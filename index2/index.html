@@ -1,0 +1,1334 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "//www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="//www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<link rel="shortcut icon" href="favicon.ico">
+
+<title>医家讯_智能医体健康平台</title>
+
+<meta name="keywords" content="医家讯,医家讯智能医疗设备,智能健康电子档案,个人健康、家庭健康,健康检测,心率监测,血糖监测,血压监测,睡眠监测,健康饮食,运动健美,亲友互动,运动圈子,医体健康,食动平衡,人工智能,健康管理,物联网,智能大数据">
+
+<meta name="description" content="医家讯智能医体健康平台通过智能紧急提醒、生命健康监测、智能穿戴设备及专业级智能医疗设备，结合物联网、云计算、健康大数据分析与呼叫中心，构建智能医体健康平台，让家人享受更健康、更安全、更舒心、更智慧化的生活，也让子女随时随地的了解父母的健康情况，及时表达爱心和孝心。">
+
+<link rel="stylesheet" type="text/css" href="/statics/css/appstyle.css">
+
+<link rel="stylesheet" type="text/css" href="/statics/js/layer/1.9.3/skin/layer.css">
+
+<script type="text/javascript" src="/statics/js/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/statics/js/global.js"></script>
+
+<script type="text/javascript" src="/statics/js/layer_mobile/layer.js"></script>
+
+<style>
+
+body{ background: #eef1f2;}
+
+/*头部*/
+
+.index_option_{ width:100%; overflow: hidden;}
+
+.index_option{ width:100%; overflow:hidden; position:relative;}
+
+.banner .pic{ width:100%; overflow:hidden;}
+
+.index_option .option_box{ width:100%; overflow:hidden; position:absolute; left:0; bottom:13%;}
+
+.index_option .option_box li{ float:left; width:25%;}
+
+.option_box .option_box_{ width:100%; overflow:hidden; text-align:center; color:#fff;}
+
+.option_box .option_box_ img{ width:60%; display:block; margin:0 auto 5px auto;}
+
+/**/
+
+.banner_head{ padding:0px 5px; position:absolute; left:0; top:6%; z-index:9999;}
+
+.banner_head .head_l{ color:#fff;     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.44); font-size:1.1rem; margin-right: 5px; width:20%; margin-top: 1%; }
+
+.head_l .location{ width: 15px; height: 15px; vertical-align: sub; }
+
+.head_l .xiala{ width:20%;}
+
+.banner_head .head_m{ width:65%; overflow: hidden; background: rgba(255,255,255,0.8); border-radius: 5px; text-align: center; padding: 5px 0px; display: block;}
+
+.banner_head .head_m img{ width:15px; height: 15px; vertical-align: sub;}
+
+.head_m .write{ padding-left: 5px; background-color:transparent;}
+
+.head_m .write::-webkit-input-placeholder { color:#000; }
+
+.head_m .write::-moz-placeholder { color:#000; }
+
+.banner_head .head_r{ width:10%;}
+
+.banner_head .head_r img{ width:60%; display: block; margin: 0 auto;}
+
+.banner_head .head_r p{ font-size: 0.5rem; color: #fff; text-align: center; line-height: 0.8rem; font-weight:bold;}
+
+/*今日健康*/
+
+.index_today_data{ width:96%; overflow:hidden; position:relative; transform: translate(2%,-14px); -webkit-transform: translate(2%,-14px); padding-bottom: 12.5%;}
+
+.index_today_data .data_box{ width:100%; overflow:hidden; background-color:#fff; border-radius:5px; margin-bottom:5px;}
+
+.data_box .box1_title{ width:100%; height: 50px; text-align:center; position:relative;}
+
+.box1_title .p1{ margin-top: 10px; font-size:1.2rem;}
+
+.box1_title .p2{ color:#999; font-size: 0.9rem;}
+
+.box1_title .check{ width:50px; height:50px; position:absolute; right:5px; top:-5px;}
+
+.data_box .box1_mess{ width:100%; overflow: hidden; margin-top: 5px;}
+
+.data_box .box1_mess li{ width:33.3%; float: left; text-align: center; border-right: 1px solid #e3e3e7;}
+
+.data_box .box1_mess li:last-child{ border-right:none;}
+
+.box1_mess .mess_box p:first-child{ font-size:1.8rem; height: 1.8rem; line-height: 1.8rem; margin-bottom: 5px; font-family: arial; font-weight: bold;}
+
+.box1_mess .mess_box p:last-child{ font-size:.9rem;}
+
+.box1_mess .mess_box img{ width:20px; height: 20px; vertical-align: bottom; margin-right: 5px;}
+
+.mess_box{ color: #333333;}
+
+/*下拉更多*/
+
+.data_more{ position:relative}
+
+.data_more,.more_box1,.more_box2{ width:100%; overflow: hidden;}
+
+.data_more .more_box1{ text-align: center; padding: 5px 0px;}
+
+.data_more .more_box1 p{ width:100%; overflow: hidden; color: #999;}
+
+.more_box1 .more{ width:4%; display: block; margin: 0 auto;}
+
+.data_more .more_box2{ padding:10px 0px 5px 0px;}
+
+
+
+.more_box2 .p1{ margin-bottom:10px; font-size: 1.3rem; text-align: center;}
+
+.more_box2 ul{ width:100%; overflow: hidden;}
+
+.more_box2 li{ width:27.3%; float: left; margin: 0px 3%;}
+
+.more_box2_add{ width:45%; text-align: center; height: 35px; line-height: 35px; color: #fff; background-color: #2cacfc; border-radius: 20px; display: block; margin: 0 auto; box-shadow: 3px 3px 5px #999;}
+
+.more_box2 .more_box2_{ width:100%; overflow: hidden; text-align: center;}
+
+.more_box2 .more_box2_ p{ margin:5px 0px; width: 100%; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; word-break: break-all;}
+
+.more_box2 .more_box2_ img{ width:70%; border:1px solid #d5d5d5; border-radius: 5px; margin: 5px auto;}
+
+.more_box2_ .pic{ width:50%; display: block; margin: 0 auto; border: 1px solid #999;}
+
+.data_more .more_box3{ width:100%; overflow: hidden; padding-bottom: 10px;}
+
+.more_box3 p{ text-align:center; margin: 10px 0px 5px 0px;}
+
+.more_box3 .p3{ color:#999999; }
+
+.more_box3 .more{ width:4%; display: block; margin: 0 auto; transform: rotate(180deg);}
+
+/*推荐*/
+
+.data_box .box_reco{ padding: 15px 10px; width: 100%; overflow: hidden; position: relative;}
+
+.box_reco .left{ width:40.5px; height: 40.8px; margin-right: 10px;}
+
+.box_reco .box_reco_m{ width:80%;}
+
+.box_reco .box_reco_m p:last-child{ width: 100%; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; word-break: break-all; color: #666; font-size: 0.9rem;}
+
+.box_reco .box_reco_m span{ color:#2cacfc;}
+
+.box_reco .right{ width:5%; position: absolute; top: 50%; right: 1%; transform: translate(-50%,-50%); -webkit-transform: translate(-50%,-50%);}
+
+/**/
+
+.health_data{margin-top:8px}
+
+.health_data li{float:left;width:33.3333%;position:relative;text-align:center}
+
+.indicatorContainer canvas{ transform: scaleX(-1)rotate(270deg); -webkit-transform: scaleX(-1)rotate(270deg);}
+
+.health_data .health_data_box{text-align:center;position:absolute;top:12%;left:50%;margin-left:-38px;font-size:1rem;color:#333;width:78px;height:78px;border:#F3F4F7 1px solid;border-radius:50%}
+
+.health_data_box p{margin-top:18px;font-size:.8rem}
+
+.indicator_data{color:#7f7f80;font-size:.6rem}
+
+.indicator_data font{color:#fea531;font-size:1.25rem;font-weight:400}
+
+/**/
+
+.h60{ width:100%; height: 60px; position: fixed; left: 0; bottom: 0;}
+
+.index_foot,.foot_box{ width:100%; overflow:hidden;}
+
+.index_foot{ padding:5px 0px 5px 0px; background-color:#f8f8f8; border-top:1px solid #e3e3e7; position: fixed; left: 0; bottom: 0;}
+
+.index_foot li{ float:left; width:20%;}
+
+.index_foot .foot_box{ text-align:center;}
+
+.foot_box img{ display:block; margin:0 auto;}
+
+.foot_box .logo{ width:30%;}
+
+.foot_box p{ font-size: 13px; color: #797979;}
+
+.foot_box .pic{ width:80%;}
+
+/**/
+
+.city-box {position: fixed;left: 100%;top: 0;width: 100%;height: 100%;overflow:hidden;overflow-y: scroll;display: block;	transition: left .5s;z-index:10000;background-color:#fff;}
+
+.city-box .city-box-content { width:100%; height:100%;}
+
+.city-box .city-box-content iframe { width:100%; height:100%; }
+
+</style>
+
+</head>
+
+<script>
+
+zhuangb();  
+
+</script>
+
+<script src="/app/updatejs.js"></script>
+
+<script>
+
+	update();
+
+  
+
+</script>
+
+<body>
+
+<div id="index_div" style="/*display: none;*/">
+
+	<div class="index_option_">
+
+		<div class="index_option">
+
+			<div class="banner">
+
+				<img src="/index/statics/images/index3_pic.png" class="pic">
+
+			</div>
+
+			<div class="banner_head">
+
+				<span class="head_l fl"><img src="statics/index/images/home_location.png" class="location"><font id="city_">定位中</font><!--<img src="/statics/index/images/xiala.png" class="xiala">--></span> 
+
+				<span class="head_m fl"><img src="/statics/index/images/search.png" onClick="window.location.href='ios://share:www.baidu.com,aaa,aaa,aaa,aaa;'"><input type="text" placeholder="做运动、找食谱" class="write nobd" id="key"></span>
+
+				<span class="head_r fr" onClick="goo('/member/my_mess.html')"><img src="/statics/index/images/mess_.png"><p>消息</p></span>
+
+			</div>
+
+			<ul class="option_box">
+
+				<li onclick="goo('/equipment/equipment_list.html')">
+
+					<div class="option_box_">
+
+						<img src="/index/statics/images/index3_icon1.png">
+
+						<p>绑定设备</p>
+
+					</div>
+
+				</li>
+
+				<li onclick="goo('/diet/diet_index1.html')">
+
+					<div class="option_box_">
+
+						<img src="/index/statics/images/index3_icon2.png">
+
+						<p>饮食管理</p>
+
+					</div>
+
+				</li>
+
+				<li onClick="goo('/member/remind.html')">
+
+					<div class="option_box_" id="icon3">
+
+						<img src="/index/statics/images/index3_icon3.png">
+
+						<p>健康提醒</p>
+
+					</div>
+
+				</li>
+
+				<li onclick="location.href = '/group/per_list.html'">
+
+					<div class="option_box_">
+
+						<img src="/index/statics/images/index3_icon4.png">
+
+						<p>我的亲友</p>
+
+					</div>
+
+				</li>
+
+			</ul>
+
+		</div>
+
+	</div>
+
+    <div class="index_today_data">
+
+    	<div class="data_box">
+
+        	<div class="box1_title">
+
+            	<p class="p1">今日健康</p>
+
+               	<p class="p2">马上测量 实时关注身体状况</p>
+
+                <!--<img src="/statics/index2/images/check.png" class="check" onClick="goo('/medical/today_check.html')">-->
+
+                <img src="/statics/index2/images/check.png" class="check" id="today_check"><!-- onClick="goo('/equipment/equipment_list.html?today=1')"-->
+
+            </div>
+
+            <ul class="box1_mess">
+
+            	<li>
+
+					<div class="mess_box">
+
+						<p style="color: #1d87ff;" id="heart">0</p>
+
+						<p><img src="/statics/index2/images/mess_box1.png">心率(bpm)</p>
+
+					</div>
+
+				</li>
+
+				<li>
+
+					<div class="mess_box">
+
+						<p style="color: #1d87ff;" id="blood">-/-</p><!--ff6d6d-->
+
+						<p><img src="/statics/index2/images/mess_box2.png">血压(mmhg)</p>
+
+					</div>
+
+				</li>
+
+				<li>
+
+					<div class="mess_box">
+
+						<p style="color: #1d87ff;" id="sleep">0</p>
+
+						<p><img src="/statics/index2/images/mess_box3.png">睡眠时间(小时)</p>
+
+					</div>
+
+				</li>
+
+            </ul>
+
+            
+
+            <div class="health_data">
+
+        	<ul>
+
+            	<li>
+
+               		<div class="indicatorContainer" >
+
+               			<canvas width="102" height="102" id="indicatorContainer1"></canvas>
+
+               		</div>
+
+                	<div class="health_data_box">
+
+                    	<p>今日已走<br>
+
+                        <span class="indicator_data"><font class="" id="steps">0</font> 步</span>
+
+                    </p></div>
+
+                </li>
+
+                <li>
+
+                	<div class="indicatorContainer" >
+
+                		<canvas width="102" height="102" id="indicatorContainer2"></canvas>
+
+                	</div>
+
+                	<div class="health_data_box">
+
+                    	<p>运动距离<br>
+
+                        <span class="indicator_data"><font class="" id="distance">0</font> km</span>
+
+                    </p></div>
+
+                </li>
+
+                <li>
+
+                	<div class="indicatorContainer" >
+
+                		<canvas width="102" height="102" id="indicatorContainer3"></canvas>
+
+                	</div>
+
+                	<div class="health_data_box">
+
+                    	<p>热量消耗<br>
+
+                        <span class="indicator_data"><font class="" id="calorie">0</font> 卡</span>
+
+                    </p></div>
+
+                </li>
+
+            </ul>
+
+        	</div> 
+
+			<div class="data_more">
+
+
+
+			<div class="more_box2" style="display:none ;"> 
+
+				<p class="p1">更多设备数据</p>
+
+				<ul>
+
+					<li>
+
+						<div class="more_box2_" onClick="goo('//shop.yjxun.cn/index.php?m=wb_shop&c=index&a=show&catid=6&id=5')">
+
+							<img src="/statics/equipment/images/pro/blood_glucose_meter.jpg">
+
+							<p>智能血糖仪</p>
+
+						</div>
+
+					</li>
+
+					<li>
+
+						<div class="more_box2_" onClick="goo('//shop.yjxun.cn/index.php?m=wb_shop&c=index&a=show&catid=6&id=6')">
+
+							<img src="/statics/index2/images/more_box2_2.jpg">
+
+							<p>智能血压计</p>
+
+						</div>
+
+					</li>
+
+					<li>
+
+						<div class="more_box2_" onClick="goo('//shop.yjxun.cn/index.php?m=wb_shop&c=index&a=show&catid=6&id=7')">
+
+							<img src="/statics/equipment/images/pro/body_fat_weigh.jpg">
+
+							<p>蓝牙智能体脂秤</p>
+
+						</div>
+
+					</li>
+
+				</ul>
+
+
+
+			</div>
+
+			<div class="more_box1">
+
+				<p>下拉显示更多数据</p>
+
+				<img src="/statics/index2/images/idnex_data_more.png" class="more">
+
+			</div>
+
+			<div class="more_box3" style="display:none ;">
+
+				<div class="more_box2_add" onClick="goo('/equipment/equipment_list.html')">添加新设备</div>
+
+				<p class="p3">点击隐藏数据</p>
+
+				<img src="/statics/index2/images/idnex_data_more.png" class="more">
+
+			</div>
+
+		</div>
+
+        </div>
+
+        <!--<div class="data_box" onClick="goo('/diet/day_poster.html')">-->
+
+        <div class="data_box" onClick="goo('/diet/day_poster.html')">
+
+			<div class="box_reco">
+
+				<img src="/statics/index2/images/box_reco_1.png" class="left fl">
+
+				<div class="box_reco_m fl">
+
+					<p>饮食推荐</p>
+
+					<p>今日饮食建议：<span style="border-bottom:1px solid #2cacfc;">立即前往查看</span></p>
+
+				</div>
+
+				<img src="/statics/index2/images/gym_mine_boxr.png" class="right">
+
+			</div>
+
+		</div>
+
+        <div class="data_box" onClick="goo('/sport/sport_lists.html?get=sport')">
+
+			<div class="box_reco">
+
+				<img src="/statics/index2/images/box_reco_2.png" class="left fl">
+
+				<div class="box_reco_m fl">
+
+					<p>运动推荐</p>
+
+					<p>今日运动建议：<span><font id="sport1" style="border-bottom:1px solid #2cacfc;">获取中..</font> + <font id="sport2" style="border-bottom:1px solid #2cacfc;">获取中..</font></span></p> 
+
+				</div>
+
+				<img src="/statics/index2/images/gym_mine_boxr.png" class="right">
+
+			</div>
+
+		</div>
+
+    </div>
+
+	<div class="h60"></div>
+
+    <div class="index_foot">
+
+    	<ul>
+
+        	<li>
+
+            	<div class="foot_box">
+
+                	<img src="/statics/index/images/index_foot1_.png" class="logo">
+
+                    <p style="color:#2cacfc;">首页</p>
+
+                </div>
+
+            </li>
+
+        	<li onclick="goo('/medical/index.html')">
+
+            	<div class="foot_box">
+
+                	<img src="/statics/index/images/index_foot2.png" class="logo">
+
+                    <p>档案</p>
+
+                </div>
+
+            </li>
+
+            <li onClick="goo('/circle/index_circle.html')">
+
+            	<!--<div class="foot_box">
+
+                	<img src="statics/images/index_foot3.png" class="pic">
+
+                </div>-->
+
+                <div class="foot_box">
+
+                	<img src="/statics/index/images/index_foot3.png" class="logo">
+
+                    <p>圈子</p>
+
+                </div>
+
+            </li>
+
+        	<li onclick="goo('/sport/sport_index.html')">
+
+            	<div class="foot_box">
+
+                	<img src="/statics/index/images/index_foot4.png" class="logo">
+
+                    <p>发现</p>
+
+                </div>
+
+            </li>
+
+            <li onClick="goo('/member/index.php')">
+
+            	<div class="foot_box">
+
+                	<img src="/statics/index/images/index_foot5.png" class="logo">
+
+                    <p>我的</p>
+
+                </div>
+
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div class="city-box" id="city_box" data-off="0">
+
+    	<!--<div class="city-box-header"><h2>选择城市</h2></div>-->
+
+        <div class="city-box-content">
+
+        	<iframe src="?m=oc&a=diqu&diqutype=1" frameborder="0" width="100%"></iframe>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
+
+
+
+<script>
+
+
+
+_if_login();
+
+function _if_login(){
+
+	var userid__ = getCookie('GkvUY___userid');
+
+	if(userid__ > 0){ 
+
+		$('#index_div').css('display','block');
+
+		sync_member();
+
+	}else{
+
+		try{
+
+			jstojava.logined();
+
+		}catch(e){}
+
+	}
+
+}
+
+var device_list_cookie = getCookie('device_list')?getCookie('device_list'):'{}';
+
+device_list_cookie = JSON.parse(device_list_cookie);
+
+
+
+$('#today_check').click(function(){
+
+	try{
+
+		jstojava.goY('manridy');
+
+	}catch(e){
+
+		if(device_list_cookie && JSON.stringify(device_list_cookie) != '{}'){
+
+			if(isios()==true){
+
+				window.location.href = "ios://manridy";
+
+			}else{ 
+
+
+
+
+
+					goo('/equipment/equipment_show.html');
+
+
+
+			}
+
+		}else{
+
+			goo('/equipment/equipment_list.html');
+
+		}
+
+	}
+
+});
+
+</script>
+
+<script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=77a30b0eb06dee8a4df81401ada6ac61"></script>
+
+
+
+<script>
+
+set_qq_map_js();
+
+
+
+$(function(){
+
+	userid = getQueryString('userid');
+
+	//set_qq_map_js();
+
+	var u = navigator.userAgent;
+
+	var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+
+	var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+	if(!isiOS){
+
+		_getCurrent();
+
+	}
+
+	/***************************************/
+
+	try{
+
+		 jstojava.getLocation_2();
+
+	}catch(e){ }
+
+	$('#city_').on('click',function(){
+
+		slideCity();
+
+	});
+
+	/***********************************************/
+
+	$('#city_').on('click',function(){
+
+		slideCity();	
+
+	});
+
+
+
+	arc("indicatorContainer1",0,"#2cacfc");
+
+	arc("indicatorContainer2",0,"#2cacfc");
+
+	arc("indicatorContainer3",0,"#2cacfc");
+
+	
+
+	$.ajax({
+
+        type: 'get',
+
+        url: 'http://www.yjxun.cn/index.php?m=member&c=data&a=if_portrait_fun&userid_='+userid,
+
+        dataType: 'jsonp',
+
+        jsonp: "jsoncallback___",
+
+		success:function(data){
+
+			if(data.num == 2){
+
+				var index_ = layer.open({
+
+					shadeClose: false
+
+					,content: '您的用户信息还未完善'
+
+					,btn: ['立即前往']
+
+					,yes: function(index_){
+
+						goo('http://www.yjxun.cn/member/perfect_data.html');
+
+						layer.close(index);
+
+					}
+
+				});
+
+			}
+
+		}
+
+	})
+
+	
+
+	get_index_data();
+
+	get_comm_sport();
+
+	get_medical_bpm();	
+
+	get_medical_mmhg();
+
+	
+
+	$.ajax({
+
+        type: 'get',
+
+        url: 'http://www.yjxun.cn/index.php?m=member&c=data&a=get_fir_data',
+
+        dataType: 'jsonp',
+
+        jsonp: "jsoncallback__",
+
+		success:function(data){
+
+			if(data.num == 1){
+
+				$('#icon3 img').attr('src','/index/statics/images/index3_icon33.gif');
+
+			}
+
+		}
+
+	})
+
+})
+
+$('.more_box1').click(function(){
+
+	$('.more_box1').hide();
+
+	$('.more_box3').fadeIn(900);
+
+	$('.more_box2').slideDown(); 
+
+});
+
+$('.more_box3 .more').click(function(){
+
+	$('.more_box1').fadeIn();
+
+	$('.more_box3').slideUp();
+
+	$('.more_box2').slideUp(); 
+
+});
+
+</script>
+
+<script>
+
+
+
+function arc(canvas,number,color){
+
+	   var canvas = document.getElementById(canvas),  //获取canvas元素
+
+	   context = canvas.getContext('2d'),  //获取画图环境，指明为2d
+
+	   centerX = canvas.width/2,   //Canvas中心点x轴坐标
+
+	   centerY = canvas.height/2,  //Canvas中心点y轴坐标
+
+	   speed = 1, //加载的快慢就靠它了
+
+	   bj = 0, 	//起始角度
+
+	   ej = 6.3;	//终止角度
+
+	   
+
+		   
+
+   //绘制蓝色外圈
+
+	   function blueCircle(n){
+
+		   var chazhi = (ej-bj);
+
+		   if( chazhi<0){ chazhi*=-1; }
+
+		   
+
+		   new_ej = chazhi*(n/1000) + Number(ej) - chazhi;	
+
+		   whiteCircle();
+
+		   context.save();
+
+		   context.strokeStyle = color; //设置描边样式
+
+		   context.lineWidth = 5; //设置线宽
+
+		   context.beginPath(); //路径开始
+
+		   context.arc(centerX, centerY, 45 , bj, new_ej , false); //用于绘制圆弧context.arc(x坐标，y坐标，半径，起始角度，终止角度，顺时针/逆时针)
+
+		   context.stroke(); //绘制
+
+		   context.closePath(); //路径结束
+
+		   context.restore(); 
+
+	   }
+
+	   //绘制白色外圈
+
+	   function whiteCircle(){
+
+		   context.save();
+
+		   context.beginPath();
+
+		   context.strokeStyle = "#f3f4f7";
+
+		   context.lineWidth = 5; //设置线宽
+
+		   context.arc(centerX, centerY, 45 ,bj, ej, false);
+
+		   context.stroke();
+
+		   context.closePath();
+
+		   context.restore();
+
+	   } 
+
+//	   //百分比文字绘制
+
+	   function text(n){
+
+		   context.save(); //save和restore可以保证样式属性只运用于该段canvas元素
+
+		   context.fillStyle="#44C7F4";
+
+		   context.font = "40px Arial"; //设置字体大小和字体
+
+		   context.textAlign= "center";
+
+		   //绘制字体，并且指定位置
+
+		   context.fillText(n.toFixed(0)+"%", centerX-0, centerY+0);
+
+		   context.stroke(); //执行绘制
+
+		   context.restore();
+
+	   }
+
+	   //动画循环
+
+	   function drawFrame(){
+
+		  if(parseInt(speed) <= number){
+
+			  speed += 5;
+
+			  window.setTimeout(function(){ drawFrame(); },7);
+
+		   }else{
+
+			  speed = number
+
+		   }  
+
+		   context.clearRect(0, 0, canvas.width, canvas.height);
+
+		   whiteCircle();
+
+		   //text(speed);
+
+		   blueCircle(speed);
+
+	   }
+
+	   drawFrame();
+
+   }
+
+
+
+function _getCurrent(){
+
+	var geolocation = new BMap.Geolocation();
+
+	geolocation.getCurrentPosition(function(r){
+
+		if(this.getStatus() == BMAP_STATUS_SUCCESS){
+
+			lng = r.point.lng;
+
+			lat = r.point.lat;
+
+			point2Address(lng,lat);
+
+		}
+
+		else {
+
+			console.log('failed'+this.getStatus());
+
+		}        
+
+	},{enableHighAccuracy: true});
+
+}
+
+var date = new Date();
+
+var year = date.getFullYear();
+
+var month = date.getMonth()+1;
+
+var day = date.getDate();
+
+var hour = date.getHours();
+
+var minute = date.getMinutes();
+
+var second = date.getSeconds();
+
+function point2Address(lng_,lat_){
+
+	var address = '';
+
+	var geoc = new BMap.Geocoder();
+
+	geoc.getLocation(new BMap.Point(lng_, lat_), function(rs){
+
+		var addComp = rs.addressComponents;
+
+		//var address = addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber;
+
+		position = addComp.province+'·'+addComp.city+'·'+addComp.district;
+
+		position_ = addComp.province+addComp.city+addComp.district;
+
+		if(addComp.city){
+
+			/*获取定位*/
+
+			cityname = addComp.city.replace('市' ,'');
+
+			$('#city_').text(cityname);
+
+		}
+
+		/*上传位置*/
+
+		if(hour < 10) hour = "0"+hour;
+
+		if(month < 10) month = "0"+month;
+
+		if(minute < 10) minute = "0"+minute;
+
+		if(second < 10) second = "0"+second;
+
+		$.ajax({
+
+			type: 'get',
+
+			url: 'http://www.yjxun.cn/index.php?m=member&c=data_api&a=location&lat='+lat_+'&lng='+lng_+'&address='+position+'&city='+cityname+'&street=&province='+addComp.province+'&district=&time='+year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second+'&userid=&mobile=ios',
+
+			data:'',
+
+			success:function(data){}
+
+		})
+
+		/**/
+
+		console.log(lng_);console.log(lat_);
+
+		return position;
+
+	});
+
+}
+
+function slideCity(){
+
+	var off = $('#city_box').attr('data-off');
+
+	if (off==1) {
+
+		off=0;
+
+		$('#city_box').css({left:'100%'},500,function(){/*$('#city_box').show();*/});	
+
+	} else {
+
+		off=1;
+
+		$('#city_box').css({left:'0'},500,function(){/*$('#city_box').hide();*/});	
+
+	}
+
+	$('#city_box').attr('data-off',off);
+
+}
+
+function setdiqu(info){
+
+	if(info){
+
+		var id = getUrlParam('id',info);
+
+		var name = getUrlParam('name',info);
+
+		name = name.replace("市","");
+
+		$('#city_').text(name);
+
+	}
+
+	var city = getCookie('city');
+
+	console.log(city+'--'+name);
+
+	if(city == null || city != name){
+
+		setCookie('city',city,'d1');
+
+		slideCity();
+
+	}else{
+
+		layer.open({
+
+			content: '您确定要更换位置到'+name+'吗？',
+
+			btn: ['是的', '不要'],
+
+			yes: function(index) {
+
+				setCookie('city',name,'d1');
+
+				slideCity();
+
+				layer.close(index);
+
+			}
+
+		});
+
+	}
+
+} 
+
+function get_comm_sport(){
+
+	/*获取运动推荐数据*/
+
+	$.ajax({
+
+        type: 'get',
+
+        url: 'http://www.yjxun.cn/index.php?m=member&c=data&a=get_soprt_recommend',
+
+        dataType: 'jsonp',
+
+        jsonp: "jsoncallback_",
+
+		success:function(data){
+
+			$('#sport1').text(data.health[0].title);
+
+			$('#sport1').click(function(){
+
+				goo('/sport/course_content.html?id='+data.health[0].id+'&catid='+data.health[0].catid);
+
+				event.stopPropagation();
+
+			});
+
+			if(data.health[1]){
+
+				$('#sport2').text(data.health[1].title);
+
+			}
+
+			$('#sport2').click(function(){
+
+				goo('/sport/course_content.html?id='+data.health[1].id+'&catid='+data.health[1].catid);
+
+				event.stopPropagation();
+
+			});
+
+		}
+
+	})
+
+}
+
+$('#key').keydown(function(e){
+
+	if(e.keyCode==13){
+
+		goo('/member/search_all.html?search='+$(this).val());
+
+	}
+
+})
+
+var steps_arc = 0,distance_arc = 0,remind_arc = 0;
+
+
+
+function get_index_data(){
+
+	/*获取运动推荐数据*/
+
+	$.ajax({
+
+        type: 'get',
+
+        url: 'http://www.yjxun.cn//index.php?m=member&c=data&a=get_index_data',
+
+        dataType: 'jsonp',
+
+        jsonp: "jsoncallback",
+
+        success: function(data) {
+
+			//console.log(data);
+
+			if(steps_arc != data.steps_arc) arc("indicatorContainer1",data.steps_arc,"#fea531");
+
+			if(distance_arc != data.distance_arc) arc("indicatorContainer2",data.distance_arc,"#2cacfc");
+
+			if(remind_arc != data.calorie_arc) arc("indicatorContainer3",data.calorie_arc,"#1d87ff");
+
+			if(data.healthy_bpm > 0){ $('#heart').text(data.healthy_bpm); }else{ $('#heart').text('-');}
+
+			if(data.healthy_mmhg != ','){ $('#blood').text(data.healthy_mmhg); }else{ $('#blood').text('--/--');}
+
+			if(data.healthy_sleep) $('#sleep').text(data.healthy_sleep);
+
+			if(data.healthy_steps) $('#steps').text(data.healthy_steps);
+
+			if(data.health_distance) $('#distance').text((data.health_distance / 1000).toFixed(1));
+
+			if(data.healthy_calorie) $('#calorie').text(data.healthy_calorie);
+
+			steps_arc = data.steps_arc;
+
+			distance_arc = data.distance_arc;
+
+			remind_arc = data.calorie_arc;
+
+		}
+
+	});
+
+	setTimeout(function(){
+
+		get_index_data();
+
+	},15000);
+
+}
+
+function get_medical_bpm(){
+
+	/*获取心率数据*/
+
+	$.ajax({
+
+		url:'/index.php?m=member&c=data&a=get_medical_bpm',
+
+		type:'POST',
+
+		dataType:'json',
+
+		success:function(data){
+
+			console.log(data);
+
+
+
+			
+
+		}
+
+	})
+
+}
+
+function get_medical_mmhg(){
+
+	/*获取血压数据*/
+
+	$.ajax({
+
+		url:'/index.php?m=member&c=data&a=get_medical_mmhg',
+
+		type:'POST',
+
+		dataType:'json',
+
+		success:function(data){
+
+			console.log(data);
+
+			
+
+		}
+
+	})
+
+}
+
+
+
+</script>
+

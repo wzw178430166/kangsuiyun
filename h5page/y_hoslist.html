@@ -1,0 +1,354 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="topcolor" rgba="44.172.252.1">
+    <title>预约挂号</title>
+    <meta name="keywords"
+        content="医家讯,医家讯智能医疗设备,智能健康电子档案,个人健康、家庭健康,健康检测,心率监测,血糖监测,血压监测,睡眠监测,健康饮食,运动健美,亲友互动,运动圈子,医体健康,食动平衡,人工智能,健康管理,物联网,智能大数据">
+    <meta name="description"
+        content="医家讯智能医体健康平台通过智能紧急提醒、生命健康监测、智能穿戴设备及专业级智能医疗设备，结合物联网、云计算、健康大数据分析与呼叫中心，构建智能医体健康平台，让家人享受更健康、更安全、更舒心、更智慧化的生活，也让子女随时随地的了解父母的健康情况，及时表达爱心和孝心。">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+    <link rel="stylesheet" type="text/css" href="/statics/css/appstyle.css">
+    <script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/statics/js/layer_mobile/layer.js"></script>
+    <script type="text/javascript" src="/statics/js/global.js"></script>
+    <script type="text/javascript" src="/statics/js/cookie.js"></script>
+    <script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+    <style>
+	.headerBoxCircle{height:3.8rem;z-index:999;}
+	.headerBoxCircle p{height:3.8rem;line-height:3.8rem;}
+		.m-head {
+    padding: 1rem .19rem 0 .19rem;
+    overflow: hidden;
+    left: 0;
+    top: 0;margin-bottom: 1rem;
+    width: 100%;
+    height: 4rem;
+    z-index: 999;
+}
+        .m-head .head-query {
+    margin-top: .2rem;
+    width: 90%;
+    margin: 0 auto;
+    height: 2.89rem;
+    padding-left: 2rem;
+    background: #fff url(./images/Magnifier.png) no-repeat 2.8rem center;
+    padding-left: 4.5rem;
+    background-size: 1rem;
+    border-radius: 500px;
+    border: 1px solid #ececec;
+}
+        .head-query input {
+    width: 90%;
+    height: 100%;
+    border: 0;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    padding-left: .2rem;
+}
+
+
+.n21{width: 5.5rem;border: 1px solid #2CACFC;background: #2CACFC;margin: 11% auto;text-align: center;color: #FFF;padding: 3px;border-radius: 15px;}
+.n22{overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;font-size: 0.923rem;color: #999;}
+.registered_place_box_line .registered_place_box_line_r {
+    width:  11.165rem;
+}
+
+.registered_place_box_line .registered_place_box_line_r .p1_l {
+    font-size: 1.1rem;
+}
+.registered_place_box_line .registfont{color: #999;}
+body{ background-color:#f8f8f8;}
+.header_box{ background-color:#fff; border-bottom:1px solid #e3e2e7;}
+.header_box .midden{ color:#1d1d1d;}
+.registered_place_box,.registered_place_option,.registered_place_box_,.registered_place_box_line{ width:100%; overflow:hidden; background-color:#fff;}
+.registered_place_option{ border-bottom:1px solid #e3e3e7;position: relative;
+    z-index: 6;}
+.registered_place_option li{width: 33.3%;
+    float: left;
+    margin: 0.923rem auto;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    border-right: 1px solid #c8c8c8;
+    color: #101d37;
+    font-size: 1.1rem;}
+.registered_place_option li:last-child{ border-right:none;}
+.registered_place_option i{ margin-left:6px;display:inline-block;width: 0;
+          height: 0;vertical-align: middle;
+          border-right: 5px solid transparent;
+          border-left: 5px solid transparent;
+          border-top: 5px solid #515151;
+}
+/*.registered_place_option .active{ border-bottom:1px solid #ffb61a; color:#ffb61a;}*/
+.registered_place_box_line{ border-bottom:1px solid #e3e3e7; padding:0.923rem;}
+/**/
+.registered_place_choice{ width:100%; overflow:hidden; position:fixed; left:0; top:7.1rem; height:100%; display:none;}
+.registered_place_choice .registered_place_choice_{ width:100%; overflow:hidden;}
+.registered_place_choice_ .choice_box{ background-color:#fff;margin-top: 5rem;}
+.registered_place_choice_ .choice_box ul{ overflow:scroll;}
+.registered_place_choice_ .choice_box li{ width:100%; line-height: 3.346rem; height: 3.346rem; border-bottom: 1px solid #ddd8cd; padding-left:10%; position:relative;}
+.registered_place_choice_ .choice_box i{ position:absolute; left:6%; top:50%; transform: translate(-50%,-50%); -webkit-transform: translate(-50%,-50%);width: 0;
+          height: 0;vertical-align: middle;
+          border-right: 7px solid transparent;
+          border-left: 7px solid transparent;
+          border-top: 7px solid #515151;}
+.registered_place_choice_ .bg_color{ display:block; position:absolute; top:auto;}
+.registered_search{ width:93.33%; height:2.615rem; line-height:2.615rem; margin:0.769rem auto; border-radius:20px; background-color:#fff; border:1px solid #e4e4e4; text-align:center;}
+.registered_search img{ width:1rem; height:1rem; vertical-align:sub;}
+.registered_search input{ width:18.423rem;}
+.registered_search input::-ms-input-placeholder{ color:#666}/* Internet Explorer 10+*/
+.registered_search input::-webkit-input-placeholder{ color:#666} /* WebKit browsers*/
+.registered_search input::-moz-placeholder{ color:#666;}/* Mozilla Firefox */
+/**/
+.registered_place_box_line img{width: 7.9rem;
+    height: 5.9rem;
+    border-radius: .35rem;
+    float: left;}
+@media screen and (max-width: 414px) {
+    .registered_place_box_line .registered_place_box_line_r{ width:11.165rem;}
+}
+@media screen and (max-width: 375px) {
+    .registered_place_box_line .registered_place_box_line_r{ width:11.165rem;}
+}
+@media screen and (max-width: 320px) {
+    .registered_place_box_line .registered_place_box_line_r{ width:9.55rem;}
+}
+.registered_place_box_line .registered_place_box_line_r .p1,.p2,.p3{ width:100%; }
+.registered_place_box_line .registered_place_box_line_r .p1{ height:1.4rem; line-height:1.4rem;}
+.registered_place_box_line .registered_place_box_line_r .p1_l{ color:#000; font-size:1.277rem;font-weight: bold;}
+.registered_place_box_line .registered_place_box_line_r .p1_l .yisli{ color:#ff6a5d; font-size:1.077rem;}
+.registered_place_box_line .registered_place_box_line_r .p1_l span{margin-left:0.654rem; font-size:0.923rem;font-weight: normal;}
+.registered_place_box_line .registered_place_box_line_r .p1_r{ color:#999; font-size:0.923rem;}
+.registered_place_box_line .registered_place_box_line_r .p2{ font-size:0.923rem; color:#999; height:1.923rem; line-height:1.923rem;margin-top: .5rem;}
+.registered_place_box_line .registered_place_box_line_r .psie{width: 265%;}
+.registered_place_box_line .registered_place_box_line_r .psie span{border-radius: 500px;
+    padding: .2rem .8rem;margin-right: .42rem;
+    border: 1px solid #a1a7a8;}
+.registered_place_box_line .registered_place_box_line_r .psie span:empty {
+   display: none;
+}	
+.registered_place_box_line .registered_place_box_line_r .p3 li{ line-height:1.077rem; padding:0.115rem 0.731rem; border:1px solid #a1a7a8; color:#a1a7a8; border-radius:15px; float:left; margin-right:0.5rem;}
+.header_box{height: 3.8rem;}
+.header_box .midden{    height: 3.8rem;
+    line-height: 3.8rem;}
+.h50 {
+    height: 3.8rem;
+}
+.bg_color {
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.3);
+    z-index: 1;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: none;
+}
+    </style>
+</head>
+
+<body>
+    <div class="headerBoxCircle">
+        <img src="/statics/images/goback_b.png" onClick="goback()" class="left">
+        <p class="midden">预约挂号</p>
+    </div>
+    <div class="h50"></div>
+    <div class="m-head"> 
+        <div class="head-query">
+            <input type="text" placeholder="请输入医院/诊所名称或医生名进行搜索
+            " id="k" placeholder-color="#999">
+        </div>
+    </div>
+    
+    <div class="registered_place_box">
+    <div class="registered_place_option">
+        <ul>
+            <li class="" data-paixu="0">地区选择<i class="fa fa-caret-down"></i></li>
+            <li data-keshi="1">医院类型<i class="fa fa-caret-down"></i></li>
+            <li data-city="2" class="active">智能筛选<i class="fa fa-caret-down"></i></li>
+        </ul>
+    </div>
+    <div class="registered_place_box_" id="inputtime_div">
+        <ul><li style="display:none ;"><div class="registered_place_box_line"><img src="./images/leis.png"><div class="registered_place_box_line_r fr" style="width: 5.5rem;margin-left: 5%;"><div class="p1" style="color: #666;text-align: right;"><i class="registfont">2.5km</i></div><div class="p3" style="font-size: 0.9rem;"></div></div><div class="registered_place_box_line_r fr"><div class="p1"><div class="p1_l fl" style="width:200%">澳门镜湖医院<span class="yisli">综合医院</span></div></div><div class="p2">连胜街60(近镜湖马路)</div><div class="p2 psie"><span>神经外科</span><span>口腔外科</span><span>妇产科</span></div></div></div></li>       
+        </ul>
+    </div>
+</div>
+   <div class="registered_place_choice" id="register" style="display: none;">
+    <div class="registered_place_choice_" style="display:none;">
+        <div class="choice_box choice_box1">
+			 <ul class="paixu">
+                <li class="active" da_sort="1"><i class="fa fa-angle-down fa-2x"></i>地区选择</li>
+           <!-- <li da_sort="2">人气优先</li></ul>-->
+        </div>
+        <div class="bg_color"></div>
+    </div>
+    <div class="registered_place_choice_" style="display:none;">
+        <div class="choice_box choice_box2">
+              <ul class="keshi">
+              <li class="active" da_sort="1"><i class="fa fa-angle-down fa-2x"></i>预约类型</li>
+          </ul>
+        </div>
+        <div class="bg_color"></div>
+    </div>
+    <div class="registered_place_choice_" style="">
+        <div class="choice_box choice_box3">
+              <ul class="city">
+                <li class="active" da_sort="1"><i class="fa fa-angle-down fa-2x"></i>智能筛选</li>
+           </ul>
+        </div>
+        <div class="bg_color"></div>
+    </div>
+    
+</div>
+<input type="hidden" value="1" id="page">
+<script>
+function get_head(){
+	var data={"data":{"paixu":"全国,佛山,广州","keshi":"线上,线下","city":"好评优先","zhicheng":"好评优先,副主任医师,主治医师,住院医师"}};
+	var cons;
+	var das = data.data;
+	for(i in das){
+		cons = das[i].split(',');
+		var m = 1;
+		for(j in cons){
+			m++;
+			$('.'+i).append('<li da_sort="'+m+'">'+cons[j]+'</li>');
+		}
+	}
+}	
+get_head();
+
+var ac = getQueryString('ac')?getQueryString('ac'):'';
+var doc_type = '';
+if(ac == 'zhuan'){
+	$('.midden,title').text('预约挂号');
+	doc_type = 3;
+}
+$('.registered_place_option ul li').click(function(){
+$(this).addClass('active').siblings().removeClass('active');
+	var _index = $(this).index();
+	console.log(_index);
+	$('.registered_place_choice').show();
+	$('.registered_place_choice_').eq(_index).show().siblings('.registered_place_choice_').hide();
+	
+});
+$('.registered_place_choice_ .bg_color').click(function(){
+	$('.registered_place_choice').hide();
+});
+$('.registered_place_choice_ .choice_box3 li').click(function(){
+	$(this).addClass('active').siblings().removeClass('active');
+});
+</script>
+<script>
+var lockPage = 0;
+window.onscroll = function(){
+	if ($(document).scrollTop() <= 0){
+		console.log("滚动条已经到达顶部为0");
+	}
+	if ($(document).scrollTop() >= $(document).height() - $(window).height()){
+		console.log("滚动条已经到达底部为" + $(document).scrollTop());
+		get_data();
+	}
+};
+$(function(){
+	if(userid_ == 2 || userid_ == 1 || userid_ == 3585){
+		$('#inputtime_div ul li').eq(0).show();
+	}
+	//get_frame();
+	//_getCurrent();
+	get_data();
+})
+var lng,lat,p;
+var page = 1;
+lng = lng?lng:116.404;
+lat = lat?lat:39.915;
+function _getCurrent(){
+	var geolocation = new BMap.Geolocation();
+	geolocation.getCurrentPosition(function(r){
+		if(this.getStatus() == BMAP_STATUS_SUCCESS){
+			lng = r.point.lng;
+			lat = r.point.lat;
+		}else{
+			alert('failed'+this.getStatus());
+		}        
+	},{enableHighAccuracy: true});
+}
+function get_data(s,n){
+	var data=[{'url':'./images/leis1.png','hlis':'综合医院','hos':'中山一院','jie':'连胜街60(近镜湖马路)','ks1':'神经外科','ks2':'口腔外科','ks3':'妇产科','jl':'25km'},{'url':'./images/leis1.png','hlis':'专科诊所','hos':'澳门科大医院','jie':'连胜街60(近镜湖马路)','ks1':'神经外科','ks2':'口腔外科','ks3':'','jl':'15km'},{'url':'./images/leis.png','hlis':'专科诊所','hos':'仁伯晫诊所','jie':'连胜街60(近镜湖马路)','ks1':'神经外科','ks2':'口腔外科','ks3':'妇产科','jl':'15km'},{'url':'./images/leis.png','hlis':'专科诊所','hos':'仁康牙科医疗中心','jie':'连胜街60(近镜湖马路)','ks1':'','ks2':'口腔外科','ks3':'','jl':'15km'},{'url':'./images/leis1.png','hlis':'专科诊所','hos':'澳门科大医院','jie':'连胜街60(近镜湖马路)','ks1':'神经外科','ks2':'','ks3':'妇产科','jl':'15km'},{'url':'./images/leis.png','hlis':'专科诊所','hos':'澳门镜湖医院','jie':'连胜街60(近镜湖马路)','ks1':'神经外科','ks2':'口腔外科','ks3':'妇产科','jl':'15km'}];
+	//if(lockPage == 1) return;
+	//$.ajax({
+		//url:'/?m=doctor&a=get_datas&page='+page,
+	//	type:'POST',
+		//data:'judge=18&type=1&ac='+ac+'&doc_type='+doc_type+'&s='+s+'&n='+n,
+	//	dataType:'json',
+		//success:function(data){
+			var da = data;
+			if(!da) lockPage = 1;
+			var cm_num = 0;
+			var date_ = new Date().getDay();
+			for(i in da){
+				var text = 
+				` <li style="display: ;"><div class="registered_place_box_line" onclick="goo('/index_yy/hops_register/department.html');"><img src="${da[i].url}"><div class="registered_place_box_line_r fr" style="width: 5.5rem;margin-left: 5%;"><div class="p1" style="color: #666;text-align:right;"><i class="registfont">${da[i].jl}</i></div><div class="p3" style="font-size: 0.9rem;"></div></div><div class="registered_place_box_line_r fr"><div class="p1"><div class="p1_l fl" style="width:200%">${da[i].hos}<span class="yisli">${da[i].hlis}</span></div></div><div class="p2">${da[i].jie}</div><div class="p2 psie"><span>${da[i].ks1}</span><span>${da[i].ks2}</span><span>${da[i].ks3}</span></div></div></div></li>`;
+				$('#inputtime_div ul').append(text);
+			}
+		//	page++;
+		//}
+	//})
+}
+function fo_url(obj){
+//	goo('./fast_detail.html?data='+$(obj).attr('da_data'));
+    	goo('/drug/docdetails.html?data='+$(obj).attr('da_data'));
+}
+function search_data(type,num){
+	lockPage = 0;
+	page = 1;
+	if(num == '科室') type = '';
+	get_data(type,num);
+}
+$('.choice_box1 ul li').click(function(){
+	$(this).parent().find('i').remove();
+	$(this).html($(this).html()+'<i class="fa fa-angle-down fa-2x"></i>');
+	$('.registered_place_choice').hide();
+	$('.registered_place_option ul li').eq(0).html($(this).text()+'<i class="fa fa-caret-down"></i>');
+	search_data('sort',$(this).attr('da_sort'));
+})
+$('.choice_box2 ul li').click(function(){
+	$(this).parent().find('i').remove();
+	$(this).html($(this).html()+'<i class="fa fa-angle-down fa-2x"></i>');
+	$('.registered_place_choice').hide();
+	$('.registered_place_option ul li').eq(1).html($(this).text()+'<i class="fa fa-caret-down"></i>');
+	search_data('ks',$(this).text());
+})
+$('.choice_box3 ul li').click(function(){
+	$(this).parent().find('i').remove();
+	$(this).html($(this).html()+'<i class="fa fa-angle-down fa-2x"></i>');
+	$('.registered_place_choice').hide();
+	$('.registered_place_option ul li').eq(2).html($(this).text()+'<i class="fa fa-caret-down"></i>');
+	search_data('cy',$(this).attr('da_sort'));
+})
+	$('.choice_box4 ul li').click(function(){
+	$(this).parent().find('i').remove();
+	$(this).html($(this).html()+'<i class="fa fa-angle-down fa-2x"></i>');
+	$('.registered_place_choice').hide();
+	$('.registered_place_option ul li').eq(3).html($(this).text()+'<i class="fa fa-caret-down"></i>');
+	search_data('te',$(this).attr('da_sort'));
+})
+function get_frame(){
+	$.get('/index2/footer.html',function(data){
+		$('#footer').after(data);
+	});
+}
+
+
+</script> 
+</body>
+
+</html>

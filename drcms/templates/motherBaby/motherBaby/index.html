@@ -1,0 +1,720 @@
+{template 'dataManage','header_common'}
+<style>
+.left, .Switch, .right { /*display: none;*/
+}
+.right {
+	background-color: #eeefef;
+}
+.ct-index-bg {
+	width: 100%;
+	height: 100%;
+}
+.ct-index-bg img {
+	display: block;
+	width: 100%;
+}
+.title_right {
+	display: none;
+}
+ul, p {
+	margin: 0
+}
+.layui-col-md12 {
+	margin-bottom: 15px;
+}
+/**/
+.ct-data-preview {
+	margin-bottom: 15px;
+}
+.ct-data-preview .preview-tool {
+	overflow: hidden;
+}
+.preview-tool ul {
+	overflow: hidden;
+	float: left;
+	background-color: #f4f5fa;
+	border-radius: 3px 3px 0 0;
+}
+.preview-tool ul li {
+	width: 160px;
+	text-align: center;
+	line-height: 40px;
+	font-size: 14px;
+	font-weight: 700;
+	float: left;
+	cursor: pointer;
+}
+.preview-tool ul li.active {
+	background-color: #fff;
+	color: #108ee9;
+}
+.ct-data-preview .preview-content {
+	padding: 24px;
+	background-color: #fff;
+	border-radius: 0 3px 3px 3px;
+	overflow: hidden;
+}
+.preview-content .preview-content-item {
+	display: none;
+}
+.preview-content-item ul {
+	overflow: hidden;
+}
+.preview-content-item ul li {
+	float: left;
+	width: 33.33%;
+}
+.preview-to-do .preview-content-item ul li {
+	width: 20%;
+}
+.preview-shop .preview-trend {
+	width: 60%;
+	float: left;
+}
+.preview-trend .charts-head ul {
+	overflow: hidden;
+}
+.preview-trend .charts-head ul li {
+	float: left;
+	width: 50%;
+}
+.preview-trend .charts-head ul li p:first-child {
+	font-size: 16px;
+}
+.preview-trend .charts-head ul li p:last-child {
+	line-height: 35px;
+}
+.preview-trend .charts-head ul li p:last-child font {
+	font-size: 16px;
+}
+.preview-shop .preview-content-item {
+	display: block;
+	float: right;
+	width: 38%;
+}
+.preview-shop .preview-content-item ul li {
+	width: 50%;
+	margin-bottom: 30px;
+}
+.preview-shop .preview-trend .charts-content {
+	height: 150px;
+}
+.preview-content-item ul li p:first-child {
+	font-size: 14px;
+	color: #999;
+}
+.preview-content-item ul li p:last-child {
+	line-height: 36px;
+}
+.preview-content-item ul li .item-val {
+	margin-top: 5px;
+}
+.preview-content-item ul li p font {
+	font-size: 18px;
+	color: #333;
+}
+.preview-content-item ul li .item-val2 {
+	color: #999;
+}
+.preview-content-item ul li .item-val2 font {
+	font-size: 16px;
+	margin-right: 5px;
+}
+.operate-more {
+	float: right;
+	line-height: 40px;
+}
+.preview-to-do .preview-content-item ul li {
+	cursor: pointer;
+}
+/**/
+.custom-tooltip {
+	width: 100% !important;
+	height: 10% !important;
+	position: absolute;
+	top: 0px;
+	left: 0px
+}
+.custom-tooltip-item {
+	width: 150px;
+	height: 50px;
+	position: relative;
+	float: left;
+	margin-left: 20px;
+	border-left-style: solid;
+	border-left-width: 5px
+}
+.custom-tooltip-item:first-child {
+	margin-left: 0
+}
+.custom-tooltip-item-name {
+	width: 80%;
+	height: 20px;
+	position: absolute;
+	top: 0px;
+	left: 10px;
+	color: rgba(0, 0, 0, 0.45);
+	font-size: 14px
+}
+.custom-tooltip-item-value {
+	width: 80%;
+	height: 30px;
+	position: absolute;
+	bottom: 0px;
+	left: 10px;
+	color: #262626;
+	font-size: 22px;/*font-weight: bold*/
+}
+</style>
+<body>
+{template 'dataManage','header'}
+<div id="middle"> 
+  <!--<div class="ct-index-bg"><img src="/statics/dataManage/images/index_bg.jpg"></div>--> 
+  {template 'dataManage','left'}
+  <div class="right" id="mainFrame">
+    <div class="right_cont">
+      <ul class="breadcrumb">
+        当前位置： <a href="/?m=dataManage">首页</a>
+      </ul>
+      <div class="title_right"><strong>数据概览</strong></div>
+      <div style="width: auto;margin: auto;">
+        <div class="ct-content"> 
+          <!--start-->
+          <div class="ct-data-preview preview-to-do" style=" clear: both;">
+            <div class="preview-tool">
+              <ul>
+                <li>待处理</li>
+              </ul>
+            </div>
+            <div class="preview-content">
+              <div class="preview-content-item" style=" display: block;">
+                <ul>
+                  <li onClick="goUrl('/?m=dataManage&c=member&a=memberList2&type=offline3')">
+                    <p>离线3天人数</p>
+                    <p><font id="toDoDay3">0</font></p>
+                  </li>
+                  <li onClick="goUrl('/?m=dataManage&c=member&a=memberList2&type=offline7')">
+                    <p>离线达7天人数</p>
+                    <p><font id="toDoDay7">0</font></p>
+                  </li>
+                  <li onClick="goUrl('/?m=dataManage&c=health&a=warning')">
+                    <p>健康告警</p>
+                    <p><font id="toDoWarning">0</font></p>
+                  </li>
+                  <li onClick="goUrl('/?m=dataManage&c=cs&a=csOnline&customer_svc=1&pc=1')">
+                    <p>客服咨询</p>
+                    <p><font id="toDoCs">0</font></p>
+                  </li>
+                  <li onClick="goUrl('/?m=dataManage&c=cs&a=guestbook')">
+                    <p>意见反馈</p>
+                    <p><font id="toDoGuest">0</font></p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!--preview-content--> 
+          </div>
+          <!--ct-data-preview--> 
+          <!--end--> 
+          <!--start-->
+          <div class="ct-data-preview preview-member" style=" width: 49%; float: left;">
+            <div class="preview-tool" data-val="member">
+              <ul>
+                <li data-type="title">用户数据</li>
+                <li class="active" data-val="0">今日</li>
+                <li data-val="1">昨日</li>
+              </ul>
+              <a href="/?m=dataManage&c=index&a=memberStatistics" class="operate-more">更多&gt;&gt;</a> </div>
+            <div class="preview-content">
+              <div class="preview-content-item" style=" display: block;">
+                <ul>
+                  <li>
+                    <p>当前在线人数</p>
+                    <p><font id="todayOnline">0</font></p>
+                  </li>
+                  <li>
+                    <p>新增人数</p>
+                    <p><font id="todayRegister">0</font></p>
+                  </li>
+                  <li>
+                    <p>活跃人数</p>
+                    <p><font id="todayActive">0</font></p>
+                  </li>
+                </ul>
+              </div>
+              <div class="preview-content-item">
+                <ul>
+                  <li>
+                    <p>新增人数</p>
+                    <p><font id="yesterdayRegister">0</font></p>
+                  </li>
+                  <li>
+                    <p>活跃人数</p>
+                    <p><font id="yesterdayActive">0</font></p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!--preview-content--> 
+          </div>
+          <!--ct-data-preview--> 
+          <!--end--> 
+          <!--start-->
+          <div class="ct-data-preview preview-equipment" style=" width: 49%; float: right;">
+            <div class="preview-tool" data-val="equipment">
+              <ul>
+                <li data-type="title">设备数据</li>
+                <li class="active" data-val="0">今日</li>
+                <li data-val="1">昨日</li>
+              </ul>
+              <a href="/?m=dataManage&c=index&a=equipmentStatistics" class="operate-more">更多&gt;&gt;</a> </div>
+            <div class="preview-content">
+              <div class="preview-content-item" style=" display: block;">
+                <ul>
+                  <li>
+                    <p>使用人数</p>
+                    <p><font id="todayEquipment">0</font></p>
+                  </li>
+                  <li>
+                    <p>异常人数</p>
+                    <p><font id="todayWarning">0</font></p>
+                  </li>
+                </ul>
+              </div>
+              <div class="preview-content-item">
+                <ul>
+                  <li>
+                    <p>使用人数</p>
+                    <p><font id="yesterdayEquipment">0</font></p>
+                  </li>
+                  <li>
+                    <p>异常人数</p>
+                    <p><font id="yesterdayWarning">0</font></p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!--preview-content--> 
+          </div>
+          <!--ct-data-preview--> 
+          <!--end--> 
+          
+          <!--start-->
+          <div class="layui-col-md12" style=" width: 39%; float: left;">
+            <div class="layui-card">
+              <div class="layui-card-header">母婴服务（元）<a href="javascript:;" class="operate-more">更多&gt;&gt;</a></div>
+              <div class="layui-card-body ">
+                <div class="ct-charts ct-trend">
+                  <div class="ct-charts-content" id="J_inquiry_trend" style=" height: 300px;"></div>
+                </div>
+                <!--ct-charts---> 
+              </div>
+            </div>
+          </div>
+          <!--end--> 
+          <!--start-->
+          <div class="layui-col-md12" style=" width: 39%; float: left; margin-left: 1%">
+            <div class="layui-card">
+              <div class="layui-card-header">母婴服务（人数）</div>
+              <div class="layui-card-body ">
+                <div class="ct-charts ct-trend">
+                  <div class="ct-charts-content" id="J_inquiry_trend2" style=" height: 300px;"></div>
+                </div>
+                <!--ct-charts---> 
+              </div>
+            </div>
+          </div>
+          <!--end--> 
+          <!--start-->
+          <div class="layui-col-md12" style=" width: 20%; float: right;">
+            <div class="layui-card">
+              <div class="layui-card-header">母婴类型统计</div>
+              <div class="layui-card-body ">
+                <div class="ct-charts ct-trend">
+                  <div class="ct-charts-content" id="J_inquiry_type_columnar" style=" height: 300px;"></div>
+                </div>
+                <!--ct-charts---> 
+              </div>
+            </div>
+          </div>
+          <!--end--> 
+          
+          <!--start-->
+          <div class="ct-data-preview preview-shop" style=" clear: both;">
+            <div class="preview-tool">
+              <ul>
+                <li>商城交易</li>
+              </ul>
+              <a href="/?m=dataManage&c=index&a=productStatistics" class="operate-more">更多&gt;&gt;</a> </div>
+            <div class="preview-content">
+              <div class="preview-content-charts preview-trend">
+                <div class="charts-head">
+                  <ul>
+                    <li>
+                      <p>支付金额</p>
+                      <p><font id="todayPayMoney">0.00</font></p>
+                    </li>
+                    <li>
+                      <p >昨日全天</p>
+                      <p><font id="yesterdayPayMoney">0.00</font></p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="charts-content" id="J_shop_trend"></div>
+              </div>
+              <div class="preview-content-item" style=" display: block;">
+                <ul>
+                  <li>
+                    <p>访客数</p>
+                    <p class="item-val"><font id="todayUv">0</font></p>
+                    <div class="item-val2"><font id="yesterdayUv">0</font>昨日全天</div>
+                  </li>
+                  <li>
+                    <p>支付用户数</p>
+                    <p class="item-val"><font id="todayPayMember">0</font></p>
+                    <div class="item-val2"><font id="yesterdayPayMember">0</font>昨日全天</div>
+                  </li>
+                  <li>
+                    <p>访问量</p>
+                    <p class="item-val"><font id="todayPv">0</font></p>
+                    <div class="item-val2"><font id="yesterdayPv">0</font>昨日全天</div>
+                  </li>
+                  <li>
+                    <p>支付订单数</p>
+                    <p class="item-val"><font id="todayPayNumber">0</font></p>
+                    <div class="item-val2"><font id="yesterdayPayNumber">0</font>昨日全天</div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!--preview-content--> 
+          </div>
+          <!--ct-data-preview--> 
+          <!--end--> 
+          
+          <!--start-->
+          <div class="layui-col-md12" style=" width: 65%; float: left;">
+            <div class="layui-card">
+              <div class="layui-card-header">网页访问<a href="/?m=dataManage&c=index&a=webStatistics" class="operate-more">更多&gt;&gt;</a></div>
+              <div class="layui-card-body ">
+                <div class="ct-charts ct-trend">
+                  <div class="ct-charts-content" id="J_web_trend" style=" height: 300px;"></div>
+                </div>
+                <!--ct-charts---> 
+              </div>
+            </div>
+          </div>
+          <!--end--> 
+          <!--start-->
+          <div class="layui-col-md12" style=" width: 34%; float: right;">
+            <div class="layui-card">
+              <div class="layui-card-header">设备型号分布</div>
+              <div class="layui-card-body ">
+                <div class="ct-charts ct-trend">
+                  <div class="ct-charts-content" id="J_equipment_mode_pie" style=" height: 300px;"></div>
+                </div>
+                <!--ct-charts---> 
+              </div>
+            </div>
+          </div>
+          <!--end--> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html><script>/*Fixing iframe window.innerHeight 0 issue in Safari*/document.body.clientHeight;</script>
+<script src="/statics/admin/common/antv/g2/3.5.1/g2.min.js"></script>
+<script src="/statics/admin/common/antv/lib/data-set.min.js"></script>
+<script>
+$(function(){
+	getData();
+	var item1 = $('.preview-tool ul li');
+	item1.each(function(i) {
+        $(item1[i]).on('click',function(){
+			var column = $(this).parent().parent().attr('data-val');
+			if (-1 == $.inArray(column,new Array('member','equipment'))) return;
+			var type = $(this).attr('data-type');
+			if ('title' == type) return;
+			var index = parseInt($(this).attr('data-val'));
+			//console.log(type+'***'+index);return;
+			$('.preview-'+column+' .preview-tool ul li').removeClass('active');
+			$(this).addClass('active');
+			$('.preview-'+column+' .preview-content-item').hide();
+			$('.preview-'+column+' .preview-content-item').eq(index).show();
+		});
+    });
+})
+function getData(){
+	var url = '/?m=dataManage&ajax=1&ssaw=1';
+	$.ajax({
+		url: url,
+		type: "GET",
+		dataType: "JSON",
+		success:function(data){
+			var datas = data.data.datas;
+			for(var i in datas){
+				var value = datas[i];
+				//console.log(i+'***'+value);
+				if (-1!=$.inArray(i,new Array('trend','trend2'))) continue;
+				$('#'+i).text(value);
+			}
+			if (datas.trend) {
+				trendCharts({fields:["today","yesterday"],x:'hour',data:datas.trend},'J_shop_trend');
+			}
+			if (datas.trend2) {
+				trendCharts2({alias:{pv:'访问量(PV)',uv:'访问人数(UV)'},data:datas.trend2},'J_web_trend');
+			}
+			if (datas.pie) {
+				pie({data:datas.pie},'J_equipment_mode_pie');
+			}
+			if (datas.trend3) {
+				trendCharts2({alias:{doctor_service:'快速问诊',bespoke:'在线咨询'},data:datas.trend3},'J_inquiry_trend');
+			}
+			if (datas.trend4) {
+				//trendCharts({fields:["doctor_service","bespoke"],x:'day',data:datas.trend4},'J_inquiry_trend2');
+				trendCharts2({alias:{doctor_service:'快速问诊',bespoke:'在线咨询'},data:datas.trend4},'J_inquiry_trend2');
+			}
+			if (datas.columnar) {
+				columnar({data:datas.columnar},'J_inquiry_type_columnar');
+			}
+			//columnar();
+		}
+	})
+}
+function trendCharts(param,selector){
+  var ds = new DataSet();
+  var dv = ds.createView().source(param.data);
+  // fold 方式完成了行列转换，如果不想使用 DataSet 直接手工转换数据即可
+  dv.transform({
+    type: 'fold',
+    fields: param.fields, // 展开字段集
+    key: 'key', // key字段
+    value: 'value' // value字段
+  });
+  var chart = new G2.Chart({
+    container: selector,
+    forceFit: true,
+    height: 150,
+	padding: [20,15,20,30]
+  });
+  switch(param.x){
+	case 'hour':
+		chart.source(dv, {
+			hour: {
+			  range: [0, 1],
+			  min: 0,
+			  max: 23,
+			  tickInterval: 3
+			}
+		  });
+		break;
+	case 'day':
+		chart.source(dv, {
+			day: {
+			  range: [0, 1]
+			}
+		  });
+		break;
+	  
+  }
+  
+  chart.tooltip({
+    crosshairs: {
+      type: 'line'
+    }
+  });
+  chart.line().position(param.x+'*value').color('key').shape('smooth');
+  chart.point().position(param.x+'*value').color('key').size(2).shape('circle').style({
+    stroke: '#fff',
+    lineWidth: 1
+  });
+  chart.render();
+}
+function trendCharts2(param,selector){
+  var chart = new G2.Chart({
+    container: selector,
+    forceFit: true,
+    height: 300,
+    padding: [100, 30, 30, 45] // 上右下左
+  });
+  chart.source(param.data);
+  chart.tooltip({
+    follow: false,
+    crosshairs: 'y',
+    htmlContent: function htmlContent(title, items) {
+      var alias = param.alias;
+      var html = '<div class="custom-tooltip">';
+      for (var i = 0; i < items.length; i++) {
+        var item = items[i];
+        var color = item.color;
+        var name = alias[item.name];
+        var value = item.value;
+        var domHead = '<div class="custom-tooltip-item" style="border-left-color:' + color + '">';
+        var domName = '<div class="custom-tooltip-item-name">' + name + '</div>';
+        var domValue = '<div class="custom-tooltip-item-value">' + value + '</div>';
+        var domTail = '</div>';
+        html += domHead + domName + domValue + domTail;
+      }
+      return html + '</div>';
+    }
+  });
+  chart.axis('date', {
+    label: {
+      textStyle: {
+        fill: '#aaaaaa',
+      },
+	  formatter: function formatter(text) {
+		//console.log(text);
+        return text.replace(/-/g, '/');
+      }
+    }
+  });
+  chart.axis('value', {
+    label: {
+      textStyle: {
+        fill: '#aaaaaa'
+      },
+      formatter: function formatter(text) {
+        return text.replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
+      }
+    }
+  });
+  chart.legend(false);
+  chart.line().position('date*value').color('type');
+  chart.render();
+  chart.showTooltip({
+    x: $("#"+selector).width() - 20,
+    y: 100
+  });
+}
+function pie(param,selector){
+  // 根据比例，获取两点之间的点
+  function getPoint(p0, p1, ratio) {
+    return {
+      x: (1 - ratio) * p0.x + ratio * p1.x,
+      y: (1 - ratio) * p0.y + ratio * p1.y
+    };
+  }
+  var pointRatio = 0.7; // 设置开始变成三角形的位置 0.7
+
+
+  // 自定义 other 的图形，增加两条线
+  G2.Shape.registerShape('interval', 'triangleShape', {
+    draw: function draw(cfg, container) {
+      var centerPoint = {
+        x: cfg.points[3].x,
+        y: (cfg.points[2].y + cfg.points[3].y) / 2
+      };
+      centerPoint = this.parsePoint(centerPoint);
+
+      var points = this.parsePoints(cfg.points);
+      var tmpPoint1 = getPoint(points[0], points[3], pointRatio);
+      var tmpPoint2 = getPoint(points[1], points[2], pointRatio);
+      var path = [];
+      path.push(['M', points[0].x, points[0].y]);
+      path.push(['L', points[1].x, points[1].y]);
+      path.push(['L', tmpPoint2.x, tmpPoint2.y]);
+      path.push(['L', centerPoint.x, centerPoint.y]);
+      path.push(['L', tmpPoint1.x, tmpPoint1.y]);
+      path.push('Z');
+      return container.addShape('path', {
+        attrs: {
+          fill: cfg.color,
+          path: path,
+          lineWidth: 1,
+          stroke: 'white'
+        }
+      });
+    }
+  });
+
+  var chart = new G2.Chart({
+    container: selector,
+    forceFit: true,
+    height: 300
+  });
+
+  chart.source(param.data);
+  chart.coord('theta', {
+    radius: 0.8
+  });
+  chart.intervalStack().position('value').color('type').shape('triangleShape').label('type');
+
+  chart.render();
+}
+function columnar(param,selector){
+	var sortType = 'positive';
+  var chart = new G2.Chart({
+    container: selector,
+    forceFit: true,
+    height: 300,
+    padding: [20, 20, 30, 90]
+  });
+  chart.source(param.data, {
+    value: {
+      tickCount: 5
+    }
+  });
+  chart.scale('value', {
+    alias: '累计额(元)'
+  });
+  chart.axis('type', {
+    label: {
+      textStyle: {
+        fill: '#aaaaaa'
+      }
+    },
+    tickLine: {
+      alignWithLabel: false,
+      length: 0
+    }
+  });
+  chart.axis('value', {
+    label: {
+      textStyle: {
+        fill: '#aaaaaa'
+      },
+      formatter: function formatter(text) {
+        return text.replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
+      }
+    },
+    title: {
+      offset: 70
+    }
+  });
+  chart.tooltip({
+    share: true
+  });
+  chart.guide().dataMarker({
+    top: true,
+    content: '因政策调整导致销量下滑',
+    position: ['2014-01', 1750],
+    style: {
+      text: {
+        fontSize: 13
+      }
+    },
+    lineLength: 30
+  });
+  chart.interval().position('type*value').opacity(1);
+  chart.render();
+  $('.sort-button').click(function() {
+    sortType = sortType === 'positive' ? 'negative' : 'positive';
+    sortData(sortType);
+    chart.repaint();
+  });
+}
+function sortData(sortType) {
+    if (sortType === 'positive') {
+      data.sort(function(a, b) {
+        return b.value - a.value;
+      });
+    } else {
+      data.sort(function(a, b) {
+        return a.value - b.value;
+      });
+    }
+  }
+</script>

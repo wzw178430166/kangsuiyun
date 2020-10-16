@@ -1,0 +1,219 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="topcolor" rgba="44.172.252.1">
+    <title>医生列表</title>
+    <meta name="keywords"
+        content="医家讯,医家讯智能医疗设备,智能健康电子档案,个人健康、家庭健康,健康检测,心率监测,血糖监测,血压监测,睡眠监测,健康饮食,运动健美,亲友互动,运动圈子,医体健康,食动平衡,人工智能,健康管理,物联网,智能大数据">
+    <meta name="description"
+        content="医家讯智能医体健康平台通过智能紧急提醒、生命健康监测、智能穿戴设备及专业级智能医疗设备，结合物联网、云计算、健康大数据分析与呼叫中心，构建智能医体健康平台，让家人享受更健康、更安全、更舒心、更智慧化的生活，也让子女随时随地的了解父母的健康情况，及时表达爱心和孝心。">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+    <link rel="stylesheet" type="text/css" href="/statics/css/appstyle.css">
+    <script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/statics/js/global.js"></script>
+    <script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+    <style>
+        body {
+            background-color: #fff;
+        }
+
+        .container .top-box {
+            display: flex;
+            justify-content: space-evenly;
+            padding: .5rem;
+        }
+
+        .container .top-box .date-item {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            flex: 1;
+        }
+
+        /* .sbox {
+        height: 10%;
+        border-right: 1px solid #999;
+        align-self:flex-end;
+    } */
+        .select {
+            color: #2cacfc;
+            border-bottom: 2px solid #2cacfc;
+        }
+    .info-box {
+        width: 100vw;
+        position: relative;
+        border-bottom: 1px solid #ececec;
+    }
+    .info-box .info-top {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        /* color: #fff; */
+        position: relative;
+    }
+    .info-top .info-pic {
+        width: 10rem;
+        overflow: hidden;
+        border-radius: 50%;
+        margin-right: 1rem;
+        align-self: flex-start;
+    }
+    .info-top .info-pic img{
+        width: 100%;
+    }
+    .info-top .bookrule{
+        background-color: #2ca0fa;
+        width: 4.7rem;
+        border-top-left-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+        text-align: right;
+        font-size: .9rem;
+        padding: .2rem;
+        position:absolute;
+        right: 0;
+        top: 1.2rem;
+    }
+    .info-top .b1 {
+        margin-bottom: .3rem;
+    }
+    .info-top .b1 span:first-child{
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+    .info-top .b2 {
+        color: #888686;
+        font-size: 0.8rem;
+    }
+    .info-top .b2 span{
+        color: #ff5400;
+    }
+    .goodat {
+        width: 80%;
+        text-align: left;
+        text-overflow: ellipsis;
+        font-size: 0.8rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        margin-bottom: 1rem;
+        color: #888686;
+    }
+    .num {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        text-align: center;
+    }
+    .num .sbtn {
+        color: #fff;
+        background-color: #2ca0fa;
+        text-align: center;
+        width: 4.5rem;
+        padding: .3rem;
+        border-radius: 1rem;
+    }
+    .num .hao{
+        color: #ff5400;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="headerBoxCircle">
+        <img src="/statics/images/goback_b.png" onClick="goback()" class="left">
+        <p class="midden">医生列表</p>
+    </div>
+    <div class="h50"></div>
+    <div class="container">
+        <div class="top-box">
+            <div class="date-item select">
+                <p>08-29</p>
+                <p>今天</p>
+            </div>
+            <div class="date-item">
+                <p>08-30</p>
+                <p>周四</p>
+            </div>
+            <div class="date-item">
+                <p>08-31</p>
+                <p>周五</p>
+            </div>
+            <div class="date-item">
+                <p>09-01</p>
+                <p>周六</p>
+            </div>
+            <div class="date-item">
+                <p>09-02</p>
+                <p>周日</p>
+            </div>
+            <div class="date-item">
+                <p>09-03</p>
+                <p>周一</p>
+            </div>
+        </div>
+        <div class="doc-box">
+            <div class="info-box">
+                <div class="info-top">
+                    <div class="info-pic">
+                        <img src="./images/docpic.png" alt="">
+                    </div>
+                    <div class="info-b">
+                        <div class="b1">
+                            <span>张步玲</span>
+                            <span>主治医师</span>
+                        </div>
+                        <div class="b2">
+                            好评率: <span>99.6%</span>
+                            预约量: <span>5343</span>
+                        </div>
+                        <p class="goodat">擅长：<span>小儿气管炎、肺炎、腹泻、手足口病、急症及疑难病的诊治，对迁延性肺炎、顽固性腹泻的治疗有独到之处....</span> </p>
+                    </div>
+                </div>
+                <div class="num" onClick="goo('/index_yy/hops_register/doctor_detail.html')">
+                    <div class="sbtn">有号</div>
+                    <p>剩<span class="hao">3个</span></p>
+                </div>
+            </div>
+            <div class="info-box">
+                <div class="info-top">
+                    <div class="info-pic">
+                        <img src="./images/d3.png" alt="">
+                    </div>
+                    <div class="info-b">
+                        <div class="b1">
+                            <span>杨国山</span>
+                            <span>主治医师</span>
+                        </div>
+                        <div class="b2">
+                            好评率: <span>98.6%</span>
+                            预约量: <span>4243</span>
+                        </div>
+                        <p class="goodat">擅长：<span>小儿气管炎、肺炎、腹泻、手足口病、急症及疑难病的诊治，对迁延性肺炎、顽固性腹泻的治疗有独到之处....</span> </p>
+                    </div>
+                </div>
+                <div class="num">
+                    <div class="sbtn">有号</div>
+                    <p>剩<span class="hao">3个</span></p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    </div>
+
+</body>
+<script>
+    $(function () {
+
+    })
+
+</script>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+        content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+<link rel="stylesheet" type="text/css" href="./css/prescription.css">
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+<script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<title>处方药单</title>
+</head>
+<style>
+.hideTxt{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+.c-right{max-width: 75%;}
+</style>
+<body>
+<div class="header_box" style="z-index: 3;"> <img src="/statics/images/goback_b.png" class="left" id="props" onclick="goback()">
+  <p class="midden">处方药单</p>
+</div>
+<div class="h50"></div>
+<div class="base-one">
+  <div class="base-one-head"><img src="https://lxj.yjxun.cn/uploadfile/2018/0629/20180629122433262.png" id='docImg'></div>
+  <div class="base-one-desc">
+    <p><span class="doctor-name" id="title">泽瑞权</span><span id='position_level'>主任医师 教授</span></p>
+    <p id='hospital'>广东省中医院 儿科</p>
+  </div>
+</div>
+<div class="hengline"> </div>
+<div class="p-opinion">
+  <p>诊断意见：</p>
+  <p id='zd'>感冒引起的，伴有发烧、浑身无力、恶心呕吐、酸困等症状</p>
+</div>
+<div class="c-fang">
+  <p class="chutitle">处方药单：</p>
+  
+	<div class="chuf-item">
+		<div class="c-is">
+			<div class="c-img"> <img src="./images/chuimg.png"> </div>
+			<div class="c-right">
+				<p>999感冒灵</p>
+				<p>解热镇痛。本品用于感冒引起的头痛，发热， 鼻塞，流涕...[说明书]</p>
+				<p><span>价格：<i>23</i>元*<i>2</i>盒</span> <span>合计<i class="y-Price">￥46.00</i></span></p>
+			</div>
+		</div>
+		<p class="c-usage">用量用法：<i>开水冲服。</i><i>一次1袋</i>，<i>一日2次</i> <span class="c-useright">数量：24袋</span></p>
+	</div>
+</div>
+<div class="henglines"></div>
+<div class="c-settlement">
+  <div> <i class="cseitem">合计：</i>￥<i class="cesprice">86.00</i> </div>
+  <div id="J_do"> 一键付款配送 </div>
+</div>
+</body>
+</html>
+<script>
+//var pnid = getQueryString('pnid');
+$(function(){
+	//getData();
+	$('#J_dos').on('click',function(){
+		window.location.href = '/payCenter/template/payConfirm2.html?&prescription_id='+pnid;
+	});
+})
+function getData(){
+	$.ajax({
+		url:'/?m=member&c=data&a=getDrugDetail',
+		type:'POST',
+		data:'pnid='+pnid,
+		dataType:'json',
+		success:function(re){
+			$('#title').text(re.doctor.realname);
+			$('#docImg').attr('src',re.doctor.thumb);	
+			$('#position_level').text(re.doctor.position_level);
+			$('#hospital').text(re.doctor.hospital);
+			$('#zd').text(re.zd);
+			var totalPrice = 0;
+			for(let i in re.data){
+				var txt = '<div class="chuf-item"><div class="c-is"><div class="c-img" style="width:6rem;height:6rem;"> <img src="/drug/images/yaopin.jpg" style="width:5rem;"> </div><div class="c-right"><p>'+re.data[i].dname+'</p><p class="hideTxt">'+re.data[i].sales_status+'</p><p><span>价格：<i>'+re.data[i].vip_price+'</i>元*<i>'+re.data[i].data4+'</i></span> <span>合计<i class="y-Price">￥'+Math.ceil(parseInt(re.data[i].data4)*re.data[i].vip_price)+'</i></span></p></div></div><p class="c-usage">用量用法：<i>'+re.data[i].data3+'。</i><i>'+re.data[i].data2+'</i>，<i>'+re.data[i].data1+'</i> <span class="c-useright">数量：'+re.data[i].data4+'</span></p></div>';
+				$('.c-fang').append(txt);
+				totalPrice += Math.ceil(parseInt(re.data[i].data4)*re.data[i].vip_price);
+			}
+			$('.cesprice').text(totalPrice);
+		}
+	})
+}
+function sendMsg(){
+	layer.open({
+		content: '即将开放！'
+		,skin: 'msg'
+		,time: 2 //2秒后自动关闭
+	});
+}
+</script>

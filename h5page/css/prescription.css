@@ -1,0 +1,74 @@
+body{background: #fff;}
+.header_box{border-bottom: 1px solid #e5e5e5;}
+.base-one {
+    width: 100%;
+       overflow: hidden;
+    padding: 1rem 1.5rem;
+}
+.base-one-head {
+    float: left;
+    overflow: hidden;
+    margin-right: 1rem;
+    border-radius: 50%;
+}
+.base-one-head img {
+   width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+}
+.base-one-desc {
+    color: #999;
+}
+.base-one-desc p {
+    line-height: 1.94rem;
+}
+.base-one-desc p span.doctor-name {
+    font-size: 1.33rem;
+    color: #000;
+}
+.base-one-desc p span {
+    margin-right: 0.7rem;
+    font-size: 1rem;
+}
+.hengline{width: 100%;
+    height: 1rem;
+    background: #f8f8f8;}
+.p-opinion{padding:1rem;border-bottom:1px dashed #e5e5e5;}
+.p-opinion p:nth-child(1){margin-bottom: .5rem;font-size:1rem;color:#1f1f1f;}
+
+.p-opinion p:nth-child(2){font-size:1rem;color:#6c6c6c;}
+.c-fang{width:100%;padding:0 1rem;margin-top:1rem;}
+.c-fang .chutitle{font-size:1rem;}
+.c-fang .chuf-item{width:100%;margin-top: 1.3rem;}
+.chuf-item .c-is{width: 100%;
+    display: flex;
+    padding-bottom: .5rem;
+    border-bottom: 1px dashed #e5e5e5;}
+.c-img{      width: 12rem;
+    height: 7rem;
+    border: 1px solid #d0d0d0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: .5rem;}
+.c-img img{width: 7rem;}
+
+
+.c-right{padding-left:1rem;}
+.c-right p{margin-bottom: .5rem;}
+.c-right p:nth-child(1){font-size:1.1rem;}
+.c-right p:nth-child(2){font-size:1rem;color:#7f7f7f;}
+.c-right p:nth-child(3){font-size:1rem;color:#7f7f7f;}
+.c-right p:nth-child(3) span{margin-right: .5rem;}
+.c-right .y-Price{color:red;font-size:1.4rem;}
+.c-usage{margin-top: .8rem;font-size: 1rem;color:#7f7f7f;margin-bottom: 1rem;}
+.c-usage .c-useright{float: right;}
+
+.c-settlement{width: 100%;height: 3.8rem;line-height: 3.8rem;display: flex;position: fixed;bottom: 0;}
+.c-settlement div:nth-child(1){width: 55%;color: #f12036;font-size: 1.1rem;background: #fff;}
+.c-settlement .cseitem{color: #fc7e18;padding-left:1.5rem;}
+.c-settlement .cesprice{font-size:1.4rem;}
+.c-settlement div:nth-child(2){width: 45%;text-align: center;color: #fff;font-size:1.2rem;background: #ff5555;}
+.henglines{width: 100%;
+    height: 3.8rem;
+    background: #f8f8f8;}

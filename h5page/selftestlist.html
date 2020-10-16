@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script> 
+<script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script> 
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<title>自测工具</title>
+<style>
+body {
+	background: #ffffff;
+}
+.header_box {
+	border-bottom: 1px solid #ecebeb;
+}
+/*
+.contendbox{width: 93%;margin: 0 auto;display: flex;flex-wrap: wrap;justify-content: space-around;}
+.cont_item{width: 45%;height: 9rem;border: 1px solid #666;border-radius: .2rem;}
+*/
+ .boxed {
+	height: 15.5rem;
+    padding: 1em;
+    margin-top: 1em;
+    -moz-page-break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    border-radius: .2rem;position: relative;
+    break-inside: avoid;
+    border: 1px solid #e8e8e8;
+    background: #faf9f9;
+}
+.spe {
+	height:10rem;
+}
+.box-wrapper {
+	-moz-column-count: 2;
+    -webkit-column-count: 2;
+    column-count: 2;
+    width: 93%;
+    margin: 1rem auto;
+    -moz-column-gap: 1em;
+    -webkit-column-gap: 1em;
+    column-gap: 1em;
+}
+	.cont_conter{text-align: center;margin-top: .5rem;color: #000;font-weight: 600;font-size: 1.08rem;}
+	.cont_plis{font-size: 1.02rem;color: #666;margin-top: .5rem; width:100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;}
+	.cont_img{width: 2.5rem;text-align: center;margin: 0 auto;height: 3rem;}
+	.cont_img img{width: 100%;}
+	.cont_btn{position: absolute;
+    bottom: 1rem;
+    width: 6.5rem;
+    border: 1px solid #ff8a8a;
+    height: 2rem;
+    text-align: center;
+    background: #ffffff;
+    font-size: .95rem;
+    line-height: 2rem;
+    left: 50%;
+    transform: translateX(-50%);}
+</style>
+</head>
+<body>
+<div class="header_box"> <img src="/statics/images/goback_b.png" class="left" id="props" onclick="goback()">
+  <p class="midden">自测工具</p>
+</div>
+<div class="h50"></div>
+<div class="box-wrapper">
+    <div style="margin-top:0px" class="boxed">
+	 <p class="cont_img" style="width: 2rem;">
+		<img src="./images/dfd11.png">
+	  </p>
+	<p class="cont_conter">基础代谢率计算</p>
+	  <p class="cont_plis">基础代谢率计算公式计算器在线计算基础代谢率，  基础代谢率(BMR)是指人体 ......</p>
+	  <div class="cont_btn" onClick="goo_t('/h5page/selftest.html?&type=1')">开始测试</div>
+	</div>
+	  <div class="boxed">
+	 <p class="cont_img" style="width: 2.8rem;">
+		<img src="./images/dfd33.png">
+	  </p>
+	<p class="cont_conter">肥胖指数测试</p>
+	  <p class="cont_plis">肥胖指数测试根据身高，臀围和年龄进行组合计算，得出肥胖指数值，同时 ......</p>
+	  <div class="cont_btn" onClick="goo_t('/h5page/selftest.html?&type=2')">开始测试</div>
+	</div>
+   	  <div class="boxed">
+	 <p class="cont_img">
+		<img src="./images/dfd55.png">
+	  </p>
+	<p class="cont_conter">疲劳度测试量表</p>
+	  <p class="cont_plis">职业疲劳度测试来源于英国KCH心理医学研究室，共计14个问题，也称为Fat ......</p>
+	  <div class="cont_btn" onClick="goo_t('/h5page/selftest.html?&type=3')">开始测试</div>
+	</div>
+
+  	  <div class="boxed">
+	 <p class="cont_img">
+		<img src="./images/dfd77.png">
+	  </p>
+	<p class="cont_conter">糖尿病早期症状自测</p>
+	  <p class="cont_plis">糖尿病发病率相当高，除了遗传因素以外，生活环境也是造成糖尿病的重......</p>
+	  <div class="cont_btn" onClick="goo_t('/h5page/selftest.html?&type=4')">开始测试</div>
+	</div>
+   	  <div class="boxed">
+	 <p class="cont_img">
+		<img src="./images/dfd22.png">
+	  </p>
+	<p class="cont_conter">BMI指数计算</p>
+	  <p class="cont_plis">bmi是什么？bmi计算公式是什么？bmi是国际上衡量人体胖瘦程度的标准 ......</p>
+	  <div class="cont_btn" onClick="goo_t('/h5page/selftest.html?&type=5')">开始测试</div>
+	</div>
+   	  <div class="boxed">
+	 <p class="cont_img">
+		<img src="./images/dfd44.png">
+	  </p>
+	<p class="cont_conter">睡眠质量自测</p>
+	  <p class="cont_plis">睡眠不仅仅是睡眠时间长度足够，而是深度睡眠的时间，通常睡眠质量保障 ......</p>
+	  <div class="cont_btn" onClick="goo_t('/h5page/selftest.html?&type=6')">开始测试</div>
+	</div>
+   	  <div class="boxed">
+	 <p class="cont_img">
+		<img src="./images/dfd66.png">
+	  </p>
+	<p class="cont_conter">颈椎病症状自测</p>
+	  <p class="cont_plis">颈椎病的症状 颈椎病的症状主要有颈背疼痛、上肢无力、手指发麻、下肢乏力 ......</p>
+	  <div class="cont_btn" onClick="goo_t('/h5page/selftest.html?&type=7')">开始测试</div>
+	</div>
+   	  <div class="boxed">
+	 <p class="cont_img">
+		<img src="./images/dfd88.png">
+	  </p>
+	<p class="cont_conter">痛风的症状自测</p>
+	  <p class="cont_plis">痛风的症状自测 典型症状 常于深夜因关节痛而惊醒，疼痛进行性加剧，呈撕裂 ......</p>
+	  <div class="cont_btn" onClick="goo_t('/h5page/selftest.html?&type=8')">开始测试</div>
+	</div>
+   
+</div>
+<!--
+<div class="contendbox">
+	<div class="cont_item">
+	  <p class="cont_img">
+		<img src="./images/chuimg.png">
+	  </p>
+	  <p class="cont_plis">基础代谢率计算公式计算器在线计算基础代谢率，  基础代谢率(BMR)是指人体 ......</p>
+	  <div class="cont_btn">开始测试</div>
+	</div>
+</div>
+-->
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="topcolor" rgba="44.172.252.1">
+<title>预约挂号成功</title>
+<meta name="keywords" content="医家讯,医家讯智能医疗设备,智能健康电子档案,个人健康、家庭健康,健康检测,心率监测,血糖监测,血压监测,睡眠监测,健康饮食,运动健美,亲友互动,运动圈子,医体健康,食动平衡,人工智能,健康管理,物联网,智能大数据">
+<meta name="description" content="医家讯智能医体健康平台通过智能紧急提醒、生命健康监测、智能穿戴设备及专业级智能医疗设备，结合物联网、云计算、健康大数据分析与呼叫中心，构建智能医体健康平台，让家人享受更健康、更安全、更舒心、更智慧化的生活，也让子女随时随地的了解父母的健康情况，及时表达爱心和孝心。">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/appstyle.css">
+<script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+<style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .container .check-img {
+        width: 6rem;
+        margin-top: 3rem;
+    }
+    .container .check-txt {
+        color: #ff5353;
+        font-size: 1.6rem;
+        margin-top: 1rem;
+    }
+    .container .info-box {
+        padding: 2.7rem;
+    background: #ffffff;
+    margin-top: 3rem;
+    border-radius: .3rem;
+    }
+    .doc-n,.doc-p,.doc-rtime,.apm {
+        color: #2cacfc;
+    }
+    .container .fun-box {
+        width: 100vw;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 3rem;
+    }
+    .info-box p span:first-child {
+        margin-left: .5rem;
+    }
+    .doc-rtime {
+        margin-right: 1rem;
+    }
+    .btn {
+        width: 10rem;
+        border: 1px solid #2cacfc;
+        border-radius: .5rem;
+        padding: .5rem 1.6rem;
+        text-align: center;
+    }
+    .container .fun-box {
+        margin-top: 2rem;
+    }
+    .btn.check-btn{
+        background-color: #2cacfc;
+        color: #fff;
+    }
+    .btn.home-btn{
+        color: #2cacfc;
+    }
+	body{background: #F2F2F2;}
+</style>
+</head>
+
+<body>
+    <div class="headerBoxCircle">
+        <img src="/statics/images/goback_b.png" onClick="goback()" class="left">
+        <p class="midden">预约挂号成功</p>
+    </div>
+    <div class="h50"></div>
+    <div class="container">
+        <img class="check-img" src="./images/wc.png" alt="">
+        <p class="check-txt">预约挂号成功</p>
+        <div class="info-box">
+            <p>就诊医生: <span class="doc-n">张步领</span><span class="doc-p">主治医师</span></p>
+            <p>就诊医院: <span class="doc-hosp">中山一院</span></p>
+            <p>就诊科室: <span class="doc-dept">儿科</span></p>
+            <p>预约时间: <span class="doc-rtime">2020年8月30日</span><span class="apm">上午</span></p>
+        </div>
+        <div class="fun-box">
+            <div class="check-btn btn">查看预约订单</div>
+            <div class="home-btn btn" onClick="goo('/index_yy/yjx_home.html')">返回首页</div>
+        </div>
+    </div>
+    
+</body>
+<script>
+    $(function(){
+       
+    })
+
+</script>
+</html>

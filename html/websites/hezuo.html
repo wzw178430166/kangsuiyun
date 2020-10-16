@@ -1,0 +1,127 @@
+<!--#include file="header_common.html"-->
+<body>
+<!--#include file="header.html"-->
+<div class="innerbanner">
+  <dl>
+  </dl>
+</div>
+<div class="b30"></div>
+<div class="cont_1 center" aos="fade-up">
+  <div class="price">
+        <div class="title">
+            <strong>合作模式</strong>
+            <p>按需报价，拒绝额外收费，公开化透明化，我们努力为客户创造价值</p>
+        </div>
+
+        <div class="pricewrap">
+            <div class="box" aos="fade-up"  aos-offset="300" >
+                <div class="mainbox">
+                    <dl>
+                        <dt>大健康系统快速搭建</dt>
+                    </dl>
+                    <ul>
+                        <li>快速搭建专属域名的独立大健康平台</li>
+                        <li>免费使用已对接智能穿戴硬件</li>
+                        <li>免费使用平台众多医院的医生资源</li>
+                        <li>大量健康文章自助发布，减轻后期维护压力</li>
+                        <li>产品迭代创新速度快，后续新功能直接用</li>
+                        <li>智能健康设备源头价，无需奔波找产品</li>
+                        <li>设有分级权限大数据管理后台，一目了然</li>
+                    </ul>
+                    <div><a href="">在线咨询</a></div>
+                </div>
+            </div>
+
+            <div class="box orange" aos="fade-up"  aos-offset="300">
+                <div class="mainbox">
+                    <dl>
+                        <dt>成为区域代理商</dt>
+                        
+                    </dl>
+                    <ul>
+                        <li>成为区域代理商，享有平台所有系统使用权</li>
+                        <li>提供高额返点优惠辅助代理商更好的拓展当地市场</li>
+                        <li>提供在线技术服务，让代理商没有后顾之忧</li>
+                        <li>定期为代理商给予扶持，快速提高代理商团队战斗力</li>
+                        <li>定期对代理商人员开展销售、售后、管理等相关培训</li>
+                        <li>资源按规则分配给代理商，确保代理商利益最大化</li>
+                        <li>强大的研发团队保障系统的安全性、稳定性、可靠性</li>
+                    </ul>
+                    <div><a href="">在线咨询</a></div>
+                </div>
+            </div>
+            <div class="box"  aos="fade-up"  aos-offset="300">
+                <div class="mainbox">
+                    <dl>
+                        <dt>深度系统定制服务</dt>
+                        
+                    </dl>
+                    <ul>
+                        <li>开放平台医生、设备、内容资源，直接接入使用</li>
+                        <li>10年经验设计师，一对一服务</li>
+                        <li>针对客户业务发展阶段，对系统开发进行长远性规划</li>
+                        <li>根据客户的行业进行深度属性规划定制</li>
+                        <li>智能健康监测设备可独立OEM，打造自有品牌</li>
+                        <li>运用人工智能技术，对数据挖掘统计分析</li>
+                        <li>定制系统更能充分发挥企业自身特点和优势</li>
+                    </ul>
+                    <div><a href="">在线咨询</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="cl01"></div>
+    </div>
+  
+  
+  
+  
+  
+</div>
+<div class="b30"></div>
+<footer aos="fade-up" aos-anchor-placement="top-bottom">
+  <div class="main">
+    <div class="form">
+      <h5>微信公众号</h5>
+      <div class="wx"> <img src="./imgs/qrc.jpg" alt=""> </div>
+    </div>
+    <dl class="fl">
+      <dd>联系热线：4001012-810</dd>
+      <dd>联系QQ：464981941</dd>
+      <dd>地址：广东省广州市越秀区东风西路161号301室</dd>
+    </dl>
+    <dl class="fr">
+      <dt>唐剑科技利用技术优势和产品开发经验，结合物联网、大数据、云计算等技术，高效整合大健康服务资源，建设综合型的智慧健康管理服务平台。</dt>
+    </dl>
+    <div class="cl01"></div>
+    <div class="foot_3">
+      <p>粤公网安备  粤ICP备16024208号-4 工业和信息化部备案管理系统网站 </p>
+    </div>
+  </div>
+  <!--<P>333</P>--> 
+</footer>
+<script>
+        AOS.init({
+            easing: 'ease-out-back',
+            duration: 1000
+        });
+
+        $('.tabnav a').hover(function () {
+            $(this).addClass('hover').siblings('a').removeClass('hover');
+            var id = $(this).index();
+            $('.case').removeClass('hover');
+            $('.case').eq(id).addClass('hover');
+        })
+
+        $('.navbtn').click(function () {
+            if ($('.navbox').is(":visible")) {
+                $('.navbox').hide();
+            } else {
+                $('.navbox').show();
+            }
+        })
+        $('.close').click(function () {
+            $('.navbox').hide();
+        })
+    </script>
+</body>
+</html>

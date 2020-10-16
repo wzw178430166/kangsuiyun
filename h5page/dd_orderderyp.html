@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+<script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<title>订单配送流程</title>
+<style>
+body {
+    background: #f6f6f6;
+}
+    .mubg{ width: 100%;
+    height: 6.2rem;
+    line-height: 6.2rem;
+    background: url(./images/oderpei.png) -3rem center no-repeat;
+    background-size: 111%;
+    font-size: 1.3rem;
+    padding-left: 2.5rem;
+    color: #fff;}
+#tab-con .tab_itemst {
+    width: 100vw;
+    /* height: 10rem; */
+    position: relative;
+    background: #fff;
+    padding-left: .2rem;
+}
+.henline {
+   height: .4rem;
+    background: url(./images/oderline.png) no-repeat;
+    background-size: 100%;
+}
+.tab_itemst .tcontbox {
+    width: 100%;
+}
+.tab_itemst .tcontbox .tconp {
+    display: flex;
+    justify-content: space-between;
+    height: 3.2rem;
+    line-height: 3.2rem;
+    border-bottom: 1px solid #dcdcdc;
+    width: 93%;
+    margin: 0 auto;
+    padding: 0 .5rem;
+    font-size: 1.1rem;
+    color: #2b2b2b;
+}
+.tab_itemst .tcontbox .tconp span:nth-child(2) {
+    color: #ff8625;
+}
+.tab_itemst .tcontbox .tunOrder {
+    height: 3.2rem;
+    line-height: 3.2rem;
+    width: 93%;
+    margin: 0 auto;
+    font-size: .95rem;
+    color: #7a7979;
+}
+.tab_itemst .tcontbox .tunOrder span:nth-child(2) {
+    float: right;
+}
+.m-fun {
+    background-color: #fff;
+}
+.m-fun ul li {
+    width: 93%;
+    margin: 0 auto;
+    position: relative;
+    height: 3rem;
+    line-height: 3rem;
+}
+.m-fun ul li.conlist {
+    border-bottom: 1px solid #dcdcdc;
+}
+.m-fun ul li.conitem {
+    text-align: right;
+    color: #7a7979;
+}
+.m-fun ul li .m-th {
+    background-size: 24%!important;
+}
+.m-fun ul li .m-ths {
+    width: 75%;
+    height: 5.2rem;
+    position: relative;
+    overflow: hidden;
+}
+.m-fun ul li .m-ths .boxyao {
+    float: left;
+    width: 5.5rem;
+    height: 5.2rem;
+    border: 1px solid #ccc;
+    margin-right: .5rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.m-fun ul li .m-ths .boxyao img {
+    width: 100%;
+}
+.m-fun ul li .m-ths .m-yb {
+    width: 2rem;
+    height: 5.5rem;
+    background: url(./images/yaodetils.png) -6rem .5rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-size: 100%;
+}
+.m-fun ul li .m-num {
+    position: absolute;
+    top: 50%;
+    right: .2rem;
+    transform: translateY(-50%);
+    height: 3.5rem;
+    line-height: 3.5rem;
+    font-size: 1rem;
+    color: #7a7979;
+}
+.m-fun ul li .icon-arrow-r {
+    float: right;
+    display: block;
+    width: .8rem;
+    height: 3.5rem;
+    background: url(./images/icon_arrow_r.png) no-repeat 100% center;
+    margin-left: .5rem;
+    background-size: 1.3rem;
+}
+.tcontbox .m-fun ul li.listed {
+    height: 5.2rem;
+}
+    
+    .muser-list{    width: 100%;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    padding: .8rem 1rem .8rem 2rem;
+    justify-content: space-between;}
+    .muser-list .muse-mssage{width: 90%;}
+    .muser-list .muse-mssage p{height: 2rem;line-height: 2rem;}
+      .muser-list .muse-mssage p:nth-child(1){color: #2f2f2f;font-size: 1.2rem;}
+      .muser-list .muse-mssage p:nth-child(2){color: #666666;font-size: 1.05rem;}
+    .muser-list .muser-pic{width: 1.4rem;}
+    .muser-list .muser-pic img{width: 100%;vertical-align: middle;}
+    .m-fuo{width: 100%;
+    padding: 1.6rem 0 .1rem 0;
+    background: #fff;}
+    .m-fuo .mc-conter{ padding: 0 2rem 0 4rem;
+    background: url(./images/oderliu.png) 1.3rem top no-repeat;
+    background-size: 1.3rem;
+   }
+    .m-fuo .mc-conter ul li:nth-child(odd){font-size: 1.12rem;color: #2b2b2b;}
+      .m-fuo .mc-conter ul li:nth-child(even){font-size: 1rem;
+    color: #7a7979;
+    border-bottom: 1px solid #dcdcdc;
+    height: 3rem;
+    line-height: 3rem;
+    margin-bottom: 1rem;}
+    .m-fuo .mc-conter ul li:last-child{border-bottom: 0;}
+</style>
+</head>
+<body>
+<div class="header_box" style="border-bottom: 0;">
+	<img src="/statics/images/goback_b.png" class="left" id="props" onclick="goback()">
+  <p class="midden">订单配送流程</p>
+</div>
+<div class="h50"></div>
+<div class="mubg">
+    正在配送中
+    </div>
+<div class="henline"></div>
+<div class="muser-list">
+    <div class="muse-mssage">
+     <p><i>张三</i> <i>12895448823</i></p>
+      <p>广东省广州市越秀区东风西路123号3楼3032</p>
+    </div>
+    <span class="muser-pic"><img src="./images/icon_arrow_r.png"></span>
+    </div>
+    <div style="height: .8rem;"></div>
+<div id="tab-con">
+  <div class="tab_itemst"> 
+    <!--订单1-->
+    <div class="tcontbox">
+      <p class="tconp"><span>药品配送</span><span>药品已发货</span></p>
+      <p class="tunOrder"> <span>订单号：<i>34423232323</i></span><span>下单时间：<i>2019.12.18 12:32</i></span> </p>
+      <div class="m-fun">
+        <ul>
+          <li class="listed">
+            <div class="m-ths">
+                <div style="width: 200%;">
+              <div class="boxyao"><img src="./images/chuimg.png"></div>
+              <div class="boxyao"><img src="./images/chuimg.png"></div>
+              <div class="boxyao"><img src="./images/chuimg.png"></div>
+              <div class="boxyao"><img src="./images/chuimg.png"></div>
+              <div class="boxyao"><img src="./images/chuimg.png"></div>
+              <div class="boxyao"><img src="./images/chuimg.png"></div>
+              </div> 
+              <span class="m-yb"></span> </div>
+            <div class="m-num"> <i class="icon-arrow-r"></i><span>共<i class="m-c">4</i>件药品</span> </div>
+          </li>
+          <li class="conlist"><i>呵尔盾感冒清热颗粒(乳糖型)</i>*<i>2</i>、<i>999感冒灵</i>*<i>2</i></li>
+          <li class="conitem">共4件药品 合计：￥270.00元(含运费￥10.00元）</li>
+        </ul>
+      </div>
+    </div>
+    <!--订单1--> 
+  
+  </div>
+</div>
+    <div style="height: 1.1rem;"></div>
+    <div class="m-fuo">
+      <div class="mc-conter">
+          <ul>
+            <li>您的药品已经开始配送，请留意配送员电话</li>
+              <li>2019.12.21  12:32</li>
+              <li>您的药品已经分拣完成，准备进行配送</li>
+              <li>2019.12.21  10:32</li>
+              <li>订单已经打印成功</li>
+              <li>2019.12.21  09:32</li>
+          </ul>
+        </div>
+    </div>
+    <div style="height: 3rem;"></div>
+</body>
+<script>
+$(function(){
+	
+})
+</script>
+</html>

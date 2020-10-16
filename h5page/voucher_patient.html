@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="topcolor" rgba="44.172.252.1">
+<title>就诊人信息</title>
+<meta name="keywords" content="医家讯,医家讯智能医疗设备,智能健康电子档案,个人健康、家庭健康,健康检测,心率监测,血糖监测,血压监测,睡眠监测,健康饮食,运动健美,亲友互动,运动圈子,医体健康,食动平衡,人工智能,健康管理,物联网,智能大数据">
+<meta name="description" content="医家讯智能医体健康平台通过智能紧急提醒、生命健康监测、智能穿戴设备及专业级智能医疗设备，结合物联网、云计算、健康大数据分析与呼叫中心，构建智能医体健康平台，让家人享受更健康、更安全、更舒心、更智慧化的生活，也让子女随时随地的了解父母的健康情况，及时表达爱心和孝心。">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/appstyle.css">
+<script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+<style>
+    body{
+        background-color: #F2F2F2;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+    .container .info-box {
+        padding: 1rem;
+    }
+    .info-box p:nth-child(2){
+        font-size: .8rem;
+        color: #666;
+    }
+    .container .submit-btn {
+        width: 100%;
+        background-color: #2cacfc;
+        color: #fff;
+        text-align: center;
+        font-size: 1.3rem;
+        position: absolute;
+        bottom: 0;
+        padding: 1rem;
+    }
+    .patient-box {
+        display: flex;background: #ffffff;
+        flex-wrap: wrap;
+    }
+    .patient-item {
+        width: 50%;
+        padding: 1rem;
+    }
+    .patient-item:not(odd) {
+        border-right: 1px solid #ececec;
+    }
+    .patient-item{
+        border-bottom: 1px solid #ececec;
+    }
+    .patient-inner {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        border-radius: .5rem;
+        position: relative;
+    }
+    .patient-inner.inner-select {
+        background-color: #d4e3f9;
+    }
+    .patient-inner .pic{
+        width: 4rem;
+        margin-right: .5rem;
+    }
+    .patient-inner .pic img{
+        width: 100%;
+    }
+    .patient-inner .info p:nth-child(2){
+        color: #666;
+    }
+    .mark {
+        width: 1.3rem;
+        position: absolute;
+        top: -.4rem;
+        right: -.40rem;
+    }
+    .add_p {
+        width: 90%;
+        background-color: #e6f0ff;
+        color: #33aafb;
+        border: 1px solid #b7d1f9;
+        border-radius: .5rem;
+        margin: 3rem auto;
+        text-align: center;
+        padding: 1.5rem;
+    }
+	.header_box{background: #ffffff;}
+</style>
+</head>
+
+<body>
+		<div class="header_box" style="z-index: 3;"> <img src="/statics/images/goback_b.png" class="left" id="props" onclick="goback()">
+  <p class="midden">就诊人信息</p>
+        <div class="right">管理</div>
+</div>
+    <div class="h50"></div>
+    <div class="container">
+        <div class="info-box">
+            <p>请选择预约患者凭证</p>
+            <p>预约需要本人真实资料,请谨慎选择</p>
+        </div>
+        <div class="patient-box">
+            <div class="patient-item">
+                <div class="patient-inner inner-select">
+                    <div class="pic">
+                        <img src="https://b.yjxun.cn/index_yy/img/p1.png" alt="">
+                    </div>
+                    <div class="info">
+                        <p>李倓</p>
+                        <p>男 34岁</p>
+                    </div>
+                    <img class="mark" src="https://b.yjxun.cn/index_yy/img/mark.png" alt="">
+                </div>
+            </div>
+            <div class="patient-item">
+                <div class="patient-inner">
+                    <div class="pic">
+                        <img src="https://b.yjxun.cn/index_yy/img/p3.png" alt="">
+                    </div>
+                    <div class="info">
+                        <p>李夏东(父亲)</p>
+                        <p>男 64岁</p>
+                    </div>
+                </div>
+            </div>
+            <div class="patient-item">
+                <div class="patient-inner">
+                    <div class="pic">
+                        <img src="https://b.yjxun.cn/index_yy/img/p2.png" alt="">
+                    </div>
+                    <div class="info">
+                        <p>陈玉(母亲)</p>
+                        <p>女 60岁</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="add_p" onClick="goo('/index_yy/hops_register/new_pz.html')">
+            + 添加新的就诊人信息
+        </div>
+        <div class="submit-btn" onClick="goo('/index_yy/submit_app.html')">确定预约</div>
+    </div>
+    
+</body>
+<script>
+    $(function(){
+       
+    })
+
+</script>
+</html>

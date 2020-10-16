@@ -1,0 +1,36 @@
+/*公共头部*/
+body{background: #ffffff;}
+.header_box{ width:100%; height:50px; position:fixed; background-color:#FFF; z-index:2;}
+
+.h50{ height:50px;}
+
+.header_box .left{ width:20px; height:20px; position:absolute; left:6%; top:50%; transform: translate(-50%,-50%); -webkit-transform: translate(-50%,-50%);}
+
+.header_box .left_{ height:45px; line-height:45px; position:absolute; left:6%; top:50%; transform: translate(-50%,-50%); -webkit-transform: translate(-50%,-50%); color:#fff; font-size:1rem;}
+
+.header_box .midden { text-align:center; height:50px; line-height:50px; color:#333; font-size:1.2rem;}
+
+.header_box .right{ width:40px; height:45px; position:absolute; right:-4%; top:50%; transform: translate(-50%,-50%); -webkit-transform: translate(-50%,-50%);}
+
+.header_box .right img{ width:20px; height:20px; display:block; margin:0 auto;}
+
+.header_box .right p{ text-align:center; color:#fff;}
+
+.header_box .right_{ height:45px; line-height:45px; position:absolute; right:-4%; top:50%; transform: translate(-50%,-50%); -webkit-transform: translate(-50%,-50%); color:#fff; font-size:1rem;}
+
+
+.header_box_white {
+	background: #fff;
+	border-bottom: 1px #e0dddd solid
+}
+.header_box_white .midden {
+	color: #1d1d1d
+}
+.header_box_white .left_b {
+	border-left: 1px #383838 solid;
+	border-bottom: 1px #383838 solid;
+	transform: rotate(45deg);
+	width: 1rem;
+	height: 1rem;
+	top: 39%
+}

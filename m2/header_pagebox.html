@@ -1,0 +1,44 @@
+<div class="pagebox center">
+  <div class="seostep" aos="fade-up" aos-duration="1500">
+    <dl id="pills-tab">
+      <dd class="x_on">物联网+移动医疗健康平台</dd>
+      <dd onClick="goo('/m2/fa2.html')">互联网+医院移动医疗平台</dd>
+      <dd onClick="goo('/m2/fa3.html')">居家养老管理方案</dd>
+      <dd onClick="goo('/m2/fa4.html')">慢病管理解决方案</dd>
+      <dd onClick="goo('/m2/fa5.html')">养生中医馆解决方案</dd>
+      <dd onClick="goo('/m2/fa6.html')">康复理疗健康驿站方案</dd>
+      <dd onClick="goo('/m2/fa7.html')">健康食疗行业方案</dd>
+      <dd onClick="goo('/m2/fa8.html')">保健品产业解决方案</dd>
+      <dd onClick="goo('/m2/fa9.html')">母婴健康护理方案</dd>
+      <dd onClick="goo('/m2/fa10.html')">运动健康场馆解决方案</dd>
+    </dl>
+  </div>
+</div>
+
+<!--  <dd class="x_on">母婴健康护理方案</dd>-->
+
+<!--x_on-->
+
+<script>
+	$(function() { //
+		var arr = ['fa1.html', 'fa2.html', 'fa3.html', 'fa4.html', 'fa5.html','fa6.html',
+			'fa7.html', 'fa8.html', 'fa9.html', 'fa10.html'
+		];
+		$('#pills-tab').children('dd').click(function() {
+
+			var i = $(this).index();
+			$(this).addClass('x_on').siblings().removeClass('x_on');
+			goo_t(arr[i]);
+		});
+		var ulr = window.location.pathname;
+		var index = 0;
+		for (var i in arr) {
+			if (ulr.indexOf(arr[i]) > -1) {
+				index = i;
+				break;
+			}
+		}
+
+		$('#pills-tab').children('dd').eq(index).addClass('x_on').siblings().removeClass('x_on');
+	})
+</script>

@@ -1,0 +1,451 @@
+.cong_eg{width: 100%;height: 15rem;background: url("../images/grgegwe.png")no-repeat;background-size: 100%;}
+
+
+.option_box_ {
+    width: 100%;
+    overflow: hidden;
+/*    margin-top: 1rem;*/
+}
+.option_box {
+width: 93%;
+    overflow: hidden;-moz-box-shadow: 0px 0px 3px #c1b3b3; /* 老的 Firefox */
+box-shadow: 0px 0px 3px #c1b3b3;
+    margin: 0 auto;
+    padding: 1rem 0;
+    border-radius: 10px;
+    background-color: #fff;
+}
+.option_box li {
+    float: left;
+    width: 25%;
+    margin-top: 1rem;
+}
+.option_box .option {
+    text-align: center;
+}
+.option_box .option img {
+    width: 1.658rem;
+    height: 1.758rem;
+    display: block;
+    margin: 0 auto;
+}
+.option_box .option p {
+   height: 1.538rem;
+    line-height: 1.54rem;
+    font-size: 1.012rem;
+    color: #282828;margin-top: .45rem;
+}
+.option_boxww{margin-top: .8rem;}
+.option_boxww .option img {
+    width: 3.2rem;
+    height: 3.2rem;
+    display: block;
+    margin: 0 auto;
+}		
+.option_box2 li {
+    float: left;
+    width: 20%;
+    margin-top: 1rem;
+}
+.option_box2 .option p {
+    font-size: .882rem;
+    color: #282828;margin-top: .45rem;
+}
+		
+.option_box3 .option img {
+    width: 2.1rem;
+    height: 2.1rem;
+    display: block;
+    margin: 0 auto;
+}	
+
+.option_box3 .option p {
+    height: 1.538rem;
+    line-height: 1.54rem;
+    font-size: 1.012rem;
+    color: #282828;
+    margin-top: .35rem;
+}
+
+.option_box3 .option p:nth-child(3) {
+    height: 1.538rem;
+    line-height: 1.54rem;
+    font-size: .912rem;
+    color: #9E9E9E;
+    margin-top: .15rem;
+}
+.bord_cot{    width: 93%;
+    margin: 3rem auto 2rem auto;
+    display: flex;
+    align-items: center;
+}
+.bord_img{width:3rem;margin-right: 1rem;}
+.bord_img img{width:100%;}
+.bord_contetn p:nth-child(1){font-size: 1.13rem;
+    font-weight: 600;}
+.bord_contetn p:nth-child(2){    font-size: 1rem;
+    color: #9E9E9E;
+    line-height: 1.12rem;
+    margin-top: .3rem;}
+.bord_right{margin-left:.5rem;}
+
+.mtsed {
+    width: 94%;
+    display: flex;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: .3rem;
+    box-shadow: 0px 2px 4px 1px #e3e3e3;
+    margin-top: -3rem;
+    justify-content: space-between;
+    position: relative;
+    z-index: 3;
+}
+ .mtes_left {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+ .mtes_left div:nth-child(1) {
+       width: 48%;
+    background: #f5f7f7 url(http://www.519ksy.com/h5page/reha_phy/images/poinggus.png) no-repeat 10rem center;
+    height: 100%;
+    padding-left: 1.23rem;
+    background-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#mtsdiegggg .mtes_left div:nth-child(1) p:nth-child(2){color: #c38734;}
+.mtes_left div:nth-child(1).actimec{    background: #d8f8ff url(../images/ryrrhrqww.png) no-repeat 9.2rem center;
+    background-size: 2.3rem;}
+.mtes_left div:nth-child(1).actimec p:nth-child(1){color: #439ed7;}
+
+#mtsdiegggg .mtes_left .actimec{  background: #d8f8ff url(../images/hteefeewfg.png) no-repeat 9.5rem center;
+    background-size: 1.95rem;}
+
+#mtsdiegggg .mtes_left .actimec p:nth-child(1){color: #439ed7;}
+
+.mtes_left div:nth-child(2).actimec2{background: #f4e6cd url(../images/jtyfdedg.png) no-repeat 9.2rem center;background-size: 2.3rem;}
+ #mtsdie .mtes_left div:nth-child(2) p:nth-child(2){color: #c38734;}
+.mtes_left div:nth-child(2).actimec2 p:nth-child(1){color: #a36818;}
+
+#mtsdiegggg .mtes_left .actimec2{    background: #f4e6cd url(../images/ththrtee.png) no-repeat 9.5rem center;
+    background-size: 1.5rem;}
+#mtsdiegggg .mtes_left .actimec2 p:nth-child(1){color: #a36818;}
+
+
+.mtes_left div:nth-child(1) p:nth-child(1) {
+    width: 100%;
+    font-size: 1.173rem;
+    color: #2ab4a6;margin-bottom: .21rem;
+    font-weight: 600;text-align: left;
+}
+ .mtes_left div:nth-child(1) p:nth-child(2) {
+    width: 100%;
+    font-size: .8rem;font-weight: 500;
+    color: #666666;text-align: left;
+}
+ .mtes_left div:nth-child(2) {
+    width: 48%;
+    background: #f5f7f7 url(http://www.519ksy.com/h5page/reha_phy/images/hositip.png) no-repeat 9.5rem center;
+    height: 100%;
+    border-radius: .32rem;
+    background-size: 2.45rem;
+    display: flex;
+    flex-direction: column;
+    padding-left: 1.23rem;
+    justify-content: center;
+}
+ .mtes_left div:nth-child(2) p:nth-child(1) {
+    font-size: 1.173rem;
+    color: #439ed7;
+    font-weight: 600;text-align: left;
+    width: 90%;
+    margin-bottom: .21rem;
+}
+ .mtes_left div:nth-child(2) p:nth-child(2) {
+    font-size: .8rem;font-weight: 500;
+    color: #666666;text-align: left;
+    width: 90%;
+}
+
+
+.m_dbox {
+    width: 100%;
+    display: flex;
+    height: 3.5rem;
+    line-height: 4rem;
+    padding: 0 1rem;
+    justify-content: space-between;
+}
+
+.m_dbox .mstio{
+	color: #919899;font-weight: 500;
+}
+.m_dbox .mstio .uing{display: inline-block;width: .45rem;margin: 0 .35rem;}
+.m_dbox span:nth-child(1) {
+    font-size: 1.25rem;
+    color: #111111;
+    font-weight: 600;
+}
+	#mtsdiegggg	{
+    position: inherit;
+    margin-top: .7rem;
+    height: 5rem;
+    width: 96%;
+    box-shadow: none;
+}	
+			
+#mtsdie {
+    position: inherit;
+    margin-top: 1rem;
+    height: 5rem;
+    width: 96%;
+    box-shadow: none;
+}
+
+
+.m_dboxss {
+      width: 100%;
+    display: flex;
+    height: 3.5rem;
+    line-height: 4rem;
+    padding: 0 1rem;
+    align-items: center;
+}
+.m_dboxss .maige{
+    padding: .1rem .8rem;
+    color: #8f6e55;
+    height: 1.5rem;
+    font-size: .88rem;
+    margin-left: 1rem;
+    text-align: center;
+    line-height: 1.5rem;
+    background: #efe7d1;
+    border-radius: 500px;
+    display: inline-block;
+}
+.m_dboxss span:nth-child(1) {
+    font-size: 1.25rem;
+    color: #111111;
+    font-weight: 600;
+}
+.m-videcont {
+    width: 93%;
+    text-align: center;
+    height: 13.457rem;
+    border-radius: .5rem;
+    margin: 0 auto;
+	margin-bottom: 2rem;
+}
+.m-video1 {
+    background: transparent url(../images/hfghfgh.png) 50% 83% no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: .5rem;
+    -o-background-size: cover;
+    background-size: 100%;
+}
+
+		
+ .planting {
+        width: 100%; margin-top: 1rem;
+        overflow: hidden;
+    }
+
+    .planting ul {
+        width: 100%;
+        display: inline;
+        white-space: nowrap;
+        overflow-x: scroll;
+        float: left;
+        overflow-y: hidden;
+        padding-right: 1rem;
+    }
+
+    .planting ul li {
+   margin-left: .2rem;
+    width: 33%;
+    background: #ffffff;
+    white-space: initial;
+    border-radius: .5rem;
+    padding: .5rem 0 1rem 0;
+    overflow: hidden;
+    display: inline-block;
+    }
+  
+  #pig_two ul li {
+        width:12rem;
+    }
+
+    .planting .poster-thumb {
+        height: 6.3rem;
+    }
+     .planting .poster-thumb img{height: 6.3rem;object-fit: cover;border-radius: .3rem;}
+    .poster-title {
+        width: 100%;
+	text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;padding: 0 .6rem;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;margin-top: .5rem;
+  -webkit-box-orient: vertical;
+    }
+    .poster-subtitle{
+		font-size: .88rem;color: #666;margin-top: .5rem;padding: 0 .6rem;	white-space:nowrap;
+
+overflow:hidden;
+
+text-overflow:ellipsis;	
+			}	
+   .poster-price{font-size: 1.11rem;color: #FF9800;margin-top: .5rem;}	
+	.poster-price span:nth-child(1){margin-right: .3rem;}	
+			
+
+
+.m_dbox {
+    width: 100%;
+    display: flex;
+    height: 3.5rem;
+    line-height: 4rem;
+    padding: 0 1rem;
+    justify-content: space-between;
+}
+
+.m_dbox .mstio{
+	color: #919899;font-weight: 500;
+}
+.m_dbox .mstio .uing{display: inline-block;width: .45rem;margin: 0 .35rem;}
+.m_dbox span:nth-child(1) {
+    font-size: 1.25rem;
+    color: #111111;
+    font-weight: 600;
+}
+
+#menu {
+    padding-top: 1rem;
+    background: #fff;
+}
+#menu ul {
+    justify-content: space-around;
+    display: flex;
+}
+#menu li {
+    height: 2rem;
+    background: #f3f4f6;
+    padding: 0 .8rem;
+    border-radius: 500px;
+    line-height: 2rem;
+    text-align: center;
+    overflow: hidden;
+    font-size: .89rem;
+    color: #9E9E9E;
+    position: relative;
+}
+#menu li .pstyle {
+    width: 75%;
+    height: 2px;
+    background: #ff8625;
+    position: absolute;
+    bottom: 0;
+    left:50%;
+    transform: translateX(-50%);
+}
+#menu li.on {
+       color: #ffffff;
+    background: #d0962f;
+	background-image: linear-gradient(to right, #c59c29 , #fdba00);
+}
+.clear {
+    clear: both;
+}
+#tab-con .tab_itemst {
+    width: 100vw;
+    /* height: 10rem; */
+    position: relative;
+    display: none;
+}
+#tab-con .on {
+    display: block;
+    background-color: #fff;
+}
+#tab-con .ae {
+    width: 3rem;
+    height: 3rem;
+    background: red;
+}
+.henline {
+   height: 1.5rem;
+    background: #ffffff;
+}
+.tab_itemst .tcontbox {
+    width: 100%;padding: 0 1rem;
+}
+
+
+.container {
+    width: 93%;
+    margin: 0 auto;
+}
+.waterfall {
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    column-count: 2;
+    -moz-column-gap: 1em;
+    -webkit-column-gap: 1em;
+    column-gap: 1em;
+}
+.item {
+    margin-bottom: 1.4rem;
+    -moz-page-break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    break-inside: avoid;
+}
+.item img {
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: .45rem;
+}
+.waterfall .pitcfist {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    color: #333;
+}
+.waterfall .pitc {
+    width: 100%;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    margin-top: .5rem;
+}
+.waterfall .pitc img {
+    vertical-align: middle;
+}
+.waterfall .pitc .pictimg1 {
+    width: 2rem;
+    border-radius: 50%;
+    margin: -2.1rem .4rem 0 .2rem;height: 2rem;
+}
+.waterfall .pitc .pictimg2 {
+    width: 1.3rem;
+    float: right;
+    border-radius: 0;
+    margin: .4rem .5rem 0 0;
+}
+.waterfall .pitc .xs-hea {
+    color: #666;
+    font-size: 1rem;
+	width: 60%;
+    display: inline-block;
+	overflow: hidden;
+}			
+		
+
+

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+<script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<title>健康自测</title>
+<style>
+body {
+    background: #ffffff;
+}
+	.header_box{border-bottom: 1px solid #ecebeb;}
+	
+.outdiv{width:100%; margin:2rem auto 1rem auto;}
+	
+.main-quiz-holder{margin:0 auto;position:relative;width:100%;}
+.main-quiz-holder *{margin:0;padding:0;font-family:"Microsoft yahei",sans-serif;}
+.main-quiz-holder a{text-decoration:none;color:#6C6C6C;}
+.main-quiz-holder .slide-container{width:100%;padding:0;}
+.results-container,.intro-container{text-align:center;}
+.intro-container .ceshis{font-size: 1.53rem;font-weight: 600;color: #313130;}
+.intro-container .ceshimg{width: 93%;margin: 1.5rem auto 2rem auto;}
+	.intro-container .ceshimg img{width: 100%;}	
+	.conunises{    width: 93%;
+    margin: 1.2rem auto 2rem auto;
+    padding: 1rem;
+    color: #666;
+    border: 1px solid #ecdede;
+    border-radius: .3rem;}
+	.cont_anwer{width: 100%;padding: 0 1rem;margin-top: 1rem;text-align: center;font-size: 1.03rem;color: #666;}
+.results-container{}.main-quiz-holder .slide-container .question,.main-quiz-holder h2.qTitle{margin:20px 0 20px 10px;font-size:20px;font-weight:normal;}
+.main-quiz-holder h2.qTitle{font-size:20px;margin-top:30px; line-height:26px}
+.main-quiz-holder .question-number{position: absolute;
+    right: 8%;
+    font-size: .5rem;
+    top: 0px;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+    -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2),inset 0 0 6px 0 rgba(255,255,255,0.3),0 1px 2px rgba(0,0,0,0.4);
+    color: #949494;}
+.main-quiz-holder .slide-container ul.answers{margin: 0px auto;
+    padding: 5px;
+    width: 85%;
+    list-style: none;}
+.main-quiz-holder .slide-container ul.answers li{cursor: pointer;
+    padding: 10px 30px;
+    margin: 20px 0;
+    color: #252323;border: 1px solid #03A9F4;
+    -webkit-border-radius:500px;
+    -moz-border-radius:500px;
+    border-radius: 500px;
+    }
+.main-quiz-holder .slide-container ul.answers li.selected{
+	background: #2cacfc;color: #ffffff;
+    background: -webkit-gradient(linear,left top,left bottom,from(#2cacfc),to(#2cacfc));
+    background: -webkit-linear-gradient(#2cacfc,#18a5ff);
+    background-image: -moz-linear-gradient(top,#f6f6f6,#d4d4d4);
+    background-image: -moz-gradient(top,#f6f6f6,#d4d4d4);
+	}
+.main-quiz-holder .slide-container .prev,.main-quiz-holder .slide-container .next{height:19px;cursor:pointer;padding:5px 10px;font-size:16px;padding:5px 15px;color:#4c4c4c;border-radius:4px;text-shadow:0 1px 0 rgba(255,255,255,0.3);background:#6fb2e5;box-shadow:0 1px 5px #0061aa,inset 0 10px 20px #b6f9ff;-o-box-shadow:0 1px 5px #0061aa,inset 0 10px 20px #b6f9ff;-webkit-box-shadow:0 1px 5px #0061aa,inset 0 10px 20px #b6f9ff;-moz-box-shadow:0 1px 5px #0061aa,inset 0 10px 20px #b6f9ff;}
+.main-quiz-holder .slide-container .next{background: #2cacfc;
+    box-shadow: 0 1px 5px #2cacfc, inset 0 10px 20px #2cacfc;
+    -o-box-shadow: 0 1px 5px #3caa00,inset 0 10px 20px #c9ffb6;
+    -webkit-box-shadow: 0 1px 5px #2cacfc, inset 0 10px 20px #2cacfc;
+    -moz-box-shadow: 0 1px 5px #3caa00,inset 0 10px 20px #c9ffb6;}
+.main-quiz-holder .progress-keeper{width: 93%;background: #dee2e4;
+    box-shadow: 0 1px 5px #D9D9D9, inset 0 10px 20px #F1F1F1;
+    -o-box-shadow: 0 1px 5px #D9D9D9,inset 0 10px 20px #F1F1F1;
+    -webkit-box-shadow: 0 1px 5px #D9D9D9, inset 0 10px 20px #F1F1F1;
+    -moz-box-shadow: 0 1px 5px #D9D9D9,inset 0 10px 20px #F1F1F1;
+    border-radius: 500px;
+    border: 1px solid #dedede;
+    margin: 0 auto;}
+.main-quiz-holder .progress{width: 0;
+    height: 15px;
+    border-radius: 500px;
+    color: #4c4c4c;
+    background: #2196F3;
+    background: -webkit-gradient(linear,left top,left bottom,from(#2196F3),to(#03A9F4));
+    background: -webkit-linear-gradient(#2196F3,#03A9F4);
+    background-image: -moz-linear-gradient(top,#2196F3,#03A9F4);
+    background-image: -moz-gradient(top,#2196F3,#03A9F4);}
+.main-quiz-holder .result-keeper{margin: 10px;
+    border-radius: .3rem;
+    text-align: center;
+    border: 1px solid #dadada;}
+.main-quiz-holder .notice{color: #717171;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -10%;}
+.main-quiz-holder .slide-container .prev{width:auto;float:left;display: none;}
+.main-quiz-holder .slide-container .next,.main-quiz-holder .slide-container .final{width: 60%;
+    height: 3.8rem;
+     margin: 0 auto; line-height: 2.8rem;
+    text-align: center;
+/*    float: right;*/
+	}
+	.nav-show-result{color: #ffffff!important;}
+.main-quiz-holder .slide-container .final{width: 60%;}
+.main-quiz-holder .nav-previous{}.main-quiz-holder .nav-next{height: 3.8rem;
+    display: inline-block;
+    line-height: 3rem;
+    color: #ffffff;
+    font-size: 1.12rem;}
+/*	.main-quiz-holder .nav-show-result{padding-left:25px;background:url(images/confirm.png) left no-repeat;}*/
+.main-quiz-holder .nav-start{display: block;
+    line-height: 3.5rem;
+    height: 3.5rem;
+    width: 50%;
+    color: #ffffff;
+    margin: 0 auto;
+    font-size: 1.3rem;
+    border-radius: .2rem;
+    background: #ff6d6d;}
+.main-quiz-holder .nav-container{padding:5px;margin:15px 0;}
+.main-quiz-holder .result-row{width:80px;margin:10px 20px;float:left;position:relative;}
+.main-quiz-holder .result-row .resultsview-qhover{background:#FCFCFC;border:1px solid #dedede;box-shadow:0 1px 5px #D9D9D9,inset 0 10px 20px #F1F1F1;-o-box-shadow:0 1px 5px #D9D9D9,inset 0 10px 20px #F1F1F1;-webkit-box-shadow:0 1px 5px #D9D9D9,inset 0 10px 20px #F1F1F1;-moz-box-shadow:0 1px 5px #D9D9D9,inset 0 10px 20px #F1F1F1;border-radius:2px 10px 2px 10px;position:absolute;width:250px;top:50px;left:-80px;z-index:200;padding:15px 30px;text-align:left;font-size:22px;}
+.main-quiz-holder .resultsview-qhover ul{list-style:none;margin:10px 0;}
+.main-quiz-holder .resultsview-qhover li{padding:0 28px;margin:5px 0;min-height:20px;font-size:14px;background: #FCFCFC;border:1px solid #F6F6F6;border-radius:3px;}
+.main-quiz-holder .resultsview-qhover li.selected{}.main-quiz-holder .resultsview-qhover li.right{}
+.main-quiz-holder .correct,.main-quiz-holder .wrong{ height:19px;cursor:pointer;padding:5px 10px;font-size:14px;padding:5px 15px;color:#4c4c4c;border-radius:4px;text-shadow:0 1px 0 rgba(255,255,255,0.3);-webkit-box-shadow:inset 0 0 0 1px rgba(255,255,255,0.2),inset 0 0 6px 0 rgba(255,255,255,0.3),0 1px 2px rgba(0,0,0,0.4);-moz-box-shadow:inset 0 0 0 1px rgba(255,255,255,0.2),inset 0 0 6px 0 rgba(255,255,255,0.3),0 1px 2px rgba(0,0,0,0.4);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.2),inset 0 0 6px 0 rgba(255,255,255,0.3),0 1px 2px rgba(0,0,0,0.4);}
+.main-quiz-holder .correct{background:#c3e462;background:-webkit-gradient(linear,left top,left bottom,from(#c3e462),to(#90b61e));background:-webkit-linear-gradient(#c3e462,#90b61e);background-image:-moz-linear-gradient(top,#c3e462,#90b61e);background-image:-moz-gradient(top,#c3e462,#90b61e);border:1px solid #bfff00;}
+.main-quiz-holder .wrong{background:#fc5e5e;background:-webkit-gradient(linear,left top,left bottom,from(#fc5e5e),to(#ea4646));background:-webkit-linear-gradient(#fc5e5e,#ea4646);background-image:-moz-linear-gradient(top,#fc5e5e,#ea4646);background-image:-moz-gradient(top,#fc5e5e,#ea4646);border:1px solid #e36d6d;}
+.main-quiz-holder .correct span{padding:0 10px;background:url(images/confirm.png) 6px 2px no-repeat;}
+.main-quiz-holder .wrong span{padding:0 10px;background:url(images/delete.png) 6px 2px no-repeat;color:#474747;}
+.main-quiz-holder .question{padding-left:5px;line-height:1.3em;}
+.main-quiz-holder .share-button{display:block;margin:15px 0;}
+.jquizzy-clear{clear:both;}.main-quiz-holder .right{float:none;}
+.main-quiz-holder img{border:none;}	
+	
+	
+</style>
+</head>
+<body>
+<div class="header_box">
+	<img src="/statics/images/goback_b.png" class="left" id="props" onclick="goback()">
+  <p class="midden">健康自测</p>
+</div>
+<div class="h50"></div>
+<div class="outdiv">
+	<div id='quiz-container'></div>
+</div>
+	
+</body>
+<script>
+(function($) {
+    $.fn.jquizzy = function(settings) {
+        var defaults = {
+            questions: null,
+			titles:null,
+            startImg: null,
+			contiuies:null,
+            endText: '',
+            shortURL: null,
+            sendResultsURL: null,
+            resultComments: null
+        };
+        var config = $.extend(defaults, settings);
+        if (config.questions === null||config.questions=='') {
+            $(this).html('<div class="intro-container slide-container"><h2 class="qTitle">无法分析问题.</h2></div>');
+            return;
+        }
+        var superContainer = $(this),
+        answers = [],
+        introFob = '	<div class="intro-container slide-container"><p class="ceshis">'+config.titles+'</p><p class="ceshimg"><img src="'+config.startImg+'"></p><p class="conunises">'+config.contiuies+'</p><a class="nav-start" href="#">开始测试<br/><br/></a><p class="cont_anwer">你需回答<span>8<span>题，预计用时<span>4分16秒</span></p></div>	',
+        exitFob = '<div class="results-container slide-container"><div class="result-keeper"></div></div><div class="notice">请选择一个选项！</div>',
+		wxitbox = '<div class="progress-keeper" ><div class="progress"></div></div>',	
+		//timus = '<div class="question-number">' + config.endText + '</div>' ,
+        contentFob = '',
+        questionsIteratorIndex,
+        answersIteratorIndex;
+        superContainer.addClass('main-quiz-holder');
+        for (questionsIteratorIndex = 0; questionsIteratorIndex < config.questions.length; questionsIteratorIndex++) {
+            contentFob += '<div class="slide-container"><div class="question-number">' + (questionsIteratorIndex + 1) + '/' + config.questions.length + '</div><div class="question">' + config.questions[questionsIteratorIndex].question + '</div><ul class="answers">';
+            for (answersIteratorIndex = 0; answersIteratorIndex < config.questions[questionsIteratorIndex].answers.length; answersIteratorIndex++) {
+                contentFob += '<li>' + config.questions[questionsIteratorIndex].answers[answersIteratorIndex] + '</li>';
+            }
+            contentFob += '</ul><div class="nav-container">';
+            if (questionsIteratorIndex !== 0) {
+                contentFob += '<div class="prev"><a class="nav-previous" href="#">上一条</a></div>';
+            }
+            if (questionsIteratorIndex < config.questions.length - 1) {
+                contentFob += '<div class="next"><a class="nav-next" href="#">下一条 </a></div>';
+            } else {
+                contentFob += '<div class="next final"><a class="nav-show-result" href="#">完成</a></div>';
+            }
+            contentFob += '</div></div>';
+            answers.push(config.questions[questionsIteratorIndex].correctAnswer);
+			
+        }
+		//aab ='<div class="question-number1">' + (questionsIteratorIndex + 1) + '/' + config.questions.length + '</div>';
+        superContainer.html(introFob + contentFob + exitFob);
+		superContainer.prepend(wxitbox);
+		//$('.progress-keeper').append(timus);
+        var progress = superContainer.find('.progress'),
+        progressKeeper = superContainer.find('.progress-keeper'),
+        notice = superContainer.find('.notice'),
+        progressWidth = progressKeeper.width(),
+        userAnswers = [],
+        questionLength = config.questions.length,
+        slidesList = superContainer.find('.slide-container');
+        function checkAnswers() {
+            var resultArr = [],
+            flag = false;
+            for (i = 0; i < answers.length; i++) {
+                if (answers[i] == userAnswers[i]) {
+                    flag = true;
+                } else {
+                    flag = false;
+                }
+                resultArr.push(flag);
+            }
+            return resultArr;
+        }
+        function roundReloaded(num, dec) {
+            var result = Math.round(num * Math.pow(10, dec)) / Math.pow(10, dec);
+            return result;
+        }
+        function judgeSkills(score) {
+            var returnString;
+            if (score === 100) return config.resultComments.perfect;
+            else if (score > 90) return config.resultComments.excellent;
+            else if (score > 70) return config.resultComments.good;
+            else if (score > 50) return config.resultComments.average;
+            else if (score > 35) return config.resultComments.bad;
+            else if (score > 20) return config.resultComments.poor;
+            else return config.resultComments.worst;
+        }
+        progressKeeper.hide();
+        notice.hide();
+        slidesList.hide().first().fadeIn(500);
+        superContainer.find('li').click(function() {
+            var thisLi = $(this);
+            if (thisLi.hasClass('selected')) {
+                thisLi.removeClass('selected');
+            } else {
+                thisLi.parents('.answers').children('li').removeClass('selected');
+                thisLi.addClass('selected');
+            }
+        });
+        superContainer.find('.nav-start').click(function() {
+            $(this).parents('.slide-container').fadeOut(500,
+            function() {
+                $(this).next().fadeIn(500);
+                progressKeeper.fadeIn(500);
+            });
+            return false;
+        });
+        superContainer.find('.next').click(function() {
+            if ($(this).parents('.slide-container').find('li.selected').length === 0) {
+                notice.fadeIn(300);
+                return false;
+            }
+            notice.hide();
+            $(this).parents('.slide-container').fadeOut(500,
+            function() {
+                $(this).next().fadeIn(500);
+            });
+            progress.animate({
+                width: progress.width() + Math.round(progressWidth / questionLength)
+            },
+            500);
+            return false;
+        });
+        superContainer.find('.prev').click(function() {
+            notice.hide();
+            $(this).parents('.slide-container').fadeOut(500,
+            function() {
+                $(this).prev().fadeIn(500);
+            });
+            progress.animate({
+                width: progress.width() - Math.round(progressWidth / questionLength)
+            },
+            500);
+            return false;
+        });
+        superContainer.find('.final').click(function() {
+            if ($(this).parents('.slide-container').find('li.selected').length === 0) {
+                notice.fadeIn(300);
+                return false;
+            }
+            superContainer.find('li.selected').each(function(index) {
+                userAnswers.push($(this).parents('.answers').children('li').index($(this).parents('.answers').find('li.selected')) + 1);
+            });
+            if (config.sendResultsURL !== null) {
+                var collate = [];
+                for (r = 0; r < userAnswers.length; r++) {
+                    collate.push('{"questionNumber":"' + parseInt(r + 1, 10) + '", "userAnswer":"' + userAnswers[r] + '"}');
+                }
+                $.ajax({
+                    type: 'POST',
+                    url: config.sendResultsURL,
+                    data: '{"answers": [' + collate.join(",") + ']}',
+                    complete: function() {
+                        console.log("OH HAI");
+                    }
+                });
+            }
+            progressKeeper.hide();
+            var results = checkAnswers(),
+            resultSet = '',
+            trueCount = 0,
+            shareButton = '',
+            score,
+            url;
+            if (config.shortURL === null) {
+                config.shortURL = window.location
+            };
+            for (var i = 0,
+            toLoopTill = results.length; i < toLoopTill; i++) {
+                if (results[i] === true) {
+                    trueCount++;
+                    isCorrect = true;
+                }
+                resultSet += '<div class="result-row">' + (results[i] === true ? "<div class='correct'>#"+(i + 1)+"<span></span></div>": "<div class='wrong'>#"+(i + 1)+"<span></span></div>");
+                resultSet += '<div class="resultsview-qhover">' + config.questions[i].question;
+                resultSet += "<ul>";
+                for (answersIteratorIndex = 0; answersIteratorIndex < config.questions[i].answers.length; answersIteratorIndex++) {
+                    var classestoAdd = '';
+                    if (config.questions[i].correctAnswer == answersIteratorIndex + 1) {
+                        classestoAdd += 'right';
+                    }
+                    if (userAnswers[i] == answersIteratorIndex + 1) {
+                        classestoAdd += ' selected';
+                    }
+                    resultSet += '<li class="' + classestoAdd + '">' + config.questions[i].answers[answersIteratorIndex] + '</li>';
+                }
+                resultSet += '</ul></div></div>';
+            }
+            score = roundReloaded(trueCount / questionLength * 100, 2);
+            
+            resultSet = '<h2 class="qTitle">' + judgeSkills(score) + '<br/> 睡眠质量指数： ' + score + '</h2>' + shareButton + '<div class="jquizzy-clear"></div>' + resultSet + '<div class="jquizzy-clear"></div>';
+            superContainer.find('.result-keeper').html(resultSet).show(500);
+            superContainer.find('.resultsview-qhover').hide();
+            superContainer.find('.result-row').hover(function() {
+                $(this).find('.resultsview-qhover').show();
+            },
+            function() {
+                $(this).find('.resultsview-qhover').hide();
+            });
+            $(this).parents('.slide-container').fadeOut(500,
+            function() {
+                $(this).next().fadeIn(500);
+            });
+            return false;
+        });
+    };
+})(jQuery);	
+</script>
+<script type="text/javascript">
+var init={'questions':[{'question':'1、您的睡眠状况是：','answers':['A.睡眠时常有间断醒或睡而不实， 晨醒过早，但不影响工作','B.偶有失眠，但尚能坚持工作','C.睡眠不足4小时，影响正常工作','D.经常不眠，难以坚持正常工作'],'correctAnswer':1},{'question':'2、找出不同类的一项?','answers':['写字台','沙发','电视','桌布'],'correctAnswer':3},{'question':'3、国土面积最大的国家是：','answers':['美国','中国','俄罗斯','加拿大'],'correctAnswer':3},{'question':'4、月亮距离地球多远？','answers':['18万公里','38万公里','100万公里','180万公里'],'correctAnswer':2},{'question':'5、多远？','answers':['18万公里','38万公里','100万公里','180万公里'],'correctAnswer':2}],'titles':'睡眠质量自测',startImg: './images/kasuiyuns.png',contiuies:'决定睡眠是否充足，除了量的要求外，更重要的还有质的要求,眠质量的关键就在于深度睡眠。 在深睡眠状态下，大脑皮层细胞处于充分休息',resultComments: {
+                perfect: '你是爱因斯坦么?',
+                excellent: '非常优秀!',
+                good: '很好，发挥不错!',
+                average: '一般般了。',
+                bad: '太可怜了！',
+                poor: '好可怕啊！',
+                worst: '悲痛欲绝！'
+            }};
+
+$(function(){
+	$('#quiz-container').jquizzy({
+        questions: init.questions,
+		titles:init.titles,
+		startImg:init.startImg,
+		contiuies:init.contiuies,
+		resultComments:init.resultComments
+    });
+});
+</script>
+</html>

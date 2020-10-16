@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+<script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<title>咳喘病慢病管理服务</title>
+<style>
+body {
+    background: #ffffff;
+}
+	.header_box{border-bottom: 1px solid #ecebeb;}
+	
+.index_1 {
+	width: 100%;
+	overflow: hidden;
+	background: #fff;
+	height: 0;
+	padding-bottom: 94.6666%;
+	display: block;
+	overflow: hidden;
+	position: relative
+}	
+.head_top {
+	width: 100%;
+	overflow: hidden;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 1
+}
+.head_top div {
+	float: left
+}
+.head_top div:last-child {
+	float: right
+}
+.head_top_active {
+	background-color: #1ca7ff
+}
+.head_top .top1 {
+	width: 23%;
+	height: 43px;
+	line-height: 43px;
+	text-align: center;
+	color: #fff;
+	font-size: 1.1rem
+}
+.head_top .top1 img {
+	width: 16px;
+	height: 16px;
+	vertical-align: sub
+}
+.head_top .top1 i {
+	margin-left: 5px
+}
+.head_top .top2 {
+	width: 60%;
+	height: 30px;
+	background-color: #fff;
+	border-radius: 15px;
+	position: absolute;
+	left: 54%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	text-align: center
+}
+.head_top .top2 img {
+	width: 15px;
+	height: 15px;
+	vertical-align: sub
+}
+.head_top .top2 .search {
+	width: 55%;
+	height: 30px;
+	line-height: 30px
+}
+ .head_top .top2 .search::-webkit-input-placeholder {
+font-size:1rem
+}
+.head_top .top3 {
+	width: 14%;
+	text-align: center;
+	position: relative
+}
+.head_top .top3 img {
+	width: 20px;
+	height: 20px;
+	display: block;
+	margin: 5px auto 0 auto
+}
+.head_top .top3 p {
+	color: #fff;
+	font-size: 1rem;
+	height: 15px;
+	line-height: 15px;
+	font-family: arail
+}
+.head_top .top3 .mess_num {
+	position: absolute;
+	right: 9.5%;
+	background-color: #eb6100;
+	font-size: 12px;
+	color: #FFF;
+	width: 20px;
+	height: 12px;
+	line-height: 12px;
+	top: 5%;
+	text-align: center;
+	font-weight: 500;
+	display: none;
+	font-size: .9rem;
+	border-radius: 3px
+}	
+.index_1 {
+	padding-bottom: 91.6666%
+}
+.index_1_ {
+	padding-bottom: 69.6666%
+}	
+.index_banner {
+	overflow: hidden;
+	width: 100%;
+	background-color: #f5f5f5;
+	height: 0;
+	padding-bottom: 50.6666%;
+	display: block;
+	overflow: hidden;
+	position: relative
+}
+.index_banner img {
+	width: 100%
+}
+	.head_bottom{
+	position: relative;
+    z-index: 3;
+	}
+	.head_titles{    text-align: center;
+    font-size: 1.22rem;
+    font-weight: 600;
+    padding-top: 1.3rem;
+    color: #e9a102;}
+.head_bottom .head_bottom_l {
+    width: 95%;
+    border-radius: .3rem;background: #ffffff;
+    margin: -5% auto;
+    box-shadow: 2px 0px 6px 1px #efecec;
+}
+.head_bottom .head_bottom_l ul {
+	width: 100%;
+    overflow: hidden;
+    border-radius: 5px;
+    border-top-right-radius: 0;
+    background-color: #fff;
+    padding: 15px 0 20px 0;
+    box-shadow: 3px 7px 10px #d0edf3;
+}
+.head_bottom_ img {
+	width: 50%;
+	display: block;
+	margin: 3px auto 0 auto
+}
+
+.option_box_ {
+    width: 100%;
+    overflow: hidden;
+/*    margin-top: 1rem;*/
+}
+.option_box {
+    width: 98%;
+    overflow: hidden;
+    margin: 0 auto;
+    border-radius: 10px;
+    background-color: #fff;
+}
+.option_box li {
+    float: left;
+    width: 33.3%;
+    margin-bottom: 1rem;
+}
+.option_box .option {
+    text-align: center;
+}
+
+.option_box .option p {
+   height: 1.538rem;
+    line-height: 1.54rem;
+    font-size: .912rem;
+    padding: 0 .7rem;
+    color: #282828;
+    margin-top: .45rem;
+}
+
+.option_boxww .option img {
+    width: 4.2rem;
+    height: 4.2rem;
+    display: block;
+    margin: 0 auto;
+}		
+.option_box2 li {
+    float: left;
+    width: 20%;
+    margin-top: 1rem;
+}
+.info-item.ts {
+    margin-bottom: 0.8rem;
+    display: flex;
+}
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}	
+.info-item .tisi {
+    font-size: 0.8rem;
+    color: #999;
+}
+.info-item .ling {
+    align-self: center;
+    line-height: .8rem;
+}
+.info-item img {
+    width: .6rem;
+    margin-right: .5rem;
+}
+	.containers{padding: 0 1rem;}
+ .ms-foot{width: 100%;
+    position: fixed;
+    bottom: 0;border-top: 1px solid #f9f9f9;
+    height: 3.975rem;
+    line-height: 3.975rem;
+    background: #fff;
+    z-index: 999;
+  }
+    .ms-foot div:nth-child(1){float: left;
+    width: 7rem;
+    padding: .5rem 0 .5rem 0;
+    border-right: 1px solid #f9f9f9;} 
+    .ms-foot div:nth-child(1) img{    width: 1.784rem;
+    margin: 0 auto;
+    display: block;} 
+      .ms-foot div:nth-child(1) p{text-align: center;
+    font-size: 1.1rem;
+    color: #313131;} 
+	.ms-foot div:nth-child(2){float: left;margin-left: .5rem;}
+	.mss-pice{color: #f11b35;font-size: 1.38rem;}
+	.mss-pices{color: #f11b35;font-size:.9rem;}
+     .ms-foot div:nth-child(3){float: right;
+    background: #4dd366;
+    color: #fff;
+    width: 10rem;
+    text-align: center;
+    font-size: 1.154rem;}
+</style>
+</head>
+<body>
+<div class="header_box">
+	<img src="/statics/images/goback_b.png" class="left" id="props" onclick="goback()">
+  <p class="midden">咳喘病慢病管理服务</p>
+</div>
+<div class="h50"></div>
+<div class="index_1">
+    <div class="head_top">
+        <div class="top1"><img src="/statics/index4/images/fixed.png" class="location"><font id="city_" set-lan="html:positioning">定位中</font><i class="fa fa-angle-down"></i></div>
+        <div class="top2"> <img src="/statics/index4/images/search.png" onclick="window.location.href='ios://share:www.baidu.com,aaa,aaa,aaa,aaa;'">
+            <input type="text" placeholder="搜索健康资讯" class="search nobd" id="key">
+        </div>
+        <div class="top3" onclick="setCookie('get_new_data',1);goo('/member/my_mess.html');"> <img src="/statics/index4/images/mess.png">
+            <p set-lan="html:message">消息</p>
+            <div class="mess_num" id="msg_count"></div>
+        </div>
+    </div>
+    <div class="index_banner">
+        <ul>
+            <li><img src="/statics/index4/images/index_new_top.jpg" set-lan="src:index4/images/"></li>
+        </ul>
+    </div>
+    
+    <!--<div class="index_height"></div>-->
+    
+    <div class="head_bottom">
+        <div class="head_bottom_l">
+			<p class="head_titles">— 第一时间捕捉异常状态 —</p>
+          		<div class="option_box option_boxww">
+            <ul>
+                <li onclick="goo_t('/patient/sr_index.html')">
+                    <div class="option"><img src="./images/fhfhf1.png">
+                        <p>资深呼吸内科 专家解读</p>
+                    </div>
+                </li>
+                <li onclick="goo_t('#')">
+                    <div class="option"><img src="./images/fhfhf2.png">
+                        <p>可筛查多种心率异常症状</p>
+                    </div>
+                </li>
+                <li onclick="goo_t('#')">
+                    <div class="option"><img src="./images/fhfhf3.png">
+                        <p>免挂号免排队 省时省心</p>
+                    </div>
+                </li>
+            </ul>
+        </div> 
+        </div>
+    </div>
+</div>
+	<div class="containers">
+<p style="font-size:1.2; font-weight: bold; margin-bottom: .3rem;">温馨提示:</p>
+	<div class="info-item ts">
+            <!-- <img src="img/ling.png" class="ling"> -->
+            <p class="tisi"><img src="./images/ling.png" class="ling">请务必提供受服务人员的真实信息！请勿向任何第三方泄露您的资料。  使用本服务需要先购买相关心电监测设备。  测量数据会同步上传</p>
+        </div>
+			<div class="info-item ts">
+            <!-- <img src="img/ling.png" class="ling"> -->
+            <p class="tisi"><img src="./images/ling.png" class="ling">使用本服务需要先购买相关心电监测设备。  测量数据会同步上传</p>  
+        </div>
+			<div class="info-item ts">
+            <!-- <img src="img/ling.png" class="ling"> -->
+            <p class="tisi"><img src="./images/ling.png" class="ling">测量数据会同步上传到您的健康档案，可随时查看。</p>
+        </div>
+			<div class="info-item ts">
+            <!-- <img src="img/ling.png" class="ling"> -->
+            <p class="tisi"><img src="./images/ling.png" class="ling">感觉胸闷、气短、心慌、心悸建议及时测量，不错过任何异常状况。</p>
+        </div>
+	</div>
+	<div class="ms-foot">
+     <div onclick="goo('/customer_service/index.html')">
+      <img src="./images/kefu.png">
+       <p>咨询客服</p>  
+    </div>
+	<div>
+	服务费：￥<span class="mss-pice">1500<span class="mss-pices">元/月</span></span>
+	</div>
+    <div>购买服务</div>
+    </div>
+</body>
+<script>
+
+</script>
+</html>

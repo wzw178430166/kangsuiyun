@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="topcolor" rgba="44.172.252.1">
+<title>添加就诊人</title>
+<meta name="keywords" content="医家讯,医家讯智能医疗设备,智能健康电子档案,个人健康、家庭健康,健康检测,心率监测,血糖监测,血压监测,睡眠监测,健康饮食,运动健美,亲友互动,运动圈子,医体健康,食动平衡,人工智能,健康管理,物联网,智能大数据">
+<meta name="description" content="医家讯智能医体健康平台通过智能紧急提醒、生命健康监测、智能穿戴设备及专业级智能医疗设备，结合物联网、云计算、健康大数据分析与呼叫中心，构建智能医体健康平台，让家人享受更健康、更安全、更舒心、更智慧化的生活，也让子女随时随地的了解父母的健康情况，及时表达爱心和孝心。">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/appstyle.css">
+<script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/statics/js/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<script type="text/javascript" src="/statics/js/cookie.js"></script>
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+<style>
+	body {
+		background-color: #fff;
+	}
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .container div {
+        width: 100vw;;
+    }
+    .title {
+        font-size: 1.3rem;
+        text-align: left;
+        padding: 1rem;
+    }
+    .info-box {
+        display: flex;
+        justify-content: space-between;
+        padding:1rem;
+        font-size: 1.1rem;
+    }
+    .info-box:not(:last-child){
+        border-bottom: 1px solid #eaeaea;
+    }
+    .info-box input{
+        width: 19rem;
+        border: none;
+        outline: none;
+        text-align: right;
+    }
+    .container .notice {
+        margin-top: 1.5rem;
+        width: 90%;
+        border-radius: 1rem;;
+        background-color: #d4e3f9;
+        padding: 1rem;
+    }
+    .container .submit-btn {
+        background-color: #2cacfc;
+        color: #fff;
+        text-align: center;
+        font-size: 1.3rem;
+        position: fixed;
+        bottom: 0;
+        padding: 1rem;
+    }
+	.icon-arrow-r {
+    float: right;
+    display: block;
+    width: 2rem;
+    background: url(https://lxj.yjxun.cn/member/style2/images/icon_arrow_r.png) no-repeat 100% center;
+    background-size: 1.3rem; height: 1.5rem;
+}
+</style>
+</head>
+
+<body>
+    <div class="headerBoxCircle">
+        <img src="/statics/images/goback_b.png" onClick="goback()" class="left">
+        <p class="midden">添加就诊人</p>
+    </div>
+    <div class="h50"></div>
+    <div class="container">
+        <div class="title">就诊人信息</div>
+        <div class="info-box">
+            <span>就诊人姓名</span>
+            <input type="text" placeholder="请输入就诊人姓名">
+        </div>
+		 <div class="info-box" style="display: initial;">
+            <span>性别</span>
+            <i class="icon-arrow-r"></i>
+			 <span style="float: right;color: #757575;">男</span>
+        </div>
+		
+		
+        <div class="info-box">
+            <span>年龄</span>
+            <input type="text" placeholder="请输入真实年龄">
+        </div>
+        <div class="info-box">
+            <span>手机号码</span>
+            <input type="text" placeholder="请输入联系手机号码">
+        </div>
+        <div class="info-box">
+            <span>居住地地址</span>
+            <input type="text" placeholder="请输入详细居住地址">
+        </div>
+        <div class="notice">温馨提示：预约挂号实行实名制，请准确填写就诊人信 息，信息错误将导致无法正常挂号。</div>
+        <div class="submit-btn">确认添加</div>
+    </div>
+    
+</body>
+<script>
+    $(function(){
+       
+    })
+
+</script>
+</html>

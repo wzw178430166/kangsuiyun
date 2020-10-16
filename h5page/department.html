@@ -1,0 +1,254 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="topcolor" rgba="44.172.252.1">
+<title>科室查找</title>
+<meta name="keywords" content="医家讯,医家讯智能医疗设备,智能健康电子档案,个人健康、家庭健康,健康检测,心率监测,血糖监测,血压监测,睡眠监测,健康饮食,运动健美,亲友互动,运动圈子,医体健康,食动平衡,人工智能,健康管理,物联网,智能大数据">
+<meta name="description" content="医家讯智能医体健康平台通过智能紧急提醒、生命健康监测、智能穿戴设备及专业级智能医疗设备，结合物联网、云计算、健康大数据分析与呼叫中心，构建智能医体健康平台，让家人享受更健康、更安全、更舒心、更智慧化的生活，也让子女随时随地的了解父母的健康情况，及时表达爱心和孝心。">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/appstyle.css">
+<script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/statics/js/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<script type="text/javascript" src="/statics/js/cookie.js"></script>
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+<style>
+    body {
+        background-color: #fff;
+    }
+    .container .hosp-box{
+        display: flex;
+        /* align-items: center; */
+        padding: 1rem;
+        position: relative;
+    }
+    .hosp-box .pic-box {
+        width: 7.5rem;
+        overflow: hidden;
+        border-radius: 0.3rem;
+        margin-right: 1rem;
+    }
+    .hosp-box .pic-box img {
+        width: 100%;
+    }
+    .hosp-box .hosp-info {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        
+    }
+    .hosp-info .info-b1 {
+        display: flex;
+    }
+    .hosp-info .info-b1 .h-name{
+        font-size: 1.4rem;
+        font-weight: bold;
+        margin-right:1rem;
+    }
+    .hosp-info .info-b1 .h-type{
+        color: #ff7468
+    }
+    .hosp-info .info-b1 .h-rang{
+        color: #999;
+        align-self:flex-end;
+        position: absolute;
+        right: 1rem;
+    }
+    .hosp-box .call-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: .4rem;
+        width: 6rem;
+        height: 2.6rem;
+        background-color: #fea531;
+        color: #fff;
+        font-size: 1.1rem;
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+    }
+    .hosp-box .info-address {
+        color: #999;
+        font-size: 1.1rem;
+    }
+    .hosp-box .info-phone {
+        color: #999;
+        font-size: 1.1rem;
+    }
+    .hosp-box .info-phone span{
+        color: #fea531;
+    }
+    .container .search-box {
+        text-align: center;
+        padding: 1rem 2rem;
+        
+    }
+    .container .search-box .input{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #999;
+        border-radius: 2rem;
+        padding: .5rem;
+    }
+    .input img {
+        width: 1.3rem;
+        margin-right: 1rem;
+    }
+    .input input {
+        width: 14rem;
+        border: none;
+        outline: none;
+    }
+    /* 门诊 */
+    .container .dept-container {
+        height: 100vh;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    /* df */
+    .dept-container .dept-left{
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        background-color: #f5f6f6;
+    }
+    .dept-left .deptl-item{
+        display: flex;
+        flex-direction: row;
+        padding: 1rem;
+        border-bottom: 1px solid #e4e4e4;
+    }
+    /* dr */
+    .dept-container .dept-right{
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+    .dept-right .deptr-item{
+        padding: 1rem;
+    }
+    .select {
+        width: 10px;
+        display:block;
+        border-width:10px;
+        border-style:solid;
+        border-color:  transparent transparent transparent #31b2fe;
+    }
+</style>
+</head>
+
+<body>
+    <div class="headerBoxCircle">
+        <img src="/statics/images/goback_b.png" onClick="goback()" class="left">
+        <p class="midden">中山一院</p>
+    </div>
+    <div class="h50"></div>
+    <div class="container">
+        <div class="hosp-box">
+            <div class="pic-box">
+                <img src="./images/leis.png" alt="">
+            </div>
+            <div class="hosp-info">
+                <div class="info-b1">
+                    <span class="h-name">中山一院</span>
+                    <span class="h-type">综合医院</span>
+                    <span class="h-rang">3.2km</span>
+                </div>
+                <p class="info-address">中山二路58号</p>
+                <p class="info-phone">质询热线: <span>87755766</span></p>
+            </div>
+            <div class="call-btn">一键拨打</div>
+        </div>
+        <div class="search-box">
+            <div class="input">
+                <img src="./images/Magnifier.png" alt="">
+                <input type="text" placeholder="请输入科室名称进行搜索">
+            </div>
+        </div>
+        <div class="dept-container">
+            <div class="dept-left">
+                <div class="deptl-item">
+                    <span class="dl-name">特色科室</span>
+                </div>
+                <div class="deptl-item">
+                    <span class="dl-name">内科</span>
+                </div>
+                <div class="deptl-item ">
+                    <div class="select"></div>
+                    <span class="dl-name">外科</span>
+                </div>
+                <div class="deptl-item">
+                    <span class="dl-name">骨科</span>
+                </div>
+                <div class="deptl-item">
+                    <span class="dl-name">妇产科</span>
+                </div>
+                <div class="deptl-item">
+                    <span class="dl-name">儿科</span>
+                </div>
+                <div class="deptl-item">
+                    <span class="dl-name">眼科</span>
+                </div>
+                <div class="deptl-item">
+                    <span class="dl-name">耳鼻咽喉头颈科</span>
+                </div>
+                <div class="deptl-item">
+                    <span class="dl-name">眼科</span>
+                </div>
+                <div class="deptl-item">
+                    <span class="dl-name">皮肤性病科</span>
+                </div>
+                <div class="deptl-item">
+                    <span class="dl-name">肿瘤</span>
+                </div>
+                <div class="deptl-item">
+                    <span class="dl-name">麻醉</span>
+                </div>
+            </div>
+            <div class="dept-right">
+                <div class="deptr-item mz">
+                    <span class="dr-name">门诊普外</span>
+                </div>
+                <div class="deptr-item mz">
+                    <span class="dr-name">门诊伤科</span>
+                </div>
+                <div class="deptr-item mz">
+                    <span class="dr-name">门诊胸外</span>
+                </div>
+                <div class="deptr-item mz">
+                    <span class="dr-name">心外科</span>
+                </div>
+                <div class="deptr-item mz">
+                    <span class="dr-name">神经外科</span>
+                </div>
+                <div class="deptr-item mz">
+                    <span class="dr-name">门诊功能神外</span>
+                </div>
+                <div class="deptr-item mz">
+                    <span class="dr-name">泌尿外科门诊</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+<script>
+    $(function(){
+    //    $('.deptl-item').on('click', function(){
+    //        $(this).find('.dl-name').before('<div class="select"></div>')
+    //     //    $(this).addClass('select');
+    //    })
+		$('.mz').on('click',function(){
+			goo('/index_yy/doc_list.html');
+		})
+    })
+
+</script>
+</html>
