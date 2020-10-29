@@ -40,7 +40,8 @@
 
 			var i = $(this).index();
 			$(this).addClass('x_on').siblings().removeClass('x_on');
-			goo_t(arr[i]);
+			var url = arr[i]+'?&s='+i;
+			goo_t(url);
 		});
 		var ulr = window.location.pathname;
 		var index = 0;

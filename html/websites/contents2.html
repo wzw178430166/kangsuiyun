@@ -35,7 +35,7 @@
 </span> </span></div>
 
 <script>
-	var item1 = $('.btn');
+	var item1 = $('.btn-tiyan');
 	
 	item1.each(function(i) {
     	$(item1[i]).on('click',function(e){
@@ -79,12 +79,12 @@ function contact(){
 	  
         var system = ['dataManage','prehospital','pension','chronic','tcm','rpt','hdt','hps','motherBaby','venue'];
         var current_system = '';
-       var item1 = $('.ty_kang');
+       /*var item1 = $('.ty_kang');
         item1.each(function(i){
             $(this).find('.name').val('root');
             $(this).find('.password').val('yjxun2020.');
-        });
-        var item2 = $('.ty_kang .btnhhhh');
+        });*/
+        /*var item2 = $('.ty_kang .btn-login');
         item2.each(function(i){
             $(item2[i]).on('click',function(){
                 //var url = 'https://ksy.yjxun.cn/?m='+system[i];
@@ -100,6 +100,20 @@ function contact(){
     			script.setAttribute('src',src);
     			$('body').append(script);
             });
+        });*/
+        $('.ty_kang .btn-login').on('click',function(){
+            var i = parseInt(getUrlParam('s'));
+            current_system = system[i];
+            var username = $('.name').val();
+            var password = $('.password').val();
+            var secret = 'username='+username+'&password='+password;
+			secret = new Base64().encode(secret);
+			var system_id = 10 + parseInt(i) + 1;
+			var src = 'https://ksy.yjxun.cn/?m=authed&c=doing&a=experienceLogin&system_id='+system_id+'&secret='+secret;
+			//alert(src);return;
+			var script = document.createElement('script');
+			script.setAttribute('src',src);
+			$('body').append(script);
         });
         function loginSuccess(res){
             if (1 == res.status) {
