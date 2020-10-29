@@ -217,17 +217,17 @@
                     </div>
                 </li>
                 <li onclick="goo('#')">
-                    <div class="option"><img src="./images/gbdggsd.png">
+                    <div class="option"><img src="./images/gbdggsd.png" style="width: 1.7rem;">
                         <p>就医通道</p>
                     </div>
                 </li>
                 <li onclick="goo('/medical/jktx.html')">
-                    <div class="option"><img src="./images/hfhfhf.png">
+                    <div class="option"><img src="./images/hfhfhf.png" style="width: 1.7rem;">
                         <p>健康提醒</p>
                     </div>
                 </li>
                 <li onclick="goo('/group/per_list.html')">
-                    <div class="option"><img src="./images/jijis.png">
+                    <div class="option"><img src="./images/jijis.png" style="width: 1.8rem;">
                         <p>我的亲友</p>
                     </div>
                 </li>
@@ -399,9 +399,8 @@
     }
         function getData(){
             $.ajax({
-                url:'/?m=circle&c=news&a=getNewsData',
-                type:'POST',
-                data:'',
+                url:'/?m=circle&c=news&a=getNewsData&ajax=1&catid=66,67',
+                type:'GET',
                 dataType:'json',
                 success:function(e){
                     for(i in e.data){

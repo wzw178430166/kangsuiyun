@@ -1,8 +1,96 @@
 <!--#include file="header_common.html"-->
 <body>
 <!--#include file="header.html"-->
-<div class="center">
+<style>
+.makefriends{width: 96%;
+    margin: .5rem auto .5rem auto;
+    display: flex;
+    background:#FFF08B;
+    height: 2.423rem;}
+.makefriends div.makebg{    width: 4.5rem;
+    height: 2.325rem;
+    background: url(../images/wentisa.png) 1.642rem top no-repeat;
+    border-right: 1px solid #d6d3d4;
+    background-size: 50%;
+    padding-right: .7rem;
+    align-self: center;
   
+}
+.makefP{width: 60%;flex: 1;display: flex;}
+.makefP img{width: 1.145rem;
+    height: 1.345rem;
+    align-self: center;
+    margin: 0 .5rem;}
+/* .makefP p{margin-left: .123rem;
+    overflow: hidden;
+    align-self: center;color:#333;
+    line-height: 1.245rem;height: 1.245rem;} */
+.makefP .maskbox{
+    width: 82%;
+    white-space:nowrap;
+    margin-left: .123rem;
+    overflow: hidden;
+    align-self: center;color:#333;
+    line-height: 1.245rem;
+}
+.makefP .maskbox .masitem{
+    width:auto;height:auto;font-size: 1.0354rem;float:left;overflow:hidden;
+}	
+	.makefP .maskbox .masitem ul li{font-size: .85rem;
+    color: #AB5A16;}
+	
+.conts_border{    width: 100%;
+    background: #ffffff;
+    height: 450px;
+    padding-top: 30px;}
+.conts_one{width: 100%;display: flex;justify-content: space-around;margin-top: 1rem;flex-wrap: wrap;}
+.conts_two{width: 100%;display: flex;justify-content: space-around;margin-top: 1rem;flex-wrap: wrap;}
+.conts_three{width: 100%;display: flex;justify-content: space-around;margin-top: 1rem;flex-wrap: wrap;}
+.conts_items{width: 45%;
+    float: left;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 3.5rem;}
+.conts_items img{vertical-align: middle;width: 100%;}
+.conts_itemst{width: 25.3%;
+    float: left;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 4rem;}	
+	.conts_itemst img{width: 100%;}
+
+@media (min-width: 768px) {
+	.conts_border {
+    height: 750px;
+}
+	.conts_items {
+    height: 6.5rem;
+}
+.conts_itemst {
+   .conts_border
+    height: 7rem;
+}	
+}
+/*
+@media only screen and (min-width: 576px) and (max-width: 768px) {
+	.conts_border {
+    height: 650px;
+}
+	.conts_items {
+    height: 6.5rem;
+}
+.conts_itemst {
+   
+    height: 7rem;
+}
+}	
+*/
+</style>
+<div class="center">
   <div class="nav_right">
     <div id="banner" aos="zoom-in" class="banner_new">
       <div class="swiper-container">
@@ -18,21 +106,39 @@
   </div>
   <div class="cl01"></div>
 </div>
-<div class="b30"></div>
+	<div class="b30"></div>
+	    <div class="makefriends">
+        <div class="makefP">
+            <img src="/h5page/images/nabas.png" />
+          
+			<div class="maskbox" id="maskbox">
+				<div class="scroll" id="scroll">
+				  <div class="masitem" id="masitem">
+					 <ul>
+					   <li>李克强签署国务院令 公布修订后《中华人民共和国食品安全法案》&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+					 </ul>
+			   </div>
+			   <div id="masitemSub" class="masitem"></div>
+			  </div>
+			 </div>
+        </div>
+    
+    </div>	
+	<div class="b30"></div>
 <div class="service center"  >
   <div class="servicelist">
     <dl class="" aos="fade-up">
       <dt> <img src="images/system_1.jpg" alt=""> </dt>
       <dd> <strong>物联网+移动医疗健康平台</strong> </dd>
       <dd> <span>健康检测</span> <span>智能穿戴</span> <span>在线问诊</span>  </dd>
-      <dd> <a href="https://yjxun.cn/index/?tatget=_self" class="an_2 ">查看详情</a> </dd>
+      <dd> <a href="/m2/fa1.html" class="an_2 ">查看详情</a> </dd>
     </dl>
     <dl class="" aos="fade-up">
       <dt> <img src="images/system_2.jpg" alt=""> </dt>
       <dd> <strong>互联网+医院移动医疗平台</strong> </dd>
      
       <dd> <span>智能硬件</span> <span>健康检测</span> <span>健康档案</span>  </dd>
-      <dd> <a href="https://yjxun.cn/index/?tatget=_self" class="an_2 ">查看详情</a> </dd>
+      <dd> <a href="/m2/fa2.html" class="an_2 ">查看详情</a> </dd>
     </dl>
   </div>
   <div class="cl01"></div>
@@ -64,13 +170,14 @@
     
     <div class="ser_right ">
       <dl class="sy5" aos="fade-up">
-        <dd> <strong>养生中医馆解决方案</strong> </dd>
+        <dd> <strong>养生中医康复理疗解决方案</strong> </dd>
         <dd class="lan_2">
           <p> — 提供专业化、智能化的“医养”服务解决方案<br>
             — 健康检测、智能穿戴、在线问诊一应俱全</p>
         </dd>
         <dd class="lan_3">  <a href="/m2/fa5.html" class="an_2 ">查看详情</a> </dd>
       </dl>
+<!--
       <dl class="sy6" aos="fade-up">
         <dd> <strong>康复理疗健康驿站方案</strong> </dd>
         <dd class="lan_2">
@@ -80,12 +187,14 @@
         </dd>
         <dd class="lan_3"> <a href="/m2/fa6.html" class="an_2 ">查看详情</a> </dd>
       </dl>
+-->
     </div>
   </div>
   
   <div class="servicelist1" aos="fade-up">
     
     <div class="ser_right ">
+<!--
       <dl class="sy7" aos="fade-up">
         <dd> <strong>健康食疗行业方案</strong> </dd>
         <dd class="lan_2">
@@ -95,8 +204,9 @@
         </dd>
         <dd class="lan_3">  <a href="/m2/fa7.html" class="an_2 ">查看详情</a> </dd>
       </dl>
+-->
       <dl class="sy8" aos="fade-up">
-        <dd> <strong>保健品产业解决方案</strong> </dd>
+        <dd> <strong>保健品健康食疗解决方案</strong> </dd>
         <dd class="lan_2">
           <p>— 电商化成为传统医药发展的必经之路<br>
 — 融合线上线下，打造健康医药大平台</p>
@@ -118,10 +228,9 @@
         <dd class="lan_3"> <a href="/m2/fa9.html" class="an_2 ">查看详情</a> </dd>
       </dl>
       <dl class="sy10" aos="fade-up">
-        <dd> <strong>运动健康场馆解决方案</strong> </dd>
+        <dd> <strong>运动健康/运动场馆解决方案</strong> </dd>
         <dd class="lan_2">
-          <p>— 无感出入场，支持一码通行、一码打卡<br>
-— 丰富卡项销售，长期绑定客户消费</p>
+          <p>— 无感出入场，支持一码通行、一码打卡<br>— 丰富卡项销售，长期绑定客户消费</p>
         </dd>
         <dd class="lan_3"> <a href="/m2/fa10.html" class="an_2 ">查看详情</a> </dd>
       </dl>
@@ -137,29 +246,70 @@
 	全国客服热线：400-1012-810
 </p>
 </div>
-<footer aos="fade-up" aos-anchor-placement="top-bottom">
-  <div class="main">
-    <div class="form">
-      <h5>微信公众号</h5>
-      <div class="wx"> <img src="./imgs/qrc.jpg" alt=""> </div>
-    </div>
-    <dl class="fl">
-      <dd>联系热线：4001012-810</dd>
-      <dd>联系QQ：464981941</dd>
-      <dd>地址：广东省广州市越秀区东风西路161号301室</dd>
-    </dl>
-    <dl class="fr">
-      <dt>唐剑科技利用技术优势和产品开发经验，结合物联网、大数据、云计算等技术，高效整合大健康服务资源，建设综合型的智慧健康管理服务平台。</dt>
-    </dl>
-    <div class="cl01"></div>
-    <div class="foot_3">
-      <p>粤公网安备  粤ICP备16024208号-4 <br>
-工业和信息化部备案管理系统网站 </p>
-    </div>
+<div class="conts_border">
+<div class="conts_one">
+ <div class="conts_items">
+	<img src="/html/websites/images/bacmg1.png">
+  </div>	
+ <div class="conts_items">
+	<img src="/html/websites/images/bacmg2.png">
+  </div>	
+	 <div class="conts_items">
+	<img src="/html/websites/images/bacmg3.png">
   </div>
-  <!--<P>333</P>--> 
-</footer>
+	 <div class="conts_items">
+	<img src="/html/websites/images/bacmg4.png">
+  </div>	
+ <div class="conts_items" style="width: 40%;">
+	<img src="/html/websites/images/bacmg5.png">
+  </div>	
+	 <div class="conts_items" style="width: 41%;margin-left: 10%;">
+	<img src="/html/websites/images/bacmg6.png" style="margin-left: -2.2rem;">
+  </div>
+</div>	
+
+	<div class="conts_three">
+				 <div class="conts_itemst">
+	<img src="/html/websites/images/bacmg7.png">
+  </div>
+			 <div class="conts_itemst">
+	<img src="/html/websites/images/bacmg8.png">
+  </div>
+			 <div class="conts_itemst">
+	<img src="/html/websites/images/bacmg9.png">
+  </div>
+			 <div class="conts_itemst">
+	<img src="/html/websites/images/bacmg10.png">
+  </div>
+			 <div class="conts_itemst">
+	<img src="/html/websites/images/bacmg11.png">
+  </div>
+			 <div class="conts_itemst">
+	<img src="/html/websites/images/bacmg12.png">
+  </div>
+	</div>
+</div>	
+	
+<!--#include file="mfooter.html"-->
 <script>
+	textBanner();
+	  	function textBanner(){
+      var  s=getid("maskbox");
+      var  s2=getid("masitem");
+      var  s3=getid("masitemSub");
+      var  s4=getid("scroll");
+        s4.style.width=(s2.offsetWidth*2+10)+"%";
+        s3.innerHTML=s2.innerHTML;
+        setInterval(function(){
+			if(s2.offsetWidth<=s.scrollLeft){
+            s.scrollLeft-=s2.offsetWidth;
+        }else{s.scrollLeft++;}
+		},30)
+    }
+		function getid(id){
+        return document.getElementById(id);
+    }
+	
 		AOS.init({
 			easing: 'ease-out-back',
 			duration: 1000

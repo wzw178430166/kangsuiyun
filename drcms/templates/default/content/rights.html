@@ -1,0 +1,67 @@
+<div class="widget widget_textads affix-top" style="top: 0px;overflow: hidden;">
+{pc:get sql="select * from drcms_news where 1 order by rand()" num="1" return="data"}
+     {loop $data $r} 
+   
+<a class="style02" href="<?php echo $r['url'];?>" target="_blank">
+<strong>热门主题</strong> 
+<h2><?php echo $r['title'];?></h2>
+<p><?php echo $r['description'];?>...</p> 
+</a>
+ 
+       {/loop}
+    {/pc}  
+</div>
+<!--
+<div class="widget widget_searchbox" style="top: 0px;">
+  <h3 class="title"><strong>搜索</strong></h3>
+  <form target="_blank" class="search-form" name="q" method="post" id="searchform" action="/e/search/index.php">
+  <input class="form-control" name="keyboard" id="s" type="text" placeholder="输入关键字" value="">
+  <input class="btn" type="submit" value="搜索">
+  <input type="hidden" value="title" name="show">
+  <input type="hidden" value="1" name="tempid">
+  </form>
+</div>
+-->
+<div class="widget widget_postlist">
+<h3 class="title"><strong>本站推荐</strong></h3>
+    {pc:get sql="select * from drcms_news where 1 order by rand()" num="10" return="data"}
+<ul class="items-01"> 
+    {loop $data $r} 
+<li>
+    <a target="_blank" href="<?php echo $r['url'];?>">
+<span class="thumbnail">
+<span><img class="thumb" src="<?php echo $r['thumb'];?>" style="display: inline;"></span>
+</span>
+<span class="text"><?php echo $r['title'];?></span>
+<span class="text-muted post-views">阅读<span id="hits"><?php echo $r['readnum'];?></span></span>
+    </a>
+</li>
+    {/loop}   
+  </ul>
+   {/pc} 
+</div>
+<div class="widget widget_ads">
+  <div class="widget_ads_inner">
+    <a href="https://www.yjxun.cn" target="_blank"><img src="https://b.yjxun.cn/statics/images/images/img46.jpg" style="width: 100%;"></a>  </div>
+</div>
+<div class="widget widget_postlist">
+  <h3 class="title"><strong>热门文章</strong></h3>
+    {pc:get sql="select * from drcms_news where 1 order by rand()" num="10" return="data"}
+  <ul class="items-01"> 
+          {loop $data $r} 
+<li>
+<a target="_blank" href="<?php echo $r['url'];?>">
+<span class="thumbnail">
+<span><img class="thumb" src="<?php echo $r['thumb'];?>" style="display: inline;"></span>
+</span>
+<span class="text"><?php echo $r['title'];?></span>
+<span class="text-muted post-views">阅读<span id="hits"><?php echo $r['readnum'];?></span></span>
+</a>
+</li>
+         {/loop}  
+  </ul>
+      {/pc} 
+</div>
+<div style="height: 100px;"></div>
+</div>	
+<script language="JavaScript" src="{APP_PATH}api.php?op=count&id={$id}&modelid={$modelid}"></script>

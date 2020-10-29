@@ -1,0 +1,43 @@
+<!DOCTYPE html> 
+<html lang="zh-CN">   
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--<script src="./资讯中心-医家讯列表_files/hm.js"></script>-->
+<meta http-equiv="x-ua-compatible" content="IE=edge, chrome=1">
+<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+<meta name="keywords" content="{$SEO['keyword']}">
+<meta name="description" content="{$SEO['description']}">
+
+<link rel="stylesheet" type="text/css" href="/statics/css/pc_common.css"> 
+<link rel="stylesheet" type="text/css" href="/statics/pc_website/css/style.css">
+
+<link rel="SHORTCUT ICON" href="favicon.ico">
+</head>
+<body>
+{template 'content','header'}
+<div class="banner"> <img src="/statics/pc_website/images/5ae29c5aae033.jpg"> </div>
+<div class="box" style="padding-bottom:72px;">
+  <div class="news-list">
+    <ul> 
+	 {pc:content action="lists" catid="83" num="25" order="id DESC" num="2" page="$page"}
+	 {loop $data $r}
+      <li> <a href="#">
+        <div class="time"> <span class="s1">13</span> <span class="s2">2018-08</span> <span class="s3">公司动态</span> </div>
+        <div class="tbox">
+          <div class="title">{$r['title']}</div>
+          <div class="txt">{$r['discription']}</div>
+        </div>
+        <div class="img"> <img src="{$r['thumb']}"> </div>
+        </a> </li>
+		{/loop}
+      	{/pc}
+    </ul>
+  </div>
+  <div class="page-lsit">
+  	{$pages}
+  </div>
+
+</div>
+{template 'content','footer_common'}
+</body>
+</html>

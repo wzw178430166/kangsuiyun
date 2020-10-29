@@ -274,7 +274,7 @@
                         var tmp = (e.data[i].keywords).split(',');
                         for(j in tmp){
                             if(j > 2) continue;
-                            if(tmp[i]) tmpTxt += '<span class="cactive1">'+tmp[i]+'</span>';
+                            if(tmp[i]) tmpTxt += '<span class="cactive'+j+'">'+tmp[j]+'</span>';
                         }
                         if(tmpTxt == '') tmpTxt = '<span class="cactive1">暂无</span>';
                         $('#ketangs').append('<div class="listitem listitem1" onclick="goo(\'/diet/show.html?&catid='+e.data[i].catid+'&id='+e.data[i].id+'\')">\n' +

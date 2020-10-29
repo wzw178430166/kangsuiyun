@@ -1,0 +1,118 @@
+	<div class="dialogBoxdd" style="display:none;"> <span class="CenterPromptbox radius" ><span class="closedthismask">X</span> 
+
+<span class="content">  
+	 <div class="title">
+            <strong>立即申请体验</strong>
+            <p>请您填写以下信息，我们将严格保密，登录账号将发送至您的手机</p>
+        </div>
+        <div class="tijiao">
+					<form>
+						
+						<tr>
+							
+							<td><input type="text"  maxlength="200" class="" value="" placeholder="请输入您的姓名" id="name"></td>
+						</tr>
+						<tr>
+							
+							<td><input type="text" name="" maxlength="128" class="" placeholder="请输入联系电话" id="tel"></td>
+						</tr>
+						
+						<tr>
+							
+							<td><textarea  placeholder="可填写您的特别需求功能或服务（非必填）" id="introduce"></textarea></td>
+						</tr>
+						<tr>
+							
+							<td><input type="botton" value="立即体验" class="tjan btn-send" style="text-align: center;cursor: pointer;"></td>
+						</tr>
+						
+					</form>	
+					
+				</div>
+
+
+
+</span> </span></div>
+
+<script>
+	var item1 = $('.btn');
+	
+	item1.each(function(i) {
+    	$(item1[i]).on('click',function(e){
+			e.preventDefault();
+			$('.dialogBoxdd').fadeIn();
+			
+		});
+    })
+	
+	$('.closedthismask').click(function(){
+		$('.dialogBoxdd').fadeOut();
+	});
+	contact();
+function contact(){
+	$('.btn-send').click(function(){
+	var name = $.trim($('#name').val());
+	var tel = $.trim($('#tel').val());
+	var cons = $.trim($('#introduce').val());
+	//var company = $.trim($('#company').val());
+	if(!name || !tel){
+		alert('请完整填写联系资料，谢谢。');
+		return;
+	}
+	$.ajax({
+		url:'//www.yjxun.cn/?m=data&c=da_fun&a=saveDatum',
+		type:'GET',
+		dataType:"jsonp",
+        jsonp:"jsoncallback",
+		data:'typeid=83&name='+name+'&tel='+tel+'&content='+cons,
+		success:function(da){
+			alert('提交成功，请留意查收短信，祝您生活愉快！');
+			setTimeout(function(){
+				$('.dialogBoxdd').fadeOut();
+			},500);
+		}
+	})
+})
+
+}
+
+	  
+        var system = ['dataManage','prehospital','pension','chronic','tcm','rpt','hdt','hps','motherBaby','venue'];
+        var current_system = '';
+       var item1 = $('.ty_kang');
+        item1.each(function(i){
+            $(this).find('.name').val('root');
+            $(this).find('.password').val('yjxun2020.');
+        });
+        var item2 = $('.ty_kang .btnhhhh');
+        item2.each(function(i){
+            $(item2[i]).on('click',function(){
+                //var url = 'https://ksy.yjxun.cn/?m='+system[i];
+                current_system = system[i];
+                var username = $('.name').eq(i).val();
+                var password = $('.password').eq(i).val();
+                var secret = 'username='+username+'&password='+password;
+    			secret = new Base64().encode(secret);
+    			var system_id = 10 + parseInt(i) + 1;
+    			var src = 'https://ksy.yjxun.cn/?m=authed&c=doing&a=experienceLogin&system_id='+system_id+'&secret='+secret;
+    			//alert(src);return;
+    			var script = document.createElement('script');
+    			script.setAttribute('src',src);
+    			$('body').append(script);
+            });
+        });
+        function loginSuccess(res){
+            if (1 == res.status) {
+                setTimeout(function(){
+                    var url = 'https://ksy.yjxun.cn/?m='+current_system;
+    				//window.location.href = url;
+    				window.open(url);
+    			},500);
+            } else {
+                layer.msg(res.erro);
+            }
+        }	
+	
+	
+	
+</script>

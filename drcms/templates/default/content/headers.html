@@ -1,0 +1,55 @@
+<header>
+  <div class="center wrap">
+    <h1> <a href=""> <img src="/html/websites/imgs/logo.jpg" alt=""> </a> </h1>
+    <div class="navbox">
+      <ul class="navlist" id="pills">
+        <li><a href="javascript:;">主页</a></li>
+        <li><a href="javascript:;">解决方案</a></li>
+        <li><a href="javascript:;">医疗信息化定制</a></li>
+        <li><a href="javascript:;">合作模式</a></li>
+        <li><a href="javascript:;">新闻中心</a></li>
+        <li><a href="javascript:;">联系我们</a></li>
+      </ul>
+      <p class="nav_r"> <span>全国咨询热线：<b>400-1012-810</b></span><a href="/html/websites/tiyan.html">体验中心</a> </p>
+    </div>
+    <button class="navbtn"></button>
+  </div>
+</header>
+
+<script>
+	$(function() { ///html/websites/xinwen.html
+		var arr = ['/html/websites/index.html', '/html/websites/fa_1.html', '/html/websites/xinxihua.html', '/html/websites/hezuo.html', '/index.php?m=content&c=index&a=lists&catid=19','/html/websites/lianxi.html',
+		];
+		$('#pills').children('li').click(function() {
+			var i = $(this).index();
+			$(this).children('a').addClass('active').parent().siblings().find('a').removeClass('active');
+			goo_t(arr[i]);
+		});
+		var ulr = window.location.pathname;
+		var ulrs = window.location.href;
+		var ulrss = window.location.hostname;
+		var index=0;
+	    if(ulrs=='http://www.519ksy.com/index.php?m=content&c=index&a=lists&catid=19'){
+		   index=4;
+		   }
+		if(ulr=='/html/websites/xinwen_con.html'){
+		   index=4;
+		   }
+		if(ulr=='/'){
+		   index=4;
+		   }
+		console.log(ulrss);
+		console.log(ulr);	if(ulr=='/html/websites/fa_1.html'||ulr=='/html/websites/fa_2.html'||ulr=='/html/websites/fa_3.html'||ulr=='/html/websites/fa_4.html'||ulr=='/html/websites/fa_5.html'||ulr=='/html/websites/fa_6.html'||ulr=='/html/websites/fa_7.html'||ulr=='/html/websites/fa_8.html'||ulr=='/html/websites/fa_9.html'||ulr=='/html/websites/fa_10.html'){
+		   index=1;
+		   }
+		
+		for (var i in arr) {
+			if (ulr.indexOf(arr[i]) > -1) {
+				index = i;
+				break;
+			}
+		}
+
+		$('#pills').children('li').eq(index).children('a').addClass('active').parent().siblings().removeClass('active');
+	})
+</script>

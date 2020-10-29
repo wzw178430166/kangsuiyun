@@ -1,20 +1,68 @@
 <!--#include file="header_common.html"-->
 <body>
 <!--#include file="header.html"-->
+<style>
+.zui-page {
+    font: 0px / 22px "Helvetica Neue", Helvetica, "PingFang SC", Tahoma, Arial, sans-serif;
+    padding: 0px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    box-sizing: content-box;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 10px 0px;
+    text-align: left !important;
+    moz-user-select: -moz-none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.zui-page-noallow {
+    color: rgb(210, 210, 210);
+    cursor: not-allowed;
+}
+
+.zui-page a {
+   display: inline-block;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    padding: 0px 15px;
+    height: 28px;
+    line-height: 28px;
+    margin: 0px -1px 5px 0px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(51, 51, 51);
+    font-size: 12px;
+    margin-right: 5px!important;
+    /* border: 1px solid rgb(226, 226, 226); */
+}
+/*	.zui-page a:hover{color: #FE5E08;border:1px solid #FE5E08;}*/
+
+.zui-page-curr {
+    background-color: #FE5E08;overflow: hidden;
+    color: #fff !important;
+}	
+	.page_fys{  text-align: center;
+    width: 100%;}
+</style>
 <div class="innerbanner">
   <dl>
   </dl>
 </div>
-<div class="b30"></div><div class="b30"></div><div class="b30"></div>
+<div class="b30"></div>
 
-<div class="newsbody" aos="fade-up" aos-duration="3000">
+<div class="newsbody" aos="fade-up" aos-duration="3000" id="ketangs">
             <div class="newslibox">
                 <dl>
-                    <dt>04-14</dt>
+                    <dt>10-04</dt>
                     <dd>2020</dd>
                 </dl>
                 <ul>
-                    <li class="tt"><a href="xinwen_con.html">解决地址对应问题的一种方法。根据中国互联网络</a></li>
+                    <li class="tt"><a href="xinwen_con.html" id="title">解决地址对应问题的一种方法。根据中国互联网络</a></li>
                     <li class="parg">
                         <p>域名注册是Internet中用于解决地址对应问题的一种方法。交通设施厂家 根据中国互联网络域名管理办法，域名注册服务机构及域名注册管理机构需对申请人提出的域名是否违反了第三方的权利和申请人的真实身份进...</p>
                     </li>
@@ -24,7 +72,7 @@
 
             <div class="newslibox">
                 <dl>
-                    <dt>04-14</dt>
+                    <dt>10-06</dt>
                     <dd>2020</dd>
                 </dl>
                 <ul>
@@ -36,10 +84,31 @@
             </div>
 
 
+         <div class="newslibox">
+                <dl>
+                    <dt>10-06</dt>
+                    <dd>2020</dd>
+                </dl>
+                <ul>
+                     <li class="tt"><a href="xinwen_con.html">互联网的小伙伴创建</a></li>
+                    <li class="parg">
+                        <p>每一个相同顶级域名中的二级域名注册都是独一无二的，不可重复的，但不同顶级域名中的二级域名可以是相同的，例如baidu这个二级域名曾可以在.com中注册，也可以在.cn中注册...</p>
+                    </li>
+                </ul>
+            </div>
 
-	<div class="page_fy">
-<a href="">上一页</a><span class="current">1</span><a href="">2</a><a href="">3</a><span>...</span><a href="">下一页</a>
-</div>
+	              <div class="newslibox">
+                <dl>
+                    <dt>10-06</dt>
+                    <dd>2020</dd>
+                </dl>
+                <ul>
+                     <li class="tt"><a href="xinwen_con.html">互联网的小伙伴创建</a></li>
+                    <li class="parg">
+                        <p>每一个相同顶级域名中的二级域名注册都是独一无二的，不可重复的，但不同顶级域名中的二级域名可以是相同的，例如baidu这个二级域名曾可以在.com中注册，也可以在.cn中注册...</p>
+                    </li>
+                </ul>
+            </div>
 
 
            
@@ -51,31 +120,184 @@
 
            
         </div>
-
+	<div class="page_fys"></div>
 
 <div class="b30"></div>
-<footer aos="fade-up" aos-anchor-placement="top-bottom">
-  <div class="main">
-    <div class="form">
-      <h5>微信公众号</h5>
-      <div class="wx"> <img src="./imgs/qrc.jpg" alt=""> </div>
-    </div>
-    <dl class="fl">
-      <dd>联系热线：4001012-810</dd>
-      <dd>联系QQ：464981941</dd>
-      <dd>地址：广东省广州市越秀区东风西路161号301室</dd>
-    </dl>
-    <dl class="fr">
-      <dt>唐剑科技利用技术优势和产品开发经验，结合物联网、大数据、云计算等技术，高效整合大健康服务资源，建设综合型的智慧健康管理服务平台。</dt>
-    </dl>
-    <div class="cl01"></div>
-    <div class="foot_3">
-      <p>粤公网安备  粤ICP备16024208号-4 工业和信息化部备案管理系统网站 </p>
-    </div>
-  </div>
-  <!--<P>333</P>--> 
-</footer>
+<!--#include file="mfooter.html"-->
 <script>
+(function () {
+    class ZUI {
+        constructor() {
+
+        }
+        paging(options) {
+            new Paging(options)
+        }
+
+    }
+    self.ZUI = new ZUI()
+
+    var paging_defult = {
+        prev_next_text: '上一页|下一页',
+        current: 1,
+        page_len: 7,
+        color: '#FE5E08'
+    }
+
+    function Paging(opt) {
+        var xx = this
+        xx.callBack = opt.callBack
+        $.each(opt, function (indexInArray, valueOfElement) {
+            paging_defult[indexInArray] = valueOfElement
+        });
+        if (!paging_defult.count || !paging_defult.selector) {
+            alert('参数count,selector必填!')
+            return
+        }
+        xx.count = paging_defult.count
+        xx.elem = $(paging_defult.selector)
+        xx.prev_next_text = paging_defult.prev_next_text
+        xx.page_len = paging_defult.page_len
+        xx.current = paging_defult.current
+        xx.color = paging_defult.color
+
+        xx.insertElement()
+    }
+    Paging.prototype.createTemplate = function () {
+        var xx = this
+        var t_arr = xx.prev_next_text.split('|'),
+            i, b = '',
+            c, str, f = xx.page_len
+        if (f - xx.current <= 2 && xx.count - xx.current >= (f - 3)) {
+            c = (f - 1 - 2) / 2,
+                i = -c, str
+            while (i <= c) {
+                i == 0 ? b += '<a href="javascript:;" data-page="curr" style="background-color: '+ xx.color +';" class="zui-page-curr">' + (xx.current) + '</a>' : b += '<a data-page=' + (+xx.current + i) + '>' + (+xx.current + i) + '</a>'
+                i++
+            }
+            str = `
+                <a href="javascript:;" data-page="prev">${t_arr[0]}</a>
+                <a href="javascript:;" data-page="1">1</a>
+                <a href="javascript:;" data-page="mid" class="zui-page-spr">…</a>
+                ${b}
+                <a href="javascript:;" data-page="mid" class="zui-page-spr">…</a>
+                <a href="javascript:;" data-page="${xx.count}">${xx.count}</a>
+                <a href="javascript:;" data-page="next">${t_arr[1]}</a>
+            `
+        } else if (0 < xx.current && xx.current <= (f - 3)) {
+            i = 1
+            while (i <= (f - 2)) {
+                i == +xx.current ? b += '<a href="javascript:;" data-page="curr" style="background-color: '+ xx.color +';" class="zui-page-curr">' + (i) + '</a>' : b += '<a href="javascript:;" data-page=' + (i) + '>' + (i) + '</a>'
+                i++
+            }
+            str = `
+                <a href="javascript:;" data-page="prev" class="zui-page-noallow">${t_arr[0]}</a>
+                ${b}
+                <a href="javascript:;" data-page="mid" class="zui-page-spr">…</a>
+                <a href="javascript:;" data-page="${xx.count}">${xx.count}</a>
+                <a href="javascript:;" data-page="next">${t_arr[1]}</a>
+            `
+        } else if ((xx.count - (f - 3)) < xx.current && xx.current <= xx.count) {
+            i = (f - 2) - 1
+            while (i >= 0) {
+                xx.count - i == xx.current ? b += '<a  style="background-color: '+ xx.color +';" href="javascript:;" class="zui-page-curr">' + (xx.count - i) + '</a>' : b += '<a href="javascript:;" data-page=' + (xx.count - i) + '>' + (xx.count - i) + '</a>'
+                i--
+            }
+            str = `
+                <a href="javascript:;" data-page="prev">${t_arr[0]}</a>
+                <a href="javascript:;" data-page="1">1</a>
+                <a href="javascript:;" data-page="mid" class="zui-page-spr">…</a>
+                ${b}
+                <a href="javascript:;" data-page="next" class="zui-page-noallow">${t_arr[1]}</a>
+            `
+        }
+        return str
+    }, Paging.prototype.insertElement = function () {
+        var xx = this
+        var str = this.createTemplate(),
+            s = `
+            <div class="zui-page">
+                ${str}
+            </div>
+        `
+        xx.elem.html(s)
+        xx.pagingClick()
+    }, Paging.prototype.pagingClick = function () {
+        var xx = this
+        xx.elem.on('click', 'a', function (e) {
+            var page = $(this).attr('data-page')
+            if (page != 'curr' && page != 'mid') {
+                if (page == 'prev') {
+                    if (!$(this).attr('class')) {
+                        xx.current--
+                        xx.callBack(xx.current)
+                        xx.elem.find('.zui-page').html(xx.createTemplate())
+                    } else if ($(this).attr('class').indexOf('zui-page-noallow') != -1) return
+                } else if (page == 'next') {
+                    if (!$(this).attr('class')) {
+                        xx.current++
+                        xx.callBack(xx.current)
+                        xx.elem.find('.zui-page').html(xx.createTemplate())
+                    } else if ($(this).attr('class').indexOf('zui-page-noallow') != -1) return
+                } else {
+                    xx.callBack(page)
+                    xx.current = page
+                    xx.elem.find('.zui-page').html(xx.createTemplate())
+                }
+            }
+        })
+    }
+})(window)	
+</script>
+<script>
+	    var pages = 1;
+		$(function(){		
+			getdata();
+		})
+	  function getdata(pages){
+	 $.ajax({
+		url:'//www.yjxun.cn/?m=circle&c=news&a=getDatas_ksy',
+		type:'GET',
+		dataType:"jsonp",
+        jsonp:"jsoncallback",
+		data:'page='+pages,
+		success:function(da){
+			var data=da.data;
+		    	      var tmpTxt='';
+				       for(i in data){
+                         tmpTxt += '<div class="newslibox"><dl><dt>'+timestampToTime(data[i].inputtime)+'</dt><dd>2020</dd></dl><ul><li class="tt"><a href="xinwen_con.html?&id='+data[i].id+'&catid='+data[i].catid+'">'+data[i].title+'</a></li><li class="parg"><p>每一个相同顶级域名中的二级域名注册都是独一无二的，不可重复的，但不同顶级域名中的二级域名可以是相同的，例如baidu这个二级域名曾可以在.com中注册，也可以在.cn中注册...</p></li></ul></div>';
+                 
+                    }
+					  $('#ketangs').html(tmpTxt);
+		}
+	    })	
+	        pages++;  
+		   }
+     	function timestampToTime(timestamp) {
+    //时间戳为10位需*1000，时间戳为13位的话不需乘1000
+    //时间戳*1000就是毫秒数
+    var date = new Date(timestamp*1000);
+    Y = date.getFullYear() + '-';
+    M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+    D = date.getDate() + ' ';
+    h = date.getHours() + ':';
+    m = date.getMinutes() + ':';
+    s = date.getSeconds();
+    return M+D;
+}	
+	
+	    ZUI.paging({
+        prev_next_text: '上一页|下一页',
+        count: 40,
+        selector: '.page_fys',
+        current: 1,
+        page_len: 5,
+        callBack: function (page) {
+			getdata(page);
+        }
+    })
+
+	
         AOS.init({
             easing: 'ease-out-back',
             duration: 1000
@@ -98,6 +320,10 @@
         $('.close').click(function () {
             $('.navbox').hide();
         })
+	
+	
+	
+	
     </script>
 </body>
 </html>

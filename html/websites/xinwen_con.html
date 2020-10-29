@@ -8,16 +8,16 @@
 
 <div class="arc"  data-url="huishun.net">
             <div class="content" aos="zoom-out-up">
-                <h2>互联网的小伙伴创建，致力于帮助一些中小</h2>
+                <h2 id="title">互联网的小伙伴创建，致力于帮助一些中小</h2>
                 <div class="infos">
-                    <span>日期：2020-4-14 16:39:49</span>
+                    <span>日期：<span id="times">2020-4-14 16:39:49</span></span>
                 </div>
-                <article>
+                <article id="content">
                     域名注册是Internet中用于解决地址对应问题的一种方法。<a href="http://www.huishun.net">交通设施厂家</a> 根据中国互联网络域名管理办法，域名注册服务机构及域名注册管理机构需对申请人提出的域名是否违反了第三方的权利和申请人的真实身份进行核验。每一个相同顶级域名中的二级域名注册都是独一无二的，不可重复的，但不同顶级域名中的二级域名可以是相同的，例如baidu这个二级域名曾可以在.com中注册，也可以在.cn中注册，也可以在.xyz中及其他多种顶级域名中注册，且每个域名都起到同样的作用。因此，在网络上域名是一种相对有限的资源，它的价值随着注册企业和个人用户的增多而逐步为人们所重视。
                 </article>
                 <div class="nextprev">
-                    <p>上一篇：<a href="">于解决地址对应问题的一种方法。根据中国互联网络</a></p>
-                    <p>下一篇：<a href="">域名注册服务机构及域名注册管理机构需对申请人提出的域名是否违反了第三方的</a></p>
+                    <p>上一篇：<a href="javascript:;" id="srorid1">于解决地址对应问题的一种方法。根据中国互联网络</a></p>
+                    <p>下一篇：<a href="javascript:;" id="srorid2">域名注册服务机构及域名注册管理机构需对申请人提出的域名是否违反了第三方的</a></p>
                 </div>
             </div>
             
@@ -26,27 +26,7 @@
 
 
 
-<footer aos="fade-up" aos-anchor-placement="top-bottom">
-  <div class="main">
-    <div class="form">
-      <h5>微信公众号</h5>
-      <div class="wx"> <img src="./imgs/qrc.jpg" alt=""> </div>
-    </div>
-    <dl class="fl">
-      <dd>联系热线：4001012-810</dd>
-      <dd>联系QQ：464981941</dd>
-      <dd>地址：广东省广州市越秀区东风西路161号301室</dd>
-    </dl>
-    <dl class="fr">
-      <dt>唐剑科技利用技术优势和产品开发经验，结合物联网、大数据、云计算等技术，高效整合大健康服务资源，建设综合型的智慧健康管理服务平台。</dt>
-    </dl>
-    <div class="cl01"></div>
-    <div class="foot_3">
-      <p>粤公网安备  粤ICP备16024208号-4 工业和信息化部备案管理系统网站 </p>
-    </div>
-  </div>
-  <!--<P>333</P>--> 
-</footer>
+<!--#include file="mfooter.html"-->
 <script>
         AOS.init({
             easing: 'ease-out-back',
@@ -70,6 +50,47 @@
         $('.close').click(function () {
             $('.navbox').hide();
         })
+	
+	
+	var id= getUrlParam('id');	 
+	var catid= getUrlParam('catid');	 
+		$(function(){		
+			getdata();
+		})
+	
+	 function getdata(){
+	 $.ajax({
+		url:'//www.yjxun.cn/?m=diet&c=index&a=get_data_ksy&ajax=1&action=show|relative&catid='+catid+'&id='+id+'&thumb=1&num=3',
+		type:'GET',
+		dataType:"jsonp",
+        jsonp:"jsoncallback",
+		success:function(da){
+			var data=da.show[0];
+			$('#times').html(timestampToTime(data.inputtime));
+		   	$('#content').html(data.content);   	     
+			$('#title').html(data.title);	 
+			$('#srorid1').html(da.relative[0].title);
+			$('#srorid2').html(da.relative[1].title);
+			$('#srorid1').attr('href','xinwen_con.html?&id='+da.relative[0].id+'&catid='+da.relative[0].catid);
+			$('#srorid2').attr('href','xinwen_con.html?&id='+da.relative[1].id+'&catid='+da.relative[1].catid);
+		}
+	    })	
+	      
+		   }
+	function timestampToTime(timestamp) {
+    //时间戳为10位需*1000，时间戳为13位的话不需乘1000
+    //时间戳*1000就是毫秒数
+    var date = new Date(timestamp*1000);
+    Y = date.getFullYear() + '-';
+    M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+    D = date.getDate() + ' ';
+    h = date.getHours() + ':';
+    m = date.getMinutes() + ':';
+    s = date.getSeconds();
+    return Y+M+D;
+}
+	
+	
     </script>
 </body>
 </html>

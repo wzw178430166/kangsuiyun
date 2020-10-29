@@ -1,0 +1,401 @@
+{template 'content','header_commons'}
+<link href="css/newsstyle.css" rel="stylesheet">
+<style>
+header {
+  position: absolute;
+  width: 100%;
+  z-index: 99;
+}
+body {
+    background-color: #f4f4f4;
+}
+.sidebar {
+  float: left;
+  margin-left: -320px;
+  width: 300px;
+  position: relative;
+  padding-top: 20px;
+}
+.content-wrap {
+  background: #fff;
+}
+.excerpt h2 {
+  display: inline;
+  font-size: 22px;
+  margin: 0;
+  font-weight: normal;
+  position: relative;
+  top: 1px;
+  line-height: 25px;
+}
+.excerpt h2 a {
+  color: #444;
+  font-size: 20px;
+}
+.content {
+  margin-left: 0px;
+}
+.excerpt .text-muted {
+  font-size: 12px;
+  margin-top: 35px;
+}
+.page5 {
+  margin: 40px 0 40px 0;
+}
+.excerpt-one .focus {
+  margin-top: -45px;
+}
+.footer-container .content-l {
+  padding-top: 30px;
+}
+.footer-container .content-r {
+  margin-top: 25px;
+}
+.excerpt-one:hover {
+  cursor: pointer;
+}
+ul, ol {
+  margin-bottom: 0px;
+}
+.content_box {
+  width: 1200px;
+  margin: 0px auto;
+}
+.article-header {
+  width: 830px;
+}
+.article-content {
+  padding: 85px 0 8px 0;
+}
+.article-title a {
+  font-size: 2.82rem;
+}
+.glyphicon-thumbs-up:before {
+  content: "";
+}
+.bdsharebuttonbox {
+  line-height: 24px;
+  height: 24px;
+  overflow: hidden;
+  vertical-align: top;
+}
+.bdsharebuttonbox a {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  margin-right: 5px;
+  background: url(/statics/images/images/share.png) no-repeat;
+  cursor: pointer;
+  margin-bottom: 0;
+  opacity: .8;
+  vertical-align: top;
+}
+.bdsharebuttonbox a:hover {
+  opacity: 1
+}
+.bdsharebuttonbox a.bds_tsina {
+  background-position : 0 0;
+}
+.bdsharebuttonbox a.bds_weixin {
+  background-position : 0 -33px;
+}
+.bdsharebuttonbox a.bds_qzone {
+  background-position : 0 -65px;
+}
+.bdsharebuttonbox a.bds_sqq {
+  background-position : 0 -98px;
+}
+.bdsharebuttonbox a.bds_renren {
+  background-position : 0 -131px;
+}
+.bdsharebuttonbox a.bds_tqq {
+  background-position : 0 -163px;
+}
+.bdsharebuttonbox a.bds_diandian {
+  background-position : 0 -356px;
+}
+.bdsharebuttonbox a.bds_youdao {
+  background-position : 0 -388px;
+}
+.bdsharebuttonbox a.bds_ty {
+  background-position : 0 -420px;
+}
+.bdsharebuttonbox a.bds_fbook {
+  background-position : 0 -452px;
+}
+.bdsharebuttonbox a.bds_twi {
+  background-position : 0 -484px;
+}
+.bdsharebuttonbox a.bds_kaixin001 {
+  background-position : 0 -228px;
+}
+.bdsharebuttonbox a.bds_taobao {
+  background-position : 0 -196px;
+}
+.bdsharebuttonbox a.bds_douban {
+  background-position : 0 -324px;
+}
+.bdsharebuttonbox a.bds_mail {
+  background-position : 0 -548px;
+}
+.bdsharebuttonbox a.bds_copy {
+  background-position : 0 -516px;
+}
+.bdsharebuttonbox a.bds_bdhome {
+  background-position : 0 -292px;
+}
+.bdsharebuttonbox a.bds_tqf {
+  background-position : 0 -260px;
+}
+.bdsharebuttonbox a.bds_more, .bdsharebuttonbox a.bds_count {
+  background: none;
+  width: auto;
+  height: auto;
+}
+.bdsharebuttonbox a.bds_count {
+  margin: 0 2px;
+}
+.article-content {
+    padding: 127px 0 8px 0!important;
+   
+}
+.msigt{    
+	z-index: 999;
+    width: 3%;
+    position: relative;
+    right: -3.8rem;}
+    .Article-Tool img{width: 23px; margin: 10px 7px;}
+ .content {
+    margin-right: 0px; 
+    padding: 20px 25px 0;
+    min-height: 0px; 
+     overflow: auto; 
+}
+.article-header {
+     width: auto; 
+}
+.article-content {
+    padding: 30px 0 8px 0!important;
+}
+header .wrap {
+     padding:  0!important;
+   
+}
+.title {
+    position: relative;
+    margin: 0;
+    line-height: 32px;
+    font-size: 20px;
+    border-bottom: 2px solid #ff6c3a;
+}
+.content {
+  
+    padding: 20px 25px 69px;
+
+}
+.content-wrap {
+   
+    margin-bottom: 5rem;
+}
+	.article-nav{margin-top: 20px;}
+</style>
+</head>
+<body>
+{template 'content','headers'}
+<div style="height: 10rem;"></div>
+<div class="content_box">
+<div class="content-wrap">
+  <div class="content">
+    <div class="article-header">
+        <h1>{$title}</h1>
+<p><span>来源：{$copyfrom}&nbsp;&nbsp;&nbsp; 阅读：</span><span id="hits"></span></p>
+    </div>
+    <article class="article-content">{$content}</article>
+    <div class="article-social"> <span class="article-social"><img src="https://b.yjxun.cn/statics/images/images/zan1.svg" class="msigt"><a href="#" title="我赞" class="action action-like"><i class="glyphicon glyphicon-thumbs-up"></i>赞 (   &nbsp;&nbsp;<i class="count" id="diggnum" style="font-style: normal;">{$readnum}20</i>&nbsp;&nbsp;&nbsp; ) </a> </span> </div>
+ 
+      <div class="Article-Tool">
+
+          分享到：
+
+		  <img src="https://ss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/wisegame/pic/item/6f338744ebf81a4c287eb281d12a6059252da62e.jpg" style="padding-bottom:3px;" onclick="postToWb();" class="cu" title="分享到腾讯微博"/>腾讯微博
+ <script type="text/javascript">
+
+	function postToWb(){
+
+		var _t = encodeURI(document.title);
+
+		var _url = encodeURIComponent(document.location);
+
+		var _appkey = encodeURI("cba3558104094dbaa4148d8caa436a0b");
+
+		var _pic = encodeURI('{$thumb}');
+
+		var _site = '';
+
+		var _u = 'http://v.t.qq.com/share/share.php?url='+_url+'&appkey='+_appkey+'&site='+_site+'&pic='+_pic+'&title='+_t;
+
+		window.open( _u,'', 'width=700, height=680, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, location=yes, resizable=no, status=no' );
+
+	}
+
+</script>
+
+          <script type="text/javascript">document.write('<a href="http://v.t.sina.com.cn/share/share.php?url='+encodeURIComponent(location.href)+'&appkey=3172366919&title='+encodeURIComponent('{new_addslashes($title)}')+'" title="分享到新浪微博" class="t1" target="_blank"><img src="https://b.yjxun.cn/statics/images/images/downloadnow.png" style="padding-bottom:3px;" class="cu" title="新浪微博"/>新浪微博</a>');</script>
+
+		  <script type="text/javascript">document.write('<a href="http://www.douban.com/recommend/?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent('{new_addslashes($title)}')+'" title="分享到豆瓣" class="t2" target="_blank"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584005893074&di=cd8f60529966e883e4839f5f3bc33835&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%3D580%2Fsign%3D16adb93fd658ccbf1bbcb53229d9bcd4%2F80aeb951f81986189309ff094ded2e738ad4e622.jpg" style="padding-bottom:3px;" class="cu" title="豆瓣"/>豆瓣</a>');</script>
+
+		  <script type="text/javascript">document.write('<a href="http://share.renren.com/share/buttonshare.do?link='+encodeURIComponent(location.href)+'&title='+encodeURIComponent('{new_addslashes($title)}')+'" title="分享到人人" class="t3" target="_blank"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584006081087&di=fdde515e8e32d8e2f11899e3a5d57e88&imgtype=0&src=http%3A%2F%2Fwww.ljzfin.com%2Fuploads%2F1%2Fimage%2Fpublic%2F201507%2F20150723162848_43ac3nw3so.png" style="padding-bottom:3px;" class="cu" title="人人"/>人人</a>');</script>
+
+	
+
+	
+
+      
+
+<!--
+	  <span id='favorite'>
+
+		<a href="javascript:;" onclick="add_favorite('{addslashes($title)}');" class="t6">收藏</a>
+
+	  </span>
+-->
+
+
+
+	  </div>
+    <nav class="article-nav"> 
+<!--
+		<span class="article-nav-prev" id="upst">上一篇<br>
+      <a href="#">【读图】社交媒体用户数据全统计</a>
+	   </span> 
+		<span class="article-nav-next" id="downst">下一篇<br>
+      <a href="/?m=content&a=lists&catid=11">返回列表</a>
+		</span>
+-->
+		    <p class="f14">
+
+                <div style="float: left"><strong>上一篇：</strong><a href="{$previous_page[url]}">{$previous_page[title]}</a></div>
+
+                <div style="float: right"><strong>下一篇：</strong><a href="{$next_page[url]}">{$next_page[title]}</a></div> 
+
+            </p>
+	</nav>
+	
+    <h3 class="title" id="comments">
+      <div class="text-muted pull-right"> </div>
+    </h3>
+    <!--        <link href="/skin/ecmspl/css/pl.css" rel="stylesheet">--> 
+    <!--
+<div class="showpage" id="plpost">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="line-height: 25px; padding: 5px 3px 1px 8px; font-size: 18px;">
+<tbody><tr><td><strong><font color="#333333">留言与评论（共有 <span id="infocommentnumarea">0</span> 条评论）</font></strong></td></tr>
+</tbody></table>
+<script>
+		  function CheckPl(obj)
+		  {
+		  if(obj.saytext.value=="")
+		  {
+		  alert("您没什么话要说吗？");
+		  obj.saytext.focus();
+		  return false;
+		  }
+		  return true;
+		  }
+		  </script>
+<form action="/e/pl/doaction.php" method="post" name="saypl" id="saypl" onsubmit="return CheckPl(document.saypl)">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" id="plpost">
+<tbody><tr>
+<td>
+<table width="100%" border="0" cellspacing="10" cellpadding="0">
+<tbody><tr>
+<td>
+<script src="http://107.libusi.com/e/pl/loginjspl.php"></script><link href="/e/message/libusi/font-awesome/css/font-awesome.css" rel="stylesheet"><table width="98%" border="0" cellpadding="0" cellspacing="2" style="font-size: 16px;"><tbody><tr><td align="left">昵称：<input name="username" type="text" class="inputText" id="username1" value="匿名" placeholder="昵称（必填），登录账号后不用填写" size="16"></td></tr><tr><td align="left"><label>密码：</label><input name="password" type="password" class="inputText" id="password1" placeholder="密码" value="" size="16" /></td></tr><tr><td align="left"><input name="nomember" type="checkbox" id="nomember" value="1" checked="checked">匿名发表 <a href="/e/member/login/" target="_blank"><font color="#888888"><i class="fa fa-user"></i> 登录账号</font></a></td></tr></tbody></table>
+
+<textarea name="saytext" rows="6" id="saytext" placeholder="请遵守互联网相关规定，不要发布广告和违法内容!"></textarea>
+<script src="/d/js/js/plface.js"></script><script src="/e/data/js/addplface.js"></script><a href="#eface" onclick="eaddplface('[~e.jy~]');"><img src="/e/data/face/1.gif" border="0"></a>&nbsp;<a href="#eface" onclick="eaddplface('[~e.kq~]');"><img src="/e/data/face/2.gif" border="0"></a>&nbsp;<a href="#eface" onclick="eaddplface('[~e.se~]');"><img src="/e/data/face/3.gif" border="0"></a>&nbsp;<a href="#eface" onclick="eaddplface('[~e.sq~]');"><img src="/e/data/face/4.gif" border="0"></a>&nbsp;<a href="#eface" onclick="eaddplface('[~e.lh~]');"><img src="/e/data/face/5.gif" border="0"></a>&nbsp;<a href="#eface" onclick="eaddplface('[~e.ka~]');"><img src="/e/data/face/6.gif" border="0"></a>&nbsp;<a href="#eface" onclick="eaddplface('[~e.hh~]');"><img src="/e/data/face/7.gif" border="0"></a>&nbsp;<a href="#eface" onclick="eaddplface('[~e.ys~]');"><img src="/e/data/face/8.gif" border="0"></a>&nbsp;<a href="#eface" onclick="eaddplface('[~e.ng~]');"><img src="/e/data/face/9.gif" border="0"></a>&nbsp;<a href="#eface" onclick="eaddplface('[~e.ot~]');"><img src="/e/data/face/10.gif" border="0"></a><br>&nbsp;&nbsp;&nbsp;
+<table width="100%" align="left" cellpadding="3" cellspacing="1" bgcolor="#FFF">
+<tbody><tr>
+<td width="80%" height="40" bgcolor="#FFFFFF">验证码：<input name="key" type="text" class="inputText" size="16">
+<img src="/e/ShowKey/?v=pl" align="absmiddle" name="plKeyImg" id="plKeyImg" onclick="plKeyImg.src='/e/ShowKey/?v=pl&amp;t='+Math.random()" title="看不清楚,点击刷新"> 
+</td> 
+<td width="20%" height="40" bgcolor="#FFFFFF"> 
+<input name="sumbit" type="submit" value="提交评论" tabindex="6" style="border-radius: 5px;font-size: 16px;background: #00aeff none repeat scroll 0% 0%;border: 0px none;margin: 0px 16px;padding: 1px 16px;height: 33px;line-height: 30px;color: rgb(255, 255, 255);opacity: 0.95;">
+<input name="id" type="hidden" id="id" value="110">
+<input name="classid" type="hidden" id="classid" value="12">
+<input name="enews" type="hidden" id="enews" value="AddPl">
+<input name="repid" type="hidden" id="repid" value="0">
+<input type="hidden" name="ecmsfrom" value="http://107.libusi.com/news/tumeiti/110.html">
+</td>
+</tr>  
+</tbody></table> 
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table></form>
+	<table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
+        <tbody><tr>
+          <td bgcolor="#FFFFFF" id="infocommentarea"><table width="100%" border="0" cellspacing="1" cellpadding="3">
+  <tbody><tr>
+    <td><div class="page5" align="right"></div></td>
+  </tr>
+</tbody></table></td>
+        </tr>
+        </tbody></table>
+ <script src="http://107.libusi.com/e/extend/infocomment/commentajax.php?classid=12&amp;id=110"></script>
+</div>	
+--> 
+      
+      
+
+  </div>
+</div>
+<!--<div class="sidebar"> \{ templ ate ' content','rights' }\ </div>-->
+	
+	</div>
+
+{template 'content','footers'}
+</body>
+</html>
+<script>
+// var num=0;
+// var ids=getUrlParams('id');
+//			$(function(){
+// 			$('#upst').onclick(function(){ //上一页
+//				//ids--；
+//				//window.location.href=
+//			});
+//	     })
+function getUrlParams(name) { // 不传name返回所有值，否则返回对应值
+    var url = window.location.search;
+    if (url.indexOf('?') == 1) { return false; }
+    url = url.substr(1);
+    url = url.split('&');
+    var name = name || '';
+    var nameres;
+    // 获取全部参数及其值
+    for(var i=0;i<url.length;i++) {
+        var info = url[i].split('=');
+        var obj = {};
+        obj[info[0]] = decodeURI(info[1]);
+        url[i] = obj;
+    }
+    // 如果传入一个参数名称，就匹配其值
+    if (name) {
+        for(var i=0;i<url.length;i++) {
+            for (const key in url[i]) {
+                if (key == name) {
+                    nameres = url[i][key];
+                }
+            }
+        }
+    } else {
+        nameres = url;
+    }
+    // 返回结果
+    return nameres;
+}
+
+</script>
+<script language="JavaScript" src="{APP_PATH}api.php?op=count&id={$id}&modelid={$modelid}"></script>
