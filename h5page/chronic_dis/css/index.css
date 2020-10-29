@@ -103,7 +103,7 @@
 #mtsdie {
     position: inherit;
     margin-top: 1rem;
-    height: 5.5rem;    margin-bottom: 1.5rem;
+    height: 5.5rem;    margin-bottom: 1rem;
     width: 96%;
     box-shadow: none;
 }
@@ -234,7 +234,7 @@ font-size: 1.15rem;
 .option_box li {
     float: left;
     width: 25%;
-    margin-top: 1rem;
+    margin-top: .5rem;
 }
 .option_box .option {
     text-align: center;
@@ -287,7 +287,7 @@ font-size: 1.15rem;
 
 .menu_big1_choice_box {
     position: relative;width: 93%;
-    margin: 0 auto;
+    margin: 0 auto; margin-top: .5rem;
 }			
 .menu_big1_choice_box img {
     width: 100%;
@@ -441,4 +441,17 @@ font-size: 1.15rem;
     align-items: center;}
 .refresh img{width: 1.3rem;
     margin-right: .3rem;}
-
+	.cont_box{width: 93%;margin: 0 auto;display: flex;flex-wrap: wrap;justify-content: space-between;}
+    .cont_box .cont_itemws{width: 48%;height: 7rem;position: relative;margin-top: 1rem;}
+    .cont_box .cont_itemws img{position: absolute;top: 0;left: 0;width: 100%;height: 100%;object-fit: cover;border-radius: .4rem;}
+    .cont_box .cont_itemws .mtwe_p{position: absolute;
+bottom: 0;
+width: 100%;
+font-size: 1.03rem;
+color: #ffffff;
+left: 0;    border-bottom-right-radius: .4rem;
+border-bottom-left-radius: .4rem;
+line-height: 2.3rem;
+height: 2.3rem;
+background: #9c8d8d87;
+text-align: center;}
