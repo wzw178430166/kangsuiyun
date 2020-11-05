@@ -40,8 +40,8 @@
 	item1.each(function(i) {
     	$(item1[i]).on('click',function(e){
 			e.preventDefault();
-			$('.dialogBoxdd').fadeIn();
-			
+			//$('.dialogBoxdd').fadeIn();
+			svcFun(1);
 		});
     })
 	
@@ -75,4 +75,24 @@ function contact(){
 })
 
 }
+function svcFun(n){
+	layer.open({
+		type: 2,
+		title: '客服咨询',
+		shadeClose: true,
+		shade: false,
+		maxmin: false, //开启最大化最小化按钮
+		area: ['700px', '600px'],
+		content: '/csd/csOnline.html'
+	});
+	return;
+	    window.open('/csd/csOnline.html');
+
+		if(getCookie('OkveJ_user_id')){
+			window.open('/?m=e&c=content&a=csOnline');
+			return false;
+		}else{
+			goo('/html/pc/style1/member_login.html');
+		}
+	}
 </script>

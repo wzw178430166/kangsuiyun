@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html class="">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta content="webkit" name="renderer">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>在线客服</title>
+    <script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/statics/js/global.js"></script>
+    <script type="text/javascript" src="/statics/js/ex/im_online.js"></script>
+    <script type="text/javascript" src="/statics/js/layer-v3.1.1/layer/layer.js"></script>
+    <link href="/statics/csOnline/app.20201022-v5.0513-feat.css" rel="stylesheet">
+    <style type="text/css">
+        .rvc-input-wrapper input {
+            box-sizing: border-box;
+            border: none;
+            outline: none;
+            -webkit-appearance: textfield;
+            float: left;
+            width: 100%;
+            vertical-align: middle;
+            margin-bottom: 0;
+            font-size: inherit;
+            font-weight: inherit;
+            height: 40px;
+            padding: 0 10px;
+        }
+        .rvc-input-wrapper input::-webkit-input-placeholder {
+            font-size: inherit;
+            color: #ddd;
+            font-weight: lighter;
+        }
+        .rvc-input-wrapper input:-ms-input-placeholder {
+            font-size: inherit;
+            color: #ddd;
+            font-weight: lighter;
+        }
+        .rvc-input-wrapper input::-ms-input-placeholder {
+            font-size: inherit;
+            color: #ddd;
+            font-weight: lighter;
+        }
+        .rvc-input-wrapper input::placeholder {
+            font-size: inherit;
+            color: #ddd;
+            font-weight: lighter;
+        }
+        .rvc-modal a {
+            text-decoration: none;
+            color: #009CFF;
+        }
+        .rvc-modal p {
+            margin: 1em 0;
+        }
+        .jimi-left-header[data-v-4617a5f5]{
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 10px;
+            background: #4cbbff;
+            background-image: -webkit-linear-gradient(229deg, #4cbbff 0%, #3778ff 100%);
+            background-image: -o-linear-gradient(229deg, #FF534C 0%, #FF3737 100%);
+            background-image: linear-gradient(-139deg, #4cbbff 0%, #3778ff 100%);
+            height: 104px;
+        }
+        .avatar[data-v-6785b4b4]{background-color: unset;}
+        .jimi-underline-tabs .jimi-underline-tab {
+            height: 33px;
+        }
+        .jimi-underline-tabs .jimi-underline-tab-content {
+            padding: 9px 0;
+        }
+        .jimi-underline-tabs .jimi-underline-tab-content.active {
+            border-top: 2px solid #F23030;
+        }
+        /* .jimi-tabs {
+            border-bottom: solid 1px #e7e7e7;
+        } */
+        .jimi[data-v-505e1c0c]{width: 880px;margin: unset;}
+        .main[data-v-505e1c0c]{padding-top: unset !important;background-color: #ffffff;}
+        .jimi-chat[data-v-1bdd748f]{width: 453px;background-color: #ffffff;}
+        .jimi-right-pane[data-v-9f42a422]{width: 230px;}
+        .jimi[data-v-505e1c0c]{width: 683px;}
+        .contendse{width: 100%;margin-top: 25px;}
+        .contendse p{padding-left: 10px;text-align: left;margin-bottom: 15px;}
+        .contendse p span{font-weight: 700;}
+        .jimi[data-v-505e1c0c] {
+    min-height: 554px!important;border-radius: 0;
+}
+.jimi-tabs .jimi-tab.active {
+    background-color: #fff;
+    /* border-bottom: 0 none; */
+    border-bottom: 1px solid #e7e7e7;
+    color: #F23030;
+    border-top: 2px solid #F23030;
+}
+       </style>
+</head>
+<body>
+<div id="app" data-cid="">
+    <div data-v-505e1c0c="" class="main" style="height: 100%; padding-top: 3%; opacity: 1;">
+        <div data-v-505e1c0c="" class="jimi" style="height: 557px;">
+            <div data-v-505e1c0c="" class="right-pane">
+                <div data-v-505e1c0c="" class="head">
+                    <div data-v-18b31222="" data-v-505e1c0c="" class="jimi-head clearfix" style="display: none;">
+                        <div data-v-18b31222="" class="customer-info-wrapper clearfix">
+                            <div data-v-18b31222="" class="avatar-wrapper">
+                                <div data-v-731dc9c6="" data-v-56fd8d14="" data-v-6785b4b4="" data-v-18b31222="" class="img-bg avatar" uselazyload="true" alt="" style="background-image: url(/html/websites/images/logo11.png);"></div>
+                            </div>
+                            <div data-v-18b31222="" class="jimi-info">
+                                <p data-v-18b31222="" class="name">
+                                    <!---->在线客服 <span data-v-18b31222="" class="typing" style="display: none;">对方正在输入......</span>
+                                </p>
+                                <p data-v-18b31222="" class="description"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div data-v-505e1c0c="" class="body clearfix">
+                    <div data-v-1bdd748f="" data-v-505e1c0c="" class="jimi-chat" style="height:545.75px;">
+                        <div data-v-1bdd748f="" id="container" class="jimi-chat--container" style="height: 422.75px; padding-bottom: 40px;">
+                            <div data-v-1bdd748f="" class="alert-wrapper" style="display: none;">
+                                <div data-v-1bdd748f="" class="alert alert__info">
+                                    <div class="alert--content"><span class="alert--desc"></span>  <i class="alert--close"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-v-1bdd748f="" class="jimi-chat--wrapper">
+                                <div data-v-1bdd748f="" class="jimi-chat--log-btn" style="">没有聊天记录了</div>
+                                <!---->
+                                <div data-v-1bdd748f="" class="jimi-chat--separation " style=""><span data-v-1bdd748f="">上次聊到这里</span>
+                                </div>
+                                <div data-v-1bdd748f="">
+                                    <div data-v-736aaca9="" data-v-1bdd748f="" class="message clearfix waiter-message">
+                                        <div data-v-736aaca9="" class="message--date">10:51</div>
+                                        <!---->
+                                        <div data-v-736aaca9="" class="message--container clearfix waiter-message">
+                                            <!---->
+                                            <div data-v-736aaca9="" class="message--content clearfix filling">
+                                                <div data-v-736aaca9="" class="message--wrapper filling">
+                                                    <div data-v-65efd66c="" data-v-736aaca9="" index="0" sender="im.waiter" msgid="986ded6e-97f2-4b91-80cb-4422f2ff4246" cls="waiter-message">
+                                                        <div data-v-65efd66c="">
+                                                            <div data-v-65efd66c="" class="sys-message-welcome">
+                                                                <div data-v-65efd66c="" class="avatar-img" style="background-image: url(/html/websites/images/logo11.png);"></div> <span data-v-65efd66c="" style="background-color: rgb(251, 243, 241); background-image: url(&quot;data:image/png;base64,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&quot;);">您好，在线智能客服助手为您服务！
+    </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div data-v-736aaca9="" class="message--icon" style="display: none;">
+                                                    <div data-v-736aaca9="" class="message--retry"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--<div data-v-736aaca9="" data-v-1bdd748f="" class="message clearfix waiter-message">
+                                        &lt;!&ndash;&ndash;&gt;
+                                        <p data-v-736aaca9="" class="message&#45;&#45;pin">在线智能客服</p>
+                                        <div data-v-736aaca9="" class="message&#45;&#45;container clearfix waiter-message">
+                                            <div data-v-736aaca9="" class="message&#45;&#45;head">
+                                                <div data-v-731dc9c6="" data-v-56fd8d14="" data-v-6785b4b4="" data-v-736aaca9="" class="img-bg avatar" uselazyload="true" alt="" style="background-image: url(&quot;//saws.cy073.com/html/pc/style1/assets/images/logo_m.png&quot;);"></div>
+                                            </div>
+                                            <div data-v-736aaca9="" class="message&#45;&#45;content clearfix">
+                                                <div data-v-736aaca9="" class="message&#45;&#45;wrapper">
+                                                    <div data-v-34c9e742="" data-v-736aaca9="" class="tpl-message clearfix" action="ans.questionCard" sender="jd.waiter">
+                                                        <div data-v-47852f6e="" data-v-34c9e742="" class="menu-box">
+                                                            <div data-v-77a3087f="" data-v-47852f6e="" class="text-message clearfix waiter-message">
+                                                                <div data-v-77a3087f="" class="text-message&#45;&#45;container"><strong>您可能还想问</strong>
+                                                                </div>
+                                                            </div>
+                                                            <div data-v-47852f6e="" class="menu-wrap">
+                                                                &lt;!&ndash;&ndash;&gt;
+                                                                <div data-v-47852f6e="" class="menu-list">
+                                                                    <div data-v-47852f6e="">
+                                                                        <div data-v-47852f6e="" class="item2 border"><span data-v-47852f6e="" title="我的商品坏了怎么办？" class="ellipsis">我的商品坏了怎么办？</span>
+                                                                        </div>
+                                                                        <div data-v-47852f6e="" class="item2 border"><span data-v-47852f6e="" title="商品如何使用" class="ellipsis">商品如何使用</span>
+                                                                        </div>
+                                                                        <div data-v-47852f6e="" class="item2 border"><span data-v-47852f6e="" title="多久能够收到退款？" class="ellipsis">多久能够收到退款？</span>
+                                                                        </div>
+                                                                        <div data-v-47852f6e="" class="item2"><span data-v-47852f6e="" title="是否支持维修" class="ellipsis">是否支持维修</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                &lt;!&ndash;&ndash;&gt;
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div data-v-736aaca9="" class="message&#45;&#45;icon" style="display: none;">
+                                                    <div data-v-736aaca9="" class="message&#45;&#45;retry"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>-->
+                                </div>
+                            </div>
+                            <div data-v-23d57823="" data-v-1bdd748f="" class="quick-entry" style="">
+                                <div data-v-23d57823="" class="quick-entry_container swiper-container-initialized swiper-container-horizontal swiper-container-free-mode">
+                                    <ul data-v-23d57823="" class="quick-entry_wrapper swiper-wrapper clearfix" style="transition-duration: 0ms;">
+                                        <li data-v-23d57823="" class="quick-entry_item swiper-slide swiper-slide-active" style="margin-right: 8px;">
+                                            <!-- <div data-v-23d57823="" class="jimi-btn quick-entry_btn oval" style="max-width: 130px; height: 24px; line-height: 24px; padding: 0px 12px;">咨询其他问题</div> -->
+                                        </li>
+                                    </ul><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                                </div>
+                                <!-- <div data-v-23d57823="" class="quick-entry_icon"><i data-v-23d57823="" class="quick-entry_arrow"></i>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div data-v-1dde1cb1="" data-v-1bdd748f="" class="input-field">
+                            <div data-v-1dde1cb1="">
+                                <div data-v-1dde1cb1="" class="input-field--toolbar">
+                                    <div data-v-1dde1cb1="" name="emoji" class="input-field--tool input-field--tool__emoji"></div>
+                                    <!--<div data-v-1dde1cb1="" name="image" class="input-field&#45;&#45;tool input-field&#45;&#45;tool__image"></div>-->
+                                    <div data-v-1dde1cb1="" name="evaluate" class="input-field--tool input-field--tool__evaluate"></div>
+                                </div>
+                                <div data-v-6eaf452b="" data-v-1dde1cb1="" class="send-box"><pre data-v-6eaf452b="" name="sendBox" contenteditable="true" class="send-textarea"></pre>
+                                </div>
+                                <div data-v-1dde1cb1="" class="input-field--bottom">
+                                    <div data-v-1dde1cb1="" class="input-field--btn-wrap clearfix">
+                                        <div onclick="sendWord()" data-v-1dde1cb1="" class="jimi-btn input-field--send-btn panda" style="max-width: 108px;">发送</div> <i data-v-1dde1cb1="" class="input-field--choose-keys"></i>
+                                        <ul data-v-4d3e832d="" data-v-1dde1cb1="" class="hot-keys" style="display: none;">
+                                            <li data-v-4d3e832d="" class="hot-keys_item hot-keys_item--active">按Enter发送</li>
+                                            <li data-v-4d3e832d="" class="hot-keys_item">按Ctrl+Enter发送</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!---->
+                            <!---->
+                        </div>
+                        <!---->
+                        <!---->
+                    </div>
+                    <div data-v-9f42a422="" data-v-505e1c0c="" class="jimi-right-pane">
+                        <div data-v-9f42a422="" class="jimi-right-tabs">
+                            <div data-v-9f42a422="" class="jimi-tabs clearfix">
+                                <!--<div class="jimi-tab ellipsis active" style="width: 50%;">正在咨询</div>-->
+                                <div class="jimi-tab ellipsis active" style="width: 107%;">客服中心</div>
+                            </div>
+                        </div>
+                        <div data-v-9f42a422="" class="jimi-right-content" style="height: 509.75px;">
+                            <div data-v-b2f5c6cc="" data-v-9f42a422="" class="product-info">
+                                <!---->
+                                <div data-v-b2f5c6cc="" class="product-info-tabs" style="height: 500px;text-align: center;">
+                                    <img src="/html/websites/images/ksycode.jpg" style="width: 150px;">
+                                    <div class="contendse">
+                                        <p style="display: flex;"><span style="width: 7rem;display: inline-block;">公司地址：</span><span style="color: #312929;font-weight: 500;">广东省广州市越秀区东风西路161号301室</span></p>
+                                        <p><span style="width: 4rem;display: inline-block;">电话：</span>400-1012-810</p>   
+                                        <p><span style="width: 4rem;display: inline-block;">公司邮箱：</span>464981941@qq.com</p>     
+                                    </div>
+                                    <!-- <div data-v-b2f5c6cc="" class="jimi-underline-tabs clearfix">
+                                        <div class="jimi-underline-tab ellipsis" style="width: 100%;">
+                                            <div class="jimi-underline-tab-content active">物联网+移动医疗方案</div>
+                                        </div>
+                                        <div class="jimi-underline-tab ellipsis" style="width: 100%;">
+                                            <div class="jimi-underline-tab-content active">物联网+医院移动医疗方案</div>
+                                        </div>
+                                        <div class="jimi-underline-tab ellipsis" style="width: 100%;">
+                                            <div class="jimi-underline-tab-content active">居家养老管理方案</div>
+                                        </div>
+                                        <div class="jimi-underline-tab ellipsis" style="width: 100%;">
+                                            <div class="jimi-underline-tab-content active">慢病管理解决方案</div>
+                                        </div>
+                                        <div class="jimi-underline-tab ellipsis" style="width: 100%;">
+                                            <div class="jimi-underline-tab-content active">养生中医康复理疗解决方案</div>
+                                        </div>
+                                        <div class="jimi-underline-tab ellipsis" style="width: 100%;">
+                                            <div class="jimi-underline-tab-content active">保健品健康食疗方案</div>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!---->
+    </div>
+</div>
+</body>
+</html>
+<script>
+    $(function(){
+        var scrollHeight = $('.jimi-chat--wrapper').prop("scrollHeight");
+        $('.jimi-chat--wrapper').scrollTop(scrollHeight,200);
+        getChatData();
+    })
+    document.onkeydown = function(event){
+        var e = event || window.event || arguments.callee.caller.arguments[0];
+        if(e.keyCode == 13 && e.ctrlKey){
+            sendWord();
+        }
+    }
+    function send_word(){
+        var da_cid = $('#app').attr('data-cid');
+        var text = $('.send-textarea').text();
+        if(da_cid && text){
+            $.ajax({
+                url:'/?m=e&c=content&a=send_word&ajax=1',
+                type:'POST',
+                data:'text='+new Base64().encode(encodeURIComponent(text))+'&cid='+da_cid,
+                dataType:'json',
+                success:function(da){ }
+            })
+            $('.jimi-chat--wrapper').append('<div data-v-736aaca9="" data-v-1bdd748f="" class="message clearfix customer-message">\n' +
+                '            <p data-v-736aaca9="" class="message--pin">Quan</p>\n' +
+                '                <div data-v-736aaca9="" class="message--container clearfix customer-message">\n' +
+                '                <div data-v-736aaca9="" class="message--head">\n' +
+                '                <div data-v-731dc9c6="" data-v-56fd8d14="" data-v-6785b4b4="" data-v-736aaca9="" class="img-bg avatar" uselazyload="true" alt="" style="background-image: url(&quot;https://www.yjxun.cn/statics/images/member/nophoto.gif&quot;);"></div>\n' +
+                '                </div>\n' +
+                '                <div data-v-736aaca9="" class="message--content clearfix">\n' +
+                '                <div data-v-736aaca9="" class="message--wrapper">\n' +
+                '                <div data-v-77a3087f="" data-v-736aaca9="" class="text-message clearfix customer-message" action="cfg.quickEntry" index="3" msgid="b2be5d38-ccf3-a03d-3fd5-7cc8a1b4a438">\n' +
+                '                <div data-v-77a3087f="" class="text-message--container">\n' +
+                '                <p>'+text+'</p>\n' +
+                '                </div>\n' +
+                '                </div>\n' +
+                '                </div>\n' +
+                '                <div data-v-736aaca9="" class="message--icon" style="display: none;">\n' +
+                '                <div data-v-736aaca9="" class="message--retry"></div>\n' +
+                '                </div>\n' +
+                '                </div>\n' +
+                '                </div>\n' +
+                '                </div>');
+            $('.send-textarea').text('');
+            var scrollHeight = $('.jimi-chat--wrapper').prop("scrollHeight");
+            $('.jimi-chat--wrapper').scrollTop(scrollHeight,200);
+            return;
+            $('.main_cid'+da_cid+' .m-message ul').append('<li><div class="main self"><img class="avatar" width="30" height="30" src="https://www.yjxun.cn/customer_service/statics/images/kf_topimg.jpg"><div class="text">'+text+'</div></div></li>');
+            $('.main_cid'+da_cid+' .m-text textarea').val('');
+            $('.main_cid'+da_cid).find('.m-message').scrollTop($('.main_cid'+da_cid).find('.m-message')[0].scrollHeight);
+            $('.round_d'+da_cid).remove();
+        }
+    }
+    function getChatData(){
+        $.ajax({
+            url:'/?m=data&c=csd&a=getChatData',
+            type:'POST',
+            data:'socketid='+client_id_,
+            dataType:'json',
+            success:function(e){
+                for(i in e){
+                    if(e[i].adminid != 0){
+                        $('.jimi-chat--wrapper').append('<div data-v-736aaca9="" data-v-1bdd748f="" class="message clearfix waiter-message">\n' +
+                            '                                    <p data-v-736aaca9="" class="message--pin">在线智能客服</p>\n' +
+                            '                                    <div data-v-736aaca9="" class="message--container clearfix waiter-message">\n' +
+                            '                                        <div data-v-736aaca9="" class="message--head">\n' +
+                            '                                            <div data-v-731dc9c6="" data-v-56fd8d14="" data-v-6785b4b4="" data-v-736aaca9="" class="img-bg avatar" uselazyload="true" alt="" style="background-image: url(/html/websites/images/logo11.png);"></div>\n' +
+                            '                                        </div>\n' +
+                            '                                        <div data-v-736aaca9="" class="message--content clearfix">\n' +
+                            '                                            <div data-v-736aaca9="" class="message--wrapper">\n' +
+                            '                                                <div data-v-77a3087f="" data-v-736aaca9="" class="text-message clearfix waiter-message" index="1" msgid="EC9B48059F9A407CB743FFA091DBEA32">\n' +
+                            '                                                    <div data-v-77a3087f="" class="text-message--container">\n' +
+                            '                                                        <p>'+e[i].last_text+'</p>\n' +
+                            '                                                    </div>\n' +
+                            '                                                </div>\n' +
+                            '                                            </div>\n' +
+                            '                                            <div data-v-736aaca9="" class="message--icon" style="display: none;">\n' +
+                            '                                                <div data-v-736aaca9="" class="message--retry"></div>\n' +
+                            '                                            </div>\n' +
+                            '                                        </div>\n' +
+                            '                                    </div>\n' +
+                            '                                </div>');
+                    }else{
+                        $('.jimi-chat--wrapper').append('<div data-v-736aaca9="" data-v-1bdd748f="" class="message clearfix customer-message">\n' +
+                            '                                <div data-v-736aaca9="" class="message--date">'+timestampToTime(e[i].addtime)+'</div>\n' +
+                            '                                <p data-v-736aaca9="" class="message--pin">游客</p>\n' +
+                            '                                <div data-v-736aaca9="" class="message--container clearfix customer-message">\n' +
+                            '                                    <div data-v-736aaca9="" class="message--head">\n' +
+                            '                                        <div data-v-731dc9c6="" data-v-56fd8d14="" data-v-6785b4b4="" data-v-736aaca9="" class="img-bg avatar" uselazyload="true" alt="" style="background-image: url(&quot;https://www.yjxun.cn/statics/images/member/nophoto.gif&quot;);"></div>\n' +
+                            '                                    </div>\n' +
+                            '                                    <div data-v-736aaca9="" class="message--content clearfix">\n' +
+                            '                                        <div data-v-736aaca9="" class="message--wrapper">\n' +
+                            '                                            <div data-v-77a3087f="" data-v-736aaca9="" class="text-message clearfix customer-message" action="cfg.quickEntry" index="3" msgid="b2be5d38-ccf3-a03d-3fd5-7cc8a1b4a438">\n' +
+                            '                                                <div data-v-77a3087f="" class="text-message--container">\n' +
+                            '                                                    <p>'+e[i].last_text+'</p>\n' +
+                            '                                                </div>\n' +
+                            '                                            </div>\n' +
+                            '                                        </div>\n' +
+                            '                                        <div data-v-736aaca9="" class="message--icon" style="display: none;">\n' +
+                            '                                            <div data-v-736aaca9="" class="message--retry"></div>\n' +
+                            '                                        </div>\n' +
+                            '                                    </div>\n' +
+                            '                                </div>\n' +
+                            '                            </div>');
+                    }
+                }
+                var scrollHeight = $('.jimi-chat--wrapper').prop("scrollHeight");
+                $('.jimi-chat--wrapper').scrollTop(scrollHeight,200);
+            }
+        })
+    }
+    function sendWord(){
+        var text = $('.send-textarea').text();
+        $.ajax({
+            url:'/?m=data&c=csd&a=sendWord',
+            type:'POST',
+            data:'last_text='+new Base64().encode(encodeURIComponent(text)),
+            dataType:'json',
+            success:function(e){
+
+            }
+        })
+        $('.jimi-chat--wrapper').append('<div data-v-736aaca9="" data-v-1bdd748f="" class="message clearfix customer-message">\n' +
+            '            <p data-v-736aaca9="" class="message--pin">游客</p>\n' +
+            '                <div data-v-736aaca9="" class="message--container clearfix customer-message">\n' +
+            '                <div data-v-736aaca9="" class="message--head">\n' +
+            '                <div data-v-731dc9c6="" data-v-56fd8d14="" data-v-6785b4b4="" data-v-736aaca9="" class="img-bg avatar" uselazyload="true" alt="" style="background-image: url(&quot;https://www.yjxun.cn/statics/images/member/nophoto.gif&quot;);"></div>\n' +
+            '                </div>\n' +
+            '                <div data-v-736aaca9="" class="message--content clearfix">\n' +
+            '                <div data-v-736aaca9="" class="message--wrapper">\n' +
+            '                <div data-v-77a3087f="" data-v-736aaca9="" class="text-message clearfix customer-message" action="cfg.quickEntry" index="3" msgid="b2be5d38-ccf3-a03d-3fd5-7cc8a1b4a438">\n' +
+            '                <div data-v-77a3087f="" class="text-message--container">\n' +
+            '                <p>'+text+'</p>\n' +
+            '                </div>\n' +
+            '                </div>\n' +
+            '                </div>\n' +
+            '                <div data-v-736aaca9="" class="message--icon" style="display: none;">\n' +
+            '                <div data-v-736aaca9="" class="message--retry"></div>\n' +
+            '                </div>\n' +
+            '                </div>\n' +
+            '                </div>\n' +
+            '                </div>');
+        $('.send-textarea').text('');
+        var scrollHeight = $('.jimi-chat--wrapper').prop("scrollHeight");
+        $('.jimi-chat--wrapper').scrollTop(scrollHeight,200);
+    }
+    function timestampToTime(timestamp) {
+        var date = new Date(timestamp * 1000);
+        Y = date.getFullYear() + '-';
+        M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+        D = date.getDate() + ' ';
+        h = date.getHours() + ':';
+        m = date.getMinutes() + ':';
+        s = date.getSeconds();
+        return Y+M+D+h+m+s;
+    }
+</script>

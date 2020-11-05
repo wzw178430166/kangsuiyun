@@ -102,14 +102,14 @@ function contact(){
             });
         });*/
         $('.ty_kang .btn-login').on('click',function(){
-            var i = parseInt(getUrlParam('s'));
+            var i = getUrlParam('s')?parseInt(getUrlParam('s')):0;
             current_system = system[i];
             var username = $('.name').val();
             var password = $('.password').val();
             var secret = 'username='+username+'&password='+password;
 			secret = new Base64().encode(secret);
 			var system_id = 10 + parseInt(i) + 1;
-			var src = 'https://ksy.yjxun.cn/?m=authed&c=doing&a=experienceLogin&system_id='+system_id+'&secret='+secret;
+			var src = 'https://www.519ksy.com/?m=authed&c=doing&a=experienceLogin&system_id='+system_id+'&secret='+secret;
 			//alert(src);return;
 			var script = document.createElement('script');
 			script.setAttribute('src',src);
@@ -118,7 +118,7 @@ function contact(){
         function loginSuccess(res){
             if (1 == res.status) {
                 setTimeout(function(){
-                    var url = 'https://ksy.yjxun.cn/?m='+current_system;
+                    var url = '/?m='+current_system;
     				//window.location.href = url;
     				window.open(url);
     			},500);

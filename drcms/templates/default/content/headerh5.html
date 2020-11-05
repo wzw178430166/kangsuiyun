@@ -1,0 +1,31 @@
+<header id="heads">
+    <div class="center wrap" style="padding:2vw!important;">
+      <h1 class="mstes"> <a href="/m2/index.html"> <img src="/m2/imgs/logo.jpg" alt=""> </a> </h1>
+      <div class="navbox" id="navbox">
+        <ul class="navlist">
+          <li><a href="/m2/index.html">主页</a></li>
+          <li><a href="/m2/fa1.html">解决方案</a></li>
+          <li><a href="/m2/xinxihua.html">医疗信息化定制</a></li>
+          <li><a href="/m2/hezuo.html">合作模式</a></li>
+          <li><a href="/index.php?m=content&c=index&a=lists&catid=101">新闻中心</a></li>
+          <li><a href="/m2/lianxi.html">联系我们</a></li>
+        </ul>
+        <p class="nav_r"> <span>全国咨询热线：<b>400-1012-810</b></span><a href="">点击咨询客服</a> </p>
+      </div>
+      <button class="navbtn"></button>
+    </div>
+  </header>
+  <script>
+  $(function(){
+    $('.navbtn').click(function(){
+       $('.navbox').show();
+  });
+  $('.navbox').click(function(){
+	$('.navbox').fadeOut();
+});
+$('.navlist').click(function(e){
+	e.stopPropagation();
+});
+  })
+ 
+  </script>

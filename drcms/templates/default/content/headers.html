@@ -15,6 +15,7 @@
     <button class="navbtn"></button>
   </div>
 </header>
+{template 'content','floating_ck'}
 
 <script>
 	$(function() { ///html/websites/xinwen.html
@@ -38,11 +39,13 @@
 		if(ulr=='/'){
 		   index=4;
 		   }
-		console.log(ulrss);
-		console.log(ulr);	if(ulr=='/html/websites/fa_1.html'||ulr=='/html/websites/fa_2.html'||ulr=='/html/websites/fa_3.html'||ulr=='/html/websites/fa_4.html'||ulr=='/html/websites/fa_5.html'||ulr=='/html/websites/fa_6.html'||ulr=='/html/websites/fa_7.html'||ulr=='/html/websites/fa_8.html'||ulr=='/html/websites/fa_9.html'||ulr=='/html/websites/fa_10.html'){
+	
+		if(ulr=='/html/websites/fa_1.html'||ulr=='/html/websites/fa_2.html'||ulr=='/html/websites/fa_3.html'||ulr=='/html/websites/fa_4.html'||ulr=='/html/websites/fa_5.html'||ulr=='/html/websites/fa_6.html'||ulr=='/html/websites/fa_7.html'||ulr=='/html/websites/fa_8.html'||ulr=='/html/websites/fa_9.html'||ulr=='/html/websites/fa_10.html'){
 		   index=1;
 		   }
-		
+		   if(ulr=='/index.php'||ulr=='ksy.yjxun.cn'){
+		   index=4;
+		   }
 		for (var i in arr) {
 			if (ulr.indexOf(arr[i]) > -1) {
 				index = i;

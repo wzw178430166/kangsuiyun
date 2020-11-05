@@ -57,10 +57,6 @@ body {
 ul, ol {
   margin-bottom: 0px;
 }
-.content_box {
-  width: 1200px;
-  margin: 0px auto;
-}
 .article-header {
   width: 830px;
 }
@@ -68,7 +64,7 @@ ul, ol {
   padding: 85px 0 8px 0;
 }
 .article-title a {
-  font-size: 2.82rem;
+  font-size: 2.82rem;  
 }
 .glyphicon-thumbs-up:before {
   content: "";
@@ -172,7 +168,7 @@ ul, ol {
      overflow: auto; 
 }
 .article-header {
-     width: auto; 
+     width: auto; text-align: center;
 }
 .article-content {
     padding: 30px 0 8px 0!important;
@@ -197,21 +193,30 @@ header .wrap {
    
     margin-bottom: 5rem;
 }
-	.article-nav{margin-top: 20px;}
+  .article-nav{margin-top: 20px;}
+  .content_box {
+    width: 1200px;
+    margin: 0px auto;
+    margin-top: 1rem;
+}
 </style>
 </head>
 <body>
 {template 'content','headers'}
-<div style="height: 10rem;"></div>
+<div style="height: 6rem;"></div>
+<div class="innerbanner">
+  <dl>
+  </dl>
+</div>
 <div class="content_box">
 <div class="content-wrap">
   <div class="content">
     <div class="article-header">
         <h1>{$title}</h1>
-<p><span>来源：{$copyfrom}&nbsp;&nbsp;&nbsp; 阅读：</span><span id="hits"></span></p>
+<!-- <p><span>来源：{$copyfrom}&nbsp;&nbsp;&nbsp; 阅读：</span><span id="hits"></span></p> -->
     </div>
     <article class="article-content">{$content}</article>
-    <div class="article-social"> <span class="article-social"><img src="https://b.yjxun.cn/statics/images/images/zan1.svg" class="msigt"><a href="#" title="我赞" class="action action-like"><i class="glyphicon glyphicon-thumbs-up"></i>赞 (   &nbsp;&nbsp;<i class="count" id="diggnum" style="font-style: normal;">{$readnum}20</i>&nbsp;&nbsp;&nbsp; ) </a> </span> </div>
+    <!-- <div class="article-social"> <span class="article-social"><img src="https://b.yjxun.cn/statics/images/images/zan1.svg" class="msigt"><a href="#" title="我赞" class="action action-like"><i class="glyphicon glyphicon-thumbs-up"></i>赞 (   &nbsp;&nbsp;<i class="count" id="diggnum" style="font-style: normal;">{$readnum}20</i>&nbsp;&nbsp;&nbsp; ) </a> </span> </div> -->
  
       <div class="Article-Tool">
 

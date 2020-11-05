@@ -265,7 +265,7 @@
 			var data=da.data;
 		    	      var tmpTxt='';
 				       for(i in data){
-                         tmpTxt += '<div class="newslibox"><dl><dt>'+timestampToTime(data[i].inputtime)+'</dt><dd>2020</dd></dl><ul><li class="tt"><a href="xinwen_con.html?&id='+data[i].id+'&catid='+data[i].catid+'">'+data[i].title+'</a></li><li class="parg"><p>每一个相同顶级域名中的二级域名注册都是独一无二的，不可重复的，但不同顶级域名中的二级域名可以是相同的，例如baidu这个二级域名曾可以在.com中注册，也可以在.cn中注册...</p></li></ul></div>';
+                         tmpTxt += '<div class="newslibox"><dl><dt>'+timestampToTime(data[i].inputtime)+'</dt><dd>2020</dd></dl><ul><li class="tt"><a href="xinwen_con.html?&id='+data[i].id+'&catid='+data[i].catid+'">'+data[i].title+'</a></li><li class="parg"><p>'+data[i].title+'...</p></li></ul></div>';
                  
                     }
 					  $('#ketangs').html(tmpTxt);
