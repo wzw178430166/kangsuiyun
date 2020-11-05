@@ -1196,7 +1196,7 @@ footer .main .wx img {
 }
 .servicelist1 dd.lan_2 p {
 	font-size: 12px;
-	color: #464545;
+	color: #464545;text-align: left;
 }
 .servicelist1 dd.lan_3 {
 	padding:1vw 0 0 5vw;
@@ -1499,7 +1499,7 @@ display: flex;
 
 
 .servicelist1 dl {
-    height: 46vw;
+    height: 42vw;
 }
 
 .servicelist1 dl.sy1 {

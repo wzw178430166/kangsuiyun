@@ -1,0 +1,628 @@
+
+<!DOCTYPE html>
+<html lang="cn">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+		<link rel="stylesheet" type="text/css" href="/statics/css/animate.css">
+		<link rel="stylesheet" type="text/css" href="/statics/css/appstyle.css">
+		<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+			<link rel="stylesheet" type="text/css" href="./css/index.css">
+		<script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="/statics/js/layer/3.1.1/layer.js"></script>
+		<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+		<script type="text/javascript" src="/statics/js/global.js"></script>
+		 <script type="text/javascript" src="/statics/js/TouchSlide.1.1.js"></script>
+		<title>健康食疗</title>
+		<style>
+		.header_box .midden {
+    color: #2f2828;
+     }
+            .aaa{overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;}
+   
+        /* 轮播图 */
+
+        .m-banner .banner-container {
+            width: 100%;
+            height: 7rem;
+/*            overflow: hidden;*/
+            margin: 0 auto;
+        }
+
+        .m-banner .banner-container img {
+            width: 100%;
+            float: left;
+            height:auto;object-fit: cover;
+        }
+
+        .bd .tempWrap ul,
+        .banner-container .tempWrap ul li {
+            width: 99%;
+            height: 100%; margin: 0 auto;
+            /*padding-left: 1rem;left: -.8%; */
+            border-radius: .7rem;
+        }
+
+        .m-banner .banner-intelligent {
+            width: 99%;
+            height: 7rem;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .m-banner .banner-intelligent img {
+            width: 100%;
+            float: left;
+            height: auto;object-fit: cover;
+        }
+
+        .bd .tempWrap ul,
+        .banner-intelligent .tempWrap ul li {
+            width: 99%;
+            height: 100%;
+            margin: 0 auto;
+        }
+
+        .m-banner .hd {
+           position: absolute;
+    bottom: 1%;
+    width: 100%;
+    text-align: right!important;
+    right: 7%;
+        }
+
+        .m-banner .hd ul li {
+            display: inline-block;
+            width: 0.5rem;
+            height: 0.5rem;
+            background-color: #fedede;
+            color: transparent;
+            border-radius: 500px;
+            margin-right: 0.192rem;
+            text-indent: -999px;
+        }
+
+        .m-banner .hd ul li.on {
+            background-color: #fd5148;
+             width: 1.5rem;
+/*            height: .385rem; */
+        }
+	        .m-banner {
+            width: 99%;
+/*          overflow: hidden;*/
+            position: relative;height: 10rem;
+            margin-top: .29rem!important;
+        }
+.mt_boxs{
+   width: 101%;}
+   .mt_boxs .m-banner{
+    padding: 0;margin-top: 0!important;
+    }
+  .mt_boxs .m-banner .banner-container img {
+    width: 100%;
+    float: left;
+    height: 10rem;
+}
+ .mt_boxs .m-banner .banner-container {
+    width:100%;
+    height: 10rem;border-radius: 0;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.mt_boxs .m-banner .banner-container img{
+       border-radius: 0rem;  
+    }
+   .mt_boxs .bd .tempWrap ul, .mt_boxs .banner-container .tempWrap ul li{
+		    width: 100%;
+            height: 100%;
+            margin: 0 auto;padding-left: 0rem!important;left: 0%;
+            border-radius: .7rem;
+	   } 
+/*	轮播图结束*/
+	
+.option_box_ {
+    width: 100%;
+    overflow: hidden;
+/*    margin-top: 1rem;*/
+}
+.option_box {
+    width: 98%;
+    overflow: hidden;
+    margin: 0 auto;
+    border-radius: 10px;
+    background-color: #fff;
+}
+.option_box li {
+    float: left;
+    width: 25%;
+    margin-top: 1rem;
+}
+.option_box .option {
+    text-align: center;
+}
+/* .option_box .option img {
+    width: 1.658rem;
+    height: 1.758rem;
+    display: block;
+    margin: 0 auto;
+} */
+.option_box .option p {
+   height: 1.538rem;
+    line-height: 1.54rem;
+    font-size: 1.012rem;
+    color: #282828;margin-top: .45rem;
+}
+.option_boxww{margin-top: .8rem;}
+.option_boxww .option img {
+    width: 3.8rem;
+    height: 3.8rem;
+    display: block;
+    margin: 0 auto;
+}		
+.option_box2 li {
+    float: left;
+    width: 25%;
+    margin-top: 1rem;
+}
+.option_box2 .option p {
+    font-size: .882rem;
+    color: #282828;margin-top: .45rem;
+}
+			
+#mtsdie {
+       position: inherit;
+    margin-top: 2rem;
+    height: 5rem;
+    width: 96%;
+    margin-bottom: .5rem;
+    box-shadow: none;
+}
+.mtsed {
+    width: 94%;
+    height: 12.25rem;
+    display: flex;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: .3rem;
+    box-shadow: 0px 2px 4px 1px #e3e3e3;
+    margin-top: -3rem;
+    justify-content: space-between;
+    position: relative;
+    z-index: 3;
+}
+#mtsdie .mtes_left {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+#mtsdie .mtes_left div:nth-child(1) {
+    width: 48%;
+    background: #f5f7f7 url(/h5page/reha_phy/images/poinggus.png) no-repeat 1rem center;
+    height: 100%;padding-left: 4.23rem;
+    background-size: 2rem;display: flex;flex-direction: column;justify-content: center;
+}
+#mtsdie .mtes_left div:nth-child(1) p:nth-child(1) {
+    width: 100%;
+    font-size: 1.203rem;
+    color: #2ab4a6;margin-bottom: .21rem;
+    font-weight: 600;text-align: left;
+}
+#mtsdie .mtes_left div:nth-child(1) p:nth-child(2) {
+    width: 100%;
+    font-size: .8rem;font-weight: 500;
+    color: #666666;text-align: left;
+}
+#mtsdie .mtes_left div:nth-child(2) {
+    width: 48%;
+    background: #f5f7f7 url(/h5page/reha_phy/images/hositip.png) no-repeat 1rem center;
+    height: 100%;border-radius: .32rem;
+    background-size: 2.45rem;display: flex;
+    flex-direction: column;
+    padding-left: 4.23rem;
+    justify-content: center;
+}
+	#mtsdie .mtes_left div:nth-child(2) p:nth-child(1) {
+    font-size:1.203rem;
+    color: #439ed7;
+    font-weight: 600;text-align: left;
+    width: 90%;
+    margin-bottom: .21rem;
+}
+	#mtsdie .mtes_left div:nth-child(2) p:nth-child(2) {
+    font-size: .8rem;font-weight: 500;
+    color: #666666;text-align: left;
+    width: 90%;
+}
+
+.mt_box2{width: 100%;margin-top: .5rem;clear: both;}
+
+.mt_box2 .m-banner {
+    width: 97%;
+    margin: 0 auto;position: relative;
+    height: 8.525rem;
+    margin-top: .29rem!important;
+    padding: .8rem;
+    padding-bottom: .2rem;
+}
+.mt_box2 .m-banner .banner-container img{border-radius: .3rem;}
+.container {
+    width: 93%;
+    margin: 0 auto;
+}
+.waterfall {
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    column-count: 2;
+    -moz-column-gap: 1em;margin-top: .5rem;
+    -webkit-column-gap: 1em;
+    column-gap: 1em;
+}
+.item {
+    margin-bottom: 1.4rem;
+    -moz-page-break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    break-inside: avoid;
+}
+.item img {
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: .45rem;
+}
+.waterfall .pitcfist {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    color: #333;
+}
+.waterfall .pitc {
+    width: 100%;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    margin-top: .5rem;
+}
+.waterfall .pitc img {
+    vertical-align: middle;
+}
+.waterfall .pitc .pictimg1 {
+    width: 2rem;
+    border-radius: 50%;
+    margin: -2.1rem .4rem 0 .2rem;height: 2rem;
+}
+.waterfall .pitc .pictimg2 {
+    width: 1.3rem;
+    float: right;
+    border-radius: 0;
+    margin: .4rem .5rem 0 0;
+}
+.waterfall .pitc .xs-hea {
+    color: #666;
+    font-size: 1rem;
+	width: 60%;
+    display: inline-block;
+	overflow: hidden;
+}
+.option_itwe{margin-bottom: 2rem;}
+.menu_big1_box .menu_big1_line {
+    width: 96%;
+    margin: 0 auto;
+}
+.menu_big1_line .line_l {
+    width: 49%;
+}
+.menu_big1_line .line_l, .line_r {
+    background-color: #ffffff;
+    position: relative;
+}
+.menu_big1_line .line_l img {
+    width: 2.231rem;
+    /* height: 2.231rem; */
+    position: relative;
+    left: 20%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+.menu_big1_line .line_l .line_l_ {
+    width: 11.308rem;
+    position: absolute;
+    left: 60%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+.menu_big1_line .line_l .line_l_ .p1, .menu_big1_line .line_r .line_r_ .p1 {
+    font-size: 1.15rem;
+    color: #060606;
+}
+.menu_big1_line .line_l .line_l_ .p2 {
+    font-size: 0.923rem;
+    color: #666;
+}
+.menu_big1_line p {
+    width: 100%;
+    /* overflow: hidden; */
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+}
+.menu_big1_line .line_r {
+    width: 49%;
+}
+.menu_big1_line .line_r img {
+    left: 16%;
+}
+.menu_big1_line .line_r .line_r_ {
+    left: 80%;
+}
+#J_banner2 .hd {
+    position: absolute;
+    bottom: -12%;
+     width: auto; 
+    text-align: right!important;
+    left: 50%;right: auto!important;
+    transform: translateX(-50%);
+    text-align: center;
+}
+.option_box2{margin-top: 1rem;}
+.option_box2 .option img {
+    width: 1.88rem;
+    height: 1.758rem;
+    display: block;
+    margin: 0 auto;
+}
+#J_banner2 .banner-container img{
+    height: 8.525rem;
+}
+		</style>
+	</head>
+<body>
+
+    <div class="header_box" style="border-bottom: 0;">
+        <p class="midden">健康食疗</p>
+      </div>
+      <div class="h50"></div>
+          <div class="mt_boxs">
+              <div class="m-banner" id="J_banners">
+              <div class="banner-container bd">
+                <div class="tempWrap">
+                  <ul id="adverts">
+                    <li style="width: 100%;overflow: hidden;border-radius: 0;"><img src="/h5page/food/images/barnnerd12.png"></li>
+                    <li style="width: 100%;overflow: hidden;border-radius: 0;"><img src="/h5page/food/images/barnnerd12.png"></li>
+                    <li style="width: 100%;overflow: hidden;border-radius: 0;"><img src="/h5page/food/images/barnnerd12.png"></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="hd">
+                <ul>
+                  <li class="on"></li>
+                </ul>
+              </div>
+            </div> 
+          </div>
+              <div class="option_box option_boxww">
+                  <ul>
+                      <li onclick="goo('/patient/sr_index.html')">
+                          <div class="option"><img src="/h5page/food/images/fangan1.png">
+                              <p>营养套餐</p>
+                          </div>
+                      </li>
+                      <li onclick="goo('#')">
+                          <div class="option"><img src="/h5page/food/images/fangan2.png">
+                              <p>养生食疗</p>
+                          </div>
+                      </li>
+                      <li onclick="goo('#')">
+                          <div class="option"><img src="/h5page/reha_phy/images/timgs3.png">
+                              <p>健康检测</p>
+                          </div>
+                      </li>
+                      <li onclick="goo('#')">
+                          <div class="option"><img src="/h5page/food/images/fangan4.png">
+                              <p>健康档案</p>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+                  <div class="option_box option_box2">
+                  <ul>
+                      <li onclick="goo('/patient/index_.html')">
+                          <div class="option"><img src="/h5page/food/images/dhagbv1.png" style="width: 1.75rem;">
+                              <p>健康提醒</p>
+                          </div>
+                      </li>
+                      <li onclick="goo('/patient/index_.html')">
+                          <div class="option"><img src="/h5page/food/images/dhagbv2.png">
+                              <p>我的亲友</p>
+                          </div>
+                      </li>
+                      <li onclick="goo('#')">
+                          <div class="option"><img src="/h5page/food/images/dhagbv3.png">
+                              <p>领优惠券</p>
+                          </div>
+                      </li>
+                      <li onclick="goo('#')">
+                          <div class="option"><img src="/h5page/food/images/dhagbv4.png" style="width: 1.8rem;">
+                              <p>食疗指南</p>
+                          </div>
+                      </li>
+                    
+                  </ul>
+              </div>
+              <div class="mtsed" id="mtsdie">
+              <div class="mtes_left">
+                  <div onclick="goo('/patient/sr_index.html')" style="border-bottom: 0;border-radius: .32rem;">
+                  <p>在线中医问诊</p>
+                  <p>足不出户线上问诊</p>
+                  </div>
+                  <div onclick="goo('/patient/sr_index.html')">
+                  <p>名医坐诊预约</p>
+                  <p>特邀名医到店坐诊</p>
+                  </div>
+              </div>
+          </div>
+   
+
+          <div class="menu_big1_line" style="margin-top: 1%;">
+            <div class="line_l fl" onclick="goo('/?m=myim&amp;a=sr_dialogue_fast&amp;target=top')" style="height: 5.154rem;">
+              <img src="/index/style10/images/kuaishus.png" style="width: 2.3rem;">
+              <div class="line_l_" style="left: 72%;">
+                <p class="p1">快速问诊</p>
+                <p class="p2">1小时内快速响应</p>
+              </div> 
+            </div>
+            <div class="line_l fl" onclick="goo('/?m=myim&amp;a=sr_dialogue_fast&amp;target=top')" style="height: 5.154rem;">
+                <img src="/index6/images/mingyizx.png" style="width: 2.3rem;">
+                <div class="line_l_" style="left: 72%;">
+                  <p class="p1">找专科医生</p>
+                  <p class="p2">专科医生对症咨询</p>
+                </div> 
+              </div>
+           
+          </div>
+
+
+
+          <div class="mt_box2">
+            <div class="m-banner" id="J_banner2">
+            <div class="banner-container bd">
+              <div class="tempWrap">
+                <ul id="adverts">
+                  <li style="width: 100%;overflow: hidden;border-radius: 0;"><img src="/h5page/food/images/barnner13.png"></li>
+                  <li style="width: 100%;overflow: hidden;border-radius: 0;"><img src="/h5page/food/images/barnner13.png"></li>
+                  <li style="width: 100%;overflow: hidden;border-radius: 0;"><img src="/h5page/food/images/barnner13.png"></li>
+                </ul>
+              </div>
+            </div>
+            <div class="hd">
+              <ul>
+                <li class="on"></li>
+              </ul>
+            </div>
+          </div> 
+        </div>
+   
+	<div class="m_dboxss">
+   <span>品质食疗 精心为你</span>       
+   <span class="maige">HOT</span>
+  </div>
+	    <div class="option_box option_itwe">
+            <ul>
+                <li onclick="goo('#')">
+                    <div class="option">
+						<img src="./images/hrgrgreee.png">
+                    </div>
+                </li>
+                <li onclick="goo('#')">
+                    <div class="option"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601450956756&di=e8583e7ae6c72c098862717f47e29249&imgtype=0&src=http%3A%2F%2Fimg1.tbcdn.cn%2Ftfscom%2Fi3%2F805425898%2FTB2x9N2aBNkpuFjy0FaXXbRCVXa_%2521%2521805425898.jpg">
+                    </div>
+                </li>
+                <li onclick="goo('#')">
+                    <div class="option"><img src="./images/grgerge.png">
+                    </div>
+                </li>
+                <li onclick="goo('#')">
+                    <div class="option"><img src="./images/jyjrtyrthj.png">
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+		<div class="m_dbox">
+   <span>互动交流</span>       
+   <span class="mstio" onclick="goo('#')">去逛逛<i class="uing"><img src="/h5page/reha_phy/images/fanhuis.png" style="width: 100%;"></i></span>
+  </div>
+  <div class="container">
+    <div class="waterfall" id="waterdiv">
+    
+    </div>
+  </div>
+	
+		<span id="footer_box" v-html="url1"></span>
+	<script>
+        var page = 1;
+		$(function(){
+		var offstt = 60;
+		var offset = 300;
+		var duration = 500
+			$(window).scroll(function() {
+		
+            if ($(window).scrollTop() > offstt) {
+				$('#m_head').css('display','block');   
+               $('#m_head').css('background','#ffffff');  
+            }else{
+				$('#m_head').css('display','none');   
+                $('#m_head').css('background','none');    
+            }
+            
+            
+		});
+            banner2();
+            banner1();
+			getfooter();
+            getCircleNData();
+		})
+		   function getfooter() {
+            $('#footer_box').load('/h5page/food/footer1.html', function () {
+            });
+        }
+        function banner2(){
+         TouchSlide({
+        slideCell: '#J_banner2',
+        titCell: '.hd ul',
+        mainCell: '.bd ul',
+        autoPage: true,
+        effect: 'leftLoop',
+        autoPlay: true,
+        delayTime: 200,
+        interTime: 2500,
+        //switchLoad:'src',
+    })
+
+    }
+	        function banner1(){
+         TouchSlide({
+        slideCell: '#J_banners',
+        titCell: '.hd ul',
+        mainCell: '.bd ul',
+        autoPage: true,
+        effect: 'leftLoop',
+        autoPlay: true,
+        delayTime: 200,
+        interTime: 2500,
+        //switchLoad:'src',
+    })
+    }
+    function getCircleNData(){
+       
+			$.ajax({
+				url:'/?m=circleN&c=news&a=getNewsFy&ajax=1&cid=84,85,86&page='+page,
+				data:'',
+				dataType:'json',
+				success:function(e){
+					var data = e.data;
+                    console.log(data);
+					var cidData = e.cidData;
+					for(i in data){
+						var imgs = data[i].imgs.split(',');
+						$('#waterdiv').append('<div class="item" onclick="goo(\'/circleN/contentDetail.html?&type=1&id='+data[i].id+'&cid='+data[i].cid+'\')"> <img src="'+(imgs[0]?imgs[0]:'/statics/images/imgss.jpg')+'">\n' +
+											 
+								'          <p class="pitcfist">'+data[i].title+'</p>\n' +
+								'          <p class="pitc"><img src="'+cidData[data[i].cid].logo+'" class="pictimg1"><span class="xs-hea">'+cidData[data[i].cid].name+'</span><img src="https://lxj.yjxun.cn/edits/images/icon_like.png"  class="pictimg2"></p>\n' +
+								'        </div>');
+					}
+				}
+			})
+			page++;
+		}
+	</script>
+</body>
+</html>
