@@ -1477,7 +1477,7 @@ footer .main .wx img {
 
 
 .servicelist1 dd {
-    padding: 2vw 0 0 5vw;
+    padding: 2.7vw 0 0 5vw;
     margin-bottom: 2vw;
 }
 
@@ -2142,8 +2142,10 @@ footer .main .wx img {
     height: 20rem;
     display: flex;}
 .conb_br .conb_left{width: 64%;
-    /* background: url(../images/iphonebor1.png) no-repeat center 1rem; */
-    background-size: 80%;}
+    background-size: 80%;overflow: hidden;}
+    .conb_br .conb_lefts{
+        width: 100%;overflow: hidden;
+    }
 .conb_br .conb_right{    width: 60%;
     background: url(../images/con_right_bg.png) no-repeat bottom right;
     background-size: 25%;
