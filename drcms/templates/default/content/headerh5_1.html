@@ -1,0 +1,141 @@
+
+<style>
+    .heigh45 {
+    height: 45px;
+}
+  #heads {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+  .navbtn {
+      display: block;
+      width: 8vw;
+      height: 8vw;
+      border: none;  
+      position: relative;   
+      background: none;
+      outline: none;
+      background: url(/m2/imgs/caidangs.png) center center no-repeat;
+      background-size: 7vw 6vw;  
+      z-index: 999;
+  }
+  
+  .center.wrap {
+      display: flex;
+      align-items: center;
+      padding: 2vw!important;  
+      justify-content: space-between;            
+      background: #fff;
+      box-shadow: 0 0px 8px #bdbbbb;
+  }
+  
+  .center.wrap h1 img {
+      width: 35vw;
+  }
+  
+  .navbox {
+      left: 0;
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      background: rgba(0, 0, 0, 0.8);
+      width: 100%;
+      height: 100%;
+  }
+  
+  .close {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 50vw;
+      height: 10vw;
+      background: #ff6c3a;
+      padding-left: 5vw;
+      font-family: 宋体;
+      color: #fff;
+      font-size: 24px;
+  }
+  
+  .close:active {
+      opacity: 0.9;
+  }
+  
+  .navlist {
+      width: 50vw;
+      height: 100vh;
+      background: #fff;
+      padding-top: 5vw;
+  }
+  
+  .yd_fd {
+      background: #2d2d2d;
+      height: 16vw;
+      width: 100%;
+      position: fixed;
+      z-index: 99997;
+      bottom: 0;
+  }
+  
+  .yd_fd .fd_l {
+      display: block;
+      float: left;
+      background: #f85415;
+      height: 16vw;
+      color: #fff;
+      width: 28vw;
+      line-height: 16vw;
+      text-align: center;
+      font-size: 15px;
+  }
+  
+  .yd_fd .fd_r {
+      display: block;
+      float: left;
+      height: 16vw;
+      color: #fff;
+      width: 66vw;
+      line-height: 5.4vw;
+      text-align: left;
+      font-size: 14px;
+      margin: 2vw 0 0 6vw;
+  }
+  
+  .yd_fd .fd_r span {
+      color: #d3450e;
+  }
+  
+</style>
+<header id="heads">
+    <div class="center wrap">
+      <!-- <h1> <a href="/m2/index.html"> <img src="./imgs/logo.jpg" alt=""> </a> </h1> -->
+      <div class="navbox">
+        <ul class="navlist">
+          <li><a href="/m2/index.html">主页</a></li>    
+          <li><a href="/m2/fc1.html">解决方案</a></li>
+          <li><a href="/m2/xinxihua.html">医疗信息化定制</a></li>
+          <li><a href="/m2/hezuo.html">合作模式</a></li>
+          <li><a href="/index.php?m=content&c=index&a=lists&catid=101">新闻中心</a></li>
+          <li><a href="/m2/lianxi.html">联系我们</a></li>
+        </ul>
+        <p class="nav_r"> <span>全国咨询热线：<b>400-1012-810</b></span><a href="">点击咨询客服</a> </p>
+      </div>
+      <button class="navbtn"></button>
+      <span style="position: absolute;width: 100%;text-align: center;color: #080808;font-size: 1.01rem;" class="chaks">康穗云</span>
+    </div>
+  </header>
+  <script>
+  $(function(){
+    $('.navbtn').click(function(){
+       $('.navbox').show();
+  });
+  $('.navbox').click(function(){
+	$('.navbox').fadeOut();
+});
+$('.navlist').click(function(e){
+	e.stopPropagation();
+});
+  })
+  </script>

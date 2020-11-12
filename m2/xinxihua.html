@@ -1,12 +1,118 @@
 <!--#include file="header_common.html"-->
-<body class="con_w">
-<!--#include file="header.html"-->
-<!--#include file="contents_kefu.html"-->
-<div class="b30"></div>
-<div class="b30"></div>
-<div class="b30"></div>
-<div class="b30"></div>
+<style>
+.heigh45 {
+    height: 60px;
+}
+#heads {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+.navbtn {
+    display: block;
+    width: 8vw;
+    height: 8vw;
+    border: none;  
+    position: relative;   
+    background: none;
+    outline: none;
+    background: url(/m2/imgs/caidangs.png) center center no-repeat;
+    background-size: 7vw 6vw;  
+    z-index: 999;
+}
 
+.center.wrap {
+    display: flex;
+    align-items: center;
+    padding: 2vw;
+    justify-content: space-between;
+    background: #fff;
+    box-shadow: 0 0px 8px #bdbbbb;
+}
+
+.center.wrap h1 img {
+    width: 35vw;
+}
+
+.navbox {
+    left: 0;
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    background: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+}
+
+.close {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 50vw;
+    height: 10vw;
+    background: #ff6c3a;
+    padding-left: 5vw;
+    font-family: 宋体;
+    color: #fff;
+    font-size: 24px;
+}
+
+.close:active {
+    opacity: 0.9;
+}
+
+.navlist {
+    width: 50vw;
+    height: 100vh;
+    background: #fff;
+    padding-top: 5vw;
+}
+
+.yd_fd {
+    background: #2d2d2d;
+    height: 16vw;
+    width: 100%;
+    position: fixed;
+    z-index: 99997;
+    bottom: 0;
+}
+
+.yd_fd .fd_l {
+    display: block;
+    float: left;
+    background: #f85415;
+    height: 16vw;
+    color: #fff;
+    width: 28vw;
+    line-height: 16vw;
+    text-align: center;
+    font-size: 15px;
+}
+
+.yd_fd .fd_r {
+    display: block;
+    float: left;
+    height: 16vw;
+    color: #fff;
+    width: 66vw;
+    line-height: 5.4vw;
+    text-align: left;
+    font-size: 14px;
+    margin: 2vw 0 0 6vw;
+}
+
+.yd_fd .fd_r span {
+    color: #d3450e;
+}
+
+</style>
+<body class="con_w">
+<!--#include file="header1.html"-->
+<!--#include file="contents_kefu.html"-->
+
+<div class="heigh45"></div>
 <div class="con_lift jj_con_js" aos="fade-up" aos-duration="1500">
       <dl class="sy10">
         <dd class="con_title2">
