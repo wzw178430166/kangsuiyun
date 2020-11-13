@@ -1,8 +1,7 @@
 <!--#include file="header_common1.html"-->
 <style>
     .tiyan_rk {
-           width: 100%;
-        
+         width: 100%;
         background: url(/html/websites/imgs/tiyan_bg.png) no-repeat;
         border-radius: 10px;
         padding: 1rem 0;
@@ -26,11 +25,48 @@
       color: #696767;
         margin: 5px 0;
         font-size: .9rem;
-        text-align: left;
+        text-align: left;  
         line-height: 1.5;
         text-indent: 2em;
     }
     .tiyan_border{margin-top: 1rem;}
+    .conb_br {
+    width: 100%;
+    height: 22rem;margin-top: 2rem;
+    display: flex;
+}
+.conb_br .conb_left {
+    width: 65%;position: relative;left: 5%;
+}
+.iphones{width: 100%;height: 100%;position: absolute;top: 0;left: 0;}
+.conts_imgs {
+    width: 80%;
+    height: 77%;
+    position: absolute;
+    overflow: hidden;
+    top: 50%;
+    transform: translate(-50%,-50%)!important;
+    left: 50%;
+}
+.conts_imgs img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+.conts_imgs .conts_item{width: 100%;height: 100%;}
+.conb_br .conb_right {
+    width: 60%;
+    background: url(../images/con_right_bg.png) no-repeat bottom right;
+    background-size: 25%;
+    padding-top: 2rem;
+    padding-left: 2rem;
+}
+.swiper-container {
+    height: 100%;
+}
+#banner .swiper-slide {
+    height: 100%;
+}
     </style>
     <body class="con_w">
     <!--#include file="header1.html"-->
@@ -40,7 +76,7 @@
     
     <span class="content">  
          <div class="title">
-                <strong>立即申请体验</strong>
+                <strong>立即申请体验</strong>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
                 <p>请您填写以下信息，我们将严格保密，客服将第一时间与您联系</p>
             </div>
             <div class="tijiao">
@@ -82,10 +118,10 @@
 
     <div class="servicelist1 jj_con" aos="fade-up">
         <div class="ser_right">
-          <dl class="sy3" aos="fade-up">
-            <dd> <strong>社区居家养老管理方案</strong> </dd>
+          <dl class="sy10" aos="fade-up">
+            <dd> <strong>运动健康解决方案</strong> </dd>
             <dd class="lan_2">
-              <p>  通过各种先进的信息技术，创建 “系统+服务+老人+终端”的智慧养老服务模式。运用一系列智能设备实现与子女、服务中心、医护人员的信息交互。 </p>
+              <p>建立智能运动健康平台，基于智能手表、智能体脂称等智能设备，监测用户每天的运动量、消耗的卡路里和睡眠质量。为用户提供运动方面的健康建议。 </p>
             </dd>
             <!-- <dd class="lan_3">  <a href="" class="an_2 ">申请体验账号</a> </dd> -->
           </dl>
@@ -104,44 +140,43 @@
             <div class="cl01"></div>
           </div>
           <div class="conb_br">
-            <div class="conb_left">
-                <img src="/m2/images/iphonebor11.png" class="iphones">
-                 <div class="conts_imgs" id="banner">
-                     <div class="swiper-container">
-                         <div class="swiper-wrapper">
-                           <div class="swiper-slide">
-                             <div class="conts_item">
-                                 <img src="/m2/images/screen31.jpg">
-                             </div>
-                           </div>
-                           <div class="swiper-slide">
-                             <div class="conts_item">
-                                 <img src="/m2/images/screen32.jpg">
-                             </div>
-                           </div>
-                           <div class="swiper-slide">
-                             <div class="conts_item">
-                                 <img src="/m2/images/screen33.jpg">
-                             </div>
-                           </div>
-                         </div>
-                     
-                         <div class="swiper-pagination"></div>
-                       </div>
-                 </div>    
-              </div>
+             <div class="conb_left">
+               <img src="/m2/images/iphonebor11.png" class="iphones">
+                <div class="conts_imgs" id="banner" aos="zoom-in">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                            <div class="conts_item">
+                                <img src="/m2/images/screen101.jpg">
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="conts_item">
+                                <img src="/m2/images/screen102.jpg">
+                            </div>
+                          </div>
+                          <div class="swiper-slide">
+                            <div class="conts_item">
+                                <img src="/m2/images/screen103.jpg">
+                            </div>
+                          </div>
+                        </div>
+                    
+                        <div class="swiper-pagination"></div>
+                      </div>
+                </div>    
+             </div> 
               <div class="conb_right">
                 <ul>
-                    <li>智能健康检测</li>
-                    <li>在线图文/视频问诊</li>
-                    <li>护理服务预约</li>
-                    <li>健康干预方案</li>
-                    <li>健康异常预警</li>
-                    <li>预约挂号</li>
-                    <li>数据自动上传</li>
+                    <li>一键预约课程</li>
+                    <li>运动数据记录</li>
+                    <li>运动商城</li>
+                    <li>健康方案定制</li>
+                    <li>在线健身视频</li>
+                    <li>营养食谱搭配</li>
                 </ul>
              </div>
-         </div> 
+         </div>
 
      <!-- <div class="conb_br">
      <div class="conb_left">
@@ -170,24 +205,24 @@
            </dl>
            <div class="cl01"></div>
          </div>
-         <div class="planting" id="pig_two" aos="zoom-in">
+         <div class="planting" id="pig_two">
             <ul id="plants">
                 <li class='li-rela'>
-                    <div class="poster-thumb"><img src="./images/adfdee31.png" width="100%"></div>
+                    <div class="poster-thumb"><img src="./images/adfdee101.png" width="100%"></div>
                     <div class="msg_box">
-                        <p class="poster-title">居家养老</p>
+                        <p class="poster-title">运动场馆</p>
                     </div>
                 </li>
                 <li class='li-rela'>
-                    <div class="poster-thumb"><img src="./images/adfdee32.png" width="100%"></div>
+                    <div class="poster-thumb"><img src="./images/adfdee102.png" width="100%"></div>
                     <div class="msg_box">
-                        <p class="poster-title">社区养老</p>
+                        <p class="poster-title">瑜伽馆</p>
                     </div>
                 </li>
                 <li class='li-rela'>
-                    <div class="poster-thumb"><img src="./images/adfdee33.png" width="100%"></div>
+                    <div class="poster-thumb"><img src="./images/adfdee103.png" width="100%"></div>
                     <div class="msg_box">
-                        <p class="poster-title">医养结合</p>
+                        <p class="poster-title">运动健康平台</p>
                     </div>
                 </li>
             </ul>
@@ -209,42 +244,42 @@
             <ul>
                 <li onclick="goo('#')">
                     <div class="option"><img src="./images/icons_imgbg31.png">
-                        <p>服务预约</p>
+                        <p>课程预约</p>
                     </div>
                 </li>
                 <li onclick="goo('#')">
-                    <div class="option"><img src="./images/icons_imgbg32.png">
-                        <p>电子围栏</p>
+                    <div class="option"><img src="./images/icons_imgbg101.png">
+                        <p>运动记录</p>
                     </div>
                 </li>
                 <li onclick="goo('#')">
-                    <div class="option"><img src="./images/icons_imgbg3.png">
-                        <p>在线问诊</p>
+                    <div class="option"><img src="./images/icons_imgbg102.png">
+                        <p>社交圈子</p>
                     </div>
                 </li>
                 <li onclick="goo('#')">
                     <div class="option"><img src="./images/icons_imgbg4.png">
-                        <p>健康监测</p>
+                        <p>运动监测</p>
                     </div>
                 </li>
                 <li onclick="goo('/patient/sr_index.html')">
-                    <div class="option"><img src="./images/icons_imgbg22.png">
-                        <p>健康档案</p>
+                    <div class="option"><img src="./images/icons_imgbg103.png">
+                        <p>饮食管理</p>
                     </div>
                 </li>
                 <li onclick="goo('#')">
-                    <div class="option"><img src="./images/icons_imgbg6.png">
-                        <p>异常预警</p>
+                    <div class="option"><img src="./images/icons_imgbg105.png">
+                        <p>课程管理</p>
                     </div>
                 </li>
                 <li onclick="goo('#')">
-                    <div class="option"><img src="./images/icons_imgbg23.png">
-                        <p>用药提醒</p>
+                    <div class="option"><img src="./images/icons_imgbg104.png">
+                        <p>智能穿戴</p>
                     </div>
                 </li>
                 <li onclick="goo('#')">
-                    <div class="option"><img src="./images/icons_imgbg33.png">
-                        <p>呼叫中心</p>
+                    <div class="option"><img src="./images/icons_imgbg24.png">
+                        <p>会员管理</p>
                     </div>
                 </li>
             </ul>
@@ -273,9 +308,9 @@
                 duration: 1000
             });
             var swiper = new Swiper('.swiper-container', {
-            pagination: '.swiper-pagination',
+                pagination: '.swiper-pagination',
             paginationClickable: true,
-            speed: 1500,
+            speed: 2000,
             loop: true,//设置为true时自动播放，默认为false
             observer:true,
             observeParents:true,
@@ -284,8 +319,7 @@
             autoplay: {
             disableOnInteraction: false,
             }
-            }
-            );
+            });
   
             $('.tabnav a').hover(function () {
                 $(this).addClass('hover').siblings('a').removeClass('hover');

@@ -2142,10 +2142,19 @@ footer .main .wx img {
     height: 20rem;
     display: flex;}
 .conb_br .conb_left{width: 64%;
-    background-size: 80%;overflow: hidden;}
+    background-size: 80%;overflow: hidden;
+    /* background: url(../images/iphonebor11.png) no-repeat center 1rem;background-size: 80%; */
+}
     .conb_br .conb_lefts{
         width: 100%;overflow: hidden;
     }
+    .conts_imgs{width: 18vh;
+        height: 33vh;
+        position: absolute;
+        top: 65vh;
+        transform: translate(-50%,-50%);
+        left: 14.5vh;}
+    .conts_imgs img{width: 100%;height: 100%;object-fit: cover;} 
 .conb_br .conb_right{    width: 60%;
     background: url(../images/con_right_bg.png) no-repeat bottom right;
     background-size: 25%;
@@ -2215,3 +2224,42 @@ footer .main .wx img {
     color: #000;
     text-align: center;
 }
+
+
+.conb_br {
+    width: 100%;
+    height: 22rem;margin-top: 2rem;
+    display: flex;
+}
+.conb_br .conb_left {
+    width: 65%;position: relative;left: 5%;
+}
+.iphones{width: 100%;height: 100%;position: absolute;top: 0;left: 0;}
+.conts_imgs {
+    width: 80%;
+    height: 77%;
+    position: absolute;
+    overflow: hidden;
+    top: 50%;
+    transform: translate(-50%,-50%)!important;
+    left: 50%;
+}
+.conts_imgs img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+.conts_imgs .conts_item{width: 100%;height: 100%;}
+.conb_br .conb_right {
+    width: 60%;
+    background: url(../images/con_right_bg.png) no-repeat bottom right;
+    background-size: 25%;
+    padding-top: 2rem;
+    padding-left: 2rem;
+}
+.swiper-container {
+    height: 100%;
+}
+#banner .swiper-slide {
+    height: 100%;
+}       

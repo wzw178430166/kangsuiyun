@@ -103,25 +103,31 @@
             <div class="cl01"></div>
           </div>
           <div class="conb_br">
-            <div id="banner" aos="zoom-in" class="banner_new conb_left">
-                <div class="swiper-container">
-                  <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="conb_br">
-                            <div class="conb_lefts" style="background: url(./images/iphonebor8.png) no-repeat center 1rem;background-size: 80%;">
-                            </div>
-                         </div> 
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="conb_br">
-                            <div class="conb_lefts" style="background: url(./images/iphonebor8.png) no-repeat center 1rem;background-size: 80%;">
-                            </div>
-                         </div> 
-                    </div>
-                  </div>
-                  <!-- Add Pagination -->
-                  <div class="swiper-pagination"></div>
-                </div>
+            <div class="conb_left">
+                <img src="/m2/images/iphonebor11.png" class="iphones">
+                 <div class="conts_imgs" id="banner">
+                     <div class="swiper-container">
+                         <div class="swiper-wrapper">
+                           <div class="swiper-slide">
+                             <div class="conts_item">
+                                 <img src="/m2/images/screen81.jpg">
+                             </div>
+                           </div>
+                           <div class="swiper-slide">
+                             <div class="conts_item">
+                                 <img src="/m2/images/screen82.jpg">
+                             </div>
+                           </div>
+                           <div class="swiper-slide">
+                             <div class="conts_item">
+                                 <img src="/m2/images/screen83.jpg">
+                             </div>
+                           </div>
+                         </div>
+                     
+                         <div class="swiper-pagination"></div>
+                       </div>
+                 </div>    
               </div>
               <div class="conb_right">
                 <ul>
@@ -147,7 +153,7 @@
            </dl>
            <div class="cl01"></div>
          </div>
-         <div class="planting" id="pig_two">
+         <div class="planting" id="pig_two" aos="zoom-in">
             <ul id="plants">
                 <li class='li-rela'>
                     <div class="poster-thumb"><img src="./images/adfdee81.png" width="100%"></div>
@@ -250,9 +256,19 @@
                 duration: 1000
             });
             var swiper = new Swiper('.swiper-container', {
-                pagination: '.swiper-pagination',
-                paginationClickable: true,
-            });
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
+            speed: 1500,
+            loop: true,//设置为true时自动播放，默认为false
+            observer:true,
+            observeParents:true,
+            autoplayDisableOnInteraction : false,
+            grabCursor:true,  //开启抓手光标
+            autoplay: {
+            disableOnInteraction: false,
+            }
+            }
+            );
   
             $('.tabnav a').hover(function () {
                 $(this).addClass('hover').siblings('a').removeClass('hover');

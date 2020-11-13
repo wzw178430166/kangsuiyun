@@ -80,23 +80,23 @@ switch ( $_REQUEST[ 'ac' ] ) {
     break;
     //移动医疗
     case 'move': 
-      header( "Location:https://www.519ksy.com/m2/fa1.html" );
+      header( "Location:https://www.519ksy.com/m2/fc1.html" );
       break;
       //互联网医院
       case 'internet': 
-        header( "Location:https://www.519ksy.com/m2/fa2.html" );
+        header( "Location:https://www.519ksy.com/m2/fc2.html" );
         break;
         //慢病管理
         case 'chronic': 
-          header( "Location:https://www.519ksy.com/m2/fa4.html" );
+          header( "Location:https://www.519ksy.com/m2/fc4.html" );
           break;
           //居家养老
           case 'pension': 
-            header( "Location:https://www.519ksy.com/m2/fa3.html" );
+            header( "Location:https://www.519ksy.com/m2/fc3.html" );
             break;
             //更多产品
             case 'more': 
-              header( "Location:https://www.519ksy.com/m2/fa1.html" );
+              header( "Location:https://www.519ksy.com/m2/fc1.html" );
               break;
               //快速搭建
               case 'build': 
