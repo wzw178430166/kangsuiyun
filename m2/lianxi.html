@@ -118,7 +118,7 @@
 <div class="b30"></div>
 <div class="b30"></div>
 <div class="b30"></div>
-<!--#include file="contents_kefu.html"-->
+
 
 
 <div class="cont_1 center" aos="fade-up">
@@ -175,7 +175,12 @@
 </div>
 <div class="b30"></div>
 <!--#include file="mfooter.html"-->
+<span id=footer_box v-html="url1"></span>
 <script>
+           getfooter();
+            function getfooter(){ 
+	              $('#footer_box').load('/m2/mfooters.html',function(){}); 
+            }
         AOS.init({
             easing: 'ease-out-back',
             duration: 1000

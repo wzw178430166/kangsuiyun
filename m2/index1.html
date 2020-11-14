@@ -240,7 +240,7 @@
       
       <div class="cl01"></div>
     </div>
-    <!--#include file="contents_kefu.html"-->
+ 
     <div class="conts_border">
     <div class="conts_one">
      <div class="conts_items">
@@ -284,9 +284,14 @@
       </div>
         </div>
     </div>	
-        
+    <span id=footer_box v-html="url1"></span>   
     <!--#include file="mfooter.html"-->
     <script>
+            getfooter();
+            function getfooter(){ 
+	              $('#footer_box').load('/m2/mfooters.html',function(){}); 
+            }
+
         textBanner();
               function textBanner(){
           var  s=getid("maskbox");

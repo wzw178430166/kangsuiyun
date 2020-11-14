@@ -1,0 +1,151 @@
+<style>
+    .m-foot {
+        position: fixed;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    color: #333;
+    background: url(/m2/images/footbottoms.png?v=1) no-repeat center .2rem;
+    background-size: 130%;
+    height: 6rem;z-index: 999;
+        }
+        .m-foot ul li {
+            list-style: none;
+            width: calc(100%/5);
+            float: left;  
+            text-align: center;
+            padding-top: 2.2rem;
+            padding-bottom: 0.45rem;
+            font-size: 12rem;
+        }
+        .m-foot ul li font {
+            display: block;
+            margin: 0 auto;
+            width: 1.6rem;
+            height: 2rem;margin-top: .3rem; 
+        }
+        .m-foot ul li p {
+            font-size: .75rem;
+            margin: 0;
+        }
+        .m-foot ul li.foot-cart{padding-top:1rem;}
+        .m-foot ul li.foot-index font {
+            background: url(/m2/images/jaigwhi.png) no-repeat center;
+            background-size:80%;
+        }
+        .m-foot ul li.foot-product font {
+            background: url(/m2/images/dnagseg.png) no-repeat center;
+            background-size: 80%;
+        }
+        .m-foot ul li.foot-cart font {
+            margin-bottom: .2rem;
+            width: 2.7rem;
+            height: 3rem;
+            background: url(https://lxj.yjxun.cn/doctor/images/xiaoxis.jpg) no-repeat center;
+            background-size: 90%;
+        }
+        .m-foot ul li.foot-member font {
+            background: url(/m2/images/dingzhiw.png) no-repeat center;
+            background-size:75%;
+        }
+        .m-foot ul li.foot-me font {
+            background: url(https://lxj.yjxun.cn/doctor/images/huiyuans.jpg) no-repeat center;
+            background-size: 75%;
+        }
+        
+           .fa-angle-down0 {
+            background: url(/m2/images/qiangguas.png) no-repeat center !important;
+            background-size: 80%!important;
+        }
+    
+        .fa-angle-down1 {
+            background: url(/m2/images/adghe.png) no-repeat center !important;
+            background-size: 80%!important;
+        }
+    
+        .fa-angle-down2 {
+            background: url(https://lxj.yjxun.cn/doctor/images/xiaoxi2.png) no-repeat center !important;
+            background-size: 90%!important;
+        }
+    
+        .fa-angle-down3 {
+            background: url(/m2/images/singsewte.png) no-repeat center !important;
+            background-size: 75% !important;
+        }
+         .fa-angle-down4 {
+            background: url(https://lxj.yjxun.cn/doctor/images/huiyuan2.png) no-repeat center !important;
+            background-size: 75% !important;
+        }
+    #m-footul .cur {
+        color: #0088fe;
+    }
+    
+    </style>
+    <div class="m-foot">
+      <ul id="m-footul">
+        <li class="foot-index cur"> 
+        <font></font>
+          <p>解决方案</p>
+        </li>
+        <li class="foot-product">
+    
+        <font></font>
+          <p>行业动态</p>
+    
+        </li>
+        <li class="foot-cart" style="position:relative;">
+        <font style="margin-top: .0rem;"></font>
+          <p style="margin-top: .5rem;" class="lishis">立即咨询</p>
+          <div id="newTi" style="display: none;width: .5rem;height: .5rem;background: #F00;position: absolute;top: 1.3rem;right: 1.3rem;border-radius: 50%;"></div>
+        </li>
+        <li class="foot-member"> 
+        <font></font>   
+          <p>系统定制</p>
+        </li>
+        <li class="foot-me"> 
+         <font></font>
+          <p>联系我们</p>
+        </li>
+      </ul>
+    </div>
+    <script>
+       $(function(){
+            var arr=['/m2/','/index.php?m=content&c=index&a=lists&catid=101','/?m=myim&c=customer_service','/m2/hezuo.html','/m2/lianxi.html'];
+               $('#m-footul').children('li').click(function () {
+                 try{
+                   if(location.href.indexOf('doctor/patient_list.html') != -1){
+                     $('body',parent.document).scrollTop($('body',parent.document).attr('scrolltop'));
+                     $('.application-mange',parent.document).css({"animation":"mangeright 0.1s 1","-webkit-animation":"mangeright 0.1s 1","animation-fill-mode":"forwards","-webkit-animation-fill-mode":"forwards"});
+                   }
+                 }catch(e){ }
+                       var i = $(this).index() ;   
+                       $(this).children('font').addClass(`fa-angle-down${i}`).parent().siblings().find('font').removeClass();
+                       $(this).addClass('cur').siblings().removeClass('cur');
+                      goo_t(arr[i]); 
+                }); 
+                      var ulr=window.location.pathname;
+                      var index =0;
+                      console.log(ulr);
+                     if(ulr==arr[0]){
+                         index=0;
+                     }else if(ulr==arr[1]){
+                         index=1;
+                     }else if(ulr==arr[3]){
+                         index=3;
+                     }else if(ulr==arr[4]){
+                         index=4;
+                     }
+                    //  if(getUrlParam('talk')){
+                    //      index=2;
+                    //  }
+                    if(ulr=='/index.php'){
+                         index=1;
+                     }
+                     if(ulr=='/'){
+                         index=1;
+                     }
+                     $('#m-footul').children('li').eq(index).find('font').addClass(`fa-angle-down${index}`);
+                     $('#m-footul').children('li').eq(index).addClass('cur').siblings().removeClass('cur');
+           })
+    </script>
+    

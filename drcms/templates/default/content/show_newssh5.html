@@ -63,7 +63,42 @@ footer .main dl {
 }
 .center.wrap{height: auto!important;}
 .chaks{position: absolute;width: 100%;text-align: center;color: #080808;font-size: 1.61rem!important;}
-</style>
+
+.m-foot {
+    position: fixed;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    color: #333;
+    background: url(/m2/images/footbottoms.png?v=1) no-repeat center -.5rem!important;
+    background-size: 130%!important;                         
+    height: 7.4rem!important; 
+    z-index: 999;
+}    
+.m-foot ul li font {
+    display: block;
+    margin: 0 auto;         
+    width: 2.2rem!important;   
+    height: 2rem;          
+    margin-top: 0!important;     
+}
+
+.m-foot ul li.foot-cart font {
+    width: 3.5rem!important;
+    height: 3.4rem!important;
+    margin-bottom: 0rem!important;
+    margin-top: 0rem!important;
+}               
+.m-foot ul li font {
+    margin-top: .9rem!important;         
+}
+.m-foot ul li p {
+    font-size: .75rem; 
+    margin: 0;   
+    margin-top: .2rem!important;                 
+}
+.m-foot ul li p.lishis{margin-top: .9rem!important;}
+</style>     
 </head>
 <body>
 {template 'content','headerh5_1'}       
@@ -109,10 +144,15 @@ footer .main dl {
 	</div>
 
 {template 'content','footersh5'}
+
+<span id=footer_box v-html="url1"></span>
 </body>
 </html>
 <script>
-
+    getfooter();
+            function getfooter(){ 
+	              $('#footer_box').load('/m2/mfooters.html',function(){}); 
+            }
 function getUrlParams(name) { // 不传name返回所有值，否则返回对应值
     var url = window.location.search;
     if (url.indexOf('?') == 1) { return false; }

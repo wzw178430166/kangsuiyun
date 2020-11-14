@@ -143,8 +143,12 @@ header .wrap {
       
       <div class="b30"></div>
     <div id="footer" >{template 'content','footersh5'}</div>
-
+    <span id=footer_box v-html="url1"></span>
     <script>
+         getfooter();
+            function getfooter(){ 
+	              $('#footer_box').load('/m2/mfooters.html',function(){}); 
+            }
         (function () {
             class ZUI {
                 constructor() {
