@@ -1,0 +1,422 @@
+<!--<head></head><body></body>-->
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+<link rel="stylesheet" type="text/css" href="/statics/equipment/css/inner.css">
+<link type="text/css" rel="stylesheet" href="/statics/css/jquery.pagewalkthrough.css"/>
+<script type="text/javascript" src="/statics/js/jquery.min.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<script type="text/javascript" src="/statics/js/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="/statics/js/jquery.pagewalkthrough.min.js"></script>
+<script type="text/javascript" src="/statics/js/cookie.js"></script>
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+<script type="text/javascript" src="/statics/languages/20181105/languages.js"></script>
+<title set-lan="html:device_management">设备管理</title>
+<meta name="keywords" content="医家讯,医家讯智能医疗设备,智能健康电子档案,个人健康、家庭健康,健康检测,心率监测,血糖监测,血压监测,睡眠监测,健康饮食,运动健美,亲友互动,运动圈子,医体健康,食动平衡,人工智能,健康管理,物联网,智能大数据">
+<meta name="description" content="医家讯智能医体健康平台通过智能紧急提醒、生命健康监测、智能穿戴设备及专业级智能医疗设备，结合物联网、云计算、健康大数据分析与呼叫中心，构建智能医体健康平台，让家人享受更健康、更安全、更舒心、更智慧化的生活，也让子女随时随地的了解父母的健康情况，及时表达爱心和孝心。">
+</head>
+<script>
+
+function placeholderPic(){
+
+	var w = document.documentElement.offsetWidth;
+
+	document.documentElement.style.fontSize=w/30+'px';
+
+}
+
+placeholderPic();
+
+$('body').height(window.screen.height);
+
+$('body').width(window.screen.width);
+
+window.onresize = function(){
+
+	placeholderPic();
+
+	$('body').height(window.screen.height);
+
+	$('body').width(window.screen.width);
+
+}
+
+</script>
+<style>
+body { background-color: #f3f7f8; }
+/**/
+
+.device_box { width: 94%; overflow: hidden; background-color: #fff; border-radius: 5px; margin: 10px auto; }
+.device_box .device_line { width: 94%; margin: 0 auto; overflow: hidden; border-bottom: 1px dashed #dedcdc; padding: 15px 0px; }
+.device_box .device_line:last-child { border-bottom: none; }
+.device_line .line_l { width: 30%; }
+.device_line .line_l img { width: 100px; height: 100px; }
+.device_line .line_r { width: 65%; }
+.device_line .line_r .p1 { font-size: 1.2rem; color: #242424; margin-top: 6%; }
+.device_line .line_r .p2 { font-size: 1rem; color: #999; margin-top: 3%; }
+.device_line .line_r .p3 { color: #fff; background-color: #efc058; height: 28px; line-height: 28px; text-align: center; width: 80px; border-radius: 3px; display: block; float: right; margin-top: 1%; margin-right: 5%; font-size: 1rem; }
+</style>
+
+<body>
+<div class="header_box"> <img src="/statics/images/goback_b.png" onClick="goback()" class="left">
+  <p class="midden" set-lan="html:intelligent_hardware">智能硬件</p>
+  <div class="right_" onclick="goo('//shop.yjxun.cn/')" set-lan="html:shop">进入商城</div>
+</div>
+<div class="h50"></div>
+<div class="device_box">
+  <div class="device_line" onclick="goY2('bioland_bp_a223',this)" data-m="s3pro">
+    <div class="line_l fl"> <img src="/statics/equipment/images/pro/arm_mmhg.jpg"> </div>
+    <div class="line_r fr">
+      <p class="p1" set-lan="html:sphygmomanometer_a223">智能全自动血压计</p>
+      <p class="p2" set-lan="html:sphygmomanometer_a223_describe">智能一键检测，绑定后数据同步发给亲友，轻松易用</p>
+      <p class="p3" set-lan="html:detects">去检测>></p>
+    </div>
+  </div>
+  <div class="device_line" onclick="goY2('g_777g',this)" id="" data-m="">
+    <div class="line_l fl"> <img src="/statics/equipment/images/pro/xuetang.jpg"> </div>
+    <div class="line_r fr">
+      <p class="p1" set-lan="html:blood_glucosemeter_g777g">智能血糖仪</p>
+      <p class="p2" set-lan="html:blood_glucosemeter_g777g_describe">智能GPRS测量血糖测试仪 家用 全自动套装</p>
+      <p class="p3" set-lan="html:detects">去检测>></p>
+    </div>
+  </div>
+  <div class="device_line" onclick="goY2('electrocardio',this)" data-m="">
+    <div class="line_l fl"> <img src="/statics/equipment/images/pro/electrocardio.jpg"> </div>
+    <div class="line_r fr">
+      <p class="p1" set-lan="html:electrocardiograph">快速心电检测仪</p>
+      <p class="p2" set-lan="html:electrocardiograph_describe">专业心电监测，真实波形显示，30秒快速测量，云端储存。</p>
+      <p class="p3" set-lan="html:detects">去检测>></p>
+    </div>
+  </div>
+  <div class="device_line" onclick="goY2('kangyun',this)" data-m="kangyun">
+    <div class="line_l fl"> <img src="/statics/equipment/images/pro/kangyun.jpg"> </div>
+    <div class="line_r fr">
+      <p class="p1" set-lan="html:urine_test">康云智能试纸检测</p>
+      <p class="p2" set-lan="html:urine_test_describe">可进行尿常规、血红蛋白、农药残留、早早孕等检测</p>
+      <p class="p3" set-lan="html:detects">去检测>></p>
+    </div>
+  </div>
+  <div class="device_line" onclick="goY2('bioland_tp',this)" data-m="s4pro">
+    <div class="line_l fl"> <img src="/statics/equipment/images/pro/tiwen.jpg"> </div>
+    <div class="line_r fr">
+      <p class="p1" set-lan="html:thermometer_e122">医用电子体温计</p>
+      <p class="p2" set-lan="html:thermometer_e122_describe">宝宝电子体温计，家用常备。医用婴儿红外线体温计</p>
+      <p class="p3" set-lan="html:detects">去检测>></p>
+    </div>
+  </div>
+  <div class="device_line" onclick="goY2('manridy',this)" id="device_list_line" data-m="x9pro">
+    <div class="line_l fl"> <img src="/statics/equipment/images/pro/x9pro.jpg"> </div>
+    <div class="line_r fr">
+      <p class="p1" set-lan="html:hand_ring_x9">智能心率手环 X9</p>
+      <p class="p2" set-lan="html:hand_ring_x9_describe">实时监测心率 血压监测 提供智能健康服务</p>
+      <p class="p3" set-lan="html:detects">去检测>></p>
+    </div>
+  </div>
+  <div class="device_line" onclick="goY2('v3',this)" id="" data-m="v3">
+    <div class="line_l fl"> <img src="/statics/equipment/images/pro/bracelet.jpg"> </div>
+    <div class="line_r fr">
+      <p class="p1" set-lan="html:hand_ring_v3">智能心率手环 V3</p>
+      <p class="p2" set-lan="html:hand_ring_v3_describe">持续心率、科学睡眠运动检测血压监测 运动和卡路里记录</p>
+      <p class="p3" set-lan="html:detects">去检测>></p>
+    </div>
+  </div>
+</div>
+</body>
+<script>
+
+var device_list_cookie = getcookie('device_list')?getcookie('device_list'):'{}';
+
+device_list_cookie = JSON.parse(device_list_cookie);
+
+var GetLength = function (str) {
+
+	var realLength = 0, len = str.length, charCode = -1;
+
+	for (var i = 0; i < len; i++) {
+
+		charCode = str.charCodeAt(i);
+
+		if (charCode >= 0 && charCode <= 128) realLength += 1;
+
+		else realLength += 2;U
+
+	}
+
+	return realLength;
+
+};
+
+device_list_js();
+
+function device_list_js(){
+
+	$('#device_list_div').find('.device_list_box').each(function(){
+
+		var device = $(this).find('.device_list_line').attr('data-m');
+
+		if((device_list_cookie && device_list_cookie[device]!=undefined) && (device == 'x9pro' || device == 'v3')){
+
+			$('#my_device_list').append('<div class="device_list_box">'+$(this).html()+'</div>');
+
+			$('#my_device_list').find('.device_list_line').append('<div class="check">去检测</div>');
+
+			if(GetLength($('#my_device_list').find('.device_list_line').eq(0).find('p').eq(1).text()) > 26 && window.screen.width <= 320){
+
+			$('#my_device_list').find('.device_list_line').eq(0).find('p').eq(1).text(cutstr($('#my_device_list').find('.device_list_line').eq(0).find('p').eq(1).text(), 26));	$('#my_device_list').find('.device_list_line').eq(1).find('p').eq(1).text(cutstr($('#my_device_list').find('.device_list_line').eq(1).find('p').eq(1).text(), 26));
+
+			}
+
+		}
+
+	});
+
+	//$('.device_list_box .device_list_line').eq(1).remove();
+
+	if(getQueryString('today') == 1){
+
+		for(var o in device_list_cookie){
+
+			if(o == 'x9pro'){
+
+				$('.device_list_line').eq(0).click();
+
+			}
+
+			if(o == 'v3'){
+
+				$('.device_list_line').eq(1).click();
+
+			}
+
+			return;
+
+		}
+
+	}
+
+}
+
+function goY2(ac,obj){ }
+
+function goY(ac,obj){ 
+
+	var d_name = $(obj).attr('data-m');
+
+//	if(device_list_cookie[d_name] == undefined){
+
+//		var newData = '{"'+d_name+'":1}';
+
+//		newData = JSON.parse(newData);
+
+//		device_list_cookie[d_name] = 1;
+
+//		setcookie('device_list',JSON.stringify(device_list_cookie));
+
+//		//return;
+
+//	}else{
+
+//		var tmp = JSON.parse('{}');
+
+//		setcookie('device_list',JSON.stringify('{}'));
+
+//		for(var o in device_list_cookie){
+
+//			if(d_name == o) tmp[o] = 1;
+
+//		}
+
+//		for(var o in device_list_cookie){  
+
+//			if(d_name != o) tmp[o] = 1;
+
+//		}
+
+//		setcookie('device_list',JSON.stringify(tmp));
+
+//	}
+
+var ua = navigator.userAgent.toLowerCase();	
+
+  ///iphone|ipad|ipod/.test(ua) ||
+
+  if(ac=="kangyun"){ goo('//www.yjxun.cn/dev/ky/urine_check.html'); return; } 
+
+	if( getUrlParam('mobile')=='ios'){
+
+		//window.location.href = "ios://goY=>"+ac; return; 
+
+    
+
+		if(ac=="manridy") window.location.href = "ios://"+ac;
+
+		else{window.location.href = "ios://goY=>"+ac;}
+
+	}else{
+
+		try{ 
+
+      if(!jstojava.goY(ac)){
+
+        //信息框
+
+//        layer.open({
+
+//          content: '暂未开启,敬请期待'
+
+//          ,btn: '我知道了'
+
+//        });
+
+      } 
+
+        return; }catch(e){ }   
+
+		try{ jstojava2.goY(ac); return; }catch(e){ } 
+
+		if(ac=="bioland_bp_a223"){ goo('//www.yjxun.cn/dev/bioland/bp_a223.html'); return; } //爱奥乐血压计a223 
+
+		if(ac=="g_777g"){ goo('//www.yjxun.cn/dev/bioland/g_777g.html'); return; }//爱奥乐血糖仪
+
+		if(ac=="bioland_tp"){ goo('//www.yjxun.cn/dev/bioland/tp.html'); return; }//爱奥乐温度计
+
+		if(ac=="kangyun"){ goo('//www.yjxun.cn/dev/ky/urine_check.html'); return; }//康云尿检
+
+		if(ac=="electrocardio"){ 
+
+      //goo('http://www.yjxun.cn/dev/heal_force/electrocardio.html'); 
+
+      alert('暂未开启,敬请期待');   
+
+    return; }//心电计
+
+		goo('//www.yjxun.cn/app');
+
+	}
+
+}
+
+$(".bg_box1_top img").click(function(){
+
+  $(".bg_box1").hide();
+
+  });
+
+$(".bg_box1_more .next").click(function(){
+
+  $(".bg_box1").hide();
+
+  });
+
+$(".kown_box .yes").click(function(){
+
+  $(".bg_box2").hide();
+
+  });
+
+function open_msg(){
+
+	layer.open({
+
+		content: '<div><span style="color:#2dacfd">首次使用今日检测</span><div><ul style="color:#CCC;margin-top:10px;"><li>● 使用今日检测需要先连接设备,请选择已经购买的设备进行连接</li></ul></div></div>',
+
+		btn: ['连接设备', '下次再说'],
+
+		yes: function(index) {
+
+			layer.closeAll();
+
+			yindao();
+
+		}
+
+	});
+
+}
+
+function yindao(){
+
+    // Set up tour
+
+    $('body').pagewalkthrough({
+
+        name: 'introduction',
+
+        steps: [{
+
+           wrapper: '#device_list_line',
+
+            popup: {
+
+                content: '#walkthrough',
+
+                type: 'tooltip',
+
+                position: 'bottom'
+
+            }
+
+        }]
+
+    });
+
+    // Show the tour
+
+    $('body').pagewalkthrough('show');
+
+};
+
+function cutstr(str, len) {
+
+	var str_length = 0;
+
+	var str_len = 0;
+
+	str_cut = new String();
+
+	str_len = str.length;
+
+	for (var i = 0; i < str_len; i++) {
+
+		a = str.charAt(i);
+
+		str_length++;
+
+		if (escape(a).length > 4) {
+
+			//中文字符的长度经编码之后大于4  
+
+			str_length++;
+
+		}
+
+		str_cut = str_cut.concat(a);
+
+		if (str_length >= len) {
+
+			str_cut = str_cut.concat("...");
+
+			return str_cut;
+
+		}
+
+	}
+
+	//如果给定字符串小于指定长度，则返回源字符串；  
+
+	if (str_length < len) {
+
+		return str;
+
+	}
+
+}
+
+</script>
+</html>
