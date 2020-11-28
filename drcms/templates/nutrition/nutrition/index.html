@@ -1,0 +1,466 @@
+{template 'dataManage','header_common'}
+<style>
+.ct-aux { overflow: hidden; }
+.query-module { float: left; }
+.ct-statistics { float: left; margin: 45px 0 0 20px; display: none;}
+.ct-statistics ul { overflow: hidden; margin: 0; }
+.ct-statistics ul li { float: left; font-size: 15px; }
+.ct-statistics ul li font { font-family: Georgia, Arial; color: #0E774A; font-size: 30px; margin: 0 5px; }
+.h-state, .o-state { font-style: normal; }
+.cell-locate { width: 300px; }
+.cell-state, .cell-online, .cell-regdate { width: 130px; }
+.btn-locate, .btn-device { cursor: pointer; }
+</style>
+<body>
+{template 'dataManage','header'}
+<div id="middle"> {template 'dataManage','left'}
+  <div class="right" id="mainFrame">
+    <div class="right_cont">
+      <ul class="breadcrumb">
+        当前位置： <a href="/?m=dataManage">首页</a> <span class="divider">/</span> <a href="javascript:;">用户管理</a> <span class="divider">/</span> 用户列表
+      </ul>
+      <div class="title_right"><strong>用户列表</strong></div>
+      <div style="width:auto;margin:auto;">
+        <div class="ct-aux">
+          <div class="query-module">
+            <div class="query-form">
+              <div class="form-item"> <font>关键词</font>
+                <div class="element">
+                  <div class="element-text">
+                    <input type="text" id="k" value="" placeholder="用户名、手机号码或昵称">
+                  </div>
+                </div>
+              </div>
+              <div class="form-item hidden"> <font>用户ID</font>
+                <div class="element">
+                  <div class="element-text">
+                    <input type="text" id="userid" value="">
+                  </div>
+                </div>
+              </div>
+              <div class="form-item hidden"> <font>注册时间</font>
+                <div class="element">
+                  <div class="element-date">
+                    <input type="text" id="st" value="">
+                    <span class="gap">到</span>
+                    <input type="text" id="et" value="">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="query-btn">
+              <div class="btn-item"> <a class="btn-query" id="J_query">查询</a> <a href="/?m=dataManage&c=member&a=doMember" class="btn-add" style="margin-left: 10px;">添加</a> <a class="btn-screen" id="J_screen" data-off="0">显示高级选项</a> </div>
+            </div>
+          </div>
+          <div class="ct-statistics">
+            <ul>
+              <li>总人数 : <font id="memberCount">0</font>人，</li>
+              <li>注册人数 : <font id="registerCount">0</font>人，</li>
+              <li>登录人数 : <font id="activeCount">0</font>人，</li>
+              <li>在线人数 : <font id="onlineCount">0</font>人，</li>
+              <li>设备使用人数 : <font id="deviceCount">0</font>人，</li>
+            </ul>
+          </div>
+        </div>
+        <div class="data-content">
+          <div class="tb-container">
+            <table class="table table-bordered table-hover table-striped" id="rstb">
+              <thead>
+                <tr align="center">
+                  <th><strong class="tb-head cell-check" data-val="check">
+                    <input type="checkbox" id="J_sel_all">
+                    </strong></th>
+                  <th><strong class="tb-head cell-userid" data-val="userid">编号</strong></th>
+                  <th><strong class="tb-head cell-username" data-val="username">用户名</strong></th>
+                  <th><strong class="tb-head cell-nickname" data-val="nickname">昵称</strong></th>
+                  <th><strong class="tb-head cell-remarks" data-val="remarks">备注</strong></th>
+                  <th><strong class="tb-head cell-sex" data-val="sex">性别</strong></th>
+                  <th><strong class="tb-head cell-age" data-val="age">年龄</strong></th>
+                  <th><strong class="tb-head cell-mobile" data-val="mobile">手机号码</strong></th>
+                  <th><strong class="tb-head cell-locate" data-val="locate">地址</strong></th>
+                  <th><strong class="tb-head cell-device" data-val="device">设备</strong></th>
+                  <th><strong class="tb-head cell-service" data-val="service">服务</strong></th>
+                  <th><strong class="tb-head cell-state" data-val="state">上线/离线</strong></th>
+                  <th><strong class="tb-head cell-online" data-val="online">上线时间</strong></th>
+                  <th><strong class="tb-head cell-regdate" data-val="regdate">注册时间</strong></th>
+                  <th><strong class="tb-head cell-operate" data-val="operate">操作</strong></th>
+                </tr>
+              </thead>
+              <tbody id="datas">
+              </tbody>
+            </table>
+          </div>
+          <div class="btn-batch"> <span id="J_sel_all2" data-off="0">全选/取消</span> <a href="javascript:;" class="batch-del" id="J_batch_del">删除</a> <a href="javascript:;" class="batch-userToGroup" id="J_batch_userToGroup">加入分组</a> <a href="javascript:;" class="batch-remark" id="J_batch_remark">备注</a> <a href="javascript:;" class="batch-remark" id="J_batch_message">消息</a></div>
+        </div>
+        <div class="inner-page" id="innerPage"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<script>
+var page = 1;
+var datas = {};
+var queryType = getUrlParam('type')?getUrlParam('type'):'';
+var qst = getUrlParam('st')?getUrlParam('st'):'';
+var qet = getUrlParam('et')?getUrlParam('et'):'';
+$(function(){
+	if (-1 < $.inArray(queryType,new Array('register','a2userReg'))) {
+		$('#st').val(qst);
+		$('#et').val(qet);
+	}
+	getData();
+	var tbWidth = $(window).width() - 245;
+	$(".tb-container").css({width:tbWidth});
+	$("#rstb").css({maxWidth:tbWidth});
+	$("#rstb").colResizable({
+		resizeMode: 'overflow',
+		//minWidth: 15,
+		//headerOnly: true,
+		//dragCursor: '',
+		//liveDrag: true,
+		//draggingClass: 'tb-cell',
+		onResize: function(e,data){
+			//console.log($(e.currentTarget));
+			//$('.tb-cell').width();
+		}
+	});
+	laydate.render({
+	  elem: '#et'
+	  ,format: 'yyyy-MM-dd'
+	  ,done: function(value,date,endDate){
+		  et = value;
+		  //console.log(value); //得到日期生成的值，如：2017-08-18
+		  //console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+		  //console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+	  }
+	});
+	laydate.render({
+	  elem: '#st'
+	  ,format: 'yyyy-MM-dd'
+	  ,done: function(value,date,endDate){
+		  st = value;
+		  //console.log(value); //得到日期生成的值，如：2017-08-18
+		  //console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+		  //console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+	  }
+	});
+	$('#J_query').on('click', function(){
+		page = 1;
+		getData();
+	});
+	$('#J_screen').on('click', function(){
+		var off = parseInt($(this).attr('data-off'));
+		if (off==1) {
+			off = 0;
+			$('.query-form .form-item').addClass('hidden');
+			$('.query-form .form-item').eq(0).removeClass('hidden');
+		} else {
+			off = 1;
+			$('.query-form .form-item').removeClass('hidden');
+		}
+		$(this).attr('data-off',off);
+		$(this).text(off==1?'隐藏高级选项':'显示高级选项');
+	});
+
+	$('#J_sel_all').on('click',function(){
+		setSelCss();
+	});
+	$('#J_sel_all2').on('click',function(){
+		setSelCss();
+	});
+
+	$('#J_batch_del').on('click',function(){
+		var uids = setSel();
+		if (false == uids) return;
+		var index = layer.confirm('确定删除该会员?',{btn:["删除","取消"]},function(){
+			layer.close(index);
+			layer.prompt({title: '操作密码', formType: 1}, function(pass,index){
+				var url = '/?m=dataManage&c=member&a=delMember&ajax=1';
+				var formParam = {"dosubmit":1,"uid":uids,'password':pass};
+				$.post(url,formParam,function(data){
+					layer.msg(data.erro);
+					validateAuth(data.status);
+					if (data.status == 1) {
+						layer.close(index);
+						getData();
+					}
+				},'json');
+
+			});
+
+		});
+	});
+	$('#J_batch_userToGroup').on('click',function(){
+		var ids = setSel();
+		if (false == ids) return;
+		var url = '/?m=dataManage&c=doing&a=setMemberGroup';
+		var param = '{"ids":"'+ids+'"}';
+			url += '&param='+encodeURIComponent(param);
+			url = encodeURI(encodeURI(url));
+		//alert(param);return;
+		layer.open({
+			type: 2,
+			title: '加入分组',
+			shadeClose: true,
+			shade: 0.8,
+			area: ['480px', '620px'],
+			content: url //iframe的url
+		}); 
+	});
+	$('#J_batch_remark').on('click',function(){
+		var uids = setSel();
+		if (false == uids) return;
+		layer.prompt({title: '用户备注', formType: 2}, function(text, index){
+			var url = '/?m=dataManage&c=doing&a=setRemarks&ajax=1';
+			$.ajax({
+				url: url,
+				type: "POST",
+				dataType: "JSON",
+				data: {"dosubmit":1,"uid":uids,"remark":text},
+				success: function(data){
+					layer.close(index);
+					layer.msg(data.erro);
+					getData();
+				}
+			});
+		});
+	});
+	$('#J_batch_message').on('click',function(){
+		var ids = '';
+		var user_type = 1;
+		if (queryType) {
+			switch(queryType){
+				case 'offline3':
+					user_type = 2;
+					break;
+				case 'offline7':
+					user_type = 3;
+					break;
+			}
+		}
+		if (1 == user_type) {
+			ids = setSel();
+			if (false == ids) return;
+		}
+		var url = '/?m=dataManage&c=doing&a=setMessage';
+		var param = '{"ids":"'+ids+'","user_type":'+user_type+'}';
+		url += '&param='+encodeURIComponent(param);
+		url = encodeURI(encodeURI(url));
+		layer.open({
+			type: 2,
+			title: '主动关怀',
+			shadeClose: true,
+			shade: 0.8,
+			area: ['568px', '480px'],
+			content: url //iframe的url
+		});
+	});
+});
+function setSelCss(){
+	var off = parseInt($('#J_sel_all2').attr('data-off'));
+	var _item = $('input[name="ids[]"]');
+	_item.each(function(i) {
+		$(this).prop('checked',off==0?true:false);
+    });
+	$('#J_sel_all').prop('checked',off==0?true:false);
+	$('#J_sel_all2').attr('data-off',off==0?1:0);
+}
+function setSel(){
+	var selected = $('input[name="ids[]"]:checked');
+	if (0 >= selected.length) {
+		layer.msg('请选择');
+		return false;
+	}
+	var str = '';
+	selected.each(function(i) {
+		str += $(this).val()+',';
+	});
+	str = str.substring(0,str.length - 1);
+	return str;
+}
+function getData(){
+	var url = '?m=dataManage&c=member&a=memberList2&ajax=1';
+	if (page > 1) url += '&page='+page;
+	var k = $.trim($('#k').val());
+	var userid = parseInt($.trim($('#userid').val()));
+	var st = $.trim($('#st').val());
+	var et = $.trim($('#et').val());
+	if (k) url += '&k='+k;
+	if (0<userid) url += '&userid='+userid;
+	if (st) url += '&st='+st;
+	if (et) url += '&et='+et;
+	if (queryType) {
+		url += '&queryType='+queryType;
+		if (-1==$.inArray(queryType,new Array('register','a2userReg'))) {
+			if (qst) url += '&st2='+qst;
+			if (qet) url += '&et2='+qet;
+		}
+	}
+	var index = layer.load(2,{time:3000});
+	$.ajax({
+		url: url,
+		type: "GET",
+		dataType: "JSON",
+		success: function(data){
+			layer.close(index);
+			validateAuth(data.status);
+			var html = '';
+			var pageCount = 0;
+			if (1==data.status) {
+				datas = data.data.datas;
+				var locate = data.data.locate;
+				var device = data.data.device;
+				var operateState = data.data.operateState;
+				pageCount = data.data.pageCount;
+				for(var i in datas){
+					var info = datas[i];
+					var _locate = {};
+					if (!$.isEmptyObject(locate)&&locate[info.userid]) {
+						_locate = locate[info.userid];
+					} else {
+						_locate = {"address":info.address?info.address:'未开启',"lng":0,"lat":0,"time":""};
+					}
+					var deviceStr = '';
+					if (-1 != $.inArray(info.userid,device)) {
+						info.is_device = 1;
+						deviceStr = '已绑定';
+					} else {
+						deviceStr = '无设备';
+					}
+					var serviceStr = '';
+					var serviceState = 0;
+					var _operateState = {};
+					if (!$.isEmptyObject(operateState)&&operateState[info.userid]) {
+						_operateState = operateState[info.userid];
+					} else {
+						_operateState = {"state":2,"stateStr":"未上线","last_time":""};
+					}
+					html += '<tr align="center"><td><div class="tb-cell cell-check"><input type="checkbox" name="ids[]" value="'+info.userid+'"></div></td><td><div class="tb-cell cell-userid">'+info.userid+'</div></td><td><div class="tb-cell cell-username"><a href="/?m=dataManage&c=member&a=memberDetail&uid='+info.userid+'" target="_bank">'+info.username+'</a></div></td><td><div class="tb-cell cell-nickname">'+info.nickname+'</div></td><td><div class="tb-cell cell-remarks">'+(info.remarks?info.remarks:'')+'</div></td><td><div class="tb-cell cell-sex">'+(info.sexStr?info.sexStr:'')+'</div></td><td><div class="tb-cell cell-age">'+(info.age?info.age:'')+'</div></td><td><div class="tb-cell cell-mobile">'+info.mobile+'</div></td><td><div class="tb-cell cell-locate btn-locate" data-lng="'+_locate.lng+'" data-lat="'+_locate.lat+'" data-time="'+_locate.time+'">'+_locate.address+'</div></td><td><div class="tb-cell cell-device"><i class="h-state state-'+info.is_device+' btn-device" data-state="'+info.is_device+'">'+deviceStr+'</i></div></td><td><div class="tb-cell cell-service"><i class="h-state state-'+serviceState+' btn-service" data-state="'+serviceState+'">'+serviceStr+'</i></div></td><td><div class="tb-cell cell-state"><i class="o-state state-'+_operateState.state+'">'+_operateState.stateStr+'</i></div></td><td><div class="tb-cell cell-online">'+_operateState.last_time+'</div></td><td><div class="tb-cell cell-regdate">'+info.regdate+'</div></td><td><div class="tb-cell cell-operate"><a href="/?m=dataManage&c=member&a=doMember&uid='+info.userid+'" class="operate-btn btn-edit">修改</a>  <a href="javascript:;" class="operate-btn btn-pass">重置密码</a></div></td></tr>';
+				}
+			} else {
+				html += '<tr align="center"><td colspan="'+($('.tb-head').length)+'">暂无数据</td></tr>';
+			}
+			$('#datas').html(html);
+			initWidth();
+			initOperate();
+			if (page == 1) initPage(pageCount);
+		}
+	});
+}
+function initWidth(){
+	var _item = $('.tb-head');
+	_item.each(function(i) {
+        var w = $(this).width();
+		var v = $(this).attr('data-val');
+		$('.cell-'+v).width(w);
+    });
+}
+function initOperate(){
+	$('.btn-device').unbind('click');
+	$('.btn-service').unbind('click');
+	var _item = $('.btn-device');
+	_item.each(function(i) {
+        $(_item[i]).on('click',function(){
+			var state = parseInt($(this).attr('data-state'));
+			if (0==state) return false;
+			var uid = parseInt(datas[i].userid);
+			var url = '/?m=dataManage&c=datas&a=getMemberHardware&uid='+uid;
+			layer.open({
+				type: 2,
+				title: '设备列表',
+				shadeClose: true,
+				shade: 0.8,
+				area: ['820px', '620px'],
+				content: url //iframe的url
+			});
+		});
+    });
+	var _item2 = $('.btn-service');
+	_item2.each(function(i) {
+        $(_item2[i]).on('click',function(){
+			var state = parseInt($(this).attr('data-state'));
+			if (0==state) return false;
+			var uid = parseInt(datas[i].userid);
+			var url = '/?m=dataManage&c=datas&a=getMemberService&uid='+uid;
+			layer.open({
+				type: 2,
+				title: '医生服务',
+				shadeClose: true,
+				shade: 0.8,
+				area: ['573px', '620px'],
+				content: url //iframe的url
+			});
+		});
+    });
+	var _item3 = $('.btn-pass');
+	_item3.each(function(i) {
+        $(_item3[i]).on('click',function(){
+			var uid = parseInt(datas[i].userid);
+			var url = '/?m=dataManage&c=member&a=doMemberPass&ajax=1';
+			$.ajax({
+				url: url,
+				type: "POST",
+				dataType: "JSON",
+				data: {dosubmit:1,id:uid},
+				success: function(data){
+					layer.msg(data.erro);
+					validateAuth(data.status);
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown){
+					layer.msg(errorThrown);
+				}
+			});
+		});
+    });
+	var _item4 = $('.btn-locate');
+	_item4.each(function(i) {
+        $(_item4[i]).on('click',function(){
+			var address = $(this).text();
+			var lng = $(this).attr('data-lng');
+			var lat = $(this).attr('data-lat');
+			var time = $(this).attr('data-time');
+			if (0==lng || 0==lat) return;
+			var url = '/?m=dataManage&c=doing&a=setLocation';
+			var param = '{"address":"'+address+'","lng":'+lng+',"lat":'+lat+',"time":"'+time+'"}';
+			url += '&param='+encodeURIComponent(param);
+			url = encodeURI(encodeURI(url));
+			//alert(param);return;
+			var lw = $(window).width()*0.9 + 'px';
+			var lh = $(window).height()*0.9 + 'px';
+			layer.open({
+				type: 2,
+				title: '获取地址',
+				shadeClose: true,
+				shade: 0.8,
+				area: [lw, lh],
+				content: url //iframe的url
+			});
+		});
+    });
+}
+function initPage(pageCount) {
+	layui.use('laypage', function(){
+		var laypage = layui.laypage;
+		laypage.render({
+			elem: 'innerPage' //注意，这里的 test1 是 ID，不用加 # 号
+			,count: pageCount //数据总数，从服务端得到
+			,limit: 15
+			,layout: ['prev', 'page','next', 'skip','count']//['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+			,prev: '<i class="icon-arrow arrow-l"></i>'
+			,next: '<i class="icon-arrow arrow-r"></i>'
+			,hash: 'page'//页面载入时就定位到指定页
+			,theme: '#234686'
+			,jump: function(obj, first){
+				//首次不执行
+				if (!first) {
+					//console.log(obj);
+					page = parseInt(obj.curr);
+					getData();
+				}
+			}
+		});
+	});
+}
+</script>
+</html>

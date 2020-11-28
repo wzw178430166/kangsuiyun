@@ -1,208 +1,253 @@
 <!--#include file="header_common.html"-->
 <style>
-  .heigh45 {
-    height: 45px;
+    body {
+    background: #f5f5f5;
 }
-  #heads {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 999;
-}
-  .navbtn {
-      display: block;
-      width: 8vw;
-      height: 8vw;
-      border: none;  
-      position: relative;   
-      background: none;
-      outline: none;
-      background: url(/m2/imgs/caidangs.png) center center no-repeat;
-      background-size: 7vw 6vw;  
+    .heigh45 {
+      height: 35px;
+  }
+    #heads {
+      position: fixed;
+      top: 0;
+      width: 100%;
       z-index: 999;
   }
-  
-  .center.wrap {
-      display: flex;
-      align-items: center;
-      padding: 2vw;
-      justify-content: space-between;
-      background: #fff;
-      box-shadow: 0 0px 8px #bdbbbb;
-  }
-  
-  .center.wrap h1 img {
-      width: 35vw;
-  }
-  
-  .navbox {
-      left: 0;
-      display: none;
-      position: fixed;
-      z-index: 9999;
-      top: 0;
-      background: rgba(0, 0, 0, 0.8);
-      width: 100%;
-      height: 100%;
-  }
-  
-  .close {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      width: 50vw;
-      height: 10vw;
-      background: #ff6c3a;
-      padding-left: 5vw;
-      font-family: 宋体;
-      color: #fff;
-      font-size: 24px;
-  }
-  
-  .close:active {
-      opacity: 0.9;
-  }
-  
-  .navlist {
-      width: 50vw;
-      height: 100vh;
-      background: #fff;
-      padding-top: 5vw;
-  }
-  
-  .yd_fd {
-      background: #2d2d2d;
-      height: 16vw;
-      width: 100%;
-      position: fixed;
-      z-index: 99997;
-      bottom: 0;
-  }
-  
-  .yd_fd .fd_l {
-      display: block;
-      float: left;
-      background: #f85415;
-      height: 16vw;
-      color: #fff;
-      width: 28vw;
-      line-height: 16vw;
-      text-align: center;
-      font-size: 15px;
-  }
-  
-  .yd_fd .fd_r {
-      display: block;
-      float: left;
-      height: 16vw;
-      color: #fff;
-      width: 66vw;
-      line-height: 5.4vw;
-      text-align: left;
-      font-size: 14px;
-      margin: 2vw 0 0 6vw;
-  }
-  
-  .yd_fd .fd_r span {
-      color: #d3450e;
-  }
-  
-  </style>
-<body  class="con_w">
-  <div class="heigh45"></div>
-<!--#include file="header1.html"-->
-<div class="innerbanner">
-  <dl>
-  </dl>
-</div>
-<div class="b30"></div>
-<div class="b30"></div>
-<div class="b30"></div>
-
-
-
-<div class="cont_1 center" aos="fade-up">
- 
-  <div class="con_lift jj_con_js">
-      <dl class="sy10">
-       <img src="imgs/lx_logo.png" width="100%">
-        <dd class="con_title2">
-         <span class="">广州唐剑科技有限公司</span>
-         <p class=""></p>
-          <div class="cl01"></div>
-        </dd>
-        <dd class="lan_1">
-        			广州唐剑科技有限公司，是一家智能健康解决方案提供商，专注开发打造智慧健康大健康系统。拥有超强的接口开发及对接能力，可针对不同设备进行开发。让大健康产业的管理变得更加智能，提供更加全面及多元化的服务。唐剑科技利用技术优势和产品开发经验，结合物联网、大数据、云计算等技术，高效整合大健康服务资源，建设综合型的智慧健康管理服务平台。
-        	
-        </dd>
-        
-        
-      </dl>
-      <div class="b30"></div>
-<div class="b30"></div>
-<div class="b30"></div>
-    </div>
-     <div class="con_lift jj_con_js">
-      <dl class="sy10">
-        <dd class="con_title2">
-         <span class="">联系方式</span>
-         <p class=""></p>
-          <div class="cl01"></div>
-        </dd>
-        <dd class="lan_1">
-公司地址：广东省广州市越秀区东风西路161号301室<br>
-联系电话：400-1012-810<br>
-联系邮箱:464981941@qq.com
-        </dd>
-        
-        
-      </dl>
-      
-      <img src="imgs/con_lx_img3.jpg" width="100%">
-      <div class="b30"></div>
-<div class="b30"></div>
-<div class="b30"></div>
-    </div>
+    .navbtn {
+        display: block;
+        width: 8vw;
+        height: 8vw;
+        border: none;  
+        position: relative;   
+        background: none;
+        outline: none;
+        background: url(/m2/imgs/caidangs.png) center center no-repeat;
+        background-size: 7vw 6vw;  
+        z-index: 999;
+    }
     
+    .center.wrap {
+        display: flex;
+        align-items: center;
+        padding: 2vw;
+        justify-content: space-between;
+        background: #fff;
+        box-shadow: 0 0px 8px #bdbbbb;
+    }
     
-  
-  
- 
+    .center.wrap h1 img {
+        width: 35vw;
+    }
+    
+    .navbox {
+        left: 0;
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        background: rgba(0, 0, 0, 0.8);
+        width: 100%;
+        height: 100%;
+    }
+    
+    .close {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 50vw;
+        height: 10vw;
+        background: #ff6c3a;
+        padding-left: 5vw;
+        font-family: 宋体;
+        color: #fff;
+        font-size: 24px;
+    }
+    
+    .close:active {
+        opacity: 0.9;
+    }
+    
+    .navlist {
+        width: 50vw;
+        height: 100vh;
+        background: #fff;
+        padding-top: 5vw;
+    }
+    
+    .yd_fd {
+        background: #2d2d2d;
+        height: 16vw;
+        width: 100%;
+        position: fixed;
+        z-index: 99997;
+        bottom: 0;
+    }
+    
+    .yd_fd .fd_l {
+        display: block;
+        float: left;
+        background: #f85415;
+        height: 16vw;
+        color: #fff;
+        width: 28vw;
+        line-height: 16vw;
+        text-align: center;
+        font-size: 15px;
+    }
+    
+    .yd_fd .fd_r {
+        display: block;
+        float: left;
+        height: 16vw;
+        color: #fff;
+        width: 66vw;
+        line-height: 5.4vw;
+        text-align: left;
+        font-size: 14px;
+        margin: 2vw 0 0 6vw;
+    }
+    
+    .yd_fd .fd_r span {
+        color: #d3450e;
+    }
+    .innerbanner {
+    background:url(/m2/images/weowloan.png) no-repeat 0rem 0rem;
+    background-size: cover;
+    position: relative;
+    height: 48vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.courint_box{width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    top: -1rem;
+    background: red;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background:#ffffff url(/html/websites/images/logo11.png) no-repeat center center;
+    background-size: 65%;
+}
+.con_lift span{font-size: 17px;}
+.jj_con_js .lan_1 {
+    text-indent: 2em;padding:0 1rem;
+}
+.cont_1{width: 93%;
+    margin: 0 auto;
+    background: #ffffff;
+    border-top-left-radius: .3rem;
+    border-top-right-radius: .3rem;
+    margin-top: -1.5rem;
+    box-shadow:1px 8px 8px 0px #e2dede;
+}
+.con_lift {
+    margin-bottom: .5rem;
+}
+.con_title2 p {
+    margin: 1vw auto 1vw;
+}
+.con_lift .con_title2 {
+    color: #363636;
+    margin-bottom: 15px;
+}
+    </style>
+  <body>
+    <div class="heigh45"></div>
+  <!--#include file="header1.html"-->
+  <div class="innerbanner">
+    <dl>
+    </dl>
+  </div>
+  <div class="cont_1 center" aos="fade-up">
+    <div class="courint_box"></div>
+    <div class="con_lift jj_con_js">
+        <dl class="sy10">
+         <!-- <img src="imgs/lx_logo.png" width="100%"> -->
+         <div style="height: 3.5rem;"></div>
+          <dd class="con_title2">
+           <span class="">广州唐剑科技有限公司</span>
+           <p class=""></p>
+            <div class="cl01"></div>
+          </dd>
+          <dd class="lan_1">
+                  公司拥有专业的物联网移动医疗和互联网+医院移动医疗整体解决方案。融合互联网+、物联网、AI人工智能、云计算以及大数据应用等技术，提供基于行业特性的智慧健康管理解决方案。并整合医疗资源，与合作伙伴共同拓展医疗大健康产业。
+                      <!-- 广州唐剑科技有限公司，是一家智能健康解决方案提供商，专注开发打造智慧健康大健康系统。拥有超强的接口开发及对接能力，可针对不同设备进行开发。让大健康产业的管理变得更加智能，提供更加全面及多元化的服务。唐剑科技利用技术优势和产品开发经验，结合物联网、大数据、云计算等技术，高效整合大健康服务资源，建设综合型的智慧健康管理服务平台。 -->
+              
+          </dd>
+          
+          
+        </dl>
+        <div class="b30"></div>
   <div class="b30"></div>
+  <div class="b30"></div>
+      </div>
+       <div class="con_lift jj_con_js">
+        <dl class="sy10">
+          <dd class="con_title2">
+           <span class="">联系方式</span>
+           <p class=""></p>
+            <div class="cl01"></div>
+          </dd>
+          <dd class="lan_1" style="text-align: center;text-indent: 0;">
+ 广东省广州市越秀区东风西路161号301室<br>
+  联系电话：400-1012-810
   
+          </dd>
+          
+          
+        </dl>
+        
+        <div style="width: 40%;margin: 0 auto;text-align: center;margin-top: .5rem;">
+            <img src="/html/websites/images/ksycode.jpg" width="100%">
+           
+        </div>
+        <p style="font-size: .85rem;text-align: center;">扫描二维码关注公众号</p> 
+        <div class="b30"></div>
+  <div class="b30"></div>
+  <div class="b30"></div>
+      </div>
+      
+      
+    
+    
+   
+    <div class="b30"></div>
+    
+    
+    
+  </div>
+  <div class="b30"></div>
+  <!--#include file="mfooter.html"-->
+  <span id=footer_box v-html="url1"></span>
+  <script>
+             getfooter();
+              function getfooter(){ 
+                    $('#footer_box').load('/m2/mfooters.html',function(){}); 
+              }
+          AOS.init({
+              easing: 'ease-out-back',
+              duration: 1000
+          });
   
+          $('.tabnav a').hover(function () {
+              $(this).addClass('hover').siblings('a').removeClass('hover');
+              var id = $(this).index();
+              $('.case').removeClass('hover');
+              $('.case').eq(id).addClass('hover');
+          })
   
-</div>
-<div class="b30"></div>
-<!--#include file="mfooter.html"-->
-<span id=footer_box v-html="url1"></span>
-<script>
-           getfooter();
-            function getfooter(){ 
-	              $('#footer_box').load('/m2/mfooters.html',function(){}); 
-            }
-        AOS.init({
-            easing: 'ease-out-back',
-            duration: 1000
-        });
+          $('.navbtn').click(function () {
+              if ($('.navbox').is(":visible")) {
+                  $('.navbox').hide();
+              } else {
+                  $('.navbox').show();
+              }
+          })
+          $('.close').click(function () {
+              $('.navbox').hide();
+          })
+      </script>
+  </body>
+  </html>
 
-        $('.tabnav a').hover(function () {
-            $(this).addClass('hover').siblings('a').removeClass('hover');
-            var id = $(this).index();
-            $('.case').removeClass('hover');
-            $('.case').eq(id).addClass('hover');
-        })
-
-        $('.navbtn').click(function () {
-            if ($('.navbox').is(":visible")) {
-                $('.navbox').hide();
-            } else {
-                $('.navbox').show();
-            }
-        })
-        $('.close').click(function () {
-            $('.navbox').hide();
-        })
-    </script>
-</body>
-</html>

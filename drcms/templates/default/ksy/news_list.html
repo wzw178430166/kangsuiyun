@@ -110,218 +110,37 @@ header .wrap {
 }
 .mtdsf{height: 8rem!important;}
 
-
-#menu {
-    padding-top: 1rem;
-    background: #fff;
-}
-#menu ul {
-    /* justify-content: space-around; */
-    display: flex;padding-left: 1rem;
-}
-#menu li {
-    height: 2rem;
-    background: #f3f4f6;
-    padding: 0 .8rem;
-    border-radius: 500px;margin-right: 1rem;
-    line-height: 2rem;
-    text-align: center;
-    overflow: hidden;
-    font-size: .89rem;
-    color: #9E9E9E;
-    position: relative;
-}
-#menu li .pstyle {
-    width: 75%;
-    height: 2px;
-    background: #ff8625;
-    position: absolute;
-    bottom: 0;
-    left:50%;
-    transform: translateX(-50%);
-}
-#menu li.on {
-    color: #ffffff;
-    background: #FF7A6B;
-    background-image: linear-gradient(to right, #FF7A6B , #FF8C6F);
-}
-.clear {
-    clear: both;
-}
-#menu li a{color: #000;font-size: 1.02rem;text-decoration: none;}
-
-.m_dbox {
-    width: 100%;
-    display: flex;
-    height: 3.5rem;
-    line-height: 4rem;
-    padding: 0 1rem;
-    justify-content: space-between;
-}
-
-.m_dbox .mstio{
-	color: #919899;font-weight: 500;font-size: .91rem;
-}
-.m_dbox .mstio .uing{display: inline-block;width: .45rem;margin: 0 .35rem;}
-.m_dbox span:nth-child(1) {
-    font-size: 1.05rem;
-    color: #111111;
-    font-weight: 600;
-}
-
-.listitem1 {
-    display: flex;
-}
-.listitem {
-    background: #ffffff;
-    margin-bottom: .5rem;
-    position: relative;
-    overflow: hidden;
-    width: 100vw;
-}
-.listitem1 .artic {
-    flex: 3;
-    padding: 1rem 1rem 0.9rem 0rem;
-    position: relative;
-    width: 100vw;
-}
-.listitem .artic {
-    width: 92%;
-    margin: 0 auto;
-    text-align: justify;
-    padding-top: .7rem;
-}
-.title {
-   color: #343434;
-    font-size: .92rem; padding: 0 0; 
-    text-overflow: -o-ellipsis-lastline;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-.piece {
-    color: #656565;
-    font-size: 0.9rem;
-    position: absolute;
-    bottom: .66rem;
-    width: 90%;text-align: right;
-}
-.pide_img{    width: 1rem;
-    display: inline-block;}
-.pide_img img{width:100%;}
-.listitem1 .img {
-    flex: 2;
-    padding: 1rem;
-}
-.listitem1 .zoomImage {
-    height: 5.66rem;
-    margin: 0 auto;border-radius: .2rem;
-}
-.zoomImage {
-    background-size: cover;
-    background-position: center center;
-}
- .citem_div2{color: #666;
-    font-size: .8rem;
-    font-weight: 500;
-    margin-top: .2rem;
-    text-overflow: -o-ellipsis-lastline;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-    body {
-    background: #ffffff;
-}
-
-
     </style>
     <div class="heigh45"></div>
       <div id="header" >{template 'content','headerh5_1'}</div>
-  
+      <div class="innerbanner">
+        <dl>
+        </dl>
+      </div>
       <div class="b30"></div>
      
-	<div id="menu">
-        <ul>
-          <li onclick="goo_t('/index.php?m=content&c=index&a=lists&catid=58')" class="on"> 
-            全部
-          </li>
-          <li onclick="goo_t('/index.php?m=content&c=index&a=lists&catid=101')">
-           行业动态
-          </li>
-          <li onclick="goo_t('/index.php?m=content&c=index&a=lists&catid=102')">
-            医疗政策 
-          </li>
-      
-          <div class="clear"></div>
-        </ul>
-        <div class="clear"></div>
-      </div>   
-      <div class="m_dbox">    
-        <span>新闻中心</span>           
-        <span class="mstio"  onclick="goo('#')">更多<i class="uing"><img src="/h5page/pet_shop/images/fanhuis.png" style="width: 100%;"></i></span>
-       </div>
-     
-       <!-- <div class="contents" id="contenteds">
-        <div class="listitem listitem1">
-       <div class="img" onclick="goo('/news2/detail.html?target=top&amp;id=2712&amp;catid=96')">
-           <div class="zoomImage" style="background-image:url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601205564843&di=33542f4214534fea3d753c22b1f7f447&imgtype=0&src=http%3A%2F%2F08imgmini.eastday.com%2Fmobile%2F20190909%2F20190909223721_02a44c9c75aab1a788db1d1ace8b5892_2.jpeg'); "></div>
-         </div>
-         <div class="artic">
-           <div class="title" onclick="goo('/news2/detail.html?target=top&amp;id=2712&amp;catid=96')">
-             松狮犬皮肤病什么症状 嘴唇周围皮肤发红脱毛
-           </div>
-           <div class="citem_div2">松狮犬是头毛很长的一种宠物犬，打理....</div>
-         </div>
-       </div>
-            <div class="listitem listitem1">
-       <div class="img" onclick="goo('/news2/detail.html?target=top&amp;id=2712&amp;catid=96')">
-           <div class="zoomImage" style="background-image:url('https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3400294860,668531057&fm=26&gp=0.jpg'); "></div>
-         </div>
-         <div class="artic">
-           <div class="title" onclick="goo('/news2/detail.html?target=top&amp;id=2712&amp;catid=96')">
-           毛孩嘴巴怪怪的？可能食道卡异物要当心！
-           </div>   
-           <div class="citem_div2">毛孩吃饭时，尖锐的食物、骨头容易卡....</div>
-           <div class="piece">
-             <span class="pide_img">
-             <img src="images/edfdf.png">
-             </span>
-             <span>
-              375
-             </span>
-           </div>
-         </div>
-       </div>
-        </div> -->
+<!--   
+    <a href="/index.php?m=content&c=index&a=lists&catid=101">
+        
+    </a> -->
 
-      <?php
-        $where = '';
-        if(58 == $catid) {
-            $where = 'catid in (101,102)';
-        }
-      ?>
+      
       <div class="newsbody" aos="fade-up" aos-duration="3000" id="ketangs">
-        {pc:content action="lists" catid="101" where="$where" num="25" order="id DESC" num="8" page="$page"}
+        {pc:content action="lists" catid="$catid" num="25" order="id DESC" num="8" page="$page"}
         {loop $data $r}
-       
-        <div class="listitem listitem1">
-            <div class="img" onclick="goo('/news2/detail.html?target=top&amp;id=2712&amp;catid=96')">
-                <div class="zoomImage" style="background-image:url('<?php echo $r['thumb']?:'/m2/images/xinsppqsaui.png';?>');"></div>
-              </div>
-              <div class="artic">
-                <div class="title" onclick="goo_t('/?m=content&c=index&a=show&catid=<?php echo $r['catid'];?>&id=<?php echo $r['id'];?>')">
-                    {$r['title']}
-                </div>
-                <div class="citem_div2"><?php echo $r['description'];?></div>
-              </div>
-            </div>     
+                  <div class="newslibox">
+                      <dl>
+                          <dt>10-04</dt>
+                          <dd>2020</dd>
+                      </dl>
+                      <ul>
+                          <li class="tt"><a class="pc" href="/?m=content&c=index&a=show&catid=<?php echo $r['catid'];?>&id=<?php echo $r['id'];?>"  id="title">{$r['title']}</a></li>
+                          <li class="parg">
+                            <p><?php echo $r['description'];?></p>
+                          </li>
+                          
+                      </ul>
+                  </div>
                   {/loop}
             
                   {/pc}

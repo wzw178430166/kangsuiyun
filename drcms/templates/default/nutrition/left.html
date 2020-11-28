@@ -1,0 +1,66 @@
+<div class="left">
+    <div id="menu2" class="sdmenu">
+    </div>
+  </div>
+  <div class="Switch" id="J_switch"></div>
+<script>
+var menu2;
+var menuid = getQueryVariable('menuid')?parseInt(getQueryVariable('menuid')):0;
+$(function(){
+	getMenu();
+	$('#J_switch').on('click',function(){
+		$(".left").toggle();
+	});
+});
+function getMenu(){
+	var url = '/?m=nutrition&c=index&a=getMenu&ajax=1&menuid='+menuid;
+	$.get(url,function(data){
+		if (data.status==1) {
+			var datas = data.data.datas;
+			var menu = data.data.menu;
+			var icons = data.data.icons;       
+			var html = html2 = '';
+			for(var i in datas){
+				var info = datas[i];
+				var _menu = menu[info];
+				if (info == menuid) {
+					$('.module-menu').text(_menu.name);
+				}
+				var remind2 = '<i class="icon-remind remind-'+info+'"></i>';
+				
+				//html += '<li><a href="/?m=dataManage&a=category&menuid='+info.id+'"><img src="/statics/dataManage/images/menu_'+info.c+'.png"><p>'+info.name+'</p></a></li>';
+				//if (0<menuid&&menuid!=info.id) continue;
+				html2 += '<div class="collapsed"><span>'+_menu.name+remind2+'</span>';
+				for(var ii in _menu.items){
+					var info2 = _menu.items[ii];
+					var remind = '';
+					if (373 == info2.id) {
+						remind = '<i class="remind-count" id="J_health_warning_remind">0</i>';
+						
+					}
+					html2 += '<a href="/?m='+info2.m+'&c='+info2.c+'&a='+info2.a+(info2.param?info2.param:'')+'&menuid='+_menu.id+'">'+info2.name+remind+'</a>';
+				}
+				html2 += '</div>';
+			}
+			//$('#menu').html(html);
+			$('#menu2').html(html2);
+			initMenu();
+			checkAbnormal();
+		}
+	},'json');
+}
+function initMenu(){
+	menu2 = new SDMenu("menu2");
+	menu2.init();
+	//$('#menu2 div').eq(0).addClass('collapsed');
+}
+function getQueryVariable(variable){
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+}
+</script>

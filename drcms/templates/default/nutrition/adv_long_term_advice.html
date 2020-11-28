@@ -1,0 +1,154 @@
+{template $this->template,'header_common',$this->style}
+<script type="text/javascript" src="/statics/admin/common/js/region.js"></script>
+<style>
+#menu {
+    padding-top: 1rem;
+    background: #fff;
+}
+#menu ul {
+    display: flex;margin: 0;
+}
+#menu li {
+    width: 6rem;cursor: pointer;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    background-color: #F1F1F1;
+    overflow: hidden;
+    font-size: .8rem;
+    color: #111111;
+}
+#menu li .pstyle {
+    width: 70%;
+    height: 2px;
+    background: #339EFC;
+    margin: .5rem auto 0 auto;
+}
+#menu li.on {
+    color: #2196F3;
+    background: #F4F5FA;
+}
+.clear {
+    clear: both;
+}
+.data-content {
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+}
+.query-btn .btn-item {
+    margin-left: 0px;
+    height: auto;
+    min-height: 26px;
+}
+</style>
+<body>
+{template $this->template,'header',$this->style}
+<div id="middle"> {template $this->template,'left',$this->style}
+  <div class="right" id="mainFrame">
+    <div class="right_cont">
+      <ul class="breadcrumb">
+        当前位置： <a href="/?m=dataManage">首页</a> <span class="divider">/</span> <a href="javascript:;">长期医嘱单</a> 
+      </ul>
+      <div class="title_right">
+        <strong>长期医嘱单</strong> 
+    </div>
+      <div style="width:auto;margin:auto;">   
+        <div class="query-btn">
+            <div class="btn-item"> <a class="btn-query" >刷新</a> <a href="javascript:;" class="btn-add" style="margin-left: 10px;">重整医嘱</a> <a href="javascript:;" class="btn-add" style="margin-left: 10px;">还原医嘱</a><a href="javascript:;" class="btn-add" style="margin-left: 10px;">全部打印</a><a href="javascript:;" class="btn-add" style="margin-left: 10px;">续打</a></div>
+          </div> 
+        
+        <div class="data-content">
+          <div class="tb-container">
+            <table class="table table-bordered table-hover table-striped" id="rstb">
+              <thead><tr align="center">
+                  <th><strong class="tb-head cell-check" data-val="check">
+                    <input type="checkbox" id="J_sel_all">
+                    </strong></th>
+                  <th><strong class="tb-head cell-name" data-val="name">医嘱内容</strong></th>
+                  <th><strong class="tb-head cell-sex" data-val="sex">剂量</strong></th>
+                  <th><strong class="tb-head cell-age" data-val="age">单位</strong></th>
+                  <th><strong class="tb-head cell-telephone" data-val="telephone">途径</strong></th>
+                  <th><strong class="tb-head cell-pici" data-val="pici">频次</strong></th>
+                  <th><strong class="tb-head cell-starttime" data-val="starttime">医嘱开始时间</strong></th>
+                  <th><strong class="tb-head cell-endtime" data-val="endtime">医嘱结束时间</strong></th>
+                  <th><strong class="tb-head cell-state" data-val="state">医嘱状态</strong></th>
+                  <!-- <th><strong class="tb-head cell-operate" data-val="operate">操作</strong></th> -->
+                </tr></thead>
+              <tbody id="datas">
+              </tbody>
+            </table>
+          </div>
+          <div class="btn-batch"> <span id="J_sel_all2" data-off="0">全选/取消</span><a href="javascript:;" class="batch-del" id="J_batch_del">删除</a></div>
+        </div>
+        <div class="inner-page" id="innerPage"></div>
+        
+        
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<script>
+  var page = 1;
+var datas = {};
+$(function(){
+  var $list = $("#menu").find("li");
+	var $div = $("#tab-con").children("div");
+	$list.click(function() {
+		var index = $(this).index();
+		$list.eq(index).addClass("on").siblings().removeClass("on");
+		$div.eq(index).addClass("on").siblings().removeClass("on");
+		$(this).find("p").addClass("pstyle").parent().siblings().find('p').removeClass("pstyle");;
+	})
+  getTable();
+  var tbWidth = $(window).width() - 245;
+  $("#rstb").css({maxWidth:tbWidth});    
+	$("#rstb").colResizable({  
+		resizeMode: 'overflow',   
+		//minWidth: 15,
+		//headerOnly: true,
+		//dragCursor: '',
+		//liveDrag: true,
+		//draggingClass: 'tb-cell',
+		onResize: function(e,data){
+			//console.log($(e.currentTarget));
+			//$('.tb-cell').width();
+		}
+	});
+    laydate.render({
+	  elem: '#st'
+	  ,format: 'yyyy-MM-dd'
+	  ,done: function(value,date,endDate){
+		  st = value;
+		  //console.log(value); //得到日期生成的值，如：2017-08-18
+		  //console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+		  //console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+	  }
+	});
+	$('#J_close').on('click',function(){
+		window.history.back();
+	});
+});
+
+function getTable(){
+	var url = '/?m=dataManage&c=hospital&a=doctorList&ajax=1';
+	if (page > 1) url += '&page='+page;
+	var index = layer.load(2,{time:3000});
+	$.get(url,function(data){
+		layer.close(index);
+		var html = '';
+		var pageCount = 0;
+		if (data.status==0) {
+		} else {
+			html = '<tr align="center"><td colspan="'+($('.tb-head').length)+'">暂无数据</td></tr>';
+		}
+		$('#datas').html(html);
+		//initAction();
+		//if (page == 1) initPage(pageCount);
+	},'json');
+}
+
+
+</script>
+</html>

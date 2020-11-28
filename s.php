@@ -104,7 +104,7 @@ switch ( $_REQUEST[ 'ac' ] ) {
                 break;
                    //定制服务
               case 'customized': 
-                header( "Location:https://www.519ksy.com/m2/hezuo.html" );
+                header( "Location:https://www.519ksy.com/m2/service2.html" );
                 break;
                    //申请体验
               case 'experience': 
@@ -112,7 +112,7 @@ switch ( $_REQUEST[ 'ac' ] ) {
                 break;
                    //代理加盟
               case 'join': 
-                header( "Location:https://www.519ksy.com/m2/hezuo.html" );
+                header( "Location:https://www.519ksy.com/m2/joinus.html" );
                 break;
                    //客服中心
               case 'customerss': 

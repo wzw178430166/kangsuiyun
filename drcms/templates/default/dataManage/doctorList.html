@@ -1,0 +1,337 @@
+{template 'dataManage','header_common'}
+<body>
+{template 'dataManage','header'}
+<style>
+.cell-sex, .cell-age, .cell-status, .cell-state { width: 40px;}
+/**/
+.more-cover { position: fixed; left: 0; top: 0; width: 100%; height: 100%; display: none; }
+.more-cover .more-bg { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,.5); }
+.more-cover .more-content { width: 350px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); /*background-color:#fff;*/ border-radius: 4px; overflow: hidden; /*padding-bottom:10px;*/ }
+.more-content .content-title { padding: 10px; background-color: #009688; color: #fff; }
+.more-content .content-more { background-color: #fff; /*float: left; width: 100%;*/ height: 500px; padding: 0 10px; position: relative; overflow-x: hidden; overflow-y: auto; }
+.more-content .content-more ul { margin: 0; }
+.more-content .content-more ul li { list-style-type: none; padding: 10px 0; border-bottom: 1px #f6f6f6 solid; overflow: hidden; }
+.more-content .content-more ul li:last-child { border: 0; }
+.more-content .content-more ul li font { display: inline-block; width: 90px; float: left; }
+.more-content .content-more ul li span { display: inline-block; width: 200px; float: left; }
+</style>
+<div id="middle"> {template 'dataManage','left'}
+  <div class="right" id="mainFrame">
+    <div class="right_cont">
+      <ul class="breadcrumb">
+        当前位置： <a href="/?m=dataManage">首页</a> <span class="divider">/</span> <a href="javascript:;">医院管理</a> <span class="divider">/</span> 医生信息
+      </ul>
+      <div class="title_right"><strong>医生信息</strong></div>
+      <div style="width:auto;margin:auto;">
+          <div class="query-module">
+              <div class="query-form">
+                <div class="form-item"> <font>医生姓名</font>
+                  <div class="element">
+                    <div class="element-text">
+                      <input type="text" id="k" value="">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-item"> <font>联系方式</font>
+                  <div class="element">
+                    <div class="element-text">
+                      <input type="text" id="k" value="">
+                    </div>
+                  </div>
+                </div>
+                <!--<div class="form-item"> <font>医院级别</font>
+                  <div class="element">
+                    <div class="element-select">
+                      <select><option value="0">全部</option><option value="1">一甲</option><option value="2">二甲</option><option value="3">三甲</option></select>
+                    </div>
+                  </div>
+                </div>-->
+              </div>
+              <div class="query-btn">
+                <div class="btn-item"> <a class="btn-query" id="J_query">查询</a> <a  href="/?m=dataManage&c=hospital&a=doDoctor" class="btn-add" style="margin-left: 10px;">添加</a> <!--<a class="btn-screen" id="J_screen" data-off="0">显示高级选项</a>--> </div>
+              </div>
+            </div>
+            <div class="data-content">
+              <div class="tb-container">
+                <table class="table table-bordered table-hover table-striped" id="rstb">
+                	<thead><tr align="center">
+                      <th><strong class="tb-head cell-check" data-val="check">
+                        <input type="checkbox" id="J_sel_all">
+                        </strong></th>
+                      <th><strong class="tb-head cell-name" data-val="name">姓名</strong></th>
+                      <th><strong class="tb-head cell-sex" data-val="sex">性别</strong></th>
+                      <th><strong class="tb-head cell-age" data-val="age">年龄</strong></th>
+                      <th><strong class="tb-head cell-telephone" data-val="telephone">联系方式</strong></th>
+                      <th><strong class="tb-head cell-idcard" data-val="idcard">身份证</strong></th>
+                      <th><strong class="tb-head cell-titles" data-val="position">职位</strong></th>
+                      <th><strong class="tb-head cell-department" data-val="department">科室</strong></th>
+                      <th><strong class="tb-head cell-hospital" data-val="hospital">医院</strong></th>
+                      <th><strong class="tb-head cell-status" data-val="status">状态</strong></th>
+                      <th><strong class="tb-head cell-state" data-val="state">认证</strong></th>
+                      <th><strong class="tb-head cell-time" data-val="time">创建时间</strong></th>
+                      <th><strong class="tb-head cell-operate" data-val="operate">操作</strong></th>
+                    </tr></thead>
+                  <tbody id="datas">
+                  </tbody>
+                </table>
+              </div>
+              <div class="btn-batch"> <span id="J_sel_all2" data-off="0">全选/取消</span><a href="javascript:;" class="batch-del" id="J_batch_del">删除</a></div>
+            </div>
+            <div class="inner-page" id="innerPage"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!---cover-->
+<div class="more-cover" id="moreCover">
+	<div class="more-bg"></div>
+    <div class="more-content">
+    	<div class="content-title">医生详情</div>
+        <div class="content-more">
+            <ul>
+            	<li>
+                	<font>照片</font>
+                    <span id="realname"></span>
+                </li>
+                <li>
+                	<font>姓名</font>
+                    <span id="realname"></span>
+                </li>
+                <li>
+                	<font>性别</font>
+                    <span id="realname"></span>
+                </li>
+                <li>
+                	<font>年龄</font>
+                    <span id="realname"></span>
+                </li>
+                <li>
+                	<font>身份证</font>
+                    <span id="realname"></span>
+                </li>
+                
+                <li>
+                	<font>职位</font>
+                    <span id="position_level"></span>
+                </li>
+                <li>
+                	<font>科室</font>
+                    <span id="department"></span>
+                </li>
+                <li>
+                	<font>医院</font>
+                    <span id="hospital"></span>
+                </li>
+                <li>
+                	<font>简介</font>
+                    <span id="content"></span>
+                </li>
+                <li>
+                	<font>备注</font>
+                    <span id="content"></span>
+                </li>
+                <!--<li>
+                	<font>执业证书</font>
+                    <span><a href="javascript:;" target="_blank" id="_zhiye_img"><img src="" class="doctor-cert" id="zhiye_img"></a></span>
+                </li>
+                <li>
+                	<font>资格证书</font>
+                    <span><a href="javascript:;" target="_blank" id="_zige_img"><img src="" class="doctor-cert" id="zige_img"></a></span>
+                </li>
+                <li>
+                	<font>职称证书</font>
+                    <span><a href="javascript:;" target="_blank" id="_zhicheng_img"><img src="" class="doctor-cert" id="zhicheng_img"></a></span>
+                </li>
+                <li>
+                	<font>身份证扫描件</font>
+                    <span><a href="javascript:;" target="_blank" id="_usercard_img"><img src="" class="doctor-cert" id="usercard_img"></a></span>
+                </li>-->
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+var datas = {};
+var page = 1;
+$(function(){
+	getData();
+	var tbWidth = $(window).width() - 245;
+	$(".tb-container").css({width:tbWidth});
+	$("#rstb").css({maxWidth:tbWidth});
+	$("#rstb").colResizable({
+		resizeMode: 'overflow',
+		//minWidth: 15,
+		//headerOnly: true,
+		//dragCursor: '',
+		//liveDrag: true,
+		//draggingClass: 'tb-cell',
+		onResize: function(e,data){
+			//console.log($(e.currentTarget));
+			//$('.tb-cell').width();
+		}
+	});
+	$('#J_query').on('click',function(){
+		page = 1;
+		getData();
+
+	});
+	$('#J_sel_all').on('click',function(){
+		setSelCss();
+	});
+	$('#J_sel_all2').on('click',function(){
+		setSelCss();
+	});
+	$('#J_batch_del').on('click',function(){
+		var ids = setSel();
+		if (false == ids) return;
+		layer.confirm('确定删除医生?',{btn:["删除","取消"]},function(){
+			var url = '/?m=dataManage&c=hospital&a=delDoctor&ajax=1';
+			var formParam = {"dosubmit":1,"ids":ids};
+			$.post(url,formParam,function(data){
+				layer.msg(data.erro);
+				validateAuth(data.status);
+				if (data.status == 1) {
+					getData();
+				}
+			},'json');
+		});
+	});
+});
+function setSelCss(){
+	var off = parseInt($('#J_sel_all2').attr('data-off'));
+	var _item = $('input[name="ids[]"]');
+	_item.each(function(i) {
+		$(this).prop('checked',off==0?true:false);
+    });
+	$('#J_sel_all').prop('checked',off==0?true:false);
+	$('#J_sel_all2').attr('data-off',off==0?1:0);
+}
+function setSel(){
+	var selected = $('input[name="ids[]"]:checked');
+	//console.log(selected);return;
+	if (0 >= selected.length) {
+		layer.msg('请选择');
+		return false;
+	}
+	var str = '';
+	selected.each(function(i) {
+		str += $(this).val()+',';
+	});
+	str = str.substring(0,str.length - 1);
+	return str;
+}
+function getData(){
+	var url = '/?m=dataManage&c=hospital&a=doctorList&ajax=1';
+	if (page > 1) url += '&page='+page;
+	var k = $.trim($('#k').val());
+	if (k) url += '&k='+k;
+	var index = layer.load(2,{time:3000});
+	$.get(url,function(data){
+		layer.close(index);
+		var html = '';
+		var pageCount = 0;
+		if (data.status==1) {
+			datas = data.data.datas;
+			var parent = data.data.department;
+			var hospital = data.data.hospital;
+			var department = data.data.department;
+			var titles = data.data.titles;
+			pageCount = data.data.pageCount;
+			for(var i in datas){
+				var info = datas[i];
+				var _department = {};
+				if (0<info.departmentid) {
+					_department = department[info.departmentid]?department[info.departmentid]:{"name":''};
+				} else {
+					_department = {'name':''};
+				}
+				var _hospital = {};
+				if (0<info.hospitalid) {
+					_hospital = hospital[info.hospitalid]?hospital[info.hospitalid]:{"name":''};
+				} else {
+					_hospital = {'name':''};
+				}
+				var _titles = {};
+				if (0<info.titlesid) {
+					_titles = titles[info.titlesid]?titles[info.titlesid]:{"name":''};
+				} else {
+					_titles = {'name':''};
+				}
+				
+				var sex = '';
+				switch(parseInt(info.sex)){
+					case 0:
+						sex = '保密';
+						break;
+					case 1:
+						sex = '男';
+						break;
+					case 2:
+						sex = '女';
+						break;
+				}
+				
+				var state = '';
+				if (3 == info.state) {
+					state = '已认证';
+				} else {
+					state = '待审核';
+				}
+				var status = '';
+				if (99 == info.status) {
+					status = '启用';
+				} else {
+					status = '禁用';
+				}
+				
+				html += '<tr align="center">\
+							<td><div class="tb-cell cell-check"><input type="checkbox" name="ids[]" value="'+info.userid+'"></div></td>\
+							<td><div class="tb-cell cell-name">'+info.realname+'</div></td>\
+							<td><div class="tb-cell cell-sex">'+sex+'</div></td>\
+							<td><div class="tb-cell cell-age">'+info.age+'</div></td>\
+							<td><div class="tb-cell cell-telephone">'+info.telephone+'</div></td>\
+							<td><div class="tb-cell cell-idcard">'+info.identity+'</div></td>\
+							<td><div class="tb-cell cell-titles">'+_titles.name+'</div></td>\
+							<td><div class="tb-cell cell-department">'+_department.name+'</div></td>\
+							<td><div class="tb-cell cell-hospital">'+_hospital.name+'</div></td>\
+							<td><div class="tb-cell cell-status">'+status+'</div></td>\
+							<td><div class="tb-cell cell-state">'+state+'</div></td>\
+							<td><div class="tb-cell cell-time">'+info.inputtime+'</div></td>\
+							<td><div class="tb-cell cell-operate"><a href="/?m=dataManage&c=hospital&a=doDoctor&uid='+info.userid+'" class="btn-edit">[修改]</a></div></td>\
+						</tr>';
+			}
+			// <a href="/?m=dataManage&c=hospital&a=doctorDetail&uid='+info.userid+'" class="btn-edit">[查看]</a>
+		} else {
+			html = '<tr align="center"><td colspan="'+($('.tb-head').length)+'">暂无数据</td></tr>';
+		}
+		$('#datas').html(html);
+		//initAction();
+		if (page == 1) initPage(pageCount);
+	},'json');
+}
+function initPage(pageCount) {
+	layui.use('laypage', function(){
+		var laypage = layui.laypage;
+		laypage.render({
+			elem: 'innerPage' //注意，这里的 test1 是 ID，不用加 # 号
+			,count: pageCount //数据总数，从服务端得到
+			//,limit: 10
+			,layout: ['prev', 'page','next', 'skip','count']//['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+			,prev: '<i class="icon-arrow arrow-l"></i>'
+			,next: '<i class="icon-arrow arrow-r"></i>'
+			,hash: 'page'//页面载入时就定位到指定页
+			,theme: '#234686'
+			,jump: function(obj, first){
+				//首次不执行
+				if (!first) {
+					//console.log(obj);
+					page = parseInt(obj.curr);
+					getData();
+				}
+			}
+		});
+	});
+}
+</script>
+</html>

@@ -1,0 +1,213 @@
+
+<!--#include file="header_common.html"-->
+<script src="/statics/js/setFontSize.js"></script>
+<style>
+     #conternsq{font-size: 1.18rem!important;}
+   body {
+    background: #FFF3DD;
+}
+    .heigh45 {
+      height: 45px;
+  }
+  #heads {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    z-index: 999;
+}
+    .navbtn {
+        display: block;
+        width: 8vw;
+        height: 8vw;
+        border: none;  
+        position: relative;   
+        background: none;
+        outline: none;
+        background: url(/m2/imgs/caidangs.png) center center no-repeat;
+        background-size: 7vw 6vw;  
+        z-index: 999;
+    }
+    
+    .center.wrap {
+        display: flex;
+    align-items: center;
+    line-height: 45px;
+    height: 45px;
+    padding: 0 2vw;
+    justify-content: space-between;
+    background: #fff;
+    box-shadow: 0 0px 8px #bdbbbb;
+    }
+    
+    .center.wrap h1 img {
+        width: 35vw;
+    }
+    
+    .navbox {
+        left: 0;
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        background: rgba(0, 0, 0, 0.8);
+        width: 100%;
+        height: 100%;
+    }
+    
+    .close {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 50vw;
+        height: 10vw;
+        background: #ff6c3a;
+        padding-left: 5vw;
+        font-family: 宋体;
+        color: #fff;
+        font-size: 24px;
+    }
+    
+    .close:active {
+        opacity: 0.9;
+    }
+    .innerbanner {
+    background: #FFC100 url(/m2/images/baohuhs.png) no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 46vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+  .inner_borders{width: 93%;
+    margin: 0 auto;
+    position: absolute;
+    top: 46vw;
+    z-index: 2;
+    left: 50%;
+    transform: translateX(-50%);}
+  .inner_borders img{width: 100%;}
+  .serversi {
+    width: 80%;
+    margin: 1.5rem auto 1.5rem auto;
+    border: 2px solid #ff8b02;
+    height: 2.8rem;
+    position: relative;
+    background: #ffffff;
+    font-size: 1.11rem;
+    padding-left: 1.5rem;
+    line-height: 2.8rem;
+    border-radius: 500px;
+}
+ .serve_left{
+    height: 2.8rem;
+    line-height: 2.8rem;
+} 
+.serve_right {
+    position: absolute;
+    right: -1px;
+    width: 5rem;height: 100%;
+    background: #ff8b02;
+    border-radius: 500px;
+    color: #ffffff;font-size: 1.01rem;
+    text-align: center;
+    top: 0;
+}
+.serv_span1 {
+    color: #1d1d1d;
+    font-weight: 600;
+    font-size:1.01rem;
+}
+.serv_span2 {
+    color: #ff8b02;
+}
+.contend_div{width: 100%;}
+.contend_item{width: 100%;}
+.contend_item img{width: 100%;display: block;}
+    </style>
+  <body>
+    <div class="heigh45"></div>
+  <!--#include file="header1.html"-->
+    <div class="contend_div">
+        <div class="contend_item">
+            <img src="/m2/images/loads.svg" data-src="/m2/images/spingtai_02.jpg">
+        </div>
+        <div class="contend_item">
+            <img src="/m2/images/spingtai_03.jpg" data-src="/m2/images/spingtai_03.jpg">
+        </div>
+        <div class="contend_item">
+            <img src="/m2/images/spingtai_04.jpg" data-src="/m2/images/spingtai_04.jpg">             
+        </div>
+        <div class="contend_item">
+            <img src="/m2/images/spingtai_05.jpg" data-src="/m2/images/spingtai_05.jpg">
+        </div>
+        <div class="contend_item">
+            <img src="/m2/images/spingtai_06.jpg" data-src="/m2/images/spingtai_06.jpg">
+        </div>
+        <div class="contend_item" onclick="goo_t('/?m=myim&c=customer_service')">
+            <img src="/m2/images/spingtai_07.jpg" data-src="/m2/images/spingtai_07.jpg">
+        </div>
+        <div class="contend_item">
+            <img src="/m2/images/spingtai_08.jpg" data-src="/m2/images/spingtai_08.jpg">
+        </div>            
+    </div>        
+                       
+  <script>
+          AOS.init({
+              easing: 'ease-out-back',
+              duration: 1000
+          });
+  
+          $('.tabnav a').hover(function () {
+              $(this).addClass('hover').siblings('a').removeClass('hover');
+              var id = $(this).index();
+              $('.case').removeClass('hover');
+              $('.case').eq(id).addClass('hover');      
+          })
+                                  
+          $('.navbtn').click(function () {
+              if ($('.navbox').is(":visible")) {
+                  $('.navbox').hide();
+              } else {
+                  $('.navbox').show();
+              }
+          })
+          $('.close').click(function () {
+              $('.navbox').hide();               
+          })
+   
+
+          $('.contend_div img').each(function () {
+            if (checkShow($(this)) && !isLoaded($(this))) {
+                loadImg($(this));
+            }
+        });
+        $(window).on('scroll', function () {
+            $('.contend_div img').each(function () {
+                if (checkShow($(this)) && !isLoaded($(this))) { 
+                    loadImg($(this));
+                }
+            })
+        });
+        function checkShow($img) { 
+            var scrollTop = $(window).scrollTop(); 
+            var windowHeight = $(window).height(); 
+            var offsetTop = $img.offset().top; 
+            if (offsetTop < (scrollTop + windowHeight) && offsetTop > scrollTop) { 
+                return true;
+            }
+            return false;
+        }
+        function isLoaded($img) {
+            return $img.attr('data-src') === $img.attr('src');
+        }
+        function loadImg($img) {
+            $img.attr('src', $img.attr('data-src')); 
+        }
+
+      </script>
+  </body>
+  </html>

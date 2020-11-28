@@ -1,0 +1,221 @@
+{template $this->template,'header_common',$this->style}
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+<style>
+.role-do ul { margin: 0; display: flex;flex-wrap: wrap;}
+.role-do ul li { overflow: hidden; border-bottom: 1px #eee solid; padding: 10px 0;width: 50%;}
+.role-do ul li .role-do-strw1 { float: left; width: 90px; height: 30px; line-height: 30px; padding-left: 5px; }
+.role-do ul li .role-do-val { float: left; margin-right: 30px; }
+.role-do ul li .role-do-val .input-text { width: 160px; height: 30px; padding: 0; padding-left: 5px; border-radius: 3px; }
+.role-do ul li .role-do-val .input-textbg { background: #f7f7f7;}
+.role-do ul li .role-do-val .input-textarea { width: 250px; height: 100px; border-radius: 3px; outline: none; resize: none; }
+.role-do-val label { float: left; margin: 5px 10px 0 0; }
+.role-do-val input[type="radio"] { margin: 0; margin-right: 5px; }
+.role-do-val select { width: 166px; height: 30px; }
+.role-do-val .input-tips { margin-left: 15px; color: #666; }
+.role-do-val .editor-inner { width: 600px; }
+.role-do-btn a { display: block; width: 80px; float: left; height: 30px; line-height: 30px; text-align: center; border-radius: 3px; margin-right: 10px; }
+.role-do-btn a.btn-send { background-color: #234686; color: #fff; }
+.role-do-btn a.btn-close { background-color: #e0e0e0; color: #666; }
+.role-do ul li .role-do-val .input-date {
+    width: 50px;
+    height: 30px;
+    padding: 0;
+    padding-left: 5px;
+    border-radius: 3px;
+}
+.role-do ul li .role-do-val .role-spanv{padding: 0 15px;margin-left: 0!important;}
+.role-do ul li.listw100{width: 100%;}
+.role-do ul li .role-do-strw1{ float: left;
+    width: 175px;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 5px;}
+    .query-btn .btn-item {
+   margin-left: 0px; 
+}
+select {
+    width: 170px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    height: 30px;
+}
+#menu {
+    padding-top: 1rem;
+    background: #fff;
+}
+#menu ul {
+    display: flex;margin: 0;
+}
+#menu li {
+    width: 6rem;cursor: pointer;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    background-color: #F1F1F1;
+    overflow: hidden;
+    font-size: .8rem;
+    color: #111111;
+}
+#menu li .pstyle {
+    width: 70%;
+    height: 2px;
+    background: #339EFC;
+    margin: .5rem auto 0 auto;
+}
+#menu li.on {
+    color: #2196F3;
+    background: #F4F5FA;
+}
+.clear {
+    clear: both;
+}
+.data-content {
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+}
+.cell-xiangmus {
+    width: 250px;
+}
+</style>
+<body>
+{template $this->template,'header',$this->style}
+<div id="middle"> {template $this->template,'left',$this->style}
+  <div class="right" id="mainFrame">
+    <div class="right_cont">
+      <ul class="breadcrumb">
+        当前位置： <a href="/?m=dataManage">首页</a> <span class="divider">/</span> <a href="javascript:;">医嘱监测图</a> 
+      </ul>
+      <div class="title_right">
+        <strong>肠内肠外监测</strong> 
+    </div>
+      <div style="width:auto;margin:auto;">  
+        <!-- <div class="query-btn">
+            <div class="btn-item"> <a class="btn-query" >全部停止</a> <a href="javascript:;" class="btn-add" style="margin-left: 10px;">执行</a> </div>
+          </div>    -->
+
+        <!-- <div id="menu">
+          <ul>
+            <li class="on">新增医嘱
+              <p class="pstyle"></p>
+            </li>
+            <li>新开/执行
+                <p></p>
+              </li>
+            <li>历史记录
+              <p></p>
+            </li>
+            <div class="clear"></div>
+          </ul>
+          <div class="clear"></div>
+        </div> -->
+        <div class="data-content">
+          <div class="tb-container">
+            <table class="table table-bordered table-hover table-striped" id="rstb">
+              <thead><tr align="center">
+                  <th><strong class="tb-head cell-check" data-val="check">
+                    <input type="checkbox" id="J_sel_all">
+                    </strong></th>
+                  <th><strong class="tb-head cell-xiangmus" data-val="xiangmus">肠内肠外监测项目</strong></th>
+                  <!-- <th><strong class="tb-head cell-operate" data-val="operate">操作</strong></th> -->
+                </tr></thead>
+              <tbody id="datas">
+              </tbody>
+            </table>
+          </div>
+          <div class="btn-batch"> <span id="J_sel_all2" data-off="0">全选/取消</span><a href="javascript:;" class="batch-del" id="J_batch_del">删除</a></div>
+        </div>
+        <div class="inner-page" id="innerPage"></div>
+      </div>
+       <div style="height: 30px;"></div>
+       <h3 style="text-align: center;">项目名称</h3>
+      <div id="container" style="height: 300px"></div>
+
+
+    </div>
+  </div>
+</div>
+</body>
+<script>
+  var page = 1;
+var datas = {};
+$(function(){
+    var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+    xAxis: {
+        type: 'category',
+        data: ['2020-10-23', '2020-10-24', '2020-10-25', '2020-10-26', '2020-10-27', '2020-10-28', '2020-10-29']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{
+        data: [120, 200, 150, 80, 70, 110, 130],
+        type: 'bar',
+        showBackground: true,
+        backgroundStyle: {
+            color: 'rgba(220, 220, 220, 0.8)'
+        }
+    }]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+
+
+  var $list = $("#menu").find("li");
+  var $div = $("#tab-con").children("div");
+	$list.click(function() {
+		var index = $(this).index();
+		$list.eq(index).addClass("on").siblings().removeClass("on");
+		$div.eq(index).addClass("on").siblings().removeClass("on");
+		$(this).find("p").addClass("pstyle").parent().siblings().find('p').removeClass("pstyle");;
+	})
+  getTable();
+  var tbWidth = $(window).width() - 245;
+  $("#rstb").css({maxWidth:tbWidth});    
+	$("#rstb").colResizable({  
+		resizeMode: 'overflow',   
+		//minWidth: 15,
+		//headerOnly: true,
+		//dragCursor: '',
+		//liveDrag: true,
+		//draggingClass: 'tb-cell',
+		onResize: function(e,data){
+			//console.log($(e.currentTarget));
+			//$('.tb-cell').width();
+		}
+	});
+});
+function getTable(){
+	var url = '/?m=dataManage&c=hospital&a=doctorList&ajax=1';
+	if (page > 1) url += '&page='+page;
+	var index = layer.load(2,{time:3000});
+	$.get(url,function(data){
+		layer.close(index);
+		var html = '';
+		var pageCount = 0;
+		if (data.status==0) {
+		} else {
+			html = '<tr align="center"><td colspan="'+($('.tb-head').length)+'">暂无数据</td></tr>';
+		}
+		$('#datas').html(html);
+		//initAction();
+		//if (page == 1) initPage(pageCount);
+	},'json');
+}
+
+
+</script>
+</html>

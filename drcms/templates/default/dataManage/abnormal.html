@@ -1,0 +1,230 @@
+{template 'dataManage','header_common'}
+<style>
+.cell-content { width: 300px; text-align: left; color: #fe2525;}
+.cell-way { width: 200px;}
+.tb-head { color: #444;}
+.cell-sex,.cell-age { width: 30px;}
+.state-waitHandle { color: #f89406;}
+.state-handled { color: #009688;}
+.btn-detail { display: none;}
+</style>
+<body>
+{template 'dataManage','header'}
+<div id="middle"> {template 'dataManage','left'}
+  <div class="right" id="mainFrame">
+    <div class="right_cont">
+      <ul class="breadcrumb">
+        当前位置： <a href="/?m=dataManage">首页</a> <span class="divider">/</span> <a href="javascript:;">健康管理</a> <span class="divider">/</span> 健康预警
+      </ul>
+      <div class="title_right"><strong>健康预警</strong></div>
+      <div style="width: auto;margin:auto;">
+        <div class="query-module">
+          <div class="query-form">
+            <div class="form-item"> <font>用户</font>
+              <div class="element">
+                <div class="element-text">
+                  <input type="text" id="k" value="">
+                </div>
+              </div>
+            </div>
+            <div class="form-item hidden"> <font>预警时间</font>
+              <div class="element">
+                <div class="element-date">
+                  <input type="text" id="st" value="">
+                  <span class="gap">到</span>
+                  <input type="text" id="et" value="">
+                </div>
+              </div>
+            </div>
+            <div class="form-item hidden"> <font>状态</font>
+              <div class="element">
+                <div class="element-select">
+                  <select id="status">
+                  	<option value="">全部</option>
+                    <option value="waitHandle">未处理</option>
+                    <option value="handled">已处理</option>
+                  </select>
+                </div>
+              </div>
+            </div> 
+          </div>
+          <div class="query-btn">
+            <div class="btn-item"> <a class="btn-query" id="J_query">查询</a> <a class="btn-screen" id="J_screen" data-off="0">显示高级选项</a> </div>
+          </div>
+        </div>
+        <div class="data-content">
+          <div class="tb-container">
+            <table class="table table-bordered table-hover table-striped" id="rstb">
+              <thead>
+                <tr align="center">
+                  <th><strong class="tb-head cell-check" data-val="check">
+                    <input type="checkbox" id="J_sel_all">
+                    </strong></th>
+                  <th><strong class="tb-head cell-username" data-val="username">用户名</strong></th>
+                  <th><strong class="tb-head cell-nickname" data-val="nickname">昵称</strong></th>
+                  <th><strong class="tb-head cell-sex" data-val="sex">性别</strong></th>
+                  <th><strong class="tb-head cell-age" data-val="age">年龄</strong></th>
+                  <th><strong class="tb-head cell-type" data-val="type">告警类型</strong></th>
+                  <th><strong class="tb-head cell-way" data-val="way">设备</strong></th>
+                  <th><strong class="tb-head cell-content" data-val="content">告警内容</strong></th>
+                  <th><strong class="tb-head cell-time" data-val="time">告警时间</strong></th>
+                  <th><strong class="tb-head cell-state" data-val="state">状态</strong></th>
+                  <th><strong class="tb-head cell-operate" data-val="operate">操作</strong></th>
+                </tr>
+              </thead>
+              <tbody id="datas">
+              </tbody>
+            </table>
+          </div>
+          <div class="inner-page" id="innerPage"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<script>
+var page = 1;
+$(function(){
+	var date = new Date();
+	var curr =  date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate();
+	$('#st').val(curr);
+	$('#et').val(curr);
+	getData();
+	var screenHeight = $(window).height();
+	$('.first-container').css({height: screenHeight - 93});
+	var tbWidth = $(window).width() - 245;
+	$(".tb-container").css({width:tbWidth});
+	$("#rstb").css({maxWidth:tbWidth});
+	$("#rstb").colResizable({
+		resizeMode: 'overflow',
+		//minWidth: 15,
+		//headerOnly: true,
+		//dragCursor: '',
+		//liveDrag: true,
+		//draggingClass: 'tb-cell',
+		onResize: function(e,data){
+			//console.log($(e.currentTarget));
+			//$('.tb-cell').width();
+		}
+	});
+	laydate.render({
+	  elem: '#et'
+	  ,format: 'yyyy-MM-dd'
+	  ,done: function(value,date,endDate){
+		  et = value;
+	  }
+	});
+	laydate.render({
+	  elem: '#st'
+	  ,format: 'yyyy-MM-dd'
+	  ,done: function(value,date,endDate){
+		  st = value;
+	  }
+	});
+	$('#J_query').on('click', function(){
+		page = 1;
+		getData();
+	});
+	$('#J_screen').on('click', function(){
+		var off = parseInt($(this).attr('data-off'));
+		if (off==1) {
+			off = 0;
+			$('.query-form .form-item').addClass('hidden');
+			$('.query-form .form-item').eq(0).removeClass('hidden');
+		} else {
+			off = 1;
+			$('.query-form .form-item').removeClass('hidden');
+		}
+		$(this).attr('data-off',off);
+		$(this).text(off==1?'隐藏高级选项':'显示高级选项');
+	});
+});
+function getData(){
+	var url = '/?m=dataManage&c=healthy&a=abnormal&ajax=1';
+	var k = $.trim($('#k').val());
+	if (k) url += '&k='+k;
+	var st = $.trim($('#st').val());
+	var et = $.trim($('#et').val());
+	if (st&&et) url += '&st='+st+'&et='+et;
+	var status = $.trim($('#status').val());
+	if (status) url += '&status='+status;
+	if (page > 1) url += '&page='+page;
+	var index = layer.load(2,{time:3000});
+	$.ajax({
+		url: url,
+		type: "GET",
+		dataType: "JSON",
+		success: function(data){
+			layer.close(index);
+			var html = '';
+			var pageCount = 0;
+			if (data.status==1) {
+				var datas = data.data.datas;
+				var member = data.data.member;
+				var hardware = data.data.hardware;
+				pageCount = data.data.pageCount;
+				for(var i in datas){
+					var info = datas[i];
+					var _member = {};
+					if (member&&member[info.userid]) {
+						_member = member[info.userid]
+					} else {
+						_member = {username:"",nickname:""}
+					}
+					var sexs = new Array('','男','女');
+					var sex = sexs[_member.sex]?sexs[_member.sex]:'保密';
+					var operate = '';
+					if ('waitHandle'==info.status) operate = '<a href="/?m=dataManage&c=healthy&a=doAbnormal&id='+info.id+'" class="operate-btn btn-edit">处理</a>';
+					var way = '';
+					if (0<info.hardwareid) {
+						if (!$.isEmptyObject(hardware)&&hardware[info.hardwareid]) {
+							way = hardware[info.hardwareid].name+(info.sn?'(S/N：'+info.sn+')':'');
+						}
+					} else {
+						way = '手动录入';
+					}
+					html += '<tr align="center"><td><div class="tb-cell cell-check"><input type="checkbox" name="ids[]" value="'+info.id+'"></div></td><td><div class="tb-cell cell-username"><a href="/?m=dataManage&c=member&a=memberDetail&uid='+info.userid+'">'+_member.username+'</a></div></td><td><div class="tb-cell cell-nickname">'+_member.nickname+'</div></td><td><div class="tb-cell cell-sex">'+sex+'</div></td><td><div class="tb-cell cell-age">'+(_member.age?_member.age:'')+'</div></td><td><div class="tb-cell cell-type">'+info.type+'</div></td><td><div class="tb-cell cell-way">'+way+'</div></td><td><div class="tb-cell cell-content">'+info.content+'</div></td><td><div class="tb-cell cell-time">'+info.createtime+'</div><td><div class="tb-cell cell-state"><font class="state-'+info.status+'">'+info.statusStr+'</font></div></td><td><div class="tb-cell cell-operate">'+operate+'<a href="/?m=dataManage&c=healthy&a=abnormalDetail&id='+info.id+'" class="operate-btn btn-detail">查看</a></div></td></tr>';
+				}
+			} else {
+				html += '<tr align="center"><td colspan="'+($('.tb-head').length)+'">暂无数据</td></tr>';
+			}
+			$('#datas').html(html);
+			initWidth();
+			if (page == 1) initPage(pageCount);
+		}
+	});
+}
+function initWidth(){
+	var _item = $('.tb-head');
+	_item.each(function(i) {
+        var w = $(this).width();
+		var v = $(this).attr('data-val');
+		$('.cell-'+v).width(w);
+    });
+}
+function initPage(pageCount) {
+	layui.use('laypage', function(){
+		var laypage = layui.laypage;
+		laypage.render({
+			elem: 'innerPage' //注意，这里的 test1 是 ID，不用加 # 号
+			,count: pageCount //数据总数，从服务端得到
+			,limit: 15
+			,layout: ['prev', 'page','next', 'skip','count']//['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+			,prev: '<i class="icon-arrow arrow-l"></i>'
+			,next: '<i class="icon-arrow arrow-r"></i>'
+			,hash: 'page'//页面载入时就定位到指定页
+			,theme: '#234686'
+			,jump: function(obj, first){
+				//首次不执行
+				if (!first) {
+					//console.log(obj);
+					page = parseInt(obj.curr);
+					getData();
+				}
+			}
+		});
+	});
+}
+</script>
+</html>

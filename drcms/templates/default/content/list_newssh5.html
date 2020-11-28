@@ -1,6 +1,7 @@
+
 {template 'content','header_commonsh5'}
 <body>
-    <style>
+    <style>   
   #pages{margin-top: 30px;text-align: center;}
     #pages span{border: #00aeff 1px solid;display: inline-block;width: 40px;height: 30px;line-height: 30px;background: #00aeff;color: #fff;text-align: center;border-radius: 5px;}
     #pages a{display: inline-block;width: 40px;height: 30px;text-align: center;border: #999 1px solid;line-height: 30px;border-radius: 5px;}
@@ -77,7 +78,7 @@ header .wrap {
     text-decoration: none;
     vertical-align: middle;
     cursor: pointer;
-    padding: 0px 15px;
+    padding: 0px 11px;
     height: 28px;
     line-height: 28px;
     margin: 0px -1px 5px 0px;
@@ -109,37 +110,222 @@ header .wrap {
 }
 .mtdsf{height: 8rem!important;}
 
+
+#menu {
+    padding-top: 1rem;
+    background: #fff;
+}
+#menu ul {
+    /* justify-content: space-around; */
+    display: flex;padding-left: 1rem;
+}
+#menu li {
+    height: 2rem;
+    background: #f3f4f6;
+    padding: 0 .8rem;
+    border-radius: 500px;margin-right: 1rem;
+    line-height: 2rem;
+    text-align: center;
+    overflow: hidden;
+    font-size: .89rem;
+    color: #9E9E9E;
+    position: relative;
+}
+#menu li .pstyle {
+    width: 75%;
+    height: 2px;
+    background: #ff8625;
+    position: absolute;
+    bottom: 0;
+    left:50%;
+    transform: translateX(-50%);
+}
+#menu li.on {
+    color: #ffffff;
+    background: #FF7A6B;
+    background-image: linear-gradient(to right, #FF7A6B , #FF8C6F);
+}
+.clear {
+    clear: both;
+}
+#menu li a{color: #000;font-size: 1.02rem;text-decoration: none;}
+
+.m_dbox {
+    width: 100%;
+    display: flex;
+    height: 3.5rem;
+    line-height: 4rem;
+    padding: 0 1rem;
+    justify-content: space-between;
+}
+
+.m_dbox .mstio{
+	color: #919899;font-weight: 500;font-size: .91rem;
+}
+.m_dbox .mstio .uing{display: inline-block;width: .45rem;margin: 0 .35rem;}
+.m_dbox span:nth-child(1) {
+    font-size: 1.05rem;
+    color: #111111;
+    font-weight: 600;
+}
+
+.listitem1 {
+    display: flex;
+}
+.listitem {
+    background: #ffffff;
+    margin-bottom: .5rem;
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+}
+.listitem1 .artic {
+    flex: 3;
+    padding: 1rem 1rem 0.9rem 0rem;
+    position: relative;
+    width: 100vw;
+}
+.listitem .artic {
+    width: 92%;
+    margin: 0 auto;
+    text-align: justify;
+    padding-top: 1rem;
+}
+.title {
+   color: #343434;
+    font-size: .92rem; padding: 0 0; 
+    text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.piece {
+    color: #656565;
+    font-size: 0.9rem;
+    position: absolute;
+    bottom: .66rem;
+    width: 90%;text-align: right;
+}
+.pide_img{    width: 1rem;
+    display: inline-block;}
+.pide_img img{width:100%;}
+.listitem1 .img {
+    flex: 2;
+    padding: 1rem; 
+}
+.listitem1 .zoomImage {
+    height: 5.66rem;
+    margin: 0 auto;border-radius: .2rem;
+}
+.zoomImage {
+    background-size: cover;
+    background-position: center center;
+    background-repeat:no-repeat;
+}
+ .citem_div2{color: #666;
+    font-size: .8rem;
+    font-weight: 500;
+    margin-top: .2rem;
+    text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+    body {
+    background: #ffffff;
+}
+     
+
     </style>
     <div class="heigh45"></div>
-      <div id="header" >{template 'content','headerh5_1'}</div>
-      <div class="innerbanner">
-        <dl>
-        </dl>
-      </div>
+      <div id="header" >{template 'content','headerh5_2'}</div>
+  
       <div class="b30"></div>
      
-<!--   
-    <a href="/index.php?m=content&c=index&a=lists&catid=101">
-        
-    </a> -->
-
+	<div id="menu">
+        <ul>
+          <li onclick="goo_t('/index.php?m=content&c=index&a=lists&catid=58')"> 
+            全部
+          </li>
+          <li onclick="goo_t('/index.php?m=content&c=index&a=lists&catid=101')">
+           行业动态
+          </li>
+          <li onclick="goo_t('/index.php?m=content&c=index&a=lists&catid=102')">
+            医疗政策 
+          </li>          
       
+          <div class="clear"></div>
+        </ul>
+        <div class="clear"></div>          
+      </div>            
+      <div class="m_dbox">            
+        <span>新闻中心</span>                        
+        <span class="mstio"  onclick="goo_t('/index.php?m=content&c=index&a=lists&catid=58')">更多<i class="uing"><img src="/h5page/pet_shop/images/fanhuis.png" style="width: 100%;"></i></span>
+       </div>
+     
+       <!-- <div class="contents" id="contenteds">
+        <div class="listitem listitem1">
+       <div class="img" onclick="goo('/news2/detail.html?target=top&amp;id=2712&amp;catid=96')">
+           <div class="zoomImage" style="background-image:url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601205564843&di=33542f4214534fea3d753c22b1f7f447&imgtype=0&src=http%3A%2F%2F08imgmini.eastday.com%2Fmobile%2F20190909%2F20190909223721_02a44c9c75aab1a788db1d1ace8b5892_2.jpeg'); "></div>
+         </div>
+         <div class="artic">
+           <div class="title" onclick="goo('/news2/detail.html?target=top&amp;id=2712&amp;catid=96')">
+             松狮犬皮肤病什么症状 嘴唇周围皮肤发红脱毛
+           </div>
+           <div class="citem_div2">松狮犬是头毛很长的一种宠物犬，打理....</div>
+         </div>
+       </div>
+            <div class="listitem listitem1">
+       <div class="img" onclick="goo('/news2/detail.html?target=top&amp;id=2712&amp;catid=96')">
+           <div class="zoomImage" style="background-image:url('https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3400294860,668531057&fm=26&gp=0.jpg'); "></div>
+         </div>
+         <div class="artic">
+           <div class="title" onclick="goo('/news2/detail.html?target=top&amp;id=2712&amp;catid=96')">
+           毛孩嘴巴怪怪的？可能食道卡异物要当心！
+           </div>   
+           <div class="citem_div2">毛孩吃饭时，尖锐的食物、骨头容易卡....</div>
+           <div class="piece">
+             <span class="pide_img">
+             <img src="images/edfdf.png">
+             </span>
+             <span>
+              375
+             </span>
+           </div>
+         </div>
+       </div>
+        </div> -->
+
+      <?php
+        
+        if(58 == $catid) {
+            $catids = '101,102';
+        } else {
+            $catids = $catid;
+        }
+        $where = '`catid` in ('.$catids.')';
+      ?>
       <div class="newsbody" aos="fade-up" aos-duration="3000" id="ketangs">
-        {pc:content action="lists" catid="$catid" num="25" order="id DESC" num="8" page="$page"}
+        {pc:content action="lists" catid="$catid" where="$where" num="25" order="id DESC" num="8" page="$page"}
         {loop $data $r}
-                  <div class="newslibox">
-                      <dl>
-                          <dt>10-04</dt>
-                          <dd>2020</dd>
-                      </dl>
-                      <ul>
-                          <li class="tt"><a class="pc" href="/?m=content&c=index&a=show&catid=<?php echo $r['catid'];?>&id=<?php echo $r['id'];?>"  id="title">{$r['title']}</a></li>
-                          <li class="parg">
-                            <p><?php echo $r['description'];?></p>
-                          </li>
-                          
-                      </ul>
-                  </div>
+       
+        <div class="listitem listitem1">
+            <div class="img" onclick="goo_t('/?m=content&c=index&a=show&catid=<?php echo $r['catid'];?>&id=<?php echo $r['id'];?>')">
+                <div class="zoomImage" style="background-image:url('<?php echo $r['thumb']?:'/m2/images/xinsppqsaui.png';?>');"></div>
+              </div>
+              <div class="artic">
+                <div class="title" onclick="goo_t('/?m=content&c=index&a=show&catid=<?php echo $r['catid'];?>&id=<?php echo $r['id'];?>')">
+                    {$r['title']}
+                </div>
+                <div class="citem_div2"><?php echo $r['description'];?></div>                 
+              </div>
+            </div>     
                   {/loop}
             
                   {/pc}
@@ -155,149 +341,311 @@ header .wrap {
             function getfooter(){ 
 	              $('#footer_box').load('/m2/mfooters.html',function(){}); 
             }
+        // (function () {
+        //     class ZUI {
+        //         constructor() {
+        
+        //         }
+        //         paging(options) {
+        //             new Paging(options)
+        //         }
+        
+        //     }
+        //     self.ZUI = new ZUI()
+        
+        //     var paging_defult = {
+        //         prev_next_text: '上一页|下一页',
+        //         current: 1,
+        //         page_len: 7,
+        //         color: '#FE5E08'
+        //     }
+        
+        //     function Paging(opt) {
+        //         var xx = this
+        //         xx.callBack = opt.callBack
+        //         $.each(opt, function (indexInArray, valueOfElement) {
+        //             paging_defult[indexInArray] = valueOfElement
+        //         });
+        //         if (!paging_defult.count || !paging_defult.selector) {
+        //             alert('参数count,selector必填!')
+        //             return
+        //         }
+        //         xx.count = paging_defult.count
+        //         xx.elem = $(paging_defult.selector)
+        //         xx.prev_next_text = paging_defult.prev_next_text
+        //         xx.page_len = paging_defult.page_len
+        //         xx.current = paging_defult.current
+        //         xx.color = paging_defult.color
+        
+        //         xx.insertElement()
+        //     }
+        //     Paging.prototype.createTemplate = function () {
+        //         var xx = this
+        //         var t_arr = xx.prev_next_text.split('|'),
+        //             i, b = '',
+        //             c, str, f = xx.page_len
+        //         if (f - xx.current <= 2 && xx.count - xx.current >= (f - 3)) {
+        //             c = (f - 1 - 2) / 2,
+        //                 i = -c, str
+        //             while (i <= c) {
+        //                 i == 0 ? b += '<a href="javascript:;" data-page="curr" style="background-color: '+ xx.color +';" class="zui-page-curr">' + (xx.current) + '</a>' : b += '<a data-page=' + (+xx.current + i) + '>' + (+xx.current + i) + '</a>'
+        //                 i++
+        //             }
+        //             str = `
+        //                 <a href="javascript:;" data-page="prev">${t_arr[0]}</a>
+        //                 <a href="javascript:;" data-page="1">1</a>
+        //                 <a href="javascript:;" data-page="mid" class="zui-page-spr">…</a>
+        //                 ${b}
+        //                 <a href="javascript:;" data-page="mid" class="zui-page-spr">…</a>
+        //                 <a href="javascript:;" data-page="${xx.count}">${xx.count}</a>
+        //                 <a href="javascript:;" data-page="next">${t_arr[1]}</a>
+        //             `
+        //         } else if (0 < xx.current && xx.current <= (f - 3)) {
+        //             i = 1
+        //             while (i <= (f - 2)) {
+        //                 i == +xx.current ? b += '<a href="javascript:;" data-page="curr" style="background-color: '+ xx.color +';" class="zui-page-curr">' + (i) + '</a>' : b += '<a href="javascript:;" data-page=' + (i) + '>' + (i) + '</a>'
+        //                 i++
+        //             }
+        //             str = `
+        //                 <a href="javascript:;" data-page="prev" class="zui-page-noallow">${t_arr[0]}</a>
+        //                 ${b}
+        //                 <a href="javascript:;" data-page="mid" class="zui-page-spr">…</a>
+        //                 <a href="javascript:;" data-page="${xx.count}">${xx.count}</a>
+        //                 <a href="javascript:;" data-page="next">${t_arr[1]}</a>
+        //             `
+        //         } else if ((xx.count - (f - 3)) < xx.current && xx.current <= xx.count) {
+        //             i = (f - 2) - 1
+        //             while (i >= 0) {
+        //                 xx.count - i == xx.current ? b += '<a  style="background-color: '+ xx.color +';" href="javascript:;" class="zui-page-curr">' + (xx.count - i) + '</a>' : b += '<a href="javascript:;" data-page=' + (xx.count - i) + '>' + (xx.count - i) + '</a>'
+        //                 i--
+        //             }
+        //             str = `
+        //                 <a href="javascript:;" data-page="prev">${t_arr[0]}</a>
+        //                 <a href="javascript:;" data-page="1">1</a>
+        //                 <a href="javascript:;" data-page="mid" class="zui-page-spr">…</a>
+        //                 ${b}
+        //                 <a href="javascript:;" data-page="next" class="zui-page-noallow">${t_arr[1]}</a>
+        //             `
+        //         }
+        //         return str
+        //     }, Paging.prototype.insertElement = function () {
+        //         var xx = this
+        //         var str = this.createTemplate(),
+        //             s = `
+        //             <div class="zui-page">
+        //                 ${str}
+        //             </div>
+        //         `
+        //         xx.elem.html(s)
+        //         xx.pagingClick()
+        //     }, Paging.prototype.pagingClick = function () {
+        //         var xx = this
+        //         xx.elem.on('click', 'a', function (e) {
+        //             var page = $(this).attr('data-page')
+        //             if (page != 'curr' && page != 'mid') {
+        //                 if (page == 'prev') {
+        //                     if (!$(this).attr('class')) {
+        //                         xx.current--
+        //                         xx.callBack(xx.current)
+        //                         xx.elem.find('.zui-page').html(xx.createTemplate())
+        //                     } else if ($(this).attr('class').indexOf('zui-page-noallow') != -1) return
+        //                 } else if (page == 'next') {
+        //                     if (!$(this).attr('class')) {
+        //                         xx.current++
+        //                         xx.callBack(xx.current)
+        //                         xx.elem.find('.zui-page').html(xx.createTemplate())
+        //                     } else if ($(this).attr('class').indexOf('zui-page-noallow') != -1) return
+        //                 } else {
+        //                     xx.callBack(page)
+        //                     xx.current = page
+        //                     xx.elem.find('.zui-page').html(xx.createTemplate())
+        //                 }
+        //             }
+        //         })
+        //     }
+        // })(window)	
+
         (function () {
-            class ZUI {
-                constructor() {
-        
-                }
-                paging(options) {
-                    new Paging(options)
-                }
-        
+    class ZUI {
+        constructor() {
+
+        }
+        paging(options) {
+            new Paging(options)
+        }
+
+    }
+    self.ZUI = new ZUI()
+
+    var paging_defult = {
+        prev_next_text: '上一页|下一页',
+        current: 1,
+        page_len: 4,
+        color: '#FE5E08'
+    }
+
+    function Paging(opt) {
+        var xx = this
+        xx.callBack = opt.callBack
+        $.each(opt, function (indexInArray, valueOfElement) {
+            paging_defult[indexInArray] = valueOfElement
+        });
+        if (!paging_defult.count || !paging_defult.selector) {
+           // alert('参数count,selector必填!')
+           alert('没有数据了');
+           window.location.href = '/?m=mall&c=news&a=lists&page=1';
+            return
+        }
+        xx.count = paging_defult.count
+        xx.elem = $(paging_defult.selector)
+        xx.prev_next_text = paging_defult.prev_next_text
+        xx.page_len = paging_defult.page_len
+        xx.current = paging_defult.current
+        xx.color = paging_defult.color
+
+        xx.insertElement()
+    }
+   
+    Paging.prototype.createTemplate = function () {
+        var xx = this
+        var t_arr = xx.prev_next_text.split('|'),
+            i, b = '',
+            c, str, f = xx.page_len
+        if (f - xx.current <= 2 && xx.count - xx.current >= (f - 3)) {
+            c = (f - 1 - 2) / 2,
+                i = -c, str
+             
+            while (i <= c) {
+                i == 0 ? b += '<a href="javascript:;" data-page="curr" style="background-color: '+ xx.color +';" class="zui-page-curr">' + (xx.current) + '</a>' : b += '<a data-page=' + (+xx.current + i) + '>' + (+xx.current + i) + '</a>'
+                i++
             }
-            self.ZUI = new ZUI()
-        
-            var paging_defult = {
-                prev_next_text: '上一页|下一页',
-                current: 1,
-                page_len: 7,
-                color: '#FE5E08'
+            str = `
+                <a href="javascript:;" data-page="prev">${t_arr[0]}</a>
+                <a href="javascript:;" data-page="1">1</a>
+                <a href="javascript:;" data-page="mid" class="zui-page-spr">…</a>
+                ${b}
+                <a href="javascript:;" data-page="mid" class="zui-page-spr">…</a>
+                <a href="javascript:;" data-page="${xx.count}">${xx.count}</a>
+                <a href="javascript:;" data-page="next">${t_arr[1]}</a>
+            `
+        } else if (0 < xx.current && xx.current <= (f - 3)) {
+          if(xx.count>=3){
+            i = 1
+          while (i <= (f - 2)) {
+                i == +xx.current ? b += '<a href="javascript:;" data-page="curr" style="background-color: '+ xx.color +';" class="zui-page-curr">' + (i) + '</a>' : b += '<a href="javascript:;" data-page=' + (i) + '>' + (i) + '</a>'
+                i++
             }
-        
-            function Paging(opt) {
-                var xx = this
-                xx.callBack = opt.callBack
-                $.each(opt, function (indexInArray, valueOfElement) {
-                    paging_defult[indexInArray] = valueOfElement
-                });
-                if (!paging_defult.count || !paging_defult.selector) {
-                    alert('参数count,selector必填!')
-                    return
+            str = `
+                <a href="javascript:;" data-page="prev" class="zui-page-noallow">${t_arr[0]}</a>
+                ${b}
+                <a href="javascript:;" data-page="mid" class="zui-page-spr">…</a>
+                <a href="javascript:;" data-page="${xx.count}">${xx.count}</a>
+                <a href="javascript:;" data-page="next">${t_arr[1]}</a>
+            `
+        }else{
+            i = 1
+            while (i <= xx.count) {
+                i == +xx.current ? b += '<a href="javascript:;" data-page="curr" style="background-color: '+ xx.color +';" class="zui-page-curr">' + (i) + '</a>' : b += '<a href="javascript:;" data-page=' + (i) + '>' + (i) + '</a>'
+                i++
+            }
+                 str = `
+                <a href="javascript:;" data-page="prev" class="zui-page-noallow">${t_arr[0]}</a>
+                ${b}
+                <a href="javascript:;" data-page="next">${t_arr[1]}</a>
+            ` 
+        }  
+        } else if ((xx.count - (f - 3)) < xx.current && xx.current <= xx.count) {
+            i = (f - 2) - 1
+            while (i >= 0) {
+                xx.count - i == xx.current ? b += '<a  style="background-color: '+ xx.color +';" href="javascript:;" class="zui-page-curr">' + (xx.count - i) + '</a>' : b += '<a href="javascript:;" data-page=' + (xx.count - i) + '>' + (xx.count - i) + '</a>'
+                i--
+            }
+            str = `
+                <a href="javascript:;" data-page="prev">${t_arr[0]}</a>
+                <a href="javascript:;" data-page="1">1</a>
+                <a href="javascript:;" data-page="mid" class="zui-page-spr">…</a>
+                ${b}
+                <a href="javascript:;" data-page="next" class="zui-page-noallow">${t_arr[1]}</a>
+            `
+        }
+        return str
+    }, Paging.prototype.insertElement = function () {
+        var xx = this
+        var str = this.createTemplate(),
+            s = `
+            <div class="zui-page">
+                ${str}
+            </div>
+        `
+        xx.elem.html(s)
+        xx.pagingClick()
+    }, Paging.prototype.pagingClick = function () {
+        var xx = this
+        xx.elem.on('click', 'a', function (e) {
+            var page = $(this).attr('data-page')
+            if (page != 'curr' && page != 'mid') {
+                if (page == 'prev') {
+                    if (!$(this).attr('class')) {
+                        xx.current--
+                        xx.callBack(xx.current)
+                        xx.elem.find('.zui-page').html(xx.createTemplate())
+                    } else if ($(this).attr('class').indexOf('zui-page-noallow') != -1) return
+                } else if (page == 'next') {
+                    if (!$(this).attr('class')) {
+                        xx.current++
+                        xx.callBack(xx.current)
+                        xx.elem.find('.zui-page').html(xx.createTemplate())
+                    } else if ($(this).attr('class').indexOf('zui-page-noallow') != -1) return
+                } else {
+                    xx.callBack(page)
+                    xx.current = page
+                    xx.elem.find('.zui-page').html(xx.createTemplate())
                 }
-                xx.count = paging_defult.count
-                xx.elem = $(paging_defult.selector)
-                xx.prev_next_text = paging_defult.prev_next_text
-                xx.page_len = paging_defult.page_len
-                xx.current = paging_defult.current
-                xx.color = paging_defult.color
-        
-                xx.insertElement()
             }
-            Paging.prototype.createTemplate = function () {
-                var xx = this
-                var t_arr = xx.prev_next_text.split('|'),
-                    i, b = '',
-                    c, str, f = xx.page_len
-                if (f - xx.current <= 2 && xx.count - xx.current >= (f - 3)) {
-                    c = (f - 1 - 2) / 2,
-                        i = -c, str
-                    while (i <= c) {
-                        i == 0 ? b += '<a href="javascript:;" data-page="curr" style="background-color: '+ xx.color +';" class="zui-page-curr">' + (xx.current) + '</a>' : b += '<a data-page=' + (+xx.current + i) + '>' + (+xx.current + i) + '</a>'
-                        i++
-                    }
-                    str = `
-                        <a href="javascript:;" data-page="prev">${t_arr[0]}</a>
-                        <a href="javascript:;" data-page="1">1</a>
-                        <a href="javascript:;" data-page="mid" class="zui-page-spr">…</a>
-                        ${b}
-                        <a href="javascript:;" data-page="mid" class="zui-page-spr">…</a>
-                        <a href="javascript:;" data-page="${xx.count}">${xx.count}</a>
-                        <a href="javascript:;" data-page="next">${t_arr[1]}</a>
-                    `
-                } else if (0 < xx.current && xx.current <= (f - 3)) {
-                    i = 1
-                    while (i <= (f - 2)) {
-                        i == +xx.current ? b += '<a href="javascript:;" data-page="curr" style="background-color: '+ xx.color +';" class="zui-page-curr">' + (i) + '</a>' : b += '<a href="javascript:;" data-page=' + (i) + '>' + (i) + '</a>'
-                        i++
-                    }
-                    str = `
-                        <a href="javascript:;" data-page="prev" class="zui-page-noallow">${t_arr[0]}</a>
-                        ${b}
-                        <a href="javascript:;" data-page="mid" class="zui-page-spr">…</a>
-                        <a href="javascript:;" data-page="${xx.count}">${xx.count}</a>
-                        <a href="javascript:;" data-page="next">${t_arr[1]}</a>
-                    `
-                } else if ((xx.count - (f - 3)) < xx.current && xx.current <= xx.count) {
-                    i = (f - 2) - 1
-                    while (i >= 0) {
-                        xx.count - i == xx.current ? b += '<a  style="background-color: '+ xx.color +';" href="javascript:;" class="zui-page-curr">' + (xx.count - i) + '</a>' : b += '<a href="javascript:;" data-page=' + (xx.count - i) + '>' + (xx.count - i) + '</a>'
-                        i--
-                    }
-                    str = `
-                        <a href="javascript:;" data-page="prev">${t_arr[0]}</a>
-                        <a href="javascript:;" data-page="1">1</a>
-                        <a href="javascript:;" data-page="mid" class="zui-page-spr">…</a>
-                        ${b}
-                        <a href="javascript:;" data-page="next" class="zui-page-noallow">${t_arr[1]}</a>
-                    `
-                }
-                return str
-            }, Paging.prototype.insertElement = function () {
-                var xx = this
-                var str = this.createTemplate(),
-                    s = `
-                    <div class="zui-page">
-                        ${str}
-                    </div>
-                `
-                xx.elem.html(s)
-                xx.pagingClick()
-            }, Paging.prototype.pagingClick = function () {
-                var xx = this
-                xx.elem.on('click', 'a', function (e) {
-                    var page = $(this).attr('data-page')
-                    if (page != 'curr' && page != 'mid') {
-                        if (page == 'prev') {
-                            if (!$(this).attr('class')) {
-                                xx.current--
-                                xx.callBack(xx.current)
-                                xx.elem.find('.zui-page').html(xx.createTemplate())
-                            } else if ($(this).attr('class').indexOf('zui-page-noallow') != -1) return
-                        } else if (page == 'next') {
-                            if (!$(this).attr('class')) {
-                                xx.current++
-                                xx.callBack(xx.current)
-                                xx.elem.find('.zui-page').html(xx.createTemplate())
-                            } else if ($(this).attr('class').indexOf('zui-page-noallow') != -1) return
-                        } else {
-                            xx.callBack(page)
-                            xx.current = page
-                            xx.elem.find('.zui-page').html(xx.createTemplate())
-                        }
-                    }
-                })
-            }
-        })(window)	
+        })
+    }
+})(window)
+
+    
+
+
         </script>
 
     <script>
-
+var lens=Math.ceil('<?=$count;?>'/8);
+console.log(lens);
 var page = parseInt(getUrlParam('page'));
+var catid = parseInt(getUrlParam('catid'));
     if (!page) page = 1;
      ZUI.paging({
         prev_next_text: '上一页|下一页',
-        count: 40,
-        selector: '.page_fys',
-        current: page,
-        page_len: 5,
+        count: 5, 
+        selector: '.page_fys',   
+        current: page,     
+         page_len: 5, 
         callBack: function (page) {
             console.log(page);
-            window.location.href = '/index.php?m=content&c=index&a=lists&catid=101&page='+page;
+            window.location.href = '/index.php?m=content&c=index&a=lists&catid='+catid+'&page='+page;
             //page++;
         }
     })
-
-
+// if(catid==)
+$('#menu ul').children('li').click(function () {
+                       var i = $(this).index() ;   
+                       $(this).addClass('on').siblings().removeClass('on');
+                }); 
+                      var index =0;
+                     if(catid==58){
+                         index=0;
+                       // $('#spanswe').html('新闻中心');
+                     }else if(catid==101){
+                         index=1;
+                        // $('#spanswe').html('新闻中心');
+                     }else if(catid==102){    
+                         index=2;
+                        // $('#spanswe').html('新闻中心');
+                     }
+       $('#menu ul').children('li').eq(index).addClass('on').siblings().removeClass('on');
 
 
              function timestampToTime(timestamp) {
@@ -345,3 +693,4 @@ var page = parseInt(getUrlParam('page'));
         </script>
     </body>
     </html>
+

@@ -9,13 +9,13 @@
           <li><a href="/m2/fc1.html">解决方案</a></li>
           <li><a href="/m2/xinxihua.html">医疗信息化定制</a></li>
           <li><a href="/m2/hezuo.html">合作模式</a></li>
-          <li><a href="/index.php?m=content&c=index&a=lists&catid=101">新闻中心</a></li>
+          <li><a href="/index.php?m=content&c=index&a=lists&catid=58">新闻中心</a></li>
           <li><a href="/m2/lianxi.html">联系我们</a></li>
         </ul>
         <p class="nav_r"> <span>全国咨询热线：<b>400-1012-810</b></span><a href="">点击咨询客服</a> </p>
       </div>
       <button class="navbtn"></button>
-      <span style="position: absolute;width: 100%;text-align: center;color: #080808;font-size: 1.01rem;">康穗云</span>
+      <span style="position: absolute;width: 100%;top: 50%;transform: translateY(-50%);text-align: center;color: #080808;font-size: 1.01rem;" id="conternsq">康穗云</span>
     </div>
   </header>
   <script>
@@ -25,4 +25,29 @@
   $('.navlist').click(function(e){
       e.stopPropagation();
   });
+
+  var ulrtst=window.location.pathname;
+  var acd = parseInt(getUrlParam('acd'));
+  var strs='';
+  if(ulrtst=='/m2/advantage.html'){
+         strs='平台优势';
+   } else if(ulrtst=='/m2/service1.html'){
+    strs='精细化服务';
+   }else if(ulrtst=='/m2/lianxi.html'){
+    strs='联系我们';
+   }else if(acd=='a'||ulrtst=='/m2/hezuo.html'){
+    strs='合作模式';
+   }else if(ulrtst=='/m2/joinus.html'){
+    strs='加入我们';
+   }else if(ulrtst=='/m2/advantage1.html'){
+    strs='平台优势';
+   }else if(ulrtst=='/m2/service2.html'){
+    strs='精细化服务';
+   }else{
+    strs='康穗云';
+   }
+  
+  
+  $('#conternsq').text(strs);              
+
   </script>

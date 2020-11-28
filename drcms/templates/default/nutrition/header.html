@@ -1,0 +1,146 @@
+<?php
+	$this->menu_tb = 'auth_menu';
+	if(isset($_GET['system_style'])){
+		$system_style = $_GET['system_style'];
+		param::set_cookie('system_style',$system_style);
+	}else{
+		$system_style = param::get_cookie('system_style');
+	}
+	
+	if (!empty($system_style) && 'default' != $system_style) {
+	    $this->menu_tb .= '_'.$system_style;
+	}
+	
+    $default_db = pc_base::load_model('default_model');
+    $default_db->load('system');
+    $system = $default_db->get_one(['type'=>'platform','style'=>$system_style],'id,name,module');
+?>
+<?php $authData = $this->authority->authData;?>
+
+<style>
+
+</style>
+<div class="top" style="height: 50px;">
+    <a href="/?m=<?php echo $system['module']?>" id="J_index">
+	<span style="color: #fff; font-size: 22px; display: inline-block; margin: 0px 0 0 20px; float: left;">
+		<?php echo $system['name']?>
+		</span>
+        <!-- <img class="logo" src="/statics/core2/common/images/core_logo5.png"> -->
+    </a>
+	{if $system_style=='all'}
+    <div class="tab1">
+        <div class="menu">
+            <ul class="nav" id="menu">
+               <li data-id="default"><a href="javascript:;"><img src="/statics/core2/common/images/icon_nav_154.png">
+                   <p>移动医疗</p></a></li>
+			   <li data-id="prehospital"><a href="javascript:;"><img src="/statics/core2/common/images/icon_nav_154.png">
+                   <p>互联网医院</p></a></li>
+			   <li data-id="doctor"><a href="javascript:;"><img src="/statics/core2/common/images/icon_nav_154.png">
+                   <p>医生APP</p></a></li>
+			   <li data-id="doctor2"><a href="javascript:;"><img src="/statics/core2/common/images/icon_nav_154.png">
+                   <p>医生APP(春雨)</p></a></li>
+			   <li data-id="pharmacy"><a href="javascript:;"><img src="/statics/core2/common/images/icon_nav_154.png">
+                   <p>药房APP</p></a></li>
+			   <li data-id="chronic"><a href="javascript:;"><img src="/statics/core2/common/images/icon_nav_154.png">
+                   <p>慢病管理</p></a></li>
+			   <li data-id="pension"><a href="javascript:;"><img src="/statics/core2/common/images/icon_nav_154.png">
+                   <p>社区养老</p></a></li>
+			   <li data-id="volunteer"><a href="javascript:;"><img src="/statics/core2/common/images/icon_nav_154.png">
+                   <p>志愿者</p></a></li>
+			   <li data-id="hygiene"><a href="javascript:;"><img src="/statics/core2/common/images/icon_nav_154.png">
+                   <p>公共卫生</p></a></li>
+			   <li data-id="tcm"><a href="javascript:;"><img src="/statics/core2/common/images/icon_nav_154.png">
+                   <p>中医养生</p></a></li>
+				<li data-id="venue"><a href="javascript:;"><img src="/statics/core2/common/images/icon_nav_154.png">
+                   <p>场馆</p></a></li>
+			   <li data-id="nurse"><a href="javascript:;"><img src="/statics/core2/common/images/icon_nav_154.png">
+                   <p>护士站</p></a></li>
+            </ul>
+        </div>
+        <div class="ct-head-tool">
+            <ul>
+                <li onClick="alarm()"><a href="javascript:;" id="J_passwordk" style="position: relative;"><img src="/statics/core2/common/images/jingao.png">
+                    <p>{L('通知')}</p></a></li>
+
+
+				    <li>
+                    <a href="/?m=core&c=authed&a=logout"><img src="/statics/core2/common/images/xiugaimi.png">
+                        <p>{L('Lock')}</p></a>
+                </li>
+
+<!--
+				<li><a href="javascript:;" id="J_password"><img src="/statics/core2/common/images/jingao.png">
+                    <p>修改密码</p></a></li>
+                <li>
+                    <a href="/?m=core&c=authed&a=logout"><img src="/statics/core2/common/images/xiugaimi.png">
+                        <p>锁定</p></a>
+                </li>
+-->
+            </ul>
+        </div>
+    </div>
+	{else}
+	{php $_COOKIE['parent_menu_id']='';}
+	{/if}
+</div>
+
+<!--template $this->template,'alarm'}-->
+<script> 
+	// var lan = getCookie('lan');
+	// if(lan == 'en'){
+ //      $('.logo').attr('src', '/statics/core2/common/images/core_logoeng.png');
+ //  	}
+    var system = parseInt(getQueryString('system'));
+	$('#alarm').css('display','none');
+	//切换左栏收缩图标
+	$('#J_switch').on('click', function(){
+		if($(this).attr('src') == '/statics/core/images/show-sidebar-horiz.svg'){
+			$(this).attr('src', '/statics/core/images/hide-sidebar-horiz.svg');
+		}else{
+			$(this).attr('src', '/statics/core/images/show-sidebar-horiz.svg');
+		};
+		
+	});
+    $('#J_index').on('click', function () {
+        Cookies.set('parent_menu_id', '');
+        Cookies.set('sdmenu_J_menu2', '');
+        var url = '/?m=core';
+        if (0<system) url += '&system='+system;
+        window.location.href = url;
+    });
+    var item1 = $('.nav li');
+    item1.each(function (i) {
+        var parent_menu_id = $(this).attr('data-id');
+        if (Cookies.get('parent_menu_id') == parent_menu_id) {
+            //设置选中的css
+            $(item1).removeClass('active');
+            $(this).addClass('active');
+        }
+        $(item1[i]).on('click', function () {
+            Cookies.set('parent_menu_id', parent_menu_id);
+            Cookies.set('sdmenu_J_menu2', '');
+            
+			window.location.reload();
+        });
+    });
+    $('#J_password').on('click', function () {
+        layer.open({
+            type: 2,
+            title: '密码修改',
+            shadeClose: true,
+            shade: 0.8,
+            area: ['450px', '35%'],
+            content: '/?m=core&c=authed&a=doPassword' //iframe的url
+        });
+    });
+	
+	//警告弹窗
+	function alarm() {
+		if($('#alarm').css('display') == 'none'){
+			$('#alarm').show();
+			$('#alarm').append('<embed id="mp3" src="/statics/core/video/fence_alarm.mp3" autostart="true" hidden="true" loop="false">');
+		}
+		
+		
+	}
+</script>

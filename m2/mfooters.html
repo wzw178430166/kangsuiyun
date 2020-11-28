@@ -120,7 +120,7 @@
     <script>
        $(function(){
             // var arr=['/m2/','/index.php?m=content&c=index&a=lists&catid=101','/?m=myim&c=customer_service','/m2/hezuo.html','/m2/lianxi.html'];
-            var arr=['/index.php?m=content&c=index&a=lists&catid=101','/?m=myim&c=customer_service','/m2/lianxi.html'];
+            var arr=['/index.php?m=content&c=index&a=lists&catid=58','/?m=myim&c=customer_service','/m2/lianxi.html'];
                $('#m-footul').children('li').click(function () {
                  try{
                    if(location.href.indexOf('doctor/patient_list.html') != -1){
@@ -158,7 +158,7 @@
                          index=0;
                      }
                      if(ulr=='/m2/hezuo.html'){
-                         index=2;
+                         index=5;
                      }
                      $('#m-footul').children('li').eq(index).find('font').addClass(`fa-angle-down${index}`);
                      $('#m-footul').children('li').eq(index).addClass('cur').siblings().removeClass('cur');

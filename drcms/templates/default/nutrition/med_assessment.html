@@ -1,0 +1,240 @@
+{template $this->template,'header_common',$this->style}
+<script type="text/javascript" src="/statics/admin/common/js/region.js"></script>
+<style>
+.role-do ul { margin: 0; display: flex;flex-wrap: wrap;}
+.role-do ul li { overflow: hidden; border-bottom: 1px #eee solid; padding: 10px 0;width: 50%;}
+.role-do ul li .role-do-strw1 { float: left; width: 90px; height: 30px; line-height: 30px; padding-left: 5px; }
+.role-do ul li .role-do-val { float: left; margin-right: 30px; }
+.role-do ul li .role-do-val .input-text { width: 160px; height: 30px; padding: 0; padding-left: 5px; border-radius: 3px; }
+.role-do ul li .role-do-val .input-textbg { background: #f7f7f7;}
+.role-do ul li .role-do-val .input-textarea { width: 250px; height: 100px; border-radius: 3px; outline: none; resize: none; }
+.role-do-val label { float: left; margin: 5px 10px 0 0; }
+.role-do-val input[type="radio"] { margin: 0; margin-right: 5px; }
+.role-do-val select { width: 166px; height: 30px; }
+.role-do-val .input-tips { margin-left: 15px; color: #666; }
+.role-do-val .editor-inner { width: 600px; }
+.role-do-btn a { display: block; width: 80px; float: left; height: 30px; line-height: 30px; text-align: center; border-radius: 3px; margin-right: 10px; }
+.role-do-btn a.btn-send { background-color: #234686; color: #fff; }
+.role-do-btn a.btn-close { background-color: #e0e0e0; color: #666; }
+.role-do ul li .role-do-val .input-date {
+    width: 50px;
+    height: 30px;
+    padding: 0;
+    padding-left: 5px;
+    border-radius: 3px;
+}
+.role-do ul li .role-do-val .role-spanv{padding: 0 15px;margin-left: 0!important;}
+.role-do ul li.listw100{width: 100%;}
+.role-do ul li .role-do-strw1{ float: left;
+    width: 175px;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 5px;}
+    .query-btn .btn-item {
+   margin-left: 0px; 
+}
+select {
+    width: 170px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    height: 30px;
+}
+</style>
+<body>
+{template $this->template,'header',$this->style}
+<div id="middle"> {template $this->template,'left',$this->style}
+  <div class="right" id="mainFrame">
+    <div class="right_cont">
+      <ul class="breadcrumb">
+        当前位置： <a href="/?m=dataManage">首页</a> <span class="divider">/</span> <a href="javascript:;">营养评估</a> 
+      </ul>
+      <div class="title_right">
+        <strong>基本信息</strong> 
+    </div>
+      <div style="width:auto;margin:auto;">   
+        <div class="query-btn">
+            <div class="btn-item"> <a class="btn-query" >新增</a> <a href="javascript:;" class="btn-add" style="margin-left: 10px;">历史记录</a></div>
+          </div>         
+        <div class="data-content">       
+          <form id="doForm">    
+            <input type="hidden" name="userid" id="userid" value="0">
+            <input type="hidden" name="dosubmit" value="1">     
+            <div class="role-do">
+              <ul>
+                <li style="border-bottom: 0;">
+                    <div class="role-do-strw1">日期</div>
+                    <div class="role-do-val">
+                      <input type="text" name="info[realname]" class="input-text" id="st" value="">
+                    </div>
+                  </li>
+              </ul>
+              <div style="height: 15px;"></div>
+              <div class="title_right">
+                <strong>评估内容</strong> 
+            </div>
+              <ul>
+                <li>
+                    <div class="role-do-strw1">饮食摄入</div>
+                    <div class="role-do-val">
+                        <label>
+                            <input type="radio" name="info[sex]" value="0">禁食
+                          </label>
+                          <label>
+                            <input type="radio" name="info[sex]" value="1">流质
+                          </label>
+                          <label>
+                            <input type="radio" name="info[sex]" value="2">
+                            半流质</label>
+                            <label>
+                                <input type="radio" name="info[sex]" value="2">
+                               软食</label>
+                            <label>
+                                 <input type="radio" name="info[sex]" value="2">
+                             普食</label>
+                             <label>
+                                <input type="radio" name="info[sex]" value="2">
+                            特殊饮食</label>
+                            <input type="text" name="info[realnames]" class="input-text" value="">
+                        </div>
+                  </li>
+                  <li>
+                    <div class="role-do-strw1">完成情况</div>
+                    <div class="role-do-val" style="width: 100%;">
+                        <div class="element-select">
+                            <select id="status">
+                               <option value="">全部</option>
+                              <option value="waitPay">1</option>
+                              <option value="success">2</option>
+                              <option value="close">3</option>
+                            </select>
+                            <input type="text" name="info[realnames]" class="input-text" value="">
+                          </div>
+                        
+                        </div>
+                  </li>
+                  <li class="listw100">
+                      <div style="width:auto;margin:auto;">   
+                          <div class="data-content">
+                            <div class="tb-container">
+                              <table class="table table-bordered table-hover table-striped" id="rstb">
+                                <thead><tr align="center">
+                                    <th><strong class="tb-head cell-check" data-val="check">
+                                      <input type="checkbox" id="J_sel_all">
+                                      </strong></th>
+                                    <th><strong class="tb-head cell-name" data-val="name">医嘱类别</strong></th>
+                                    <th><strong class="tb-head cell-sex" data-val="sex">日期</strong></th>
+                                    <th><strong class="tb-head cell-age" data-val="age">评估时机</strong></th>
+                                    <th><strong class="tb-head cell-telephone" data-val="telephone">消化不良</strong></th>
+                                    <th><strong class="tb-head cell-idcard" data-val="idcard">营养摄入</strong></th>
+                                    <th><strong class="tb-head cell-operate" data-val="operate">操作</strong></th>
+                                  </tr></thead>
+                                <tbody id="datas">
+                                </tbody>
+                              </table>
+                            </div>
+                            <div class="btn-batch"> <span id="J_sel_all2" data-off="0">全选/取消</span><a href="javascript:;" class="batch-del" id="J_batch_del">删除</a></div>
+                          </div>
+                          <div class="inner-page" id="innerPage"></div>
+                    </div>
+                </li>
+                  <li class="listw100">
+                    <div class="role-do-strw1">消化道症状</div>
+                    <div class="role-do-val">
+                        <label>
+                            <input type="radio" name="info[sex]" value="0">腹疼
+                          </label>
+                          <label>
+                            <input type="radio" name="info[sex]" value="1">恶心
+                          </label>
+                          <label>
+                            <input type="radio" name="info[sex]" value="2">
+                            呕吐</label>
+                            <label>
+                                <input type="radio" name="info[sex]" value="2">
+                               腹胀</label>
+                            <label>
+                                 <input type="radio" name="info[sex]" value="2">
+                             腹泻</label>
+                             <label>
+                                <input type="radio" name="info[sex]" value="2">
+                            便秘</label>
+                            <label>
+                                <input type="radio" name="info[sex]" value="2">
+                            出血</label>
+                            <label>
+                                <input type="radio" name="info[sex]" value="2">
+                            溃疡</label>
+                            <label>
+                                其他
+                                <input type="text" name="info[realnames]" class="input-text" value="">
+                               </label>
+                          
+                        </div>
+                  </li>
+                 
+                 
+              </ul>
+            </div>
+          </form>
+          <div class="role-do-btn"> <a href="javascript:;" class="btn-send" id="J_send">保存</a> <a href="javascript:;" class="btn-close" id="J_close">关闭</a> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<script>
+var page = 1;
+$(function(){
+  getTable();
+  var tbWidth = $(window).width() - 245;
+  $("#rstb").css({maxWidth:tbWidth});    
+	$("#rstb").colResizable({  
+		resizeMode: 'overflow',   
+		//minWidth: 15,
+		//headerOnly: true,
+		//dragCursor: '',
+		//liveDrag: true,
+		//draggingClass: 'tb-cell',
+		onResize: function(e,data){
+			//console.log($(e.currentTarget));
+			//$('.tb-cell').width();
+		}
+	});
+    laydate.render({
+	  elem: '#st'
+	  ,format: 'yyyy-MM-dd'
+	  ,done: function(value,date,endDate){
+		  st = value;
+		  //console.log(value); //得到日期生成的值，如：2017-08-18
+		  //console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+		  //console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+	  }
+	});
+	$('#J_close').on('click',function(){
+		window.history.back();
+	});
+});
+function getTable(){
+	var url = '/?m=dataManage&c=hospital&a=doctorList&ajax=1';
+	if (page > 1) url += '&page='+page;
+	var index = layer.load(2,{time:3000});
+	$.get(url,function(data){
+		layer.close(index);
+		var html = '';
+		var pageCount = 0;
+		if (data.status==0) {
+
+		} else {
+			html = '<tr align="center"><td colspan="'+($('.tb-head').length)+'">暂无数据</td></tr>';
+		}
+		$('#datas').html(html);
+		//initAction();
+		if (page == 1) initPage(pageCount);
+	},'json');
+}
+
+
+
+</script>
+</html>

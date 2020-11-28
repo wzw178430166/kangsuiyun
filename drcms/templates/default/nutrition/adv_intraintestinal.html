@@ -1,0 +1,324 @@
+{template $this->template,'header_common',$this->style}
+<script type="text/javascript" src="/statics/admin/common/js/region.js"></script>
+<style>
+.role-do ul { margin: 0; display: flex;flex-wrap: wrap;}
+.role-do ul li { overflow: hidden; border-bottom: 1px #eee solid; padding: 10px 0;width: 50%;}
+.role-do ul li .role-do-strw1 { float: left; width: 90px; height: 30px; line-height: 30px; padding-left: 5px; }
+.role-do ul li .role-do-val { float: left; margin-right: 30px; }
+.role-do ul li .role-do-val .input-text { width: 160px; height: 30px; padding: 0; padding-left: 5px; border-radius: 3px; }
+.role-do ul li .role-do-val .input-textbg { background: #f7f7f7;}
+.role-do ul li .role-do-val .input-textarea { width: 250px; height: 100px; border-radius: 3px; outline: none; resize: none; }
+.role-do-val label { float: left; margin: 5px 10px 0 0; }
+.role-do-val input[type="radio"] { margin: 0; margin-right: 5px; }
+.role-do-val select { width: 166px; height: 30px; }
+.role-do-val .input-tips { margin-left: 15px; color: #666; }
+.role-do-val .editor-inner { width: 600px; }
+.role-do-btn a { display: block; width: 80px; float: left; height: 30px; line-height: 30px; text-align: center; border-radius: 3px; margin-right: 10px; }
+.role-do-btn a.btn-send { background-color: #234686; color: #fff; }
+.role-do-btn a.btn-close { background-color: #e0e0e0; color: #666; }
+.role-do ul li .role-do-val .input-date {
+    width: 50px;
+    height: 30px;
+    padding: 0;
+    padding-left: 5px;
+    border-radius: 3px;
+}
+.role-do ul li .role-do-val .role-spanv{padding: 0 15px;margin-left: 0!important;}
+.role-do ul li.listw100{width: 100%;}
+.role-do ul li .role-do-strw1{ float: left;
+    width: 175px;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 5px;}
+    .query-btn .btn-item {
+   margin-left: 0px; 
+}
+select {
+    width: 170px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    height: 30px;
+}
+#menu {
+    padding-top: 1rem;
+    background: #fff;
+}
+#menu ul {
+    display: flex;margin: 0;
+}
+#menu li {
+    width: 6rem;cursor: pointer;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    background-color: #F1F1F1;
+    overflow: hidden;
+    font-size: .8rem;
+    color: #111111;
+}
+#menu li .pstyle {
+    width: 70%;
+    height: 2px;
+    background: #339EFC;
+    margin: .5rem auto 0 auto;
+}
+#menu li.on {
+    color: #2196F3;
+    background: #F4F5FA;
+}
+.clear {
+    clear: both;
+}
+.data-content {
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+}
+</style>
+<body>
+{template $this->template,'header',$this->style}
+<div id="middle"> {template $this->template,'left',$this->style}
+  <div class="right" id="mainFrame">
+    <div class="right_cont">
+      <ul class="breadcrumb">
+        当前位置： <a href="/?m=dataManage">首页</a> <span class="divider">/</span> <a href="javascript:;">医嘱信息</a> 
+      </ul>
+      <div class="title_right">
+        <strong>肠内营养</strong> 
+    </div>
+      <div style="width:auto;margin:auto;">  
+        <div class="query-btn">
+            <div class="btn-item"> <a class="btn-query" >新增</a> <a href="javascript:;" class="btn-add" style="margin-left: 10px;">执行</a> </div>
+          </div>   
+        <div id="menu">
+          <ul>
+            <li class="on">新开/执行
+              <p class="pstyle"></p>
+            </li>
+            <li>历史记录
+              <p></p>
+            </li>
+            <div class="clear"></div>
+          </ul>
+          <div class="clear"></div>
+        </div>
+        <div class="data-content">
+          <div class="tb-container">
+            <table class="table table-bordered table-hover table-striped" id="rstb">
+              <thead><tr align="center">
+                  <th><strong class="tb-head cell-check" data-val="check">
+                    <input type="checkbox" id="J_sel_all">
+                    </strong></th>
+                  <th><strong class="tb-head cell-name" data-val="name">医嘱内容</strong></th>
+                  <th><strong class="tb-head cell-sex" data-val="sex">剂量</strong></th>
+                  <th><strong class="tb-head cell-age" data-val="age">单位</strong></th>
+                  <th><strong class="tb-head cell-telephone" data-val="telephone">途径</strong></th>
+                  <th><strong class="tb-head cell-pici" data-val="pici">频次</strong></th>
+                  <th><strong class="tb-head cell-starttime" data-val="starttime">医嘱开始时间</strong></th>
+                  <th><strong class="tb-head cell-endtime" data-val="endtime">医嘱结束时间</strong></th>
+                  <th><strong class="tb-head cell-state" data-val="state">医嘱状态</strong></th>
+                  <!-- <th><strong class="tb-head cell-operate" data-val="operate">操作</strong></th> -->
+                </tr></thead>
+              <tbody id="datas">
+              </tbody>
+            </table>
+          </div>
+          <div class="btn-batch"> <span id="J_sel_all2" data-off="0">全选/取消</span><a href="javascript:;" class="batch-del" id="J_batch_del">删除</a></div>
+        </div>
+        <div class="inner-page" id="innerPage"></div>
+      </div>
+      <div style="width:auto;margin:auto;">   
+        <div style="height: 20px;"></div>
+        <div class="data-content">       
+          <form id="doForm">    
+            <input type="hidden" name="userid" id="userid" value="0">
+            <input type="hidden" name="dosubmit" value="1">     
+            <div class="role-do">
+              <ul>
+                <li>
+                    <div class="role-do-strw1">体重(kg)</div>
+                    <div class="role-do-val"><input type="text" name="username" class="input-text" id="username" value="">  </div>
+                  </li>
+                  <li>
+                    <div class="role-do-strw1">总液体重</div>
+                    <div class="role-do-val"><input type="text" name="username" class="input-text input-textbg" id="username" value="" readonly>  <span>毫升</span></div>
+                  </li>
+                  <li>
+                    <div class="role-do-strw1">选择制剂</div>
+                    <div class="role-do-val"><input type="text" name="username" class="input-text" id="username" value="">  </div>
+                  </li>
+                  <li>
+                    <div class="role-do-strw1">执行频次</div>
+                    <div class="element-select">
+                        <select id="status">
+                            <option value="">全部</option>
+                          <option value="waitPay">1</option>
+                          <option value="success">2</option>
+                          <option value="close">3</option>
+                        </select>
+                      </div>
+                    </li>
+                    <li class="listw100">
+                        <div class="role-do-strw1">肠内途径</div>
+                        <div class="role-do-val"><input type="text" name="username" class="input-text input-textbg" id="username" value="" readonly style="width: 1000px"></div>
+                      </li>
+                      <li>
+                        <div class="role-do-strw1">剂量</div>
+                        <div class="role-do-val"><input type="text" name="username" class="input-text" id="username" value="">  <input type="text" name="username" class="input-text input-textbg" value="" readonly style="width: 90px;"></div>
+                      </li>
+                      <li>
+                        <div class="role-do-strw1">规格</div>
+                        <div class="role-do-val"><input type="text" name="username" class="input-text input-textbg" id="username" value="" readonly> </div>
+                      </li>
+                      <li>
+                        <div class="role-do-strw1">开始日期</div>
+                        <div class="role-do-val">
+                          <input type="text" name="info[realname]" class="input-text" id="st" value="">
+                        </div>
+                      </li>
+                      <li>
+                        <div class="role-do-strw1">停止日期</div>
+                        <div class="role-do-val">
+                          <input type="text" name="info[realname]" class="input-text" id="et" value="">
+                        </div>
+                      </li>
+                      <li class="listw100">
+                        <div class="role-do-strw1">备注</div>
+                        <div class="role-do-val"><input type="text" name="username" class="input-text" id="username" value=""  style="width: 1000px"></div>
+                      </li>
+              </ul>
+            </div>
+          </form>
+          <div class="title_right">
+            <strong>营养素分析表</strong> 
+        </div>
+        <div style="width:auto;margin:auto;">   
+            <div class="data-content">
+              <div class="tb-container">
+                <table class="table table-bordered table-hover table-striped" id="rstb3">
+                  <thead>
+                      <tr align="center">
+                      <th><strong class="tb-head cell-name" data-val="name">营养素</strong></th>
+                      <th><strong class="tb-head cell-sex" data-val="sex">推荐值</strong></th>
+                      <th><strong class="tb-head cell-nowd" data-val="nowd">当前值</strong></th>
+                      <th><strong class="tb-head cell-biadf" data-val="biadf">百分比</strong></th>
+                    </tr></thead>
+                  <tbody id="datas3">
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="inner-page" id="innerPage3"></div>
+      </div>
+       <div style="height: 25px;"></div>
+          <div class="role-do-btn"> <a href="javascript:;" class="btn-send" id="J_send">保存</a> <a href="javascript:;" class="btn-close" id="J_close">关闭</a> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<script>
+  var page = 1;
+var datas = {};
+$(function(){
+  var $list = $("#menu").find("li");
+	var $div = $("#tab-con").children("div");
+	$list.click(function() {
+		var index = $(this).index();
+		$list.eq(index).addClass("on").siblings().removeClass("on");
+		$div.eq(index).addClass("on").siblings().removeClass("on");
+		$(this).find("p").addClass("pstyle").parent().siblings().find('p').removeClass("pstyle");;
+	})
+  getTable();
+  getTable3()
+  var tbWidth = $(window).width() - 245;
+  $("#rstb").css({maxWidth:tbWidth});    
+	$("#rstb").colResizable({  
+		resizeMode: 'overflow',   
+		//minWidth: 15,
+		//headerOnly: true,
+		//dragCursor: '',
+		//liveDrag: true,
+		//draggingClass: 'tb-cell',
+		onResize: function(e,data){
+			//console.log($(e.currentTarget));
+			//$('.tb-cell').width();
+		}
+	});
+    var tbWidth3 = $(window).width() - 245;
+  $("#rstb3").css({maxWidth:tbWidth3});    
+	$("#rstb3").colResizable({  
+		resizeMode: 'overflow',   
+		//minWidth: 15,
+		//headerOnly: true,
+		//dragCursor: '',
+		//liveDrag: true,
+		//draggingClass: 'tb-cell',
+		onResize: function(e,data){
+			//console.log($(e.currentTarget));
+			//$('.tb-cell').width();
+		}
+	});
+    laydate.render({
+	  elem: '#st'
+	  ,format: 'yyyy-MM-dd'
+	  ,done: function(value,date,endDate){
+		  st = value;
+		  //console.log(value); //得到日期生成的值，如：2017-08-18
+		  //console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+		  //console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+	  }
+	});
+    laydate.render({
+	  elem: '#et'
+	  ,format: 'yyyy-MM-dd'
+	  ,done: function(value,date,endDate){
+		  st = value;
+		  //console.log(value); //得到日期生成的值，如：2017-08-18
+		  //console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+		  //console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+	  }
+	});
+	$('#J_close').on('click',function(){
+		window.history.back();
+	});
+});
+
+function getTable(){
+	var url = '/?m=dataManage&c=hospital&a=doctorList&ajax=1';
+	if (page > 1) url += '&page='+page;
+	var index = layer.load(2,{time:3000});
+	$.get(url,function(data){
+		layer.close(index);
+		var html = '';
+		var pageCount = 0;
+		if (data.status==0) {
+		} else {
+			html = '<tr align="center"><td colspan="'+($('.tb-head').length)+'">暂无数据</td></tr>';
+		}
+		$('#datas').html(html);
+		//initAction();
+		//if (page == 1) initPage(pageCount);
+	},'json');
+}
+//营养素分析表
+function getTable3(){
+	var url = '/?m=dataManage&c=hospital&a=doctorList&ajax=1';
+	if (page > 1) url += '&page='+page;
+	var index = layer.load(2,{time:3000});
+	$.get(url,function(data){
+		layer.close(index);
+		var html = '';
+		var pageCount = 0;
+		if (data.status==0) {
+		} else {
+			html = '<tr align="center"><td colspan="'+($('.tb-head').length)+'">暂无数据</td></tr>';
+		}
+		$('#datas3').html(html);
+		//initAction();
+	},'json');
+}
+
+</script>
+</html>

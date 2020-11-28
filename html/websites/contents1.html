@@ -1,4 +1,4 @@
-	<div class="dialogBoxdd" style="display:none;"> <span class="CenterPromptbox radius" ><span class="closedthismask">X</span> 
+	<!-- <div class="dialogBoxdd" style="display:none;"> <span class="CenterPromptbox radius" ><span class="closedthismask">X</span> 
 
 <span class="content">  
 	 <div class="title">
@@ -32,48 +32,47 @@
 
 
 
-</span> </span></div>
+</span> </span></div> -->
 
 <script>
-	var item2 = $('.an_2');
+// 	var item2 = $('.an_2');
 
-		item2.each(function(i) {
+// 		item2.each(function(i) {
 		
-    	$(item2[i]).on('click',function(e){
-			e.preventDefault();
-			$('.dialogBoxdd').fadeIn();
+//     	$(item2[i]).on('click',function(e){
+// 			e.preventDefault();
+// 			$('.dialogBoxdd').fadeIn();
 			
-		});
-    })
-	$('.closedthismask').click(function(){
-		$('.dialogBoxdd').fadeOut();
-	});
-	contact();
-function contact(){
-	$('.btn-send').click(function(){
-	var name = $.trim($('#name').val());
-	var tel = $.trim($('#tel').val());
-	var cons = $.trim($('#introduce').val());
-	//var company = $.trim($('#company').val());
-	if(!name || !tel){
-		alert('请完整填写联系资料，谢谢。');
-		return;
-	}
-	$.ajax({
-		url:'//www.yjxun.cn/?m=data&c=da_fun&a=saveDatum',
-		type:'GET',
-		dataType:"jsonp",
-        jsonp:"jsoncallback",
-		data:'typeid=83&name='+name+'&tel='+tel+'&content='+cons,
-		success:function(da){
-			alert('提交成功，请耐心等候，客服会尽快与您联系，祝您生活愉快！');
-			setTimeout(function(){
-				$('.dialogBoxdd').fadeOut();
-			},500);
-		}
-	})
-})
+// 		});
+//     })
+// 	$('.closedthismask').click(function(){
+// 		$('.dialogBoxdd').fadeOut();
+// 	});
+// 	contacts();
+// function contacts(){
+// 	$('.btn-send').click(function(){
+// 	var name = $.trim($('#name').val());
+// 	var tel = $.trim($('#tel').val());
+// 	var cons = $.trim($('#introduce').val());
+// 	if(!name || !tel){
+// 		alert('请完整填写联系资料，谢谢。');
+// 		return;
+// 	}
+// 	$.ajax({
+// 		url:'//www.yjxun.cn/?m=data&c=da_fun&a=saveDatum',
+// 		type:'GET',
+// 		dataType:"jsonp",
+//         jsonp:"jsoncallback",
+// 		data:'typeid=83&name='+name+'&tel='+tel+'&content='+cons,
+// 		success:function(da){
+// 			alert('提交成功，请耐心等候，客服会尽快与您联系，祝您生活愉快！');
+// 			setTimeout(function(){
+// 				$('.dialogBoxdd').fadeOut();
+// 			},500);
+// 		}
+// 	})
+// })
 
-}
+// }
 </script>
 

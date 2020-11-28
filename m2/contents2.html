@@ -1,0 +1,130 @@
+<style>
+    .closedthismaskdd {
+        cursor: pointer;
+        position: absolute;
+        top: 2vw;
+        right: 1vw;
+        width: 5vw;
+        height: 6vw;
+        z-index: 100;
+    }
+    </style>	
+    
+    <div class="dialogBoxdd" style="display:none;"> <span class="CenterPromptbox radius" ><span class="closedthismask">X</span> 
+    
+    <span class="content">  
+         <div class="title">
+                <strong>立即申请加盟</strong>
+                <p>请您填写以下信息，我们将严格保密，客服将第一时间与您联系</p>
+            </div>
+            <div class="tijiao">
+                        <form>
+                            
+                            <tr>
+                                
+                                <td><input type="text"  maxlength="200" class="" value="" placeholder="请输入您的姓名" id="name"></td>
+                            </tr>
+                            <tr>
+                                
+                                <td><input type="text" name="" maxlength="128" class="" placeholder="请输入联系电话" id="tel"></td>
+                            </tr>
+                            
+                            <tr>
+                                
+                                <td><textarea  placeholder="可填写您的特别需求功能或服务（非必填）" id="introduce"></textarea></td>
+                            </tr>
+                            <tr>
+                                
+                                <td><input type="botton" value="立即提交" class="tjan btn-send" style="text-align: center;cursor: pointer;"></td>
+                            </tr>
+                            
+                        </form>	
+                        
+                    </div>
+    
+    
+    
+    </span> </span></div>
+    
+    
+    <!-- <div class="dialogBox tj_wc" style="display:none;"> <span class="CenterPromptbox radius" ><span class="closedthismaskdd">X</span> 
+    
+    <span class="content">  
+         <div class="title">
+               <img src="imgs/yd_tj_conimg.jpg" width="40%">
+                <strong>申请提交成功</strong>
+                <p>客服将尽快与您联系，请保持电话畅通</p>
+            </div>
+            <div class="tijiao">
+                        <p>由于体验账号是PC端管理后台，因此需要使用电脑进行操作，打开浏览器输入网站：<span>https://www.519ksy.com/</span> ，进入体验中心，即可进入后台体验。客服人员也会将操作方式已短信发送给您。</p>
+                        <input type="botton" value="我知道了" class="tj_zd" autocomplete="off" style="text-align: center;">
+                    </div>
+    
+    
+    
+    </span> </span></div> -->
+    
+    
+    <script>
+        var item2 = $('.an_3');
+    
+            item2.each(function(i) {
+            
+            $(item2[i]).on('click',function(e){
+                e.preventDefault();
+                $('.dialogBoxdd').fadeIn();
+                
+            });
+        })
+        
+        // 	var item44 = $('.fd_l');
+    
+        // 	item44.each(function(i) {
+            
+        // 	$(item44[i]).on('click',function(e){
+        // 		e.preventDefault();
+        // 		$('.dialogBoxdd').fadeIn();
+                
+        // 	});
+        // })
+        
+        
+        
+        $('.tj_zd').click(function(){
+            $('.tj_wc').fadeOut();
+        });
+            $('.closedthismaskdd').click(function(){
+            $('.tj_wc').fadeOut();
+        });
+        $('.closedthismask').click(function(){
+            $('.dialogBoxdd').fadeOut();
+        });
+        contact();
+    function contact(){
+        $('.btn-send').click(function(){
+        var name = $.trim($('#name').val());
+        var tel = $.trim($('#tel').val());
+        var cons = $.trim($('#introduce').val());
+        //var company = $.trim($('#company').val());
+        if(!name || !tel){
+            alert('请完整填写联系资料，谢谢。');
+            return;
+        }
+        $.ajax({
+            url:'//www.yjxun.cn/?m=data&c=da_fun&a=saveDatum',
+            type:'GET',
+            dataType:"jsonp",
+            jsonp:"jsoncallback",
+            data:'typeid=87&name='+name+'&tel='+tel+'&content='+cons,
+            success:function(da){
+                alert('提交成功，请耐心等候，客服会尽快与您联系，祝您生活愉快！');
+                // setTimeout(function(){
+                //     $('.dialogBoxdd').fadeOut();
+                //     $('.tj_wc').fadeIn();
+                // },200);
+            }
+        })
+    })
+    
+    }
+    </script>

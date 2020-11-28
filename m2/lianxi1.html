@@ -1,0 +1,424 @@
+
+<!DOCTYPE html >
+<html lang="cn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<title></title>
+<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+<link rel="stylesheet" type="text/css" href="https://www.yjxun.cn/news2/css/index.css?v=33" id="index_css">
+<script type="text/javascript" src="/statics/js/jquery_11.min.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+</head>
+
+<body> 
+<header>
+  <div class="header">
+    <div class="arrow">
+      <img src="images/index_back.png">
+    </div>
+    <div class="serach">
+      <div class="serach_img">
+        <img src="images/xxxc.jpg">
+      </div>
+      <form id="doForm" onsubmit="return send()" action="?">
+        <input type="text" id="search" placeholder="首批5G牌照发放 |   广东河源暴雨洪涝" value="">
+      </form>
+    </div>
+  </div>
+  <nav>
+    <ul class="news">
+      <li>
+        <i>关注</i>
+        <span>●</span>
+      </li>
+      <li class="cur">
+        <i>热点</i>
+      </li>
+      <li>
+        <i>运动</i>
+      </li>
+      <li>
+        <i>健康</i>
+      </li>
+      <li>
+        <i>视频</i>
+      </li>
+      <li>
+        <i>娱乐</i>
+      </li>
+    </ul>
+  </nav>
+  <div class="line"></div>
+</header>
+<div style="height: 6.9rem;"></div>
+<div>
+  <div class="content" id="content" style="width:100vw;overflow: hidden; "></div>
+  <div class="template" id="template1">
+    <div class="listitem listitem1">
+      <div class="artic">
+        <div class="title" onclick="goo('detail.html?id=<$id>&catid=<$catid>')">
+          <$title>
+        </div>
+        <div class="piece">
+          <span>
+          <$author>
+          </span>&nbsp;&nbsp;
+          <span>
+          <$count_r>
+           </span>
+          <img src="images/bp_ico.png" class="pb_btn" onClick="showpb.show()">
+        </div>
+      </div>
+      <div class="img" onclick="goo('detail.html?id=<$id>&catid=<$catid>')">
+        <div class="zoomImage" style="background-image:url('<$thumb>'); "></div>
+      </div>
+    </div>
+  </div> 
+  <div class="template" id="template2">
+    <div class="listitem listitem2">
+      <div class="artic">
+        <div class="title" onclick="goo('detail.html?id=<$id>&catid=<$catid>')">
+          <$title>
+        </div>
+        <div class="thumbList thumbList3">
+          <$tumbList>
+        </div>
+        <div class="piece">
+          <span>
+          <$author>
+          </span>&nbsp;&nbsp;
+          <span>
+          <$count_r>
+           </span>
+          <img src="images/bp_ico.png" class="pb_btn" onClick="showpb.show()">
+        </div>
+        <div style="clear: both"></div>
+      </div>
+      <div style="clear: both"></div>
+    </div>
+  </div>
+  <div class="template" id="template2_1">
+    <div class="zoomImage" style="background-image:url('<$imgurl>'); " onclick="goo('detail.html?id=<$id>&catid=<$catid>')"></div>
+  </div>
+  <!---->
+  <div class="template" id="template2_2">
+    <div class="listitem listitem2 listitem2_2">
+      <div class="artic">
+        <div class="title" onclick="goo('detail.html?id=<$id>&catid=<$catid>')">
+          <$title>
+        </div>
+        <div class="thumbList thumbList2">
+          <$tumbList>
+        </div>
+        <div class="piece">
+          <span>
+          <$author>
+          </span>&nbsp;&nbsp;
+          <span>
+          <$count_r>
+           </span>
+          <img src="images/bp_ico.png" class="pb_btn" onClick="showpb.show()">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!---->
+  <div class="template" id="template3">
+    <div class="listitem listitem3">
+      <div class="artic">
+        <div class="title" onclick="goo('detail.html?id=<$id>&catid=<$catid>')">
+          <$title>
+        </div>
+        <div class="zoomImage" style="background-image:url('<$thumb>'); " onclick="goo('detail.html?id=<$id>&catid=<$catid>')"></div>
+        <div class="piece">
+          <span>
+          <$author>
+          </span>&nbsp;&nbsp;
+          <span>
+          <$count_r>
+           </span>
+          <img src="images/bp_ico.png" class="pb_btn" onClick="showpb.show()">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="template" id="template4">
+    <div class="listitem listitem3">
+      <div class="artic">
+        <div class="title" onclick="goo('detail.html?id=<$id>&catid=<$catid>')">
+          <$title>
+        </div>
+        <div class="zoomImage" style="background-image:url('<$thumb>'); "
+                    onclick="goo('detail.html?id=<$id>&catid=<$catid>')"></div>
+        <div class="piece">
+          <span> 广告 </span>
+          <img src="images/bp_ico.png" class="pb_btn" onClick="showpb.show()">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="pbbox" id="pbbox">
+  <div class="bpcon" id="bpcon">
+    <div class="bpkuang">
+		<!--bpkuang1-->
+      <div class="bpkuang1">
+        <div class="bptitle">选择你不喜欢的原因</div>
+        <div class="bpitem">
+          <img src="images/Multiply.png" alt="">
+          不感兴趣 </div>
+        <div class="bpitem">
+          <img src="images/DangerSymbol.png" alt="">
+          不感兴趣 </div>
+        <div class="bpitem">
+          <img src="images/Question.png" alt="">
+          不感兴趣 </div>
+        <div class="bpqita">
+          <img src="images/Pencilfreeicon.png" alt="">
+          其它屏蔽理由 </div>
+      </div>
+		<!--bpkuang2-->
+		<div class="bpkuang2">  
+        <div class="bptitle">
+			<img src="images/goleft_black.png" class="bpback"/>
+			输入其它屏蔽理由</div>
+			<div class="bpinput"> 
+			<textarea placeholder="输入其它屏蔽理由" id="bpinput_"></textarea>
+				<div class="bpinput_bpzishu"><span id="bpzishu">0</span>/200</div>
+			</div>
+         <div class="bpinput_btn">提交</div>
+      </div>
+	
+    </div> 
+  </div> 
+	<div class="bpbg"></div>
+</div>
+</body>
+</html>
+<script> 
+var page=1;
+$(function () {
+	var btn_w = 0;
+	//$('#index_css').attr('href',$('#index_css').attr('href') + '?v='+  (new Date()).valueOf());
+
+	getDatas();
+	setlib();
+	showpb.set();
+});
+function setlib(){
+	$(".news li").click(function(){
+         $(".news li").removeClass("cur");
+         $(this).addClass("cur");
+		 $("#content").html('');
+                
+        switch (parseInt($(this).index())) {
+            case 0: // 关注 无
+                break;
+            case 1:// 热点 所有新闻
+                 getDatas(); break;
+                 
+            case 2://运动
+                getDatas(97); break;
+            case 3://健康
+                 getDatas(96); break;
+            case 4://视频   无
+//                 getDatas(); break;
+            case 5://娱乐
+                getDatas(98); break;
+                 break;
+        }     
+     });
+}
+function send(){
+    var a = $('#search').val();
+    getDatas(false,a);
+    return false; 
+} 
+function getDatas(catid,search){
+    catid = catid? '&catid='+catid : '';
+    search = search? '&search='+search : '';
+    ajax({url:'/?m=circle&c=news&a=getDatas',type:'get',data:'page='+page +search+catid,dataType:'json'}).then(data=>{
+            data = JSON.parse(data);
+			console.log(data);
+            if(data.status==1){ 
+				$("main #content li").remove();
+				var da = mytemplate_list(data.data);
+				$('#content').append(da);
+            } 
+    })  
+	// $.ajax({
+	// 	url: '/?m=circle&c=news&a=getDatas'
+	// 	,data:'page='+page +search+catid
+	// 	,success:function(data){
+	// 		data = JSON.parse(data);
+	// 		console.log(data);
+    //         if(data.status==1){ 
+	// 			$("main #content li").remove();
+	// 			var da = mytemplate_list(data.data);
+	// 			$('#content').append(da);
+    //         } 
+	// 	} 
+    // });
+    
+
+
+}
+var showpb = {
+	set:function(obj){
+		this.obj = obj; 
+		var self = this;
+		$('.bpbg').on('click',function(){ self.hide(); });
+		$('.bpback').on('click',function(){ self.gopage(0); }); 
+		$('.bpqita').on('click',function(){ self.gopage(1); }); 
+		
+		$('#bpinput_').on('input propertychange',function(){ 
+			var i = $.trim($(this).val()).length;
+			if(i>0){ 
+				$('.bpinput_btn').addClass('bpinput_btn_b');
+			}else{
+				$('.bpinput_btn').removeClass('bpinput_btn_b'); 
+			}
+			if(i>200){ 
+				$(this).val( $(this).val().substr(0,200) ); 
+				i = $.trim($(this).val()).length; 
+			} 
+			$('#bpzishu').text( i );
+		});
+	}
+	,show : function(){
+		var s = $(window).scrollTop();
+		$("#pbbox").css({'top':s}).show();
+		$("#bpcon").slideDown(130);
+		$('html').css('overflow','hidden');
+	}
+	,hide : function(){
+		$("#bpcon").slideUp(130);
+		window.setTimeout(function(){ $("#pbbox").hide(); },250);
+		$('html').css('overflow','auto');
+	}
+	,gopage : function(i){
+		$('.bpkuang').animate({'left':(i*90*-1)+'vw'});
+	}	
+}
+	 
+function mytemplate_list(opt) {
+    var list = '',strr = '';
+    var isl = 1;
+	var showY = {'1':0,'2':0,'3':0}; //现在显示模板的连续次数
+	var showC; //能显示的模板
+	var showT;
+    for (i in opt) {
+		showT=1;
+		do{ 
+			showC = {'1':0,'2':0,'3':0};
+			
+			try{
+				if(opt[i].style1==1){ showT=3; break;}
+				if(opt[i].style1==0){ showT=1; break; }
+				if(opt[i].style1==2){ showT=2; break; }
+				if(opt[i].style1==3){ showT=2; break; }  
+			}catch(e){}
+			
+			
+			for(k in showY){
+				if(showY[k]<1){ 
+					showT = k;
+					showY[k] ++;
+					if(k==3){
+						showY = {'1':0,'2':0,'3':0};
+					} 
+					break;
+				} 
+			}
+		}while(1>5);  
+
+		do{ 
+			var a = opt[i].thumbList; 
+			
+			if(showT==1){
+				html = $('#template1').html();
+				break;
+			}
+
+			if(showT==2){
+				if(a.length<2 ){
+					html = $('#template3').html();
+					break;
+				}else if(a.length<3 || opt[i].style1==2){
+					html = $('#template2_2').html(); 
+				}else{
+					html = $('#template2').html();
+				}
+
+				var html_ = "", html__="", k=1;  
+				for (j in a) {
+					if(opt[i].style1==2){ if(k>2){ break; } }  
+					if(k>3){ break; }  
+					k++;
+					html_ = $('#template2_1').html();   console.log(html_);
+					html_ = html_.replace('<$imgurl>', a[j].url);   
+					//html_ = html_.replace('<$imgalt>', a[j].alt); 
+					html__ += html_; 
+				}
+				strr = '(&lt;\\$tumbList\&gt;)|(<\\$tumbList\>)';
+				reger = new RegExp(strr, 'g'); 
+				html = html.replace(reger, html__); 	
+				break;
+			}
+
+			if(showT==3){
+				html = $('#template3').html(); break;
+			} 
+
+		}while(1>5); 
+		
+        for (j in opt[i]) {
+            strr = '(&lt;\\$' + j + '\&gt;)|(<\\$' + j + '\>)';
+            reger = new RegExp(strr, 'g'); 
+	
+			if(j=='count_r'){
+				if(Number(opt[i][j])<=0){
+					opt[i][j] = ''; 
+				}else{
+					opt[i][j] += '评论'; 
+				}
+			}
+			html = html.replace(reger, opt[i][j]);
+        }
+        list += html;
+    } 
+    return list;
+}
+    
+    
+function ajax({url,type,data,dataType}){   
+  return new Promise(function(open,err){
+  var xhr=new XMLHttpRequest();
+  xhr.onreadystatechange=function(){
+  if(xhr.readyState==4&&xhr.status==200){
+        if(dataType!==undefined&&dataType.toLowerCase()==="json"){
+                  var res=JSON.parse(xhr.responseText)
+                     }
+          else{
+              var res=xhr.responseText
+          }
+          open(res);   //请求到数据，缺一段逻辑，使用回调函数（引出了Promise）
+      }
+  }
+  if(type.toLowerCase()=="get"&&data!=undefined){
+    //  url+="?"+data;
+        url+="&"+data;
+  }
+  xhr.open(type,url,true);
+  if(type.toLowerCase()==="post")
+   xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+  if(type.toLowerCase()=="post"&&data!==undefined)
+      xhr.send(data);
+  else
+      xhr.send(null);
+})
+}
+
+</script>

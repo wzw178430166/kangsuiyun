@@ -1,0 +1,302 @@
+{template $this->template,'header_common',$this->style}
+<script type="text/javascript" src="/statics/admin/common/js/region.js"></script>
+<style>
+.role-do ul { margin: 0; display: flex;flex-wrap: wrap;}
+.role-do ul li { overflow: hidden; border-bottom: 1px #eee solid; padding: 10px 0;width: 50%;}
+.role-do ul li .role-do-strw1 { float: left; width: 90px; height: 30px; line-height: 30px; padding-left: 5px; }
+.role-do ul li .role-do-val { float: left; margin-right: 30px; }
+.role-do ul li .role-do-val .input-text { width: 160px; height: 30px; padding: 0; padding-left: 5px; border-radius: 3px; }
+.role-do ul li .role-do-val .input-textbg { background: #f7f7f7;}
+.role-do ul li .role-do-val .input-textarea { width: 250px; height: 100px; border-radius: 3px; outline: none; resize: none; }
+.role-do-val label { float: left; margin: 5px 10px 0 0; }
+.role-do-val input[type="radio"] { margin: 0; margin-right: 5px; }
+.role-do-val select { width: 166px; height: 30px; }
+.role-do-val .input-tips { margin-left: 15px; color: #666; }
+.role-do-val .editor-inner { width: 600px; }
+.role-do-btn a { display: block; width: 80px; float: left; height: 30px; line-height: 30px; text-align: center; border-radius: 3px; margin-right: 10px; }
+.role-do-btn a.btn-send { background-color: #234686; color: #fff; }
+.role-do-btn a.btn-close { background-color: #e0e0e0; color: #666; }
+.role-do ul li .role-do-val .input-date {
+    width: 50px;
+    height: 30px;
+    padding: 0;
+    padding-left: 5px;
+    border-radius: 3px;
+}
+.role-do ul li .role-do-val .role-spanv{padding: 0 15px;margin-left: 0!important;}
+.role-do ul li.listw100{width: 100%;}
+.role-do ul li .role-do-strw1{ float: left;
+    width: 175px;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 5px;}
+</style>
+<body>
+{template $this->template,'header',$this->style}
+<div id="middle"> {template $this->template,'left',$this->style}
+  <div class="right" id="mainFrame">
+    <div class="right_cont">
+      <ul class="breadcrumb">
+        当前位置： <a href="/?m=dataManage">首页</a> <span class="divider">/</span> <a href="javascript:;">患者档案</a> <span class="divider">/</span> 基本信息
+      </ul>
+      <div class="title_right"><strong>基本信息</strong></div>
+      <div style="width:auto;margin:auto;">
+        <div class="data-content">
+          <form id="doForm">
+            <input type="hidden" name="userid" id="userid" value="0">
+            <input type="hidden" name="dosubmit" value="1">
+            <div class="role-do">
+              <ul>
+                <li>
+                  <div class="role-do-strw1">住院号</div>
+                  <div class="role-do-val">
+                    <input type="text" name="info[realname]" class="input-text input-textbg" id="realname" value="" readonly>
+                  </div>
+                </li>
+                <li>
+                  <div class="role-do-strw1">姓名</div>
+                  <div class="role-do-val">
+                    <input type="text" name="info[realname]" class="input-text input-textbg" id="realname" value="" placeholder="请输入真实姓名" readonly>
+                  </div>
+                </li>
+                 <li>
+                  <div class="role-do-strw1">病区</div>
+                  <div class="role-do-val"><input type="text" name="username" class="input-text input-textbg" id="username" value="" readonly></div>
+                </li>
+                <li>
+                <div class="role-do-strw1">床号</div>
+                  <div class="role-do-val"><input type="text" name="info[idcard]" class="input-text input-textbg" id="idcard" value="" readonly></div>
+                </li>
+                <li>
+                  <div class="role-do-strw1">科室</div>
+                    <div class="role-do-val"><input type="text" name="info[idcard]" class="input-text input-textbg" id="idcard" value="" readonly></div>
+                  </li>
+                  <li>
+                    <div class="role-do-strw1">性别</div>
+                      <div class="role-do-val"><input type="text" name="info[idcard]" class="input-text input-textbg" id="idcard" value="" readonly></div>
+                    </li>
+                <li>
+                  <div class="role-do-strw1">年龄</div>
+                  <div class="role-do-val" style="display: flex;align-items: center;"><input type="text" name="info[age]" class="input-date input-textbg" id="age" value="" placeholder="" readonly><span class="role-spanv">岁</span><input type="text" name="info[age]" class="input-date input-textbg" id="age" value="" placeholder="" readonly><span class="role-spanv">月</span><input type="text" name="info[age]" class="input-date input-textbg" id="age" value="" placeholder="" readonly><span class="role-spanv">天</span></div>
+                </li>
+                <li>
+                  <div class="role-do-strw1">生日</div>
+                    <div class="role-do-val"><input type="text" name="info[idcard]" class="input-text input-textbg" id="idcard" value="" readonly></div>
+                  </li>
+                <li class="listw100">
+                    <div class="role-do-strw1">STAMP评分(护士筛查)</div>
+                      <div style="width:auto;margin:auto;">   
+                          <div class="data-content">
+                            <div class="tb-container">
+                              <table class="table table-bordered table-hover table-striped" id="rstb">
+                                <thead><tr align="center">
+                                    <th><strong class="tb-head cell-check" data-val="check">
+                                      <input type="checkbox" id="J_sel_all">
+                                      </strong></th>
+                                    <th><strong class="tb-head cell-name" data-val="name">日期</strong></th>
+                                    <th><strong class="tb-head cell-sex" data-val="sex">评估总分</strong></th>
+                                    <th><strong class="tb-head cell-age" data-val="age">评估时机</strong></th>
+                                    <th><strong class="tb-head cell-telephone" data-val="telephone">消化不良</strong></th>
+                                    <th><strong class="tb-head cell-idcard" data-val="idcard">营养摄入</strong></th>
+                                    <th><strong class="tb-head cell-operate" data-val="operate">操作</strong></th>
+                                  </tr></thead>
+                                <tbody id="datas">
+                                </tbody>
+                              </table>
+                            </div>
+                            <div class="btn-batch"> <span id="J_sel_all2" data-off="0">全选/取消</span><a href="javascript:;" class="batch-del" id="J_batch_del">删除</a></div>
+                          </div>
+                          <div class="inner-page" id="innerPage"></div>
+                    </div>
+                </li>
+                <li class="listw100">
+                  <div class="role-do-strw1">入院日期</div>
+                  <div class="role-do-val"><input type="text" name="info[idcard]" class="input-text input-textbg" id="dd" value="" readonly></div>
+              </li>
+                <li class="listw100">
+                  <div class="role-do-strw1">入院诊断</div>
+                  <div class="role-do-val"><textarea style="width: 600px;height: 80px;" class="input-text"></textarea></div>
+              </li>
+              <li class="listw100">
+                <div class="role-do-strw1">目前诊断</div>
+                <div class="role-do-val"><textarea style="width: 600px;height: 80px;" class="input-text"></textarea></div>
+            </li>
+            <li class="listw100">
+              <div class="role-do-strw1">手术日期</div>
+                <div class="role-do-val">
+                  <input type="button" class="input-text" id="idcard" value="新增手术记录">
+                  <input type="button" class="input-text" id="idcard" value="还原">
+                </div>
+              </li>
+              <li class="listw100">
+                  <div class="role-do-val">
+                    <div style="width:auto;margin:auto;">   
+                      <div class="data-content">
+                        <div class="tb-container">
+                          <table class="table table-bordered table-hover table-striped" id="rstb3">
+                            <thead><tr align="center">
+                                <th><strong class="tb-head cell-check" data-val="check">
+                                  <input type="checkbox" id="J_sel_all3">
+                                  </strong></th>
+                                <th><strong class="tb-head cell-name" data-val="name">手术日期</strong></th>
+                                <th><strong class="tb-head cell-sex" data-val="sex">手术名称</strong></th>
+                                <th><strong class="tb-head cell-operate" data-val="operate">操作</strong></th>
+                              </tr></thead>
+                            <tbody id="datas3">
+                            </tbody>
+                          </table>
+                        </div>
+                        <div class="btn-batch"> <span id="J_sel_all23" data-off="0">全选/取消</span><a href="javascript:;" class="batch-del" id="J_batch_del3">删除</a></div>
+                      </div>
+                      <div class="inner-page" id="innerPage3"></div>
+                </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </form>
+          <div class="role-do-btn"> <a href="javascript:;" class="btn-send" id="J_send">保存</a> <a href="javascript:;" class="btn-close" id="J_close">关闭</a> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<script>
+var uid = getUrlParam('uid')?getUrlParam('uid'):0;
+var page = 1;
+var datas = {};
+$(function(){
+  getTable();
+  getTable3();
+  var tbWidth = $(window).width() - 245;
+  $("#rstb").css({maxWidth:tbWidth});    
+	$("#rstb").colResizable({  
+		resizeMode: 'overflow',   
+		//minWidth: 15,
+		//headerOnly: true,
+		//dragCursor: '',
+		//liveDrag: true,
+		//draggingClass: 'tb-cell',
+		onResize: function(e,data){
+			//console.log($(e.currentTarget));
+			//$('.tb-cell').width();
+		}
+	});
+
+  var tbWidth3 = $(window).width() - 245;
+  $("#rstb3").css({maxWidth:tbWidth3});    
+	$("#rstb3").colResizable({  
+		resizeMode: 'overflow',   
+		//minWidth: 15,
+		//headerOnly: true,
+		//dragCursor: '',
+		//liveDrag: true,
+		//draggingClass: 'tb-cell',
+		onResize: function(e,data){
+			//console.log($(e.currentTarget));
+			//$('.tb-cell').width();
+		}
+	});
+
+
+	if (0<uid) {
+		$('#userid').val(uid);
+		getData();
+	} else {
+		getRegionNode(1,0);
+	}
+	$('#J_send').on('click',function(){
+		var username = $.trim($('#username').val());
+		if (username == '') {
+			layer.msg('请输入手机号码');
+			return;
+		}
+		var index = layer.load(2,{time:3000});
+		var url = '/?m=dataManage&c=member&a=doMember&ajax=1';
+		$.ajax({
+			url: url,
+			type: "POST",
+			dataType:"JSON",
+			data: $('#doForm').serialize(),
+			success: function(data){
+				layer.close(index);
+				layer.msg(data.erro);
+				validateAuth(data.status);
+				if (data.status == 1) setTimeout(function(){window.location.href='/?m=dataManage&c=member&a=memberList2'},1000);
+			}
+		});
+	});
+	$('#J_close').on('click',function(){
+		window.history.back();
+	});
+
+});
+function getData(){
+	var url = '/?m=dataManage&c=member&a=doMember&ajax=1&uid='+uid;
+	$.ajax({
+		url: url,
+		type: "GET",
+		dataType:"JSON",
+		success: function(data){
+			if (data.status==1) {
+				var current = data.data.member;
+				$('#realname').val(current.realname);
+				$('#username').val(current.username);
+				$('#idcard').val(current.idcard);
+				$('input[name="info[sex]"]').prop('checked',false);
+				$('input[name="info[sex]"]').eq(current.sex).prop('checked',true);
+				$('#age').val(current.age);
+				getRegionNode(1,0,current.province);
+				if (0<current.city) getRegionNode(current.province,1,current.city);
+				if (0<current.area) getRegionNode(current.city,2,current.area);
+				if (0<current.street) getRegionNode(current.area,3,current.street);
+				if (0<current.community) getRegionNode(current.street,4,current.community);
+				$('#address').val(current.address);
+				$('#lng').val(current.lng);
+				$('#lat').val(current.lat);
+			}
+		}
+	});
+}
+
+function getTable(){
+	var url = '/?m=dataManage&c=hospital&a=doctorList&ajax=1';
+	if (page > 1) url += '&page='+page;
+	var index = layer.load(2,{time:3000});
+	$.get(url,function(data){
+		layer.close(index);
+		var html = '';
+		var pageCount = 0;
+		if (data.status==0) {
+		} else {
+			html = '<tr align="center"><td colspan="'+($('.tb-head').length)+'">暂无数据</td></tr>';
+		}
+		$('#datas').html(html);
+		//initAction();
+		if (page == 1) initPage(pageCount);
+	},'json');
+}
+
+//手术表单
+function getTable3(){
+	var url = '/?m=dataManage&c=hospital&a=doctorList&ajax=1';
+	if (page > 1) url += '&page='+page;
+	var index = layer.load(2,{time:3000});
+	$.get(url,function(data){
+		layer.close(index);
+		var html = '';
+		var pageCount = 0;
+		if (data.status==0) {
+		} else {
+			html = '<tr align="center"><td colspan="'+($('.tb-head').length)+'">暂无数据</td></tr>';
+		}
+		$('#datas3').html(html);
+		//initAction();
+		if (page == 1) initPage(pageCount);
+	},'json');
+}
+
+
+</script>
+</html>
