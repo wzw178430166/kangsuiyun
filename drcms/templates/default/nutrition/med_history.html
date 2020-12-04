@@ -1,0 +1,1026 @@
+{template $this->template,'header_common',$this->style}
+<script type="text/javascript" src="/statics/admin/common/js/region.js"></script>
+<style>
+    #menu {
+        padding-top: 1rem;
+        background: #fff;
+    }
+
+    #menu ul {
+        display: flex;
+        margin: 0;
+    }
+
+    #menu li {
+        width: 6rem;
+        cursor: pointer;
+        height: 2rem;
+        line-height: 2rem;
+        text-align: center;
+        background-color: #F1F1F1;
+        overflow: hidden;
+        font-size: .8rem;
+        color: #111111;
+    }
+
+    #menu li .pstyle {
+        width: 70%;
+        height: 2px;
+        background: #339EFC;
+        margin: .5rem auto 0 auto;
+    }
+
+    #menu li.on {
+        color: #2196F3;
+        background: #F4F5FA;
+    }
+
+    .clear {
+        clear: both;
+    }
+
+    .data-content {
+        width: 100%;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .query-btn .btn-item {
+        margin-left: 0px;
+        height: auto;
+        min-height: 26px;
+    }
+
+    .table_div {
+        text-align: left;
+        font-size: 14px;
+    }
+
+    .table_div span {
+        margin-right: 15px;
+    }
+
+    .cell-adive {
+        width: 160px;
+    }
+
+    .cell-shopd {
+        width: 180px;
+    }
+
+    .table-bordered th.rowth {
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .tb-headstortg {
+        height: 50px;
+        line-height: 40px;
+    }
+
+    .tb-cell,
+    .tb-head {
+        display: block;
+        width: 50px;
+        overflow: hidden;
+        white-space: nowrap;
+        word-wrap: normal;
+        padding: 0 5px;
+    }
+
+    .borderline {
+        /* border-bottom: 1px solid #666; */
+        display: inline-block;
+        margin-left: 10px;
+        width: 70px;margin-right: 18px;
+    }
+    .borderline input{width: 100%;}
+    .tb-container {
+        width: 960px;
+        overflow: hidden;
+        overflow-x: auto;
+    }
+    .borderline1 {
+        /* border-bottom: 1px solid #666; */
+        display: inline-block;
+        margin-left: 10px;
+        width: 30px;margin-right: 18px;
+    }
+    .borderline1 input{width: 100%;}
+    .table-bordered th,
+    .table-bordered td {
+        border-left: 1px solid #dddddd;
+        color: #292929;
+        text-align: left;
+    }
+
+    .table-striped tbody>tr:nth-child(even)>td,
+    .table-striped tr:nth-child(odd)>th {
+        background-color: transparent;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+        margin: 0;
+    }
+
+    .mt_tbs {
+        display: flex;
+    }
+
+    /* .mt_tbs label{width: 70px;} */
+    .mta_div {
+        width: 100%;
+        display: flex;
+    }
+
+    .cop_label {
+        float: left;
+        margin-right: 10px;
+    }
+    select {
+    width: 100px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    height: 28px;
+    line-height: 28px;
+}
+ #rstb th, #rstb td {
+     border: 0; 
+}
+#rstb{ border: 0;} 
+.borderline textarea{width: 100%;}
+.zhengds{width: 65px;display: inline-block;vertical-align: middle;}
+.copspandv{width: 50px;margin-right: 20px;margin-left: 0;}
+.mt-m{margin-bottom: 10px;}
+.text-alcente{text-align: center!important;}
+.bordersee{width: 950px;}
+.bordersee textarea{width: 100%;height: 12rem;}
+.birde_divs{width:960px;}
+.birde_divs span{float: right;color: #2196F3;}
+.borderline .backgrblok{
+    width: 100%;background:#efefef;
+}
+
+</style>
+
+<body>
+    {template $this->template,'header',$this->style}
+    <div id="middle"> {template $this->template,'left',$this->style}
+        <div class="right" id="mainFrame">
+            <div class="right_cont">
+                <ul class="breadcrumb">
+                    当前位置： <a href="/?m=dataManage">首页</a> <span class="divider">/</span> <a href="javascript:;">营养病史</a>
+                </ul>
+                <div class="title_right">
+                    <strong>营养病史</strong>
+                </div>
+                <div style="width:auto;margin:auto;">
+                    <div class="query-form">
+                        <div class="form-item">
+                            <font>会诊日期</font>
+                            <div class="element" style="float: left;margin-left: 10px;margin-right: 25px;">
+                                <div class="element-text">
+                                    <input type="text" id="k" value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <font>结束日期</font>
+                            <div class="element" style="float: left;margin-left: 10px;margin-right: 25px;">
+                                <div class="element-text">
+                                    <input type="text" id="endt" value="">
+                                </div>
+                            </div>
+                         
+                        </div>
+                        <div class="form-item" style="clear: both;position: relative;top: 15px;">
+                            <font>住院号</font>
+                            <div class="element" style="float: left;margin-left: 10px;margin-right: 25px;">
+                                <div class="element-text">
+                                    <input type="text" id="endttw" value="">
+                                </div>
+                            </div>
+                         
+                        </div>
+                        <div class="form-item">
+                            <font>营养记录编号</font>
+                            <div class="element" style="float: left;margin-left: 10px;margin-right: 25px;">
+                                <div class="element-text">
+                                    <input type="text" id="endts" value="">
+                                </div>
+                            </div>
+                         
+                        </div>
+                        <div class="query-btn" style="clear: both;margin-top: 15px;position: relative;top: 15px;">
+                            <div class="btn-item"> <a class="btn-query">查询</a> <a href="javascript:;"
+                                    class="btn-add" style="margin-left: 10px;">打印</a> </div>
+                        </div>
+                    </div>
+                    <div style="height: 20px;"></div>
+                    <div class="data-content">
+                        <div class="tb-container">
+                            <table class="table table-bordered table-striped" id="rstb">
+                                <caption align="top">
+                                    <h4><span style="color:#3a3939;font-size:16px;">儿童医学中心营养治疗记录</span>
+                                    </h4>
+                                </caption>
+
+                                <tr>
+                                    <td>姓名：<span class="borderline"><input type="text"></span></td>
+                                    <td>性别：<span class="borderline"><input type="text"></span></td>
+                                    <td>年龄：<span class="borderline"><input type="text"></span></td>
+                                    <td>病区：<span class="borderline"><input type="text"></span>
+                                        床位：<span class="borderline"><input type="text"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" style="height: 75px;"><span class="zhengds">主要诊断：</span><span class="borderline" style="width: 600px;">
+                                    <textarea readonly class="backgrblok"></textarea>
+                                    </span></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4"><span class="zhengds">既往史：</span><span class="borderline" style="width: 600px;">
+                                    <textarea readonly class="backgrblok"></textarea>
+                                    </span></td>
+                                </tr>
+                                <tr>
+                                    <th colspan="5"><strong>一般情况</strong></th>
+                                </tr>
+                                <tr>
+                                    <td>身高：<span class="borderline"><input type="text" readonly class="backgrblok"></span></td>
+                                    <td>目前体重：<span class="borderline" style="width: 50px;"><input type="text" readonly class="backgrblok"></span></td>
+                                    <td>体质指数：<span class="borderline"><input type="text" readonly class="backgrblok"></span></td>
+                                    <td>理想体重：<span class="borderline"><input type="text" readonly class="backgrblok"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="cop_label">
+                                            <span class="cop_label copspandv">意识</span>
+                                            <label class="cop_label"><input type="checkbox">清楚</label>
+                                            <label class="cop_label"><input type="checkbox">嗜睡</label>
+                                            <label class="cop_label"><input type="checkbox">昏迷</label>
+                                        </div>
+                                        <div class="cop_label" style="clear: both;">
+                                            <span class="cop_label copspandv">呼吸</span>
+                                            <label class="cop_label"><input type="checkbox">自主呼吸</label>
+                                            <label class="cop_label"><input type="checkbox">机械通气</label>
+                                        </div><br>
+                                        <div class="cop_label" style="clear: both;">
+                                            <span class="cop_label copspandv">皮肤弹性</span>
+                                            <label class="cop_label"><input type="checkbox">好</label>
+                                            <label class="cop_label"><input type="checkbox">差</label>
+                                        </div>
+                                    </td>
+                                    <td colspan="1">
+                                        <div class="cop_label">
+                                            <span class="cop_label copspandv">体温</span>
+                                            <label class="cop_label"><input type="checkbox">正常</label>
+                                            <label class="cop_label"><input type="checkbox">发热</label>
+                                        </div>
+                                        <div class="cop_label" style="clear: both;">
+                                            <span class="cop_label copspandv">口唇</span>
+                                            <label class="cop_label"><input type="checkbox">红润</label>
+                                            <label class="cop_label"><input type="checkbox">苍白</label>
+                                        </div>
+                                        <div class="cop_label" style="clear: both;">
+                                            <span class="cop_label copspandv">水肿</span>
+                                            <label class="cop_label"><input type="checkbox">有</label>
+                                            <label class="cop_label"><input type="checkbox">无</label>
+                                        </div>
+                                    </td>
+                                    <td style="position: relative;">&nbsp;<span style="position: absolute;right: 0;bottom: 0;color: #2196F3;cursor: pointer;">保存</span></td>
+                                </tr>
+                               
+                                <tr>
+                                    <th colspan="5"><strong>初始营养状况评估</strong></th>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="cop_label">
+                                            <label class="cop_label"><input type="checkbox">良好</label>
+                                            <label class="cop_label"><input type="checkbox">一般</label>
+                                            <label class="cop_label"><input type="checkbox">不良</label>
+                                        </div>
+                                        <div class="cop_label">
+                                            <span class="cop_label copspandv" style="margin: 0;">(过剩</span>
+                                            <label class="cop_label"><input type="checkbox">轻</label>
+                                            <label class="cop_label"><input type="checkbox">中</label>
+                                            <label class="cop_label"><input type="checkbox">重)</label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                      
+                                    </td>
+                                    <td style="position: relative;"><span style="position: absolute;right: 0;bottom: 0;color: #2196F3;"></span></td>
+                                </tr>
+                                <tr>
+                                <td colspan="4">
+                                    <div class="cop_label">
+                                        <span class="cop_label copspandv">评价方法</span>
+                                        <label class="cop_label"><input type="checkbox">SGA</label>
+                                        <label class="cop_label"><input type="checkbox">BCA</label>
+                                        <label class="cop_label"><input type="checkbox">其他</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><span class="zhengds">食物禁忌：</span><span class="borderline" style="width: 600px;">
+                                <textarea></textarea>
+                                </span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><span class="zhengds">与营养相关的药物治疗</span><span class="borderline" style="width: 600px;">
+                                <textarea></textarea>
+                                </span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><span class="zhengds">营养治疗指征</span><span class="borderline" style="width: 600px;">
+                                <textarea></textarea>
+                                </span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><span class="zhengds">监测重点</span><span class="borderline" style="width: 600px;">
+                                <textarea></textarea>
+                                </span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><span class="zhengds">营养治疗出院小结</span><span class="borderline" style="width: 600px;">
+                                <textarea></textarea>
+                                </span></td>
+                            </tr>
+                            <tr>
+                                <td style="position: relative;" colspan="4">&nbsp;<span style="position: absolute;right: 0;bottom: 0;color: #2196F3;cursor: pointer;">保存</span></td> 
+                            </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="data-content">
+                        <div class="tb-container">
+                            <table class="table table-bordered table-striped" id="rstb2">
+                                <caption align="top">
+                                    <h4><span style="color:#3a3939;font-size:16px;">营养评估随访记录</span>
+                                    </h4>
+                                </caption>
+                                <tr>
+                                    <th class="text-alcente">项目</th>
+                                    <th class="text-alcente">说明</th>
+                                    <th class="text-alcente">评分</th>
+                                    <th class="text-alcente">项目</th>
+                                    <th class="text-alcente">说明</th>
+                                    <th class="text-alcente">评分</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="mt-m">体重变化<span class="borderline1"><input type="text"></span>kg</div>
+                                        <div class="mt-m">目前体重<span class="borderline1"><input type="text"></span>kg</div>
+                                    </td>
+                                    <td>  
+                                        <div class="mt-m">2分 无下降/升高</div>
+                                        <div class="mt-m">1分 减少<5%</div>
+                                        <div class="mt-m">0分 减少>5%</div>
+                                    </td>
+                                    <td class="text-alcente"><span class="borderline"><input type="text"></span></td>
+                                    <td class="text-alcente">蛋白质</td>
+                                    <td>
+                                        <div class="mt-m">2分 无下降/升高</div>
+                                        <div class="mt-m">1分 减少<5%</div>
+                                        <div class="mt-m">0分 减少>5%</div>
+                                    </td>
+                                    <td class="text-alcente"><span class="borderline"><input type="text"></span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="mt-m">饮食改变量</div>
+                                        <div class="mt-m">根据平时摄入量及</div>
+                                        <div class="mt-m">是否合饮食建议量</div>
+                                    </td>
+                                    <td>  
+                                        <div class="mt-m">2分 无改变</div>
+                                        <div class="mt-m">1分 减少<5%</div>
+                                        <div class="mt-m">0分 不进食/低热量流质</div>
+                                    </td>
+                                    <td class="text-alcente"><span class="borderline"><input type="text"></span></td>
+                                    <td class="text-alcente">   <div class="mt-m">疾病状态<5%</div>
+                                        <div class="mt-m">机体代谢增加程度</div>
+                                    </td>
+                                    <td>
+                                        <div class="mt-m">2分 轻度增加</div>
+                                        <div class="mt-m">1分 中度增加<5%</div>
+                                        <div class="mt-m">0分 高度增加</div>
+                                    </td>
+                                    <td class="text-alcente"><span class="borderline"><input type="text"></span></td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div class="mt-m">肠胃道症状</div>
+                                        <div class="mt-m">（持续两周）</div>
+                                    </td>
+                                    <td>  
+                                        <div class="mt-m">2分 轻微恶心,呕吐</div>
+                                        <div class="mt-m">1分 明显恶心,呕吐</div>
+                                        <div class="mt-m">0分 严重恶心,呕吐</div>
+                                    </td>
+                                    <td class="text-alcente"><span class="borderline"><input type="text"></span></td>
+                                    <td class="text-alcente">  
+                                         <div class="mt-m">机体情况</div>
+                                        <div class="mt-m">有无肌肉消耗,皮下</div>
+                                        <div class="mt-m">脂肪消失及水肿</div>
+                                    </td>
+                                    <td>
+                                        <div class="mt-m">2分 无</div>
+                                        <div class="mt-m">1分 轻度</div>
+                                        <div class="mt-m">0分 重度</div>
+                                    </td>
+                                    <td class="text-alcente"><span class="borderline"><input type="text"></span></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-alcente">总分</td>
+                                    <td colspan="2">
+                                        <span class="borderline"><input type="text"></span> 
+                                    </td>
+                                    <td class="text-alcente">营养治疗措施</td>
+                                    <td colspan="2">
+                                        <span class="borderline"><input type="text"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6">
+                                        评分:轻度营养不良=10-12    重度营养不良=5-9分   严重营养不良= 0-4分
+                                    </td>
+                                </tr>
+                            <tr>
+                                <td style="position: relative;border-top: 0;" colspan="6">&nbsp;<span style="position: absolute;right: 0;bottom: 0;color: #2196F3;cursor: pointer;">保存</span></td> 
+                            </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="data-content">
+                        <div class="tb-container">
+                            <table class="table table-bordered table-striped" id="rstb3">
+                                <caption align="top">
+                                    <h4><span style="color:#3a3939;font-size:16px;">主观全面评价方法(SGA)</span>
+                                    </h4>
+                                </caption>
+                                <tr>
+                                    <td colspan="4">
+                                        主观症状的变化
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>1.体重变化</td>
+                                    <td> 
+                                     <div class="cop_label" style="clear: both;">
+                                        <label class="cop_label"><input type="checkbox">A、无变化或增加</label>
+                                    </div>
+                                </td>
+                                <td> 
+                                    <div class="cop_label" style="clear: both;">
+                                       <label class="cop_label"><input type="checkbox">B、<5%</label>
+                                   </div>
+                               </td>
+                               <td> 
+                                <div class="cop_label" style="clear: both;">
+                                   <label class="cop_label"><input type="checkbox">C、>5%</label>
+                               </div>
+                               </td>
+                                </tr>
+                                <tr>
+                                    <td>2.膳食变化</td>
+                                    <td> 
+                                     <div class="cop_label" style="clear: both;">
+                                        <label class="cop_label"><input type="checkbox">A、无变化或增加</label>
+                                    </div>
+                                </td>
+                                <td> 
+                                    <div class="cop_label" style="clear: both;">
+                                       <label class="cop_label"><input type="checkbox">B、<5%</label>
+                                   </div>
+                               </td>
+                               <td> 
+                                <div class="cop_label" style="clear: both;">
+                                   <label class="cop_label"><input type="checkbox">C、>5%</label>
+                               </div>
+                               </td>
+                                </tr>
+                                <tr>
+                                    <td>3.肠胃道症状</td>
+                                    <td> 
+                                     <div class="cop_label" style="clear: both;">
+                                        <label class="cop_label"><input type="checkbox">A、无</label>
+                                    </div>
+                                </td>
+                                <td> 
+                                    <div class="cop_label" style="clear: both;">
+                                       <label class="cop_label"><input type="checkbox">B、较轻</label>
+                                   </div>
+                               </td>
+                               <td> 
+                                <div class="cop_label" style="clear: both;">
+                                   <label class="cop_label"><input type="checkbox">C、较重</label>
+                               </div>
+                               </td>
+                                </tr>
+                                <tr>
+                                    <td>4.应激反应</td>
+                                    <td> 
+                                     <div class="cop_label" style="clear: both;">
+                                        <label class="cop_label"><input type="checkbox">A、无</label>
+                                    </div>
+                                </td>
+                                <td> 
+                                    <div class="cop_label" style="clear: both;">
+                                       <label class="cop_label"><input type="checkbox">B、轻度</label>
+                                   </div>
+                               </td>
+                               <td> 
+                                <div class="cop_label" style="clear: both;">
+                                   <label class="cop_label"><input type="checkbox">C、重度</label>
+                               </div>
+                               </td>
+                                </tr>
+                                <tr>
+                                    <td>5.活动能力</td>
+                                    <td> 
+                                     <div class="cop_label" style="clear: both;">
+                                        <label class="cop_label"><input type="checkbox">A、减退</label>
+                                    </div>
+                                </td>
+                                <td> 
+                                    <div class="cop_label" style="clear: both;">
+                                       <label class="cop_label"><input type="checkbox">B、能起床活动</label>
+                                   </div>
+                               </td>
+                               <td> 
+                                <div class="cop_label" style="clear: both;">
+                                   <label class="cop_label"><input type="checkbox">C、卧床休息</label>
+                               </div>
+                               </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        人体测量结果
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>6.肌肉消耗</td>
+                                    <td> 
+                                     <div class="cop_label" style="clear: both;">
+                                        <label class="cop_label"><input type="checkbox">A、无</label>
+                                    </div>
+                                </td>
+                                <td> 
+                                    <div class="cop_label" style="clear: both;">
+                                       <label class="cop_label"><input type="checkbox">B、轻度</label>
+                                   </div>
+                               </td>
+                               <td> 
+                                <div class="cop_label" style="clear: both;">
+                                   <label class="cop_label"><input type="checkbox">C、重度</label>
+                               </div>
+                               </td>
+                                </tr>
+                                <tr>
+                                    <td>7.皮皱厚度</td>
+                                    <td> 
+                                     <div class="cop_label" style="clear: both;">
+                                        <label class="cop_label"><input type="checkbox">A、>8%</label>
+                                    </div>
+                                </td>
+                                <td> 
+                                    <div class="cop_label" style="clear: both;">
+                                       <label class="cop_label"><input type="checkbox">B、<8%</label>
+                                   </div>
+                               </td>
+                               <td> 
+                                <div class="cop_label" style="clear: both;">
+                                   <label class="cop_label"><input type="checkbox">C、<6.5%</label>
+                               </div>
+                               </td>
+                                </tr>
+                                <tr>
+                                    <td>8.裸水肿</td>
+                                    <td> 
+                                     <div class="cop_label" style="clear: both;">
+                                        <label class="cop_label"><input type="checkbox">A、无</label>
+                                    </div>
+                                </td>
+                                <td> 
+                                    <div class="cop_label" style="clear: both;">
+                                       <label class="cop_label"><input type="checkbox">B、轻度</label>
+                                   </div>
+                               </td>
+                               <td> 
+                                <div class="cop_label" style="clear: both;">
+                                   <label class="cop_label"><input type="checkbox">C、重度</label>
+                               </div>
+                               </td>
+                                </tr>
+                               <tr>
+                                   <td colspan="4">
+                                       <p>1.体重变化,考虑过去6个月或近2周的,若过去5个月变化显著,但近1个月无丢失或增加,或近周治疗后体重稳定,则体重丢失一项不予考虑。</p>
+                                       <p>2.肠胃道症状至少持续2周,偶尔1-2次不予考虑。</p>
+                                       <p> 3.应激参照:大面积烧伤、高烧或大量出血属高应激,长期发烧、慢性腹泻属中应激,长期低烧或恶性肿瘤属低应激。</p>
+                                       <p> 4.评价结果中,有5项以上属于C组或B组,可定为重度或中度营养不良。</p>
+                                   </td>
+                               </tr>
+                            <tr>
+                                <td style="position: relative;border-top: 0;" colspan="4">&nbsp;<span style="position: absolute;right: 0;bottom: 0;color: #2196F3;cursor: pointer;">保存</span></td> 
+                            </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="data-content">
+                        <div class="tb-container">
+                            <table class="table table-bordered table-striped" id="rstb4">
+                                <caption align="top">
+                                    <h4><span style="color:#3a3939;font-size:16px;">测定人体组成的营养评价方法(BCA)</span>
+                                    </h4>
+                                </caption>
+                                <tr>
+                                    <td>
+                                        人体测量结果
+                                    </td>
+                                    <td>
+                                        轻度营养不良
+                                    </td>
+                                    <td>
+                                        中度营养不良
+                                    </td>
+                                    <td>
+                                        重度营养不良
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>1.占理想体重</td>
+                                    <td> 
+                                     <div class="cop_label" style="clear: both;">
+                                        <label class="cop_label"><input type="checkbox">A、80%~90%</label>
+                                    </div>
+                                </td>
+                                <td> 
+                                    <div class="cop_label" style="clear: both;">
+                                       <label class="cop_label"><input type="checkbox">B、60%~80%</label>
+                                   </div>
+                               </td>
+                               <td> 
+                                <div class="cop_label" style="clear: both;">
+                                   <label class="cop_label"><input type="checkbox">C、<60%</label>
+                               </div>
+                               </td>
+                                </tr>
+                                <tr>
+                                    <td>2.肱三头肌皮摺厚度占人群标准<br>(男性12.5mm,女性16.5mm)</td>
+                                    <td> 
+                                     <div class="cop_label" style="clear: both;">
+                                        <label class="cop_label"><input type="checkbox">A、80%~90%</label>
+                                    </div>
+                                </td>
+                                <td> 
+                                    <div class="cop_label" style="clear: both;">
+                                       <label class="cop_label"><input type="checkbox">B、60%~80%</label>
+                                   </div>
+                               </td>
+                               <td> 
+                                <div class="cop_label" style="clear: both;">
+                                   <label class="cop_label"><input type="checkbox">C、<60%</label>
+                               </div>
+                               </td>
+                                </tr>
+                                <tr>
+                                    <td>3.上臂肌围占人群标准值<br>(男性25.3mm,女性23.2mm)</td>
+                                    <td> 
+                                        <div class="cop_label" style="clear: both;">
+                                           <label class="cop_label"><input type="checkbox">A、80%~90%</label>
+                                       </div>
+                                   </td>
+                                   <td> 
+                                       <div class="cop_label" style="clear: both;">
+                                          <label class="cop_label"><input type="checkbox">B、60%~80%</label>
+                                      </div>
+                                  </td>
+                                  <td> 
+                                   <div class="cop_label" style="clear: both;">
+                                      <label class="cop_label"><input type="checkbox">C、<60%</label>
+                                  </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                    <td>4.体质指数(kg/m2)</td>
+                                    <td> 
+                                     <div class="cop_label" style="clear: both;">
+                                        <label class="cop_label"><input type="checkbox">A、17~18.5</label>
+                                    </div>
+                                </td>
+                                <td> 
+                                    <div class="cop_label" style="clear: both;">
+                                       <label class="cop_label"><input type="checkbox">B、16~17</label>
+                                   </div>
+                               </td>
+                               <td> 
+                                <div class="cop_label" style="clear: both;">
+                                   <label class="cop_label"><input type="checkbox">C、<16</label>
+                               </div>
+                               </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        生化数据
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5.总淋巴细胞记数(10^9/L)</td>
+                                    <td> 
+                                     <div class="cop_label" style="clear: both;">
+                                        <label class="cop_label"><input type="checkbox">A、1.2~2.0</label>
+                                    </div>
+                                </td>
+                                <td> 
+                                    <div class="cop_label" style="clear: both;">
+                                       <label class="cop_label"><input type="checkbox">B、0.8~1.2</label>
+                                   </div>
+                               </td>
+                               <td> 
+                                <div class="cop_label" style="clear: both;">
+                                   <label class="cop_label"><input type="checkbox">C、<0.8</label>
+                               </div>
+                               </td>
+                                </tr>
+                                <tr>
+                                    <td>6.肌纤身高指数</td>
+                                    <td> 
+                                     <div class="cop_label" style="clear: both;">
+                                        <label class="cop_label"><input type="checkbox">A、80%~90%</label>
+                                    </div>
+                                </td>
+                                <td> 
+                                    <div class="cop_label" style="clear: both;">
+                                       <label class="cop_label"><input type="checkbox">B、60%~80%</label>
+                                   </div>
+                               </td>
+                               <td> 
+                                <div class="cop_label" style="clear: both;">
+                                   <label class="cop_label"><input type="checkbox">C、<60%</label>
+                               </div>
+                               </td>
+                                </tr>
+                                <tr>
+                                    <td>7.血白蛋白(g/L)</td>
+                                    <td> 
+                                     <div class="cop_label" style="clear: both;">
+                                        <label class="cop_label"><input type="checkbox">A、30~50</label>
+                                    </div>
+                                </td>
+                                <td> 
+                                    <div class="cop_label" style="clear: both;">
+                                       <label class="cop_label"><input type="checkbox">B、25~30</label>
+                                   </div>
+                               </td>
+                               <td> 
+                                <div class="cop_label" style="clear: both;">
+                                   <label class="cop_label"><input type="checkbox">C、<25</label>
+                               </div>
+                               </td>
+                                </tr>
+                                <tr>
+                                    <td>8.运铁蛋白(g/L)</td>
+                                    <td> 
+                                     <div class="cop_label" style="clear: both;">
+                                        <label class="cop_label"><input type="checkbox">A、1.5~1.8</label>
+                                    </div>
+                                </td>
+                                <td> 
+                                    <div class="cop_label" style="clear: both;">
+                                       <label class="cop_label"><input type="checkbox">B、1.0~1.5</label>
+                                   </div>
+                               </td>
+                               <td> 
+                                <div class="cop_label" style="clear: both;">
+                                   <label class="cop_label"><input type="checkbox">C、<1.0</label>
+                               </div>
+                               </td>
+                                </tr>
+                                <tr>
+                                    <td>9.前白蛋白(g/L)</td>
+                                    <td> 
+                                     <div class="cop_label" style="clear: both;">
+                                        <label class="cop_label"><input type="checkbox">A、30~35</label>
+                                    </div>
+                                </td>
+                                <td> 
+                                    <div class="cop_label" style="clear: both;">
+                                       <label class="cop_label"><input type="checkbox">B、25~30</label>
+                                   </div>
+                               </td>
+                               <td> 
+                                <div class="cop_label" style="clear: both;">
+                                   <label class="cop_label"><input type="checkbox">C、<25</label>
+                               </div>
+                               </td>
+                                </tr>
+                            <tr>
+                                <td style="position: relative" colspan="4">&nbsp;<span style="position: absolute;right: 0;bottom: 0;color: #2196F3;cursor: pointer;">保存</span></td> 
+                            </tr>
+                            </table>
+                        </div>
+                    </div>
+
+
+                 
+                    <div style="width:auto;margin:auto;">   
+                        <h4 class="text-alcente" style="width: 960px;"><span style="color:#3a3939;font-size:16px;">临床检测记录</span>
+                        </h4>
+                        <div class="query-btn">
+                            <div class="btn-item"> <a class="btn-query" >新增</a> </div>
+                          </div> 
+                        <div style="height: 20px;"></div>
+                        <div class="data-content">
+                            <div class="tb-container">
+                                <table class="table table-bordered table-striped" id="rstb4" style="margin: 0;border-bottom: 0;">
+                                    <!-- <caption align="top">
+                                        <h4><span style="color:#3a3939;font-size:16px;">临床检测记录</span>
+                                        </h4>
+                                    </caption> -->
+                                    <thead>
+                                    <tr>
+                                        <td colspan="7" class="text-alcente">
+                                          <strong>营养治疗方案</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-alcente tb-heads">
+                                            日期
+                                        </td>
+                                        <td class="text-alcente tb-heads">
+                                            类别
+                                        </td>
+                                        <td class="text-alcente tb-heads">
+                                            能量KCAL
+                                        </td>
+                                        <td class="text-alcente tb-heads">
+                                            蛋白质g
+                                        </td>
+                                        <td class="text-alcente tb-heads">
+                                            氮热比
+                                        </td>
+                                        <td class="text-alcente tb-heads">
+                                            脂肪g
+                                        </td>
+                                        <td class="text-alcente tb-heads">
+                                            碳水化合物g
+                                        </td>
+                                    </tr>
+                                </thead>
+                                    <tbody id="datas4">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="inner-page" id="innerPage"></div>
+                        
+                        <div class="data-content">
+                            <div class="tb-container">
+                                <table class="table table-bordered table-striped" id="rstb5">
+                                    <!-- <caption align="top">
+                                        <h4><span style="color:#3a3939;font-size:16px;">临床检测记录</span>
+                                        </h4>
+                                    </caption> -->
+                                    <thead>
+                                    <tr>
+                                        <td colspan="7" class="text-alcente">
+                                          <strong>膳食配方</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-alcente tb-heads">
+                                            日期
+                                        </td>
+                                        <td class="text-alcente tb-heads">
+                                            组分及含量
+                                        </td>
+                                        <td class="text-alcente tb-heads">
+                                            备注
+                                        </td>
+                                    </tr>
+                                </thead>
+                                    <tbody id="datas5">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+                      </div>   
+      <div class="div_border">
+          <p><strong>治疗小结：</strong></p>
+          <div class="bordersee">
+              <textarea></textarea>
+          </div>
+          <div class="birde_divs">
+              <span style="cursor: pointer;">保存</span>
+          </div>
+      </div>
+      <div style="height: 200px;"></div>           
+
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+  
+</body>
+<script>
+    var page = 1;
+    var datas = {};
+    $(function () {
+        laydate.render({
+            elem: '#k',
+            format: 'yyyy-MM-dd',
+            done: function (value, date, endDate) {
+                st = value;
+                //console.log(value); //得到日期生成的值，如：2017-08-18
+                //console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+                //console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+            }
+        });
+        laydate.render({
+            elem: '#endt',
+            format: 'yyyy-MM-dd',
+            done: function (value, date, endDate) {
+                st = value;
+                //console.log(value); //得到日期生成的值，如：2017-08-18
+                //console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+                //console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+            }
+        });
+        var $list = $("#menu").find("li");
+        var $div = $("#tab-con").children("div");
+        $list.click(function () {
+            var index = $(this).index();
+            $list.eq(index).addClass("on").siblings().removeClass("on");
+            $div.eq(index).addClass("on").siblings().removeClass("on");
+            $(this).find("p").addClass("pstyle").parent().siblings().find('p').removeClass("pstyle");;
+        })
+        getTable4();
+        getTable5()
+        laydate.render({
+            elem: '#st',
+            format: 'yyyy-MM-dd',
+            done: function (value, date, endDate) {
+                st = value;
+                //console.log(value); //得到日期生成的值，如：2017-08-18
+                //console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+                //console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+            }
+        });
+        $('#J_close').on('click', function () {
+            window.history.back();
+        });
+    });
+
+    function getTable4() {
+        var url = '/?m=dataManage&c=hospital&a=doctorList&ajax=1';
+        if (page > 1) url += '&page=' + page;
+        var index = layer.load(2, {
+            time: 3000
+        });
+        $.get(url, function (data) {
+            layer.close(index);
+            var html = '';
+            var pageCount = 0;
+            if (data.status == 0) {} else {
+                html = '<tr align="center"><td class="text-alcente" colspan="' + ($('.tb-heads').length) + '">暂无数据</td></tr>';
+            }
+            $('#datas4').html(html);
+            //initAction();
+            //if (page == 1) initPage(pageCount);
+        }, 'json');
+    }
+
+    function getTable5() {
+        var url = '/?m=dataManage&c=hospital&a=doctorList&ajax=1';
+        if (page > 1) url += '&page=' + page;
+        var index = layer.load(2, {
+            time: 3000
+        });
+        $.get(url, function (data) {
+            layer.close(index);
+            var html = '';
+            var pageCount = 0;
+            if (data.status == 0) {} else {
+                html = '<tr align="center"><td class="text-alcente" colspan="' + ($('.tb-heads').length) + '">暂无数据</td></tr>';
+            }
+            $('#datas5').html(html);
+            //initAction();
+            //if (page == 1) initPage(pageCount);
+        }, 'json');
+    }
+</script>
+
+</html>

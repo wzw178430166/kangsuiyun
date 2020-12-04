@@ -95,7 +95,7 @@
             <input type="text" placeholder="安利纽崔莱
             " id="k" onsearch="search_data()" placeholder-color="#999">
         </div>
-        <div class="m-head-message" onclick="goo('/drug/lxj_meecter.html')">
+        <div class="m-head-message" onclick="goo_d()">
             <i id="maget"></i>
             <div class="mheadTag" id="medmsg">12</div>
         </div>
@@ -135,7 +135,7 @@
 	 <div class="bord_img">
 		<img src="./images/footgfger.html.png"> 
 	  </div>
-		<div class="bord_contetn">
+		<div class="bord_contetn"  onclick="setCookie('get_new_data',1);goo('/medical/jktx.html?target=top');">
 		 <p>健康提醒</p>
 	     <p>你检测的血压数据偏高，请15分钟以后再检查， 并且适当的放松，检查结果才准确</p>
 		 </div>
@@ -146,11 +146,11 @@
 	
 		 <div class="mtsed" id="mtsdie">
         <div class="mtes_left">
-            <div onclick="goo('/equipment/equipment_list.html')" style="border-bottom: 0;border-radius: .32rem;" class="actimec">
+            <div onclick="goo_d()" style="border-bottom: 0;border-radius: .32rem;" class="actimec">
 			<p>健康课堂</p>
 		    <p>专家面授养生方法</p>
 			</div>
-            <div onclick="goo('/patient/index_.html')" class="actimec2">
+            <div onclick="goo_d()" class="actimec2">
 			<p>健康管理</p>
 			<p>身体健康有保障</p>
 			</div>
@@ -159,11 +159,11 @@
 	
 			 <div class="mtsed" id="mtsdiegggg">
         <div class="mtes_left">
-            <div onclick="goo('/equipment/equipment_list.html')" style="border-bottom: 0;border-radius: .32rem;" class="actimec2">
+            <div onclick="goo_d()" style="border-bottom: 0;border-radius: .32rem;" class="actimec2">
 			<p>极速购药</p>
 		    <p>正品保障极速送达</p>
 			</div>
-            <div onclick="goo('/equipment/equipment_list.html')" class="actimec">
+            <div onclick="goo_d()" class="actimec">
 			<p>健康报告</p>
 			<p>每月健康统计报告</p>
 			</div>
@@ -255,9 +255,6 @@
   </ul>
   <div class="clear"></div>
 </div>
-
-
-
 	<div class="henline"></div>
 <div id="tab-con">
   <div class="tab_itemst on"> 

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="cn">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+		<link rel="stylesheet" type="text/css" href="/statics/css/animate.css">
+		<link rel="stylesheet" type="text/css" href="/statics/css/appstyle.css">
+		<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+            <link rel="stylesheet" type="text/css" href="./css/index.css">
+		<script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="/statics/js/layer/3.1.1/layer.js"></script>
+		<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+		<script type="text/javascript" src="/statics/js/global.js"></script>
+		 <script type="text/javascript" src="/statics/js/TouchSlide.1.1.js"></script>
+		<title>移动医疗方案</title>
+		<style>
+
+            .aaa{overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;}
+      .header_box {
+    top: 0;z-index: 99;
+}
+     .index_banner_top{display: flex;}
+
+
+
+     .head_top {
+    width: 100%;
+    overflow: hidden;
+    position: fixed;
+    left: 0;
+    top: 0;background: #ffffff;
+    z-index: 1;
+}
+.head_top .top1 {
+    width: 23%;
+    height: 43px;
+    line-height: 43px;
+    text-align: center;
+    color: #000000;
+    font-size: 1.1rem;
+}
+.head_top div {
+    float: left;
+}
+.head_top .top1 img {
+    width: 20px;
+    height: 20px;
+    margin-right: -.5rem;
+    vertical-align: sub;left: 4%;
+}
+.head_top .top1 i {
+    margin-left: 5px;
+}
+.head_top .top2 {
+    width: 60%;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 15px;
+    position: absolute;
+    left: 54%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    text-align: center;
+}
+.head_top div:last-child {
+    float: right;
+}
+.head_top .top3 {
+    width: 14%;
+    text-align: center;
+    position: relative;
+}
+.head_top .top3 img {
+    width: 20px;
+    height: 20px;
+    display: block;
+    margin: 5px auto 0 auto;
+}
+.head_top .top3 p {
+    color: #fff;
+    font-size: 1rem;
+    height: 15px;
+    line-height: 15px;
+    font-family: arail;
+}
+.head_top .top3 .mess_num {
+    position: absolute;
+    right: 9.5%;
+    background-color: #eb6100;
+    font-size: 12px;
+    color: #FFF;
+    width: 20px;
+    height: 12px;
+    line-height: 12px;
+    top: 5%;
+    text-align: center;
+    font-weight: 500;
+    display: none;
+    font-size: .9rem;
+    border-radius: 3px;
+}
+.head_top .top1 img.locationtt{    
+    /* position: absolute; */
+    /* right: 0; */
+    /* top: 0; */
+    width: .9rem;
+    height: .5rem;
+    position: sticky;
+    margin-left: 1rem;}
+    .stttop3{width: 5.5%; position: absolute;right: 1%;top: 50%;transform: translateY(-50%);}
+    .stttop3 img{ 
+    text-align: center;
+    width: 100%;
+   }
+   .header_box {
+    height: 45px;
+}
+		</style>
+	</head>
+<body>
+<div class="header_box" style="border-bottom: 0;" id="m_head">
+    <!-- <div class="index_banner_top">
+      <span><img src="https://yjxun.cn/index2/statics/images/home_location.png"></span>
+      <span>广州</span>
+      <span><img src="/h5page/mobile_medicals/images/jiangtousw.jpg"></span> 
+    </div>   -->
+    <div class="head_top head_top_active">
+        <div class="top1"><img src="https://yjxun.cn/index2/statics/images/home_location.png" class="location"><font id="city_"  style="margin-left: 1rem;font-size: 1.17rem;">广州</font><img src="/h5page/mobile_medicals/images/jiangtousw.jpg" class="locationtt"></div>
+     
+        <div class="stttop3"> <img src="/h5page/mobile_medicals/images/fangdajiann.jpg">
+        </div>
+    </div>
+</div>
+<div style="height: 50px;"></div>
+<div class="m-banner" id="J_banner">
+    <div class="banner-container bd">
+      <div class="tempWrap">
+        <ul id="advert">
+          <li><img src="/h5page/mobile_medicals/images/bakcn.png" style="border-radius: .4rem"></li>
+          <li><img src="/h5page/mobile_medicals/images/bakcn.png" style="border-radius:.4rem"></li>
+          <li><img src="/h5page/mobile_medicals/images/bakcn.png" style="border-radius: .4rem"></li>
+        </ul>
+      </div>
+    </div>
+    <div class="hd" style="display: none;">
+      <ul>
+        <li class="on"></li>
+      </ul>
+    </div>
+  </div> 
+  <div class="menu_big1_line" style="margin-top: 4%;">
+    <div class="line_l fl" onclick="goo('/?m=myim&a=sr_dialogue_fast&target=top')" style="height: 5.154rem;">
+      <img src="/h5page/mobile_medicals/images/kaushi01.png">
+      <div class="line_l_">
+        <p class="p1">快速问诊</p>
+        <p class="p2">20分钟内快速响应</p>
+      </div> 
+    </div>
+    <div class="line_l fl" onclick="goo('/patient/sr_index_fd.html?target=top')" style="height: 5.154rem;">
+        <img src="/h5page/mobile_medicals/images/kaushi02.png">
+        <div class="line_l_">
+          <p class="p1">名医资讯</p>
+          <p class="p2">三甲名医线上坐诊</p>
+        </div> 
+      </div>
+  </div>
+  <div class="menu_big1_line" style="margin-top: 1%;">
+    <div class="line_l fl" onclick="goo('/patient/sr_index.html?target=top')" style="height: 5.154rem;">
+      <img src="/h5page/mobile_medicals/images/kaushi03.png" style="width: 2.3rem;">
+      <div class="line_l_">
+        <p class="p1">找医生</p>
+        <p class="p2">专家一对一咨询</p>
+      </div> 
+    </div>
+    <div class="line_l fl" onclick="goo('/equipment/equipment_list.html')" style="height: 5.154rem;">
+        <img src="/h5page/mobile_medicals/images/kaushi04.png" style="width: 2.6rem;">
+        <div class="line_l_">
+          <p class="p1">健康检测</p>
+          <p class="p2">智能设备监测数据</p>
+        </div> 
+      </div>
+  </div>
+  <div class="m_dbox">
+    <span>热门门诊</span>       
+    <!-- <span class="mstio" onclick="goo('#')">去逛逛<i class="uing"><img src="/h5page/reha_phy/images/fanhuis.png" style="width: 100%;"></i></span> -->
+   </div>
+   <div class="option_box option_box4">
+    <ul>
+        <li onclick="goo('/patient/sr_index.html?target=top&searchD=1')">
+            <div class="option"><img src="https://b.yjxun.cn/index_yy/img/fck.png">
+                <p>妇产科</p>
+            </div>
+        </li>
+        <li onclick="goo('/patient/sr_index.html?target=top&searchD=2')">
+            <div class="option"><img src="https://b.yjxun.cn/index_yy/img/ek.png">
+                <p>儿科</p>
+            </div>
+        </li>
+        <li onclick="goo('/patient/sr_index.html?target=top&searchD=3')">
+            <div class="option"><img src="https://b.yjxun.cn/index_yy/img/nk.png" style="width:2.5rem">
+                <p>内科</p>
+            </div>
+        </li>
+        <li onclick="goo('/patient/sr_index.html?target=top&searchD=9')">
+            <div class="option"><img src="https://b.yjxun.cn/index_yy/img/wk.png">
+                <p>外科</p>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="option_box option_box4">
+    <ul>
+        <li onclick="goo('/patient/sr_index.html?target=top&searchD=4')">
+            <div class="option"><img src="https://b.yjxun.cn/index_yy/img/pfk.png">
+                <p>皮肤科</p>
+            </div>
+        </li>
+        <li onclick="goo('/patient/sr_index.html?target=top&searchD=14')">
+            <div class="option"><img src="https://b.yjxun.cn/index_yy/img/ebh.png" style="width:2.1rem">
+                <p>耳鼻喉科</p>
+            </div>
+        </li>
+        <li onclick="goo('/patient/sr_index.html?target=top&searchD=12')">
+            <div class="option"><img src="https://b.yjxun.cn/index_yy/img/zyy.png">
+                <p>中医科</p>
+            </div>
+        </li>
+        <li onclick="goo('/patient/sr_index.html?target=top')">
+            <div class="option"><img src="https://b.yjxun.cn/index_yy/img/gd.png">
+                <p>更多</p>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="m_dbox" style="margin-top: .8rem;">
+    <span>健康管理服务</span>       
+    <!-- <span class="mstio" onclick="goo('#')">去逛逛<i class="uing"><img src="/h5page/reha_phy/images/fanhuis.png" style="width: 100%;"></i></span> -->
+   </div>
+        <div class="mtsed" id="mtsdie">
+            <div class="mtes_left">
+                <div onclick="goo('/patient/index_.html')" style="border-bottom: 0;border-radius: .32rem;">
+                <p>血糖健康管理</p>
+                <p>合理高效降糖</p>
+                <p>￥<span style="font-size: 1.2rem;">450</span>起</p>
+                </div>
+                <div onclick="goo('/patient/index_.html')">
+                <p>血压管理服务</p>
+                <p>呵护心血管</p>
+                <p>￥<span style="font-size: 1.2rem;">320</span>起</p>
+                </div>
+            </div>
+        </div>
+	<div class="option_box option_box3">
+            <ul>
+                <li onclick="goo('/medical/index.html?target=top');">
+                    <div class="option"><img src="/h5page/mobile_medicals/images/jaingw01.jpg">
+                        <p>健康档案</p>
+                    </div>
+                </li>
+                <li onclick="setCookie('get_new_data',1);goo('/group/per_list.html?target=top');">
+                    <div class="option"><img src="/h5page/mobile_medicals/images/jaingw02.jpg">
+                        <p>我的亲友</p>
+                    </div>
+                </li>
+                <li onclick="goo('/sport/sport_lists.html')">
+                    <div class="option"><img src="/h5page/mobile_medicals/images/jaingw03.jpg">
+                        <p>运动健康</p>
+                    </div>
+                </li>
+                <li onclick="setCookie('get_new_data',1);goo('/medical/jktx.html?target=top');">
+                    <div class="option"><img src="/h5page/mobile_medicals/images/jaingw04.jpg">
+                        <p>健康提醒</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+ 
+
+        <!-- <div class="m_dbox">
+            <span>新闻资讯</span>       
+           </div> -->
+          
+           <div class="tab_itemst on" style="margin-top: 1.8rem;">
+            <div class="mtBox">
+              <div class="ms-content">
+                <div class="ms-left">
+                  <p>这些症状一出现，离心脏病仅有一步之遥！要留意了</p>
+                  <p><span>健康常识</span> <span>632评论</span><img src="https://lxj.yjxun.cn/drug/images/heartbeat_03.jpg" class="m-mig"></p>
+                </div>
+                <div class="ms-right"> <img src="https://b.yjxun.cn/index_yy/img/ttpic.png"> </div>
+              </div>
+              <div class="ms-line"></div>
+            </div>
+                <div class="mtBox">
+              <div class="ms-content">
+                <div class="ms-left">
+                  <p>夏秋相交腹泻高发 别随便吃抗生素、止泻药</p>
+                  <p><span>健康常识</span> <span>342评论</span><img src="https://lxj.yjxun.cn/drug/images/heartbeat_03.jpg" class="m-mig"></p>
+                </div>
+                <div class="ms-right"> <img src="https://lxj.yjxun.cn/drug/images/banana2.png"> </div>
+              </div>
+              <div class="ms-line"></div>
+            </div>
+              <div class="m-boxw">
+                <p class="m-boxp">身上不是很胖，但脂肪都在腰部，8步让你减掉腰部赘肉</p>
+                  <div class="mbs-pics">
+                   <img src="https://lxj.yjxun.cn/drug/images/banana3.png">
+                       <img src="https://lxj.yjxun.cn/drug/images/banana4.png">
+                       <img src="https://lxj.yjxun.cn/drug/images/banana5.png">
+                  </div>
+                 <p class="mb-lastp"><span>健康常识</span> <span>342评论</span><span>2小时前</span><img src="https://lxj.yjxun.cn/drug/images/heartbeat_03.jpg" class="m-mig"></p>
+              </div>
+          </div>
+        <div class="m-empty">暂无数据</div>
+        <div class="loading">
+            <span>正在努力加载更多</span>
+            <img src="/statics/admin/common/images/icon_loading2.gif" />
+        </div>
+		<span id="footer_box" v-html="url1"></span>
+    <div style="height: 2rem;"></div>
+	<script>
+        var page = 1;
+		$(function(){
+		var offstt = 60;
+		var offset = 300;
+		var duration = 500
+		// 	$(window).scroll(function() {
+		
+        //     if ($(window).scrollTop() > offstt) {
+		// 		$('#m_head').css('display','block');   
+        //        $('#m_head').css('background','#ffffff');  
+        //     }else{
+		// 		$('#m_head').css('display','none');   
+        //         $('#m_head').css('background','none');    
+        //     }
+            
+		// });
+
+        var item1 = $('.tab-menu ul li');
+	item1.each(function(i) {
+        $(item1[i]).on('click',function(){
+			$(item1).removeClass('change');
+			$(this).addClass('change');
+			$('#datas').empty();
+			$('.loading').show();
+			$('#datas').attr('data-page',1);
+			$('#datas').attr('data-loaded',0);
+			var category_id = parseInt($(this).attr('data-id'));
+			getNews(category_id);
+		});
+    });
+
+
+
+			getfooter();
+            getData();
+            banner();
+            getNews();
+	        document.body.onscroll = function(){
+		myscroll();
+	};
+		})
+
+        function myscroll(){
+	var loaded = parseInt($('#datas').attr('data-loaded'));
+	var page = parseInt($('#datas').attr('data-page'));
+	if(0 == loaded){
+		//变量scrollTop是滚动条滚动时，距离顶部的距离
+		var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+		//var scrollTop = document.getElementById('J_coupon').scrollTop;
+		//变量windowHeight是可视区的高度
+		var windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+		//var windowHeight = document.getElementById('J_coupon').clientHeight;
+		//变量scrollHeight是滚动条的总高度
+		var scrollHeight = document.documentElement.scrollHeight||document.body.scrollHeight;
+		//var scrollHeight = document.getElementById('datas').scrollHeight;
+		//console.log(scrollTop+'**'+windowHeight+'**'+scrollHeight);return;
+		if(scrollTop+windowHeight==scrollHeight){
+			page++;
+			$('#datas').attr('data-loaded',1);
+			$('#datas').attr('data-page',page);
+			window.setTimeout("getNews()",300);
+		}
+	}
+}
+function getNews(category_id){
+	var url = '/?m=circle&c=news&a=getDatas';
+	if (0<category_id) url += '&cateogry_id='+category_id;
+	var page = parseInt($('#datas').attr('data-page'));
+	if (1<page) url += '&page=' + page;
+	$.ajax({
+		url: url,
+		type: "GET",
+		dataType: "JSON",
+		success: function(data){
+			if (1 == data.status) {
+				$('.m-empty').hide();
+				$('#datas').attr('data-loaded',0);
+				$('.loading').show();
+				var datas = data.data;
+				var html = '';
+				for(var i in datas){
+					var info = datas[i];
+					html += '<div class="news-container" onClick="goo(\'/news2/detail.html?target=top&id='+info.id+'&catid='+info.catid+'\')"><div class="news-img " style=" background-image: url('+info.thumb+');background-size: cover;background-position: center center;"><img  src="'+info.thumb+'" onerror="error(this);" style=" display: none;"/></div><div class="news-txt-wrap"><span>'+info.title+'</span><span>'+info.author+'</span><span>'+info.views+'阅读</span></div></div>';
+				}
+				$('#datas').append(html);
+			} else {
+				if (1 == page) {
+					$('.m-empty').show();
+				} else {
+					$('.loading').hide();
+				}
+			}
+		}
+	});
+}
+		   function getfooter() {
+            $('#footer_box').load('/h5page/mobile_medicals/footer.html', function () {
+            });
+        }
+	
+        function banner(){
+         TouchSlide({
+        slideCell: '#J_banner',
+        titCell: '.hd ul',
+        mainCell: '.bd ul',
+        autoPage: true,
+        effect: 'leftLoop',
+        autoPlay: true,
+        delayTime: 200,
+        interTime: 2500,
+        //switchLoad:'src',
+    })
+    }
+    function getData(){
+		    $.ajax({
+                url:'/?m=member&c=data&a=getNewsData&page='+page,
+                type:'POST',
+                data:'',
+                dataType:'json',
+                success:function(e){
+                    for(i in e.data){
+                        var tmpTxt = '';
+                        var tmp = (e.data[i].keywords).split(',');
+                        for(j in tmp){
+                            if(j > 2) continue;
+                            if(tmp[i]) tmpTxt += '<span class="cactive'+j+'">'+tmp[j]+'</span>';
+                        }
+                        if(tmpTxt == '') tmpTxt = '<span class="cactive1">暂无</span>';
+                        $('#ketangs').append('<div class="listitem listitem1" onclick="goo(\'/diet/show.html?&catid='+e.data[i].catid+'&id='+e.data[i].id+'\')">\n' +
+                            '      <div class="artic">\n' +
+                            '        <div class="title">\n' +
+                            '         '+e.data[i].title+' \n' +
+                            '        </div>\n' +
+                            '\t\t<div class="citem_div5 aaa">'+e.data[i].description+'</div>\n' +
+                            '      <div class="citem_div4">'+tmpTxt+'</div>\n' +
+                            '      </div>\n' +
+                            '\t\t \t<div class="img">\n' +
+                            '        <div class="zoomImage" style="background-image:url('+e.data[i].thumb+'); "></div>\n' +
+                            '      </div>\n' +
+                            '    </div>');
+                    }
+                }
+            })
+        page++;
+    }
+	</script>
+</body>
+</html>

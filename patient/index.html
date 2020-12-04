@@ -1,0 +1,365 @@
+<!doctype html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<title>高级健康顾问服务</title>
+<script type="text/javascript" src="/statics/js/jquery_11.min.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<script type="text/javascript" src="/statics/js/cookie.js"></script>
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+<script type="text/javascript" src="/statics/js/jquery.raty.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+<link href="/statics/css/choice_style.css" rel="stylesheet" type="text/css">
+<style>
+.top_search .top_search_box {
+	height: 30px;
+	line-height: 30px;
+}
+ .top_search_box input::-webkit-input-placeholder {
+color:#333;
+}
+.top_search_box .dr_name {
+	width: 86%;
+	border: 1px solid #CCC;
+	height: 30px;
+	padding: 2px 6px 2px 6px;
+	color: #808080;
+	border-radius: 3px;
+}
+.content_div {
+	border-left: 0;
+	border-top: 0;
+	height: 100px;
+}
+.content_div_one {
+	position: relative;
+}
+/**/
+
+#score-demo img {
+	width: 11px;
+	height: 11px;
+}
+#wrapper {/*height: 436px;*/
+	-webkit-overflow-scrolling: touch;
+	overflow: auto;
+}
+</style>
+</head>
+
+<body>
+<div class="header_box"> <img src="/statics/images/goback_b.png" onClick="goback()" class="left">
+    <p class="midden">高级健康顾问服务</p>
+</div>   
+<div class="h50"></div>
+    
+<!--<div class="top_search">
+
+		<div class="top_search_box">
+
+			<img src="/statics/myim_images/search_c.png" style="width: 21px;height: 21px;float: left;margin: 1.5% 0px 0px 0.5%;"/>
+
+			<input type="text" value="" id="k" placeholder="输入医生名" class="dr_name"/>
+
+		</div>
+
+	</div>
+
+	<div style="background: #F1F1F1;width: 100%;height: 45px;line-height: 45px;"> &nbsp;&nbsp;按科室找医生<div>
+
+	<div id="content_department" style="height: auto;width: 100%;background: #FFF;font-size: 14px;margin-left: 2px;">
+
+		
+
+	</div>-->
+
+<div class="doctor_list" id="content_data" style="display: none;"> 
+    <div class="doctor_user" style="display: none;">
+        <div class="doctor_user_tou fl"> <img src="/upload_cache/member/18030110114SPt4264.jpeg"/> <i></i> </div>
+        <div class="content_user fr">
+            <div class="user_class">Quan&nbsp;<span>主任医师 教授</span></div>
+            <div style="font-size: 12px;color: #333;">广东省中医院 儿科</div>
+            <div style="color: #747474;">好评率：<span style="color: #FF5400">99.9%</span></div>
+            <div class="bga" >擅长：呼吸、儿童生长发育等常见病的诊断和治疗以及新生儿、小儿危急重症的抢救...</div>
+            <div style="color: #747474;" class="price"> <span style="color: #FF5400">200元起</span>&nbsp;可咨询医生 </div>
+        </div>
+        <div class="q_doctor">签约医生</div>
+    </div>
+</div>
+</body>
+<div id="good_doctor">
+    <div onClick="goo('./Dr_details_expert.html?&userid=3347')" style="margin-bottom: 3%;"><img src="/statics/doctor/images/lihuidong.jpg" style="width: 100%;height: 100%;border-radius: 3px;"/></div>
+    <div onClick="goo('./Dr_details_expert.html?&userid=3421')"><img src="/statics/doctor/images/wujian.jpg" style="width: 100%;height: 100%;border-radius: 3px;"/></div>
+    <!--<div onClick="goo('./Dr_details_expert.html?&userid=3616')"><img src="/statics/doctor/images/yechaomin.jpg" style="width: 100%;height: 100%;border-radius: 3px;"/></div>-->
+</div>
+</html>
+<script>
+
+var UA = navigator.userAgent;
+
+var forIOS = function(){
+
+	if(!UA.match(/iPad/) && !UA.match(/iPhone/) && !UA.match(/iPod/)){return;}
+
+	if($('#wrapper').length){return;}
+
+	$('body').children().not('script').not('.header_box').wrapAll('<div id="wrapper"></div>');
+
+	if(isWeiXin()) $('#wrapper').height((screen.availHeight-60)+'px');
+
+}();
+
+</script>
+<script>
+
+var page = 1;
+
+var loaded = 0;
+
+var did = 0;
+
+var department = {};
+
+var k = '';
+
+var openid = getcookie('_openid');
+
+$(function(){
+
+	if (1>3&&isWeiXin()) {
+
+		if (!openid) {
+
+			var url = '/?m=weixin&c=payCenter&a=getWechatPayApi&forward='+encodeURIComponent(window.location.href);
+
+			$.get(url,function(data){
+
+				if (data.status==1) {
+
+					//alert(data.apiUrl);
+
+					window.location.href = data.apiUrl;
+
+				}
+
+			},'json');
+
+		}
+
+	}
+
+	//get_department();
+
+	get_data();
+
+	/*$('#k').on('keyup',function(event){
+
+		if (event.keyCode == "13") {
+
+			k = $.trim($('#k').val());
+
+			$('#content_data').html('');
+
+			get_data();
+
+		}
+
+	});*/
+
+})
+
+$(window).scroll(function(){
+
+　　var scrollTop = $(this).scrollTop();
+
+　　var scrollHeight = $(document).height();
+
+　　var windowHeight = $(this).height();
+
+　　if(scrollTop + windowHeight == scrollHeight){
+
+　　　　//滚动条到最底部加载方法
+
+	if (loaded == 0) {
+
+		loaded = 1;
+
+		page++;
+
+		get_data();
+
+	}
+
+　　}
+
+});
+
+function bindSelectDepartmentEvent(){
+
+	var department_item = $('.content_div');
+
+	department_item.each(function(i) {
+
+        $(department_item[i]).on('click',function(){
+
+			//console.log(1);
+
+			$('.content_div_one').removeClass('content_div_one_click');
+
+			$('.img_one').hide();
+
+			$(this).find('.content_div_one').addClass('content_div_one_click');
+
+			$(this).find('.content_div_one .img_one').show();
+
+			did = department[i].id;
+
+			$('#content_data').html('');
+
+			get_data();
+
+		});
+
+    });
+
+}
+
+function get_department(){
+
+	var url = '/?m=doctor&c=patient&a=getDepartment&ajax=1';
+
+	$.get(url,function(data){
+
+		if (!$.isEmptyObject(data)) {
+
+			html = '';
+
+			department = data;
+
+			for(var i in data){
+
+				var setBorderClass = i<4?'clear_top':'clear_bottom';
+
+				html += '<div class="content_div '+setBorderClass+'">\
+
+			<div class="content_div_one">\
+
+				<img src="/statics/myim_images/gou_quan.png" class="img_one"/>\
+
+				<img src="/statics/myim_images/'+data[i].param+'.png"/>\
+
+				<div>'+data[i].title+'</div>\
+
+			</div>\
+
+		</div>';
+
+			}
+
+			$('#content_department').html(html);
+
+			bindSelectDepartmentEvent();
+
+		}
+
+	},'json');	
+
+}
+
+function get_data(){
+
+	var url = '/?m=doctor&c=patient&a=doctor_list&ajax=1';
+
+	if (page > 1) url += '&page='+page;
+
+	if (did > 0) url += '&did='+did;
+
+	if (k) url += '&k='+k;
+
+	$.ajax({
+
+		url:url,
+
+		type:'GET',
+
+		dataType:'json',
+
+		success:function(data){
+
+			if (data.status==1) {
+
+				loaded = 0;
+
+				var html = $('#good_doctor').html();
+
+				if(userid_ == 4 || userid_ == 5 || userid_ == 104){
+
+					html += '<div class="doctor_user"><div class="doctor_user_tou fl"><img src="http://www.yjxun.cn/uploadfile/2018/0524/20180524063101908.png"/><img src="/patient/statics/images/pass1.png" class="pass1"></div><div class="content_user fr"  onClick="goo(\'/patient/Dr_details.html?&userid=553\')"><div class="user_class">蔡医生&nbsp;<span>家庭医生 主治医师</span></div><div  class="keshi03" style="display: none;"></div><div  class="haoping03"><div class="change_box"><div class="change_line"><i class="fl"">好评率：</i><div class="demo fl"><div id="score-demo" style="cursor: pointer;width: 60px;"><input type="hidden" name="score" value="3"></div></div><span style="color: #FF5400; margin-left:5px;">100%</span></div><div class="change_line">签约家庭：<span style="color: #FF5400">0个</span></div></div><div class="bga"></div></div><div class="price"><span class="price_l fl">可咨询医生</span></div></div></div>';
+
+				}
+
+				var datas = data.data.datas;
+
+				/*for(var i in datas){
+
+					var info = datas[i];
+
+					info.position_level = '家庭医生 主治医师';
+
+					var dtpe = '<img src="/patient/statics/images/stars2_.png" alt="5" title="bad"><img src="/patient/statics/images/stars2_.png" alt="5" title="bad"><img src="/patient/statics/images/stars2_.png" alt="5" title="bad"><img src="/patient/statics/images/stars2_.png" alt="5" title="bad"><img src="/patient/statics/images/stars2_.png" alt="5" title="bad">';
+
+					if(info.dt_pe >= 30 && info.dt_pe <= 40){
+
+						dtpe = '<img src="/patient/statics/images/stars2_.png" alt="1" title="bad"><img src="/patient/statics/images/stark2_.png" alt="2" title="bad"><img src="/patient/statics/images/stark2_.png" alt="3" title="good"><img src="/patient/statics/images/stark2_.png" alt="4" title="good"><img src="/patient/statics/images/stark2_.png" alt="5" title="good">';
+
+					}else if(info.dt_pe > 40 && info.dt_pe <= 60){
+
+						dtpe = '<img src="/patient/statics/images/stars2_.png" alt="1" title="bad"><img src="/patient/statics/images/stars2_.png" alt="2" title="bad"><img src="/patient/statics/images/stars2_.png" alt="3" title="bad"><img src="/patient/statics/images/stark2_.png" alt="5" title="good"><img src="/patient/statics/images/stark2_.png" alt="5" title="good">';
+
+					}else if(info.dt_pe > 60 && info.dt_pe <= 80){
+
+						dtpe = '<img src="/patient/statics/images/stars2_.png" alt="1" title="bad"><img src="/patient/statics/images/stars2_.png" alt="2" title="bad"><img src="/patient/statics/images/stars2_.png" alt="3" title="bad"><img src="/patient/statics/images/stars2_.png" alt="3" title="bad"><img src="/patient/statics/images/stark2_.png" alt="5" title="good">';
+
+					}else if(info.dt_pe > 80){
+
+						//dtpe
+
+					}
+
+					html += '<div class="doctor_user"><div class="doctor_user_tou fl"><img src="'+info.thumb+'"/><img src="/patient/statics/images/pass1.png" class="pass1"></div><div class="content_user fr"  onClick="goo(\'/patient/Dr_details.html?&userid='+info.userid+'\')"><div class="user_class">'+info.realname+'&nbsp;<span>'+info.position_level+'</span></div><div  class="keshi03" style="display: none;">'+info.hospital+' '+info.department+'</div><div  class="haoping03"><div class="change_box"><div class="change_line"><i class="fl"">好评率：</i><div class="demo fl"><div id="score-demo" style="cursor: pointer;width: 60px;">'+dtpe+'<input type="hidden" name="score" value="3"></div></div><span style="color: #FF5400; margin-left:5px;">'+info.dt_pe+'%</span></div><div class="change_line">签约家庭：<span style="color: #FF5400">'+info.service_family+'个</span></div></div><div class="bga">'+info.bga+'</div></div><div class="price"><span class="price_l fl">可咨询医生</span><!--<span class="price_r fr">'+info.price2+'元/月</span>--></div></div></div>';
+
+				}*/
+
+				$('#content_data').append(html);
+
+			}		
+
+		}
+
+	})
+
+}
+
+$('#star').raty({ score: 3 });
+
+function isWeiXin(){
+
+  var ua = window.navigator.userAgent.toLowerCase();
+
+  if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+
+  	return true;
+
+  }else{
+
+  	return false;
+
+  }
+
+}
+
+</script>

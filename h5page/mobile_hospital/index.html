@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="cn">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+		<link rel="stylesheet" type="text/css" href="/statics/css/animate.css">
+		<link rel="stylesheet" type="text/css" href="/statics/css/appstyle.css">
+		<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+			<link rel="stylesheet" type="text/css" href="./css/index.css">
+		<script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="/statics/js/layer/3.1.1/layer.js"></script>
+		<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+		<script type="text/javascript" src="/statics/js/global.js"></script>
+         <script type="text/javascript" src="/statics/js/TouchSlide.1.1.js"></script>
+         <script src="/statics/js/layer/3.1.1/layer.js"></script>
+		<title>医院移动医疗方案</title>
+		<style>
+		.header_box .midden {
+    color: #2f2828;
+     }
+            .aaa{overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;}
+            .header_box {
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    background-color: #FFF;
+    z-index: 50;
+}
+		</style>
+	</head>
+<body>
+<div class="header_box" style="border-bottom: 0;display: none" id="m_head">
+  <p class="midden">医院移动医疗方案</p>
+</div>
+	
+	<div class="option_box option_boxww">
+            <ul>
+                <li onclick="goo('/index_yy/payment_voucher.html')">
+                    <div class="option"><img src="/h5page/mobile_hospital/images/iconimg011.png">
+                        <p class="plis1">门诊缴费</p>
+                        <p class="plis2">快速缴费</p>
+                    </div>
+                </li>
+                <li onclick="goo_d()">
+                    <div class="option"><img src="/h5page/mobile_hospital/images/iconimg02.png">
+                        <p class="plis1">当天挂号</p>
+                        <p class="plis2">每日号源更新</p>
+                    </div>
+                </li>
+                <li onclick="goo_d()">
+                    <div class="option"><img src="/h5page/mobile_hospital/images/iconimg03.png">
+                        <p class="plis1">我的住院</p>
+                        <p class="plis2">住院信息一览</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="mtsed" id="mtsdie">
+            <div class="mtes_left">
+                <div onclick="goo('/h5page/y_hoslist.html')" style="border-bottom: 0;border-radius: .32rem;">
+                <p>预约挂号</p>
+                <p>无需排队<br>在线挂号</p>
+                </div>
+                <div onclick="goo('/?m=myim&a=sr_dialogue_fast&target=top')">
+                <p>在线问诊</p>
+                <p>找医生问诊<br>服务好</p>
+                </div>
+            </div>
+        </div>
+	<div class="option_box option_box3">
+            <ul>
+                <li onclick="goo_d('#')">
+                    <div class="option"><img src="/h5page/mobile_hospital/images/cios001.jpg">
+                        <p>查看报告</p>
+                    </div>
+                </li>
+                <li onclick="goo('/equipment/equipment_list.html')">
+                    <div class="option"><img src="/h5page/mobile_hospital/images/cios002.jpg">
+                        <p>健康检测</p>
+                    </div>
+                </li>
+                <li onclick="setCookie('get_new_data',1);goo('/medical/jktx.html?target=top');">
+                    <div class="option"><img src="/h5page/mobile_hospital/images/cios003.jpg">
+                        <p>健康提醒</p>
+                    </div>
+                </li>
+                <li onclick="setCookie('get_new_data',1);goo('/group/per_list.html?target=top');">
+                    <div class="option"><img src="/h5page/mobile_hospital/images/cios004.jpg">
+                        <p>我的亲友</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="m-banner" id="J_banner">
+            <div class="banner-container bd">
+              <div class="tempWrap">
+                <ul id="advert">
+                  <li><img src="/h5page/mobile_hospital/images/baohgals.png" style="border-radius: .4rem"></li>
+                  <li><img src="/h5page/mobile_hospital/images/baohgals.png" style="border-radius:.4rem"></li>
+                  <li><img src="/h5page/mobile_hospital/images/baohgals.png" style="border-radius: .4rem"></li>
+                </ul>
+              </div>
+            </div>
+            <div class="hd">
+              <ul>
+                <li class="on"></li>
+              </ul>
+            </div>
+          </div>  
+
+          <div class="m_dbox">
+            <span><img src="./images/jibingbaike.jpg" style="width: 1.3rem;vertical-align: sub;margin-right: .5rem;">健康资讯</span>   
+             <span class="mstio" onclick="goo('#')">更多<i class="uing"><img src="/h5page/muyin/images/fanhuis.png" style="width: 100%;"></i></span>
+           </div>
+          
+           <div class="tab">
+            <div class="tab-menu">
+                <ul>
+                    <li class="change">健康常识</li>
+                    <li>饮食调理</li>
+                    <li>养生保健</li>
+                </ul>
+            </div>
+            <div class="m-news-data" id="datas" data-page="1" data-loaded="0">
+            
+            </div>
+            <!--<div class="news-container">
+                <div class="news-txt-wrap">
+                    <span>这些症状出现，离心脏病只有一步之遥！要留意了</span>
+                    <span>健康常识</span>
+                    <span>2123阅读</span>
+                </div>
+                <div class="news-img">
+                    <img  src="/index2_lxj/images/egg.png" alt="">
+                </div>
+            </div>
+            <div class="news-container">
+                <div class="news-txt-wrap">
+                    <span>血压到了临界值？ 别乱吃药，这样控制更好！</span>
+                    <span>健康常识</span>
+                    <span>2123阅读</span>
+                </div>
+                <div class="news-img">
+                    <img  src="/index2_lxj/images/wan.png" alt="">
+                </div>
+            </div>
+            <div class="news-container">
+                <div class="news-txt-wrap">
+                    <span>这些症状出现，离心脏病只有一步之遥！要留意了</span>
+                    <span>健康常识</span>
+                    <span>2123阅读</span>
+                </div>
+                <div class="news-img">
+                    <img  src="/index2_lxj/images/xing.png" alt="">
+                </div>
+            </div>
+            <div class="news-container">
+                <div class="news-txt-wrap">
+                    <span>这些症状出现，离心脏病只有一步之遥！要留意了</span>
+                    <span>健康常识</span>
+                    <span>1632阅读</span>
+                </div>
+                <div class="news-img">
+                    <img  src="/index2_lxj/images/zi.png" alt="">
+                </div>
+            </div>
+            <div class="news-container">
+                <div class="news-txt-wrap">
+                    <span>这些症状出现，离心脏病只有一步之遥！要留意了</span>
+                    <span>健康常识</span>
+                    <span>1632阅读</span>
+                </div>
+                <div class="news-img">
+                    <img  src="/index2_lxj/images/wuxing.png" alt="">
+                </div>
+            </div>-->
+    <!--
+            <div class="tab-box" id="tab-box">
+                <div class="m-dynamic" style="width:100vw">
+                    <div class="dynamic-item" id='defaultTpl' style='display: none;'>
+                <p class="dynamic-content" style='-webkit-line-clamp: 3'></p>
+                <div class="dynamic-content" style='text-overflow: -o-ellipsis-lastline;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;line-clamp: 3;-webkit-box-orient: vertical;'></div>
+                <div class="item-atlas">
+                  <ul>
+                    <li>
+                      <img src="">
+                    </li>
+                  </ul>
+                </div>
+                <div class="item-push" style="display: none;"></div>
+                <div class="item-tool">
+                  <div class="tool-top">
+                    <div class="tool-member">
+                      <div class="member-head">
+                        <img src="">
+                      </div>
+                      <div class="member-info">
+                        <p></p> 
+                        <p></p>
+                      </div>
+                    </div>
+                    <div class="tool-nav">
+                      <span class="nav-share"></span><span class="nav-comment">0</span><span class="nav-like"><i>0</i></span>
+                    </div>
+                  </div>
+                  <div class="tool-bottom">
+                    <span>发布自
+                    <p class="toCircleTip"></p>
+                    <i id='toCircle'></i></span>
+                    <font></font>
+                    <em class="operate-close"></em>
+                  </div>
+                </div>
+              </div> 
+                </div>
+                <div class="tab_items">
+                   <p style="padding:2rem;text-align: center;color:#ccc;">暂无数据</p>
+                </div>
+                <div class="tab_items">
+                   <p style="padding:2rem;text-align: center;color:#ccc;">暂无数据</p>
+                </div>
+            </div>-->
+        </div>
+        <div class="m-empty">暂无数据</div>
+        <div class="loading">
+            <span>正在努力加载更多</span>
+            <img src="/statics/admin/common/images/icon_loading2.gif" />
+        </div>
+		<span id="footer_box" v-html="url1"></span>
+    <div style="height: 8rem;"></div>
+	<script>
+        var page = 1;
+		$(function(){
+		var offstt = 60;
+		var offset = 300;
+		var duration = 500
+			$(window).scroll(function() {
+		
+            if ($(window).scrollTop() > offstt) {
+				$('#m_head').css('display','block');   
+               $('#m_head').css('background','#ffffff');  
+            }else{
+				$('#m_head').css('display','none');   
+                $('#m_head').css('background','none');    
+            }
+            
+            
+		});
+
+        var item1 = $('.tab-menu ul li');
+	item1.each(function(i) {
+        $(item1[i]).on('click',function(){
+			$(item1).removeClass('change');
+			$(this).addClass('change');
+			$('#datas').empty();
+			$('.loading').show();
+			$('#datas').attr('data-page',1);
+			$('#datas').attr('data-loaded',0);
+			var category_id = parseInt($(this).attr('data-id'));
+			getNews(category_id);
+		});
+    });
+
+
+
+			getfooter();
+            getData();
+            banner();
+            getNews();
+	        document.body.onscroll = function(){
+		myscroll();
+	};
+		})
+
+        function myscroll(){
+	var loaded = parseInt($('#datas').attr('data-loaded'));
+	var page = parseInt($('#datas').attr('data-page'));
+	if(0 == loaded){
+		//变量scrollTop是滚动条滚动时，距离顶部的距离
+		var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+		//var scrollTop = document.getElementById('J_coupon').scrollTop;
+		//变量windowHeight是可视区的高度
+		var windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+		//var windowHeight = document.getElementById('J_coupon').clientHeight;
+		//变量scrollHeight是滚动条的总高度
+		var scrollHeight = document.documentElement.scrollHeight||document.body.scrollHeight;
+		//var scrollHeight = document.getElementById('datas').scrollHeight;
+		//console.log(scrollTop+'**'+windowHeight+'**'+scrollHeight);return;
+		if(scrollTop+windowHeight==scrollHeight){
+			page++;
+			$('#datas').attr('data-loaded',1);
+			$('#datas').attr('data-page',page);
+			window.setTimeout("getNews()",300);
+		}
+	}
+}
+function getNews(category_id){
+	var url = '/?m=circle&c=news&a=getDatas';
+	if (0<category_id) url += '&cateogry_id='+category_id;
+	var page = parseInt($('#datas').attr('data-page'));
+	if (1<page) url += '&page=' + page;
+	$.ajax({
+		url: url,
+		type: "GET",
+		dataType: "JSON",
+		success: function(data){
+			if (1 == data.status) {
+				$('.m-empty').hide();
+				$('#datas').attr('data-loaded',0);
+				$('.loading').show();
+				var datas = data.data;
+				var html = '';
+				for(var i in datas){
+					var info = datas[i];
+					html += '<div class="news-container" onClick="goo(\'/news2/detail.html?target=top&id='+info.id+'&catid='+info.catid+'\')"><div class="news-img " style=" background-image: url('+info.thumb+');background-size: cover;background-position: center center;"><img  src="'+info.thumb+'" onerror="error(this);" style=" display: none;"/></div><div class="news-txt-wrap"><span>'+info.title+'</span><span>'+info.author+'</span><span>'+info.views+'阅读</span></div></div>';
+				}
+				$('#datas').append(html);
+			} else {
+				if (1 == page) {
+					$('.m-empty').show();
+				} else {
+					$('.loading').hide();
+				}
+			}
+		}
+	});
+}
+		   function getfooter() {
+            $('#footer_box').load('/h5page/mobile_hospital/footer.html', function () {
+            });
+        }
+	
+        function banner(){
+         TouchSlide({
+        slideCell: '#J_banner',
+        titCell: '.hd ul',
+        mainCell: '.bd ul',
+        autoPage: true,
+        effect: 'leftLoop',
+        autoPlay: true,
+        delayTime: 200,
+        interTime: 2500,
+        //switchLoad:'src',
+    })
+    }
+    function getData(){
+		    $.ajax({
+                url:'/?m=member&c=data&a=getNewsData&page='+page,
+                type:'POST',
+                data:'',
+                dataType:'json',
+                success:function(e){
+                    for(i in e.data){
+                        var tmpTxt = '';
+                        var tmp = (e.data[i].keywords).split(',');
+                        for(j in tmp){
+                            if(j > 2) continue;
+                            if(tmp[i]) tmpTxt += '<span class="cactive'+j+'">'+tmp[j]+'</span>';
+                        }
+                        if(tmpTxt == '') tmpTxt = '<span class="cactive1">暂无</span>';
+                        $('#ketangs').append('<div class="listitem listitem1" onclick="goo(\'/diet/show.html?&catid='+e.data[i].catid+'&id='+e.data[i].id+'\')">\n' +
+                            '      <div class="artic">\n' +
+                            '        <div class="title">\n' +
+                            '         '+e.data[i].title+' \n' +
+                            '        </div>\n' +
+                            '\t\t<div class="citem_div5 aaa">'+e.data[i].description+'</div>\n' +
+                            '      <div class="citem_div4">'+tmpTxt+'</div>\n' +
+                            '      </div>\n' +
+                            '\t\t \t<div class="img">\n' +
+                            '        <div class="zoomImage" style="background-image:url('+e.data[i].thumb+'); "></div>\n' +
+                            '      </div>\n' +
+                            '    </div>');
+                    }
+                }
+            })
+        page++;
+    }
+	</script>
+</body>
+</html>

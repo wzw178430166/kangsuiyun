@@ -1,51 +1,6 @@
 {template $this->template,'header_common',$this->style}
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
-<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+<script type="text/javascript" src="/statics/admin/common/js/region.js"></script>
 <style>
-.role-do ul { margin: 0; display: flex;flex-wrap: wrap;}
-.role-do ul li { overflow: hidden; border-bottom: 1px #eee solid; padding: 10px 0;width: 50%;}
-.role-do ul li .role-do-strw1 { float: left; width: 90px; height: 30px; line-height: 30px; padding-left: 5px; }
-.role-do ul li .role-do-val { float: left; margin-right: 30px; }
-.role-do ul li .role-do-val .input-text { width: 160px; height: 30px; padding: 0; padding-left: 5px; border-radius: 3px; }
-.role-do ul li .role-do-val .input-textbg { background: #f7f7f7;}
-.role-do ul li .role-do-val .input-textarea { width: 250px; height: 100px; border-radius: 3px; outline: none; resize: none; }
-.role-do-val label { float: left; margin: 5px 10px 0 0; }
-.role-do-val input[type="radio"] { margin: 0; margin-right: 5px; }
-.role-do-val select { width: 166px; height: 30px; }
-.role-do-val .input-tips { margin-left: 15px; color: #666; }
-.role-do-val .editor-inner { width: 600px; }
-.role-do-btn a { display: block; width: 80px; float: left; height: 30px; line-height: 30px; text-align: center; border-radius: 3px; margin-right: 10px; }
-.role-do-btn a.btn-send { background-color: #234686; color: #fff; }
-.role-do-btn a.btn-close { background-color: #e0e0e0; color: #666; }
-.role-do ul li .role-do-val .input-date {
-    width: 50px;
-    height: 30px;
-    padding: 0;
-    padding-left: 5px;
-    border-radius: 3px;
-}
-.role-do ul li .role-do-val .role-spanv{padding: 0 15px;margin-left: 0!important;}
-.role-do ul li.listw100{width: 100%;}
-.role-do ul li .role-do-strw1{ float: left;
-    width: 175px;
-    height: 30px;
-    line-height: 30px;
-    padding-left: 5px;}
-    .query-btn .btn-item {
-   margin-left: 0px; 
-}
-select {
-    width: 170px;
-    background-color: #ffffff;
-    border: 1px solid #cccccc;
-    height: 30px;
-}
 #menu {
     padding-top: 1rem;
     background: #fff;
@@ -81,8 +36,44 @@ select {
     padding: 0;
     overflow: hidden;
 }
-.cell-xiangmus {
-    width: 250px;
+.query-btn .btn-item {
+    margin-left: 0px;
+    height: auto;
+    min-height: 26px;
+}
+.table_div{text-align: left;font-size: 14px;margin-bottom: 10px;}
+.table_div span{margin-right: 15px;}
+.cell-adive{width: 160px;}
+.cell-shopd{width: 180px;}
+.table-bordered th.rowth{height: 50px;line-height: 50px;}
+ .tb-headstortg{height: 50px;line-height: 40px;}
+.table tr th {
+    font-weight: normal; 
+    background: #f1f1f1;
+}
+.tb-cell, .tb-head {
+    display: block;
+    width: 40px;
+    overflow: hidden;
+    white-space: nowrap;
+    word-wrap: normal;
+    padding: 0 5px;
+}
+.tb-container {
+    width: 800px;
+    overflow: hidden;
+    overflow-x: auto;
+}
+.cell-title{width: 200px;}
+.table-bordered thead:first-child tr:first-child > th:first-child, .table-bordered tbody:first-child tr:first-child > td:first-child, .table-bordered tbody:first-child tr:first-child > th:first-child {
+    -webkit-border-top-left-radius: 0px;
+    border-top-left-radius: 0px;
+    text-align: left;
+    -moz-border-radius-topleft: 0px;
+}
+#datas tr th{text-align: left;}
+.table-striped tbody > tr:nth-child(even) > td, .table-striped tr:nth-child(odd) {
+    background-color: #ffffff;
 }
 </style>
 <body>
@@ -91,55 +82,498 @@ select {
   <div class="right" id="mainFrame">
     <div class="right_cont">
       <ul class="breadcrumb">
-        当前位置： <a href="/?m=dataManage">首页</a> <span class="divider">/</span> <a href="javascript:;">生化结果检测</a> 
+        当前位置： <a href="/?m=dataManage">首页</a> <span class="divider">/</span> <a href="javascript:;">生化报告单</a> 
       </ul>
       <div class="title_right">
-        <strong>生化结果检测</strong> 
+        <strong>生化报告单</strong> 
     </div>
-      <div style="width:auto;margin:auto;">  
-        <!-- <div class="query-btn">
-            <div class="btn-item"> <a class="btn-query" >全部停止</a> <a href="javascript:;" class="btn-add" style="margin-left: 10px;">执行</a> </div>
-          </div>    -->
-
-        <!-- <div id="menu">
-          <ul>
-            <li class="on">新增医嘱
-              <p class="pstyle"></p>
-            </li>
-            <li>新开/执行
-                <p></p>
-              </li>
-            <li>历史记录
-              <p></p>
-            </li>
-            <div class="clear"></div>
-          </ul>
-          <div class="clear"></div>
-        </div> -->
+      <div style="width:auto;margin:auto;">   
+        <div class="query-btn">
+            <div class="btn-item"> <a class="btn-query" >刷新</a> <a href="javascript:;" class="btn-add" style="margin-left: 10px;">续打</a> <a href="javascript:;" class="btn-add" style="margin-left: 10px;">全部打印</a></div>
+          </div> 
+        <div style="height: 20px;"></div>
         <div class="data-content">
           <div class="tb-container">
-            <table class="table table-bordered table-hover table-striped" id="rstb">
-              <thead><tr align="center">
-                  <th><strong class="tb-head cell-check" data-val="check">
-                    <input type="checkbox" id="J_sel_all">
-                    </strong></th>
-                  <th><strong class="tb-head cell-xiangmus" data-val="xiangmus">生化项目</strong></th>
-                  <!-- <th><strong class="tb-head cell-operate" data-val="operate">操作</strong></th> -->
-                </tr></thead>
+            <table class="table table-bordered table-striped" id="rstb">
+                <caption align="top">
+                    <div class="table_div">科室：<span>耳鼻咽喉科科</span>床号：<span>+9</span> 姓名：<span>黄小明</span> 页数：<span></span>
+                    </div> 
+                 </caption>
+                <thead>
+                  <tr align="center">
+                  <td colspan="3"><strong class="tb-head cell-sexee" data-val="sexee"></strong></td>
+                  <td><strong class="tb-head cell-age" data-val="age">日期</strong> </td>
+                  <td><strong class="tb-head cell-telephoness" data-val="telephoness"> 日期</strong></td>
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg">日期 </strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> 日期</strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> 日期</strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> 日期</strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles">日期 </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa">日期 </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh">日期 </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> 日期</strong></td>
+                </tr>
+              </thead>
               <tbody id="datas">
+                <tr align="center">
+                  <td colspan="3"><strong class="tb-head cell-sexee" data-val="sexee">Data </strong></td>
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg">02/25</strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+
+                <tr align="center">
+                  <td colspan="3"><strong class="tb-head cell-sexee" data-val="sexee" style="width: auto;">Blood sugar </strong></td>
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg"></strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+
+
+                <tr align="center">
+                  <td colspan="2" rowspan="2"><strong class="tb-head cell-sexee" data-val="sexee">尿常规<br>十联 </strong></td>
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg" style="width: auto;">尿红细胞</strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+
+                <tr align="center">
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg">尿蛋白</strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg">阴性 </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+          
+                
+                <tr align="center">
+                  <td colspan="2" rowspan="9"><strong class="tb-head cell-sexee" data-val="sexee"> blood <br>Rt.</strong></td>
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg">RBC</strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+                
+                <tr align="center">
+                  <td><strong class="tb-head cell-sexee" data-val="sexee">Hb</strong></td>
+                  <td><strong class="tb-head cell-telephoness" data-val="telephoness"></strong></td>
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg"></strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+                
+                <tr align="center">
+                  <td><strong class="tb-head cell-sexee" data-val="sexee">HCT </strong></td>
+                  <td><strong class="tb-head cell-telephoness" data-val="telephoness"></strong></td>
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg"></strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+                
+                <tr align="center">
+                  <td><strong class="tb-head cell-sexee" data-val="sexee">Bpc </strong></td>
+                  <td><strong class="tb-head cell-telephoness" data-val="telephoness"></strong></td>
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg"></strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+                
+                <tr align="center">
+                  <td><strong class="tb-head cell-sexee" data-val="sexee">WBC</strong></td>
+                  <td><strong class="tb-head cell-telephoness" data-val="telephoness"></strong></td>
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg"></strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+                
+                <tr align="center">
+                  <td><strong class="tb-head cell-sexee" data-val="sexee">L</strong></td>
+                  <td><strong class="tb-head cell-telephoness" data-val="telephoness"></strong></td>
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg"></strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+                
+                <tr align="center">
+                  <td><strong class="tb-head cell-sexee" data-val="sexee">N</strong></td>
+                  <td><strong class="tb-head cell-telephoness" data-val="telephoness"></strong></td>
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg"></strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+                
+                <tr align="center">
+                  <td><strong class="tb-head cell-sexee" data-val="sexee">MCV</strong></td>
+                  <td><strong class="tb-head cell-telephoness" data-val="telephoness"></strong></td>
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg"></strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+                
+                <tr align="center">
+                  <td><strong class="tb-head cell-sexee" data-val="sexee">MCH</strong></td>
+                  <td><strong class="tb-head cell-telephoness" data-val="telephoness"></strong></td>
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg"></strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                
+                </tr> 
+                
+                <tr align="center">  
+                  <td colspan="2" rowspan="10"><strong class="tb-head cell-sexee" data-val="sexee"> Liver</strong></td>
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg" style="width: auto;">PreAlbumin</strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+                
+              
+                <tr align="center">
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg">ALT</strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+                
+                <tr align="center">
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg">AST</strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+
+                <tr align="center">
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg">ALKP</strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+                
+                <tr align="center">
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg">GGT</strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+                
+                <tr align="center">
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg">TBIL</strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+                
+                <tr align="center">
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg">TP</strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+                
+                <tr align="center">
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg">ALB</strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+
+                <tr align="center">
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg">DBIL</strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+                
+                <tr align="center">
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg">A/G</strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+                
+                <tr align="center">
+                  <td colspan="2" rowspan="2"><strong class="tb-head cell-sexee" data-val="sexee"> Renal</strong></td>
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg">BUN</strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+                
+                <tr align="center">
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg">CREA</strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+                
+                <tr align="center">
+                  <td colspan="2" rowspan="6"><strong class="tb-head cell-sexee" data-val="sexee">Mineral </strong></td>
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg">Na</strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+
+                
+                <tr align="center">
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg">K</strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+                
+                <tr align="center">
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg">CL</strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+                
+                <tr align="center">
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg">Ca</strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+                
+                <tr align="center">
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg">P</strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+                
+                <tr align="center">
+                  <td><strong class="tb-head cell-idcardgg" data-val="idcardgg">Mg</strong></td>
+                  <td><strong class="tb-head cell-titlesgg" data-val="titlesgg"> </strong></td>
+                  <td><strong class="tb-head cell-hhh" data-val="hhh"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="titles"> </strong></td>
+                  <td><strong class="tb-head cell-telephoneaa" data-val="telephoneaa"> </strong></td>
+                  <td><strong class="tb-head cell-idcardhh" data-val="idcardhh"> </strong></td>
+                  <td><strong class="tb-head cell-titlesjj" data-val="titlesjj"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"> </strong></td>
+                </tr> 
+
+
+
+
+
+               
+              
               </tbody>
             </table>
           </div>
-          <div class="btn-batch"> <span id="J_sel_all2" data-off="0">全选/取消</span><a href="javascript:;" class="batch-del" id="J_batch_del">删除</a></div>
         </div>
         <div class="inner-page" id="innerPage"></div>
-      </div>
-       <div style="height: 30px;"></div>
-       <h3 style="text-align: center;">蟑螂</h3>
-      <div id="container" style="height: 300px"></div>
-
-
-    </div>
+        
+        
+      </div>   
+    </div>  
   </div>
 </div>
 </body>
@@ -147,58 +581,47 @@ select {
   var page = 1;
 var datas = {};
 $(function(){
-    var dom = document.getElementById("container");
-var myChart = echarts.init(dom);
-var app = {};
-option = null;
-option = {
-    xAxis: {
-        type: 'category',
-        data: ['2020-10-23', '2020-10-24', '2020-10-25', '2020-10-26', '2020-10-27', '2020-10-28', '2020-10-29']
-    },
-    yAxis: {
-        type: 'value'
-    },
-    series: [{
-        data: [120, 200, 150, 80, 70, 110, 130],
-        type: 'bar',
-        showBackground: true,
-        backgroundStyle: {
-            color: 'rgba(220, 220, 220, 0.8)'
-        }
-    }]
-};
-;
-if (option && typeof option === "object") {
-    myChart.setOption(option, true);
-}
-
-
   var $list = $("#menu").find("li");
-  var $div = $("#tab-con").children("div");
+	var $div = $("#tab-con").children("div");
 	$list.click(function() {
 		var index = $(this).index();
 		$list.eq(index).addClass("on").siblings().removeClass("on");
 		$div.eq(index).addClass("on").siblings().removeClass("on");
 		$(this).find("p").addClass("pstyle").parent().siblings().find('p').removeClass("pstyle");;
 	})
-  getTable();
-  var tbWidth = $(window).width() - 245;
-  $("#rstb").css({maxWidth:tbWidth});    
-	$("#rstb").colResizable({  
-		resizeMode: 'overflow',   
-		//minWidth: 15,
-		//headerOnly: true,
-		//dragCursor: '',
-		//liveDrag: true,
-		//draggingClass: 'tb-cell',
-		onResize: function(e,data){
-			//console.log($(e.currentTarget));
-			//$('.tb-cell').width();
-		}
+ // getTable();
+//   var tbWidth = $(window).width() - 245;
+//   $("#rstb").css({maxWidth:tbWidth});    
+// 	$("#rstb").colResizable({  
+// 		resizeMode: 'overflow',   
+// 		//minWidth: 15,
+// 		//headerOnly: true,
+// 		//dragCursor: '',
+// 		//liveDrag: true,
+// 		//draggingClass: 'tb-cell',
+// 		onResize: function(e,data){
+// 			//console.log($(e.currentTarget));
+// 			//$('.tb-cell').width();
+// 		}
+// 	});
+    laydate.render({
+	  elem: '#st'
+	  ,format: 'yyyy-MM-dd'
+	  ,done: function(value,date,endDate){
+		  st = value;
+		  //console.log(value); //得到日期生成的值，如：2017-08-18
+		  //console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+		  //console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+	  }
+	});
+	$('#J_close').on('click',function(){
+		window.history.back();
 	});
 });
+
 function getTable(){
+    var arr=[{title:'PN天数'},{title:'体重(kg)'},{title:'20%脂肪乳/力保肪宁'},{title:'长链脂肪乳针/克凌偌'},{title:'6%小儿氨基酸针'},{title:'多种氨基酸/乐凡命'},{title:'10%葡萄糖针'},{title:'25%葡萄糖针'},{title:'50%葡萄糖针大冢注射液'},{title:'5%葡萄糖针'},{title:'丙氨酰谷氨酰胺/力太'},{title:'丙氨酰谷氨针/多蒙特'},{title:'水溶维生素/水乐维他'},{title:'脂溶性维/维他利匹特'},{title:'多种微量元素/安达美'},{title:'甘油磷酸钠/格利福斯'},{title:'10%氯化钾针'},{title:'浓氯化钠注射液'},{title:'硫酸镁针25%'},{title:'葡萄糖酸钙针'},{title:'渗透压'},{title:'热卡kcal'},{title:'氮 g'},{title:'pn液量 ml  预计液量 ml/kg'},{title:'其他补液'},{title:'热氮比'},{title:'糖脂比'},{title:'饮食种类'}];
+    console.log(arr);
 	var url = '/?m=dataManage&c=hospital&a=doctorList&ajax=1';
 	if (page > 1) url += '&page='+page;
 	var index = layer.load(2,{time:3000});
@@ -206,10 +629,23 @@ function getTable(){
 		layer.close(index);
 		var html = '';
 		var pageCount = 0;
-		if (data.status==0) {
+		if (data.status==1) {
+            for(var i=0;i<arr.length;i++){
+             
+                html += '<tr>\
+                    <th><strong class="tb-head cell-titless" data-val="title">'+arr[i].title+'</strong></th>\
+                    <td><strong class="tb-head cell-sex" data-val="sex"></strong></td>\
+                    <td><strong class="tb-head cell-age" data-val="age"></strong></td>\
+                    <td><strong class="tb-head cell-telephone" data-val="telephone"></strong></td>\
+                    <td><strong class="tb-head cell-idcard" data-val="idcard"></strong></td>\
+                    <td><strong class="tb-head cell-titles" data-val="position"></strong></td>\
+                  </tr>';
+            }
+            console.log(html);  
 		} else {
 			html = '<tr align="center"><td colspan="'+($('.tb-head').length)+'">暂无数据</td></tr>';
 		}
+        console.log(html);
 		$('#datas').html(html);
 		//initAction();
 		//if (page == 1) initPage(pageCount);

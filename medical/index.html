@@ -1,0 +1,298 @@
+<!--<head></head><body></body>-->
+
+<!doctype html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title set-lan="html:health_records">健康档案</title>
+<meta name="topcolor" rgba="44.172.252.1">
+<meta name="keywords" content="医家讯,医家讯智能医疗设备,智能健康电子档案,个人健康、家庭健康,健康检测,心率监测,血糖监测,血压监测,睡眠监测,健康饮食,运动健美,亲友互动,运动圈子,医体健康,食动平衡,人工智能,健康管理,物联网,智能大数据">
+<meta name="description" content="医家讯智能医体健康平台通过智能紧急提醒、生命健康监测、智能穿戴设备及专业级智能医疗设备，结合物联网、云计算、健康大数据分析与呼叫中心，构建智能医体健康平台，让家人享受更健康、更安全、更舒心、更智慧化的生活，也让子女随时随地的了解父母的健康情况，及时表达爱心和孝心。">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+<script type="text/javascript" src="/statics/js/jquery.min.js"></script>
+<script type="text/javascript" src="/statics/js/layer-v3.1.1/layer/layer.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<script type="text/javascript" src="/statics/js/cookie.js"></script>
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+<script type="text/javascript" src="/statics/languages/20181105/languages.js"></script>
+</head>
+<style>
+.header_box { z-index: 99 }
+.index_box .index_top, .index_button { width: 100%; overflow: hidden }
+.index_top { height: 135px; background-color: #2dacfd; position: relative }
+.index_top .min { width: 50%; position: absolute; top: 53%; left: 50%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); overflow: hidden; z-index: 20 }
+.index_top .logo { width: 60px; height: 60px; margin: 0 auto; display: block; border-radius: 100% }
+.index_top p { text-align: center; color: #fff; width: 100%; overflow: hidden }
+.index_top .p1 { margin: 8px 0 8px 0; font-size: 1.3rem; height: 1.5rem; line-height: 1.5rem }
+.index_top .buy { width: 125px; height: 30px; line-height: 30px; background-color: #00a0e9; color: #fff; text-align: center; border-radius: 35px; margin: 0 auto; display: block }
+.index_top .add { width: 15px; height: 15px; vertical-align: sub; margin-right: 5px }
+.index_top .see { width: 8%; position: absolute; top: 42%; right: -4%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%) }
+.index_top .wave { width: 250%; position: absolute; left: 0; bottom: 0; height: 50px }
+ @keyframes move_wave {
+0% {
+transform:translateX(0) translateZ(0) scaleY(1)
+}
+ 50% {
+transform:translateX(-25%) translateZ(0) scaleY(.55)
+}
+ 100% {
+transform:translateX(-50%) translateZ(0) scaleY(1)
+}
+}
+.waveWrapper { overflow: hidden; position: absolute; left: 0; bottom: 0; height: 42px; width: 100% }
+.waveWrapperInner { position: absolute; width: 100%; overflow: hidden; height: 100%; bottom: -1px }
+.bgTop { z-index: 15; opacity: .5 }
+.bgMiddle { z-index: 10; opacity: .75 }
+.bgBottom { z-index: 5 }
+.wave { position: absolute; left: 0; width: 200%; height: 100%; background-repeat: repeat no-repeat; background-position: 0 bottom; transform-origin: center bottom }
+.waveTop { background-size: 50% 50px }
+.waveAnimation .waveTop { animation: move_wave 5s linear infinite }
+.waveMiddle { background-size: 50% 52px }
+.waveAnimation .waveMiddle { animation: move_wave 10s linear infinite }
+.waveBottom { background-size: 50% 50px }
+.waveAnimation .waveBottom { animation: move_wave 15s linear infinite }
+.index_button { background-color: #fff; padding: 15px 0 }
+.index_button .title { margin-left: 10px; margin-bottom: 15px }
+.index_button .title span { border-left: 3px solid #2cacfc; padding-left: 5px; font-size: 1.2rem }
+.index_button ul { width: 100%; overflow: hidden }
+.index_button li { width: 45.5%; overflow: hidden; float: left; margin-left: 3%; border-radius: 5px; background-color: #f2f2f2; position: relative; margin-bottom: 15px }
+.button_line { width: 100%; overflow: hidden }
+.button_line:after, .button_line:before { border-color: #2cacfc; content: ""; position: absolute; width: 20px; height: 20px; border-style: solid; border-width: 0 }
+.button_line:before { left: 0; top: 0; border-left-width: 2px; border-top-width: 2px; border-top-left-radius: 5px }
+.button_line:after { right: 0; bottom: 0; border-right-width: 2px; border-bottom-width: 2px; border-bottom-right-radius: 5px }
+.button_line .button_file { width: 76%; overflow: hidden; line-height: 40px; padding-top: 10px; margin: 0 auto; font-size: 1.1rem }
+.button_line .button_file img { width: 40px; height: 40px; vertical-align: middle; margin-right: 15% }
+.button_line p { text-align: center; font-size: .9rem; color: #333; height: 3rem; line-height: 3rem }
+</style>
+
+<body>
+<div class="header_box"> <img src="/statics/images/goback_b.png" onClick="goback()" class="left">
+  <p class="midden" set-lan="html:health_records">健康档案</p>
+</div>
+<div class="h50"></div>
+<div class="index_box">
+  <div class="index_top">
+    <div class="min"> <img src="" class="logo" id="portrait" onerror='this.src="/statics/images/member/nophoto.gif"'/>
+      <p class="p1"><font id="nickname"></font></p>
+      <div class="buy" onClick="goo('//shop.yjxun.cn/')"> <img src="./images/add_b.png" class="add"><i set-lan="html:buy_smart_devices">购买智能设备</i></div> 
+    </div>
+    <img class="see" onclick="location.href = '/group/per_list.html'" src="images/check_other.png" >
+<!--	  set-lan="src:../statics/images/"-->
+    <div class="waveWrapper waveAnimation">
+      <div class="waveWrapperInner bgTop">
+        <div class="wave waveTop" style="background-image: url('images/wave-top.png')"></div>
+      </div>
+      <div class="waveWrapperInner bgMiddle">
+        <div class="wave waveMiddle" style="background-image: url('images/wave-mid.png')"></div>
+      </div>
+      <div class="waveWrapperInner bgBottom">
+        <div class="wave waveBottom" style="background-image: url('images/wave-bot.png')"></div>
+      </div>
+    </div>
+  </div>
+  <div class="index_button"> 
+    
+    <!--<p class="title"><span>档案列表</span></p>-->
+    
+    <ul>
+      <li> 
+        
+        <!--        <div class="button_line" onClick="goo('./history_data_bpm.html?day=1&to_uid='+to_uid)">-->
+        
+        <div class="button_line" onClick="goo('./data_xinlv.html?day=1&to_uid='+to_uid)">
+          <div class="button_file"> <img src="./images/file_v3_1.png"><i set-lan="html:heart_rate_file">心率档案</i> </div>
+          <p><i set-lan="html:latest_record">最新记录</i>: <font id="bpm_time">-- -- --</font></p>
+        </div>
+      </li>
+      <li> 
+        
+        <!--        <div class="button_line" onClick="goo('./history_data_mmhg.html?day=1&to_uid='+to_uid)">-->
+        
+        <div class="button_line" onClick="goo('./data_blood.html?day=1&to_uid='+to_uid)">
+          <div class="button_file"> <img src="./images/file_v3_2.png"><i set-lan="html:blood_pressure_file">血压档案</i> </div>
+          <p><i set-lan="html:latest_record">最新记录</i>: <font id="mmhg_time">-- -- --</font></p>
+        </div>
+      </li>
+      <li> 
+        
+        <!--        <div class="button_line" onClick="goo('./history_data_spo2h.html?day=1&to_uid='+to_uid)">-->
+        
+        <div class="button_line" onClick="goo('./data_oxy.html?day=1&to_uid='+to_uid)">
+          <div class="button_file"> <img src="./images/file_v3_3.png"><i set-lan="html:blood_oxygen_file">血氧档案</i> </div>
+          <p><i set-lan="html:latest_record">最新记录</i>: <font id="spot_time">-- -- --</font></p>
+        </div>
+      </li>
+      <li>
+        <div class="button_line" onClick="goo('/index.php?m=md&c=yl&a=lists&to_uid='+to_uid)">
+          <div class="button_file"> <img src="./images/file_v3_4.png"><i set-lan="html:hospital_records">医院病历</i> </div>
+          
+          <!--<p>最新记录: -- -- --</p>-->
+          
+          <p><i set-lan="html:latest_record">最新记录</i>: <font id="case_time">暂无</font></p>
+        </div>
+      </li>
+      <li> 
+        
+        <!--<div class="button_line" onClick="goo('./history_data_sport.html?day=1&to_uid='+to_uid)">-->
+        
+        <div class="button_line" onClick="goo('./data_sport.html?day=1&to_uid='+to_uid)">
+          <div class="button_file"> <img src="./images/file_v3_5.png"><i set-lan="html:sports_files">运动档案</i> </div>
+          <p><i set-lan="html:latest_record">最新记录</i>: <font id="sport_time">-- -- --</font></p>
+        </div>
+      </li>
+      <li> 
+        
+        <!--        <div class="button_line" onClick="goo('./history_data_sleep.html?day=1&to_uid='+to_uid)">-->
+        
+        <div class="button_line" onClick="goo('./data_sleep.html?day=1&to_uid='+to_uid)">
+          <div class="button_file"> <img src="./images/file_v3_6.png"><i set-lan="html:sleep_file">睡眠档案</i> </div>
+          <p><i set-lan="html:latest_record">最新记录</i>: <font id="sleep_time">-- -- --</font></p>
+        </div>
+      </li>
+      <li> 
+        
+        <!--        <div class="button_line" onClick="goo('./history_data_temperature.html?day=1&to_uid='+to_uid)">-->
+        
+        <div class="button_line" onClick="goo('./data_temp.html?day=1&to_uid='+to_uid)">
+          <div class="button_file"> <img src="./images/file_v3_454.png"><i set-lan="html:body_temperature_file">体温档案</i> </div>
+          <p><i set-lan="html:latest_record">最新记录</i>: <font id="temperature_time">-- -- --</font></p>
+        </div>
+      </li>
+      <li>
+        <div class="button_line" onClick="goo('/medical/data_xuetang.html?day=1&to_uid='+to_uid);/*layer.alert('即将上线，敬请期待')*/">
+          <div class="button_file"> <img src="./images/file_v3_455.png"><i set-lan="html:blood_sugar_file">血糖档案</i> </div>
+          <p><i set-lan="html:latest_record">最新记录</i>: <font id="bg_time">-- -- --</font></p>
+        </div>
+      </li>
+      <li> 
+        
+        <!--<div class="button_line" onClick="goo('./data_electrocardio.html?&to_uid='+to_uid)">-->
+        
+        <div class="button_line" onClick="layer.alert('即将上线，敬请期待')">
+          <div class="button_file"> <img src="./images/file_v3_456.png"><i set-lan="html:ECG_flie">心电档案</i> </div>
+          <p><i set-lan="html:latest_record">最新记录</i>：<font id="electrocardio_time">-- -- --</font></p>
+        </div>
+      </li>
+      <li>
+        <div class="button_line" onClick="goo('./data_record.html?&to_uid='+to_uid)">
+          <div class="button_file"> <img src="./images/yichang.png"><i set-lan="html:abnormal_archives">异常档案</i> </div>
+          <p><i set-lan="html:data_exception_file">数据异常档案</i></p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<iframe src="/index2/footer.html" id="footer" frameborder="0" width="0" height="0"></iframe>
+<div style="height: 50px"></div>
+</body>
+<script>
+$(function(){
+	is_login_();
+})
+get_frame();
+function get_frame(){
+	$.get('/index2/footer.html',function(data){
+		$('#footer').after(data);
+		setfoot(2)
+	});
+}
+</script>
+<script>
+$('.more').click(function(){
+	$(this).next().toggle(300);
+});
+var to_uid = Number(getQueryString('to_uid'));
+if(to_uid > 0){
+	$.ajax({
+		url:'/index.php?m=member&c=data&a=get_datas',
+		type:'POST',
+		data:'judge=40&to_uid='+to_uid,
+		dataType:'json',
+		success:function(data){
+			console.log(data);
+			if(data.detail_data != null){
+				console.log(data.detail_data);
+				$('#portrait').attr('src',data.detail_data.portrait);
+				$('#age').text(data.detail_data.age);
+				$('#nickname').text(data.detail_data.nickname);
+			}else{
+				$('#portrait').attr('src',getCookie('GkvUY__portrait'));
+				$('#age').text(getCookie('GkvUY__age'));
+				$('#nickname').text(getCookie('GkvUY___nickname')?decodeURIComponent(getCookie('GkvUY___nickname')):getCookie('GkvUY___username'));
+			}
+		}
+	});
+	$.ajax({
+		url:'/index.php?m=member&c=data&a=get_medical_updatetime',
+		type:'POST',
+		data:'userid='+to_uid,
+		dataType:'json',
+		success:function(data){
+			$('#bpm_time').text('暂无数据');
+			$('#mmhg_time').text('暂无数据');
+			$('#spot_time').text('暂无数据');
+			$('#sport_time').text('暂无数据');
+			$('#sleep_time').text('暂无数据');
+			$('#temperature_time').text('暂无数据');
+			if(data.bpm && data.bpm != '01-01 08:00') $('#bpm_time').text(data.bpm);
+			if(data.mmhg && data.mmhg != '01-01 08:00') $('#mmhg_time').text(data.mmhg);
+			if(data.spot && data.spot != '01-01 08:00') $('#spot_time').text(data.spot);
+			if(data.sport && data.sport != '01-01 08:00') $('#sport_time').text(data.sport);
+			if(data.sleep && data.sleep != '01-01 08:00') $('#sleep_time').text(data.sleep);
+			if(data.temperature && data.temperature != '01-01 08:00') $('#temperature_time').text(data.temperature);
+			if(data.case_time  && data.case_time != '1970-01-01') $('#case_time').text(data.case_time);
+			if(data.bg  && data.bg != '1970-01-01') $('#bg_time').text(data.bg);
+		}
+	});
+}else{
+	to_uid = getCookie('GkvUY___userid');
+	$.ajax({
+		url:'/index.php?m=member&c=data&a=get_medical_updatetime',
+		type:'POST',
+		data:'userid='+to_uid,
+		dataType:'json',
+		success:function(data){
+			$('#bpm_time').text('暂无数据');
+			$('#mmhg_time').text('暂无数据');
+			$('#spot_time').text('暂无数据');
+			$('#sport_time').text('暂无数据');
+			$('#sleep_time').text('暂无数据');
+			$('#temperature_time').text('暂无数据');
+			if(data.bpm && data.bpm != '01-01 08:00') $('#bpm_time').text(data.bpm);
+			if(data.mmhg && data.mmhg != '01-01 08:00') $('#mmhg_time').text(data.mmhg);
+			if(data.spot && data.spot != '01-01 08:00') $('#spot_time').text(data.spot);
+			if(data.sport && data.sport != '01-01 08:00') $('#sport_time').text(data.sport);
+			if(data.sleep && data.sleep != '01-01 08:00') $('#sleep_time').text(data.sleep);
+			if(data.temperature && data.temperature != '01-01 08:00') $('#temperature_time').text(data.temperature);
+			if(data.case_time  && data.case_time != '1970-01-01') $('#case_time').text(data.case_time);
+			if(data.bg  && data.bg != '1970-01-01') $('#bg_time').text(data.bg);
+			$('#portrait').attr('src',data.portrait);
+		}
+	});
+	$('#age').text(getCookie2('GkvUY__age'));
+	console.log(getCookie('GkvUY___nickname'));
+	$('#nickname').text(getCookie2('GkvUY___nickname'));
+}
+//读取cookies 
+function getCookie2(name) {
+	var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+	if (arr = document.cookie.match(reg))
+	return decodeURIComponent(arr[2]);
+	else return null;
+}
+function is_login_(){
+	var userid = parseInt(getCookie('GkvUq___userid'));
+	if(isNaN(userid)||0>=userid){
+		window.location.href = '/member/login.html?&forward='+encodeURIComponent(window.location.href);
+		return false;
+	}
+	return true;
+}
+</script>
+</html>

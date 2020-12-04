@@ -1369,7 +1369,7 @@ footer .foot_3 {
 	border: 1px solid #ff6c3a;
 	margin: 5px 60px 0 0px;
 }
-.xx_an1:hover, .di_an .an_1:hover, .cont_1 .con_lift dd .an_1:hover {
+.xx_an1:hover, .di_an .an_1:hover, .cont_1 .con_lift dd .an_1:hover ,.cont_1 .con_lift dd .an_8:hover{
 	background: #ff6c3a;
 	color: #fff;
 	transition: all 300ms linear;
@@ -1948,4 +1948,19 @@ article a {
     box-sizing: border-box;
     text-align: center;
     float: left;
+}
+
+.cont_1 .con_lift dd .an_8 {
+    background: #fff;
+    color: #ff6c3a;
+    display: flex;
+    height: 40px;
+    width: 130px;
+    text-decoration: none;
+    align-items: center;
+    font-size: 16px;
+    box-sizing: border-box;
+    justify-content: center;
+    border: 1px solid #ff6c3a;
+    margin: 5px 0 20px 45px;
 }

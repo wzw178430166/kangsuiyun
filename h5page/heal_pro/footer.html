@@ -30,7 +30,7 @@
     }
 /*    .m-foot ul li.foot-cart{padding-top:1rem;}*/
     .m-foot ul li.foot-index font {
-        background: url(./images/hosnme.png) no-repeat center;
+        background: url(/h5page/mobile_hospital/images/hoang01.png) no-repeat center;
         background-size:80%;
     }
 
@@ -67,8 +67,8 @@
         background: url(/core_bs/img/tongxin1.png) no-repeat center !important;
         background-size: 80%!important;
 */
-		 background: url(./images/sehqu.png) no-repeat center !important;
-        background-size: 90%!important;
+		 background: url(/h5page/heal_pro/images/quanzi2002.png) no-repeat center !important;
+        background-size: 78%!important;
     }
 
     .fa-angle-down2 {
@@ -76,12 +76,12 @@
         background: url(/core_bs/img/xiaoxin1.png) no-repeat center !important;
         background-size: 90%!important;
 */
-		 background: url(./images/huiyuans.png) no-repeat center !important;
+		 background: url(/h5page/heal_pro/images/bdgsgs.png) no-repeat center !important;
         background-size: 75% !important;
     }
 
     .fa-angle-down3 {
-        background: url(./images/huiyuans.png) no-repeat center !important;
+        background: url(/h5page/mobile_hospital/images/haoyodwe01.png) no-repeat center !important;
         background-size: 75% !important;
     }
 	 .fa-angle-down4 {
@@ -91,8 +91,6 @@
 #m-footul .cur {
 	color: #2cacfc;
 }  
-	
-
 </style>
 <div class="m-foot">
   <ul id="m-footul">
@@ -100,15 +98,15 @@
     <font></font>
       <p>首页</p>
     </li>
-    <li class="foot-cart" onclick="goo('/circleN/circleList2.html')">
+    <li class="foot-cart" onclick="goo('/circleN/circleList3.html')">
     <font></font>
       <p>圈子</p>
     </li>
-    <li class="foot-me"> 
+    <li class="foot-me" data-st="a"> 
      <font></font>
       <p>商城</p>
     </li>
-	 <li class="foot-product"> 
+	 <li class="foot-product" data-st="a"> 
     <font></font>
       <p>我的</p>
     </li>
@@ -144,27 +142,35 @@
 	   
 	   
 	   
-	    var arr=['#','#','#','#'];
+	    var arr=['/h5page/heal_pro/','/circleN/circleList3.html','#','#'];
 	       $('#m-footul').children('li').click(function () {
                    var i = $(this).index() ;
 				   $(this).children('font').addClass(`fa-angle-down${i}`).parent().siblings().find('font').removeClass();
-				   $(this).addClass('cur').siblings().removeClass('cur');
-				  goo(arr[i],{is_auth:1}); 
+                   $(this).addClass('cur').siblings().removeClass('cur');
+                   if($(this).attr('data-st')=='a'){goo_d();}
+				   goo(arr[i],{is_auth:1}); 
             }); 
 	              var ulr=window.location.pathname;
-	     console.log(ulr);
+	               console.log(ulr);
 			      var index =0;
 	             if(ulr==arr[0]){
 					 index=0;
 				 }else if(ulr==arr[1]){
-					 index=1;
+                     index=1;
+                   
 				 }else if(ulr==arr[2]){
-					 index=2;
+                     index=2;
+				 }else if(ulr==arr[3]){
+                     index=3;
+                   
 				 }else if(ulr==arr[4]){
 					 index=4;
 				 }
 	      
                  $('#m-footul').children('li').eq(index).find('font').addClass(`fa-angle-down${index}`);
 				 $('#m-footul').children('li').eq(index).addClass('cur').siblings().removeClass('cur');
-	   })
+       })
+       function goo_t(){
+	    alert('申请会员查看更多详情')
+       }
 </script>

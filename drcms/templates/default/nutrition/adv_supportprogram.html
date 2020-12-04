@@ -1,0 +1,209 @@
+{template $this->template,'header_common',$this->style}
+<script type="text/javascript" src="/statics/admin/common/js/region.js"></script>
+<style>
+#menu {
+    padding-top: 1rem;
+    background: #fff;
+}
+#menu ul {
+    display: flex;margin: 0;
+}
+#menu li {
+    width: 6rem;cursor: pointer;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    background-color: #F1F1F1;
+    overflow: hidden;
+    font-size: .8rem;
+    color: #111111;
+}
+#menu li .pstyle {
+    width: 70%;
+    height: 2px;
+    background: #339EFC;
+    margin: .5rem auto 0 auto;
+}
+#menu li.on {
+    color: #2196F3;
+    background: #F4F5FA;
+}
+.clear {
+    clear: both;
+}
+.data-content {
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+}
+.query-btn .btn-item {
+    margin-left: 0px;
+    height: auto;
+    min-height: 26px;
+}
+.table_div{text-align: left;font-size: 14px;margin-bottom: 10px;}
+.table_div span{margin-right: 15px;}
+.cell-adive{width: 160px;}
+.cell-shopd{width: 180px;}
+.table-bordered th.rowth{height: 50px;line-height: 50px;}
+ .tb-headstortg{height: 50px;line-height: 40px;}
+.table tr th {
+    font-weight: normal; 
+    background: #f1f1f1;
+}
+.tb-cell, .tb-head {
+    display: block;
+    width: 80px;
+    overflow: hidden;
+    white-space: nowrap;
+    word-wrap: normal;
+    padding: 0 5px;
+}
+.tb-container {
+    width: 800px;
+    overflow: hidden;
+    overflow-x: auto;
+}
+.cell-title{width: 200px;}
+.table-bordered thead:first-child tr:first-child > th:first-child, .table-bordered tbody:first-child tr:first-child > td:first-child, .table-bordered tbody:first-child tr:first-child > th:first-child {
+    -webkit-border-top-left-radius: 0px;
+    border-top-left-radius: 0px;
+    text-align: left;
+    -moz-border-radius-topleft: 0px;
+}
+#datas tr th{text-align: left;}
+.table-striped tbody > tr:nth-child(even) > td, .table-striped tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+</style>
+<body>
+{template $this->template,'header',$this->style}
+<div id="middle"> {template $this->template,'left',$this->style}
+  <div class="right" id="mainFrame">
+    <div class="right_cont">
+      <ul class="breadcrumb">
+        当前位置： <a href="/?m=dataManage">首页</a> <span class="divider">/</span> <a href="javascript:;">长期医嘱单</a> 
+      </ul>
+      <div class="title_right">
+        <strong>长期医嘱单</strong> 
+    </div>
+      <div style="width:auto;margin:auto;">   
+        <div class="query-btn">
+            <div class="btn-item"> <a class="btn-query" >刷新</a> <a href="javascript:;" class="btn-add" style="margin-left: 10px;">续打</a> <a href="javascript:;" class="btn-add" style="margin-left: 10px;">全部打印</a></div>
+          </div> 
+        <div style="height: 20px;"></div>
+        <div class="data-content">
+          <div class="tb-container">
+            <table class="table table-bordered table-striped" id="rstb">
+                <caption align="top"><h4>上海交通大学医学院附属上海儿童医学中心</br>临床营养科肠外营养支持方案</h4>
+                    <div class="table_div">病区：<span>耳鼻咽喉科病区</span>住院号：<span>2546444</span>床号：<span>+9</span> 姓名：<span>黄小明</span>性别：<span>男</span>年龄<span>3岁8月天</span>
+                    </div> 
+                    <div class="table_div">诊断：<span></span>  </div>
+                 </caption>
+                <thead><tr align="center">
+                  <th><strong class="tb-head cell-title" data-val="title">日期</strong></th>
+                  <td><strong class="tb-head cell-sex" data-val="sex"></strong></td>
+                  <td><strong class="tb-head cell-age" data-val="age"></strong></td>
+                  <td><strong class="tb-head cell-telephone" data-val="telephone"></strong></td>
+                  <td><strong class="tb-head cell-idcard" data-val="idcard"></strong></td>
+                  <td><strong class="tb-head cell-titles" data-val="position"></strong></td>
+                </tr></thead>
+              <tbody id="datas">
+                  <tr>
+                    <th><strong class="tb-head cell-title" data-val="title">--</strong></th>
+                    <td><strong class="tb-head cell-sex" data-val="sex"></strong></td>
+                    <td><strong class="tb-head cell-age" data-val="age"></strong></td>
+                    <td><strong class="tb-head cell-telephone" data-val="telephone"></strong></td>
+                    <td><strong class="tb-head cell-idcard" data-val="idcard"></strong></td>
+                    <td><strong class="tb-head cell-titles" data-val="position"></strong></td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="inner-page" id="innerPage"></div>
+        
+        
+      </div>   
+    </div>  
+  </div>
+</div>
+</body>
+<script>
+  var page = 1;
+var datas = {};
+$(function(){
+  var $list = $("#menu").find("li");
+	var $div = $("#tab-con").children("div");
+	$list.click(function() {
+		var index = $(this).index();
+		$list.eq(index).addClass("on").siblings().removeClass("on");
+		$div.eq(index).addClass("on").siblings().removeClass("on");
+		$(this).find("p").addClass("pstyle").parent().siblings().find('p').removeClass("pstyle");;
+	})
+  getTable();
+//   var tbWidth = $(window).width() - 245;
+//   $("#rstb").css({maxWidth:tbWidth});    
+// 	$("#rstb").colResizable({  
+// 		resizeMode: 'overflow',   
+// 		//minWidth: 15,
+// 		//headerOnly: true,
+// 		//dragCursor: '',
+// 		//liveDrag: true,
+// 		//draggingClass: 'tb-cell',
+// 		onResize: function(e,data){
+// 			//console.log($(e.currentTarget));
+// 			//$('.tb-cell').width();
+// 		}
+// 	});
+    laydate.render({
+	  elem: '#st'
+	  ,format: 'yyyy-MM-dd'
+	  ,done: function(value,date,endDate){
+		  st = value;
+		  //console.log(value); //得到日期生成的值，如：2017-08-18
+		  //console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+		  //console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+	  }
+	});
+	$('#J_close').on('click',function(){
+		window.history.back();
+	});
+});
+
+function getTable(){
+    var arr=[{title:'PN天数'},{title:'体重(kg)'},{title:'20%脂肪乳/力保肪宁'},{title:'长链脂肪乳针/克凌偌'},{title:'6%小儿氨基酸针'},{title:'多种氨基酸/乐凡命'},{title:'10%葡萄糖针'},{title:'25%葡萄糖针'},{title:'50%葡萄糖针大冢注射液'},{title:'5%葡萄糖针'},{title:'丙氨酰谷氨酰胺/力太'},{title:'丙氨酰谷氨针/多蒙特'},{title:'水溶维生素/水乐维他'},{title:'脂溶性维/维他利匹特'},{title:'多种微量元素/安达美'},{title:'甘油磷酸钠/格利福斯'},{title:'10%氯化钾针'},{title:'浓氯化钠注射液'},{title:'硫酸镁针25%'},{title:'葡萄糖酸钙针'},{title:'渗透压'},{title:'热卡kcal'},{title:'氮 g'},{title:'pn液量 ml  预计液量 ml/kg'},{title:'其他补液'},{title:'热氮比'},{title:'糖脂比'},{title:'饮食种类'}];
+    console.log(arr);
+	var url = '/?m=dataManage&c=hospital&a=doctorList&ajax=1';
+	if (page > 1) url += '&page='+page;
+	var index = layer.load(2,{time:3000});
+	$.get(url,function(data){
+		layer.close(index);
+		var html = '';
+		var pageCount = 0;
+		if (data.status==1) {
+            for(var i=0;i<arr.length;i++){
+             
+                html += '<tr>\
+                    <th><strong class="tb-head cell-title" data-val="title">'+arr[i].title+'</strong></th>\
+                    <td><strong class="tb-head cell-sex" data-val="sex"></strong></td>\
+                    <td><strong class="tb-head cell-age" data-val="age"></strong></td>\
+                    <td><strong class="tb-head cell-telephone" data-val="telephone"></strong></td>\
+                    <td><strong class="tb-head cell-idcard" data-val="idcard"></strong></td>\
+                    <td><strong class="tb-head cell-titles" data-val="position"></strong></td>\
+                  </tr>';
+            }
+            console.log(html);  
+		} else {
+			html = '<tr align="center"><td colspan="'+($('.tb-head').length)+'">暂无数据</td></tr>';
+		}
+        console.log(html);
+		$('#datas').html(html);
+		//initAction();
+		//if (page == 1) initPage(pageCount);
+	},'json');
+}
+
+
+</script>
+</html>

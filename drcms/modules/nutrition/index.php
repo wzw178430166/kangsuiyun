@@ -270,6 +270,7 @@ class index {
 				);
 				exit(json_encode($jsonData));
 			}
+			//echo template($this->template,'index',$this->style);die;
 		include template($this->template,'index',$this->style);
 		//$this->statistics();
     }

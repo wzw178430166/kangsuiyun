@@ -1,0 +1,288 @@
+<!--<head></head><body></body>-->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title set-lan="html:user_login">用户登录</title>
+<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+<link rel="stylesheet" type="text/css" href="/doctor/statics/css/fonts/font-awesome.min.css">
+<link rel="prefetch" href="./register.html" /> 
+<script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+<!--<script type="text/javascript" src="/statics/js/setFontSize.js"></script>-->
+<script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<script type="text/javascript" src="/statics/js/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="/statics/js/ex/im_client.js"></script>
+<link rel="stylesheet" type="text/css" href="/statics/css/app/app_dc.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/app_dc_header.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/app_dc_index.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/app_login.css">
+<script type="text/javascript" src="/statics/js/zishiying.js"></script>
+<script type="text/javascript" src="/statics/js/cookie.js"></script>
+</head>
+<script>
+var videoconferencing = getQueryString('videoconferencing');
+var ua = window.navigator.userAgent.toLowerCase();
+console.log('000======');
+if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+	console.log('111======');
+	wx.miniProgram.getEnv(function(res) {
+		console.log('222======');
+		if(!res.miniprogram && getCookie('GkvUY___userid') && videoconferencing != 1){
+		   goo('//www.yjxun.cn');
+		}
+		if (res.miniprogram && getCookie('GkvUY___userid')) {
+			$('body').hide();
+			var weChatUid = {};
+			weChatUid.uid = getCookie('GkvUY___userid');
+			weChatUid.uidAuth = getCookie('GkvUY__userid');
+			wx.miniProgram.postMessage({ data: weChatUid});
+			wx.miniProgram.switchTab({url:'../index/index'});
+			return;
+		}
+		if (res.miniprogram && getQueryString('open') != 1){
+			$('body').hide();
+			wx.miniProgram.navigateTo({url:'../urlView/index?open=1&toUrl='});
+			return;
+		}
+	})
+}
+</script>
+<style>
+.warm_box{ width:100%; overflow:hidden;}
+.warm_box p{ text-align:center; margin-bottom:.2rem;}
+.warm_box .title{ font-size:.4rem; color:#3f83ff;}
+.warm_box .link{ font-size:.25rem; color:#010101;}
+.warm_box .link a{ color:#2dacfd;}
+*:after{ content:normal;}
+</style>
+<body>
+  <div class="zhuce_pic">
+      <img src="/statics/images/new_top_ban.jpg">
+  </div>
+  <!--<div class="warm_box">
+  	<p class="title">登录后输入兑换码即可享受服务</p>
+    <p class="link">如何使用兑换码？<a href="javascript:;">使用说明</a></p>
+    <p class="link">高级健康顾问为您健康护航</p>
+  </div>-->
+<form action="" id="loginForm" style="margin: 3% auto;">
+<input type="hidden" name="dosubmit" value="1">
+<input type="hidden" name="forward" value="" id="forward">
+<input type="hidden" name="country_code" value="" id="country_code">
+  <div class="login_box">
+    <div class="login_line">
+        <img src="/patient/statics/images/mobile.png" class="logo">
+		<span class="num fl" name="phoneArea" onClick="goo('./list_template.html')"><font id="phoneArea">+86</font><i class="fa fa-sort-down"></i></span>
+        <input type="text" placeholder="请输入手机号码" class="text nobd fl" style="margin-left:9%; width:3.9rem;" name="username" id="username">
+    </div>
+    <div class="login_line">
+        <img src="/patient/statics/images/password.png" class="logo">
+        <input type="password" placeholder="请输入密码" class="text nobd" name="password" style="width:5.5rem;">
+    </div>
+    <div class="operation">
+    	<div class="operation_l fl"><u set-lan="html:no_account">未有账号？</u><span onClick="go_register()" set-lan="html:sign_up_now">立即注册</span></div>
+        <div class="operation_r fr" onClick="go_edit()"><span set-lan="html:forget_password">忘记密码</span></div>
+    </div>
+    <!--<p class="read">
+        <i class="sure">
+          <img src="statics/images/sure_open.png" class="sure_open">
+          <img src="statics/images/sure_close.png" class="sure_close" style="display:none;">
+        </i>
+        <span>我已阅读并同意<a href="avascript:;">《家庭医生签定协议》</a></span>
+    </p>-->
+    <div class="submit" id="send-btn" set-lan="html:login">登录</div>
+    <div class="other" style="position: relative;margin-top: 23%;display: none;">
+    	<p class="title"><span>使用其他账号快捷登录</span></p>
+		<div style="text-align: center;"><img src="/statics/images/icon48_wx_button.png" style="display: inline-block;width: 50%;border-radius: 5px;" onClick="goWeChat()"></div>
+    </div>
+  </div>
+</form>
+</body>
+<script type="text/javascript" src="/statics/languages/languages.js"></script>
+</html>
+<script>
+var forward = getUrlParam('forward');
+$(function(){
+	$('#send-btn').bind('click',function(){
+		$('#forward').attr('value',forward);
+		sendForm();
+	});
+	if(ua.match(/MicroMessenger/i) == "micromessenger") $('.other').show();
+	//if(getUrlParam('csopen') == 1) $('.other').show();
+	if(getCookie('GkvUY___userid') && videoconferencing == 1){
+		layer.open({
+			content: '您已在登录状态，是否执行快速登录？',
+			btn: ['确定', '关闭'],
+			yes: function(index){
+				$.ajax({
+					url:'/?m=myim&c=videoconferencing&a=fastLogin',
+					data:'sign='+getUrlParam('sign'),
+					success:function(e){ }
+				})
+				layer.close(index);
+				try{
+					document.addEventListener(
+						"WeixinJSBridgeReady",
+						function(){
+							WeixinJSBridge.call("closeWindow");
+						}
+					,false);
+					WeixinJSBridge.call("closeWindow");
+				}catch(e){
+					console.log(e);
+				}
+			}
+		});
+	}
+})
+function goWeChat(){
+	//goo('/?m=weixin&c=payCenter&a=getOpenid2&forward2='+new Base64().encode(encodeURIComponent(forward)));
+	window.location.href = '/?m=weixin&c=payCenter&a=getOpenid2&forward2='+new Base64().encode(encodeURIComponent(forward));
+}
+function go_register(){
+	//goo('./register.html?forward='+forward+'&target=_self');
+	window.location.href = './register.html?forward='+forward+'&target=_self';
+}
+function go_edit(){
+	//goo('/member/edit_pass.html?forward='+forward);
+	window.location.href = '/member/edit_pass.html?forward='+forward;
+}
+function sendForm(){
+	var reg = /^1[0-9]{10}$/;
+	var username = $('#username').val();
+	var password = $('#password').val();
+	if (password == '') {
+		layer.open({
+			content: '请输入密码!'
+			,btn: '确定' //2秒后自动关闭
+		});
+		return;
+	}
+	var index = layer.open({type: 2,time:5});
+	$.post('/index.php?m=member&c=index&a=login&ajax=1',$('#loginForm').serialize(),function(data){
+		console.log('memberLogin'+JSON.stringify(data)); 
+		layer.close(index);
+		if (data.status == 1) {
+			layer.open({
+				content: '登录成功'
+				,skin: 'msg'
+				,time: 2 //2秒后自动关闭
+			});
+			/*音视频系统扫码登录*/
+			if(videoconferencing == 1){
+				$.ajax({
+					url:'/?m=myim&c=videoconferencing&a=fastLogin',
+					data:'sign='+getUrlParam('sign'),
+					success:function(e){ }
+				})
+				layer.close(index);
+				try{
+					document.addEventListener(
+						"WeixinJSBridgeReady",
+						function(){
+							WeixinJSBridge.call("closeWindow");
+						}
+					,false);
+					WeixinJSBridge.call("closeWindow");
+				}catch(e){
+					console.log(e);
+				}
+				return;
+			}
+			/**/
+			$('.login_box').append(data.synloginstr);//执行其他应用登录接口js
+			if(getUrlParam('mobile')=='ios'){
+				var das = data;
+				das.synloginstr = ''; 
+				//console.log(JSON.stringify(das));  
+				//return;  
+				goo('dapp://setlogin=>'+JSON.stringify(data)); 
+			}else{
+				try{ 
+					delete data.synloginstr; 
+					if(data.username=='13763346681') {
+							//alert( JSON.stringify(data)); 
+						}
+					//jstojava.setlogin( JSON.stringify(data) );	
+					var jo = {'userid':data.userid,'username':data.username,'nickname':data.nickname,'portrait':data.portrait,'auth':data.auth};
+						 
+					jstojava.setlogin( JSON.stringify(data) ); 	
+					//jstojava.home();  
+					return; 
+				}catch(e){
+				
+				}
+			}
+			if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+				wx.miniProgram.getEnv(function(res) {
+					if (res.miniprogram) {
+						var weChatUid = {};
+						weChatUid.uid = getCookie('GkvUY___userid');
+						weChatUid.uidAuth = getCookie('GkvUY__userid');
+						wx.miniProgram.postMessage({ data: weChatUid});
+						wx.miniProgram.switchTab({url:'../index/index'});
+					}
+				})
+			}
+			console.log(forward);
+			//return;
+			setTimeout(function(){
+			if(data.forward == 'apps'){window.location.href = '/index.php?m=admin&a=apps';}
+				var forward = data.forward ? data.forward :'/';
+				var tapp = getTapp();
+				if(tapp){
+					var mobile = tapp[1]==1? 'android' : 'ios';
+					forward = addUrlParam('mobile',mobile,forward);
+					forward = addUrlParam('version',tapp[2],forward); 
+				}
+        
+				window.location.href = forward;
+			window.location.href ='/';
+        //history.replaceState(null, document.title, getUrlParam('forward'));
+			},500);
+		} else if (data.status == 2) {
+			layer.open({
+				content: '用户名或密码错误!'
+				,btn: '再试一次' //2秒后自动关闭
+			});
+		} else {
+			layer.open({
+				content: '登录失败!'
+				,btn: '关闭' //2秒后自动关闭
+			});
+		}
+	},'json');
+}
+$('.sure_open').click(function(){
+    $('.sure_close').show();
+    $('.sure_open').hide();
+});
+$('.sure_close').click(function(){
+    $('.sure_open').show();
+    $('.sure_close').hide();
+});
+var cookie_data_acode = getcookie('cookie_data_acode')?getcookie('cookie_data_acode'):'+86';
+var storage_data_acode = localStorage.getItem('storage_data_acode')?localStorage.getItem('storage_data_acode'):'';
+if(cookie_data_acode){
+	/*$('#phoneArea').text(storage_data_acode);
+	$('#country_code').val(parseInt(storage_data_acode));*/
+	$('#phoneArea').text(cookie_data_acode);
+	$('#country_code').val(parseInt(cookie_data_acode));
+	setcookie('cookie_data_acode',cookie_data_acode);
+}
+/*addEvent(window,'storage',function(event){
+	if(event.key == 'storage_data_acode'){
+		$('#phoneArea').text(event.newValue);
+		$('#country_code').val(parseInt(event.newValue));
+		console.log("key:"+event.key+"----old:"+event.oldValue+"----new:"+event.newValue);
+	}
+});*/
+setInterval(function(){
+	$('#phoneArea').text(getcookie('cookie_data_acode'));
+	$('#country_code').val(parseInt(getcookie('cookie_data_acode')));
+},1000)
+</script>

@@ -114,6 +114,32 @@ class medical {
         }
 	}
 	
+	public function med_bi_report(){
+        //生化报告单
+        if (isset($_POST['dosubmit'])&&$_POST['dosubmit']) {
+
+        }else {
+            include template($this->template,'med_bi_report');
+        }
+	}
+
+	public function med_consultation(){
+        //会诊单
+        if (isset($_POST['dosubmit'])&&$_POST['dosubmit']) {
+
+        }else {
+            include template($this->template,'med_consultation');
+        }
+	}
+
+	public function med_history(){
+        //营养病史
+        if (isset($_POST['dosubmit'])&&$_POST['dosubmit']) {
+
+        }else {
+            include template($this->template,'med_history');
+        }
+	}
 	
    
 

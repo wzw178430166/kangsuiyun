@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<meta name="topcolor" rgba="44.172.252.1">
+<title>快速健康咨询服务</title>
+<script type="text/javascript" src="{JS_PATH}jquery_11.min.js"></script>
+<script type="text/javascript" src="{JS_PATH}global.js"></script>
+<script type="text/javascript" src="{JS_PATH}ex/myim.js"></script>
+<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+<link rel="stylesheet" href="/statics/css/myim_style.css?v={SYS_TIME}">
+<script type="text/javascript" src="/statics/js/layer-v3.1.1/layer/mobile/layer.js"></script>
+<link type="text/css" rel="stylesheet" href="/statics/js/diyUpload/css/diyUpload.css" />
+<link type="text/css" rel="stylesheet" href="/statics/js/diyUpload/css/webuploader.css" />
+<script type="text/javascript" src="/statics/js/diyUpload/js/webuploader.html5only.min.js"></script>
+<script type="text/javascript" src="/statics/js/diyUpload/js/diyUpload.js"></script>
+<!--<script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>-->
+<script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+<link type="text/css" rel="stylesheet" href="/statics/js/cropper/cropper.min.css"/>
+<link type="text/css" rel="stylesheet" href="/statics/js/cropper/cropperMe.css?v=2019011101"/>
+<script type="text/javascript" src="/statics/js/cropper/cropper.min.js"></script>
+<script type="text/javascript" src="/statics/js/cropper/cropperMe2.js?v=2019011101"></script>
+</head>
+<style>
+.invisible_case_record {
+	position: absolute;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	border: none;
+	outline: medium;
+	width: 100%;
+	height: 60px;
+}
+.invisible_case_record {
+	width: 80px;
+	height: 80px;
+}
+#case_record {
+	width: 80px;
+	height: 80px;
+}
+#case_record .abutton {
+	width: 100%;
+	height: 66px;
+	position: absolute;
+	top: 50px;
+	right: 0;
+	opacity: 0;
+}
+.webuploader-pick {
+	position: absolute;
+	right: 0;
+	height: 60px;
+	top: 0;
+	opacity: 0;
+}
+.inputbox_ {
+	z-index: 2;
+	width: 120px!important;
+	height: 90px!important;
+	top: 135%!important;
+	left: 135%!important;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -115%);
+}
+#to_big_img {
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	top: 0;
+	z-index: 1;
+	background-color: rgba(0,0,0,0.6);
+}
+#to_big_img img {
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+	-webkit-transform: translate(0, -50%);
+}
+#user_k_div {
+	background: #FFF;
+	height: 126px;
+	line-height: 126px;
+	width: 100%;
+	position: fixed;
+	bottom: 0px;
+	border-top: 1px solid #ebe9e9;
+	text-align: center;
+	display: none;
+	z-index: 1;
+	text-align: center;
+	padding-top: 2.1%;
+}
+.bottom_sex {
+	float: left;
+	width: 15%;
+	height: 3.5rem;
+	border-radius: 5px;
+	text-align: center;
+	line-height: 3.5rem;
+	font-size: 1.5rem;
+	color: #FFF;
+	margin-top: -0.05rem;
+}
+</style>
+<style>
+.answer_box {
+	width: 85%;
+	padding: 0px 2.5%;
+	overflow: hidden;
+	border: 1px solid #dbdbdb;
+	background-color: #fff;
+	border-radius: 3px;
+}
+.answer_box .title {
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px dashed #dbdbdb;
+}
+.answer_box .title span {
+	border-left: 2px solid #59b2e9;
+	padding-left: 10px;
+}
+.answer_box .answer_list, .answer_list_ {
+	width: 100%;
+	overflow: hidden;
+}
+.answer_box .answer_list li {
+	border-bottom: 1px solid #F4F4F4;
+}
+.answer_box .answer_list li:last-child {
+	border-bottom: 1px dashed #dbdbdb;
+}
+.answer_list .answer_list_ {
+	height: 40px;
+	position: relative;
+}
+.answer_list_ .list_l {
+	margin-left: 12%;
+	line-height: 40px;
+}
+.answer_list_ i {
+	width: 20px;
+	height: 20px;
+	background: url(/statics/myim_images/yuan_weixuan_.png);
+	position: absolute;
+	left: 5%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	background-size: 100% !important;
+}
+.answer_list_ i.active {
+	background: url(/statics/myim_images/success.png);
+}
+.answer_list_ .list_l img {
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+	margin-right: 5px;
+}
+.answer_list_ .list_r {
+	line-height: 40px;
+	color: #c5b360;
+	font-weight: bold;
+}
+.answer_box .sure {
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	color: #959595;
+}
+.answer_box .sure input {
+	-webkit-appearance: checkbox;
+	background-color: #fff;
+	vertical-align: text-bottom;
+	margin-right: 5px;
+	width: 15px;
+	height: 15px;
+}
+.buttom_a{display: none;float: left;color: #FFF;background: #2CACFC;padding: 10px;border-radius: 5px;width: 26%;text-align: center;}
+</style>
+
+<body>
+<div class="header_box"> <img src="/statics/macao/app/images/goleft_black.png" onClick="goback()" class="left">
+    <p class="midden">快速健康咨询服务</p>
+</div>
+<div class="h50"></div>
+<div id="content">
+    <div id="title_"></div>
+    <div id="content_left" style="display: none;" class="show_one">
+        <div class="a_img"> <img src="/statics/myim_images/yisheng_user.png" style="width: 50px;height: 50px;border-radius: 50%;"/> </div>
+        <div class="content_text">
+            <div class="text_temp"></div>
+            您好，康穗云医生真诚为您服务，我是您的健康助手，将根据您的描述为您推荐合适的医生。 </div>
+    </div>
+    <div id="content_left" style="display: none;" class="show_two">
+        <div class="a_img"> <img src="/statics/myim_images/yisheng_user.png" style="width: 50px;height: 50px;border-radius: 50%;"/> </div>
+        <div class="content_text">
+            <div class="text_temp"></div>
+            请选择患者的<font style="color: #2CACFC;">【性别】</font> </div>
+    </div>
+    <div id="content_left" style="display: none;">
+        <div class="a_img"> <img src="/statics/myim_images/yisheng_user.png" style="width: 50px;height: 50px;border-radius: 50%;"/> </div>
+        <div class="content_text">
+            <div class="text_temp"></div>
+            请选择患者的<font style="color: #2CACFC;">【年龄】</font> </div>
+    </div>
+    <div id="content_left" style="display: none;">
+        <div class="a_img"> <img src="/statics/myim_images/yisheng_user.png" style="width: 50px;height: 50px;border-radius: 50%;"/> </div>
+        <div class="content_text">
+            <div class="text_temp"></div>
+            请您使用10-500个字详细描述<font style="color: #2CACFC;">【患者病情】</font>（比如症状，次序，时间，正在吃的药品） </div>
+    </div>
+    <div id="content_left" style="display: none;">
+        <div class="a_img"> <img src="/statics/myim_images/yisheng_user.png" style="width: 50px;height: 50px;border-radius: 50%;"/> </div>
+        <div class="content_text">
+            <div class="text_temp"></div>
+            <font style="color: #2CACFC;">【点击此处】</font>上传相关图片(检查报告、患处照片、药品等) 或<font style="color: #2CACFC;">【提交问题】</font></div>
+    </div>
+    <div id="content_right" style="display: none;">
+        <div class="content_text_r common_style">
+            <div class="text_temp_r common_style"></div>
+            现在温度多少了?孩子用了什么药了?能拍个照吗? </div>
+        <div class="a_img"> <img src="/statics/myim_images/yisheng_user.png" style="width: 50px;height: 50px;border-radius: 50%;"/> </div>
+    </div>
+</div>
+<div id="bottom_" style="z-index: 1;">
+    <form onsubmit="return false;" id="send_form" style="display: none;">
+        <div  class="bottom_c bottom_c01" onClick="show_yy(this)"> <img src="/statics/myim_images/yuyin.png" style=""/> </div>
+        <div style="" class="bottom_c bottom_c02">
+            <input type="hidden"  id="message_box" name="content"/>
+            <div id="message_box_div" contenteditable="true" type="tel"></div>
+            <button id="yuyin_div">按住 说话</button>
+        </div>
+        <div id="bottom_send" class="bottom_c">
+            <div id="bottom_three">发送</div>
+        </div>
+        <div id="bottom_more" style=" float: right; " class="bottom_c bottom_c01" onClick=""> <img src="/statics/myim_images/zengjia.png"  alt="更多"/> </div>
+        <div style="float: right;margin-right: 0px;" class="bottom_c bottom_c01" onClick=""> <img src="/statics/myim_images/face.png"  alt="表情"/> </div>
+    </form>
+    <div class="bottom_sex" style="margin-left: 32%;background: #2DACFD;">男</div>
+    <div class="bottom_sex" style="margin-left: 5%;background: #FDB52D;">女</div>
+	<div class='buttom_a' style="margin-left: 20%;margin-right: 4%;" id='headSet'>上传图片</div><div class='buttom_a' id="sendQ">提交问题</div>
+</div>
+</body>
+<div style="display: none;" data_img='<?php echo $this->portrait?>' id='data_img'></div>
+<script>
+if(!userid_) goo('/member/login.html');
+var isTxt = 0;
+var userText = '|';
+var screen_height = document.documentElement.clientHeight;
+var portrait = '<?php echo $portrait?>';
+var sex,age,text,choice,is_send = 0;
+var paytype = 0;//支付方式索引
+var wechatPayParam = {};//微信支付JSAPI参数
+var out_trade_no = '';
+setTimeout(function(){
+	$('.show_one').show();
+	setTimeout(function(){
+		$('.show_two').show();
+	},666)
+},666)
+$(function(){
+	
+})
+function send_word_right(content){
+	var txt = '<div id="content_right" class="content_right"><div class="content_text_r common_style"><div class="text_temp_r common_style"></div>'+content+'</div><div class="a_img"><img src="'+portrait+'" style="width: 50px;height: 50px;border-radius: 50%;"/></div></div>';
+	$('#content').append(txt);
+	userText += content+'|';
+	if(content == '男' || content == '女'){
+		sex = content;
+		send_word_left('请输入患者的<font style="color: #2CACFC;">【年龄】</font>');
+	}
+}
+function addImgContent(content){
+	var txt = '<div id="content_right" class="content_right"><div class="content_text_r common_style"><div class="text_temp_r common_style"></div>'+content+'</div><div class="a_img"><img src="'+portrait+'" style="width: 50px;height: 50px;border-radius: 50%;"/></div></div>';
+	$('#content').append(txt);
+}
+function send_word_left(content){
+	var txt = '<div id="content_left"><div class="a_img"><img src="/statics/myim_images/yisheng_user.png" style="width: 50px;height: 50px;border-radius: 50%;"/></div><div class="content_text"><div class="text_temp"></div>'+content+'</font></div></div>';
+	is_send = 0;
+	setTimeout(function(){
+		$('#content').append(txt);
+		load_content();
+		is_send = 1;
+		if(content == '请上传相关图片(检查报告、患处照片、药品等) 或直接提交问题'){
+			is_send = 0;
+		}
+	},800);
+}
+$('#sendQ').click(function(){
+	//alert($.inArray(parseInt(getCookie('GkvUY___userid')), new Array(2,115)));return;
+	if (1||0 <= $.inArray(parseInt(getCookie('GkvUY___userid')), new Array(2,115))) {
+		var url = encodeURI(encodeURI('/payCenter/template/payConfirm.html?&target=_self&iType=imageText&data='+userText));
+		goo(url);
+		//callPayment();
+		return;
+	}
+	layer.open({
+		type: 2
+		,content: '请稍等，正在提交数据...'
+	});
+	$.ajax({
+		url:'/?m=sr&a=fastCreate',
+		type:'POST',
+		data:'userText='+userText,
+		dataType:'json',
+		success:function(da){
+			if(da.status == 1){
+				goo('/?m=myim&c=sr&a=sr_dialogue&qid='+da.qid);
+			}else{
+				alert(da.msg);
+			}
+		}
+	})
+})
+$('.bottom_sex').eq(0).click(function(){
+	send_word_right('男');
+	$('.bottom_sex').hide();
+	$('#send_form').show();
+	$('#content_left').eq(2).show();
+})
+$('.bottom_sex').eq(1).click(function(){
+	send_word_right('女');
+	$('.bottom_sex').hide();
+	$('#send_form').show();
+	$('#content_left').eq(2).show();
+})
+$('#bottom_three').click(function(){
+	if(is_send == 0){
+		load_content();
+		return;
+	}
+	if(isTxt == 1 && $('#message_box_div').text().length < 10){
+		layer.open({
+			content: '请输入不少于10个字的描述'
+			,skin: 'msg'
+			,time: 2 //2秒后自动关闭
+		});
+		return;
+	}
+	isTxt = 0;
+	send_word_right($('#message_box_div').text());
+	text = $('#message_box_div').text();
+	if($('#message_box_div').attr('type') == 'text'){
+		is_send = 0;
+		send_word_left('请上传相关图片(检查报告、患处照片、药品等) 或直接提交问题');
+		$('#send_form').hide();
+		$('.buttom_a').show();
+	}
+	if($('#message_box_div').attr('type') == 'tel'){
+		$('#message_box_div').attr('type','text');
+		age = $('#message_box_div').text();
+		send_word_left('请您使用10-500个字详细描述<font style="color: #2CACFC;">【患者病情】</font>（比如症状，次序，时间，正在吃的药品）');
+		isTxt = 1;
+	}
+	$('#message_box_div').text('');
+	load_content();
+})
+
+function load_content(){
+	var newHeight = screen_height - (Number($('#top_div').height() + $('#bottom_').height() + $('#msg_top').height() + 99));
+	$('#content').height(newHeight);
+	$('#content').css('min-height',newHeight);
+	$('#content').animate({scrollTop:$('#content')[0].scrollHeight},300);
+	$('body').animate({scrollTop:$('body')[0].scrollHeight},0);
+	$('#content').animate({scrollTop:($('#content')[0].scrollHeight)-1},0);
+}
+load_content();
+$('html').click(function(){
+	$('body').animate({scrollTop:$('body')[0].scrollHeight},0);
+	$('#content').animate({scrollTop:($('#content')[0].scrollHeight)-1},0);
+})
+var onresize_timer;
+document.getElementById('message_box_div').onclick = function(){
+	window.clearTimeout(onresize_timer);
+	onresize_timer = window.setTimeout(function(){
+		$(window).scrollTop($(window).height());
+	},30);
+}
+
+//支付接口对接
+function callPayment(){
+	var payOperate = new Array('getwechatpublic');
+	var url = '/?m=payment&c=wechat&a='+payOperate[paytype];
+	var money = 0.01;
+	var formParam = {orderType:'inquiry',product:'快速问诊',money:money};
+	$.ajax({
+		url: url,
+		type: 'POST',
+		dataType: 'json',
+		data: formParam,
+		success: function(data){
+			layer.open({
+				content: data.erro
+				,skin: 'msg'
+				,time: 2 //2秒后自动关闭
+			});
+			if (data.status == 1) {
+				wechatPayParam = data.data.param;
+				out_trade_no = data.data.out_trade_no;
+				doWechatJsapi();
+			}			
+		}
+	});
+}
+function doWechatJsapi(){
+	if (isWeiXin()) {
+		callpay();
+	}
+}
+function jsApiCall() {
+	//console.log(_param);return;
+	window.top.WeixinJSBridge.invoke(
+		'getBrandWCPayRequest',
+		wechatPayParam,
+		function(res){
+			console.log(res);
+			//err_msg : get_brand_wcpay_request:ok | get_brand_wcpay_request:cancel | get_brand_wcpay_request:fail
+			//WeixinJSBridge.log(res.err_msg);
+			if (res.err_msg == 'get_brand_wcpay_request:ok') {
+				 creatQuestion();//创建问诊问题
+			} else {
+				layer.open({
+					content: '已取消支付!'
+					,skin: 'msg'
+					,time: 2 //2秒后自动关闭
+				});
+			}
+			return;
+		}
+	);
+}
+function callpay(){
+	if (typeof WeixinJSBridge == "undefined"){
+		if( document.addEventListener ){
+			document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+		}else if (document.attachEvent){
+			document.attachEvent('WeixinJSBridgeReady', jsApiCall); 
+			document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+		}
+	}else{
+		jsApiCall();
+	}
+}
+function creatQuestion(){
+	$.ajax({
+		url:'/?m=sr&a=fastCreate',
+		type:'POST',
+		data:'userText='+userText+'&out_trade_no='+out_trade_no,
+		dataType:'json',
+		success:function(da){
+			if(da.status == 1){
+				goo('/?m=myim&c=sr&a=sr_dialogue&qid='+da.qid);
+			}else{
+				alert(da.msg);
+			}
+		}
+	})
+}
+function getCookie2(name){
+	var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+	if (arr = document.cookie.match(reg))
+	return decodeURIComponent(arr[2]);
+	else return null;
+}
+</script>
+</html>

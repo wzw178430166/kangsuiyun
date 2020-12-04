@@ -4,7 +4,7 @@ setCookie('webSocketIp','124.172.184.210');
 jQuery.getScript("/statics/js/public_yjx.js", function(data, status, jqxhr){
 	console.log('加载完成~public_yjx');
 });
-jQuery.getScript("/statics/eeedit/js/etGlobal.js", function(data, status, jqxhr){
+/*jQuery.getScript("/statics/eeedit/js/etGlobal.js", function(data, status, jqxhr){
 	console.log('加载完成~weChatShare');
 	var ua = window.navigator.userAgent.toLowerCase();
 	if(ua.match(/MicroMessenger/i) == 'micromessenger'){
@@ -23,7 +23,7 @@ jQuery.getScript("/statics/eeedit/js/etGlobal.js", function(data, status, jqxhr)
 			}catch(e){ }
 		}
 	}
-});
+});*/
 
 var Tapp_ = getTapp();
 if (Tapp_) {  
@@ -47,9 +47,9 @@ function hideTBar(){
 	$('.header_box .left_b').hide();
 }
 /**/
-var this_site = '//www.yjxun.cn';
-var this_cookie_pre = 'GkvUY_';
-var cookie_pre = 'GkvUY_';
+var this_site = '//www.519ksy.com';
+var this_cookie_pre = 'GkvUq_';
+var cookie_pre = 'GkvUq_';
 var iosP = false;
 setTimeout(function(){ 
 	$('#_embed_v3_dc').remove();
@@ -100,7 +100,7 @@ try{
 function sync_member(){
 	if(getUrlParam('mobile')=='ios'){  
 		console.log("setlogin for ios"); 
-		goo('dapp://setlogin=>{"auth":"'+getCookie(cookie_pre+'auth')+'","status":"1","forward":"","username":"'+getCookie(cookie_pre+'__username')+'","userid":"'+getCookie(cookie_pre+'_userid')+'","avatar":"","avatar180":"","nickname":"1373","point":"29103","groupid":"14","regdate":"","regdate_":"","portrait":"'+getCookie('GkvUY__portrait')+'"}'); 
+		goo('dapp://setlogin=>{"auth":"'+getCookie(cookie_pre+'auth')+'","status":"1","forward":"","username":"'+getCookie(cookie_pre+'__username')+'","userid":"'+getCookie(cookie_pre+'_userid')+'","avatar":"","avatar180":"","nickname":"1373","point":"29103","groupid":"14","regdate":"","regdate_":"","portrait":"'+getCookie('GkvUq__portrait')+'"}');
 	}else{ 
 		try{
 			jstojava.sync_member(getCookie(cookie_pre+'_userid'),getCookie(cookie_pre+'__username'),getCookie(cookie_pre+'__nickame'),getCookie(cookie_pre+'auth'),getCookie(cookie_pre+'__avatar'));    
@@ -320,12 +320,12 @@ function goo_t(url,full){
 function goo(url,full){
   	var ua_ = window.navigator.userAgent.toLowerCase();
   	// && ua_.match(/MicroMessenger/i) == 'micromessenger'
-	if(!userid_){
-		if(url.indexOf('lgqb') == -1 && url.indexOf('yfzn') == -1 && url.indexOf('xxfeiyan/bobao/') == -1 && url.indexOf('xxfeiyan/chunyu') == -1 && url.indexOf('shop.yjxun.cn') == -1){
-			location.href = '/member/login.html?forward='+encodeURIComponent(location.href);
-			return;
-		}
-	}
+	// if(!userid_){
+	// 	if(url.indexOf('lgqb') == -1 && url.indexOf('yfzn') == -1 && url.indexOf('xxfeiyan/bobao/') == -1 && url.indexOf('xxfeiyan/chunyu') == -1 && url.indexOf('shop.yjxun.cn') == -1){
+	// 		location.href = '/member/login.html?forward='+encodeURIComponent(location.href);
+	// 		return;
+	// 	}
+	// }
 	if(url != '#'){
 		try{ 
 			jstojava.isok(); 
@@ -428,7 +428,7 @@ function goback(){
 		jstojava.isok();
 		var endTime = (Date.parse(new Date()) / 1000) - startTime;
 		$.ajax({
-			url:'//www.yjxun.cn/?m=myim&c=temp&a=addBugLog&onpagehide=1&duration='+endTime+'&title='+$('title').text()+'&toUrl='+encodeURIComponent(window.location.href),
+			url:'//ksy.yjxun.cn/?m=myim&c=temp&a=addBugLog&onpagehide=1&duration='+endTime+'&title='+$('title').text()+'&toUrl='+encodeURIComponent(window.location.href),
 			async:false
 		});
 		goo('dapp://goback');
@@ -585,7 +585,7 @@ function get_latlng(){
 }
 var options = {timeout: 9000};
 var positionNum = 0;
-var userid_ = getCookie('GkvUY___userid');
+var userid_ = getCookie('GkvUq___userid');
 function getCurLocation(){
 	try{
   geolocation.getLocation(showPosition, showErr, options);
@@ -926,7 +926,7 @@ function logout(forward){
 }
 window.onload = function(e){
 	$.ajax({
-		url:'//www.yjxun.cn/?m=myim&c=temp&a=addBugLog&onload=1'+'&title='+$('title').text()+'&toUrl='+encodeURIComponent(window.location.href),
+		url:'//ksy.yjxun.cn/?m=myim&c=temp&a=addBugLog&onload=1'+'&title='+$('title').text()+'&toUrl='+encodeURIComponent(window.location.href),
 		async:false
 	});
 	/*var blob = new Blob([`onload=12345`], {type : 'application/x-www-form-urlencoded'});
@@ -936,7 +936,7 @@ window.onpagehide = function(e){
 	//安卓原生返回键能监听 右上角返回键无效 监听goback
 	var endTime = (Date.parse(new Date()) / 1000) - startTime;
 	$.ajax({
-		url:'//www.yjxun.cn/?m=myim&c=temp&a=addBugLog&onpagehide=1&duration='+endTime+'&title='+$('title').text()+'&toUrl='+encodeURIComponent(window.location.href),
+		url:'//ksy.yjxun.cn/?m=myim&c=temp&a=addBugLog&onpagehide=1&duration='+endTime+'&title='+$('title').text()+'&toUrl='+encodeURIComponent(window.location.href),
 		async:false
 	});
 	/*var blob = new Blob([`onpagehide=123`], {type : 'application/x-www-form-urlencoded'});
@@ -962,4 +962,9 @@ function getTapp() {
 	}else{
 		return false;
 	} 
+}
+
+
+function goo_d(){
+	layer.msg('申请会员查看更多详情')
 }

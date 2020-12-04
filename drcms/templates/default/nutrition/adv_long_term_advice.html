@@ -41,6 +41,24 @@
     height: auto;
     min-height: 26px;
 }
+.table_div{text-align: left;font-size: 14px;}
+.table_div span{margin-right: 15px;}
+.cell-adive{width: 160px;}
+.cell-shopd{width: 180px;}
+.table-bordered th.rowth{height: 50px;line-height: 50px;}
+ .tb-headstortg{height: 50px;line-height: 40px;}
+.table tr th {
+    font-weight: normal; 
+    background: #f1f1f1;
+}
+.tb-cell, .tb-head {
+    display: inline;
+    width: 50px;
+    overflow: hidden;
+    white-space: nowrap;
+    word-wrap: normal;
+    padding: 0 5px;
+}
 </style>
 <body>
 {template $this->template,'header',$this->style}
@@ -57,35 +75,47 @@
         <div class="query-btn">
             <div class="btn-item"> <a class="btn-query" >刷新</a> <a href="javascript:;" class="btn-add" style="margin-left: 10px;">重整医嘱</a> <a href="javascript:;" class="btn-add" style="margin-left: 10px;">还原医嘱</a><a href="javascript:;" class="btn-add" style="margin-left: 10px;">全部打印</a><a href="javascript:;" class="btn-add" style="margin-left: 10px;">续打</a></div>
           </div> 
-        
+        <div style="height: 20px;"></div>
         <div class="data-content">
           <div class="tb-container">
             <table class="table table-bordered table-hover table-striped" id="rstb">
-              <thead><tr align="center">
-                  <th><strong class="tb-head cell-check" data-val="check">
-                    <input type="checkbox" id="J_sel_all">
-                    </strong></th>
-                  <th><strong class="tb-head cell-name" data-val="name">医嘱内容</strong></th>
-                  <th><strong class="tb-head cell-sex" data-val="sex">剂量</strong></th>
-                  <th><strong class="tb-head cell-age" data-val="age">单位</strong></th>
-                  <th><strong class="tb-head cell-telephone" data-val="telephone">途径</strong></th>
-                  <th><strong class="tb-head cell-pici" data-val="pici">频次</strong></th>
-                  <th><strong class="tb-head cell-starttime" data-val="starttime">医嘱开始时间</strong></th>
-                  <th><strong class="tb-head cell-endtime" data-val="endtime">医嘱结束时间</strong></th>
-                  <th><strong class="tb-head cell-state" data-val="state">医嘱状态</strong></th>
-                  <!-- <th><strong class="tb-head cell-operate" data-val="operate">操作</strong></th> -->
-                </tr></thead>
+              <caption align="top"><h4>长期医嘱单(静脉营养)</h4>
+                 <div class="table_div">科室：<span>耳鼻咽喉科</span> 病区：<span>耳鼻咽喉科病区</span></div> 
+                 <div class="table_div">门诊号1112：<span>63558444</span> 住院号：<span>2546444</span> 床号：<span>+9</span> 姓名：<span>黄小明</span></div>
+              </caption>
+              <thead>
+                <tr align="center">
+                  <th colspan="2"><strong class="tb-head cell-name" data-val="name">起始</strong></th>
+                  <th rowspan="2" class="rowth">
+                    <strong class="tb-head cell-adive headstortg" data-val="sex">医嘱内容</strong></th>
+                  <th rowspan="2" class="rowth">
+                    <strong class="tb-head cell-docqim headstortg" data-val="sex">医师签名</strong>
+                  </th>
+                  <th rowspan="2" class="rowth">
+                    <strong class="tb-head cell-telephone headstortg" data-val="telephone">确认时间</strong>
+                  </th>
+                  <th rowspan="2" class="rowth"><strong class="tb-head cell-pici headstortg" data-val="pici" style="white-space: initial;">确认护士签名</strong></th>
+                  <th colspan="5"><strong class="tb-head cell-shopd" data-val="shopd">停止</strong></th>
+                </tr>
+                <tr align="center">
+                  <th><strong class="tb-head cell-name" data-val="name">日期</strong></th>
+                  <th><strong class="tb-head cell-tenr" data-val="sex">时间</strong></th>
+                  <th><strong class="tb-head cell-qianm" data-val="shopd">日期时间</strong></th>
+                  <th><strong class="tb-head cell-qianm" data-val="shopd">医师签名</strong></th>
+                  <th><strong class="tb-head cell-qianm" data-val="shopd">执行时间</strong></th>
+                  <th><strong class="tb-head cell-qianm" data-val="shopd" style="white-space: initial;">执行护士签名</strong></th>
+                </tr>
+              </thead>
               <tbody id="datas">
               </tbody>
             </table>
           </div>
-          <div class="btn-batch"> <span id="J_sel_all2" data-off="0">全选/取消</span><a href="javascript:;" class="batch-del" id="J_batch_del">删除</a></div>
         </div>
         <div class="inner-page" id="innerPage"></div>
         
         
-      </div>
-    </div>
+      </div>   
+    </div>  
   </div>
 </div>
 </body>
@@ -99,7 +129,7 @@ $(function(){
 		var index = $(this).index();
 		$list.eq(index).addClass("on").siblings().removeClass("on");
 		$div.eq(index).addClass("on").siblings().removeClass("on");
-		$(this).find("p").addClass("pstyle").parent().siblings().find('p').removeClass("pstyle");;
+		$(this).find("p").addClass("pstyle").parent().siblings().find('p').removeClass("pstyle");
 	})
   getTable();
   var tbWidth = $(window).width() - 245;

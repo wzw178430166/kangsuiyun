@@ -1,0 +1,822 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"
+		content="width=device-width, height=device-height, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<title>会员中心</title>
+	<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+	<link rel="stylesheet" type="text/css" href="/statics/css/animate.css">
+	<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+	<script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="/statics/js/global.js"></script>
+	<script type="text/javascript" src="/statics/js/cookie.js"></script>
+	<script type="text/javascript" src="/statics/js/layer/3.1.1/mobile/layer.js"></script>
+	<script type="text/javascript" src="/statics/languages/20181105/languages.js"></script>
+</head>
+<style>
+	body {
+		color: #333;
+		background-color: #f6f6f6;
+	}
+
+	.m-content {
+		padding-bottom: 4rem;
+	}
+
+	.m-inner {
+		position: relative;
+		color: #fff;
+	}
+
+	.m-inner .inner-bg {
+		width: 100%;
+		display: block;
+	}
+
+	.m-inner .inner-content {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		padding: 0 1rem;
+		padding-top: 4rem;
+	}
+
+	.inner-content .inner-member {
+		overflow: hidden;
+	}
+
+	.inner-member .member-head {
+		width: 5rem;
+		height: 5rem;
+		float: left;
+		border-radius: 50%;
+	}
+
+	.inner-member .member-info {
+		margin-left: 1rem;
+		float: left;
+	}
+
+	.member-info p {
+		line-height: 2rem;
+		overflow: hidden;
+	}
+
+	.member-info p:first-child {
+		font-size: 1.1rem;
+	}
+
+	.member-info p:last-child {
+		border: 1px #eee solid;
+		border-radius: 1rem;
+		padding: 0 .5rem;
+		line-height: 1.8rem;
+		margin-top: .3rem;
+	}
+
+	.inner-member .operate-sign {
+		float: right;
+		width: 8rem;
+		margin-top: 1rem;
+	}
+
+	.operate-sign img {
+		width: 100%;
+		display: block;
+	}
+
+	.m-nav-bg {
+		background-color: #fff;
+		position: relative;
+		height: 5.5rem;
+	}
+
+	.m-nav {
+		width: 94%;
+		margin: 0 auto;
+		/* margin-top: -10rem; */
+		padding: 1.73rem 0;
+		position: absolute;
+		left: 3%;
+		top: -2.65rem;
+		background-color: #fff;
+		border-radius: 1rem;
+		box-shadow: 0 3px 6px 0px #e0e8ff;
+	}
+
+	.m-nav ul {
+		overflow: hidden;
+	}
+
+	.m-nav ul li {
+		width: 25%;
+		text-align: center;
+		font-size: 1.1rem;
+		float: left;
+	}
+
+	.m-nav ul li img {
+		width: 35%;
+		display: block;
+		margin: 0 auto;
+	}
+
+	.m-recharge {
+		padding: 0.5rem 1rem 1rem 1rem;
+		background-color: #fff;
+		overflow: hidden;
+		background-color: #fff;
+		border-bottom: .1rem solid #ececec;
+	}
+
+	.m-recharge .r-left {
+		float: left;
+	}
+
+	.r-left .r-text {
+		display: block;
+		padding-left: 2rem;
+		background: url(/member/statics/images/icon_gold.png) no-repeat 0 center;
+		background-size: 1.8rem;
+		color: #3a3a3a;
+		font-size: 1.1rem;
+	}
+	.m-recharge .r-left .r-text em { font-style: normal; font-size: .9rem; color: #fd482c;}
+	.r-left .r-balance {
+		color: #e58506;
+		font-size: 2.3rem;
+		margin-top: .9rem;
+		display: inline-block;
+		margin-left: .7rem;
+	}
+
+	.m-recharge .r-right {
+		float: right;
+	}
+
+	.r-right .operate-recharge {
+		float: right;
+		color: #f37258;
+		padding: .3rem 1rem;
+		border: 0.1rem #f37258 solid;
+		border-radius: 2rem;
+		margin-top: 1.2rem;
+	}
+
+	/**/
+	.m-fun {
+		margin-top: 1rem;
+		background-color: #fff;
+	}
+
+	.m-fun ul li {
+		padding: 0 1rem;
+		position: relative;
+		height: 3.5rem;
+		line-height: 3.5rem;
+	}
+
+	.m-fun ul li:after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 1px;
+		border-bottom: 1px solid #e0e0e0;
+		-webkit-transform: scaleY(.5);
+		transform: scaleY(.5);
+	}
+
+	.m-fun ul li:last-child:after {
+		border: 0;
+	}
+
+	.m-fun ul li span {
+		padding-left: 2.5rem;
+		font-size: 1.1rem;
+		display: inline-block;
+		line-height: 3.5rem;
+	}
+
+	.m-fun ul li .icon-hardware {
+		background: url('/member/statics/images/icon_hardware.png') no-repeat 0 center;
+		background-size: 1.8rem;
+	}
+
+	.m-fun ul li .icon-plan {
+		background: url('/member/statics/images/icon_plan.png') no-repeat 0 center;
+		background-size: 1.8rem;
+	}
+
+	.m-fun ul li .icon-order {
+		background: url('/member/statics/images/icon_order.png') no-repeat 0 center;
+		background-size: 1.8rem;
+	}
+
+	.m-fun ul li .icon-coupon {
+		background: url('/member/statics/images/icon_coupon.png') no-repeat 0 center;
+		background-size: 1.8rem;
+	}
+
+	.m-fun ul li .icon-budget {
+		background: url('/member/statics/images/icon_budget.png') no-repeat 0 center;
+		background-size: 1.8rem;
+	}
+
+	.m-fun ul li .icon-point {
+		background: url('/member/statics/images/icon_point.png') no-repeat 0 center;
+		background-size: 1.8rem;
+	}
+
+	.m-fun ul li .icon-sim {
+		background: url('/member/statics/images/icon_sim.png') no-repeat 0 center;
+		background-size: 1.8rem;
+	}
+
+	.m-fun ul li .icon-setting {
+		background: url('/member/statics/images/icon_setting.png') no-repeat 0 center;
+		background-size: 1.8rem;
+	}
+
+	.m-fun ul li .icon-hardwareUse {
+		background: url('/member/statics/images/icon_hardwareUse.png') no-repeat 0 center;
+		background-size: 1.8rem;
+	}
+
+	.m-fun ul li .icon-nearby {
+		background: url('/member/statics/images/icon_nearby.png') no-repeat 0 center;
+		background-size: 1.8rem;
+	}
+
+	.m-fun ul li .icon-guest {
+		background: url('/member/statics/images/icon_guest.png') no-repeat 0 center;
+		background-size: 1.8rem;
+	}
+
+	.m-fun ul li .icon-arrow-r {
+		float: right;
+		display: block;
+		width: 2rem;
+		height: 3.5rem;
+		background: url('/member/statics/images/icon_arrow_r.png') no-repeat 100% center;
+		background-size: 1.3rem;
+	}
+
+	.m-fun ul li font {
+		float: right;
+	}
+
+	.m-fun ul li font em {
+		font-style: normal;
+	}
+
+	/*	*/
+	.m-box {
+		width: 95vw;
+		background: #fff;
+		border-radius: .3rem;
+		color: #111111;
+		margin: 0 auto;
+		margin: 1rem auto;
+	}
+
+	.m-box-title {
+		padding-top: 1rem;
+		padding-left: 1rem;
+		margin-bottom: 1rem;
+		font-size: 1.1rem;
+	}
+
+	.m-box-c {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.m-box-item {
+		width: 25%;
+		text-align: center;
+		height: 5.5rem;
+	}
+
+	.m-box-item img {
+		width: 2.2rem;
+	}
+
+	/*	*/
+	#logined,
+	#bind_tel {
+		display: none;
+	}
+
+	#login {
+		line-height: 5rem;
+	}
+
+	#logined span {
+		float: left;
+		height: 2rem;
+	}
+
+	#logined .info-sex {
+		float: left;
+		margin-left: .5rem;
+		width: 1.2rem;
+		height: 1.2rem;
+		overflow: hidden;
+		margin-top: .3rem;
+	}
+
+	.info-sex img {
+		display: block;
+		width: 100%;
+	}
+
+	/**/ 
+	.updatetip {
+		display: none;
+		float: right;
+		margin-left: 10px;
+		color: #fff;
+		border-radius: 35px;
+		background: #ff3838;
+		padding: 0 17px;
+		font-size: .9rem;
+		height: 24px;
+		line-height: 24px;
+		top: 0.91rem;
+		position: relative
+	}
+	/**/
+	.footer_box {
+    width: 100%;
+    overflow: hidden;
+    height: 4rem;
+    border-top: 1px solid #e3e3e7;
+    background-color: #fff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 9;
+}
+	.footer_box .footer {
+    width: 20%;
+    float: left;
+		text-align: center;}
+	.footer_box .footer img {
+    width: 1.6rem;
+    height: 1.6192rem;
+    display: block;
+    margin: 0.5rem auto 0 auto;
+}
+.tixing, .tixing_ { display: none; width: 27px; height: 15px; line-height: 15px; text-align: center; border-radius: 15px; background-color: #fd616c; color: #fff; position: absolute; left: 75%; top: 21%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); }
+</style>
+
+<body>
+	<div class="m-content">
+		<div class="m-inner">
+			<img src="/member/statics/images/member_bg.jpg" class="inner-bg">
+			<div class="inner-content">
+				<div class="inner-member">
+					<img src="../statics/member/images/icon_tou.png" class="member-head  header_portrait" id="portrait"
+						onerror="initImg(this)">
+					<div class="member-info">
+						<p id="login" onClick="goo('./login.html?&forward='+escape(window.location.href))">
+							<span>登录</span> / <span>注册</span></p>
+						<p id="logined"><span class="nickname">游客</span><i class="info-sex">
+								<img src="/statics/member/images/female.png" id="sex_str">
+							</i></p>
+						<p id="bind_tel"></p>
+					</div>
+<!--
+					<div class="operate-sign" onClick="goo_sign()">
+						<img src="/member/statics/images/btn_sign.png">
+					</div>
+-->
+					<div class="operate-sign indexInside" style="display:none">
+						<img src="/member/statics/images/btn_sign3.png">
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--m-inner-->
+		<div class="m-nav-bg">
+			<div class="m-nav">
+				<ul>
+					<li onclick="goo('./my_mess.html')">
+						<img src="/member/statics/images/icon_mess.png">
+						<font>消息中心</font>
+					</li>
+					<li onclick="goo_sign()">
+						<img src="/member/statics/images/icon_sign.png">
+						<font>签到有礼</font>
+					</li>
+					<li onclick="goo('./user_friends.html')">
+						<img src="/member/statics/images/icon_friend.png">
+						<font>我的好友</font>
+					</li>
+					<li onclick="location.href = './collection.html'">
+						<img src="/member/statics/images/icon_collect.png">
+						<font>收藏记录</font>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!--m-nav-->
+		<div class="m-recharge">
+			<div class="r-left">
+				<span class="r-text">账户余额<em>（仅限购买在线问诊服务）</em></span>
+				<font class="r-balance" id="balance">0.00</font>
+			</div>
+			<div class="r-right">
+				<div class="operate-recharge" id="J_recharge" onClick="goo('/payCenter/template/payConfirm2.html')">
+					账户充值</div>
+			</div>
+		</div>
+		<!--m-box-->
+		<div class="m-box">
+			<div class="m-box-title">常用功能</div>
+			<div class="m-box-c">
+				<div class="m-box-item" onClick="goo('/member/order3.html')">
+					<img src="style1/images/dingdan.png" alt="">
+					<p>我的订单</p>
+				</div>
+				<div class="m-box-item" onClick="goo('/?m=coupon')">
+					<img src="style1/images/lingquan.png" alt="">
+					<p>领券中心</p>
+				</div>
+                <div class="m-box-item" onClick="goo('/?m=coupon&a=memberCoupon')">
+					<img src="style1/images/youhui.png" alt="">
+					<p>我的优惠券</p>
+				</div>
+				<!--<div class="m-box-item" onClick="goo('/member/coupon.html')">
+					<img src="style1/images/youhui.png" alt="">
+					<p>我的优惠券</p>
+				</div>-->
+				<div class="m-box-item" onClick="goo('/circleN/earningCash.html')">
+					<img src="style1/images/xianjin.png" alt="">
+					<p>现金奖励</p>
+				</div>
+				<!--<div class="m-box-item">
+					<img src="style1/images/jifen.png" alt="">
+					<p>我的积分</p>
+				</div>-->
+			</div>
+		</div>
+		<div class="m-box">
+			<div class="m-box-title">健康服务</div>
+			<div class="m-box-c">
+				<div class="m-box-item" onClick="goo('/equipment/equipment_list.html')">
+					<img src="style1/images/chuandai.png" alt="">
+					<p>智能穿戴</p>
+				</div>
+				<div class="m-box-item" onClick="goo('/sport/sport_lists.html')">
+					<img src="style1/images/jianshen.png" alt="">
+					<p>健康计划</p>
+				</div>
+				<div class="m-box-item" onClick="goo('/index2/today_check.html')">
+					<img src="style1/images/jiankan.png" alt="">
+					<p>健康数据</p>
+				</div>
+				<div class="m-box-item" onClick="goo('/medical/jktx.html')">
+					<img src="style1/images/yichang.png" alt="">
+					<p>健康提醒</p>
+				</div>
+			</div>
+		</div>
+		<div class="m-box" style="display: none;">
+			<div class="m-box-title">圈子管理</div>
+			<div class="m-box-c">
+				<div class="m-box-item">
+					<img src="style1/images/xiantg.png" alt="">
+					<p>圈子管理</p>
+				</div>
+				<div class="m-box-item">
+					<img src="style1/images/chengyuan.png" alt="">
+					<p>成员管理</p>
+				</div>
+				<div class="m-box-item">
+					<img src="style1/images/ticheng.png" alt="">
+					<p>奖励提成</p>
+				</div>
+				<div class="m-box-item" onClick="goo('exhibition.html')">
+					<img src="style1/images/shangjia.png" alt="">
+					<p>商家展示</p>
+				</div>
+				<div class="m-box-item" onClick="goo('/circleN/decoration.html')">
+					<img src="style1/images/zhuangxiu.png" alt="">
+					<p>圈子装修</p>
+				</div>
+				<div class="m-box-item" onClick="goo('/?m=auth&&c=withdrawal')">
+					<img src="style1/images/tiian.png" alt="">
+					<p>提现管理</p>
+				</div>
+				<div class="m-box-item" onClick="goo('garrison.html')">
+					<img src="style1/images/ruzhu.png" alt="">
+					<p>商城入驻</p>
+				</div>
+				<div class="m-box-item" onClick="goo('invitation.html')">
+					<img src="style1/images/fenghong.png" alt="">
+					<p>邀请分红</p>
+				</div>
+				<div class="m-box-item" onClick="goo('/?m=eeedit&c=eeedit&a=add_yy')">
+					<img src="style1/images/tuiguang.png" alt="">
+					<p>推广工具</p>
+				</div>
+			</div>
+		</div>
+		<!--m-fun-->
+		<div class="m-fun">
+			<ul>
+				<li onClick="goo('./set_up.html')"><span class="icon-setting">设置</span>
+					<i class="icon-arrow-r"></i>
+					<div class="updatetip" id="updatetip">发现新版本</div>
+				</li>
+				<li onClick="goo('//www.yjxun.cn/member/nearby_user.html')"><span class="icon-nearby">附近的人</span><i
+						class="icon-arrow-r"></i></li>
+				<li onClick="feedback()"><span class="icon-guest">意见反馈</span><i class="icon-arrow-r"></i>
+					<font>400-1012-810</font> 
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- <div class="footer_box">
+  <div class="footer" onclick="goindex()"> <img src="/statics/images/bottom_img/shouye.png">
+    <p>首页</p> 
+  </div>
+  <div class="footer" onclick="goo('/circleN/')">
+  <div class="tixing_ tixing_csc" style="display: none;left: 73.9%;">0</div>
+   <img src="/circleN/style1/images/faxian.png" style="width: 1.4rem; height: 1.4rem; margin-bottom:0.2rem ">
+    <p>发现</p>
+  </div>
+  <div class="footer" onclick="goo('/circleN/circleList2.html?target=top')"> 
+    <img src="/index7/images/quanzi.png"> 
+    <p>圈子</p> 
+  </div>
+  <div class="footer" onclick="goo('/circleN/msgCenter2.html')" id="consult">
+    <div class="tixing_ tixing_user" style=" width: 15px; display: none;">0</div>
+    <img src="/statics/images/bottom_img/zixun.png">
+    <p>消息</p>
+  </div> 
+  <div class="footer"> <img src="/statics/images/bottom_img/huiyuan_on.png">
+    <p style="color:#2cacfc;">我的</p>
+  </div>
+</div> -->
+<span id="footer_box" v-html="url1"></span>
+</body>
+<script>
+  function goindex(){
+  	 if(getUrlParam('mobile') == 'ios' && Number(getUrlParam('version'))>=2019081502){
+     goo('/');
+     }else{
+     goo('/index/');
+     }
+  }
+  
+	var cid = 0;
+	if (getCookie('lan') == 'Zh_hk') {
+		$('.middle_css').hide();
+		$('.middle2_css').hide();
+	}
+	function initImg(obj) {
+		var img = new Image();
+		img.src = '/statics/images/member/nophoto.gif';
+		obj.onerror = null;
+		img.onload = function () {
+			obj.src = img.src;
+			obj.onload = null;
+		};
+	}
+</script>
+<script>
+	$(function () {
+		getfooter();
+		if (!userid_) {
+			goo('/member/login.html?forward=' + encodeURIComponent(window.location.href));
+		}
+		var userid = 0;
+		get_data();
+		if (getUrlParam('mobile') != 'ios') {
+			//$('#recharge_btn').show();
+		}
+		var u = navigator.userAgent;
+		var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+		var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+		if (isiOS) {
+			//$('.android_class').hide();
+			//$('.ios_class').show();
+		}
+	})
+
+	try {
+		var myVersion = jstojava.mygetVersion();
+	} catch (e) {
+		if (userid_ == 115) {
+			//var myVersion = 123; 
+		}
+	}
+	if (myVersion) {
+		$.ajax({
+			url: '/app/version.php?ajax=1', dataType: 'json',
+			success: function (data) {
+				console.log(Number(data.versions) + ":" + Number(myVersion));
+				if (Number(data.versions) > Number(myVersion)) {
+					$('#updatetip').show();
+				}
+			}
+		});
+	}
+
+
+	var get_avatar_filename_index;
+	$('.header_portrait').click(function () {
+		try {
+			jstojava.clear_avatar_filename();
+			get_avatar_filename();
+		} catch (e) { }
+		if (!isWeiXin()) goo('/member/setting/diet_userdata.html'); else goo('/member/setting/diet_userdata_new.html');
+
+	});
+	function getfooter() {
+            $('#footer_box').load('/h5page/mobile_medicals/footer.html', function () {
+            });
+        }
+	function get_avatar_filename() {
+		a = jstojava.get_avatar_filename();
+		window.clearTimeout(get_avatar_filename_index);
+		if (a && a != 0 && a != "undefined" && a != "null") {
+			var timestamp = Date.parse(new Date());
+			$('#portrait').attr('src', a + "?v=" + timestamp);
+		} else {
+			get_avatar_filename_index = window.setTimeout(function () { get_avatar_filename() }, 2000);
+		}
+	}
+	function get_data() {
+		$.ajax({
+			url: '/index.php?m=member&c=data&a=get_datas',
+			type: 'POST',
+			data: 'judge=1',
+			dataType: 'json',
+			success: function (data) {
+				if (data.status == 1) {
+					if (data.portrait.indexOf('?') > -1) {
+						data.portrait = data.portrait + '&' + Date.parse(new Date());
+					} else {
+						data.portrait = data.portrait + '?' + Date.parse(new Date());
+					}
+					if (data.portrait) { $('#portrait').attr('src', data.portrait); }
+					if (data.nickname) { $('.nickname').text(data.nickname); }
+					$('#sex_str').attr('src', data.sex_str);
+					$('#userid').text(Number(data.userid));
+					userid = Number(data.userid);
+					$('#point').text(Number(data.point));
+					//$('#amount').text(Number(data.amount));
+					$('#balance').text(keepTwoDecimalFull(Number(data.balance)));//余额   data.balance
+					$('#firend_num').text(data.firend_num);
+					$('#message').text(data.message);
+					$('#exp_grade').text(data.exp_user.group_name);
+					$('#exp_grade_diff').text(data.exp_user.diff_exp);
+					$('#experience').text(data.exp_user.experience);
+					$('#favorite').text(data.favorite);
+					$('.progress-bar').css('width', data.exp_user.diff_up + '%');
+					$('#login').hide();
+					$('#logined').show();
+					$('.header_right').show();
+					/*$('#bind_tel').show();
+					$('#bind_tel').text('绑定手机：'+data.bind_tel);*/
+					$('#bind_tel').show();
+					$('#bind_tel').text('绑定手机：'+(data.bind_tel2?data.bind_tel2:'未绑定'));
+					if(data.cid){
+						cid = data.cid;
+						$('.m-box').eq(2).show();
+						$('.m-box').eq(2).find('.m-box-item').eq(0).click(function(){
+							goo('/circleN/circleManageL.html?cid='+cid);
+						})
+						$('.m-box').eq(2).find('.m-box-item').eq(1).click(function(){
+							goo('/circleN/memberList.html?cid='+cid);
+						})
+					}
+					$('.indexInside').on('click',function(){
+						goo('/circleN/indexHome.html?toUid='+userid_);
+					});
+					$('.indexInside').show();
+						
+				} else {
+					$('#login').show();
+					$('#logined').hide();
+					$('#bind_tel').hide();
+				}
+			}
+		})
+	}
+	//不四舍五入保留2位小数（不够位数，则用0替补）  
+	function keepTwoDecimalFull(num) {
+		var result = parseFloat(num);
+		if (isNaN(result)) {
+			return num;
+		}
+		result = Math.floor(num * 100) / 100;
+		var s_x = result.toString(); //将数字转换为字符串
+
+		var pos_decimal = s_x.indexOf('.'); //小数点的索引值
+
+
+		// 当整数时，pos_decimal=-1 自动补0  
+		if (pos_decimal < 0) {
+			pos_decimal = s_x.length;
+			s_x += '.';
+		}
+
+		// 当数字的长度< 小数点索引+2时，补0  
+		while (s_x.length <= pos_decimal + 2) {
+			s_x += '0';
+		}
+		return s_x;
+	}
+
+	function feedback() {
+		goo('/member/setting/feedback.html');
+	}
+	function set_feedback() {
+		$('.mess_show').hide();
+		var text = $('#text').val();
+		$.ajax({
+			url: '/index.php?m=member&c=data&a=get_datas',
+			type: 'POST',
+			data: 'judge=4&text=' + text,
+			dataType: 'json',
+			success: function (data) {
+				layer.open({
+					content: data.msg
+					, skin: 'msg'
+					, time: 2 //2秒后自动关闭
+				});
+			}
+		})
+	}
+	$('.mess_show .close').click(function () {
+		$('.mess_show').hide();
+	});
+	function go_grsy() {
+		if (getCookie('lan') == 'Zh_hk') return;
+		if (userid > 0) {
+			goo('../circle/personal_index.html?uid=' + userid);
+		}
+	}
+	function recharge() {
+		var url = '/payCenter/template/balanceRecharge.html';
+		goo(url);
+	}
+</script>
+<script>
+	function goo_point() {
+		if (is_login_()) {
+			var point = $('#point').text();
+			goo('./task_list.html?point=' + point);
+		}
+	}
+	function goo_sign() {
+		if (is_login_()) {
+			var point = $('#point').text();
+			goo('./task_list.html?sign=1&point=' + point);
+		}
+	}
+	function wallet() {
+		if (is_login_()) {
+			var point = $('#point').text();
+			goo('./task_list.html?sign=1&point=' + point);
+		}
+	}
+	function go_wallet() {
+		if (is_login_()) {
+			var point = $('#point').text();
+			var amount = $('#amount').text();
+			goo('./wallet.html?amount=' + amount + '&point=' + point);
+		}
+	}
+	function is_login_() {
+		if (!getcookie('auth')) {
+			window.location.href = '/member/login.html?forward=' + escape(window.location.href);
+			return false;
+		}
+		return true;
+	}
+
+	function temp_msg() {
+		layer.open({
+			content: '正在更新升级中，即将开放。'
+			, skin: 'msg'
+			, time: 2 //2秒后自动关闭
+		});
+	}
+	setInterval(function () {
+		get_data();
+	}, 13000);
+</script>
+
+</html>

@@ -1,0 +1,436 @@
+{template $this->template,'header_common',$this->style}
+<script type="text/javascript" src="/statics/admin/common/js/region.js"></script>
+<style>
+    #menu {
+        padding-top: 1rem;
+        background: #fff;
+    }
+
+    #menu ul {
+        display: flex;
+        margin: 0;
+    }
+
+    #menu li {
+        width: 6rem;
+        cursor: pointer;
+        height: 2rem;
+        line-height: 2rem;
+        text-align: center;
+        background-color: #F1F1F1;
+        overflow: hidden;
+        font-size: .8rem;
+        color: #111111;
+    }
+
+    #menu li .pstyle {
+        width: 70%;
+        height: 2px;
+        background: #339EFC;
+        margin: .5rem auto 0 auto;
+    }
+
+    #menu li.on {
+        color: #2196F3;
+        background: #F4F5FA;
+    }
+
+    .clear {
+        clear: both;
+    }
+
+    .data-content {
+        width: 100%;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .query-btn .btn-item {
+        margin-left: 0px;
+        height: auto;
+        min-height: 26px;
+    }
+
+    .table_div {
+        text-align: left;
+        font-size: 14px;
+    }
+
+    .table_div span {
+        margin-right: 15px;
+    }
+
+    .cell-adive {
+        width: 160px;
+    }
+
+    .cell-shopd {
+        width: 180px;
+    }
+
+    .table-bordered th.rowth {
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .tb-headstortg {
+        height: 50px;
+        line-height: 40px;
+    }
+
+    .tb-cell,
+    .tb-head {
+        display: block;
+        width: 50px;
+        overflow: hidden;
+        white-space: nowrap;
+        word-wrap: normal;
+        padding: 0 5px;
+    }
+
+    .borderline {
+        border-bottom: 1px solid #666;
+        display: inline-block;
+        margin-left: 10px;
+        width: 100px;
+    }
+
+    .tb-container {
+        width: 800px;
+        overflow: hidden;
+        overflow-x: auto;
+    }
+
+    .table-bordered th,
+    .table-bordered td {
+        border-left: 1px solid #dddddd;
+        color: #292929;
+        text-align: left;
+    }
+
+    .table-striped tbody>tr:nth-child(even)>td,
+    .table-striped tr:nth-child(odd)>th {
+        background-color: transparent;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+        margin: 0;
+    }
+
+    .mt_tbs {
+        display: flex;
+    }
+
+    /* .mt_tbs label{width: 70px;} */
+    .mta_div {
+        width: 100%;
+        display: flex;
+    }
+
+    .cop_label {
+        float: left;
+        margin-right: 10px;
+    }
+    select {
+    width: 100px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    height: 28px;
+    line-height: 28px;
+}
+.table-bordered th, .table-bordered td {
+     border: 0; 
+}
+.table-bordered{ border: 0;}
+</style>
+
+<body>
+    {template $this->template,'header',$this->style}
+    <div id="middle"> {template $this->template,'left',$this->style}
+        <div class="right" id="mainFrame">
+            <div class="right_cont">
+                <ul class="breadcrumb">
+                    当前位置： <a href="/?m=dataManage">首页</a> <span class="divider">/</span> <a href="javascript:;">会诊单</a>
+                </ul>
+                <div class="title_right">
+                    <strong>会诊单</strong>
+                </div>
+                <div style="width:auto;margin:auto;">
+                    <div class="query-form">
+                        <div class="form-item">
+                            <font>会诊日期</font>
+                            <div class="element" style="float: left;margin-left: 10px;margin-right: 25px;">
+                                <div class="element-text">
+                                    <input type="text" id="k" value="">
+                                </div>
+                            </div>
+                            <div class="query-btn">
+                                <div class="btn-item"> <a class="btn-query">查询</a> <a href="javascript:;"
+                                        class="btn-add" style="margin-left: 10px;">打印</a> </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="height: 20px;"></div>
+                    <div class="data-content">
+                        <div class="tb-container">
+                            <table class="table table-bordered table-striped" id="rstb">
+                                <caption align="top">
+                                    <h4><span style="color:#3a3939;font-size:16px;">上海交通大学医学院附属上海儿童医学中心</span><br><span
+                                            style="color: #000000;display: inline-block;font-size: 16px;padding-top: .5rem;">临床营养科会诊记录</span>
+                                    </h4>
+                                </caption>
+
+                                <tr>
+                                    <td>科室：<span class="borderline"> </span></td>
+                                    <td>床号：<span class="borderline"> </span></td>
+                                    <td>住院号：<span class="borderline"> </span></td>
+                                    <td>门诊号：<span class="borderline"> </span></td>
+                                </tr>
+                                <tr>
+                                    <td>姓名：<span class="borderline"> </span></td>
+                                    <td>性别：<span class="borderline"> </span></td>
+                                    <td>生日：<span class="borderline"> </span></td>
+                                    <td>目前年龄：<span class="borderline"> </span></td>
+                                </tr>
+                                <tr>
+                                    <td>入院日期：<span class="borderline" style="width: 100px;"> </span></td>
+                                    <td colspan="3">入院诊断：<span class="borderline" style="width: 521px;"> </span></td>
+                                </tr>
+                                <tr>
+                                    <td>会诊日期：<span class="borderline" style="width: 100px;"> </span></td>
+                                    <td colspan="3">目前诊断：<span class="borderline" style="width: 521px;"> </span></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">手术日期：<span class="borderline" style="width: 706px;"> </span></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">手术情况：<span class="borderline" style="width: 706px;"> </span></td>
+                                </tr>
+                                <tr>
+                                    <th colspan="5"><strong>体格测量</strong></th>
+                                </tr>
+                                <tr>
+                                    <td>身高：<span class="borderline"> </span></td>
+                                    <td>体重：<span class="borderline"> </span></td>
+                                    <td colspan="2">BIM(>5岁)：<span class="borderline"> </span></td>
+                                </tr>
+                                <tr>
+                                    <td>头围(<2岁)：<span class="borderline"> </span></td>
+                                    <td colspan="3">上臂围(>=2岁)：<span class="borderline"> </span></td>
+                                </tr>
+                                <tr>
+                                    <th colspan="5"><span style="font-size: 12px;color: #666;">新生儿</span></th>
+                                </tr>
+                                <tr>
+                                    <td>出生体重：<span class="borderline"> </span></td>
+                                    <td>G __ P __ </td>
+                                    <td colspan="2">胎龄：<span class="borderline"> </span></td>
+                                </tr>
+                                <tr>
+                                    <td>分娩方式：<span class="borderline"> </span></td>
+                                    <td colspan="3">Apgar Score：<span class="borderline"> </span></td>
+                                </tr>
+                                <tr>
+                                    <th colspan="4"><strong>饮食摄入</strong></th>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        <label class="cop_label"><input type="checkbox">禁食</label>
+                                        <label class="cop_label"><input type="checkbox">流质</label>
+                                        <label class="cop_label"><input type="checkbox">半流质</label>
+                                        <label class="cop_label"><input type="checkbox">软食</label>
+                                        <label class="cop_label"><input type="checkbox">普食</label>
+                                        <label class="cop_label"><input type="checkbox">特殊饮食</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        完成情况：<span class="borderline" style="width: 706px;"> </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th colspan="4"><strong>消化道症状</strong></th>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        <label class="cop_label"><input type="checkbox">腹疼</label>
+                                        <label class="cop_label"><input type="checkbox">恶心</label>
+                                        <label class="cop_label"><input type="checkbox">呕吐</label>
+                                        <label class="cop_label"><input type="checkbox">腹胀</label>
+                                        <label class="cop_label"><input type="checkbox">腹泻</label>
+                                        <label class="cop_label"><input type="checkbox">便秘</label>
+                                        <label class="cop_label"><input type="checkbox">出血</label>
+                                        <label class="cop_label"><input type="checkbox">溃疡</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        其他：<span class="borderline" style="width: 706px;"> </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th colspan="4"><strong>实验室检查</strong></th>
+                                </tr>
+                                <tr>
+                                    <td>ALB：<span class="borderline"> </span></td>
+                                    <td>Pre-ALB：<span class="borderline"> </span></td>
+                                    <td>HB：<span class="borderline"> </span></td>
+                                    <td>选择：<select class="region-item" id="J_province">
+                                            <option value="0">请选择</option>
+                                        </select></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        其他：<input type="text" style="width: 600px;margin-right: 10px;"><input type="button" value="保存" style="width: 50px;text-align: center;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th><strong>营养筛查(STAMP法)</strong>
+                                    <td colspan="3">评分：<span class="borderline"> </span></td>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th colspan="4"><strong>营养治疗计划</strong>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th colspan="5"><span style="font-size: 12px;color: #666;">营养支持指征</span></th>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        <label class="cop_label"><input type="checkbox">禁食>3天</label>
+                                        <label class="cop_label"><input type="checkbox">热卡摄入不足</label>
+                                        <label class="cop_label"><input type="checkbox">存在营养不良</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        其他：<span class="borderline" style="width: 706px;"> </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th colspan="5"><span style="font-size: 12px;color: #666;">营养支持方式</span></th>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        <label class="cop_label"><input type="checkbox">PN</label>
+                                        <label class="cop_label"><input type="checkbox">EN</label>
+                                        <label class="cop_label"><input type="checkbox">PN+EN</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th colspan="5"><span style="font-size: 12px;color: #666;">营养支持路径</span></th>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        <label class="cop_label"><input type="checkbox">CVC</label>
+                                        <label class="cop_label"><input type="checkbox">PVC</label>
+                                        <label class="cop_label"><input type="checkbox">PICC</label>
+                                        <label class="cop_label"><input type="checkbox">鼻胃</label>
+                                        <label class="cop_label"><input type="checkbox">鼻十二指肠</label>
+                                        <label class="cop_label"><input type="checkbox">鼻空肠</label>
+                                        <label class="cop_label"><input type="checkbox">胃造口</label>
+                                        <label class="cop_label"><input type="checkbox">PEG</label>
+                                        <label class="cop_label"><input type="checkbox">空肠造口</label>
+                                        <label class="cop_label"><input type="checkbox">PEJ</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        其他：<span class="borderline" style="width: 706px;"> </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th colspan="4"><strong>监测重点</strong></th>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        <label class="cop_label"><input type="checkbox">肝肾功能</label>
+                                        <label class="cop_label"><input type="checkbox">电解质</label>
+                                        <label class="cop_label"><input type="checkbox">凝血功能</label>
+                                        <label class="cop_label"><input type="checkbox">消化道症状</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        其他：<span class="borderline" style="width: 706px;"> </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="height: 70px;">会诊人：<span class="borderline"> </span></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="inner-page" id="innerPage"></div>
+      <div style="height: 200px;"></div>
+  
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var page = 1;
+    var datas = {};
+    $(function () {
+        laydate.render({
+            elem: '#k',
+            format: 'yyyy-MM-dd',
+            done: function (value, date, endDate) {
+                st = value;
+                //console.log(value); //得到日期生成的值，如：2017-08-18
+                //console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+                //console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+            }
+        });
+        var $list = $("#menu").find("li");
+        var $div = $("#tab-con").children("div");
+        $list.click(function () {
+            var index = $(this).index();
+            $list.eq(index).addClass("on").siblings().removeClass("on");
+            $div.eq(index).addClass("on").siblings().removeClass("on");
+            $(this).find("p").addClass("pstyle").parent().siblings().find('p').removeClass("pstyle");;
+        })
+        //getTable();
+        laydate.render({
+            elem: '#st',
+            format: 'yyyy-MM-dd',
+            done: function (value, date, endDate) {
+                st = value;
+                //console.log(value); //得到日期生成的值，如：2017-08-18
+                //console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+                //console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+            }
+        });
+        $('#J_close').on('click', function () {
+            window.history.back();
+        });
+    });
+
+    function getTable() {
+        var url = '/?m=dataManage&c=hospital&a=doctorList&ajax=1';
+        if (page > 1) url += '&page=' + page;
+        var index = layer.load(2, {
+            time: 3000
+        });
+        $.get(url, function (data) {
+            layer.close(index);
+            var html = '';
+            var pageCount = 0;
+            if (data.status == 0) {} else {
+                html = '<tr align="center"><td colspan="' + ($('.tb-head').length) + '">暂无数据</td></tr>';
+            }
+            $('#datas').html(html);
+            //initAction();
+            //if (page == 1) initPage(pageCount);
+        }, 'json');
+    }
+</script>
+
+</html>

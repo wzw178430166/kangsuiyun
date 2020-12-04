@@ -1,0 +1,549 @@
+<!--<head></head><body></body>-->
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="topcolor" rgba="44.172.252.1">
+<title>圈子列表</title>
+<meta name="keywords" content="医家讯,医家讯智能医疗设备,智能健康电子档案,个人健康、家庭健康,健康检测,心率监测,血糖监测,血压监测,睡眠监测,健康饮食,运动健美,亲友互动,运动圈子,医体健康,食动平衡,人工智能,健康管理,物联网,智能大数据">
+<meta name="description" content="医家讯智能医体健康平台通过智能紧急提醒、生命健康监测、智能穿戴设备及专业级智能医疗设备，结合物联网、云计算、健康大数据分析与呼叫中心，构建智能医体健康平台，让家人享受更健康、更安全、更舒心、更智慧化的生活，也让子女随时随地的了解父母的健康情况，及时表达爱心和孝心。">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/appstyle.css">
+<link href="/statics/plugin/videojsNew/css/video-js.min.css" rel="stylesheet">
+<!-- <script type="text/javascript" src="/statics/js/layer_mobile/layer.js"></script> -->
+
+<script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+<script src="/statics/currency/plug/layer/3.1.1/layer.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<script type="text/javascript" src="/statics/js/cookie.js"></script>
+<script type="text/javascript" src="/statics/languages/20181105/languages.js"></script>
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+<script src="/statics/plugin/videojsNew/js/video.min.js"></script>
+
+</head>
+<script>
+try{
+	jstojava.mycleargoback();
+	jstojava.close_toobar();
+}catch(e){  }
+clearInterval();
+clearTimeout();
+</script>
+
+<style>
+body { background: #FFF; }
+.topBox { position: fixed; top: 50px; background: #FFF; width: 100%; z-index: 11;}
+.topBox div { float: left; /*padding: .5rem;*/ padding: .5rem 1.1rem;
+color: #666; margin-left: .2rem;
+font-size: 1.1rem; }
+.topBox .check { color: #FE3341; font-weight: bold; font-size: 1.3rem; border-bottom: .2rem solid #FE3341;
+}
+.content { width: 100%; margin-top: 3rem; display: none; }
+.content .loopBox { width: 50%; float: left; height: 30.5rem; }
+.content .loopBox .tImg { height: 19rem; margin-top: 1rem; border-radius: .6rem;
+overflow: hidden; width: 95%; margin: 0 auto; }
+.noText { color: #999; width: 90%; text-align: center; margin-left: 5%; text-overflow: -o-ellipsis-lastline; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; height: 2.9rem; margin-top: .5rem;
+overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; }
+.ringTA { float: left; width: 33%; background: #F95D64; color: #FFF; border-radius: 1rem; text-align: center; margin-top: .69rem;
+height: 1.5rem; line-height: 1.69rem; }
+.ringTA img {
+width: .8rem; vertical-align: middle; margin-top: -0.3rem; }
+.headImg { width: 20%; text-align: center; float: left; }
+.headImg img { width: 80%; height: 80%; margin-top: 10%; border-radius: 100%; }
+.toMe { height: 3rem; width: 90%; margin-left: 5%; margin-top: .25rem;
+}
+.midBox {
+height: .09rem; width: 90%; background: #DDDBDB; margin: .5rem 0;
+margin-left: 5%; }
+.labelBox { color: #999; font-size: .8rem;
+width: 90%; margin-left: 5%; }
+.labelBox span { background: #F2F2F2; padding: .1rem .5rem;
+margin-right: .3rem;
+border-radius: .5rem;
+}
+.isAddBox { color: #5C5C5D; width: 90%; margin-left: 5%; margin-top: .3rem;
+}
+.isAddBox img { width: 1rem; vertical-align: middle; }
+.zoomImage { height: 0; padding-bottom: 149%; overflow: hidden; background-position: center center; background-repeat: no-repeat; -webkit-background-size: cover; -moz-background-size: cover; background-size: cover; border: 1px solid #eaeaea; }
+.operate-join { margin: 2rem 22.5%; width: 55%; height: 3rem; line-height: 3rem; border-radius: 3rem; background-color: #fd3f27; text-align: -webkit-center; color: #fff; font-size: 1.2rem; position: fixed; bottom: 0; }
+/**/
+.m-circle-follow { color: #333; }
+.m-circle-follow ul li {
+ padding: .8rem; position: relative; overflow: hidden; }
+.m-circle-follow ul li:after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 1px; border-bottom: 1px solid #e0e0e0; -webkit-transform: scaleY(0.5); transform: scaleY(0.5); -webkit-transform-origin: left top; transform-origin: left top; }
+.m-circle-follow .circle-head { width: 5rem; height: 5rem; float: left; border-radius: 50%; overflow: hidden; position: relative; }
+.circle-head:after { content: ''; position: absolute; left: 0; top: 0; border: 1px solid #e0e0e0; border-radius: 50%; width: 200%; height: 200%; -webkit-transform: scale(0.5); transform: scale(0.5); -webkit-transform-origin: left top; transform-origin: left top; }
+.circle-head img { display: block; width: 100%; }
+.m-circle-follow .circle-data { margin-left: 5.8rem; width: 16.5rem; padding: .3rem 0;
+}
+.circle-data .circle-name { font-size: 1.2rem; color: #333; }
+.circle-data .circle-content { color: #666; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.circle-data .circle-more { color: #666; }
+.m-circle-follow .operate-follow { position: absolute; right: .8rem;
+top: 50%; width: 4.4rem; padding: .2rem .8rem;
+transform: translate(0, -50%); font-size: .9rem;
+border-radius: 3rem; color: #fd3f27; text-align: center; }
+.operate-follow.active { color: #666; }
+.operate-follow:after { content: ''; position: absolute; left: 0; top: 0; border: 1px solid #fd3f27; border-radius: 2rem; width: 200%; height: 200%; -webkit-transform: scale(0.5); transform: scale(0.5); -webkit-transform-origin: left top; transform-origin: left top; }
+.operate-follow.active:after { border-color: #e0e0e0; }
+/**/
+.m-fans { color: #333; }
+.m-fans ul li {
+ padding: .8rem; position: relative; overflow: hidden; }
+.m-fans ul li:after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 1px; border-bottom: 1px solid #e0e0e0; -webkit-transform: scaleY(0.5); transform: scaleY(0.5); -webkit-transform-origin: left top; transform-origin: left top; }
+.m-fans .fans-head { width: 5rem; height: 5rem; float: left; border-radius: 50%; overflow: hidden; position: relative; }
+.fans-head:after { content: ''; position: absolute; left: 0; top: 0; border: 1px solid #e0e0e0; border-radius: 50%; width: 200%; height: 200%; -webkit-transform: scale(0.5); transform: scale(0.5); -webkit-transform-origin: left top; transform-origin: left top; }
+.fans-head img { display: block; width: 100%; }
+.m-fans .fans-data { margin-left: 5.8rem; width: 16.5rem; padding: .9rem 0;
+}
+.fans-data .fans-name { font-size: 1.2rem; color: #333; }
+.fans-data .fans-content { color: #666; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-top: .3rem;
+}
+.m-fans .operate-follow2 { position: absolute; right: .8rem;
+top: 50%; width: 5rem; padding: .2rem .6rem;
+transform: translate(0, -50%); font-size: .9rem;
+border-radius: 3rem; color: #fd3f27; text-align: center; }
+.operate-follow2.active { color: #666; }
+.operate-follow2:after { content: ''; position: absolute; left: 0; top: 0; border: 1px solid #fd3f27; border-radius: 2rem; width: 200%; height: 200%; -webkit-transform: scale(0.5); transform: scale(0.5); -webkit-transform-origin: left top; transform-origin: left top; }
+.operate-follow2.active:after { border-color: #e0e0e0; }
+.txtNoTwo { overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; }
+/**/
+.footer_box { width: 100%; overflow: hidden; height: 4rem; border-top: 1px solid #e3e3e7; background-color: #fff; position: fixed; left: 0; bottom: 0; z-index: 9; }
+.footer_box .footer { width: 20%; float: left; text-align: center; }
+.footer_box .footer img { width: 1.6rem; height: 1.6192rem; display: block; margin: 0.5rem auto 0 auto; }
+/**/
+.m-circle-recommend { padding: 0 .4rem;
+}
+.m-circle-recommend ul { overflow: hidden; }
+.m-circle-recommend ul li { width: 49%; margin-bottom: 1rem; }
+.m-circle-recommend ul li:nth-child(odd) { float: left; }
+.m-circle-recommend ul li:nth-child(even) { float: right; }
+.m-circle-recommend ul li .dynamic-img { height: 19rem; overflow: hidden;  border-radius: .5rem;
+background-position: center center; background-repeat: no-repeat; -webkit-background-size: cover; -moz-background-size: cover; background-size: cover; border: 1px #eee solid; position: relative;}
+.m-circle-recommend ul li .dynamic-desc { text-overflow: -o-ellipsis-lastline; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical;  margin: .5rem auto 0;
+width: 90%; height: 2.9rem; color: #999; }
+.m-circle-recommend ul li .circle-data {
+ margin: .4rem auto 0; width: 90%; }
+.circle-data .circle-logo { width: 2.1rem; height: 2.1rem; overflow: hidden; border-radius: 50%; float: left;
+}
+.circle-logo img { display: block; width: 100%; }
+.circle-data .circle-info { margin-left: 2.5rem; height: 2.1rem; padding-top: .2rem;}
+.circle-info p { line-height: 1.05rem; }
+.circle-info p:last-child {
+ font-size: .6rem; color: #B8B8B8;}
+.circle-info p:last-child font { color: #F44336; }
+/**/
+.playIco { position: absolute; background-color: rgba(0, 0, 0, 0.37); width: 4rem; height: 4rem; border-radius: 50%; left: 0; right: 0; top: 0; bottom: 0; margin: auto; }
+.playIco i { width: 0; height: 0; border-top: 1rem solid transparent; border-bottom: 1rem solid transparent; border-left: 1.5rem solid white; position: absolute; margin: auto; left: 0.4rem; right: 0; top: 0; bottom: 0; }
+</style>
+<body style="overflow: hidden; padding-bottom: 4.5rem;">
+<div class="headerBoxCircle" style="z-index: 1;"> <img src="/statics/images/goback_b.png" onClick="goback()" class="left">
+  <p class="midden"><span style='margin-left: .5rem;'>圈子列表</span><span style='float: right;font-size: .8rem;color: #FFF;background: #fd3f27;height: 25px;line-height: 25px;padding: 0 .5rem;border-radius: 25px;margin-top: 12.5px;margin-right: .5rem;' onClick="goo('createCircle.html')">创建圈子</span></p>
+</div>
+<div style="height: 50px;"></div>
+<div class="topBox">
+  <div>关注</div>
+  <!--<div>粉丝</div>-->
+  <div class="check">推荐</div>
+  <!--<div>健康饮食</div>
+  <div>养生保健</div>
+  <div>健身运动</div>-->
+  <div>健康</div>
+  <div>养生</div>
+  <div>医疗</div>
+  <div>运动</div>
+  <div style=" display: none;">生活</div>
+  <!--<img src="images/fenlei.png" style="width: 1.2rem;float: left;margin-top: 1rem;margin-left: 1.39rem;"/>--> </div>
+<div class="content">
+  <div class="m-circle-follow">
+    <ul id="follow">
+    </ul>
+  </div>
+</div>
+<!----> 
+<!--<div class="content">
+  <div class="m-fans">
+    <ul id="fans">
+    </ul>
+  </div>
+</div>--> 
+<!---->
+<div class="content" style="display: block;">
+  <div class="m-circle-recommend" style=" display: none;">
+    <ul id="recommend">
+    </ul>
+  </div>
+</div>
+<!---->
+<div class="content"></div>
+<!---->
+<div class="content"> </div>
+<!---->
+<div class="content"> </div>
+<!---->
+<div class="content"> </div>
+<!---->
+<div class="content"> </div>
+<!--<div class="operate-join" onClick="goo('createCircle.html')">创建自己的圈子'</div>-->
+<div id='tplBox' style='display: none;'>
+  <div class="loopBox">
+    <div class='tImg'>
+      <div class="zoomImage"></div>
+    </div>
+    <div class="noText"></div>
+    <div class="toMe">
+      <div class="headImg"><img src=""></div>
+      <div style="float: left;width: 47%;" class='mTxt'>
+        <div style="font-size: 1rem;margin-top: .1rem;" class="txtNoTwo"></div>
+        <div style="color: #B8B8B8;font-size: .6rem;margin-top: -.2rem;">已有<font style="color: #F95D64;">300人</font>关注</div>
+      </div>
+      <div class="ringTA"><img src="images/iconquanzi.png"/> <font style='font-size: .88rem;'>关注</font></div>
+    </div>
+    <div class='midBox'></div>
+    <div class='labelBox'></div>
+    <!--		<div class='isAddBox'><img src='images/choosehandle.png'/> 商务交流沙龙成员</div>--></div>
+</div>
+<span id="footer_box" v-html="url1"></span>
+</body>
+</html>
+<script>
+function goindex(){
+  	 if(getUrlParam('mobile') == 'ios' && Number(getUrlParam('version'))>=2019081502){
+     goo('/');
+     }else{
+     goo('/index/');
+     }
+  }
+  function getfooter() {
+            $('#footer_box').load('/h5page/heal_pro/footer.html', function () {
+            });
+        }
+var page = 1;
+var tmpCids = {};
+/*window.onscroll = function(){
+	if ($(document).scrollTop() >= $(document).height() - $(window).height()){
+		console.log("滚动条已经到达底部为" + $(document).scrollTop());
+		page++;
+	}
+};*/
+var loaded = 0;
+$(function(){
+	getfooter();
+	$('body').append('<div id="player"  style="position: absolute;display:none"></div>');
+	$('#player').load('/circleN/player.html');
+	getData();
+	if (1||2==userid_) {
+		getFollow();
+		//getFans();
+		//getRecommend();
+	}
+	if (1||2==userid_) {
+		$('.m-circle-recommend').show();
+		getRecommend();
+	}
+	$(window).on('scroll',function(){
+		myscroll();
+	});
+})
+function myscroll(){
+	if(loaded!=1){
+		//变量scrollTop是滚动条滚动时，距离顶部的距离
+		var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+		//var scrollTop = document.getElementById('J_content').scrollTop;
+		//变量windowHeight是可视区的高度
+		var windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+		//var windowHeight = document.getElementById('J_content').clientHeight;
+		//变量scrollHeight是滚动条的总高度
+		var scrollHeight = document.documentElement.scrollHeight||document.body.scrollHeight;
+		//var scrollHeight = document.getElementById('datas').scrollHeight;
+		//console.log(scrollTop+'**'+windowHeight+'**'+scrollHeight);return;
+		if(scrollTop+windowHeight>=scrollHeight){
+			loaded=1;
+			page++;
+			window.setTimeout("getRecommend()",300);
+		}
+	}
+}
+function getRecommend(){
+	var url = '/?m=circleN&c=datas&a=getRecDynamic&ajax=1';
+	if (1 < page) url += '&page='+page;
+	$.ajax({
+		url: url,
+		type: "GET",
+		dataType: "JSON",
+		success: function(data){
+			if (1==data.status) {
+				loaded = 0;
+				var datas = data.data.datas;
+				var circle = data.data.circle;
+				var html = '';
+				for(var i in datas){
+					var info = datas[i];
+					var _circle = {};
+					if (0<info.cid&&circle[info.cid]) {
+						_circle = circle[info.cid];
+					} else {
+						_circle = {"id":0,"name":"","logo":"","member_c":0};
+					}
+					var videoStr = '';
+					if (info.video) {
+						videoStr = '<div class="playIco" onClick="goplay(\''+info.video+'\')"><i></i></div>';
+					}
+					//<img src="'+info.imgs+'">
+					var follow = randomNum(1,100);//_circle.member_c
+					html += '<li onClick="goo(\'/circleN/contentDetail.html?target=top&type=1&id='+info.id+'&cid='+info.cid+'\')"><div class="dynamic-img" style=" background-image: url('+info.imgs+')">'+videoStr+'</div><p class="dynamic-desc">'+info.description+'</p><div class="circle-data" onClick="gooCircle(\'indexInside.html?target=top&cid='+_circle.id+'\')"><div class="circle-logo"><img src="'+_circle.logo+'"></div><div class="circle-info"><p>'+_circle.name+'</p><p>已有<font>'+follow+'人</font>关注</p></div></div></li>';
+				}
+				$('#recommend').append(html);
+			}
+		}
+	});
+}
+function randomNum(minNum,maxNum){ 
+    switch(arguments.length){ 
+        case 1: 
+            return parseInt(Math.random()*minNum+1,10); 
+        break; 
+        case 2: 
+            return parseInt(Math.random()*(maxNum-minNum+1)+minNum,10); 
+        break; 
+            default: 
+                return 0; 
+            break; 
+    } 
+}
+function gooCircle(url){
+	window.event? window.event.cancelBubble = true : e.stopPropagation();
+	if (!url) return false;
+	goo(url);
+}
+function goplay(url_){
+	window.event? window.event.cancelBubble = true : e.stopPropagation();
+	var b = new Base64(); 
+	url_ = b.encode(url_);
+	$('#player').css({'top':$(window).scrollTop()});
+	$('html').css({'overflow':'hidden'});
+	$('#player').show();
+	console.log('player.goplay("'+url_+'");');
+	player.goplay(url_,1);
+}
+function closeplayer(){
+	$('#player').hide();
+	$('html').css({'overflow':'auto'});
+}
+function getFollow(){
+	var url = '/?m=circleN&c=datas&a=getCircleFollow&ajax=1';
+	$.ajax({
+		url: url,
+		type: "GET",
+		dataType: "JSON",
+		success: function(data){
+			if (1==data.status) {
+				var datas = data.data.datas;
+				var circle = data.data.circle;
+				var html = '';
+				for(var i in datas){
+					var info = datas[i];
+					var _circle = {};
+					if (0<info.cid&&circle[info.cid]) {
+						_circle = circle[info.cid];
+					} else {
+						continue;
+					}
+					html += '<li onclick="goo(\'indexInside.html?target=top&cid='+_circle.id+'\')"><div class="circle-head"><img src="'+_circle.logo+'"></div><div class="circle-data"><p class="circle-name">'+_circle.name+'</p><p class="circle-content">'+_circle.content+'</p><div class="circle-more"><div class="more-item">粉丝数：'+_circle.member_c+'</div></div></div><div class="operate-follow active" data-circle-id="'+_circle.id+'">已关注</div></li>';
+				}
+				$('#follow').append(html);
+				initOperate();
+			}
+		}
+	});
+}
+function getFans(){
+	var url = '/?m=circleN&c=datas&a=getFans&ajax=1';
+	$.ajax({
+		url: url,
+		type: "GET",
+		dataType: "JSON",
+		success: function(data){
+			if (1==data.status) {
+				var datas = data.data.datas;
+				var member = data.data.member;
+				var follow = data.data.follow;
+				var html = '';
+				for(var i in datas){
+					var info = datas[i];
+					var _member = {};
+					if (0<info.from_uid&&member[info.from_uid]) {
+						_member = member[info.from_uid];
+					} else {
+						continue;
+					}
+					var operateStr = '';
+					var operateActive = '';
+					if (-1==$.inArray(info.from_uid,follow)) {
+						operateStr = '关注';
+					} else {
+						operateStr = '相互关注';
+						operateActive = 'active';
+					}
+					html += '<li onclick="goo(\'/circleN/indexHome.html?toUid='+_member.userid+'\')"><div class="fans-head"><img src="'+_member.head+'"></div><div class="fans-data"><p class="fans-name">'+_member.cn_nickname+'</p><p class="fans-content">'+(_member.describe?_member.describe:'暂无简介')+'</p></div><div class="operate-follow2 '+operateActive+'" data-to-userid="'+_member.userid+'">'+operateStr+'</div></li>';
+				}
+				$('#fans').append(html);
+				initOperate2();
+			}
+		}
+	});
+}
+function initOperate(){
+	$('.operate-follow').unbind('click');
+	var item1 = $('.operate-follow');
+	item1.each(function(i) {
+        $(item1[i]).on('click',function(event){
+			event.stopPropagation();
+			var cid = $(this).attr('data-circle-id');
+			if ($(this).hasClass('active')) {
+				layer.open({
+					content: '您确定要取消关注'
+					,btn: ['确定', '关闭']
+					,yes: function(index){
+						$.ajax({
+							url:'/?m=circleN&a=exitCircle',
+							type:'POST',
+							data:'cid='+cid,
+							success:function(da){
+								layer.closeAll();
+								$(item1[i]).text('关注');
+								$(item1[i]).removeClass('active');
+							}
+						})
+					}
+				});
+			} else {
+				$.ajax({
+					url:'/?m=circleN&a=joinCircle',
+					type:'POST',
+					data:'cid='+cid,
+					success:function(da){
+						layer.closeAll();
+						$(item1[i]).text('已关注');
+						$(item1[i]).addClass('active');
+					}
+				})
+			}
+		});
+    });
+	
+}
+function initOperate2(){
+	$('.operate-follow2').unbind('click');
+	var item1 = $('.operate-follow2');
+	item1.each(function(i) {
+        $(item1[i]).on('click',function(event){
+			event.stopPropagation();
+			var toUid = $(this).attr('data-to-userid');
+			if ($(this).hasClass('active')) {
+				layer.open({
+					content: '您确定要取消关注'
+					,btn: ['确定', '关闭']
+					,yes: function(index){
+						$.ajax({
+							url:'/?m=circleN&a=followSave',
+							type:'POST',
+							data:'type=2&toUid='+toUid,
+							success:function(da){
+								layer.closeAll();
+								$(item1[i]).text('关注');
+								$(item1[i]).removeClass('active');
+							}
+						})
+					}
+				});
+			} else {
+				$.ajax({
+					url:'/?m=circleN&a=followSave',
+					type:'POST',
+					data:'type=1&toUid='+toUid,
+					success:function(da){
+						layer.closeAll();
+						$(item1[i]).text('相互关注');
+						$(item1[i]).addClass('active');
+					}
+				})
+			}
+		});
+    });
+	
+}
+function getData(){
+	$.ajax({
+		url:'/?m=circleN&a=getMyCircleList&page='+page,
+		data:'',
+		dataType:'json',
+		success:function(da){
+			if(da.status == -1) goo('/member/login.html?forward='+location.href);
+			tmpCids = da.tmpCids;
+			if(1>3&&!$.isEmptyObject(da.myDa)) for(i in da.myDa) if(da.dynamic[da.myDa[i].id]) setTplData(da.dynamic[da.myDa[i].id].imgs,da.dynamic[da.myDa[i].id].content,da.myDa[i].logo,da.myDa[i].name,da.myDa[i].member_c,da.myDa[i].tips,da.myDa[i].id,0);
+			
+			if(2>userid_&&!$.isEmptyObject(da.rdDa)) for(i in da.rdDa) if(da.dynamic[da.rdDa[i].id]) setTplData(da.dynamic[da.rdDa[i].id].imgs,da.dynamic[da.rdDa[i].id].content,da.rdDa[i].logo,da.rdDa[i].name,da.rdDa[i].member_c,da.rdDa[i].tips,da.rdDa[i].id,1);
+			
+			if(!$.isEmptyObject(da.type1)) for(i in da.type1) if(da.dynamic[da.type1[i].id]) setTplData(da.dynamic[da.type1[i].id].imgs,da.dynamic[da.type1[i].id].content,da.type1[i].logo,da.type1[i].name,da.type1[i].member_c,da.type1[i].tips,da.type1[i].id,2);
+			
+			if(!$.isEmptyObject(da.type2)) for(i in da.type2) if(da.dynamic[da.type2[i].id]) setTplData(da.dynamic[da.type2[i].id].imgs,da.dynamic[da.type2[i].id].content,da.type2[i].logo,da.type2[i].name,da.type2[i].member_c,da.type2[i].tips,da.type2[i].id,3);
+			
+			if(!$.isEmptyObject(da.type3)) for(i in da.type3) if(da.dynamic[da.type3[i].id]) setTplData(da.dynamic[da.type3[i].id].imgs,da.dynamic[da.type3[i].id].content,da.type3[i].logo,da.type3[i].name,da.type3[i].member_c,da.type3[i].tips,da.type3[i].id,4);
+			
+			if(!$.isEmptyObject(da.type4)) for(i in da.type4) if(da.dynamic[da.type4[i].id]) setTplData(da.dynamic[da.type4[i].id].imgs,da.dynamic[da.type4[i].id].content,da.type4[i].logo,da.type4[i].name,da.type4[i].member_c,da.type4[i].tips,da.type4[i].id,5);
+			
+			if(!$.isEmptyObject(da.type5)) for(i in da.type5) if(da.dynamic[da.type5[i].id]) setTplData(da.dynamic[da.type5[i].id].imgs,da.dynamic[da.type5[i].id].content,da.type5[i].logo,da.type5[i].name,da.type5[i].member_c,da.type5[i].tips,da.type5[i].id,6);
+			
+			$('.ringTA').each(function(){
+				var _this = this;
+				$(this).click(function(){
+					goo('indexInside.html?target=top&addClass=1&cid='+$(_this).parent().parent().attr('cid'));
+					return false;
+					goo('/circleN/?ac=hezuo&cid='+$(_this).parent().parent().attr('cid'));
+				})
+			})
+			$('.loopBox').each(function(){
+				var _this = this;
+				$(this).click(function(){
+					goo('indexInside.html?target=top&cid='+$(_this).attr('cid'));
+				})
+				/*if($(this).index() % 2 == 1){
+					$(this).css({'height':'26rem'});
+					$(this).find('.tImg').css('height','auto');
+				}else{
+					if($(this).prev().hasClass('loopBox')) $(this).css({'margin-top':'-5rem'});
+				}*/
+			})
+			
+		}
+	})
+}
+function setTplData(tImg,content,logo,name,member_c,tips,cid,index){
+	if(tImg.indexOf("video=>") != -1) tImg = tImg.replace("video=>",'');
+	var html = $('#tplBox');
+	$(html).find('.zoomImage').css('background-image','url('+tImg+')');
+	$(html).find('.noText').text(content);
+	$(html).find('.headImg img').attr('src',logo);
+	$(html).find('.mTxt div').eq(0).text(name);
+	$(html).find('.mTxt div').eq(1).find('font').text(member_c+'人');
+	if(tips) var tipsArr = tips.split(',');
+	var tipsTxt = '';
+	if(tips) for(var i=0;i<tipsArr.length;i++) if(tipsArr[i] != '') tipsTxt += '<span>'+tipsArr[i]+'</span>';
+	$(html).find('.labelBox').html(tipsTxt?'标签：'+tipsTxt:'暂无标签');
+	$(html).find('.ringTA').unbind();
+	$(html).find('.loopBox').attr('cid',cid);
+	if(tmpCids&&tmpCids[cid]) $(html).find('.ringTA').hide();else $(html).find('.ringTA').show();
+	$('.content').eq(index).append($(html).html());
+}
+$('.topBox div').click(function(){
+	$('.topBox div').removeClass('check');
+	$(this).addClass('check');
+	$('.content').hide();
+	$('.content').eq($(this).index()).show();
+})
+</script>

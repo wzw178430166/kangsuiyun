@@ -1,0 +1,1275 @@
+<!--<head></head><body></body>-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0056)http://www.yjxun.cn/equipment/equipment_list.html?t=kuai -->
+<html xmlns="http://www.w3.org/1999/xhtml" style="font-size: 13.8px;" class="hb-loaded">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="topcolor" rgba="44.172.252.1">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+<link rel="stylesheet" type="text/css" href="statics/css/fonts/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="css/tk.css">
+<script type="text/javascript" src="/statics/js/jquery.min.js"></script>
+<script type="text/javascript" src="/statics/js/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<script type="text/javascript" src="/statics/js/echarts_4.common.min.js"></script>
+<script src="/statics/js/datePicker.js"></script>
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+<script type="text/javascript" src="/statics/languages/20181105/languages.js"></script>
+<title set-lan="html:health_reminder">健康提醒</title>
+<meta name="keywords" content="医家讯,医家讯智能医疗设备,智能健康电子档案,个人健康、家庭健康,健康检测,心率监测,血糖监测,血压监测,睡眠监测,健康饮食,运动健美,亲友互动,运动圈子,医体健康,食动平衡,人工智能,健康管理,物联网,智能大数据">
+<meta name="description" content="医家讯智能医体健康平台通过智能紧急提醒、生命健康监测、智能穿戴设备及专业级智能医疗设备，结合物联网、云计算、健康大数据分析与呼叫中心，构建智能医体健康平台，让家人享受更健康、更安全、更舒心、更智慧化的生活，也让子女随时随地的了解父母的健康情况，及时表达爱心和孝心。">
+<script>
+
+function placeholderPic(){
+
+	var w = document.documentElement.offsetWidth;
+
+	document.documentElement.style.fontSize=w/30+'px';
+
+}
+
+placeholderPic();
+
+$('body').height(window.screen.height);
+
+$('body').width(window.screen.width);
+
+window.onresize = function(){
+
+	placeholderPic();
+
+	$('body').height(window.screen.height);
+
+	$('body').width(window.screen.width);
+
+}
+
+</script>
+<style>
+.f_hda { font-weight: 600; }
+</style>
+</head>
+
+<body huaban_collector_injected="true">
+<div class="header_box"> <img src="/statics/images/goback_b.png" class="left">
+  <p class="midden" set-lan="html:health_reminder">健康提醒</p>
+</div>
+<div class="h50"></div>
+<div class="device_box">
+  <div class="chat-data" onclick="goo('./jktx_kith.html')"> <img class="user-img img-circle" src="images/tk.png" alt="user">
+    <div class="user-data"> <span class="name block capitalize-font"><u set-lan="html:health_reminder_of_RF">亲友健康提醒</u><span class="pull-right"><font id="utime"></font></span></span> <span class="time block truncate txt-grey"><u set-lan="html:your_RF">您的亲友</u>[ <font id="unick"></font> ]<u set-lan="html:with_new_exception_data_reminding_FYA">有新的异常数据提醒，请注意。</u></span> </div>
+    <div class="status away" style="display: none;"></div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="fenele03">
+    <div class="find_nav">
+      <div class="find_nav_left">
+        <div class="find_nav_list" id="pagenavi1">
+          <ul>
+            <li class="tnd_l"><a href="#" class="active" set-lan="html:reminding_record">提醒记录</a></li>
+            <li class="tnd_l"><a href="#" set-lan="html:history_record">历史记录</a></li>
+            <li class="tnd_r"><a href="#" set-lan="html:trend_map">趋势图</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="slider1" class="swipe">
+      <ul class="box01_list">
+        <li class="li_list" style="">
+          <div class="">
+            <div class="tx_jl_t03"> <u set-lan="html:my_health_reminder_record">我的健康提醒记录</u> <span class="qk03" onclick="del_id_txt()" set-lan="html:clean_record">清除记录</span> <span class="qk03" onclick="get_all_msgid()" style="display: none;" set-lan="html:total_selection">全选</span> <span class="qk03" onclick="get_del_msgid()" style="display: none;" set-lan="html:immediately_delete">立即删除</span> <span class="qk03" onclick="del_id_no()" style="display: none;" set-lan="html:cancel_operation">取消操作</span> </div>
+            <div class="tx_jl_shu03 tx_jl03"> </div>
+          </div>
+        </li>
+        <li class="li_list" style="">
+          <div class="">
+            <div class="tx_jl_t03" set-lan="html:my_health_reminder_record">我的历史提醒记录</div>
+            <div class="tx_jl_shu03 tx_jl03"> </div>
+          </div>
+        </li>
+        <li class="li_list">
+          <div class="tx_jl_t03 shij03"> <span id="start_t">2018-03</span><img src="images/xiala.png">&nbsp;&nbsp;至&nbsp;&nbsp; <span id="start_e">2018-04</span><img src="images/xiala.png">&nbsp;&nbsp; <span onclick="search_data()" set-lan="html:sure">确定</span> </div>
+          <div id="main" style="height:210px;background: #FFF;margin-top: 3%;"></div>
+          <div id="main2" style="height:210px;background: #FFF;margin-top: 3%;"></div>
+          <div id="main3" style="height:210px;background: #FFF;margin-top: 3%;"></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="js/jquery.min.js"></script> 
+<script type="text/javascript" src="js/touchslider.js"></script>
+</body>
+<script type="text/javascript">
+var page = 1;
+var page2 = 1;
+var page3 = 1;
+var loads = 0;
+var msgid = ',';
+
+var userid = getQueryString('userid')?getQueryString('userid'):0;
+
+var ss = getQueryString('ss')?getQueryString('ss'):0;
+
+var is_ech = 0;
+
+var del_is = 0;
+
+var all_del = 0;
+
+var da_count = 0;
+
+if(ss == 1) $('.chat-data').hide();
+
+window.onscroll = function(){
+
+	if ($(document).scrollTop() <= 0 && is_ech == 0){
+
+		console.log("滚动条已经到达顶部为0");
+
+	}
+
+	if ($(document).scrollTop() >= $(document).height() - $(window).height() && is_ech == 0){
+
+		get_data();//获取下一组数据
+
+		console.log("滚动条已经到达底部为" + $(document).scrollTop());
+
+	}
+
+};
+
+$('.header_box img').click(function(){
+	setCookie('get_new_data',1);
+	goback();
+
+	return;
+
+	/*try{
+
+		jstojava.setResult('jktx_data',da_count);
+
+		jstojava.goback();   
+
+	return;
+
+	}catch(e){
+
+		goback();
+
+		console.error(e); 
+
+	}*/
+
+})
+
+var calendar_s = new datePicker();
+
+calendar_s.init({
+
+    'trigger': '#start_t', /*按钮选择器，用于触发弹出插件*/
+
+    'type': 'ym',/*模式：date日期；datetime日期时间；time时间；ym年月；*/
+
+    'minDate':'1970-01-01',/*最小日期*/
+
+    'maxDate':'2520-12-31',/*最大日期*/
+
+    'onSubmit':function(){/*确认时触发事件*/
+
+        var theSelectData = calendar_s.value;
+
+		$('#start_t').text(theSelectData);
+
+    },
+
+    'onClose':function(){/*取消时触发事件*/
+
+    }
+
+});
+
+var calendar_e = new datePicker();
+
+calendar_e.init({
+
+    'trigger': '#start_e', /*按钮选择器，用于触发弹出插件*/
+
+    'type': 'ym',/*模式：date日期；datetime日期时间；time时间；ym年月；*/
+
+    'minDate':'1970-01-01',/*最小日期*/
+
+    'maxDate':'2520-12-31',/*最大日期*/
+
+    'onSubmit':function(){/*确认时触发事件*/
+
+        var theSelectData = calendar_e.value;
+
+		$('#start_e').text(theSelectData);
+
+    },
+
+    'onClose':function(){/*取消时触发事件*/
+
+    }
+
+});
+
+function search_data(){
+
+	if($('#start_e').text() < $('#start_t').text()){
+
+		layer.open({
+
+			content: '您选择的日期不正确！'
+
+			,skin: 'msg'
+
+			,time: 2 //2秒后自动关闭
+
+		});
+
+		return;
+
+	}
+
+	get_data_all($('#start_t').text(),$('#start_e').text());
+
+}
+
+search_data();
+
+$(function(){
+	get_data();
+
+	get_msg_num();
+
+	get_top_ech();
+
+	get_mmhg_ech();
+
+	get_bpm_ech();
+
+})
+var is_load = 0;
+var is_load_ = 0;
+function get_data(){
+	if($('.find_nav_cur').index() == 0){
+		if(is_load == 1) return;
+	
+	$.ajax({
+
+		url:'/?m=medical&c=kith&a=get_datas&page='+page2,
+
+		type:'POST',
+
+		data:'judge=1&userid='+userid,
+
+		dataType:'json',
+
+		success:function(daa){
+			if(daa.hdata.length == 0){
+				is_load = 1;
+				return;
+			}
+			var txt = '';
+
+			var a = 'none';
+
+			if(del_is == 1) a = '';
+
+			var iii = '';
+
+			for(i in daa.hdata){
+
+				msgid += daa.hdata[i].messageid+',';
+
+				var img_n = 'dian03';
+
+				if(daa.hdata[i].is_look == 0) img_n = 'dian03_';
+
+				txt += '<div class="list-unstyled" da_mid="'+daa.hdata[i].messageid+'"><div class="by-me"><div class="avatar pull-left" style="position:relative"><img style="width:40px;height:40px;border-radius:50%;" src="'+daa.portrait+'" alt=""><i class="fa fa-square-o" style="display:'+a+';position: absolute;color: #2dacfd;font-size: x-large;bottom: -100%;left: 25%;"></i><i class="fa fa-check-square-o" msgid="'+daa.hdata[i].messageid+'" style="display:none;position: absolute;color: #2dacfd;font-size: x-large;bottom: -100%;left: 25%;"></i></div><div class="chat-content"><div class="chat-meta"><img class="dian03" src="images/'+img_n+'.png">'+daa.hdata[i].subject+' <span class="pull-right">'+set_time_str(daa.hdata[i].message_time)+'</span></div>'+daa.hdata[i].content+'<div class="clearfix"></div></div></div></div>';
+
+			}
+			page2++;
+			da_count = daa.da_count;
+
+			$('.tx_jl03').eq(0).append(txt);
+
+			k_square();
+
+			set_look_data();
+			StranBody();
+		}
+
+	})
+	}
+	if($('.find_nav_cur').index() == 1 || loads == 0){
+		loads = 1;
+		if(is_load_ == 1) return;
+	$.ajax({
+
+		url:'/?m=medical&c=kith&a=get_datas&page='+page3,
+
+		type:'POST',
+
+		data:'judge=1&userid='+userid+'&type=1',
+
+		dataType:'json',
+
+		success:function(daa){
+			if(daa.hdata.length == 0){
+				is_load_ = 1;
+				return;
+			}
+			var txt = '';
+
+			var a = 'none';
+
+			if(del_is == 1) a = '';
+
+			var iii = '';
+
+			for(i in daa.hdata){
+
+				var img_n = 'dian03';
+
+				if(daa.hdata[i].is_look == 0) img_n = 'dian03_';
+
+				txt += '<div class="list-unstyled"><div class="by-me"><div class="avatar pull-left" style="position:relative"><img style="width:40px;height:40px;border-radius:50%;" src="'+daa.portrait+'" alt=""><i class="fa fa-square-o" style="display:'+a+';position: absolute;color: #2dacfd;font-size: x-large;bottom: -100%;left: 25%;"></i><i class="fa fa-check-square-o" msgid="'+daa.hdata[i].messageid+'" style="display:none;position: absolute;color: #2dacfd;font-size: x-large;bottom: -100%;left: 25%;"></i></div><div class="chat-content"><div class="chat-meta"><img class="dian03" src="images/'+img_n+'.png">'+daa.hdata[i].subject+' <span class="pull-right">'+set_time_str(daa.hdata[i].message_time)+'</span></div>'+daa.hdata[i].content+'<div class="clearfix"></div></div></div></div>';
+
+			}
+			page3++;
+			$('.tx_jl03').eq(1).append(txt);
+
+			k_square();
+
+		}
+
+	})
+	}
+	//page_ = page_ * 1 + 1 * 1;
+
+}
+
+function set_look_data(){
+
+	$('.list-unstyled').click(function(){
+
+		var mid = $(this).attr('da_mid');
+
+		if($(this).find('.dian03').attr('src') == 'images/dian03_.png' && da_count > 0) da_count--;
+
+		$(this).find('.dian03').attr('src','images/dian03.png');
+
+		$.ajax({
+
+			url:'/?m=medical&c=kith&a=update_msg_look',
+
+			type:'POST',
+
+			data:'mid='+mid+'&uid='+userid,
+
+			success:function(da){ }
+
+		})
+
+	})
+
+}
+
+function k_square(){
+
+	$('.fa-square-o').click(function(){
+
+		all_del = 0;
+
+		$(this).hide();
+
+		$(this).next().show();
+
+	})
+
+	$('.fa-check-square-o').click(function(){
+
+		all_del = 0;
+
+		$(this).hide();
+
+		$(this).prev().show();
+
+	})
+
+}
+
+function get_data_all(s_time,e_time){
+
+	$.ajax({
+
+		url:'/?m=medical&c=kith&a=get_datas',
+
+		type:'POST',
+
+		data:'judge=22&userid='+userid+'&s_time='+s_time+'&e_time='+e_time,
+
+		dataType:'json',
+
+		success:function(daa){
+
+			var ech_bpm_time = new Array(),ech_bpm_data = new Array();
+
+			var ech_mmhg_time = new Array(),ech_mmhg_data_high = new Array(),ech_mmhg_data_low = new Array();
+
+			var bpm_daa = daa.bpm;
+
+			var mmhg_daa = daa.mmhg;
+
+			for(i in bpm_daa){
+
+				ech_bpm_time.push(i);
+
+				ech_bpm_data.push(bpm_daa[i]);
+
+			}
+
+			for(i in mmhg_daa){
+
+				ech_mmhg_time.push(i);
+
+				ech_mmhg_data_high.push(mmhg_daa[i]['high_num']);
+
+				ech_mmhg_data_low.push(mmhg_daa[i]['low_num']);
+
+			}
+
+			get_bpm_ech(ech_bpm_time,ech_bpm_data);
+
+			get_mmhg_ech(ech_mmhg_time,ech_mmhg_data_high,ech_mmhg_data_low);
+
+			get_top_ech(daa.c_mmhg,daa.c_bpm);
+			StranBody();
+		}
+
+	})
+
+}
+
+function get_all_msgid(){
+
+	$('.fa-square-o').click();
+
+	all_del = 1;
+
+}
+
+function del_id_txt(){
+
+	del_is = 1;
+
+	$('.fa-square-o').show();
+
+	$('.qk03').eq(0).hide();
+
+	$('.qk03').eq(1).show();
+
+	$('.qk03').eq(2).show();
+
+	$('.qk03').eq(3).show();
+
+}
+
+function get_del_msgid(){
+
+	msgid = '';
+
+	$('.fa-check-square-o').each(function(i){
+
+		if(!$(this).is(':hidden')) msgid += $(this).attr('msgid')+',';
+
+	})
+
+	layer.open({
+
+		content: '您确定要删除选中消息吗？',
+
+		btn: ['确定', '不要'],
+
+		yes: function(index){
+
+			$('.fa-check-square-o').each(function(i){
+
+				if(!$(this).is(':hidden')) $(this).parent().parent().parent().remove();
+
+			})
+
+			$('.fa-check-square-o').hide();
+
+			$('.fa-square-o').hide();
+
+			layer.close(index);
+
+			del_id_no();
+
+			if(msgid == '') return;
+
+			$.ajax({
+
+				url:'/?m=medical&c=kith&a=get_datas',
+
+				type:'POST',
+
+				data:'judge=2&msgid='+msgid+'&userid='+userid+'&all_del='+all_del,
+
+				success:function(da){ }
+
+			})
+
+		}
+
+	});
+
+}
+
+function del_id_no(){
+
+	$('.fa-check-square-o').hide();
+
+	$('.fa-square-o').hide();
+
+	$('.qk03').eq(0).show();
+
+	$('.qk03').eq(1).hide();
+
+	$('.qk03').eq(2).hide();
+
+	$('.qk03').eq(3).hide();
+
+}
+
+function get_msg_num(){
+
+	$.ajax({
+
+		url:'/?m=medical&c=kith&a=get_datas',
+
+		type:'POST',
+
+		data:'judge=3',
+
+		dataType:'json',
+
+		success:function(da){
+
+			console.log(da);
+
+			if(da != ''){
+
+				$('#unick').text(da.uname);
+
+				$('#utime').text(da.utime);
+
+				$('.away').show();
+
+			}else{
+
+				$('.truncate').text('暂无其他最新异常数据提醒！');
+
+			}
+
+		}
+
+	})
+
+}
+
+$(".find_nav_list").css("left",0);
+
+
+
+$(".find_nav_list li").each(function(){
+
+		$(".sideline").css({left:0});
+
+		$(".find_nav_list li").eq(0).addClass("find_nav_cur").siblings().removeClass("find_nav_cur");
+
+});
+
+var nav_w=$(".find_nav_list li").first().width();
+
+$(".sideline").width(nav_w);
+$('.tx_jl03').eq(1).hide();
+$(".find_nav_list li").on('click', function(){
+if($(this).index() == 0){
+	$('.tx_jl03').eq(0).show();
+	$('.tx_jl03').eq(1).hide();
+}
+if($(this).index() == 1){
+	$('.tx_jl03').eq(1).show();
+	$('.tx_jl03').eq(0).hide();
+}
+	nav_w=$(this).width();
+
+	$(".sideline").stop(true);
+
+	$(".sideline").animate({left:$(this).position().left},300);
+
+	$(".sideline").animate({width:nav_w});
+
+	$(this).addClass("find_nav_cur").siblings().removeClass("find_nav_cur");
+
+	var fn_w = ($(".find_nav").width() - nav_w) / 2;
+
+	var fnl_l;
+
+	var fnl_x = parseInt($(this).position().left);
+
+	if (fnl_x <= fn_w) {
+
+		fnl_l = 0;
+
+	} else if (fn_w - fnl_x <= flb_w - fl_w) {
+
+		fnl_l = flb_w - fl_w;
+
+	} else {
+
+		fnl_l = fn_w - fnl_x;
+
+	}
+
+	$(".find_nav_list").animate({
+
+		"left" : fnl_l
+
+	}, 300);
+
+	
+
+});
+
+var fl_w=$(".find_nav_list").width();
+
+var flb_w=$(".find_nav_left").width();
+
+$(".find_nav_list").on('touchstart', function (e) {
+
+	var touch1 = e.originalEvent.targetTouches[0];
+
+	x1 = touch1.pageX;
+
+	y1 = touch1.pageY;
+
+	ty_left = parseInt($(this).css("left"));
+
+});
+
+$(".find_nav_list").on('touchmove', function (e) {
+
+	var touch2 = e.originalEvent.targetTouches[0];
+
+	var x2 = touch2.pageX;
+
+	var y2 = touch2.pageY;
+
+	if(ty_left + x2 - x1>=0){
+
+		$(this).css("left", 0);
+
+	}else if(ty_left + x2 - x1<=flb_w-fl_w){
+
+		$(this).css("left", flb_w-fl_w);
+
+	}else{
+
+		$(this).css("left", ty_left + x2 - x1);
+
+	}
+
+	if(Math.abs(y2-y1)>0){
+
+		e.preventDefault();
+
+	}
+
+});
+
+
+
+
+
+for(n=1;n<9;n++){
+
+	var page='pagenavi'+n;
+
+	var mslide='slider'+n;
+
+	var mtitle='emtitle'+n;
+
+	arrdiv = 'arrdiv' + n;
+
+	var as=$('#'+page+' a');//document.getElementById(page).getElementsByTagName('a');
+
+	var tt=new TouchSlider({id:mslide,'auto':'-1',fx:'ease-out',direction:'left',speed:600,timeout:5000,'before':function(index){
+
+		var as=document.getElementById(this.page).getElementsByTagName('a');
+
+		as[this.p].className='';
+
+		this.p=index;
+
+		
+
+		fnl_x =  parseInt($(".find_nav_list li").eq(this.p).position().left);
+
+		
+
+		nav_w=$(".find_nav_list li").eq(this.p).width();
+
+		$(".sideline").stop(true);
+
+		$(".sideline").animate({left:$(".find_nav_list li").eq(this.p).position().left},300);
+
+		$(".sideline").animate({width:nav_w},100);
+
+		$(".find_nav_list li").eq(this.p).addClass("find_nav_cur").siblings().removeClass("find_nav_cur");
+
+		if($('.find_nav_cur a').text() == '趋势图'){
+
+			is_ech = 1;
+
+			$('#slider1').height(210 * 3 + 100);
+
+		}else{
+
+			is_ech = 0;
+
+			$('#slider1').height('auto');
+
+		}
+
+		var fn_w = ($(".find_nav").width() - nav_w) / 2;
+
+		var fnl_l;
+
+		if (fnl_x <= fn_w) {
+
+			fnl_l = 0;
+
+		} else if (fn_w - fnl_x <= flb_w - fl_w) {
+
+			fnl_l = flb_w - fl_w;
+
+		} else {
+
+			fnl_l = fn_w - fnl_x;
+
+		}
+
+		$(".find_nav_list").animate({
+
+			"left" : fnl_l
+
+		}, 300);
+
+	}});
+
+	tt.page = page;
+
+	tt.p = 0;
+
+	//console.dir(tt); console.dir(tt.__proto__);
+
+
+
+	for(var i=0;i<as.length;i++){
+
+		(function(){
+
+			var j=i;
+
+			as[j].tt = tt;
+
+			as[j].onclick=function(){
+
+				this.tt.slide(j);
+
+				return false;
+
+			}
+
+		})();
+
+	}
+
+}
+
+function set_time_str(times_){
+
+	var date = new Date(times_*1000);
+
+	Y = date.getFullYear() + '-';
+
+	M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+
+	D = date.getDate() + ' ';
+
+	h = date.getHours() + ':';
+
+	m = date.getMinutes() + ':';
+
+	s = date.getSeconds();
+
+	return M+D+h+m+s;
+
+}
+
+</script>
+<script type="text/javascript">
+
+function get_top_ech(num1,num2){
+
+	// 基于准备好的dom，初始化echarts实例
+
+	$('#main').width(window.screen.width);
+
+	var myChart = echarts.init(document.getElementById('main'));
+
+	// 指定图表的配置项和数据
+
+	var option = {
+
+		grid:{
+
+			top: '23%',
+
+			bottom: '13%'
+
+		},
+
+		title: {
+
+			text: '我的异常次数统计',
+
+			x:'center',
+
+        	y:'top',
+
+			textAlign: 'center',
+
+			top: '5%'
+
+		},
+
+		tooltip: {},
+
+		legend: {
+
+			data:['次'],
+
+			x:'right',
+
+        	y:'top',
+
+			top: '5%',
+
+		},
+
+		xAxis: {
+
+			data: ["总异常","血压","心率","血氧","血糖","尿检"],
+
+			splitLine:{
+
+				show:true
+
+			},
+
+		},
+
+		yAxis: {
+
+			axisLine:{
+
+				show:false,
+
+			},
+
+			axisLabel : {
+
+				formatter: function(){
+
+					  return "";
+
+				}
+
+			},
+
+		},
+
+		series: [{
+
+			name: '次',
+
+			type: 'bar',
+
+			data: [num1+num2*1, num1, num2, 0, 0, 0],
+
+			barWidth: 15,
+
+			label: {
+
+				normal: {
+
+					show: true,
+
+					position: 'top',
+
+					textStyle: {
+
+					color: 'black'
+
+					}
+
+				}
+
+			},
+
+			itemStyle: {   
+
+                //通常情况下：
+
+                normal:{  
+
+　　　　　　　　　　　　//每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+
+                    color: function (params){
+
+                        var colorList = ['#2DACFD','#10C2A2','#8CD001','#FBBF43','#FA8E33','#2DACFD'];
+
+                        return colorList[params.dataIndex];
+
+                    }
+
+                },
+
+                //鼠标悬停时：
+
+                emphasis: {
+
+                        shadowBlur: 10,
+
+                        shadowOffsetX: 0,
+
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+
+                }
+
+            }
+
+		}]
+
+	};
+
+	// 使用刚指定的配置项和数据显示图表。
+
+	myChart.setOption(option);
+
+}
+
+function get_mmhg_ech(ech_mmhg_time,ech_mmhg_data_high,ech_mmhg_data_low){
+
+	// 基于准备好的dom，初始化echarts实例
+
+	$('#main2').width(window.screen.width);
+
+	var myChart = echarts.init(document.getElementById('main2'));
+
+	// 指定图表的配置项和数据
+
+	var option = {
+
+		title: {
+
+			text: '血压异常数据',
+
+			top: '5%',
+
+			left: '5%'
+
+		},
+
+		tooltip : {
+
+			trigger: 'axis',
+
+			axisPointer: {
+
+				type: 'cross',
+
+				label: {
+
+					backgroundColor: '#6a7985'
+
+				}
+
+			}
+
+		},
+
+		legend: {
+
+			data:['高压','低压'],
+
+			top: '5%'
+
+		},
+
+		toolbox: {
+
+			feature: {
+
+				saveAsImage: {}
+
+			},
+
+			top: '5%'
+
+		},
+
+		grid: {
+
+			left: '3%',
+
+			right: '4%',
+
+			bottom: '3%',
+
+			containLabel: true
+
+		},
+
+		xAxis : [
+
+			{
+
+				type : 'category',
+
+				boundaryGap : false,
+
+				data : ech_mmhg_time
+
+			}
+
+		],
+
+		yAxis : [
+
+			{
+
+				type : 'value'
+
+			}
+
+		],
+
+		series : [
+
+			{
+
+				name:'低压',
+
+				type:'line',
+
+				stack: '总量',
+
+				areaStyle: {normal: {}},
+
+				itemStyle : {normal: {
+
+					color:'#F7A907',//折线点颜色
+
+					lineStyle:{
+
+						color:'#F7A907'//折线颜色
+
+					},
+
+						label : {position: 'top',show: true}//显示数值
+
+				}},
+
+				data:ech_mmhg_data_low
+
+			},
+
+			{
+
+				name:'高压',
+
+				type:'line',
+
+				stack: '总量',
+
+				areaStyle: {normal: {}},
+
+				itemStyle : {normal: {
+
+					color:'#2982BC',//折线点颜色
+
+					lineStyle:{
+
+						color:'#2982BC'//折线颜色
+
+					},
+
+						label : {position: 'top',show: true}//显示数值
+
+				}},
+
+				data:ech_mmhg_data_high
+
+			}
+
+		]
+
+	};
+
+	// 使用刚指定的配置项和数据显示图表。
+
+	myChart.setOption(option);
+
+}
+
+function get_bpm_ech(ech_bpm_time,ech_bpm_data){
+
+	// 基于准备好的dom，初始化echarts实例
+
+	$('#main3').width(window.screen.width);
+
+	var myChart = echarts.init(document.getElementById('main3'));
+
+	// 指定图表的配置项和数据
+
+	var option = {
+
+		title: {
+
+			text: '心率异常数据',
+
+			top: '5%',
+
+			left: '5%'
+
+		},
+
+		tooltip : {
+
+			trigger: 'axis',
+
+			axisPointer: {
+
+				type: 'cross',
+
+				label: {
+
+					backgroundColor: '#6a7985'
+
+				}
+
+			}
+
+		},
+
+		toolbox: {
+
+			feature: {
+
+				saveAsImage: {}
+
+			},
+
+			top: '5%'
+
+		},
+
+		grid: {
+
+			left: '3%',
+
+			right: '4%',
+
+			bottom: '3%',
+
+			containLabel: true
+
+		},
+
+		xAxis: {
+
+			type: 'category',
+
+			data: ech_bpm_time
+
+		},
+
+		yAxis: {
+
+			type: 'value'
+
+		},
+
+		series: [{
+
+			data: ech_bpm_data,
+
+			type: 'line',
+
+			label: {
+
+				normal: {
+
+					show: true,
+
+					position: 'top',
+
+					textStyle: {
+
+					color: 'black'
+
+					}
+
+				}
+
+			},
+
+			itemStyle : {normal: {
+
+				color:'#F8A80B',//折线点颜色
+
+				lineStyle:{
+
+					color:'#F8A80B'//折线颜色
+
+				},
+
+					label : {position: 'top',show: true}//显示数值
+
+			}},
+
+		}]
+
+	};
+
+	// 使用刚指定的配置项和数据显示图表。
+
+	myChart.setOption(option);
+
+}
+
+</script>
+<script type="text/javascript" src="/statics/languages/languages.js"></script>
+</html>

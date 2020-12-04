@@ -50,6 +50,15 @@ class advice {
         }
     }
 
+    public function adv_supportprogram(){
+        //营养支持方案
+        if (isset($_POST['dosubmit'])&&$_POST['dosubmit']) {
+
+        }else {
+            include template($this->template,'adv_supportprogram');
+        }
+    }
+
 }
 
 ?>

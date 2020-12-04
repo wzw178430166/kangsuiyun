@@ -1,0 +1,88 @@
+<!--<head></head><body></body>-->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<meta name="topcolor" rgba="44.172.252.1">
+<title set-lan="html:tangya">血糖血压管理</title>
+<script type="text/javascript" src="/statics/js/jquery_11.min.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<script type="text/javascript" src="/statics/js/cookie.js"></script>
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+<script type="text/javascript" src="/statics/js/jquery.raty.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+<link href="/statics/css/choice_style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/statics/js/layer/3.1.1/mobile/layer.js"></script>
+<style>
+body{ background-color:#f8f9fb;}
+.doctor_lists,.doctor_box,.box_one,.box_two{ width:100%; overflow:hidden;}
+.doctor_lists .doctor_box img{ width:100%; float:left;}
+.doctor_box .doctor_box_{ width:100%; overflow:hidden; padding:0px 5%; background-color:#fff;}
+.doctor_box_ .box_one{ height:45px; line-height:45px; border-bottom:1px solid #ddd;}
+.doctor_box_ .box_one .one_l{ color:#000; font-size:1.3rem;}
+.doctor_box_ .box_one .one_r{ color:#4b4b4b; font-size:.9rem;}
+.doctor_box_ .box_one .one_r span{ color:#ff5d24; font-size:1.5rem; margin-right:5px;}
+.doctor_box_ .box_two{ margin:10px 0px;}
+</style>
+</head>
+<body>    
+	<div class="header_box">
+		<img src="/statics/images/goback_b.png" onClick="goback()" class="left">
+		<p class="midden" set-lan="html:tangya">血糖血压管理</p>
+	</div>
+	<div class="h50"></div>
+	<div class="doctor_lists">
+    	<ul>
+            
+        </ul>
+    </div>
+</body>
+<script type="text/javascript" src="/statics/languages/languages.js"></script>
+</html>
+<script>
+var page = 1;
+var loaded = 0;
+var did = 0;
+var department = {};
+var k = '';
+var openid = getcookie('_openid');
+$(function(){
+	get_data();
+})
+function get_data(){
+	var url = '/?m=doctor&c=patient&a=service_plan&ajax=1';
+	$.ajax({
+		url:url,
+		type:'GET',
+		dataType:'json',
+		success:function(data){
+			if(data){
+				var txt = '';
+				for(i in data){
+					var datas = new Base64().encode('{"title":"'+data[i].title+'","service_text1":"'+data[i].service_text1+'","thumb":"'+data[i].thumb+'","money1":"'+data[i].money1+'","money2":"'+data[i].money2+'","money3":"'+data[i].money3+'"}');
+					txt += '<li onClick="goo(\'./set.html?type='+data[i].type+'&data='+datas+'\')"><div class="doctor_box"><img src="'+data[i].thumb+'"><div class="doctor_box_"><div class="box_one"><div class="one_l fl">'+data[i].title+'</div><div class="one_r fr"><span>¥'+data[i].money1+'/月</span>起</div></div><div class="box_two">'+data[i].service_text1+'<br/>'+data[i].service_text2+'</div></div></div></li>';
+				}
+				$('.doctor_lists ul').html(txt);
+			}	
+		}
+	})
+}
+function isWeiXin(){
+  var ua = window.navigator.userAgent.toLowerCase();
+  if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+  	return true;
+  }else{
+  	return false;
+  }
+}
+function send_msg(){
+	layer.open({
+		content: '即将开放，尽请期待！'
+		,skin: 'msg'
+		,time: 2 //2秒后自动关闭
+	  });
+}
+</script>
