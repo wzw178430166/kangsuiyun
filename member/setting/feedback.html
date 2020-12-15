@@ -1,0 +1,210 @@
+<!--<head></head><body></body>-->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title set-lan="html:feedback">意见反馈</title>
+<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+<script type="text/javascript" src="/statics/js/jquery.min.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<script type="text/javascript" src="/statics/js/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="/statics/js/ex/mytemplate_1.js"></script>
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+<script type="text/javascript" src="/statics/languages/20181105/languages.js"></script>
+</head>
+<script>
+
+try{
+
+	jstojava.mycleargoback();
+
+	jstojava.close_toobar();
+
+}catch(e){  }
+
+</script>
+<style>
+body { background-color: #f2f2f2; }
+/**/
+
+.steps_box, .steps_line { width: 100%; overflow: hidden; }
+.steps_box p { height: 35px; line-height: 35px; padding-left: 10px; background-color: #f7f7f7; border-top: 1px solid #e3e3e7; border-bottom: 1px solid #e3e3e7; }
+.steps_box .steps_line { padding: 5px 10px; /*border-bottom: 1px solid #e3e3e7;*/ border-top: 1px solid #e3e3e7; background-color: #fff; /*margin-bottom: 10px;*/ }
+.steps_box .steps_line:first-child { border-top: none; }
+.steps_line .line_l { height: 30px; line-height: 30px; color: #333; font-size: 1.1rem; }
+.steps_line .line_l u { font-size: 12px; margin-left: 10px; color: #999; }
+.steps_line .line_r { height: 30px; line-height: 30px; width: 60%; }
+.steps_line .day { width: 20px; height: 30px; line-height: 30px; text-align: right; width: 100%; }
+.steps_foot { width: 100%; height: 45px; line-height: 45px; background-color: #2cacfc; color: #fff; text-align: center; position: fixed; left: 0; bottom: 0; }
+.liuyan { width: 100%; background-color: rgb(255,255,255); color: #333; }
+.liuyan_top { width: 100%; height: 35px; border-bottom: 1px solid #efefef; padding-left: 10px; }
+.liuyan_top h2 { float: left; height: 24px; line-height: 24px; border-left: 2px #2cacfc solid; margin-top: 5px; padding-left: 2%; }
+.liuyan_main ul { list-style-type: none; padding: 3px 10px; margin: 0px; }
+.liuyan_lists { border-bottom: 1px solid #EEE; padding: 2% 0; }
+.liuyan_lists ul li font { font-weight: 400; }
+.liuyan_lists ul li font.ly-time { color: #666; }
+</style>
+
+<body>
+<div class="header_box"> <img src="/statics/images/goback_b.png" onClick="goback()" class="left">
+  <p class="midden" set-lan="html:feedback">意见反馈</p>
+</div>
+<div class="h50"></div>
+<form action="/index.php?m=member&c=data&a=target_steps_get" method="post" enctype="multipart/form-data" id="edit_form">
+<div class="steps_box">
+  <div class="steps_line">
+    <input style="width: 100%;height: 41px;line-height: 41px;border: 1px solid #e1e1e0;text-indent: 10px;font-size: 15px;color: #181717;margin-bottom: 5px; outline: none; border-radius: 3px;" type="text" name="lxqq" id="lxqq" placeholder="请输入您的QQ...">
+  </div>
+  <div class="steps_line">
+    <textarea style="-webkit-appearance: none;width: 100%;height: 150px;line-height: 15px;padding: 11px 5px;display: block;border: 1px solid #e1e1e0;border-bottom-left-radius: 0;border-bottom-right-radius: 0;margin-top: 5px;margin-bottom: 5px; outline: none; resize: none; border-radius: 3px;" name="content" id="content" placeholder="请输入咨询内容，我们将在24小时内回复您！" value=""></textarea>
+  </div>
+</div>
+<div class="steps_foot" onClick="set_feedback()" set-lan="html:submit_feedback">提交反馈</div>
+<input type="hidden" value="1" name="edit_data">
+<form>
+<div class="liuyan" style="/*margin-bottom: 50px;*/">
+  <div class="liuyan_top">
+    <h2 set-lan="html:submit_feedback">客户留言</h2>
+  </div>
+  <div class="liuyan_main">
+    <template id="data_tpl">
+      <div class="liuyan_lists">
+        <ul>
+          <li><u set-lan="html:message_content">留言内容</u>：
+            <$introduce>
+          </li>
+        </ul>
+        <ul>
+          <li><u set-lan="html:name">姓名</u>：<font>
+            <$name>
+            </font></li>
+        </ul>
+        <ul>
+          <li><u set-lan="html:time">时间</u>：<font class="ly-time">
+            <$addtime_str>
+            </font></li>
+        </ul>
+        <ul style="color:rgb(52,160,240);">
+          <li><u set-lan="html:reply">回复</u>：
+            <$reply>
+          </li>
+        </ul>
+      </div>
+    </template>
+  </div>
+</div>
+</body>
+</html>
+<script>
+
+$(function(){
+   console.log(555);
+	get_feedback();
+
+	resetLiuYanArea();
+
+})
+
+function resetLiuYanArea(){
+
+	var screenHeight = $(window).height();
+
+	var lyHeight = 	$('.steps_box').height();
+
+	var h = screenHeight - (lyHeight+50+35+45);
+
+	$('.liuyan_main').height(h);
+
+	$('.liuyan_main').css({"height":h,"overflow":"hidden","overflow-y":"scroll"});
+
+}
+
+function set_feedback(){
+
+	var text = $('#content').val();
+
+	var lxqq = $('#lxqq').val();
+
+	if(text != '' && lxqq != ''){
+
+		$.ajax({
+
+			url:'/index.php?m=member&c=data&a=get_datas',
+
+			type:'POST',
+
+			data:'judge=4&text='+text+'&lxqq='+lxqq,
+
+			dataType:'json',
+
+			success:function(data){
+
+				$('#content').val('');
+
+				$('#lxqq').val('');
+
+				layer.open({
+
+					content: data.msg
+
+					,skin: 'msg'
+
+					,time: 2 //2秒后自动关闭
+
+				});
+
+			}
+
+		})
+
+	}else{
+
+		layer.open({
+
+			content: '反馈内容或联系方式不可为空~'
+
+			,skin: 'msg'
+
+			,time: 2 //2秒后自动关闭
+
+		});
+
+	}
+
+}
+
+function get_feedback(){
+
+	$.ajax({
+
+		url:'/index.php?m=member&c=data&a=get_feedback',
+
+		type:'POST',
+
+		data:'',
+
+		dataType:'json',
+
+		success:function(data){
+
+			var list_base = $('#data_tpl').html();
+
+			var base = data.list;
+
+			list_base = mytemplate_list(list_base,base);
+
+			$('.liuyan_main').html(list_base);
+
+		}
+
+	})
+
+}
+
+
+
+</script>

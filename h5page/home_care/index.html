@@ -16,7 +16,7 @@
 		<style>
 			.header_box{background: none;z-index: 999;}
 			.header_box .midden {
-        color: #ffffff;
+        color: #ffffff;border-bottom: 0;
        }
 .makefP .maskbox{
     width: 88%;
@@ -144,6 +144,7 @@
     height: 2.3rem;
     background: #9c8d8d87;
     text-align: center;}
+
 		</style>
 	</head>
 <body>
@@ -170,22 +171,22 @@
     </div>
 		<div class="option_box option_boxww">
             <ul>
-                <li onclick="goo('#')">
+                <li onclick="goY('data_xinlv',this)">
                     <div class="option"><img src="./images/xueghs.png">
                         <p>心率测量</p>
                     </div>
                 </li>
-                <li onclick="goo('#')">
+                <li onclick="goY('bioland_bp_a223',this)">
                     <div class="option"><img src="./images/xueyagsq.png">
                         <p>血压测量</p>
                     </div>
                 </li>
-                <li onclick="goo('#')">
+                <li onclick="goY('g_777g',this)">
                     <div class="option"><img src="./images/xuegseg.png">
                         <p>血糖测量</p>
                     </div>
                 </li>
-                <li onclick="goo('#')">
+                <li onclick="goY('bioland_tp',this)">
                     <div class="option"><img src="./images/tiwans.png">
                         <p>体温测量</p>
                     </div>
@@ -199,7 +200,7 @@
 			<p>快速提问</p>
 		    <p>健康就在身边</p>
 			</div>
-            <div onclick="goo('/equipment/equipment_list.html')">
+            <div onclick="goo_d()">
 			<p>视频问诊</p>
 			<p>更精准更及时</p>
 			</div>
@@ -211,22 +212,22 @@
   </div>
 	<div class="option_box option_box3">
             <ul>
-                <li onclick="goo('#')">
+                <li onclick="goo('/h5page/y_hoslist.html')">
                     <div class="option"><img src="./images/guahaos.png">
                         <p>预约挂号</p>
                     </div>
                 </li>
-                <li onclick="goo('#')">
+                <li onclick="goo('/h5page/green_channel.html')">
                     <div class="option"><img src="./images/gbdggsd.png" style="width: 1.7rem;">
                         <p>就医通道</p>
                     </div>
                 </li>
-                <li onclick="goo('/medical/jktx.html')">
+                <li onclick="setCookie('get_new_data',1);goo('/medical/jktx.html?target=top');">
                     <div class="option"><img src="./images/hfhfhf.png" style="width: 1.7rem;">
                         <p>健康提醒</p>
                     </div>
                 </li>
-                <li onclick="goo('/group/per_list.html')">
+                <li onclick="setCookie('get_new_data',1);goo('/group/per_list.html?target=top');">
                     <div class="option"><img src="./images/jijis.png" style="width: 1.8rem;">
                         <p>我的亲友</p>
                     </div>
@@ -263,29 +264,29 @@
 	<div style="height: 1rem;background: #f5f5f5;margin-top: 1rem;"></div>
 	<div class="m_dbox">
    <span>护理服务</span>       
-   <span class="mstio"  onclick="goo('#')">更多<i class="uing"><img src="./images/fanhuis.png" style="width: 100%;"></i></span>
+   <span class="mstio"  onclick="goo_d()">更多<i class="uing"><img src="./images/fanhuis.png" style="width: 100%;"></i></span>
   </div>
 	
 	<div class="cont_box">
-	<div class="cont_itemws">
+	<div class="cont_itemws" onclick="goo_d()">
 	<img src="images/fhfhf.png">
     <p class="mtwe_p">
       <span>上门康复</span>	
      </p>
     </div>
-			<div class="cont_itemws">
+			<div class="cont_itemws" onclick="goo_d()">
 	<img src="images/rghrfg.png">
     <p class="mtwe_p">
       <span>换药护理</span>	
      </p>
     </div>
-			<div class="cont_itemws">
+			<div class="cont_itemws" onclick="goo_d()">
 	<img src="images/bfnfn.png">
     <p class="mtwe_p">
       <span>老人陪护</span>	
      </p>
     </div>
-			<div class="cont_itemws">
+			<div class="cont_itemws" onclick="goo_d()">
 	<img src="images/ngfghf.png">
     <p class="mtwe_p">
       <span>中医保健</span>	
@@ -298,33 +299,33 @@
   </div>
 	<div class="option_box option_box3">
             <ul>
-                <li onclick="goo('#')">
+                <li onclick="goo('/h5page/selftest.html?&type=6')">
                     <div class="option"><img src="./images/shuimian.png">
                         <p>睡眠质量</p>
                     </div>
                 </li>
-                <li onclick="goo('#')">
+                <li onclick="goo('/h5page/selftest.html?&type=7')">
                     <div class="option"><img src="./images/juingsu.png" style="width: 1.3rem;">
                         <p>颈椎病自测</p>
                     </div>
                 </li>
-                <li onclick="goo('#')">
+                <li onclick="goo('/h5page/selftest.html?&type=2')">
                     <div class="option"><img src="./images/vcvcv.png" style="width: 1.8rem;">
                         <p>肥胖指数</p>
                     </div>
                 </li>
-                <li onclick="goo('#')">
+                <li onclick="goo('/h5page/selftest.html?&type=3')">
                     <div class="option"><img src="./images/vcvcbfd.png" style="width: 1.75rem;">
                         <p>疲劳度测试</p>
                     </div>
                 </li>
             </ul>
         </div>
-	<div class="refreshss">更多自测工具<img src="./images/fanhuis.png"></div>
+	<div class="refreshss" onclick="goo('/h5page/selftestlist.html')">更多自测工具<img src="./images/fanhuis.png"></div>
 	<div style="height: 1rem;background: #f5f5f5;margin-top: 1rem;"></div>
 	<div class="m_dbox">
    <span>健康课堂</span>       
-   <span class="mstio"  onclick="goo('#')">更多<i class="uing"><img src="./images/fanhuis.png" style="width: 100%;"></i></span>
+   <span class="mstio"  onclick="goo_d()">更多<i class="uing"><img src="./images/fanhuis.png" style="width: 100%;"></i></span>
   </div>
 	 <div class="tab_itemst">
 
@@ -418,6 +419,91 @@
                 }
             })
         }
+
+
+        function goY(ac,obj){
+	var tpp_ = getTapp();
+	//console.log("href====>",window.location.href);
+	var d_name = $(obj).attr('data-m');
+	var ua = navigator.userAgent.toLowerCase();
+	if (ac == "kangyun") { goo('//www.519ksy.com/dev/ky/urine_check.html?target=top'); return; }
+	if (ac == "data_xinlv") { goo('//www.519ksy.com/dev/bioland/data_xinlv.html?target=top&mobile='+getQueryString('mobile')); return; }
+    if (ac == "wrist_watch") {
+    	goo('//www.519ksy.com/dev/wrist_watch/?&f=yjxun');
+    	return;
+    }
+
+
+        if (getUrlParam('mobile') == 'ios' || tpp_[1] == 2) {
+		if (ac == "manridy"){
+			window.location.href = "dapp://" + ac;return;
+		}else{ window.location.href = "dapp://goY=>" + ac; }
+	} else {
+		if(ac != "yundong" && ac != "bmi" && ac!="jsjihua"){
+			try { jstojava.goY(ac); return; } catch (e) { }
+			try { jstojava2.goY(ac); return; } catch (e) { }
+		} 
+		
+	}
+	switch (ac) {
+			case "bioland_bp_a223":
+				goo('//www.519ksy.com/dev/bioland/bp_a223.html?target=top'); break;
+			case "g_777g":
+				goo('//www.519ksy.com/dev/bioland/g_777g.html?target=top'); break;
+			case "bioland_tp":
+				goo('//www.519ksy.com/dev/bioland/tp.html?v=123&target=top'); break;
+			/*case "manridy":
+				goY('manridy',this);break;*/
+//			case "v3":
+//				goY('v3',this);break;
+//			case "w3":
+//				goY('w3',this);break;
+			/*case "manridy":
+			case "v3": 
+			case "w3":*/ 
+			case "Y1":
+			case "F3":
+			case "F5":
+			case "F6":
+			case "M58":
+			case "sd1":
+				layer.open({
+					content: '请下载APP进行操作，是否前往下载？',
+					btn: ['确定', '取消'],
+					yes: function(index) {
+						goo('//android.myapp.com/myapp/detail.htm?apkName=com.TangJian.YiJiaXun');
+						layer.close(index);
+					}
+				});
+				break;
+			case "heal_force":
+				layer.open({
+					content: '请下载APP进行操作，是否前往下载？',
+					btn: ['确定', '取消'],
+					yes: function(index) {
+						goo('//android.myapp.com/myapp/detail.htm?apkName=com.TangJian.YiJiaXun');
+						layer.close(index);
+					}
+				});
+				break;
+			case "bmi":
+				goo('//www.519ksy.com/selfTest/bmi/bmi.html?target=top'); break;
+			case 'yundong':
+				go_sport_run();
+				break; 
+			case 'bioland_bp_2006_2b':
+				layer.open({
+					content: '即将上线,敬请期待！'
+					,skin: 'msg'
+					,time: 2 //2秒后自动关闭
+				});
+				break;
+			case 'jsjihua':
+				goo('/sport/sport_lists.html?target=top');
+				break;
+
+		}
+}
 	</script>
 </body>
 </html>

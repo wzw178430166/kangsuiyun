@@ -39,17 +39,17 @@
     </div>
 		<div class="option_box option_boxww">
             <ul>
-                <li onclick="goo('#')">
+                <li onclick="goo_d()">
                     <div class="option"><img src="./images/yjgjgfjg.png">
                         <p>预约调理</p>
                     </div>
                 </li>
-                <li onclick="goo('#')">
+                <li onclick="goo_d()">
                     <div class="option"><img src="./images/jyhgjgj.png">
                         <p>看诊预约</p>
                     </div>
                 </li>
-                <li onclick="goo('#')">
+                <li onclick="goo_d()">
                     <div class="option"><img src="./images/ngfngjt.png">
                         <p>按方抓药</p>
                     </div>
@@ -62,13 +62,13 @@
             </ul>
         </div>
         <div class="mt_conte">
-	   <div class="mt_conteleft"><img src="images/zhineng.png"></div>
-	    <div class="mt_conteright"><img src="images/whfidhuif.png"></div>
+	   <div class="mt_conteleft" onclick="goo('/equipment/equipment_list.html')"><img src="images/zhineng.png"></div>
+	    <div class="mt_conteright" onclick="goo_d()"><img src="images/whfidhuif.png"></div>
 	    </div>
 	
 	   <div class="mt_vip">
 	    <div><i class="unt_it"><img src="./images/cuiosit.png" style="width: 100%;"></i>开通会员服务·全家健康无忧</div>
-		<div>立即开通<i class="uing"><img src="/h5page/motion/images/fanhuis.png" style="width: 100%;"></i></div>
+		<div onclick="goo_d()">立即开通<i class="uing"><img src="/h5page/motion/images/fanhuis.png" style="width: 100%;"></i></div>
 	  </div>
 	  <div style="height: 1rem;background: #f4f4f4;margin-bottom: 1rem;"></div>
 	   		<div class="option_box">
@@ -112,7 +112,7 @@
                         <p>咽喉肿痛</p>
                     </div>
                 </li>
-                <li onclick="goo('#')">
+                <li onclick="goo_d()">
                     <div class="option"><img src="./images/jyhrhergvv.png">
                         <p>更多不适</p>
                     </div>
@@ -123,7 +123,7 @@
 	
 	<div class="m_dbox">
    <span> <span class="cihg"></span>热门项目</span>  
-	<span class="mstio" onclick="goo('#')">更多<i class="uing"><img src="./images/jaingtouw.png" style="width: 100%;vertical-align: middle;"></i></span>
+	<span class="mstio" onclick="goo_d()">更多<i class="uing"><img src="./images/jaingtouw.png" style="width: 100%;vertical-align: middle;"></i></span>
 	<p class="mstop">提前预约 不用排队</p>
   </div>
 	<div class="ciont_box">
@@ -135,8 +135,8 @@
 		头痛·拔罐疗法
 		</div>
 	  <div class="ciont_bottom">
-		<span class="cin_span1">200.00</span>
-		<span class="cin_span2">预约</span>
+		<span class="cin_span1">198.00</span>
+		<span class="cin_span2" onclick="goo_d()">预约</span>
 	  </div>
 	</div>
 		
@@ -149,7 +149,7 @@
 		</div>
 	  <div class="ciont_bottom">
 		<span class="cin_span1">200.00</span>
-		<span class="cin_span2">预约</span>
+		<span class="cin_span2" onclick="goo_d()">预约</span>
 	  </div>
 	</div>
 				
@@ -161,8 +161,8 @@
 		颈椎痛·刮痧疗法
 		</div>
 	  <div class="ciont_bottom">
-		<span class="cin_span1">200.00</span>
-		<span class="cin_span2">预约</span>
+		<span class="cin_span1">280.00</span>
+		<span class="cin_span2" onclick="goo_d()">预约</span>
 	  </div>
 	</div>
 				
@@ -174,14 +174,14 @@
 		脊椎痛·艾灸疗法
 		</div>
 	  <div class="ciont_bottom">
-		<span class="cin_span1">200.00</span>
-		<span class="cin_span2">预约</span>
+		<span class="cin_span1">168.00</span>
+		<span class="cin_span2" onclick="goo_d()">预约</span>
 	  </div>
 	</div>
 	</div>
 		<div class="m_dbox">
    <span> <span class="cihg"></span>便捷药方</span>  
-	<span class="mstio" onclick="goo('#')">更多<i class="uing"><img src="./images/jaingtouw.png" style="width: 100%;vertical-align: middle;"></i></span>
+	<span class="mstio" onclick="goo_d()">更多<i class="uing"><img src="./images/jaingtouw.png" style="width: 100%;vertical-align: middle;"></i></span>
 	<p class="mstop">温和固本 在家轻松中药调理</p>
   </div>
 	 <div class="planting" id="pig_two">
@@ -269,14 +269,16 @@
                 data:'',
                 dataType:'json',
                 success:function(e){
+                    var index=0;
                     for(i in e.data){
+                        index++;
                         var tmpTxt = '';
                         var tmp = (e.data[i].tag).split(',');
                         for(j in tmp){
                             if(j > 2) continue;
-                            if(tmp[i]) tmpTxt += '<span class="cactive1">'+tmp[i]+'</span>';
+                            if(tmp[i]) tmpTxt += '<span class="cactive'+3+'">'+tmp[i]+'</span>';
                         }
-                        if(tmpTxt == '') tmpTxt = '<span class="cactive1">暂无</span>';
+                        if(tmpTxt == '') tmpTxt = '<span class="cactive'+index+'">暂无</span>';
                         $('#ketangs').append('<div class="listitem listitem1" onclick="goo(\'/news2/detail.html?target=top&catid='+e.data[i].catid+'&id='+e.data[i].id+'\')">\n' +
                             '      <div class="artic">\n' +
                             '        <div class="title">\n' +

@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title set-lan="html:health_records">孕妇产专区</title>
+<meta name="topcolor" rgba="44.172.252.1">
+<meta id="import">
+</meta>
+<meta name="keywords" content="医家讯,医家讯智能医疗设备,智能健康电子档案,个人健康、家庭健康,健康检测,心率监测,血糖监测,血压监测,睡眠监测,健康饮食,运动健美,亲友互动,运动圈子,医体健康,食动平衡,人工智能,健康管理,物联网,智能大数据">
+<meta name="description" content="医家讯智能医体健康平台通过智能紧急提醒、生命健康监测、智能穿戴设备及专业级智能医疗设备，结合物联网、云计算、健康大数据分析与呼叫中心，构建智能医体健康平台，让家人享受更健康、更安全、更舒心、更智慧化的生活，也让子女随时随地的了解父母的健康情况，及时表达爱心和孝心。">
+<script type="text/javascript" src="../statics/js/jquery.min.js"></script>
+<!---->
+<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+<!---->
+<link rel="stylesheet" href="css/list.css?v=3" id="layuicss-layer">
+<script type="text/javascript" src="/statics/js/TouchSlide.1.1.js"></script>
+<script type="text/javascript" src="../statics/js/TouchSlide.1.1.js"></script>
+<link rel="shortcut icon" href="/favicon.ico">
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<script type="text/javascript" src="/statics/js/cookie.js"></script>
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+<script type="text/javascript" src="/statics/js/layer-v3.1.1/layer/mobile/layer.js"></script>
+<script type="text/javascript" src="/statics/languages/20181105/languages.js"></script>
+</head>
+<style>
+.list_box_l {
+    flex: 21%;
+}
+.praise_b {
+    float: right;
+	margin-right: 2%;
+}
+.list_box_r_1,.list_box_r_2,.list_box_r_3 {
+	flex: none;
+    width: 100%;
+	padding-top: 1px;
+}
+</style>
+<body>
+<div class="header_box header_box_white">
+  <div class="left left_b" onclick="goback()"></div>
+  <p class="midden" set-lan="html:health_records">孕产妇专区</p>
+</div>
+<div style="height: 50px"></div>
+<div class="main">
+  <div class="banner" id="slideBox">
+    <div class="bd">
+      <ul>
+        <li> <img src="images/ba_.jpg"> </li>
+        <li> <img src="images/ba_.jpg"> </li>
+      </ul>
+    </div>
+    <div class="hd">
+      <ul>
+        <li class="on">1</li>
+        <li>2</li>
+      </ul>
+    </div>
+  </div>
+  <ul class="nav_box">
+    <li onClick="goo('')">
+      <p> <img src="images/nav (3).png" alt="" class="nav_img"> </p>
+      <font>主任医师</font> </li>
+    <li onClick="fun_check(1)">
+      <p> <img src="images/nav (2).png" alt="" class="nav_img"> </p>
+      <font>胎心检测</font> </li>
+    <li onClick="fun_check(2)">
+      <p> <img src="images/nav (4).png" alt="" class="nav_img"> </p>
+      <font>检测记录</font> </li>
+    <li onClick="goo('./article_list.html')">
+      <p> <img src="images/nav (5).png" alt="" class="nav_img"> </p>
+      <font>孕期知识</font> </li>
+  </ul>
+  <div class="fenge"> <img src="images/fenge.png" width="80%"> </div>
+  <div>
+    <ul class="list_box" id="list_box">
+      <lis id="list_box_template" class="template">
+        <div class="list_box_l"> <img class="list_box_l_img" src="" alt="" width="90%;" style="height: 5.9rem;width: 5.9rem;border-radius: 50%;"> </div>
+        <div class="list_box_r">
+          <div class="list_box_r_1">
+            <div class="listtitle"></div>
+            <div class="listzhiwu"></div>
+          </div>
+          <div class="list_box_r_2">
+            <div class="yiyuan"></div>
+            <div class="praise_b">好评率： <font class="praise"></font> </div>
+            <div class="shanchang"></div>
+          </div>
+          <div class="list_box_r_3">
+            <div class="list_box_r_3_1"> <img src="images/zixun_ico.png">预约咨询 </div>
+            <div class="list_box_r_3_2"> <img src="images/dianhua_ico.png">电话咨询</div>
+          </div>
+        </div>
+      </lis>
+    </ul>
+  </div>
+  <div class="more_box"> <img src="images/more_brn_.png" alt="" width="80%" onClick="goo('/patient/cm_html/fy_cm_lists.html')"> </div>
+</div>
+<div style="height: 30px"></div>
+</body>
+</html>
+<script>
+  initBanner();
+  function initBanner() {
+    TouchSlide({
+      slideCell: "#slideBox",
+      titCell: ".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+      mainCell: ".bd ul",
+      effect: "leftLoop",
+      autoPage: true,//自动分页
+      autoPlay: true //自动播放
+    });
+  }
+$(function(){
+	$.ajax({
+		url:'/?m=doctor&a=get_datas',
+		type:'POST',
+		data:'judge=18&stype=2',
+		dataType:'json',
+		success:function(da){
+			set_data(da);
+		}
+	})
+})
+function set_data(da){
+    var te = $('#list_box_template');
+    var html;
+	var json = da[0];
+    for(var i in json){
+		$(te).find('.list_box_l_img').attr('src', json[i].thumb);
+		$(te).find('.listtitle').html(json[i].realname);
+		$(te).find('.listzhiwu').html(json[i].position_level);
+		$(te).find('.yiyuan').html(json[i].hospital);
+		$(te).find('.shanchang').html(json[i].bga);
+		$(te).find('.userid').html(json[i].userid);
+		$(te).find('.phone').html(json[i].telephone);
+		$(te).find('.praise').html('100%');
+		html = '<li onClick="goo(\'/patient/cm_html/fy_cm_detail.html?htype=2&data='+new Base64().encode(JSON.stringify(json[i]))+'\')">' + $(te).html() + '</li>';
+		$(te).before(html);
+    }
+	$('.list_box_r_3_2').click(function(){
+		event.stopPropagation();
+		layer.open({
+			content: '暂未开通电话咨询'
+			,skin: 'msg'
+			,time: 2 //2秒后自动关闭
+		});
+	})
+}
+function fun_check(t){
+	if(isWeiXin()){
+		layer.open({
+			content: '请使用安卓APP进行操作~'
+			,skin: 'msg'
+			,time: 2 //2秒后自动关闭
+		});
+	}else{
+		//try{}
+		layer.open({
+			content: '即将开放~'
+			,skin: 'msg'
+			,time: 2 //2秒后自动关闭
+		});
+	}
+}
+</script>

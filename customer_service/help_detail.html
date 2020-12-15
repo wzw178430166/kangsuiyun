@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+<style class="vjs-styles-dimensions"></style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="topcolor" rgba="45.172.253.1">
+<title class="header_text">帮助中心</title>
+<meta name="keywords" content="康穗云,康穗云智能医疗设备,智能健康电子档案,个人健康、家庭健康,健康检测,心率监测,血糖监测,血压监测,睡眠监测,健康饮食,运动健美,亲友互动,运动圈子,医体健康,食动平衡,人工智能,健康管理,物联网,智能大数据">
+<meta name="description" content="康穗云智能医体健康平台通过智能紧急提醒、生命健康监测、智能穿戴设备及专业级智能医疗设备，结合物联网、云计算、健康大数据分析与呼叫中心，构建智能医体健康平台，让家人享受更健康、更安全、更舒心、更智慧化的生活，也让子女随时随地的了解父母的健康情况，及时表达爱心和孝心。">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+<link rel="stylesheet" type="text/css" href="/diet/css/header.css">
+<link rel="stylesheet" type="text/css" href="/diet/css/content.css">
+<script type="text/javascript" src="/statics/js/jquery.min.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<script type="text/javascript" src="/statics/js/cookie.js"></script>
+<script type="text/javascript" src="/statics/circle/js/global.js"></script>
+<script type="text/javascript" src="/statics/js/layer_mobile/layer.js"></script>
+<link href="http://www.yjxun.cn/statics/js/layer_mobile/need/layer.css?2.0" type="text/css" rel="styleSheet" id="layermcss">
+<script type="text/javascript" src="/statics/js/lazyload/jquery.lazyload.js"></script>
+<script type="text/javascript" src="/statics/js/ex/mytemplate_1.js"></script>
+<script type="text/javascript" src="/statics/languages/20181105/languages.js"></script>
+<style class="vjs-styles-defaults">
+	
+</style>
+<script>
+try{
+	jstojava.mycleargoback();
+	jstojava.close_toobar();
+}catch(e){}
+</script>
+</head>
+<body style="background-color:#fff;">
+    <div class="header_box" style="z-index: 999;">
+        <font class="return-btn" onclick="goback()"></font>
+        <h2 class="header_text">帮助中心</h2>
+        <div class="header-right"> <font>消息</font>
+        </div>
+    </div>
+    <div style="height:50px;"></div>
+	<div class="big_div" style="width: 100%;height: 100%;">
+		<div style="height: 3.9rem;line-height: 3.9rem;border-bottom: 1px solid #CCC;text-align: left;"><font style="color: #FA6866;font-size: 2.3rem;font-family: -webkit-pictograph;margin-left: 1rem;">Q</font><font id="title" style="margin-left: 1rem;font-size: 1.23rem;color: #333;"></font></div>
+		<div style="margin: 1rem auto">
+			<div style="float: left;width: 10%;"><font style="color: #FA6866;font-size: 2.3rem;font-family: -webkit-pictograph;margin-left: 1rem;">A</font></div>
+			<div style="width: 84.2%;float: right;margin-right: 1rem;margin-bottom: 1rem;" id="content"><span>数据加载中...</span></div>
+		</div>
+	</div>
+	<div class="relative-box" style="margin: 1rem auto;width: 100%;text-align: center;">
+		<div class="content_expand" style="width: 56%;" id="is_ok_div">
+			<div onClick="is_ok(1,this)" style="font-size: 1.1rem;width: 46%;padding: 2% 0%;float: left;border: 1px solid #8A8A8A;color: #8A8A8A;border-radius: 2rem;"><img style="width: 20%;vertical-align: middle;" src="statics/images/ok_b.png"/> 已解决</div>
+			<div onClick="is_ok(2,this)" style="font-size: 1.1rem;width: 46%;padding: 2% 0%;float: left;border: 1px solid #8A8A8A;color: #8A8A8A;border-radius: 2rem;margin-left: 1rem;"><img style="width: 20%;vertical-align: middle;" src="statics/images/no_b.png"/> 未解决</div>
+		</div>
+	</div>
+    <div class="relative-box">
+        <div class="content_expand">
+            <div class="content_expand_box">
+                <p>相关阅读</p>
+                <ul id="content_relative"></ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+var title = new Base64().decode(getQueryString('title'));
+var hid = getQueryString('hid');
+$('#title').text(title);
+$(function(){
+	get_data();
+})
+function get_data(){
+	$.ajax({
+		url:'/?m=data&c=da_fun&a=get_help_detail',
+		type:'POST',
+		data:'hid='+hid,
+		dataType:'json',
+		success:function(data){
+			var da = data[0];
+			$('#content').html(da.content);
+			for(i in data[1]){
+				var txt = '<li onClick="detail('+data[1][i].id+',\''+data[1][i].title+'\')">· '+data[1][i].title+'？</li>';
+				$('#content_relative').append(txt);
+			}
+		}
+	})
+}
+function is_ok(t,o){
+	$('#is_ok_div div').css({"color":"#A8A8A8","border":"1px solid #A8A8A8"});
+	$('#is_ok_div div img').eq(0).attr('src','statics/images/ok_b.png');
+	$('#is_ok_div div img').eq(1).attr('src','statics/images/no_b.png');
+	if(t == 1) $(o).find('img').attr('src','statics/images/ok_h.png');
+	if(t == 2) $(o).find('img').attr('src','statics/images/no_h.png');
+	$(o).css({"color":"#F96160","border":"1px solid #F96160"});
+	$.ajax({
+		url:'/?m=data&c=da_fun&a=update_isok',
+		type:'POST',
+		data:'hid='+hid+'&t='+t,
+		success:function(da){ }
+	})
+}
+function detail(hid,title){
+	goo('./help_detail.html?hid='+hid+'&title='+new Base64().encode(title+'？'));
+}
+</script>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title set-lan="html:health_records">孕期知识</title>
+<meta name="topcolor" rgba="44.172.252.1">
+<meta id="import">
+</meta>
+<script type="text/javascript" src="../statics/js/jquery.min.js"></script>
+<!---->
+<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+<!---->
+<link rel="stylesheet" href="css/list.css?v=3" id="layuicss-layer">
+<script type="text/javascript" src="/statics/js/TouchSlide.1.1.js"></script>
+<script type="text/javascript" src="../statics/js/TouchSlide.1.1.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<script type="text/javascript" src="/statics/languages/20181105/languages.js"></script>
+</head>
+<script> 
+$().ready(function(){
+	$('#import').load('../html/header_common.html');
+})
+</script>
+<style>
+.Cwrap{ min-width: 320px; max-width: 480px; margin-left: auto; margin-right: auto;}
+.AL_main .alist { position: relative; background-color: #FFF; }
+.AL_main .alist .item {color: #666; border-bottom: 1px solid #ebdfd8; min-height: 75px; padding: 10px 5px 10px 105px;}
+.AL_main .alist .activityname { font-size: 1.1rem; line-height: 2.1rem; overflow: hidden; text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;padding-top: 6px; color: rgba(120, 120, 120, 120);min-height: 55px;}
+.AL_main .alist .desc_area { padding-right: 3%; text-align: right; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; font-size:0.825rem; }
+.AL_main .alist .activityimg { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; position: absolute; left: 5px; top: 10px; }
+.AL_main .alist .activityimg img{ width: 100px; height: 75px; max-width: 100%; display: inline-block; display: block; }
+.AL_main .alist .hotelinfo { padding-left: 1.8%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; }
+.AL_main .noData {text-align: center;color: #666;font-size: 0.9375rem;display: none;}
+.AL_main .loadmoreimg {height: 24px; line-height: 24px; margin-top: 10px;}
+.Lposr { position: relative; }
+</style>
+<body>
+<div class="header_box header_box_white">
+	<div class="left left_b" onclick="goback()"></div>
+	<p class="midden" set-lan="html:health_records">孕期知识</p>
+</div>
+<div style="height: 50px"></div>
+<div class="main">
+<div class="Cwrap">
+    <div class="AL_main">
+        <ul class="alist intergral-list-div" style="left: 0px;">
+        
+        </ul>
+    </div>
+</div>
+</div>
+</body>
+</html>
+<script>
+$(function(){
+	get_data();
+})
+function get_data(){
+	$.ajax({
+		url:'/?m=doctor&c=patient&a=get_article',
+		type:'POST',
+		data:'',
+		dataType:'json',
+		success:function(da){
+			for(i in da){
+				$('.intergral-list-div').append('<li class="item Lposr"><div class="activityimg img"><img src="'+da[i].thumb+'"></div><div class="hotelinfo"><a href="/index.php?m=content&c=index&a=show&catid='+da[i].catid+'&id='+da[i].id+'"><h3 class="activityname">'+da[i].title+'</h3></a><div class="pure-g"><div class="pure-u-13-24"></div><div class="pure-u-11-24 desc_area Lposr ">医家讯文章分发部</div></div></div></li>');
+			}
+		}
+	})
+}
+</script>

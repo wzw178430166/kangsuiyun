@@ -1,72 +1,96 @@
 <?php
 defined('IN_drcms') or exit('No permission resources.');
 class medical {
-	public $default_db;
+	public $default_db,$content_db,$member_db,$authority;
 	public $template = 'nutrition';
 	public $style = 'nutrition';
 	public $ajax = 0;
 	public function __construct() {
+
 		$this->default_db = pc_base::load_model('default_model');
+
+		$this->content_db = pc_base::load_model('content_model');
+
+		$this->member_db = pc_base::load_model('member_model');
+
 		$this->ajax = intval($_GET['ajax']);
+
+		$this->page = isset($_GET['page'])&&intval($_GET['page'])?$_GET['page']:1;
+
+		$this->encrypt = 161301;
+		
+		if ($this->ajax) {
+			pc_base::load_app_class('demo','core',0);
+			$demo = new demo();
+		}
 	}
     public function init() {
 
-    }
+	}
+
+
     public function med_patient(){
+		
 		if (isset($_POST['dosubmit'])&&$_POST['dosubmit']) {
-			$userid = intval($_POST['userid']);
-			$username = $_POST['username'];
-			$region = $_POST['region'];
-			$model = $_POST['info'];
-			$model['province'] = $region['province'];
-			$model['city'] = $region['city'];
-			$model['area'] = $region['area'];
-			$model['street'] = $region['street'];
-			$model['community'] = $region['community'];
-			if (0 < $userid) {
-				$where = '`userid` <> '.$userid.' AND `username`="'.$username.'"';
-				$member = $this->member_db->get_one($where,'userid');
-				if ($member) exit('{"status":0,"erro":"账号已存在"}');
-				$info = '`username` = "'.$username.'"';
-				$where = '`userid` = '.$userid;
-				$member = $this->member_db->get_one($where,'userid,phpssouid');
-				$status = $this->member_db->update($info,$where);
-				if ($status) {
-					//sso
-					$this->default_db->load('sso_members');
-					$this->default_db->update($info,'`uid`='.$member['phpssouid']);
-					//用户信息
-					$this->member_db->set_model(10);
-					$this->member_db->update($model,$where);
-				}
+			$this->default_db->setting('nut');
+			$id = intval( $_POST['uid'] );
+	  //	  $this->load( 'member' );
+			$this->default_db->load_no('nut_member');
+			// $wheres = 'id = '.$id.' AND userid = '.$this->userid;
+			$wheres = 'userid = '.$this->userid;
+		   // $_category = $this->db->get_one( $wheres );
+		 
+
+			$info = $_POST['info'];
+			$where = '';
+			$data['o_diagnosis'] = $info['o_diagnosis'];
+			$data['number2'] = $info['number2'];
+			$data['number3'] = $info['number3'];
+			$json = json_encode( $data );
+			if ( !empty( $_category ) ) {
+				//编辑
+				$json = json_encode( $data );
+				$where = '`userid` = ' . $this->userid;
+				$result = $this->db->update( array( 'sosnumber' => $json ), $where );
 			} else {
-				$datas = array('roleid'=>13,'sectorid'=>1,'username'=>$username,'password'=>'000000','nickname'=>$model['realname'],'mobile'=>$username,'state'=>1,'model'=>$model);
-				pc_base::load_app_class('user','dataManage',0);
-				$user = new user();
-				$result = $user->createAccount($datas);
-				$status = $result['status'];
+				//添加
+			  //  $this->db->insert( array( 'sosnumber' => $json, 'userid'=>$this->userid ) );
 			}
-			exit('{"status":'.($status?1:0).',"erro":"'.($status?'保存成功':'保存失败').'"}');
-		} else {
-			if ($this->ajax) {
+			$status = 1;
+			$erro = '操作成功';
+		    exit( '{"status":' . $status . ',"erro":"' . $erro . '"}' );
+        }else {
+           	if ($this->ajax) {
 				$userid = intval($_GET['uid']);
 				$member = array();
+				$patient= array();
 				if (0 < $userid) {
+					$this->default_db->setting('nut');
+					//$this->default_db->load_no('nut_member');
+					$this->default_db->load('member');
+					
 					$where = '`userid` = '.$userid;
-					$member = $this->member_db->get_one($where);
-					$this->member_db->set_model(10);
-					$model = $this->member_db->get_one($where,'realname,sex,age,idcard,province,city,area,street,community,address,lng,lat');
+					$member = $this->default_db->get_one($where);
+					$model = $this->default_db->get_one($where,'nickname,sex,regdate,userid,lastdate');
 					if (is_array($model)) $member = array_merge($model,$member);
+                    //$this->default_db->load('patient');
 				}
 				$status = $member?1:0;
 				$jsonData  = array(
 					'status'=>$status,
-					'data'=>array('member'=>$member),
+					'data'=>array('member'=>$member,'patient'=>$patient),
 				);
 				exit(json_encode($jsonData));
 			}
+
+
 			include template('nutrition','med_patient');
-		}
+            //include template($this->template,'med_anthropometry');
+        }
+
+
+
+
 	}
 
     public function med_anthropometry(){

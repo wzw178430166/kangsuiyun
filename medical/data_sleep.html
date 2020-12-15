@@ -1,0 +1,1027 @@
+<!--<head></head><body></body>-->
+
+<!doctype html>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+<link rel="stylesheet" type="text/css" href="statics/css/fonts/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="topcolor" rgba="44.172.252.1">
+<script type="text/javascript" src="statics/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+
+<!--<script type="text/javascript" src="/statics/js/echarts_4.js"></script>-->
+
+<script type="text/javascript" src="/statics/js/echarts_4.common.min.js"></script>
+<script type="text/javascript" src="/statics/js/layer_mobile/layer.js"></script>
+<script src="/statics/js/datePicker.js"></script>
+<script type="text/javascript" src="/statics/plugin/daterange/dateRange.js"></script>
+<link rel="stylesheet" type="text/css" href="/statics/plugin/daterange/dateRange.css"/>
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+<link rel="stylesheet" type="text/css" href="../statics/css/app/dangan.css">
+<title set-lan="html:sleep_data">睡眠数据</title>
+</head>
+<style>
+.data_details_box {
+	width: 100%;
+	overflow: hidden;
+	padding-bottom: 10px;
+}
+.data_details_box li {
+	border-bottom: 1px solid #e3e3e7;
+}
+.data_details_box .data_details_line {
+	width: 100%;
+	overflow: hidden;
+	padding: 10px 0px;
+}
+.data_details_line .line_l {
+	width: 25%;
+}
+.data_details_line p {
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	font-family: arail;
+}
+.data_details_line .line_l p {
+	height: 40px;
+	line-height: 40px;
+	color: #666;
+}
+.data_details_line .line_m {
+	width: 35%;
+	position: relative;
+	height: 40px;
+}
+.data_details_line .line_m .p1 {
+	position: absolute;
+	width: 61px;
+	border-radius: 3px;
+	color: #fff;
+	top: 25%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	text-align: center;
+}
+.data_details_line .line_m .p2 {
+	position: absolute;
+	width: 100%;
+	border-radius: 3px;
+	color: #333;
+	top: 80%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	text-align: center;
+}
+.data_details_line .line_r {
+	width: 35%;
+}
+.data_details_line .line_r p {
+	height: 20px;
+	line-height: 20px;
+	color: #7a7a7a;
+	font-size: 1rem;
+}
+/**/
+
+.details_total {
+	width: 100%;
+	overflow: hidden;
+}
+.details_total .title {
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	padding: 0px 5%;
+	background-color: #f5f5f5;
+	font-size: 1.1rem;
+	border-bottom: 1px solid #fff;
+}
+.details_total .title span {
+	color: #666;
+}
+.type_box {
+	width: 100%;
+	overflow: hidden;
+}
+.accordion-menu li.open .dropdownlink {
+	color: #666;
+}
+.accordion-menu li.open .dropdownlink .fa-caret-down {
+	-webkit-transform: rotate(180deg);
+	transform: rotate(180deg);
+	color: #b6b6b6;
+}
+.dropdownlink {
+	cursor: pointer;
+	display: block;
+	padding: 15px 5%;
+	font-size: 1.1rem;
+	color: #666;
+	position: relative;
+	-webkit-transition: all 0.4s ease-out;
+	transition: all 0.4s ease-out;
+	border-bottom: 1px solid #e4e4e4;
+	background-color: #f5f5f5;
+}
+.dropdownlink .fa-caret-down {
+	position: absolute;
+	top: 17px;
+	right: 25px;
+	color: #b6b6b6;
+}
+.submenuItems {
+	display: none;
+}
+.submenuItems a {
+	display: block;
+	color: #727272;
+	padding: 12px 12px 12px 45px;
+	-webkit-transition: all 0.4s ease-out;
+	transition: all 0.4s ease-out;
+	font-size: 1rem;
+}
+.submenuItems a:hover {
+	color: #e66b27;
+}
+.submenuItems .fa-star-o {
+	margin-right: 15px;
+}
+/**/
+
+.submenuItems li {
+	border-bottom: 1px solid #e3e3e7;
+}
+.submenuItems li:nth-child(odd) {
+	background-color: #fff;
+}
+.submenuItems li:nth-child(even) {
+	background-color: #fafafa;
+}
+.submenuItems .data_details_line {
+	width: 100%;
+	overflow: hidden;
+	padding: 10px;
+}
+.data_details_line .line_l_ {
+	width: 25%;
+	height: 40px;
+	position: relative;
+}
+.data_details_line .line_l_ .p1 {
+	position: absolute;
+	width: 61px;
+	border-radius: 3px;
+	color: #fff;
+	top: 25%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	text-align: center;
+}
+.data_details_line .line_l_ .p2 {
+	position: absolute;
+	width: 100%;
+	border-radius: 3px;
+	color: #333;
+	top: 80%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	text-align: center;
+	font-weight: 600;
+}
+.data_details_line .line_m_ {
+	width: 37.5%;
+}
+.data_details_line .line_m_ p {
+	height: 40px;
+	line-height: 40px;
+	color: #666;
+}
+.data_details_line .line_r_ {
+	width: 37.5%;
+}
+.data_details_line .line_r_ p {
+	height: 40px;
+	line-height: 40px;
+	color: #666;
+	font-size: 1.1rem;
+}
+.data_details_line .line_l_ p {
+	height: 21px;
+	line-height: 21px;
+}
+.data_details_line .line_l {
+    width: 28%;
+}
+.data_details_line .line_l p:first-child {
+	width: 100%;
+	color: #FFF;
+}
+.data_details_line .line_m_ p{width: 100%;}
+.header_box .midden {
+    border-bottom: 1px solid #e6e6e6;
+}
+</style>
+
+<body>
+<div class="header_box"> <img src="/statics/images/goback_b.png" onClick="goback()" class="left">
+    <p class="midden" set-lan="html:sleep_data">睡眠数据</p>
+</div>
+<div class="h50"></div>
+<div class="data_box">
+    <ul>
+        <li class="active" set-lan="html:today">今天</li>
+        <li set-lan="html:week">周趋势图</li>
+        <li set-lan="html:detailed_data">详细数据</li>
+    </ul>
+</div>
+<div class="data_">
+    <p class="time"><!--<span class="fl" style="color:#5e90ef;">上一天</span>--><font id="start_t">2018-03-01</font><i class="fa fa-caret-down"></i><!--<span class="fr">下一天</span>--></p>
+    <div class="bg15_f2f2f2"></div>
+    <div class="data_trend" id="main3"></div>
+    <div class="bg15_f2f2f2"></div>
+    <div class="data_details">
+        <p class="title"> <span class="title_l fl" set-lan="html:detailed_data_">详情数据</span> </p>
+        <div class="data_details_box">
+            <ul>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="data_">
+    <div class="data_trend" id="main2" style="-webkit-transform: rotate(90deg);-moz-transform: rotate(90deg);filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);margin-top: 15%;"></div>
+</div>
+<div class="data_" style="background-color:#fff;">
+    <p class="time"><!--<span class="fl" style="color:#5e90ef;">上个月</span>--><font id="start_m">2018-01</font><i class="fa fa-caret-down"></i><!--<span class="fr">下个月</span>--></p>
+    <div class="details_total">
+        <p class="title msg_p" style="text-align: center;" set-lan="html:no_data">暂无数据</p>
+        <div class="type_box">
+            <ul class="accordion-menu">
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="h50"></div>
+<div class="footer">
+    <ul>
+        <li><img src="statics/images/data_foot_l.png" class="foot_l"><i set-lan="html:send_to_friends">发送给亲友</i></li>
+        <li><img src="statics/images/data_foot_r.png" class="foot_r"><i set-lan="html:consult_a_doctor">向医生咨询</i></li>
+    </ul>
+</div>
+</body>
+<script type="text/javascript" src="/statics/languages/languages.js"></script>
+</html>
+<script>
+
+var calendar_m = new datePicker();
+
+calendar_m.init({
+
+    'trigger': '#start_m', /*按钮选择器，用于触发弹出插件*/
+
+    'type': 'ym',/*模式：date日期；datetime日期时间；time时间；ym年月；*/
+
+    'minDate':'1970-01-01',/*最小日期*/
+
+    'maxDate':'2520-12-31',/*最大日期*/
+
+    'onSubmit':function(){/*确认时触发事件*/
+
+        var theSelectData = calendar_m.value;
+
+		$('#start_m').text(theSelectData);
+
+		get_detail();
+
+    },
+
+    'onClose':function(){/*取消时触发事件*/
+
+    }
+
+});
+
+var dateRange1 = new pickerDateRange('start_t', {
+
+	stopToday : false,
+
+	isTodayValid : true,
+
+	startDate: '',
+
+	endDate: '',
+
+	needCompare : false,
+
+	defaultText : ' 至 ',
+
+	autoSubmit : false,
+
+	inputTrigger : 'input_trigger1',
+
+	theme : 'ta',
+
+	autoSubmit : true,
+
+	success : function(a){
+
+		if(a.endDate.replace(/-/g,'') - a.startDate.replace(/-/g,'') > 7){
+
+			$('#start_t').text('请选择日期');
+
+			layer.open({
+
+				content: '选择的日期区间不可超过七天'
+
+				,skin: 'msg'
+
+				,time: 2 //2秒后自动关闭
+
+			});
+
+			return false;
+
+		}else if(a.endDate.replace(/-/g,'') - a.startDate.replace(/-/g,'') < 7){
+
+			$('#start_t').text('请选择日期');
+
+			layer.open({
+
+				content: '选择的日期区间不可小于七天'
+
+				,skin: 'msg'
+
+				,time: 2 //2秒后自动关闭
+
+			});
+
+			return false;
+
+		}else{
+
+			$('.ta_calendar2').hide();
+
+			get_today(a.startDate,a.endDate);
+
+
+
+		}
+
+	}
+
+});
+
+$('.ta_calendar2').hide();
+
+$('.data_box ul li').click(function(){
+
+    $(this).addClass('active').siblings().removeClass('active');
+
+	var _index = $(this).index();
+
+    $('.data_').eq(_index).show().siblings('.data_').hide();
+
+    });
+
+$('.data_').eq(0).show().siblings('.data_').hide();
+
+</script>
+<script>
+
+var page = 0;
+
+var offsetVal = 0;
+
+var tt = 0;
+
+var page = 0;
+
+var offsetVal = 0;
+
+var userid = getQueryString('to_uid')?getQueryString('to_uid'):0;
+
+function get_today(s_time,e_time){
+
+	var msg = layer.open({
+
+				type: 2,
+
+				content: '加载中...'
+
+			});
+
+	$.ajax({
+
+		url:'/?m=medical&c=kith&a=get_datas',
+
+		type:'POST',
+
+		data:'judge=20&userid='+userid+'&date_time_s='+s_time+'&date_time_e='+e_time,
+
+		dataType:'json',
+
+		success:function(da){
+			layer.close(msg);
+
+			var txt = '';
+
+			var data = da.data;
+
+			var ech_time = new Array(),ech_data_deep = new Array(),ech_data_light = new Array();
+
+			for(o in data){
+				ech_time.push(o);
+				ech_data_deep.push(data[o]['sleep_deep']);
+				ech_data_light.push(data[o]['sleep_light']);
+				if(!data[o]['sleep_light_str'] || !data[o]['sleep_count'] || !data[o]['sleep_deep_str']) continue;
+				txt += '<li><div class="data_details_line"><div class="line_l fl"><p>'+o+'</p></div><div class="line_m fl"><p style="background-color:#2cacfc;" class="p1">睡眠时长</p><p class="p2" style="color:#2cacfc;">'+data[o]['sleep_count']+'</p></div><div class="line_r fr"><p>浅睡：'+data[o]['sleep_light_str']+'</p><p>深睡：'+data[o]['sleep_deep_str']+'</p></div></div></li>';
+			}
+			if(txt == '') txt = '<div style="color: rgb(51, 51, 51); font-size: 1.06rem; text-align: center;" onclick="goo(\'/equipment/equipment_list.html\')" id="if_fo"> <img src="/statics/images/back_no_data.png" style="height: 15rem;"> </div>';
+			
+			$('.data_details_box ul').html(txt);
+
+			get_sleep_ech(ech_time,ech_data_deep,ech_data_light);
+
+			get_sleep_ech_week(ech_time,ech_data_deep,ech_data_light);
+
+		}
+
+	})
+
+}
+
+function get_week(){
+
+	$.ajax({
+
+		url:'/?m=medical&c=kith&a=get_datas',
+
+		type:'POST',
+
+		data:'judge=18&userid='+userid,
+
+		dataType:'json',
+
+		success:function(da){
+
+			var data = da.data;
+
+			var ech_time = new Array(),ech_data = new Array();
+
+			for(i in data){
+
+				ech_time.push(i);
+
+				ech_data.push(data[i]['num']);
+
+			}
+
+			get_sleep_ech_week(ech_time,ech_data);
+
+		}
+
+	})
+
+}
+
+function get_detail(){
+
+	var msg = layer.open({
+
+				type: 2,
+
+				content: '加载中...'
+
+			});
+
+	$.ajax({
+
+		url:'/?m=medical&c=kith&a=get_datas',
+
+		type:'POST',
+
+		data:'judge=21&userid='+userid+'&date_time='+$('#start_m').text(),
+
+		dataType:'json',
+
+		success:function(da){
+
+			layer.close(msg);
+
+			$('.details_total p').show();
+
+			$('.accordion-menu').html('');
+
+			var data = da.data;
+
+			var txt1 = '';
+
+			for(i in data){
+
+				txt1 = '<li><div class="dropdownlink"> '+i+' <i class="fa fa-caret-down fa-lg" aria-hidden="true"></i> </div><ul class="submenuItems"><li><div class="data_details_line"><div class="line_l_ fl"><p style="background-color:#2cacfc;" class="p1">睡眠时长</p><p class="p2" style="color:#2cacfc;">'+data[i]['sleep_total_count']+'</p></div><div class="line_m_ fl"><p>深睡：'+data[i]['sleep_deep_count']+'</p></div><div class="line_r_ fr"><p>浅睡：'+data[i]['sleep_light_count']+'</p></div></div></li></ul></li>';
+
+				$('.accordion-menu').append(txt1);
+
+			}
+
+			if(data != '') $('.details_total .msg_p').hide();
+
+			//setLeftMenuAnimate();
+
+			$('.submenuItems').show();
+
+		}
+
+	})
+
+}
+
+$('.fa-circle-thin').click(function(){
+
+	$(this).hide();
+
+	$('.fa-circle').show();
+
+	$('.ok_cl').hide();
+
+	tt = 1;
+
+})
+
+$('.fa-circle').click(function(){
+
+	$(this).hide();
+
+	$('.fa-circle-thin').show();
+
+	$('.ok_cl').show();
+
+	tt = 0;
+
+})
+
+$(function(){
+
+	$('#main2').height(window.screen.width - 50);
+
+	$('#main2').width(window.screen.width);
+
+  	setLeftMenuAnimate();
+
+  	var visit_item  = $('.product_box');
+
+	visit_item.each(function(i) {
+
+		$(visit_item[i]).on('mousemove',function(){
+
+			$('.show').eq(i).show();
+
+		});
+
+		$(visit_item[i]).on('mouseout',function(){
+
+			$('.show').eq(i).hide();
+
+		});
+
+	});
+
+	$('#start_m').text(getNowFormatDate(1));
+
+	$('#start_t').text(getNowFormatDate(2));
+
+	$('.ta_calendar2').width(window.screen.width);
+
+	get_today();
+
+	get_week();
+
+	get_detail();
+
+});
+
+function setUlStyle(){
+
+	var lenth = parseInt($('#_item li').length);
+
+	var w = 270*lenth-20;
+
+	$('#_item').width(w);
+
+}
+
+function _slider(ac){
+
+	var offset = 270;
+
+	if (ac == 'l') {
+
+		page--;
+
+		offsetVal += offset;
+
+	} else if (ac == 'r'){
+
+		page++;
+
+		offsetVal -= offset;
+
+	}
+
+	$('#_item').css({"left":offsetVal});
+
+}
+
+function setLeftMenuAnimate(){
+
+  var Accordion = function(el, multiple) {
+
+    this.el = el || {};
+
+    // more then one submenu open?
+
+    this.multiple = multiple || false;
+
+    
+
+    var dropdownlink = this.el.find('.dropdownlink');
+
+    dropdownlink.on('click',{ el: this.el, multiple: this.multiple },this.dropdown);
+
+  };
+
+  
+
+  Accordion.prototype.dropdown = function(e) {
+
+    var $el = e.data.el,
+
+        $this = $(this),
+
+        //this is the ul.submenuItems
+
+        $next = $this.next();
+
+    
+
+    $next.slideToggle();
+
+    $this.parent().toggleClass('open');
+
+    
+
+    if(!e.data.multiple) {
+
+      //show only one menu at the same time
+
+      $el.find('.submenuItems').not($next).slideUp().parent().removeClass('open');
+
+    }
+
+  }
+
+  
+
+  var accordion = new Accordion($('.accordion-menu'), false);
+
+}
+
+
+
+/***********************************************/
+
+
+
+function get_sleep_ech(ech_time,ech_data_deep,ech_data_light){
+
+	// 基于准备好的dom，初始化echarts实例
+
+	$('#main3').width(window.screen.width);
+
+	var myChart = echarts.init(document.getElementById('main3'));
+
+	// 指定图表的配置项和数据
+
+	var option = {
+
+		title: {
+
+			text: '周趋势图(单位:分钟)',
+
+			top: '5%',
+
+			textStyle:{
+
+				fontSize: 16
+
+			}
+
+		},
+
+		tooltip : {
+
+			trigger: 'axis',
+
+			axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+
+				type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+
+			}
+
+		},
+
+		legend: {
+
+			data:['深度睡眠','浅度睡眠'],
+
+			top: '5%',
+
+			right: '5%'
+
+		},
+
+		grid: {
+
+			left: '3%',
+
+			right: '4%',
+
+			bottom: '3%',
+
+			containLabel: true
+
+		},
+
+		xAxis: {
+
+			data: ech_time,
+
+			axisLine:{ }
+
+		},
+
+		yAxis: {
+
+			splitArea : {show : false},//保留网格区域
+
+		},
+
+		series: [
+
+			{
+
+				name:'浅度睡眠',
+
+				type:'bar',
+
+				stack: '睡眠',
+
+				data:ech_data_light,
+
+				barWidth: '30%',
+
+				itemStyle : {normal: {
+
+					color:'#FFDB5C',//折线点颜色
+
+					lineStyle:{  
+
+						color:'#FFDB5C'//折线颜色
+
+					},
+
+				}}
+
+			},
+
+			{
+
+				name:'深度睡眠',
+
+				type:'bar',
+
+				stack: '睡眠',
+
+				data:ech_data_deep,
+
+				barWidth: '30%',
+
+				itemStyle : {normal: {
+
+					color:'#37A2DA',//折线点颜色
+
+					lineStyle:{  
+
+						color:'#37A2DA'//折线颜色
+
+					},
+
+				}}
+
+			},
+
+		]
+
+	};
+
+	// 使用刚指定的配置项和数据显示图表。
+
+	myChart.setOption(option);
+
+}
+
+function get_sleep_ech_week(ech_time,ech_data_deep,ech_data_light){
+
+	// 基于准备好的dom，初始化echarts实例
+
+	$('#main2').width(window.screen.width);
+
+	var myChart = echarts.init(document.getElementById('main2'));
+
+	// 指定图表的配置项和数据
+
+	var option = {
+
+		title: {
+
+			text: '周趋势图(单位:分钟)',
+
+			textStyle:{
+
+				fontSize: 16
+
+			}
+
+		},
+
+		tooltip : {
+
+			trigger: 'axis',
+
+			axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+
+				type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+
+			}
+
+		},
+
+		legend: {
+
+			data:['深度睡眠','浅度睡眠'],
+
+			top: '5%',
+
+			right: '5%'
+
+		},
+
+		grid: {
+
+			left: '3%',
+
+			right: '4%',
+
+			bottom: '3%',
+
+			containLabel: true
+
+		},
+
+		xAxis: {
+
+			data: ech_time,
+
+			axisLine:{ }
+
+		},
+
+		yAxis: {
+
+			splitArea : {show : false},//保留网格区域
+
+		},
+
+		series: [
+
+			{
+
+				name:'浅度睡眠',
+
+				type:'bar',
+
+				stack: '睡眠',
+
+				data:ech_data_light,
+
+				barWidth: '30%',
+
+				itemStyle : {normal: {
+
+					color:'#FFDB5C',//折线点颜色
+
+					lineStyle:{  
+
+						color:'#FFDB5C'//折线颜色
+
+					},
+
+				}}
+
+			},
+
+			{
+
+				name:'深度睡眠',
+
+				type:'bar',
+
+				stack: '睡眠',
+
+				data:ech_data_deep,
+
+				barWidth: '30%',
+
+				itemStyle : {normal: {
+
+					color:'#37A2DA',//折线点颜色
+
+					lineStyle:{  
+
+						color:'#37A2DA'//折线颜色
+
+					},
+
+				}}
+
+			},
+
+		]
+
+	};
+
+	// 使用刚指定的配置项和数据显示图表。
+
+	myChart.setOption(option);
+
+}
+
+function getNowFormatDate(a){
+
+    var date = new Date();
+
+    var seperator1 = "-";
+
+    var year = date.getFullYear();
+
+    var month = date.getMonth() + 1;
+
+    var strDate = date.getDate();
+
+    if(month >= 1 && month <= 9){
+
+        month = "0" + month;
+
+    }
+
+    if(strDate >= 0 && strDate <= 9){
+
+        strDate = "0" + strDate;
+
+    }
+
+    var currentdate = year + seperator1 + month + seperator1 + strDate;
+
+    if(a == 1) return year + seperator1 + month;
+
+	if(a == 2) return '请选择日期';
+
+	return currentdate;
+
+}
+
+$('.footer').click(function(){
+
+	layer.open({
+
+		content: '功能即将上线'
+
+		,skin: 'msg'
+
+		,time: 2 //2秒后自动关闭
+
+	});
+
+})
+
+</script>

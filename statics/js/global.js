@@ -1,4 +1,4 @@
-function zhuangb(){console.log("%c医家讯   %c- ⓒ广州唐剑科技有限公司 版权所有 ","font-size:40px; color:#2CACFC; font-weight: bold;font-family:Microsoft YaHei; text-shadow: 2px 2px 1px #9ED9FD;"," color:#969696");console.log("%c智能医体健康平台 ","font-size:35px; color:#2CACFC; font-weight: 600;font-family:Microsoft YaHei;text-shadow: 2px 2px 1px #9ED9FD; ");console.log("\n==========================================================\n");console.log("\n如果你看到了这个，又想加入我们，请用以下联系方式：");console.log("\n电子邮箱：%c 790059922@qq.com","color: #005991;font-weight:800");console.log("\n电话：%c 020-81533173","color: #005991;font-weight:800");console.log("\n\n")};
+function zhuangb(){console.log("%c康穗云   %c- ⓒ广州唐剑科技有限公司 版权所有 ","font-size:40px; color:#2CACFC; font-weight: bold;font-family:Microsoft YaHei; text-shadow: 2px 2px 1px #9ED9FD;"," color:#969696");console.log("%c智能医体健康平台 ","font-size:35px; color:#2CACFC; font-weight: 600;font-family:Microsoft YaHei;text-shadow: 2px 2px 1px #9ED9FD; ");console.log("\n==========================================================\n");console.log("\n如果你看到了这个，又想加入我们，请用以下联系方式：");console.log("\n电子邮箱：%c 790059922@qq.com","color: #005991;font-weight:800");console.log("\n电话：%c 020-81533173","color: #005991;font-weight:800");console.log("\n\n")};
 setCookie('webSocketIp','124.172.184.210');
 //====================================
 jQuery.getScript("/statics/js/public_yjx.js", function(data, status, jqxhr){
@@ -76,8 +76,8 @@ $(function(){
 	}
 })
 if(!document.getElementsByName("description")[0]){
-	$("title").before('<meta name="keywords" content="医家讯,医家讯智能医疗设备,智能健康电子档案,个人健康、家庭健康,健康检测,心率监测,血糖监测,血压监测,睡眠监测,健康饮食,运动健美,亲友互动,运动圈子,医体健康,食动平衡,人工智能,健康管理,物联网,智能大数据">');
-	$("title").before('<meta name="description" content="医家讯智能医体健康平台通过智能紧急提醒、生命健康监测、智能穿戴设备及专业级智能医疗设备，结合物联网、云计算、健康大数据分析与呼叫中心，构建智能医体健康平台，让家人享受更健康、更安全、更舒心、更智慧化的生活，也让子女随时随地的了解父母的健康情况，及时表达爱心和孝心。">');
+	$("title").before('<meta name="keywords" content="康穗云,康穗云智能医疗设备,智能健康电子档案,个人健康、家庭健康,健康检测,心率监测,血糖监测,血压监测,睡眠监测,健康饮食,运动健美,亲友互动,运动圈子,医体健康,食动平衡,人工智能,健康管理,物联网,智能大数据">');
+	$("title").before('<meta name="description" content="康穗云智能医体健康平台通过智能紧急提醒、生命健康监测、智能穿戴设备及专业级智能医疗设备，结合物联网、云计算、健康大数据分析与呼叫中心，构建智能医体健康平台，让家人享受更健康、更安全、更舒心、更智慧化的生活，也让子女随时随地的了解父母的健康情况，及时表达爱心和孝心。">');
 }
 
 /**/
@@ -652,7 +652,27 @@ function showErr(){
 	
 	return '定位失败';
 };
-
+//登录情况检测
+// checkLogin("golink");
+function checkLogin(ac) {
+	var status, erro;
+	var auth = getCookie(cookie_pre + 'auth');
+	if (ac && ac.indexOf('golink') > -1 && !auth) {
+		goo('/h5page/pharmacy/login.html?forward=' + encodeURIComponent(window.location.href));
+		return false;
+	}
+	if (auth) {
+		status = 'SUCCESS';
+		erro = '';
+	} else {
+		status = 'FAIL';
+		erro = '';
+	}
+	return {
+		status: status,
+		erro: erro
+	};
+}
 function home(){
     do{
       try{
@@ -921,6 +941,22 @@ function logout(forward){
 				return;
 			} 
 			goo('/member/login.html?forward='+forward);
+		}
+	},300);
+}
+function logout1(forward){
+	$.get('/index.php?m=member&a=logout&app=1&forward=');
+	setTimeout(function(){
+		try{
+			jstojava.logout();
+		}catch(d){
+			var domain = window.location.href.split(/http:\/\/([^\.]*)/);
+			if(domain[1]=="dr"){
+			
+				goo('/h5page/pharmacy/login.html?forward='+forward);
+				return;
+			} 
+			goo('/h5page/pharmacy/login.html?forward='+forward);
 		}
 	},300);
 }

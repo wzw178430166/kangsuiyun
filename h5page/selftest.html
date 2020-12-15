@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
 <script type="text/javascript" src="/statics/js/setFontSize.js"></script> 
 <script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script> 
+<script type="text/javascript" src="/statics/js/layer/3.1.1/layer.js"></script>
 <script type="text/javascript" src="/statics/js/global.js"></script>
 <title>健康自测</title>
 <style>
@@ -559,7 +560,7 @@ body {
             }
             score = roundReloaded(trueCount / questionLength * 100, 2);
             
-            resultSet = '<p class="resuied">睡眠质量评测结果</p><p class="resuied1">睡眠质量指数</p><p class="scored">'+score+'</p><p class="scoredti">（指数越高表示睡眠质量越低）</p><h2 class="qTitle">' + judgeSkills(score) +  '</h2>' + shareButton + '<div class="jquizzy-clear"></div>' + resultSet + '<div class="jquizzy-clear"><span>找医生咨询</span><span onClick="goo_t(\'/h5page/selftestlist.html\')">重新测试</span></div>';
+            resultSet = '<p class="resuied">睡眠质量评测结果</p><p class="resuied1">睡眠质量指数</p><p class="scored">'+score+'</p><p class="scoredti">（指数越高表示睡眠质量越低）</p><h2 class="qTitle">' + judgeSkills(score) +  '</h2>' + shareButton + '<div class="jquizzy-clear"></div>' + resultSet + '<div class="jquizzy-clear"><span onClick="goo_d()">找医生咨询</span><span onClick="goo_t(\'/h5page/selftestlist.html\')">重新测试</span></div>';
             superContainer.find('.result-keeper').html(resultSet).show(500);
             superContainer.find('.resultsview-qhover').hide();
             superContainer.find('.result-row').hover(function() {
@@ -578,7 +579,9 @@ body {
 })(jQuery);	
 </script>
 <script type="text/javascript">
-var init={'questions':[{'question':'1、您的睡眠状况是：','answers':['A.睡眠时常有间断醒或睡而不实， 晨醒过早，但不影响工作','B.偶有失眠，但尚能坚持工作','C.睡眠不足4小时，影响正常工作','D.经常不眠，难以坚持正常工作'],'correctAnswer':1},{'question':'2.你是否经常工作加班或者娱乐至深夜？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':3},{'question':'3.躺在床上脑子里全是白天见过的人和发生的事，难以入睡？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':3},{'question':'4.入睡后稍有动静你也能知道？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':2},{'question':'5.你总是整夜做梦，醒来时却觉得很累？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':2}],'titles':'睡眠质量自测',startImg: './images/kasuiyuns.png',contiuies:'决定睡眠是否充足，除了量的要求外，更重要的还有质的要求,眠质量的关键就在于深度睡眠。 在深睡眠状态下，大脑皮层细胞处于充分休息',resultComments: {
+var s=parseInt(getUrlParam('type'));
+var arrs=['基础代谢率计算','肥胖指数测试','疲劳度测试量表','糖尿病早期症状自测','BMI指数计算','睡眠质量自测','颈椎病症状自测','痛风的症状自测'];
+var init=[{'questions':[{'question':'1、您的睡眠状况是：','answers':['A.睡眠时常有间断醒或睡而不实， 晨醒过早，但不影响工作','B.偶有失眠，但尚能坚持工作','C.睡眠不足4小时，影响正常工作','D.经常不眠，难以坚持正常工作'],'correctAnswer':1},{'question':'2.你是否经常工作加班或者娱乐至深夜？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':3},{'question':'3.躺在床上脑子里全是白天见过的人和发生的事，难以入睡？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':3},{'question':'4.入睡后稍有动静你也能知道？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':2},{'question':'5.你总是整夜做梦，醒来时却觉得很累？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':2}],'titles':'基础代谢率计算',startImg: './images/kasuiyuns.png',contiuies:'决定睡眠是否充足，除了量的要求外，更重要的还有质的要求,眠质量的关键就在于深度睡眠。 在深睡眠状态下，大脑皮层细胞处于充分休息',resultComments: {
                 perfect: '您的睡眠质量最佳',
                 excellent: '您的睡眠质量非常好!',
                 good: '您的睡眠质量很好，发挥不错!',
@@ -586,16 +589,82 @@ var init={'questions':[{'question':'1、您的睡眠状况是：','answers':['A.
                 bad: '您的睡眠质量差，导致健康状况的严重恶化，情绪也不稳定！',
                 poor: '您的睡眠质量已经很差，长期的睡眠不足，应付工作力不从心，情绪也不稳定！',
                 worst: '您的睡眠质量已经非常差，长期的睡眠不足，导致健康状况的严重恶化，应付工作力不从心，情绪也不稳定！'
-            }};
-
+            }},{'questions':[{'question':'1、您的睡眠状况是：','answers':['A.睡眠时常有间断醒或睡而不实， 晨醒过早，但不影响工作','B.偶有失眠，但尚能坚持工作','C.睡眠不足4小时，影响正常工作','D.经常不眠，难以坚持正常工作'],'correctAnswer':1},{'question':'2.你是否经常工作加班或者娱乐至深夜？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':3},{'question':'3.躺在床上脑子里全是白天见过的人和发生的事，难以入睡？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':3},{'question':'4.入睡后稍有动静你也能知道？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':2},{'question':'5.你总是整夜做梦，醒来时却觉得很累？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':2}],'titles':'基础代谢率计算',startImg: './images/kasuiyuns.png',contiuies:'决定睡眠是否充足，除了量的要求外，更重要的还有质的要求,眠质量的关键就在于深度睡眠。 在深睡眠状态下，大脑皮层细胞处于充分休息',resultComments: {
+                perfect: '您的睡眠质量最佳',
+                excellent: '您的睡眠质量非常好!',
+                good: '您的睡眠质量很好，发挥不错!',
+                average: '您的睡眠质量一般，情绪也不稳定！',
+                bad: '您的睡眠质量差，导致健康状况的严重恶化，情绪也不稳定！',
+                poor: '您的睡眠质量已经很差，长期的睡眠不足，应付工作力不从心，情绪也不稳定！',
+                worst: '您的睡眠质量已经非常差，长期的睡眠不足，导致健康状况的严重恶化，应付工作力不从心，情绪也不稳定！'
+            }},{'questions':[{'question':'1、您的睡眠状况是：','answers':['A.睡眠时常有间断醒或睡而不实， 晨醒过早，但不影响工作','B.偶有失眠，但尚能坚持工作','C.睡眠不足4小时，影响正常工作','D.经常不眠，难以坚持正常工作'],'correctAnswer':1},{'question':'2.你是否经常工作加班或者娱乐至深夜？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':3},{'question':'3.躺在床上脑子里全是白天见过的人和发生的事，难以入睡？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':3},{'question':'4.入睡后稍有动静你也能知道？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':2},{'question':'5.你总是整夜做梦，醒来时却觉得很累？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':2}],'titles':'肥胖指数测试',startImg: './images/kasuiyuns.png',contiuies:'决定睡眠是否充足，除了量的要求外，更重要的还有质的要求,眠质量的关键就在于深度睡眠。 在深睡眠状态下，大脑皮层细胞处于充分休息',resultComments: {
+                perfect: '您的睡眠质量最佳',
+                excellent: '您的睡眠质量非常好!',
+                good: '您的睡眠质量很好，发挥不错!',
+                average: '您的睡眠质量一般，情绪也不稳定！',
+                bad: '您的睡眠质量差，导致健康状况的严重恶化，情绪也不稳定！',
+                poor: '您的睡眠质量已经很差，长期的睡眠不足，应付工作力不从心，情绪也不稳定！',
+                worst: '您的睡眠质量已经非常差，长期的睡眠不足，导致健康状况的严重恶化，应付工作力不从心，情绪也不稳定！'
+            }},{'questions':[{'question':'1、您的睡眠状况是：','answers':['A.睡眠时常有间断醒或睡而不实， 晨醒过早，但不影响工作','B.偶有失眠，但尚能坚持工作','C.睡眠不足4小时，影响正常工作','D.经常不眠，难以坚持正常工作'],'correctAnswer':1},{'question':'2.你是否经常工作加班或者娱乐至深夜？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':3},{'question':'3.躺在床上脑子里全是白天见过的人和发生的事，难以入睡？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':3},{'question':'4.入睡后稍有动静你也能知道？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':2},{'question':'5.你总是整夜做梦，醒来时却觉得很累？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':2}],'titles':'疲劳度测试量表',startImg: './images/kasuiyuns.png',contiuies:'决定睡眠是否充足，除了量的要求外，更重要的还有质的要求,眠质量的关键就在于深度睡眠。 在深睡眠状态下，大脑皮层细胞处于充分休息',resultComments: {
+                perfect: '您的睡眠质量最佳',
+                excellent: '您的睡眠质量非常好!',
+                good: '您的睡眠质量很好，发挥不错!',
+                average: '您的睡眠质量一般，情绪也不稳定！',
+                bad: '您的睡眠质量差，导致健康状况的严重恶化，情绪也不稳定！',
+                poor: '您的睡眠质量已经很差，长期的睡眠不足，应付工作力不从心，情绪也不稳定！',
+                worst: '您的睡眠质量已经非常差，长期的睡眠不足，导致健康状况的严重恶化，应付工作力不从心，情绪也不稳定！'
+            }},{'questions':[{'question':'1、您的睡眠状况是：','answers':['A.睡眠时常有间断醒或睡而不实， 晨醒过早，但不影响工作','B.偶有失眠，但尚能坚持工作','C.睡眠不足4小时，影响正常工作','D.经常不眠，难以坚持正常工作'],'correctAnswer':1},{'question':'2.你是否经常工作加班或者娱乐至深夜？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':3},{'question':'3.躺在床上脑子里全是白天见过的人和发生的事，难以入睡？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':3},{'question':'4.入睡后稍有动静你也能知道？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':2},{'question':'5.你总是整夜做梦，醒来时却觉得很累？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':2}],'titles':'糖尿病早期症状自测',startImg: './images/kasuiyuns.png',contiuies:'决定睡眠是否充足，除了量的要求外，更重要的还有质的要求,眠质量的关键就在于深度睡眠。 在深睡眠状态下，大脑皮层细胞处于充分休息',resultComments: {
+                perfect: '您的睡眠质量最佳',
+                excellent: '您的睡眠质量非常好!',
+                good: '您的睡眠质量很好，发挥不错!',
+                average: '您的睡眠质量一般，情绪也不稳定！',
+                bad: '您的睡眠质量差，导致健康状况的严重恶化，情绪也不稳定！',
+                poor: '您的睡眠质量已经很差，长期的睡眠不足，应付工作力不从心，情绪也不稳定！',
+                worst: '您的睡眠质量已经非常差，长期的睡眠不足，导致健康状况的严重恶化，应付工作力不从心，情绪也不稳定！'
+            }},{'questions':[{'question':'1、您的睡眠状况是：','answers':['A.睡眠时常有间断醒或睡而不实， 晨醒过早，但不影响工作','B.偶有失眠，但尚能坚持工作','C.睡眠不足4小时，影响正常工作','D.经常不眠，难以坚持正常工作'],'correctAnswer':1},{'question':'2.你是否经常工作加班或者娱乐至深夜？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':3},{'question':'3.躺在床上脑子里全是白天见过的人和发生的事，难以入睡？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':3},{'question':'4.入睡后稍有动静你也能知道？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':2},{'question':'5.你总是整夜做梦，醒来时却觉得很累？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':2}],'titles':'BMI指数计算',startImg: './images/kasuiyuns.png',contiuies:'决定睡眠是否充足，除了量的要求外，更重要的还有质的要求,眠质量的关键就在于深度睡眠。 在深睡眠状态下，大脑皮层细胞处于充分休息',resultComments: {
+                perfect: '您的睡眠质量最佳',
+                excellent: '您的睡眠质量非常好!',
+                good: '您的睡眠质量很好，发挥不错!',
+                average: '您的睡眠质量一般，情绪也不稳定！',
+                bad: '您的睡眠质量差，导致健康状况的严重恶化，情绪也不稳定！',
+                poor: '您的睡眠质量已经很差，长期的睡眠不足，应付工作力不从心，情绪也不稳定！',
+                worst: '您的睡眠质量已经非常差，长期的睡眠不足，导致健康状况的严重恶化，应付工作力不从心，情绪也不稳定！'
+            }},{'questions':[{'question':'1、您的睡眠状况是：','answers':['A.睡眠时常有间断醒或睡而不实， 晨醒过早，但不影响工作','B.偶有失眠，但尚能坚持工作','C.睡眠不足4小时，影响正常工作','D.经常不眠，难以坚持正常工作'],'correctAnswer':1},{'question':'2.你是否经常工作加班或者娱乐至深夜？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':3},{'question':'3.躺在床上脑子里全是白天见过的人和发生的事，难以入睡？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':3},{'question':'4.入睡后稍有动静你也能知道？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':2},{'question':'5.你总是整夜做梦，醒来时却觉得很累？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':2}],'titles':'睡眠质量自测',startImg: './images/kasuiyuns.png',contiuies:'决定睡眠是否充足，除了量的要求外，更重要的还有质的要求,眠质量的关键就在于深度睡眠。 在深睡眠状态下，大脑皮层细胞处于充分休息',resultComments: {
+                perfect: '您的睡眠质量最佳',
+                excellent: '您的睡眠质量非常好!',
+                good: '您的睡眠质量很好，发挥不错!',
+                average: '您的睡眠质量一般，情绪也不稳定！',
+                bad: '您的睡眠质量差，导致健康状况的严重恶化，情绪也不稳定！',
+                poor: '您的睡眠质量已经很差，长期的睡眠不足，应付工作力不从心，情绪也不稳定！',
+                worst: '您的睡眠质量已经非常差，长期的睡眠不足，导致健康状况的严重恶化，应付工作力不从心，情绪也不稳定！'
+            }},{'questions':[{'question':'1、您的睡眠状况是：','answers':['A.睡眠时常有间断醒或睡而不实， 晨醒过早，但不影响工作','B.偶有失眠，但尚能坚持工作','C.睡眠不足4小时，影响正常工作','D.经常不眠，难以坚持正常工作'],'correctAnswer':1},{'question':'2.你是否经常工作加班或者娱乐至深夜？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':3},{'question':'3.躺在床上脑子里全是白天见过的人和发生的事，难以入睡？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':3},{'question':'4.入睡后稍有动静你也能知道？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':2},{'question':'5.你总是整夜做梦，醒来时却觉得很累？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':2}],'titles':'颈椎病症状自测',startImg: './images/kasuiyuns.png',contiuies:'决定睡眠是否充足，除了量的要求外，更重要的还有质的要求,眠质量的关键就在于深度睡眠。 在深睡眠状态下，大脑皮层细胞处于充分休息',resultComments: {
+                perfect: '您的睡眠质量最佳',
+                excellent: '您的睡眠质量非常好!',
+                good: '您的睡眠质量很好，发挥不错!',
+                average: '您的睡眠质量一般，情绪也不稳定！',
+                bad: '您的睡眠质量差，导致健康状况的严重恶化，情绪也不稳定！',
+                poor: '您的睡眠质量已经很差，长期的睡眠不足，应付工作力不从心，情绪也不稳定！',
+                worst: '您的睡眠质量已经非常差，长期的睡眠不足，导致健康状况的严重恶化，应付工作力不从心，情绪也不稳定！'
+            }},{'questions':[{'question':'1、您的睡眠状况是：','answers':['A.睡眠时常有间断醒或睡而不实， 晨醒过早，但不影响工作','B.偶有失眠，但尚能坚持工作','C.睡眠不足4小时，影响正常工作','D.经常不眠，难以坚持正常工作'],'correctAnswer':1},{'question':'2.你是否经常工作加班或者娱乐至深夜？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':3},{'question':'3.躺在床上脑子里全是白天见过的人和发生的事，难以入睡？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':3},{'question':'4.入睡后稍有动静你也能知道？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':2},{'question':'5.你总是整夜做梦，醒来时却觉得很累？','answers':['A：经常','B：有时','C：很少','D：从不'],'correctAnswer':2}],'titles':'痛风的症状自测',startImg: './images/kasuiyuns.png',contiuies:'决定睡眠是否充足，除了量的要求外，更重要的还有质的要求,眠质量的关键就在于深度睡眠。 在深睡眠状态下，大脑皮层细胞处于充分休息',resultComments: {
+                perfect: '您的睡眠质量最佳',
+                excellent: '您的睡眠质量非常好!',
+                good: '您的睡眠质量很好，发挥不错!',
+                average: '您的睡眠质量一般，情绪也不稳定！',
+                bad: '您的睡眠质量差，导致健康状况的严重恶化，情绪也不稳定！',
+                poor: '您的睡眠质量已经很差，长期的睡眠不足，应付工作力不从心，情绪也不稳定！',
+                worst: '您的睡眠质量已经非常差，长期的睡眠不足，导致健康状况的严重恶化，应付工作力不从心，情绪也不稳定！'
+            }}
+        ];
 $(function(){
+    console.log(s);
+    console.log(init[s]);
 	$('#quiz-container').jquizzy({
-        questions: init.questions,
-		titles:init.titles,
-		startImg:init.startImg,
-		contiuies:init.contiuies,
-		resultComments:init.resultComments,
-		len:init.questions.length
+        questions: init[s].questions,
+		titles:init[s].titles,
+		startImg:init[s].startImg,
+		contiuies:init[s].contiuies,
+		resultComments:init[s].resultComments,
+		len:init[s].questions.length
     });
 });
 </script>

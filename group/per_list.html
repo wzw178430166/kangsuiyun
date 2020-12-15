@@ -1,0 +1,645 @@
+<!--<head></head><body></body>-->
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="topcolor" rgba="44.172.252.1">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+<script type="text/javascript" src="/statics/js/jquery.min.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<script type="text/javascript" src="/statics/js/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="/statics/js/ex/mytemplate_1.js"></script>
+<script type="text/javascript" src="/statics/js/cookie.js"></script>
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+<script type="text/javascript" src="/statics/languages/20181105/languages.js"></script>
+<title set-lan="html:relatives_friends">我的亲友</title>
+<meta name="keywords" content="医家讯,医家讯智能医疗设备,智能健康电子档案,个人健康、家庭健康,健康检测,心率监测,血糖监测,血压监测,睡眠监测,健康饮食,运动健美,亲友互动,运动圈子,医体健康,食动平衡,人工智能,健康管理,物联网,智能大数据">
+<meta name="description" content="医家讯智能医体健康平台通过智能紧急提醒、生命健康监测、智能穿戴设备及专业级智能医疗设备，结合物联网、云计算、健康大数据分析与呼叫中心，构建智能医体健康平台，让家人享受更健康、更安全、更舒心、更智慧化的生活，也让子女随时随地的了解父母的健康情况，及时表达爱心和孝心。">
+<style>
+body { background-color: #f2f2f2; }
+.header_box {     width: 100%;
+    background-color: #ffffff;
+    overflow: hidden;
+    height: 50px;
+    padding: 0px 5%;
+    border-bottom: 1px solid #e6e6e6;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9;}
+.header_box .header_boxl { width: 10%; margin-right: 5%; padding-top: 4.5%; }
+.header_box .header_boxl img { width: 70%; }
+.header_box .header_boxm { width: 70%; overflow: hidden; text-align: center; height: 50px; line-height: 50px; color: #fff; font-size: 18px; }
+.header_box .header_boxr { width: 10%; padding-top: 5px; margin-left: 5%; }
+.header_boxr img { width: 70%; display: block; margin: 0 auto; }
+.header_boxr p { color: #fff; text-align: center; font-size: 12px; }
+/**/
+
+.per_list, .list_box, .list_box_, .list_box_top, .list_box_more, .more_ { width: 100%; overflow: hidden; }
+.per_list .title { width: 100%; line-height: 35px; background-color: #fff; border-bottom: 1px solid #e3e3e7; padding: 5px 10px; overflow: hidden; font-size: 1.1rem; }
+.per_list .title_l { color: #666666; }
+.per_list .title_l span { color: #2cacfc; }
+.per_list .title_l span:first-child { margin-left: 5px; }
+.per_list .title_r { width: 85px; height: 30px; line-height: 30px; background-color: #2cacfc; color: #fff; border-radius: 5px; text-align: center; margin-right: 10px; margin-top: 2px; }
+/**/
+
+.list_box { margin-top: 10px; }
+.list_box li { float: left; width: 45.5%; overflow: hidden; background-color: #fff; border-radius: 5px; text-align: center; padding: 10px 0px; margin-bottom: 10px; margin-left: 3%; position: relative; }
+.list_box li:last-child { height: 222px; border: 3px dotted #eee; position: relative; }
+.list_box_ .logo { width: 60px; height: 60px; border-radius: 60px; display: block; margin: 0 auto; }
+.list_box_ .name { font-size: 1.2rem; margin-top: 5px; }
+.list_box_ .call { font-size: .9rem; color: #666666; }
+.list_box_more { margin-top: 10px; }
+.list_box_more div { float: left; width: 33.3%; text-align: center; }
+.list_box_more img { width: 40px; height: 40px; }
+.list_box_ .per_add { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); text-align: center; }
+.list_box_ .per_add img { width: 70%; display: block; margin: 0 auto; }
+.list_box_ .per_add p { font-size: 1.3rem; margin-top: 10px; }
+.danxuan { height: 26px; width: 26px; position: absolute; top: 5px; right: 5px; float: right; background: url(/statics/group/images/danxuan.png) no-repeat; background-size: 100%; }
+.danxuan_ { height: 26px; width: 26px; position: absolute; top: 5px; right: 5px; float: right; background: url(/statics/group/images/danxuan_.png) no-repeat; background-size: 100%; }
+.danxuan2 { height: 26px; width: 26px; position: absolute; top: 5px; right: 5px; float: right; background: url(/statics/group/images/danxuan.png) no-repeat; background-size: 100%; }
+.danxuan2_ { height: 26px; width: 26px; position: absolute; top: 5px; right: 5px; float: right; background: url(/statics/group/images/danxuan_.png) no-repeat; background-size: 100%; }
+.list_box_option_ { width: 100%; overflow: hidden; margin-top: 15px; }
+.list_box_option_ .option_ { width: 44%; margin-left: 4%; float: left; margin-bottom: 5px; height: 35px; line-height: 35px; text-align: center; border-radius: 5px; color: #fff; font-size: .8rem; }
+.list_box_option_ .option_ img { width: 20px; height: 20px; vertical-align: sub; }
+.state { width: 80%; height: 30px; line-height: 30px; text-align: center; border-radius: 3px; color: #fff; margin: 36px auto 29px auto; }
+.list_box .jinggao { width: 25px; height: 29px; position: absolute; top: 5px; left: 5px; background: url(/index2/statics/images/index_type5.gif) no-repeat; background-size: 100%; }/*/statics/group/images/jinggao.png*/
+.list_box .anquan { width: 25px; height: 29px; position: absolute; top: 5px; left: 5px; background: url(/index2/statics/images/index_type4.jpg) no-repeat; background-size: 100%; }/*/statics/group/images/anquan.png*/
+.yindao{display: none;position: fixed;width: 100%;height: 100%;z-index: 99;}
+</style>
+</head>
+
+<body>
+<img src='img/qyyd1.jpg' class='yindao'/>
+<img src='img/qyyd2.jpg' class='yindao'/>
+<img src='img/qyyd3.jpg' class='yindao'/>
+<img src='img/qyyd4.jpg' class='yindao'/>
+<div class="header_box"> <img src="/statics/images/goback_b.png" onClick="goback()" class="left">
+  <p class="midden" set-lan="html:relatives_friends">我的亲友</p>
+  
+  <!--<div class="right">
+
+        	<img src="/statics/group/images/mess_.png">
+
+            <p>消息</p>
+
+        </div>--> 
+  
+</div>
+<div class="h50"></div>
+<div class="per_list">
+  <div class="title">
+    <div class="title_l fl"><u set-lan="html:relatives_friends">我的亲友</u>共<span id="user_num">0</span><span>人</span></div>
+    <div class="title_r fr" onClick="goo('./per_add.html')" set-lan="html:add_RF">添加亲友</div>
+    <div class="title_r fr" onClick="new_del()" style="background-color:#EC6060;display:none;" id="del_kak" set-lan="html:clean_application">清除申请</div>
+    <div class="title_r fr" onClick="new_add()" style="display:none;" id="add_kak" set-lan="html:by_application">通过申请</div>
+  </div>
+  <div class="list_box">
+    <ul>
+      <li onClick="goo('./per_add.html')" style="display: none;">
+        <div class="list_box_">
+          <div class="per_add"> <img src="img/per4.png">
+            <p set-lan="html:add_friends">添加亲友</p>
+          </div>
+        </div>
+      </li>
+      <li id="dis_youke" style="display: none;">
+        <div class="anquan" onclick=""></div>
+        <div class="danxuan alldanxuan" onclick="" style="width:21px;height:21px;"></div>
+        <div class="list_box_">
+          <div class="list_box_top"> <img src="/upload/member/avatar_461.jpg" id="portrait" class="logo" onclick="location.href = './per_mess_change.html?uid=461'" onerror="this.src='/statics/images/member/nophoto.gif'">
+            <p class="name">13131313131</p>
+            <p class="call" style="height: 19px;">游客</p>
+          </div>
+          <div class="list_box_option_ list_box_461" style="display:block;">
+            <div class="option_" style="background-color: #3282fa;" onclick=""><img src="img/option_1.png"><u set-lan="html:today_test">今日检测</u></div>
+            <div class="option_" style="background-color: #f05a64;" onclick=""><img src="img/option_2.png" style="margin-right: 10px;"><u set-lan="html:dial">拨号</u></div>
+            <div class="option_" style="background-color: #00d7af;" onclick=""><img src="img/option_3.png" style="margin-right: 10px;"><u set-lan="html:archives">档案</u></div>
+            <div class="option_" style="background-color: #faa032;" onclick=""><img src="img/option_4.png" style="margin-right: 10px;"><u set-lan="html:location">定位</u></div>
+          </div>
+          <div class="state" style="background-color: #3588fc; display:none;"><u set-lan="html:application">申请中</u></div>
+          <div class="state" style="background-color: #fea531; display:none;" onclick="" data_tel="13662538372"><u set-lan="html:add">添加</u></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<template class="template" id="data_tpl">
+  <li>
+    <div class="<$healthy_state_>" onClick="anquan_msg(<$new_uid>,this)"></div>
+    <$state_str>
+    <div class="list_box_">
+      <div class="list_box_top"> <img src="<$new_portrait>" id="portrait" class="logo" onClick="location.href = './per_mess_change.html?uid=<$new_uid>'" onerror="this.src='/statics/images/member/nophoto.gif'">
+        <p class="name">
+          <$new_name>
+        </p>
+        <p class="call" style="height: 19px;">
+          <$new_nick>
+        </p>
+      </div>
+      <div class="list_box_option_ list_box_<$new_uid>" style="display:<$display_3>;">
+        <div class="option_" style="background-color: #3282fa;" onClick="go_jiance(<$state>,<$new_uid>)"><img src="img/option_1.png"><i set-lan="html:today_test">今日检测</i></div>
+        <div class="option_" style="background-color: #f05a64;" onClick="go_tel(<$state>,'<$new_tel>')"><img src="img/option_2.png" style="margin-right: 10px;">拨号</div>
+        <div class="option_" style="background-color: #00d7af;" onClick="go_dangan(<$state>,<$new_uid>)"><img src="img/option_3.png" style="margin-right: 10px;">档案</div>
+        <div class="option_" style="background-color: #faa032;" onClick="get_dingwei(<$state>,<$new_uid>)"><img src="img/option_4.png" style="margin-right: 10px;">定位</div>
+      </div>
+      <div class="state" style="background-color: #3588fc; display:<$display_2>;">申请中</div>
+      <div class="state" style="background-color: #fea531; display:<$display_1>;" onClick="new_add(<$fuid>,this)" data_tel="<$new_tel>">添加</div>
+    </div>
+  </li>
+</template>
+<input type="hidden" value="0" id="danxuan"/>
+</body>
+</html>
+<script>
+if(getQueryString('guide') == 1) $('.yindao').eq(0).show();
+$('.yindao').click(function(){
+	 $('.yindao').eq($(this).index()).hide();
+	var ydLength = $('.yindao').length;
+	if($(this).index() < ydLength) $('.yindao').eq($(this).index()+1).show();
+})
+var userid = getCookie('GkvUY___userid');
+
+if(getUrlParam('weixin') == 1 && !userid){
+
+	layer.open({
+
+		shadeClose: false,
+
+		content: '您还未登录医家讯账号？'
+
+		,btn: ['立即前往']
+
+		,yes: function(index){
+
+			goo('/?m=member&c=data_temp&a=go_login&forward='+encodeURIComponent(window.location.href));
+
+			layer.close(index);
+
+		}
+
+	});
+
+}
+
+
+
+$(function(){
+
+	get_kak();
+
+})
+
+function danxuan(uid,obj){
+
+	if(!$(obj).hasClass('danxuan_')){
+
+		$('.alldanxuan').removeClass('danxuan_');
+
+		$('.alldanxuan').removeClass('danxuan2_');
+
+		$(obj).addClass('danxuan_');
+
+		$('#danxuan').val(uid);
+
+		$('#add_kak').hide(500);
+
+		//$('#del_kak').show(500);
+
+		new_del(0,obj);
+
+	}else{
+
+		$('.alldanxuan').removeClass('danxuan_');
+
+		$('.alldanxuan').removeClass('danxuan2_');
+
+		$('#danxuan').val(0);
+
+		$('#del_kak').hide(500);
+
+	}
+
+}
+
+function danxuan_(uid,obj){
+
+	if(!$(obj).hasClass('danxuan_')){
+
+		$('.alldanxuan').removeClass('danxuan_');
+
+		$('.alldanxuan').removeClass('danxuan2_');
+
+		$(obj).addClass('danxuan_');
+
+		$('#danxuan').val(uid);
+
+		$('#add_kak').hide(500);
+
+		new_del(1,obj);
+
+	}
+
+}
+
+function danxuan2(uid,obj){
+
+	if(!$(obj).hasClass('danxuan2_')){
+
+		$('.alldanxuan').removeClass('danxuan2_');
+
+		$('.alldanxuan').removeClass('danxuan_');
+
+		$(obj).addClass('danxuan2_');
+
+		$('#danxuan').val(uid);
+
+		$('#del_kak').hide(500);
+
+		$('#add_kak').show(500);
+
+	}else{
+
+		$('.alldanxuan').removeClass('danxuan2_');
+
+		$('.alldanxuan').removeClass('danxuan_');
+
+		$('#danxuan').val(0);
+
+		$('#add_kak').hide(500);
+
+	}
+
+}
+
+function get_kak(){
+
+	if(userid > 0){
+
+		$.ajax({
+
+			url:'/index.php?m=member&c=data&a=get_datas',
+
+			type:'POST',
+
+			data:'judge=34',
+
+			dataType:'json',
+
+			success:function(data){
+
+				var data_template = $('#data_tpl').html();
+
+				var data_content = data.data_arr;
+
+				if(data_content != null){
+
+					var data_list = mytemplate_list(data_template,data_content);
+
+					/*$('.list_box li').before(data_list);
+
+					$('#user_num').text($('.list_box li').length*1-1*1);*/
+
+					var txt = '<li onClick="goo(\'./per_add.html\')" style="display: none;"><div class="list_box_"><div class="per_add"><img src="img/per4.png"><p>添加亲友</p></div></div></li>';
+
+					$('.list_box ul').html(data_list+txt);
+
+					$('#user_num').text($('.list_box li').length*1-1*1);
+
+				}
+
+			}
+
+		})
+
+	}else{
+
+		$('#dis_youke').show();
+
+	}
+
+}
+
+function get_dingwei(state,uid){
+
+	if(state != 1){
+
+		$.ajax({
+
+			url:'/index.php?m=member&c=data&a=get_datas',
+
+			type:'POST',
+
+			data:'judge=36&uid='+uid+'&type=1',
+
+			dataType:'json',
+
+			success:function(data){
+
+				if(data.rtp.state == 1){
+
+					layer.open({
+
+						content: data.rtp.msg,
+
+						skin: 'msg',
+
+						time: 2 //2秒后自动关闭
+
+					});
+
+				}else{
+
+					goo('./dingwei.html?uid='+uid);
+
+				}
+
+			}
+
+		});
+
+	}else{
+
+		layer.open({
+
+			content: '该亲友还未通过您的添加请求,无法查看最新定位~',
+
+			skin: 'msg',
+
+			time: 2 //2秒后自动关闭
+
+		});
+
+	}
+
+}
+
+function go_tel(state,new_tel){
+
+	if(state != 1){
+
+		try{
+
+			jstojava.go_test(new_tel);
+
+		}catch(e){
+
+			goo('tel:'+new_tel);
+
+		}
+
+	}else{
+
+		layer.open({
+
+			content: '该亲友还未通过您的添加请求,无法快速拨通电话~',
+
+			skin: 'msg',
+
+			time: 2 //2秒后自动关闭
+
+		});
+
+	}
+
+}
+
+function new_add(fuid,obj){
+
+	fuid = fuid?fuid:$('#danxuan').val();
+
+	var new_tel = $(obj).attr('data_tel');
+
+	if(fuid > 0){
+
+		layer.open({
+
+			content: '您确认要通过该亲友的申请吗？',
+
+			btn: ['确定', '考虑一下'],
+
+			yes: function(index) {
+
+				$.ajax({
+
+					url:'/index.php?m=member&c=data&a=get_datas',
+
+					type:'POST',
+
+					data:'judge=33&add=4&fuid='+fuid,
+
+					dataType:'json',
+
+					success:function(data){
+
+						//location.reload();
+
+						var str_html = '<div class="option_" style="background-color: #3282fa;" onClick="go_jiance(2,'+fuid+')"><img src="img/option_1.png">今日檢測</div><div class="option_" style="background-color: #f05a64;" onClick="go_tel(2,'+new_tel+')"><img src="img/option_2.png" style="margin-right: 10px;">拨号</div><div class="option_" style="background-color: #00d7af;" onClick="go_dangan(2,'+fuid+')"><img src="img/option_3.png" style="margin-right: 10px;">档案</div><div class="option_" style="background-color: #faa032;" onClick="get_dingwei(2,'+fuid+')"><img src="img/option_4.png" style="margin-right: 10px;">定位</div>';
+
+						$('.list_box_'+fuid).html(str_html);
+
+						$('.list_box_'+fuid).css('display','block');
+
+						$(obj).css('display','none');
+
+						layer.closeAll();
+
+						get_kak();
+
+					}
+
+				});
+
+			}
+
+		});
+
+	}else{
+
+		layer.open({
+
+			content: '请先选择需要操作的亲友!',
+
+			skin: 'msg',
+
+			time: 2 //2秒后自动关闭
+
+		});
+
+	}
+
+}
+
+function new_del(fuid,obj){
+
+	var content = fuid == 1?'确认撤回该申请吗?':'确认删除该亲友的信息？';
+
+	fuid = $('#danxuan').val();
+
+	if(fuid > 0){
+
+		layer.open({
+
+			content: content,
+
+			btn: ['确定', '考虑一下'],
+
+			yes: function(index) {
+
+				$.ajax({
+
+					url:'/index.php?m=member&c=data&a=get_datas',
+
+					type:'POST',
+
+					data:'judge=33&add=5&fuid='+fuid,
+
+					dataType:'json',
+
+					success:function(data){
+
+						$(obj).parent().remove();
+
+						layer.closeAll();
+
+					}
+
+				});
+
+			},
+
+			no: function(data){
+
+				$('.alldanxuan').removeClass('danxuan2_');
+
+				$('.alldanxuan').removeClass('danxuan_');
+
+				$('#danxuan').val(0);
+
+				$('#add_kak').hide(500);
+
+			}
+
+		});
+
+	}else{
+
+		layer.open({
+
+			content: '请先选择需要操作的亲友!',
+
+			skin: 'msg',
+
+			time: 2 //2秒后自动关闭
+
+		});
+
+	}
+
+	
+
+}
+
+function go_dangan(state,uid){
+
+	if(state != 1){
+
+		goo('/medical/index.html?to_uid='+uid);
+
+	}else{
+
+		layer.open({
+
+			content: '该亲友还未通过您的添加请求,无法查看该档案~',
+
+			skin: 'msg',
+
+			time: 2 //2秒后自动关闭
+
+		});
+
+	}
+
+}
+
+function go_jiance(state,uid){
+
+	if(state != 1){
+
+		goo('/index2/today_check.html?to_uid='+uid)
+
+	}else{
+
+		layer.open({
+
+			content: '该亲友还未通过您的添加请求,无法查看检测数据~',
+
+			skin: 'msg',
+
+			time: 2 //2秒后自动关闭
+
+		});
+
+	}
+
+}
+
+/*function new_del(fuid){
+
+	$.ajax({
+
+		url:'/index.php?m=member&c=data&a=get_datas',
+
+		type:'POST',
+
+		data:'judge=33&add=5&fuid='+fuid,
+
+		dataType:'json',
+
+		success:function(data){
+
+			location.reload();
+
+		}
+
+	});
+
+}*/
+
+function anquan_msg(uid,obj){
+
+	$.ajax({
+
+		url:'/?m=member&c=data&a=set_healthy_state_&userid='+uid,
+
+		data:'',
+
+		dataType:'json',
+
+		success:function(re){
+
+			goo('/medical/jktx.html?userid='+uid+'&ss=1');
+
+		}
+
+	})
+
+	$(obj).removeClass('jinggao');
+
+	$(obj).addClass('anquan');
+
+}
+
+setInterval(function(){
+
+	get_kak();
+
+},10000);
+
+
+
+</script>

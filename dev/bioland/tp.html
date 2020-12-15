@@ -1,0 +1,362 @@
+<!--<head></head><body></body>-->
+<!doctype html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="topcolor" rgba="44.172.252.1">
+    <title set-lan="html:thermometer">体温计</title>
+    <link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+    <link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+    <!--<link rel="stylesheet" type="text/css" href="/statics/js/layer/1.9.3/skin/layer.css">-->
+    <link rel="stylesheet" type="text/css" href="statics/css/style.css">
+    <script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/statics/js/global.js"></script>
+    <link rel="stylesheet" type="text/css" href="/statics/js/layer/3.1.1/mobile/need/layer.css">
+    <script type="text/javascript" src="/statics/js/layer/3.1.1/mobile/layer.js"></script>
+    <script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+    <script type="text/javascript" src="/statics/languages/20181105/languages.js"></script>
+    <style>
+        body { background-color: #f8f8f8; }
+        .tiwen_pro { width: 80%; overflow: hidden; margin: 6% auto; }
+        .tiwen_pro .tiwen_day { width: 100%; overflow: hidden; border: 1px solid #317ce2; border-radius: 20px; }
+        .tiwen_day li { width: 33.3%; float: left; text-align: center; height: 35px; line-height: 35px; background-color: #fff; color: #317ce2; border-right: 1px solid #317ce2; }
+        .tiwen_day li:last-child { border-right: none; }
+        .tiwen_day .active { background-color: #317ce2; color: #fff; }
+        /**/
+        
+        .tiwen_pic { width: 100%; overflow: hidden; position: relative; }
+        .tiwen_pic img { width: 100%; }
+        .tiwen_pic .tiwen_pic_ { width: 100%; overflow: hidden; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); text-align: center; }
+        .tiwen_pic_ .p1 { width: 100%; height: 75px; line-height: 75px; position: relative; }
+        .tiwen_pic_ .p1_ { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); width: 58%; }
+        .tiwen_pic_ .p1_ img { width: 23%; float: left; }
+        /*.tiwen_pic_ .p1_ img:nth-child(3){ width:8%;}*/
+        
+        .tiwen_pic_ .p2 { width: 20%; height: 40px; line-height: 40px; background-color: #fff; color: #0195b3; margin: 4% auto; border-radius: 3px; font-size: 1.2rem; }
+        .tiwen_pic_ .p3 { color: #666; font-size: 1.2rem; }
+        .tiwen_more { width: 100%; overflow: hidden; }
+        .tiwen_more .more { width: 45%; height: 40px; line-height: 40px; text-align: center; border-radius: 20px; }
+        .tiwen_more .more img { vertical-align: sub; width: 1.2rem; margin-right: 5px; }
+        .tiwen_more .more:first-child { background-color: #2a8cd5; color: #fff; }
+        .tiwen_more .more:last-child { border: 1px solid #2a8cd5; color: #2a8cd5; }
+        .tiwen_point { width: 8% !important; }
+        /*数据记录*/
+        
+        .tiwen_data { width: 100%; overflow: hidden; background-color: #fff; padding: 0px 2%; }
+        .tiwen_data .title { width: 100%; height: 44px; line-height: 44px; text-align: center; color: #666; }
+        .tiwen_data .data_box, .data_line { width: 100%; overflow: hidden; }
+        .tiwen_data .data_line { height: 45px; padding: 10px 5px; border-top: 1px solid #e3e3e7; }
+        .tiwen_data .line_l { height: 25px; line-height: 25px; }
+        .tiwen_data .line_l span { color: #666; }
+        .tiwen_data .line_r { width: 48%; height: 25px; line-height: 25px; }
+        .tiwen_data .line_r i { color: #2cacfc; float: right; }
+        .tiwen_data .line_r span { padding: 0px 15px; height: 25px; line-height: 25px; text-align: center; border-radius: 3px; color: #fff; }
+        </style>
+</head>
+
+<body>
+    <div class="header_box">
+        <img src="/statics/images/goback_b.png" onClick="goback()" class="left">
+        <p class="midden" set-lan="html:thermometer_data">体温计数据</p>
+        <div class="right_" onClick="goo('http://shop.yjxun.cn/')" set-lan="html:go_to_buy">去商城购买</div>
+    </div>
+    <div class="h50"></div>
+    <div class="tiwen_pro">
+        <div class="tiwen_day">
+            <ul>
+                <li onClick="goo('/medical/history_data_temperature.html?day=1&to_uid=0')" class="active" set-lan="html:today">今天</li>
+                <li onClick="goo('/medical/history_data_temperature.html?day=7&to_uid=0')" set-lan="html:7days">最近7天</li>
+                <li onClick="goo('/medical/history_data_temperature.html?day=30&to_uid=0')" set-lan="html:30days">最近30天</li>
+            </ul>
+        </div>
+        <div class="tiwen_pic">
+            <img src="statics/images/tiwen.png">
+            <div class="tiwen_pic_">
+                <div class="p1">
+                    <div class="p1_">
+                        <img src="statics/images/tiwen_0.png">
+                        <img src="statics/images/tiwen_unit.png"> </div>
+                </div>
+                <p class="p2" id="status_str" set-lan="html:normal">正常</p>
+
+                <!--                <p class="p3 p3value">-/-/-&nbsp;-:-</p>-->
+
+            </div>
+        </div>
+        <div class="tiwen_more">
+            <div class="more fl" onClick="show_write_more();">
+                <img src="statics/images/write.png">
+                <u set-lan="html:manual_entry">手工录入</u>
+            </div>
+            <div class="more fr">
+                <img src="statics/images/explain.png">
+                <u set-lan="html:instructions" onClick="window.location.href='/dev/bioland/shuoming2.html'">使用说明</u>
+                <u onClick="goo('/equipment/instruct_show.html?&id=5')"> / 视频</u>
+            </div>
+        </div>
+    </div>
+    <div class="tiwen_data">
+        <p class="title" set-lan="html:data_record">数据记录</p>
+        <div class="data_box">
+            <ul>
+                <span id="insert_bp"></span>
+            </ul>
+        </div>
+    </div>
+    <div class="write_more">
+        <div class="write_more_down" onClick="hide_write_more()">
+            <img src="statics/images/down.png" /> </div>
+        <div class="write_box">
+            <div class="write_box_">
+                <div class="write_box_l fl">
+                    <img src="statics/images/data_foot_4.png">
+                    <u set-lan="html:temperature">温度</u>
+                </div>
+                <input class="write_box_m fl" type="number" id="m_bpHp" placeholder="手工输入数据">
+                <div class="write_box_r fl">ºC</div>
+            </div>
+            <div class="save" onClick="write_save()" set-lan="html:save">确认保存</div>
+        </div>
+    </div>
+    <div class="bg"></div>
+    <div id="template" class="template">
+        <li>
+            <div class="data_line">
+                <div class="line_l fl">
+                    <span class="day">-月-日</span>&nbsp;
+                    <span class="time">14:00</span>
+                </div>
+                <div class="line_r fr">
+                    <span style="background-color:#32e5f5;" class="line_m"></span>
+                    <i class="t_tnum">36.5℃</i>
+                </div>
+            </div>
+        </li>
+    </div>
+</body>
+
+</html>
+<script>
+
+    var userid_;
+
+    $(function () {
+        $.ajax({
+            url: "/?m=member&c=data&a=set_ss_encode",
+            async: false,
+            success: function (daa) {
+                userid_ = daa;
+                get_data();
+            }
+        })
+    })
+
+
+
+    window.onresize = function () {
+        var v = document.getElementsByClassName('write_more')[0];
+        if (document.documentElement.clientHeight - v.clientHeight <= 50) {
+            v.style.bottom = 'auto';
+            v.style.top = '50px';
+        } else {
+            v.style.bottom = '0px';
+            v.style.top = 'auto';
+        }
+    }
+
+    //get_data_back('{"tp":[{"add_date":"2018-01-25 23:19:11","add_time":1516893551,"device_name":"manual","device_number":"2","tnum":"36"},{"add_date":"2018-01-25 23:20:17","add_time":1516893617,"device_name":"manual","device_number":"2","tnum":"36"},{"add_date":"2018-01-25 23:21:17","add_time":1516893677,"device_name":"manual","device_number":"2","tnum":"36"},{"add_date":"2018-01-26 10:06:50","add_time":1516932410,"device_name":"manual","device_number":"2","tnum":"25"},{"add_date":"2018-01-26 10:06:57","add_time":1516932417,"device_name":"manual","device_number":"2","tnum":"25"},{"add_date":"2018-01-26 10:42:40","add_time":1516934560,"device_name":"manual","device_number":"2","tnum":"25"}]}');
+
+    $('.bg').css('height', window.screen.height - 50);
+
+    //$('.tiwen_pic_ .p1_ img').css({'width':$('.p1').height()*0.3});
+
+    function show_write_more() {
+        $('.write_more').css("top", 'auto');
+        $('.write_more').css("bottom", 0 - $('.write_more').height() - 200);
+        $('.write_more').show();
+
+        window.setTimeout(function () {
+            $('.write_more').css({ 'transition': 'all .5s', "bottom": 0 });
+            $('.bg').fadeIn(300);
+        }, 30);
+    }
+
+    function hide_write_more() {
+        $('.write_more').css("bottom", 0 - $('.write_more').height() - 200);
+        window.setTimeout(function () {
+            $('.write_more').css({ 'transition': 'none' });
+            $('.write_more').hide();
+        }, 300);
+
+        $('.bg').fadeOut(30);
+        $('#m_bpHp').val("");
+    }
+
+    $('.tiwen_day ul li').click(function () {
+
+        $(this).addClass('active').siblings().removeClass('active');
+
+    });
+
+    function write_save() {
+        $('html,body').scrollTop(0);
+        layer.open({ 
+            content: '确定保存此数据？'
+            , btn: ['确定', '取消']
+            , yes: function (index) {
+                layer.close();
+                var tp = Number($.trim($('#m_bpHp').val()));
+                try {
+                    jstojava.manual_upload("tp", '{"tnum":"' + tp + '"}');
+                } catch (e) {
+                    var date = new Base64().encode('{"tnum":"' + tp + '"}');
+                    $.ajax({ 
+						'async':false, 
+                        'url': '/index.php?m=member&c=data_api&a=measure&equipment=bioland&device_name=manual&device_number=2&data=' + date + '&userid=' + userid_+'&province='+getCookie3('province')+'&city='+getCookie3('city')+'&district='+getCookie3('district'),
+                        'success': function (data) { 
+							write_save_back(tp);
+						},  
+						'error':function(){
+							layer.open({
+								content: '网络错误,稍后再试'
+								, btn: ['确定']
+							});
+						}
+                    });
+                }
+                
+            }
+        });
+    }
+
+
+
+    function write_save_back(tp) {
+        is_status(tp);
+        //layer.msg("数据保存成功",{time: 1000,offset: (window.screen.height*0.8)+"px"});
+        layer.open({
+            content: '数据保存成功'
+            , skin: 'msg'
+            , time: 2 //2秒后自动关闭
+        });
+
+        window.setTimeout(function () {
+			 get_data();
+            hide_write_more();
+            setValue(tp);
+        }, 1000);
+
+    }
+
+
+
+    function setValue(tp, time) {
+        if (time = "") {
+            time = new Date();
+            console.log(time);
+        }
+        tp += "";
+        var t, str = '';
+        for (var i = 0; i < tp.length; i++) {
+            t = tp.substr(i, 1);
+            if (t == '.') { str += '<img src="statics/images/tiwen_point.png" class="tiwen_point">'; }
+            else { str += '<img src="statics/images/tiwen_' + t + '.png">'; }
+        }
+        str += '<img src="statics/images/tiwen_unit.png">';
+        $('.p1_').html(str);
+        $('.p3value').html(time);
+        is_status(tp);
+    }
+
+    function is_status(tp) {
+        if (tp < 35.5) {
+            $("#status_str").text('偏低');
+        } else if (tp > 37.5) {
+            $("#status_str").text('偏高');
+        } else {
+            $("#status_str").text('正常');
+        }
+    }
+
+    function get_data() {
+        $.ajax({
+            url: '/?m=medical&c=kith&a=get_datas',
+            type: 'POST',
+            data: 'judge=17&userid=' + userid_,
+            dataType: 'json',
+            success: function (data) {
+                get_data_back2(data);
+            }
+        })
+    }
+
+    function get_data_back2(da) {
+        try {
+            var tp = da.data;
+            var a, d; var index = null;
+            var newDate = new Date();
+            for (var i in tp) {
+                if (tp[i].num > 0) {
+                    a = $('#template');
+                    $(a).find('.day').html(i);
+                    $(a).find('.time').html('');
+                    $(a).find('.line_m').html(tp[i].status_str);
+                    $(a).find('.line_m').css('background-color', tp[i].s_color);
+                    $(a).find('.t_tnum').html(Number(tp[i].num) + '℃');
+                    $('#insert_bp').after($('#template').html());
+                }
+            }
+            var n = parseInt($('.t_tnum').eq(0).text());
+            var n_arr = String(n).split('');
+            if (n > 0) {
+                $('.tiwen_pic_ .p1_').html('');
+                for (i in n_arr) $('.tiwen_pic_ .p1_').append('<img src="statics/images/tiwen_' + n_arr[i] + '.png">');
+                $('.tiwen_pic_ .p1_').append('<img src="statics/images/tiwen_unit.png">');
+            }
+        } catch (e) { console.log(e.message); }
+
+    }
+
+    function get_data_back(data) {
+        try {
+            var da = eval('(' + data + ')');
+            var tp = da.data;
+            var a, d; var index = null;
+            var newDate = new Date();
+            for (var i in tp) {
+                if (tp[i].tnum > 0) {
+                    if (index) window.clearTimeout(index);
+                    a = $('#template');
+                    d = formatDateTime(Number(tp[i].add_time));
+                    $(a).find('.day').html(d[0]);
+
+                    $(a).find('.time').html(d[2]);
+
+                    $(a).find('.t_tnum').html(Number(tp[i].tnum) + '℃');
+
+                    $('#insert_bp').after($('#template').html());
+                    //if(i==0){
+                    index = window.setTimeout(function () { setValue(tp[i].tnum, d[10] + '-' + d[11] + '-' + d[12] + '&nbsp;' + d[2]); }, 500);
+                    // }
+                }
+            }
+        } catch (e) { console.log(e.message); }
+    }
+function getCookie3(name) {
+	var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+	if (arr = document.cookie.match(reg)){
+		//console.log(arr[2]);
+		if(arr[2].indexOf('%')!=-1){
+			arr[2] =  unescape(arr[2]); 
+			return arr[2]; 
+		}else{
+			return arr[2];
+		}
+	}
+	else return null;
+}
+</script>

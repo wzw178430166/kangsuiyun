@@ -33,7 +33,7 @@ if(ua.match(/MicroMessenger/i) == 'micromessenger'){
 	wx.miniProgram.getEnv(function(res) {
 		console.log('222======');
 		if(!res.miniprogram && getCookie('GkvUY___userid') && videoconferencing != 1){
-		   goo('//www.yjxun.cn');
+		   goo('//www.519ksy.com');
 		}
 		if (res.miniprogram && getCookie('GkvUY___userid')) {
 			$('body').hide();
@@ -237,11 +237,11 @@ function sendForm(){
 				if(tapp){
 					var mobile = tapp[1]==1? 'android' : 'ios';
 					forward = addUrlParam('mobile',mobile,forward);
-					forward = addUrlParam('version',tapp[2],forward); 
+					forward = addUrlParam('version',tapp[2],forward);      
 				}
         
-				window.location.href = forward;
-			window.location.href ='/';
+				window.location.replace(forward);
+			//window.location.href ='/';
         //history.replaceState(null, document.title, getUrlParam('forward'));
 			},500);
 		} else if (data.status == 2) {

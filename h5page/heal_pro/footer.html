@@ -147,7 +147,10 @@
                    var i = $(this).index() ;
 				   $(this).children('font').addClass(`fa-angle-down${i}`).parent().siblings().find('font').removeClass();
                    $(this).addClass('cur').siblings().removeClass('cur');
-                   if($(this).attr('data-st')=='a'){goo_d();}
+                   if($(this).attr('data-st')=='a'){
+                      alert('申请会员查看更多详情');
+                     //  layer.msg('申请会员查看更多详情');
+                   }
 				   goo(arr[i],{is_auth:1}); 
             }); 
 	              var ulr=window.location.pathname;

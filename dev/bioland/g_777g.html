@@ -1,0 +1,589 @@
+<!--<head></head><body></body>-->
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title set-lan="html:blood_glucosemeter">血糖仪</title>
+<meta name="topcolor" rgba="44.172.252.1">
+<link rel="stylesheet" type="text/css" href="/statics/js/layer/1.9.3/skin/layer.css">
+<link rel="stylesheet" type="text/css" href="statics/css/style.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+<script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<script type="text/javascript" src="/statics/js/layer/1.9.3/layer.js"></script>
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+<script type="text/javascript" src="/statics/languages/20181105/languages.js"></script>
+<style>
+body { background-color: #f8f8f8; font-weight: normal !important; }
+.xueya_pro { width: 80%; overflow: hidden; margin: 6% auto 4% auto }
+.xueya_pro .xueya_day { width: 100%; overflow: hidden; border: 1px solid #2cacfc; border-radius: 20px }
+.xueya_day li { width: 33.3%; float: left; text-align: center; height: 35px; line-height: 35px; background-color: #2cacfc; color: #fff; border-right: 1px solid #2cacfc }
+.xueya_day li:last-child { border-right: none }
+.xueya_day .active { background-color: #fff; color: #317ce2 }
+.xueya_pro_big { width: 100%; overflow: hidden; background-color: #fff }
+.xueya_pic { width: 85%; overflow: hidden; position: relative; margin: 10px auto 0 auto }
+.xueya_pic .pic { width: 163px; height: 163px; margin: 0 auto; display: block }
+.xueya_pic .xueya_pic_ { width: 27%; overflow: hidden; position: absolute; top: 50%; left: 30%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%) }
+.xueya_pic .xueya_pic_ .num { font-size: 1.4rem }
+.xueya_pic .xueya_pic_ span { font-size: 1rem; margin-left: 5px; line-height: 24px }
+.xueya_pic_ .num_xl { width: 40%; float: right }
+.xueya_pic_ .num_xl img { width: 43% }
+.xueya_pic_ .num_xy { width: 100%; overflow: hidden }
+.xueya_pic_ .num_xy_h { width: 54% }
+.xueya_pic_ .num_xy_h img { width: 28%; float: left; margin-right: .3% }
+.xueya_pic_ .num_xy_l { width: 36% }
+.xueya_pic_ .num_xy_l img { width: 50% }
+.xueya_pro .status { width: 75%; text-align: center; color: #979696; margin: 0 auto 5px auto; }
+.xueya_pro .status p { width: 100%; overflow: hidden; }
+.xueya_pro .status .status_l { font-size: 1.2rem }
+.xueya_pro .status .status_r { font-size: .9rem; }
+.xueya_more { width: 100%; overflow: hidden }
+.xueya_more .more { width: 45%; height: 40px; line-height: 40px; text-align: center; border-radius: 5px }
+.xueya_more .more img { vertical-align: sub; width: 20px; margin-right: 5px }
+.xueya_more .more:first-child { background-color: #2a8cd5; color: #fff }
+.xueya_more .bind_b { border: 1px solid #2a8cd5; color: #2a8cd5 }
+.data_details_box { width: 100%; overflow: hidden; padding-bottom: 10px }
+.data_details_box li { border-top: 1px solid #e3e3e7 }
+.data_details_box .data_details_line { width: 100%; overflow: hidden; padding: 10px 0 }
+.data_details_line .line_l { width: 35% }
+.data_details_line p { height: 20px; line-height: 20px }
+.data_details_line .line_l p:first-child { font-weight: 500; width: 50px; text-align: center; background-color: #2cacfc; color: #fff; border-radius: 3px }
+.data_details_line .line_l p:last-child { height: 25px; line-height: 25px; color: #666 }
+.data_details_line .line_m { width: 40%; position: relative; height: 40px }
+.data_details_line .line_m .p1 { position: relative; border-radius: 3px; color: #fff; left: 10%; top: 25%; margin: 0 auto; text-align: center; float: left; }
+.data_details_line .line_m .p2 { position: absolute; width: 61px; border-radius: 3px; color: #333; top: 80%; left: 50%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); text-align: center }
+.data_details_line .line_r { width: 25% }
+.data_details_line .line_r p { font-size: 1.2rem; height: 40px; line-height: 40px; color: #2cacfc }
+.explain { width: 100%; height: 35px; line-height: 35px; background-color: #f4f4f4; padding: 0 3%; color: #565656 }
+.explain img { width: 20px; margin-right: 5px; vertical-align: sub }
+.explain_1 { width: 60%; float: left; }
+.explain_1 u { margin-right: 1rem;}
+.explain_2 { float: right; }
+.xueya_data { width: 100%; overflow: hidden; background-color: #fff; padding: 0 2% }
+.xueya_data .title { width: 100%; height: 44px; line-height: 44px; text-align: center; color: grey }
+.data_line, .xueya_data .data_box { width: 100%; overflow: hidden }
+.xueya_data .data_line { border-top: 1px solid #e3e3e7; padding: 7px 3px 5px 3px }
+.xueya_data .data_line td { padding: 8px 0 }
+.xueya_data .line_1 span { color: #666 }
+.line_1 { width: 33%; display: inline-block }
+.line_1 .line_1_p { background-color: #2cacfc; text-align: center; color: #fff; font-size: .9rem; border-radius: 3px; height: 22px; line-height: 18px; display: inherit; padding: 2px 10px }
+.line_2 { width: 22%; display: inline-block; top: -14px; position: relative }
+.line_3 { width: 20%; display: inline-block; color: #2cacfc; text-align: center; position: relative; top: -12px; text-align: right }
+.line_4 { width: 20%; display: inline-block; text-align: right }
+.t_ext { color: #fff!important }
+.zhengchang { background-color: #f6ab48; width: 90%; margin: 0 auto; color: #fff; font-size: .8rem; text-align: center; border-radius: 3px; height: 25px; line-height: 25px }
+.write_more .write_box { width: 100% }
+.write_time { width: 95%; overflow-y: scroll; margin: 0 auto }
+ .write_time::-webkit-scrollbar {
+display:none
+}
+.write_time li { float: left; width: 70px }
+.write_time .time_box { width: 100%; overflow: hidden }
+.write_time .time_box p { text-align: center; color: #a3a3a3; height: 35px; line-height: 35px; border-bottom: 1px solid #a3a3a3; font-size: 1.2rem }
+.write_time .time_box p:last-child { border-bottom: none }
+.write_time .time_box .p1 { color: #040404 }
+.write_time .active p { background-color: #eee0e0; color: #595858 }
+.write_time .active .p1 { color: #fb2b2b }
+.write_box .save { width: 80%; margin: 0 auto }
+.header_box .midden {
+    border-bottom: 1px solid #e6e6e6;
+}
+</style>
+</head>
+<script>
+
+    var  userid= getCookie(cookie_pre+'_userid');
+
+    if (getUrlParam('weixin') == 1 && !userid) {
+
+        $('body').hide();
+
+        goo('/?m=member&c=data_temp&a=go_login&forward=' + encodeURIComponent(window.location.href));
+
+    }
+
+</script>
+
+<body>
+<div class="header_box"> <img src="/statics/images/goback_b.png" onClick="goback()" class="left">
+  <p class="midden" set-lan="html:blood_glucosemeter_data">血糖仪数据</p>
+  <div class="right_" onClick="goo('http://shop.yjxun.cn/')" set-lan="html:go_to_buy">去商城购买</div>
+</div>
+<div class="h50"></div>
+<div>
+  <div class="xueya_pro_big">
+    <div class="xueya_pro">
+      <div class="xueya_day">
+        <ul>
+          <li onClick="goo('//www.519ksy.com/medical/data_xuetang.html?day=1&to_uid=0')" set-lan="html:today">今天</li>
+          <li class="active" onClick="goo('//www.519ksy.com/medical/data_xuetang.html?day=1&to_uid=0')" set-lan="html:7days">最近7天</li>
+          <li class="active" onClick="goo('//www.519ksy.com/medical/data_xuetang.html?day=1&to_uid=0')" set-lan="html:30days">最近30天</li>
+        </ul>
+      </div>
+      <div class="xueya_pic"> <img src="/statics/equipment/images/pro/xuetang.jpg" class="pic"> </div>
+      <div class="status">
+        <p><span style="color:#f5a431;" class="status_l fl" set-lan="html:reference_value">参考值:</span><span class="status_r fr" set-lan="html:before_meal_blood">空腹血糖：血糖3.9-6.1 mmol/L</span></p>
+        <p><span class="status_r fr" set-lan="html:after_meal_blood">餐后1小时：血糖6.7-9.4 mmol/L</span></p>
+      </div>
+      <div class="xueya_more">
+        <div class="more fl" onclick="show_write_more()"> <img src="statics/images/write.png" set-lan="html:manual_entry">手工录入</div>
+        
+        <!---->
+        
+        <div class="more fr bind_b" onClick="goo('g_777g_bind.html?weixin=1#wechat_redirect')" id="bind_b"> <img src="statics/images/binding.png" set-lan="html:binding_device">绑定设备</div>
+        
+        <!----> 
+        
+      </div>
+    </div>
+  </div>
+  <div class="explain">
+    <div class="explain_1"> <img src="statics/images/explain_.png"><u set-lan="html:blood_glucosemeter_explain" onClick="goo('shuoming3.html')">血糖仪使用说明</u><u onClick="goo('/equipment/instruct_show.html?&id=2')">视频说明</u></div>
+    <div class="explain_2" onclick="window.location.reload()"> <img src="statics/images/refresh.png"><u set-lan="html:refresh">刷新</u> </div>
+  </div>
+  <div class="xueya_data">
+    <p class="title" set-lan="html:data_record">数据记录</p>
+    <div class="data_details_box">
+      <ul id="dataList">
+        <div class="template" id="template">
+          <li>
+            <div class="data_details_line">
+              <div class="line_l fl">
+                <p>血糖仪</p>
+                <p class="dtime">07月28日 14:00</p>
+              </div>
+              <div class="line_m fl">
+                <p class="p1 info">偏高</p>
+                <p class="p2 testtype"></p>
+              </div>
+              <div class="line_r fr">
+                <p>血糖： <span class="today_value_t">9.3</span> </p>
+              </div>
+            </div>
+          </li>
+        </div>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="write_more">
+  <div class="write_more_down" onClick="hide_write_more()"> <img src="statics/images/down.png" /> </div>
+  <div class="write_box">
+    <div class="write_time">
+      <input id="m_bg_time" type="hidden" value="1">
+      <ul>
+        <li class="active" data-bg-time="1">
+          <div class="time_box">
+            <p>00:00</p>
+            <p>06:00</p>
+            <p class="p1" set-lan="html:before_breakfast">早餐前</p>
+          </div>
+        </li>
+        <li data-bg-time="2">
+          <div class="time_box">
+            <p>06:00</p>
+            <p>09:00</p>
+            <p class="p1" set-lan="html:after_breakfast">早餐后</p>
+          </div>
+        </li>
+        <li data-bg-time="3">
+          <div class="time_box">
+            <p>09:00</p>
+            <p>12:00</p>
+            <p class="p1" set-lan="html:before_lunch">午餐前</p>
+          </div>
+        </li>
+        <li data-bg-time="5">
+          <div class="time_box">
+            <p>12:00</p>
+            <p>15:00</p>
+            <p class="p1" set-lan="html:after_lunch">午餐后</p>
+          </div>
+        </li>
+        <li data-bg-time="6">
+          <div class="time_box">
+            <p>15:00</p>
+            <p>18:00</p>
+            <p class="p1" set-lan="html:before_dinner">晚餐前</p>
+          </div>
+        </li>
+        <li data-bg-time="7">
+          <div class="time_box">
+            <p>18:00</p>
+            <p>21:00</p>
+            <p class="p1" set-lan="html:after_dinner">晚餐后</p>
+          </div>
+        </li>
+        <li data-bg-time="8">
+          <div class="time_box">
+            <p>21:00</p>
+            <p>00:00</p>
+            <p class="p1" set-lan="html:before_bedtime">睡前</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="write_box_">
+      <div class="write_box_l fl"> <img src="statics/images/heart_red.png" set-lan="html:blood_sugar_value">血糖值</div>
+      <input class="write_box_m fl" id="m_bg" type="number" placeholder="手工输入数据">
+      <div class="write_box_r fl">mmol/L</div>
+    </div>
+    <div class="save" onClick="write_save()" set-lan="html:save">确认保存</div>
+  </div>
+</div>
+<div style="width: 90%;height: 60px;margin: 0 auto;margin-top: 3%;border-radius: 80px;background: #FFF;position: fixed;bottom: 1%;margin-left: 5%;display: none;" id='showDoc'>
+	<div style='width: 50px;height: 50px;border-radius: 50px;margin-top: 5px;margin-left: 5px;display: inline-block;float: left;'><img src='' id='docImg' style='width: 100%;height: 100%;border-radius: 50px;'/></div>
+	<div style='width: 52.5%;height: 100%;float: left;margin-top: 8px;margin-left: 3%;'>
+		<div>为您推荐 <span style="color: #E77E1A;" id='hospital_name'>广东省中医院</span><span id='dataDetail'>内科 李俊龙 主任医师</span></div>
+	</div>
+	<div style='padding: 3px 5px;float: right;border-radius: 30px;background: #2CACFC;color: #FFF;margin-right: 15px;margin-top: 15px;' id='goTalk'>咨询医生</div>
+</div>
+<div class="bg"></div>
+</body>
+</html>
+<script>
+
+    $(function () {
+
+        var w = $('.write_time').find('ul li').length * $('.write_time').find('ul li').width();
+
+        $('.write_time ul').css('width', w);
+
+    });
+
+    $('.write_time ul li').click(function () {
+
+        $(this).addClass('active').siblings().removeClass('active');
+
+        var _index = $(this).index();
+
+        $('#m_bg_time').val($(this).attr('data-bg-time'));
+
+    });
+
+    
+
+
+
+    if (!userid) {
+
+        layer.open({
+
+            shadeClose: false,
+
+            content: '您还未登录医家讯账号？',
+
+            btn: ['立即前往'],
+
+            yes: function (index) {
+
+                goo('//www.519ksy.com/member/login.html?forward=' + encodeURIComponent(window.location.href));
+
+                layer.close(index);
+
+            }
+
+        });
+
+    } else {
+
+        get_data();
+
+    }
+
+
+
+
+
+    // setInterval(function(){
+
+    // 	get_data();
+
+    // },8000)
+
+    $('.bg').css('height', window.screen.height - 50);
+
+	
+
+window.onresize = function(){ 
+
+	var v = document.getElementsByClassName('write_more')[0];
+
+	if( document.documentElement.clientHeight -v.clientHeight <=50){
+
+		v.style.bottom = 'auto';
+
+		v.style.top = '55px'; 
+
+	 }else{
+
+		v.style.bottom = '0px';
+
+		v.style.top = 'auto'; 
+
+	 }
+
+}
+
+
+
+    function show_write_more() {
+
+        $('.write_more').css("bottom", 0 - $('.write_more').height() - 200);
+
+        $('.write_more').show();
+
+        window.setTimeout(function () {
+
+            $('.write_more').css({
+
+                'transition': 'all .5s',
+
+                "bottom": 0
+
+            });
+
+            $('.bg').fadeIn(300);
+
+            $('#m_bpHp').focus();
+
+        }, 30);
+
+    }
+
+
+
+    function hide_write_more() {
+
+        $('.write_more').css("bottom", 0 - $('.write_more').height() - 200);
+
+        window.setTimeout(function () {
+
+            $('.write_more').css({
+
+                'transition': 'none'
+
+            });
+
+            $('.write_more').hide();
+
+        }, 300);
+
+
+
+        $('.bg').fadeOut(30);
+
+    }
+
+
+var rDoc = 0;
+    function get_data_back(data) {
+
+        var da = eval('(' + data + ')');
+
+        var a = $('#template');
+
+        var das;
+
+        for (var ii in da) {
+
+            //das = eval('(' + da[ii].data_json + ')');
+
+            das = da[ii].data_json;
+
+            console.log(das);
+
+            for (var i in das) {
+
+                if(das[i].today_value_t){
+
+                  $(a).find('.dtime').html(timestampToTime(das[i].add_time));
+
+                  $(a).find('.today_value_t').html(das[i].today_value_t);
+
+                  $(a).find('.info').html('');
+
+                  if(das[i].info){
+
+                       $(a).find('.info').html('&nbsp;'+das[i].info+'&nbsp;');
+
+                  }
+
+                  var color;
+
+                  das[i].state = Number(das[i].state);
+
+                  switch(das[i].state){
+
+                      case 1: color = 'rgb(16, 202, 56)'; break;
+
+                      case 2: color = 'rgb(245, 164, 49)'; break;
+
+                      case 3: color = 'rgb(249, 68, 68)'; break;
+
+                  }
+
+                  console.log(color);
+
+                  $(a).find('.info').css('background-color',color);
+
+                  $(a).find('li').attr('class','i_'+ das[i].add_time);
+
+
+
+                  try { $(a).find('.testtype').html(das[i].testtype); } catch (e) { }
+
+
+
+                  $('#template').after($(a).html());
+					if(rDoc == 0){
+						rDoc = 1;
+						RecommendDoc('血糖'+ (das[i].info));
+					}
+
+                }
+
+            }
+
+        }
+
+    }
+
+function RecommendDoc(text){
+	$.ajax({
+		url:'/?m=sr&a=RecommendDoc',
+		type:'POST',
+		data:'ask='+text,
+		dataType:'json',
+		success:function(da){
+			$('#docImg').attr('src',da.image);
+			$('#hospital_name').text(da.hospital_name+' ');
+			$('#dataDetail').text('['+da.clinic_name+' '+da.name+' '+da.title+']');
+			$('#showDoc').show();
+			if((da.hospital_name).length < 10) $('#hospital_name').append('<br/>');
+			$('#goTalk').click(function(){
+				goo('/patient/sr_doctorDetail.html?docid='+da.id)
+			})
+		}
+	})
+}
+
+    function get_data() {
+
+        $.ajax({
+
+            url: "//www.519ksy.com/?m=data&c=bg&a=getList&userid=" + userid +
+
+                "&device_name=g_777g&weixin=1",
+
+            success: function (da) {
+
+                get_data_back(da);
+
+            },
+
+            //dataType:"json",
+
+        })
+
+    }
+
+
+
+    function write_save() {
+$('html,body').scrollTop(0);
+        var i = layer.confirm('确定保存此数据？', {
+
+            btn: ['确定', '取消'] //按钮
+
+        }, function () {
+
+            layer.close(i);
+
+            var bg_ = Number($.trim($('#m_bg').val())) ;
+
+            var bg = bg_ * 18;
+
+            var bg_time = $('#m_bg_time').val();
+
+            var timestamp1 = Date.parse(new Date()) / 1000;
+
+
+
+            $.ajax({
+
+                url: '//www.519ksy.com/?m=data&c=bg&a=postDate&userid=' + userid +
+
+                    '&equipment=bioland&device_name=manual&device_number=1&data=' + new Base64().encode(
+
+                        '{"bg":"' + bg + '","bg_time":"' + bg_time + '","add_time":"' + timestamp1 + '"}'),
+
+                dataType:'JSON',
+
+                success: function (daa) {
+
+                    layer.msg("数据保存成功", {
+
+                        time: 1000,
+
+                        offset: (window.screen.height * 0.8) + "px"
+
+                    });
+
+                    hide_write_more();
+
+                    $('#m_bg').val(""); 
+
+                    get_data_back('[{"data_json":[{"bg_time":"' + bg_time + '","add_time":"' +
+
+                        daa.add_time + '","today_value_t":"' + bg_ + '","info":"' + daa.info + '","state":"' + daa.state + '"}]}]');
+
+                }
+
+            })
+
+        }, function () {
+
+            layer.close(i);
+
+        });
+
+    }
+
+    $('.setuser').on("click", function () {
+
+        $(this).addClass('cur').siblings('.setuser').removeClass('cur');
+
+        $('#m_suser').val($(this).data('val'));
+
+        $('#m_bpHp').focus();
+
+    });
+
+ 
+
+    function timestampToTime(timestamp) {
+
+        var date = new Date(timestamp * 1000); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
+
+        Y = date.getFullYear() + '-';
+
+        M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+
+        D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate() + ' ';
+
+        h = date.getHours() < 10 ? '0' + date.getHours() : date.getHours() + ' '; 
+
+        m = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes() + ' ';
+
+        s = date.getSeconds(); 
+
+        return Y + M + D + ' ' + h + ':' + m;
+
+    }
+
+</script>

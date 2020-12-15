@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="topcolor" rgba="44.172.252.1">
+    <title>预约体检支付</title>
+    <meta name="keywords"
+        content="医家讯,医家讯智能医疗设备,智能健康电子档案,个人健康、家庭健康,健康检测,心率监测,血糖监测,血压监测,睡眠监测,健康饮食,运动健美,亲友互动,运动圈子,医体健康,食动平衡,人工智能,健康管理,物联网,智能大数据">
+    <meta name="description"
+        content="医家讯智能医体健康平台通过智能紧急提醒、生命健康监测、智能穿戴设备及专业级智能医疗设备，结合物联网、云计算、健康大数据分析与呼叫中心，构建智能医体健康平台，让家人享受更健康、更安全、更舒心、更智慧化的生活，也让子女随时随地的了解父母的健康情况，及时表达爱心和孝心。">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+    <link rel="stylesheet" type="text/css" href="/statics/css/appstyle.css">
+    <script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+   <script type="text/javascript" src="/statics/js/layer/3.1.1/layer.js"></script>
+    <script type="text/javascript" src="/statics/js/global.js"></script>
+    <script type="text/javascript" src="/statics/js/cookie.js"></script>
+    <script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+    <style>
+		body{
+            background-color: #fff;
+        }
+        
+        .container .pro-box {
+            display: flex;
+            border-bottom: 1px solid #e4e4e4;
+            padding: 1rem;
+        }
+        .container .pro-box .pic{
+            width: 8rem;
+            margin-right: 1.3rem;
+        }
+        .container .pro-box .pic img{
+            width: 100%;
+        }
+        
+        .info-box .p-title {
+            text-overflow: ellipsis;
+            font-size: 1rem;
+            font-weight: bold;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .info-box .p-price {
+            color: #ff5353;
+            margin: .3rem 0 0 0;
+        }
+        .info-box .p-more {
+            color: #999;
+            font-size: .9rem;
+        }
+        .option-box {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            border-bottom: 1px solid #e4e4e4;
+        }
+        .option-box p:first-child{
+            font-weight: bold;
+        }
+        .option-box .option-b {
+            display: flex;
+            align-items: center;
+            color: #999;
+        }
+        .option-box .option-b img{
+            width: .3rem;
+            margin-left: .6rem;
+        }
+        .pay-box {
+            padding: .5rem .5rem .5rem 2rem;
+        }
+        .pay-box .pay-item{
+            display: flex;
+            align-items: center;
+        }
+        .pay-box .pay-item img{
+            width: 2.5rem;
+            margin-right: 1rem;
+        }
+        .pay-box .pay-item .pay-info p:nth-child(2){
+            color: #999;
+            font-size: .8rem;
+        }
+        .rad {
+            width: 2rem;
+            height: 2rem;
+            margin-left: auto;
+            margin-right: 20px;
+            background: url('img/radio.png') no-repeat center center;
+            background-size: 1rem;
+        }
+        .rad input {
+            display: none;
+        }
+        .pay-btn {
+            width: 86%;
+            margin: 1rem auto;
+            text-align: center;
+            background-color: #ff5353;
+            padding: 1rem;
+            color: #fff;
+            border-radius: .5rem;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="headerBoxCircle">
+        <img src="/statics/images/goback_b.png" onClick="goback()" class="left">
+        <p class="midden">预约体检支付</p>
+    </div>
+   <div class="h50"></div>
+    <div class="container">
+    	<div class="pro-box">
+            <div class="pic">
+                <img src="img/fq.png" alt="">
+            </div>
+            <div class="info-box">
+                <p class="p-title">优生优育套餐「男女组合」「全民抗疫，从我做起</p>
+                <p class="p-price">￥1899.00元</p>
+                <p class="p-more">查看套餐内容 >></p>
+            </div>
+        </div>
+        <div class="option-box" onclick="goo_d();">
+            <p>预约门店 <span style="color: red;">*</span></p>
+            <div class="option-b">
+                <span>请选择门店</span>
+                <img src="img/bb.png" alt="">
+            </div>
+        </div>
+        <div class="option-box" style="margin-bottom: 2rem;" onclick="goo_d();">
+            <p>预约时间 <span style="color: red;">*</span></p>
+            <div class="option-b">
+                <span>请选择预约时间</span>
+                <img src="img/bb.png" alt="">
+            </div>
+        </div>
+        <div class="option-box" style="border-top: 1px solid #e4e4e4;" onclick="goo_d();">
+            <p>优惠卷 <span style="color: red;">*</span></p>
+            <div class="option-b">
+                <span>暂无优惠券</span>
+                <img src="img/bb.png" alt="">
+            </div>
+        </div>
+        <div class="option-box" onclick="goo_d();">
+            <p>请选择支付方式</p>
+        </div>
+        <div class="pay-box">
+            <div class="pay-item">
+                <img src="img/bank.png" alt="">
+                <div class="pay-info">
+                    <p>银行卡支付</p>
+                    <p>支持所有银联卡</p>
+                </div>
+                <div class="rad">
+                    <input type="radio" name="payway">
+                </div>
+            </div>
+        </div>
+        <div class="pay-box">
+            <div class="pay-item">
+                <img src="img/wx.png" alt="">
+                <div class="pay-info">
+                    <p>银行卡支付</p>
+                    <p>支持所有银联卡</p>
+                </div>
+                <div class="rad">
+                    <input type="radio" name="payway">
+                </div>
+            </div>
+        </div>
+        <div class="pay-box">
+            <div class="pay-item">
+                <img src="img/zfb.png" alt="">
+                <div class="pay-info">
+                    <p>银行卡支付</p>
+                    <p>支持所有银联卡</p>
+                </div>
+                <div class="rad">
+                    <input type="radio" name="payway">
+                </div>
+            </div>
+        </div>
+        <div class="pay-btn" onclick="goo_d()">
+            去付款
+        </div>
+    </div>
+
+</body>
+<script>
+    $(function () {
+
+    })
+
+</script>
+
+</html>

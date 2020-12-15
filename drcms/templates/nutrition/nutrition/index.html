@@ -10,14 +10,15 @@
 .cell-locate { width: 300px; }
 .cell-state, .cell-online, .cell-regdate { width: 130px; }
 .btn-locate, .btn-device { cursor: pointer; }
+
 </style>
 <body>
 {template 'dataManage','header'}
-<div id="middle"> {template 'dataManage','left'}
+<div id="middle">
   <div class="right" id="mainFrame">
     <div class="right_cont">
       <ul class="breadcrumb">
-        当前位置： <a href="/?m=dataManage">首页</a> <span class="divider">/</span> <a href="javascript:;">用户管理</a> <span class="divider">/</span> 用户列表
+        当前位置： <a href="/?m=nutrition">首页</a> <span class="divider">/</span> <a href="javascript:;">用户管理</a> <span class="divider">/</span> 用户列表
       </ul>
       <div class="title_right"><strong>用户列表</strong></div>
       <div style="width:auto;margin:auto;">
@@ -49,7 +50,7 @@
               </div>
             </div>
             <div class="query-btn">
-              <div class="btn-item"> <a class="btn-query" id="J_query">查询</a> <a href="/?m=dataManage&c=member&a=doMember" class="btn-add" style="margin-left: 10px;">添加</a> <a class="btn-screen" id="J_screen" data-off="0">显示高级选项</a> </div>
+              <div class="btn-item"> <a class="btn-query" id="J_query">查询</a> <a href="/?m=nutrition&c=index&a=doMember" class="btn-add" style="margin-left: 10px;">添加</a> <a class="btn-screen" id="J_screen" data-off="0">显示高级选项</a> </div>
             </div>
           </div>
           <div class="ct-statistics">
@@ -72,16 +73,12 @@
                     </strong></th>
                   <th><strong class="tb-head cell-userid" data-val="userid">编号</strong></th>
                   <th><strong class="tb-head cell-username" data-val="username">用户名</strong></th>
-                  <th><strong class="tb-head cell-nickname" data-val="nickname">昵称</strong></th>
+                  <th><strong class="tb-head cell-nickname" data-val="nickname">真实姓名</strong></th>
                   <th><strong class="tb-head cell-remarks" data-val="remarks">备注</strong></th>
                   <th><strong class="tb-head cell-sex" data-val="sex">性别</strong></th>
                   <th><strong class="tb-head cell-age" data-val="age">年龄</strong></th>
                   <th><strong class="tb-head cell-mobile" data-val="mobile">手机号码</strong></th>
                   <th><strong class="tb-head cell-locate" data-val="locate">地址</strong></th>
-                  <th><strong class="tb-head cell-device" data-val="device">设备</strong></th>
-                  <th><strong class="tb-head cell-service" data-val="service">服务</strong></th>
-                  <th><strong class="tb-head cell-state" data-val="state">上线/离线</strong></th>
-                  <th><strong class="tb-head cell-online" data-val="online">上线时间</strong></th>
                   <th><strong class="tb-head cell-regdate" data-val="regdate">注册时间</strong></th>
                   <th><strong class="tb-head cell-operate" data-val="operate">操作</strong></th>
                 </tr>
@@ -90,7 +87,7 @@
               </tbody>
             </table>
           </div>
-          <div class="btn-batch"> <span id="J_sel_all2" data-off="0">全选/取消</span> <a href="javascript:;" class="batch-del" id="J_batch_del">删除</a> <a href="javascript:;" class="batch-userToGroup" id="J_batch_userToGroup">加入分组</a> <a href="javascript:;" class="batch-remark" id="J_batch_remark">备注</a> <a href="javascript:;" class="batch-remark" id="J_batch_message">消息</a></div>
+          <div class="btn-batch"> <span id="J_sel_all2" data-off="0">全选/取消</span> <a href="javascript:;" class="batch-del" id="J_batch_del">删除</a>  <a href="javascript:;" class="batch-remark" id="J_batch_remark">备注</a></div>
         </div>
         <div class="inner-page" id="innerPage"></div>
       </div>
@@ -191,23 +188,7 @@ $(function(){
 
 		});
 	});
-	$('#J_batch_userToGroup').on('click',function(){
-		var ids = setSel();
-		if (false == ids) return;
-		var url = '/?m=dataManage&c=doing&a=setMemberGroup';
-		var param = '{"ids":"'+ids+'"}';
-			url += '&param='+encodeURIComponent(param);
-			url = encodeURI(encodeURI(url));
-		//alert(param);return;
-		layer.open({
-			type: 2,
-			title: '加入分组',
-			shadeClose: true,
-			shade: 0.8,
-			area: ['480px', '620px'],
-			content: url //iframe的url
-		}); 
-	});
+
 	$('#J_batch_remark').on('click',function(){
 		var uids = setSel();
 		if (false == uids) return;
@@ -226,36 +207,7 @@ $(function(){
 			});
 		});
 	});
-	$('#J_batch_message').on('click',function(){
-		var ids = '';
-		var user_type = 1;
-		if (queryType) {
-			switch(queryType){
-				case 'offline3':
-					user_type = 2;
-					break;
-				case 'offline7':
-					user_type = 3;
-					break;
-			}
-		}
-		if (1 == user_type) {
-			ids = setSel();
-			if (false == ids) return;
-		}
-		var url = '/?m=dataManage&c=doing&a=setMessage';
-		var param = '{"ids":"'+ids+'","user_type":'+user_type+'}';
-		url += '&param='+encodeURIComponent(param);
-		url = encodeURI(encodeURI(url));
-		layer.open({
-			type: 2,
-			title: '主动关怀',
-			shadeClose: true,
-			shade: 0.8,
-			area: ['568px', '480px'],
-			content: url //iframe的url
-		});
-	});
+
 });
 function setSelCss(){
 	var off = parseInt($('#J_sel_all2').attr('data-off'));
@@ -280,7 +232,8 @@ function setSel(){
 	return str;
 }
 function getData(){
-	var url = '?m=dataManage&c=member&a=memberList2&ajax=1';
+	var url = '?m=nutrition&c=index&a=init&ajax=1';
+	//var url = '?m=dataManage&c=member&a=memberList2&ajax=1';
 	if (page > 1) url += '&page='+page;
 	var k = $.trim($('#k').val());
 	var userid = parseInt($.trim($('#userid').val()));
@@ -303,6 +256,7 @@ function getData(){
 		type: "GET",
 		dataType: "JSON",
 		success: function(data){
+			console.log(data);
 			layer.close(index);
 			validateAuth(data.status);
 			var html = '';
@@ -310,33 +264,31 @@ function getData(){
 			if (1==data.status) {
 				datas = data.data.datas;
 				var locate = data.data.locate;
-				var device = data.data.device;
+			//	var device = data.data.device;
 				var operateState = data.data.operateState;
 				pageCount = data.data.pageCount;
 				for(var i in datas){
 					var info = datas[i];
 					var _locate = {};
 					if (!$.isEmptyObject(locate)&&locate[info.userid]) {
-						_locate = locate[info.userid];
+						_locate = locate[info.userid]; 
 					} else {
-						_locate = {"address":info.address?info.address:'未开启',"lng":0,"lat":0,"time":""};
+						_locate = {"address":info.address?info.address:'暂无数据',"lng":0,"lat":0,"time":""};
 					}
-					var deviceStr = '';
-					if (-1 != $.inArray(info.userid,device)) {
-						info.is_device = 1;
-						deviceStr = '已绑定';
-					} else {
-						deviceStr = '无设备';
-					}
-					var serviceStr = '';
-					var serviceState = 0;
+					// var deviceStr = '';
+					// if (-1 != $.inArray(info.userid,device)) {
+					// 	info.is_device = 1;
+					// 	deviceStr = '已绑定';
+					// } else {
+					// 	deviceStr = '无设备';
+					// }
 					var _operateState = {};
 					if (!$.isEmptyObject(operateState)&&operateState[info.userid]) {
 						_operateState = operateState[info.userid];
 					} else {
 						_operateState = {"state":2,"stateStr":"未上线","last_time":""};
 					}
-					html += '<tr align="center"><td><div class="tb-cell cell-check"><input type="checkbox" name="ids[]" value="'+info.userid+'"></div></td><td><div class="tb-cell cell-userid">'+info.userid+'</div></td><td><div class="tb-cell cell-username"><a href="/?m=dataManage&c=member&a=memberDetail&uid='+info.userid+'" target="_bank">'+info.username+'</a></div></td><td><div class="tb-cell cell-nickname">'+info.nickname+'</div></td><td><div class="tb-cell cell-remarks">'+(info.remarks?info.remarks:'')+'</div></td><td><div class="tb-cell cell-sex">'+(info.sexStr?info.sexStr:'')+'</div></td><td><div class="tb-cell cell-age">'+(info.age?info.age:'')+'</div></td><td><div class="tb-cell cell-mobile">'+info.mobile+'</div></td><td><div class="tb-cell cell-locate btn-locate" data-lng="'+_locate.lng+'" data-lat="'+_locate.lat+'" data-time="'+_locate.time+'">'+_locate.address+'</div></td><td><div class="tb-cell cell-device"><i class="h-state state-'+info.is_device+' btn-device" data-state="'+info.is_device+'">'+deviceStr+'</i></div></td><td><div class="tb-cell cell-service"><i class="h-state state-'+serviceState+' btn-service" data-state="'+serviceState+'">'+serviceStr+'</i></div></td><td><div class="tb-cell cell-state"><i class="o-state state-'+_operateState.state+'">'+_operateState.stateStr+'</i></div></td><td><div class="tb-cell cell-online">'+_operateState.last_time+'</div></td><td><div class="tb-cell cell-regdate">'+info.regdate+'</div></td><td><div class="tb-cell cell-operate"><a href="/?m=dataManage&c=member&a=doMember&uid='+info.userid+'" class="operate-btn btn-edit">修改</a>  <a href="javascript:;" class="operate-btn btn-pass">重置密码</a></div></td></tr>';
+					html += '<tr align="center"><td><div class="tb-cell cell-check"><input type="checkbox" name="ids[]" value="'+info.userid+'"></div></td><td><div class="tb-cell cell-userid">'+info.userid+'</div></td><td><div class="tb-cell cell-username"><a href="/?m=nutrition&c=medical&a=med_patient&uid='+info.userid+'" target="_bank">'+info.username+'</a></div></td><td><div class="tb-cell cell-nickname">'+info.nickname+'</div></td><td><div class="tb-cell cell-remarks">'+(info.remarks?info.remarks:'')+'</div></td><td><div class="tb-cell cell-sex">'+(info.sexStr?info.sexStr:'')+'</div></td><td><div class="tb-cell cell-age">'+(info.age?info.age:'')+'</div></td><td><div class="tb-cell cell-mobile">'+info.mobile+'</div></td><td><div class="tb-cell cell-locate btn-locate" data-lng="'+_locate.lng+'" data-lat="'+_locate.lat+'" data-time="'+_locate.time+'">'+_locate.address+'</div></td><td><div class="tb-cell cell-regdate">'+info.regdate+'</div></td><td><div class="tb-cell cell-operate"><a href="/?m=nutrition&c=index&a=doMember&uid='+info.userid+'" class="operate-btn btn-edit">修改</a>  <a href="javascript:;" class="operate-btn btn-pass">重置密码</a></div></td></tr>';
 				}
 			} else {
 				html += '<tr align="center"><td colspan="'+($('.tb-head').length)+'">暂无数据</td></tr>';
@@ -359,23 +311,6 @@ function initWidth(){
 function initOperate(){
 	$('.btn-device').unbind('click');
 	$('.btn-service').unbind('click');
-	var _item = $('.btn-device');
-	_item.each(function(i) {
-        $(_item[i]).on('click',function(){
-			var state = parseInt($(this).attr('data-state'));
-			if (0==state) return false;
-			var uid = parseInt(datas[i].userid);
-			var url = '/?m=dataManage&c=datas&a=getMemberHardware&uid='+uid;
-			layer.open({
-				type: 2,
-				title: '设备列表',
-				shadeClose: true,
-				shade: 0.8,
-				area: ['820px', '620px'],
-				content: url //iframe的url
-			});
-		});
-    });
 	var _item2 = $('.btn-service');
 	_item2.each(function(i) {
         $(_item2[i]).on('click',function(){

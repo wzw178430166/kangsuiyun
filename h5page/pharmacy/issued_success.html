@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+        content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+<link rel="stylesheet" href="/statics/dataManage/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/h5page/pharmacy/css/header_common.css">
+<link rel="stylesheet" type="text/css" href="/h5page/pharmacy/css/left_.css">
+<link rel="stylesheet" type="text/css" href="/h5page/pharmacy/css/index.css">
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+<script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<title>处方开具成功</title>
+<style>
+ .matst_back{    
+    width: 95%;
+    margin: 0 auto;
+    margin-top: .5rem;}
+.back_goo{    width: 2rem;
+    height: .9rem;
+    line-height: .9rem;
+    border: 1px solid #929292;
+    color: #7d7272;
+    text-align: center;
+    border-radius: .1rem;
+    }
+.back_goo svg{width: .6rem;height: .6rem;vertical-align: middle;}
+
+.p-content{    
+    width: 75%;
+    box-shadow: 0 0 25px #bfdeff;
+    padding: .5rem .8rem 1.5rem .8rem;
+    border-radius: .1rem;
+    margin: 0 auto;
+    margin-top: .8rem;}
+
+
+    .m-fun {
+            background-color: #fff;
+        }
+        .m-fun ul{    
+    display: flex;
+    margin: 0;
+    margin-left: 0;}
+        .m-fun ul li {
+            padding: 0 .5rem 0 .5rem;
+    position: relative;
+    margin-right: .2rem;
+    height: 2.5rem;border-radius: .05rem;
+    border: 1px solid #eae6e6;
+    line-height: 2.5rem;
+        }
+
+        .m-fun ul li .m-icon {
+            width: 4.5rem !important;
+            height: 5rem !important;
+            background: #fff !important;
+            font-size: 1.2rem;
+            color: #ff5400;
+            text-align: right;
+        }
+
+      
+        .m-fun ul li.m-not{
+            font-size: .35rem;
+    display: inline-block;
+    width: 3rem;
+    height: 1rem;
+    border: 0;
+    color: #504d4d;
+    text-align: left;
+    padding: 0;
+    line-height: .5rem;
+        }
+
+       #mtp li:nth-child(1){border-bottom: 0;}
+        .m-fun ul li.m-first .m-iteimg {
+            display: block;
+    border-radius: 50%;
+    float: left;
+        }
+        .m-fun ul li.m-first .m-iteimg .mieimged{width: 2.5rem;height: 1.75rem;}
+
+        .m-fun ul li.m-first img {
+            width: 4.5rem;
+            height: 4.5rem;
+            border-radius: 50%;
+            vertical-align: middle;
+        }
+
+        .m-fun ul li span {
+    font-size: 1.1rem;
+    display: inline-block;
+    color: #333;
+        }
+
+        .m-fun ul li .m-usemsg {
+            float: right;
+            font-size: 1.1rem;
+            color: #7b7777;
+            display: inline-block;
+            line-height: 3.5rem;
+        }
+
+        .m-fun ul li .icon-arrow-r {
+            float: right;
+            display: block;
+            width: 2rem;
+            height: 3.5rem;
+            background: url('https://lxj.yjxun.cn/drug/images/icon_arrow_r.png') no-repeat 100% center;
+            background-size: 1.3rem;
+        }
+
+    .pselect .m-fun ul li.m-first img{border-radius: 0;width: .8rem;height: .8rem;margin-top: -.15rem;
+}
+        .pselect .m-fun ul li.m-first{height: 1.8rem;
+    line-height: 1.8rem;}
+    .pselect .doc-ite p:nth-child(1){font-size: 1.15rem;color: #000;margin-top: .4rem;}
+    .pselect .doc-ite p:nth-child(2){font-size: 1.05rem;color: #ccc;}
+    .pselect .m-fun .iconselect{          width: 1.8rem;
+    height: 1.8rem;
+    /* background: url(https://lxj.yjxun.cn/drug/images/defoft.png) right bottom no-repeat; */
+    float: right;
+    display: block;
+    position: absolute;
+    right: 0;
+    background-size: 30%!important;
+    top: 0;
+          }
+          .pselect .m-fun .icochecked{  background:url(/h5page/pharmacy/images/xuanzhongs.png) right bottom no-repeat;}
+
+.p-subment{    
+    text-align: center;
+    width: 25%;
+    margin: 0 auto;
+    margin-top: 1rem;}
+.p-subment img{width: 100%;}
+.pay-font{    
+    font-size: .2rem;
+    width: 3.5rem;
+    text-align: center;}
+    .actived-color{border: 1px solid red!important;}
+    .p-title{    
+        font-size: .45rem;
+    margin: .2rem 0 .8rem 0;
+    font-weight: 600;
+}
+.p-font{   text-align: center;
+    font-size: 0.41rem;width: 80%;margin: 0 auto;margin-top: .2rem;}
+.p-font span:nth-child(1){color: red;}
+.p-font span:nth-child(2){color: red;}
+</style>
+</head>
+<body>
+   <div class="outdiv">
+      <div class="left" id="left">
+          <!--#include file="left.html"-->
+      </div>
+       <div class="right_conter">
+           <div style="width:auto;margin:auto;">
+            <div class="matst_back">
+                <div class="back_goo"  onclick="goback()">
+                    <svg t="1607408152481" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3504" width="48" height="48"><path d="M438.4 297.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2L300.8 480H800c19.2 0 32 12.8 32 32 0 16-12.8 28.8-28.8 32H300.8l137.6 137.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2c-12.8 12.8-28.8 12.8-41.6 3.2l-3.2-3.2-192-192-3.2-3.2-3.2-3.2-3.2-3.2V499.2l3.2-3.2 3.2-3.2 3.2-3.2 192-192c12.8-12.8 32-12.8 44.8 0z" fill="#bfbfbf" p-id="3505"></path></svg>
+                    返回
+                </div>
+            </div>
+            <div class="p-content">
+              <div class="p-title">请选择支付方式</div>
+              <div class="pselect">
+                <div class="m-fun">
+                    <ul id="mtp">
+                    <li class="m-not">支付平台</li>
+                    <li class="m-first">
+                        <span class="m-iteimg"> <img src="https://lxj.yjxun.cn/drug/images/wx.png" /></span>
+                        <div class="pay-font">微信支付</div>
+                    <i class="iconselect"></i>
+                </li>
+                <li class="m-first"><span class="m-iteimg"><img src="https://lxj.yjxun.cn/drug/images/zfb.png" />
+                </span>
+                <div class="pay-font">支付宝</div>
+                <i class="iconselect"></i>
+            </li>
+                    </ul>
+                </div>
+            </div>
+
+
+              <div class="p-subment">
+                  <img src="/html/websites/images/ksycode.jpg">
+              </div>
+              <div class="p-font">
+                支付宝扫码支付<span>220.0</span><span>元</span>
+            </div>
+
+        
+
+            </div>
+
+         
+         
+          </div>
+       </div>
+   </div>   
+   <script>
+    $(function(){
+          $('#mtp').children('li').not(":first").click(function(){
+              $(this).addClass('actived-color').siblings().removeClass('actived-color');
+              $(this).find('.iconselect').addClass('icochecked').parents().siblings().find('i').removeClass('icochecked');
+          })
+    })
+    </script>
+</body>
+</html>

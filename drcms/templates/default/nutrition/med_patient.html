@@ -37,7 +37,7 @@
   <div class="right" id="mainFrame">
     <div class="right_cont">
       <ul class="breadcrumb">
-        当前位置： <a href="/?m=dataManage">首页</a> <span class="divider">/</span> <a href="javascript:;">患者档案</a> <span class="divider">/</span> 基本信息
+        当前位置： <a href="/?m=nutrition">首页</a> <span class="divider">/</span> <a href="javascript:;">患者档案</a> <span class="divider">/</span> 基本信息
       </ul>
       <div class="title_right"><strong>基本信息</strong></div>
       <div style="width:auto;margin:auto;">
@@ -50,38 +50,38 @@
                 <li>
                   <div class="role-do-strw1">住院号</div>
                   <div class="role-do-val">
-                    <input type="text" name="info[realname]" class="input-text input-textbg" id="realname" value="" readonly>
+                    <input type="text" name="info[hospital_id]" class="input-text input-textbg" id="hospital_id" value="" readonly>
                   </div>
                 </li>
                 <li>
                   <div class="role-do-strw1">姓名</div>
                   <div class="role-do-val">
-                    <input type="text" name="info[realname]" class="input-text input-textbg" id="realname" value="" placeholder="请输入真实姓名" readonly>
+                    <input type="text" name="info[nickname]" class="input-text input-textbg" id="nickname" value="" placeholder="请输入真实姓名" readonly>
                   </div>
                 </li>
                  <li>
                   <div class="role-do-strw1">病区</div>
-                  <div class="role-do-val"><input type="text" name="username" class="input-text input-textbg" id="username" value="" readonly></div>
+                  <div class="role-do-val"><input type="text" name="unit" class="input-text input-textbg" id="unit" value="" readonly></div>
                 </li>
                 <li>
-                <div class="role-do-strw1">床号</div>
-                  <div class="role-do-val"><input type="text" name="info[idcard]" class="input-text input-textbg" id="idcard" value="" readonly></div>
+                  <div class="role-do-strw1">年龄</div>
+                  <div class="role-do-val" style="display: flex;align-items: center;"><input type="text" name="info[year]" class="input-date input-textbg" id="year" value="" placeholder="" readonly><span class="role-spanv">岁</span><input type="text" name="info[month]" class="input-date input-textbg" id="month" value="" placeholder="" readonly><span class="role-spanv">月</span><input type="text" name="info[day]" class="input-date input-textbg" id="day" value="" placeholder="" readonly><span class="role-spanv">天</span></div>
                 </li>
                 <li>
                   <div class="role-do-strw1">科室</div>
-                    <div class="role-do-val"><input type="text" name="info[idcard]" class="input-text input-textbg" id="idcard" value="" readonly></div>
+                    <div class="role-do-val"><input type="text" name="info[department]" class="input-text input-textbg" id="department" value="" readonly></div>
                   </li>
                   <li>
                     <div class="role-do-strw1">性别</div>
-                      <div class="role-do-val"><input type="text" name="info[idcard]" class="input-text input-textbg" id="idcard" value="" readonly></div>
+                      <div class="role-do-val"><input type="text" name="info[sex]" class="input-text input-textbg" id="sex" value="" readonly></div>
                     </li>
-                <li>
-                  <div class="role-do-strw1">年龄</div>
-                  <div class="role-do-val" style="display: flex;align-items: center;"><input type="text" name="info[age]" class="input-date input-textbg" id="age" value="" placeholder="" readonly><span class="role-spanv">岁</span><input type="text" name="info[age]" class="input-date input-textbg" id="age" value="" placeholder="" readonly><span class="role-spanv">月</span><input type="text" name="info[age]" class="input-date input-textbg" id="age" value="" placeholder="" readonly><span class="role-spanv">天</span></div>
-                </li>
+                    <li>
+                      <div class="role-do-strw1">床号</div>
+                        <div class="role-do-val"><input type="text" name="info[bed_number]" class="input-text input-textbg" id="bed_number" value="" readonly></div>
+                      </li>
                 <li>
                   <div class="role-do-strw1">生日</div>
-                    <div class="role-do-val"><input type="text" name="info[idcard]" class="input-text input-textbg" id="idcard" value="" readonly></div>
+                    <div class="role-do-val"><input type="text" name="info[birthday]" class="input-text input-textbg" id="birthday" value="" readonly></div>
                   </li>
                 <li class="listw100">
                     <div class="role-do-strw1">STAMP评分(护士筛查)</div>
@@ -115,7 +115,7 @@
               </li>
                 <li class="listw100">
                   <div class="role-do-strw1">入院诊断</div>
-                  <div class="role-do-val"><textarea style="width: 600px;height: 80px;" class="input-text"></textarea></div>
+                  <div class="role-do-val"><textarea style="width: 600px;height: 80px;" class="input-text" name="info[o_diagnosis]"></textarea></div>
               </li>
               <li class="listw100">
                 <div class="role-do-strw1">目前诊断</div>
@@ -124,8 +124,8 @@
             <li class="listw100">
               <div class="role-do-strw1">手术日期</div>
                 <div class="role-do-val">
-                  <input type="button" class="input-text" id="idcard" value="新增手术记录">
-                  <input type="button" class="input-text" id="idcard" value="还原">
+                  <input type="button" class="input-text" id="addshous" value="新增手术记录">
+                  <input type="button" class="input-text" id="rest" value="还原">
                 </div>
               </li>
               <li class="listw100">
@@ -169,6 +169,20 @@ var datas = {};
 $(function(){
   getTable();
   getTable3();
+    $('#addshous').click(function(){
+      var state = parseInt($(this).attr('data-state'));
+			if (0==state) return false;
+			var url = '/?m=dataManage&c=datas&a=getMemberHardware&uid='+uid;
+			layer.open({
+				type: 2,
+				title: '添加手术',
+				shadeClose: true,
+				shade: 0.8,
+				area: ['820px', '620px'],
+				content: url //iframe的url
+			});
+    });
+
   var tbWidth = $(window).width() - 245;
   $("#rstb").css({maxWidth:tbWidth});    
 	$("#rstb").colResizable({  
@@ -213,7 +227,7 @@ $(function(){
 			return;
 		}
 		var index = layer.load(2,{time:3000});
-		var url = '/?m=dataManage&c=member&a=doMember&ajax=1';
+		var url = '/?m=nutrition&c=index&a=doMember&ajax=1';
 		$.ajax({
 			url: url,
 			type: "POST",
@@ -223,7 +237,7 @@ $(function(){
 				layer.close(index);
 				layer.msg(data.erro);
 				validateAuth(data.status);
-				if (data.status == 1) setTimeout(function(){window.location.href='/?m=dataManage&c=member&a=memberList2'},1000);
+				// if (data.status == 1) setTimeout(function(){window.location.href='/?m=dataManage&c=member&a=memberList2'},1000);
 			}
 		});
 	});
@@ -233,31 +247,66 @@ $(function(){
 
 });
 function getData(){
-	var url = '/?m=dataManage&c=member&a=doMember&ajax=1&uid='+uid;
+	var url = '/?m=nutrition&c=medical&a=med_patient&ajax=1&uid='+uid;
 	$.ajax({
 		url: url,
 		type: "GET",
 		dataType:"JSON",
 		success: function(data){
 			if (data.status==1) {
-				var current = data.data.member;
-				$('#realname').val(current.realname);
-				$('#username').val(current.username);
-				$('#idcard').val(current.idcard);
+        var current = data.data.member;
+        var birthday= current.regdate; //生日
+        var sexStr='';
+        if(current.sex=='1'){
+          sexStr='男';
+        }else if(current.sex=='2'){
+          sexStr='女';
+        }else{
+          sexStr='保密';
+        }
+       // $('#hospital_id').val(current.hospital_id);
+        $('#nickname').val(current.nickname);
+        $('#sex').val(sexStr);
+				$('#bed_number').val(current.bed_number);   
+        $('#unit').val(current.unit);
+        $('#department').val(current.department);
+
+       
+        $('#birthday').val(getboth(birthday));    
+        var birthStr = getboth(birthday).replace(/-/g,'/');
+        var birthDay = new Date(birthStr).getTime();
+        var now = new Date().getTime();
+        var hours = (now - birthDay)/1000/60/60;
+        var year = Math.floor(hours / (24 * 30 * 12));
+        hours = hours % (24 * 30 * 12);
+        var months = Math.floor(hours / (24 * 30 ));
+        hours = hours % (24 * 30 );
+        var days = Math.floor(hours / (24));
+        $('#year').val(year);
+        $('#month').val(months);    
+        $('#day').val(days);
+
 				$('input[name="info[sex]"]').prop('checked',false);
 				$('input[name="info[sex]"]').eq(current.sex).prop('checked',true);
-				$('#age').val(current.age);
+			
 				getRegionNode(1,0,current.province);
 				if (0<current.city) getRegionNode(current.province,1,current.city);
 				if (0<current.area) getRegionNode(current.city,2,current.area);
 				if (0<current.street) getRegionNode(current.area,3,current.street);
 				if (0<current.community) getRegionNode(current.street,4,current.community);
-				$('#address').val(current.address);
-				$('#lng').val(current.lng);
-				$('#lat').val(current.lat);
+			
 			}
 		}
 	});
+}
+function getboth(value){
+    var date = new Date(parseInt(value) * 1000);
+    var y = date.getFullYear();
+    var m = date.getMonth() + 1;
+    m = m < 10 ? ('0' + m) : m;
+    var d = date.getDate();
+    d = d < 10 ? ('0' + d) : d;
+    return y+'-'+m+'-'+d;
 }
 
 function getTable(){
@@ -274,7 +323,7 @@ function getTable(){
 		}
 		$('#datas').html(html);
 		//initAction();
-		if (page == 1) initPage(pageCount);
+		// if (page == 1) initPage(pageCount);
 	},'json');
 }
 
@@ -293,7 +342,7 @@ function getTable3(){
 		}
 		$('#datas3').html(html);
 		//initAction();
-		if (page == 1) initPage(pageCount);
+		// if (page == 1) initPage(pageCount);
 	},'json');
 }
 

@@ -46,22 +46,22 @@
     </div>
 		<div class="option_box option_boxww">
             <ul>
-                <li onclick="goo('/patient/sr_index.html')">
+                <li onclick="goo('/patient/sr_index.html?target=top&searchD=12')">
                     <div class="option"><img src="./images/timgs1.png">
                         <p>中医问诊</p>
                     </div>
                 </li>
-                <li onclick="goo('#')">
+                <li onclick="goo_d()">
                     <div class="option"><img src="./images/timgs2.png">
                         <p>开药续方</p>
                     </div>
                 </li>
-                <li onclick="goo('#')">
+                <li onclick="goY('g_777g',this)">
                     <div class="option"><img src="./images/timgs3.png">
                         <p>血糖检测</p>
                     </div>
                 </li>
-                <li onclick="goo('#')">
+                <li onclick="goY('bioland_bp_a223',this)">
                     <div class="option"><img src="./images/timgs4.png">
                         <p>血压检测</p>
                     </div>
@@ -72,7 +72,7 @@
             <ul>
                 <li onclick="goo('/patient/index_.html')">
                     <div class="option"><img src="./images/gaoxuey.png" style="width: 1.82rem;">
-                        <p>高血管管理</p>
+                        <p>高血压管理</p>
                     </div>
                 </li>
                 <li onclick="goo('/patient/index_.html')">
@@ -80,12 +80,12 @@
                         <p>糖尿病管理</p>
                     </div>
                 </li>
-                <li onclick="goo('#')">
+                <li onclick="goo('/h5page/asthmatic.html')">
                     <div class="option"><img src="./images/jianya.png">
                         <p>颈肩腰腿痛</p>
                     </div>
                 </li>
-                <li onclick="goo('#')">
+                <li onclick="goo('/h5page/asthmatic.html')">
                     <div class="option"><img src="./images/aghos.png" style="width: 2.23rem;">
                         <p>咳喘管理</p>
                     </div>
@@ -99,11 +99,11 @@
         </div>
 	    <div class="mtsed" id="mtsdie">
         <div class="mtes_left">
-            <div onclick="goo('/patient/sr_index.html')" style="border-bottom: 0;border-radius: .32rem;">
+            <div onclick="goo_d()" style="border-bottom: 0;border-radius: .32rem;">
 			<p>康复理疗预约</p>
 		    <p>预约进行中医理疗</p>
 			</div>
-            <div onclick="goo('/patient/sr_index.html')">
+            <div onclick="goo('/patient/sr_index_fd.html?target=top')">
 			<p>名医坐诊预约</p>
 			<p>特邀名医到店坐诊</p>
 			</div>
@@ -112,10 +112,10 @@
 	
   <div class="m_dbox">
    <span>健康服务包</span>       
-   <span class="mstio"  onclick="goo('#')">更多<i class="uing"><img src="./images/fanhuis.png" style="width: 100%;"></i></span>
+   <span class="mstio"  onclick="goo('/h5page/serverlist.html')">更多<i class="uing"><img src="./images/fanhuis.png" style="width: 100%;"></i></span>
   </div>
 	<div class="contents" id="contenteds">
-	 <div class="listitem listitem1">
+	 <div class="listitem listitem1" onclick="goo('/h5page/xs_thesisservice.html')">
 	<div class="img">
         <div class="zoomImage" style="background-image:url('./images/lubnosde.png'); "></div>
       </div>
@@ -135,7 +135,7 @@
         </div>
       </div>
     </div>
-			 <div class="listitem listitem1">
+			 <div class="listitem listitem1" onclick="goo('/h5page/xs_thesisservice.html')">
 	<div class="img">
         <div class="zoomImage" style="background-image:url('./images/lubnosde1.png'); "></div>
       </div>
@@ -155,7 +155,7 @@
         </div>
       </div>
     </div>
-			 <div class="listitem listitem1">
+			 <div class="listitem listitem1" onclick="goo('/h5page/xs_thesisservice.html')">
 	<div class="img">
         <div class="zoomImage" style="background-image:url('./images/lubnosde2.png'); "></div>
       </div>
@@ -182,22 +182,22 @@
 	</div>
 	<div class="option_box option_box3">
             <ul>
-                <li onclick="goo('#')">
+                <li onclick="setCookie('get_new_data',1);goo('/group/per_list.html?target=top');">
                     <div class="option"><img src="./images/jijis.png">
                         <p>我的亲友</p>
                     </div>
                 </li>
-                <li onclick="goo('#')">
+                <li onclick="setCookie('get_new_data',1);goo('/medical/jktx.html?target=top');">
                     <div class="option"><img src="./images/tixings.png">
                         <p>健康提醒</p>
                     </div>
                 </li>
-                <li onclick="goo('#')">
+                <li onclick="goo_d()">
                     <div class="option"><img src="./images/yaonsse.png">
                         <p>用药指导</p>
                     </div>
                 </li>
-                <li onclick="goo('#')">
+                <li onclick="goo('/diet/list.html')">
                     <div class="option"><img src="./images/yaoshe.png">
                         <p>养生膳食</p>
                     </div>
@@ -209,25 +209,25 @@
   </div>
 	  <div class="menu_big1_choice_box"> <img src="./images/menu_big1_choice_bg.jpg">
       <div class="menu_big1_choice">
-        <div class="menu_big1_choice_"> <img src="./images/shuimian.png">
+        <div class="menu_big1_choice_" onclick="goo_t('/h5page/selftest.html?&type=6')"> <img src="./images/shuimian.png">
           <div class="menu_big1_choice_small">
             <p class="p1">睡眠质量自测</p>
             <p class="p2">健康体质睡出来</p>
           </div>
         </div>
-        <div class="menu_big1_choice_"> <img src="./images/paubus.png">
+        <div class="menu_big1_choice_" onclick="goo('/plan/fit_sport_2.html')"> <img src="./images/paubus.png">
           <div class="menu_big1_choice_small">
             <p class="p1">跑步运动统计</p>
             <p class="p2">计算跑步时间和消耗</p>
           </div>
         </div>
-        <div class="menu_big1_choice_"> <img src="./images/juingsu.png" style="width: 1.3rem;">
+        <div class="menu_big1_choice_" onclick="goo_t('/h5page/selftest.html?&type=7')"> <img src="./images/juingsu.png" style="width: 1.3rem;">
           <div class="menu_big1_choice_small">
             <p class="p1">颈椎病症状自测</p>
             <p class="p2">医院门诊快速挂号</p>
           </div>
         </div>
-        <div class="menu_big1_choice_"> <img src="./images/tanjano.png">
+        <div class="menu_big1_choice_" onclick="goo_t('/h5page/selftest.html?&type=4')"> <img src="./images/tanjano.png">
           <div class="menu_big1_choice_small">
             <p class="p1">糖尿病症状自测</p>
             <p class="p2">及时发现及时预防</p>
@@ -237,25 +237,25 @@
     </div>
 		  <div class="menu_big1_choice_box"> <img src="./images/menu_big1_choice_bg.jpg">
       <div class="menu_big1_choice" style="border-bottom: 0;">
-        <div class="menu_big1_choice_"> <img src="./images/xindiax.png">
+        <div class="menu_big1_choice_" onclick="goo_t('/h5page/selftest.html?&type=1')"> <img src="./images/xindiax.png">
           <div class="menu_big1_choice_small">
             <p class="p1">基础代谢率计算</p>
             <p class="p2">日常活动的消耗比例</p>
           </div>
         </div>
-        <div class="menu_big1_choice_"> <img src="./images/vcvcv.png" style="width: 2rem;height: 2.2rem;">
+        <div class="menu_big1_choice_" onclick="goo_t('/h5page/selftest.html?&type=2')"> <img src="./images/vcvcv.png" style="width: 2rem;height: 2.2rem;">
           <div class="menu_big1_choice_small">
             <p class="p1">肥胖指数测试</p>
             <p class="p2">判断您的肥胖情况</p>
           </div>
         </div>
-        <div class="menu_big1_choice_"> <img src="./images/vcvcbdf.png" style="width: 2.2rem;height: 1.4rem;">
+        <div class="menu_big1_choice_" onclick="goo_t('/h5page/selftest.html?&type=5')"> <img src="./images/vcvcbdf.png" style="width: 2.2rem;height: 1.4rem;">
           <div class="menu_big1_choice_small">
             <p class="p1">BMI指数计算</p>
             <p class="p2">身体质量指数程度</p>
           </div>
         </div>
-        <div class="menu_big1_choice_"> <img src="./images/vcvcbfd.png" style="width: 2.2rem;height: 1.9rem;">
+        <div class="menu_big1_choice_" onclick="goo_t('/h5page/selftest.html?&type=3')"> <img src="./images/vcvcbfd.png" style="width: 2.2rem;height: 1.9rem;">
           <div class="menu_big1_choice_small">
             <p class="p1">疲劳度测试</p>
             <p class="p2">专业职业疲劳度自测</p>
@@ -266,11 +266,11 @@
 	<div style="height: .8rem;background: #f9f9f9"></div>
 	  <div class="m_dbox" style="margin-bottom: .5rem;">
    <span>健康产品</span>       
-   <span class="mstio"  onclick="goo('#')">更多<i class="uing"><img src="./images/fanhuis.png" style="width: 100%;"></i></span>
+   <span class="mstio" onclick="goo_d()">更多<i class="uing"><img src="./images/fanhuis.png" style="width: 100%;"></i></span>
   </div>
 	 <div class="planting">
         <ul id="plants">
-            <li class='li-rela'>
+            <li class='li-rela' onclick="goo_d()">
                 <div class="poster-thumb"><img src="./images/tubiadfgo1.png" width="100%"></div>
                 <div class="msg_box">
                     <p class="poster-title">蓬生源牌褪黑素 维生素B6胶囊</p>
@@ -278,7 +278,7 @@
                     <p class="poster-price"><span>￥</span><span>300.00</span></p>
                 </div>
             </li>
-            <li class='li-rela'>
+            <li class='li-rela' onclick="goo_d()">
                 <div class="poster-thumb"><img src="./images/tubiadfgo3.png" width="100%"></div>
                 <div class="msg_box">
                     <p class="poster-title">蓬生源牌钙维生 素D软胶囊</p>
@@ -286,7 +286,7 @@
                       <p class="poster-price"><span>￥</span><span>250.00</span></p>
                 </div>
             </li>
-            <li class='li-rela'>
+            <li class='li-rela' onclick="goo_d()">
                 <div class="poster-thumb"><img src="./images/tubiadfgo2.png" width="100%"></div>
                 <div class="msg_box">
                     <p class="poster-title">蓬生源牌多种维 生素钙锌片</p>
@@ -294,7 +294,7 @@
                       <p class="poster-price"><span>￥</span><span>280.00</span></p>
                 </div>
             </li>
-			     <li class='li-rela'>
+			     <li class='li-rela' onclick="goo_d()">
                 <div class="poster-thumb"><img src="./images/tubiadfgo3.png" width="100%"></div>
                 <div class="msg_box">
                     <p class="poster-title">蓬生源牌褪黑素 维生素B6胶囊</p>
@@ -302,7 +302,7 @@
                      <p class="poster-price"><span>￥</span><span>300.00</span></p>
                 </div>
             </li>
-			     <li class='li-rela'>
+			     <li class='li-rela' onclick="goo_d()">
                 <div class="poster-thumb"><img src="./images/tubiadfgo1.png" width="100%"></div>
                     <div class="msg_box">
                     <p class="poster-title">蓬生源牌多种维 生素钙锌片</p>
@@ -315,7 +315,7 @@
 	<div style="height: 1rem;background: #f9f9f9;margin: 1rem 0;"></div>
 <div class="m_dbox"> 
    <span>健康课堂</span>       
-   <span class="mstio"  onclick="goo('#')">更多<i class="uing"><img src="./images/fanhuis.png" style="width: 100%;"></i></span>
+   <span class="mstio" onclick="goo_d()">更多<i class="uing"><img src="./images/fanhuis.png" style="width: 100%;"></i></span>
   </div>
 	 <div class="contents" id="ketangs">
 
@@ -382,6 +382,89 @@
             })
             page++;
         }
+        function goY(ac,obj){
+	var tpp_ = getTapp();
+	//console.log("href====>",window.location.href);
+	var d_name = $(obj).attr('data-m');
+	var ua = navigator.userAgent.toLowerCase();
+	if (ac == "kangyun") { goo('//www.519ksy.com/dev/ky/urine_check.html?target=top'); return; }
+	if (ac == "data_xinlv") { goo('//www.519ksy.com/dev/bioland/data_xinlv.html?target=top&mobile='+getQueryString('mobile')); return; }
+    if (ac == "wrist_watch") {
+    	goo('//www.519ksy.com/dev/wrist_watch/?&f=yjxun');
+    	return;
+    }
+
+
+        if (getUrlParam('mobile') == 'ios' || tpp_[1] == 2) {
+		if (ac == "manridy"){
+			window.location.href = "dapp://" + ac;return;
+		}else{ window.location.href = "dapp://goY=>" + ac; }
+	} else {
+		if(ac != "yundong" && ac != "bmi" && ac!="jsjihua"){
+			try { jstojava.goY(ac); return; } catch (e) { }
+			try { jstojava2.goY(ac); return; } catch (e) { }
+		} 
+		
+	}
+	switch (ac) {
+			case "bioland_bp_a223":
+				goo('//www.519ksy.com/dev/bioland/bp_a223.html?target=top'); break;
+			case "g_777g":
+				goo('//www.519ksy.com/dev/bioland/g_777g.html?target=top'); break;
+			case "bioland_tp":
+				goo('//www.519ksy.com/dev/bioland/tp.html?v=123&target=top'); break;
+			/*case "manridy":
+				goY('manridy',this);break;*/
+//			case "v3":
+//				goY('v3',this);break;
+//			case "w3":
+//				goY('w3',this);break;
+			/*case "manridy":
+			case "v3": 
+			case "w3":*/ 
+			case "Y1":
+			case "F3":
+			case "F5":
+			case "F6":
+			case "M58":
+			case "sd1":
+				layer.open({
+					content: '请下载APP进行操作，是否前往下载？',
+					btn: ['确定', '取消'],
+					yes: function(index) {
+						goo('//android.myapp.com/myapp/detail.htm?apkName=com.TangJian.YiJiaXun');
+						layer.close(index);
+					}
+				});
+				break;
+			case "heal_force":
+				layer.open({
+					content: '请下载APP进行操作，是否前往下载？',
+					btn: ['确定', '取消'],
+					yes: function(index) {
+						goo('//android.myapp.com/myapp/detail.htm?apkName=com.TangJian.YiJiaXun');
+						layer.close(index);
+					}
+				});
+				break;
+			case "bmi":
+				goo('//www.519ksy.com/selfTest/bmi/bmi.html?target=top'); break;
+			case 'yundong':
+				go_sport_run();
+				break; 
+			case 'bioland_bp_2006_2b':
+				layer.open({
+					content: '即将上线,敬请期待！'
+					,skin: 'msg'
+					,time: 2 //2秒后自动关闭
+				});
+				break;
+			case 'jsjihua':
+				goo('/sport/sport_lists.html?target=top');
+				break;
+
+		}
+}
 	</script>
 </body>
 </html>

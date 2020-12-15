@@ -1,0 +1,1685 @@
+<!--<head></head><body></body>-->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name = "format-detection" content = "telephone=no">
+<meta name="topcolor" rgba="76.186.255.1">
+<title set-lan="html:fitness_exercise">健身锻炼</title>
+<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+<!--<link rel="stylesheet" type="text/css" href="/statics/sport/css/common.css">-->
+<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+<link rel="stylesheet" type="text/css" href="/statics/sport/css/index.css">
+<link rel="stylesheet" type="text/css" href="/statics/sport/css/appstyle.css">
+<script type="text/javascript" src="/statics/js/jquery.min.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<script type="text/javascript" src="/statics/js/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="/statics/js/lazyload/jquery.lazyload.js"></script>
+<script type="text/javascript" src="/statics/js/ex/mytemplate_1.js"></script>
+<script type="text/javascript" src="/statics/circle/js/global.js"></script>
+<script type="text/javascript" src="/statics/js/cookie.js"></script>
+<script type="text/javascript" src="/statics/languages/20181105/languages.js"></script>
+</head>
+<script>
+
+try{
+
+	jstojava.mycleargoback();
+
+	jstojava.close_toobar();
+
+}catch(e){  }
+
+</script>
+<style>
+body { background-color: #f3f3f3; }
+.header_box { background-color: #4cbaff; }
+.header_box .right_r { width: 30px; height: 30px; position: absolute; right: 0; top: 50%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); }
+.header_box .right_r img { width: 100%; }
+/*.header_box{ width:100%; background-color:#4cbaff; overflow:hidden; height:50px; padding:0px 5%; position:fixed; left:0; top:0; z-index: 9999;}
+
+.header_box .header_boxl{ width:10%; margin-right:5%; padding-top:4.5%;}
+
+.header_box .header_boxl img{ width:70%;}
+
+.header_box .header_boxm{ width:70%; overflow:hidden; text-align:center; height:50px; line-height:50px; color:#fff; font-size:16px;}
+
+.header_box .header_boxr{ width:10%; padding-top:3.5%; margin-left:5%;}
+
+.header_boxr img{ width:80%; display:block; margin:0 auto;}*/
+
+/**/
+
+.rili_box { width: 100%; overflow: hidden; background-color: #4cbaff; }
+/**/
+
+.fangan, .fangan_option, .fangan_box, .fangan_box1, .fangan_box2 { width: 100%; overflow: hidden; }
+.fangan_option { background-color: #4cbaff; }
+.fangan_option li { float: left; width: 29%; margin: 0px 2%; height: 40px; line-height: 40px; text-align: center; font-weight: bold; color: #fff; font-size: 16px; }
+.fangan_option .active { border-bottom: 2px solid #f8a80c; }
+.fangan_box .fangan_box1 { text-align: center; }
+.fangan_box .fangan_box1 p { color: #333; font-weight: bold; }
+.fangan_box1 .build_pic { width: 50%; display: block; margin: 10% auto 8% auto; }
+.fangan_box1 .build { width: 60%; height: 40px; line-height: 40px; text-align: center; background-color: #f8a80c; border-radius: 20px; display: block; margin: 5% auto 0 auto; font-weight: bold; color: #fff; font-size: 16px; }
+.fangan_box1_ { width: 94%; overflow: hidden; margin: 0 auto 15px auto; }
+.fangan_box1_ .plan_box, .plan_box_ { width: 100%; overflow: hidden; }
+.fangan_box1_ .plan_box { border: 1px solid #eee; }
+.plan_box .day { height: 39px; line-height: 39px; font-size: 17px; padding-left: 5%; border-left: 3px solid #eee; margin-left: 5%; position: relative; font-weight: bold; }
+.day .day_l { width: 20px; height: 20px; position: absolute; top: 10px; left: -3.5%; }
+.plan_box .day_ { border-left-color: #2cacfc !important; }
+.plan_box .day_r { font-size: 15px; color: #f85a5a; }
+.day_r .careful { width: 20px; height: 20px; vertical-align: text-top; }
+.fangan_box1_ .plan_box_ { background-color: #fff; border-radius: 5px; padding: 0px 10px; overflow: hidden; }
+.plan_box_ .exe { width: 100%; overflow: hidden; height: 40px; border-bottom: 1px solid #eee; font-size: 17px; font-weight: bold; }
+.plan_box_ .train { line-height: 40px; }
+.plan_box_ .speed { line-height: 40px; color: #f8a80c; }
+.plan_box_ .finish { padding: 2px 3px; background-color: #dd4b39; color: #fff; margin-top: 2%; border-radius: 5px; }
+.plan_box_ .stop { line-height: 40px; color: #999; }
+.plan_box_ .plan_line, .plan_line_, .diet, .diet_box { width: 100%; overflow: hidden; }
+.diet p { text-align: center; color: #f8a80c; font-weight: bold; float: right; margin-bottom: 10px; }
+.diet_box { height: 40px; padding: 15px 0px; font-size: 17px; }
+.diet_box .tips { width: 5%; vertical-align: sub; margin-right: 10px; float: left; }
+.plan_box_ .plan_line_ { padding: 10px 5px 13px 5px; border-bottom: 1px solid #eee; }
+.plan_line_ .plan_ { width: 126px; height: 50px; position: relative; margin-right: -21px; overflow: hidden; border-radius: 5px; }
+.plan_line_ .plan { width: 129px; height: 79px; border-radius: 5px; }
+.plan_line_ .lock { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); width: 15%; }
+.plan_line_ .plan_line_l { margin-top: 5px; margin-left: 46px; }
+.plan_line_ .plan_line_l p:first-child { font-size: 17px; }
+.plan_line_ .plan_line_r { width: 16%; }
+.plan_line .plan_ready { width: 100%; overflow: hidden; position: relative; margin-top: 10px; padding-bottom: 10px; border-bottom: 1px solid #eee; }
+.plan_ready .plan_ready_pic { width: 100%; }
+.plan_ready .plan_ready_box { position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); width: 90%; color: #fff; }
+.plan_ready_box .plan_start { width: 39%; margin: 8% auto -36px auto; display: block; }
+.all_lesson_mess { width: 100%; overflow: hidden; }
+.all_lesson_mess li { margin-top: 5px; }
+.all_lesson_mess .lesson_mess { width: 100%; overflow: hidden; position: relative; }
+.all_lesson, .all_lesson_option { width: 100%; overflow: hidden; }
+.all_lesson_option { background-color: #fff; }
+.all_lesson_option { border-bottom: 1px solid #e4e3e8; }
+.all_lesson_option li { float: left; width: 33.3%; border-right: 1px solid #e4e3e8; padding: 10px 6%; }
+.all_lesson_option li:last-child { border-right: none; }
+.all_lesson_option option { border: none; resize: none; outline: none; }
+.all_lesson_mess { width: 100%; overflow: hidden; }
+.lesson_mess img { width: 100%; height: 160px; }
+.lesson_mess .lesson_mess_ { width: 100%; height: 97%; position: absolute; overflow: hidden; top: 0; left: 0; color: #fff; background: rgba(96,96,96,0.3); padding-left: 3%; }
+/**/
+
+.plan_date { width: 100%; overflow: hidden; }
+.plan_date .plan_date_ { width: 100%; overflow: hidden; color: #FFF }
+.plan_date .plan_date_ li { float: left; width: 14%; height: 30px; line-height: 30px; text-align: center; font-weight: bold; }
+/*.plan_date .plan_date_ li:first-child{ color:#666;}
+
+.plan_date .plan_date_ li:last-child{ color:#666;}*/
+
+.plan_date .plan_date_box { width: 100%; overflow: hidden; color: #FFF; }
+.plan_date_box .date { width: 25px !important; height: 25px !important; line-height: 25px !important; margin: 5px 3.5%; display: block; border-radius: 20px; background-color: #f8a80c; }
+.plan_date .plan_date_box li { float: left; width: 14%; text-align: center; height: 35px; line-height: 35px; position: relative; font-weight: bold; color: #fff; }
+.plan_ready .plan_ready_pic { max-width: 500px; _width:expression(this.width > 500 ? "500px" : this.width);
+}
+</style>
+
+<body>
+
+<!--<div class="header_box">
+
+        <div class="header_boxl fl" onclick="goback()">
+
+            <img src="/statics/sport/images/goleft_.png">
+
+        </div>
+
+        <div class="header_boxm fl" set-lan="html:fitness_exercise">健身锻炼</div>
+
+        <div class="header_boxr fl" onClick="javascript:if(is_login()){goo('/sport/sport_calendar.html')}">
+
+            <img src="/statics/sport/images/rili.png">
+
+        </div>
+
+    </div>-->
+
+<div class="header_box"> <img src="/statics/images/goback.png" onClick="goback()" class="left">
+  <p class="midden" set-lan="html:fitness_exercise">健身锻炼</p>
+  <div class="right_r" onClick="javascript:if(is_login()){goo('/sport/sport_calendar.html')}"> <img src="/statics/sport/images/rili.png"> </div>
+</div>
+<div style="height:50px;"></div>
+<div class="rili_box">
+  <div class="plan_date">
+    <div class="plan_date_">
+      <ul>
+        <li>日</li>
+        <li>一</li>
+        <li>二</li>
+        <li>三</li>
+        <li>四</li>
+        <li>五</li>
+        <li>六</li>
+      </ul>
+    </div>
+    <div class="plan_date_box" style="height:39px;" id="plan_date_box"></div>
+  </div>
+</div>
+<div class="fangan">
+  <div class="fangan_option">
+    <ul>
+      <li class="active" id="abc" set-lan="html:fitness_program">健身方案</li>
+      <li id="sport_" set-lan="html:free_training">自由训练</li>
+      <li id="run_" onclick="go_run()" set-lan="html:running_outdoors">户外跑步</li>
+      
+      <!--<li>视频</li>-->
+      
+    </ul>
+  </div>
+  <div class="fangan_box">
+    <div class="fangan_box1" style="display: none;"> <img src="/statics/sport/images/fangan_1.png" class="build_pic">
+      <p set-lan="html:fitness_program_advantage1">制定合适的健身方案，通过科学的课程提升</p>
+      <p set-lan="html:fitness_program_advantage2">训练效果，为您实现理想</p>
+      <div class="build" onClick="if(is_login()){location.href = '/plan/eva.html';}" set-lan="html:custom_fitness_program">定制健身方案</div>
+    </div>
+    <div class="fangan_box1_" style="display: none;"> 
+      
+      <!--<div class="plan_box one_data">
+
+					<p class="day day_">7月25日<img src="/statics/sport/images/fangan_ready.png"></p>
+
+					<div class="plan_box_">
+
+						<p class="exe">
+
+							<span class="train fl">训练日</span>
+
+							<span class="stop fr" style="display: none;">未开始</span>
+
+							<span class="speed fr" style="display: none;">完成&nbsp;1/2</span>
+
+							<span class="finish fr">已完成</span>
+
+						</p>
+
+						<div class="plan_line">
+
+							<div class="plan_line_">
+
+								<div class="plan_ fl">
+
+									<img src="/statics/sport/images/release_pic_.png" class="plan">
+
+								</div>
+
+								<div class="plan_line_l fl">
+
+									<p>快走10分钟</p>
+
+									<p>25分钟·120千卡</p>
+
+								</div>
+
+								<img src="/statics/sport/images/finish_.png" class="plan_line_r fr">
+
+							</div>
+
+						</div>
+
+						<div class="plan_line">
+
+							<div class="plan_line_">
+
+								<div class="plan_ fl">
+
+									<img src="/statics/sport/images/release_pic_.png" class="plan">
+
+								</div>
+
+								<div class="plan_line_l fl">
+
+									<p>快走10分钟</p>
+
+									<p>25分钟·120千卡</p>
+
+								</div>
+
+								<img src="/statics/sport/images/finish_.png" class="plan_line_r fr">
+
+							</div>
+
+						</div>
+
+						<div class="diet">
+
+							<div class="diet_box">
+
+								<img src="/statics/sport/images/tips.png">今日健康食谱搭配，不用节食也能瘦身
+
+							</div>
+
+							<p>查看详情>></p>
+
+						</div>
+
+					</div>
+
+				</div>--> 
+      
+      <!--<div class="plan_box">
+
+					<p class="day day_">今天<img src="/statics/sport/images/fangan_ready.png"></p>
+
+					<div class="plan_box_">
+
+						<p class="exe">
+
+							<span class="train fl">训练日</span>
+
+							<span class="stop fr" style="display: none;">未开始</span>
+
+							<span class="speed fr">完成&nbsp;1/2</span>
+
+							<span class="finish fr" style="display: none;">已完成</span>
+
+						</p>
+
+						<div class="plan_line">
+
+							<div class="plan_ready">
+
+								<img src="/statics/sport/images/release_pic_.png" class="plan_ready_pic">
+
+								<div class="plan_ready_box">
+
+									<p>收紧腿臀训练</p>
+
+									<p>25分钟·120千卡</p>
+
+									<img src="/statics/sport/images/plan_ready.png" class="plan_start">
+
+								</div>
+
+							</div>
+
+							<div class="plan_line_">
+
+								<div class="plan_ fl">
+
+									<img src="/statics/sport/images/release_pic_.png" class="plan">
+
+								</div>
+
+								<div class="plan_line_l fl">
+
+									<p>快走10分钟</p>
+
+									<p>25分钟·120千卡</p>
+
+								</div>
+
+								<img src="/statics/sport/images/finish_.png" class="plan_line_r fr">
+
+							</div>
+
+						</div>
+
+						<div class="diet">
+
+							<div class="diet_box">
+
+								<img src="/statics/sport/images/tips.png">今日健康食谱搭配，不用节食也能瘦身
+
+							</div>
+
+							<p>查看详情>></p>
+
+						</div>
+
+					</div>
+
+				</div>--> 
+      
+      <!--<div class="plan_box">
+
+					<p class="day day_">明天<img src="/statics/sport/images/fangan_ready.png"></p>
+
+					<div class="plan_box_">
+
+						<p class="exe">
+
+							<span class="train fl">训练日</span>
+
+							<span class="stop fr">未开始</span>
+
+							<span class="speed fr" style="display: none;">完成&nbsp;1/2</span>
+
+							<span class="finish fr" style="display: none;">已完成</span>
+
+						</p>
+
+						<div class="plan_line">
+
+							<div class="plan_line_">
+
+								<div class="plan_ fl">
+
+									<img src="/statics/sport/images/release_pic_.png" class="plan">
+
+									<img src="/statics/sport/images/lock.png" class="lock">
+
+								</div>
+
+								<div class="plan_line_l fl">
+
+									<p>快走10分钟</p>
+
+									<p>25分钟·120千卡</p>
+
+								</div>
+
+								<img src="/statics/sport/images/finish_.png" class="plan_line_r fr">
+
+							</div>
+
+						</div>
+
+						<div class="plan_line">
+
+							<div class="plan_line_">
+
+								<div class="plan_ fl">
+
+									<img src="/statics/sport/images/release_pic_.png" class="plan">
+
+									<img src="/statics/sport/images/lock.png" class="lock">
+
+								</div>
+
+								<div class="plan_line_l fl">
+
+									<p>快走10分钟</p>
+
+									<p>25分钟·120千卡</p>
+
+								</div>
+
+								<img src="/statics/sport/images/finish_.png" class="plan_line_r fr">
+
+							</div>
+
+						</div>
+
+						<div class="diet">
+
+							<div class="diet_box">
+
+								<img src="/statics/sport/images/tips.png">今日健康食谱搭配，不用节食也能瘦身
+
+							</div>
+
+							<p>查看详情>></p>
+
+						</div>
+
+					</div>
+
+				</div>--> 
+      
+    </div>
+  </div>
+  <div class="fangan_box">
+    <div class="fangan_box2">
+      <style>
+
+    .all_lesson_option1{ width:100%; overflow:hidden; /*margin-bottom:10px;*/ border-bottom:1px solid #e3e3e7; background-color:#fff;}
+
+	.all_lesson_option1 p{ /*height:36px; line-height:36px;*/ padding-left:1%; font-weight:bold;}
+
+	.all_lesson_option1 .all_lesson_option1_box{ width:100%; overflow:hidden; padding-left:5%;}
+
+	.all_lesson_option1_box li{ width:80px; text-align:center; height:25px; line-height:25px; background-color:#f2f2f2; color:#000; float:left; margin-right:1%; border-radius:20px; margin-bottom:10px;}
+
+	.all_lesson_option1 .active{ background-color:#2cacfc; color:#fff;}
+
+    </style>
+      <div class="all_lesson_option1">
+        <p set-lan="html:classification_select">分类选择</p>
+        <div class="all_lesson_option1_box" style="overflow-x:scroll;padding-bottom:5px;">
+          <ul style="width:696px;">
+            <li class="active type_choice" id="catid_0" set-lan="html:look_all">查看全部</li>
+            <li class="type_choice" id="catid_39" set-lan="html:fat_loss">减脂</li>
+            
+            <!--<li class="type_choice">增肌</li>-->
+            
+            <li class="type_choice" id="catid_38" set-lan="html:molding">塑型</li>
+            
+            <!--<li class="type_choice">健身</li>-->
+            
+            <li class="type_choice" id="catid_42" set-lan="html:yoga">瑜伽</li>
+            
+            <!--<li class="type_choice" id="">保健养生</li>--> 
+            
+            <!--<li class="type_choice">形体舞</li>
+
+                <li class="type_choice">按摩轻松</li>-->
+            
+          </ul>
+        </div>
+        <div class="all_lesson_mess">
+          <ul>
+            <template class="template" id="ace">
+              <li onClick="d(<$id>,<$catid>)">
+                <div class="lesson_mess"> <img src="<$thumb>">
+                  <div class="lesson_mess_">
+                    <p class="p1" style="font-size:19px;margin-top:3%;">
+                      <$title>
+                    </p>
+                    <p class="p2" style="font-size:14px;font-weight:bolder;margin-top:5px;">
+                      <$k_labels></$k_labels>
+                    </p>
+                    <p class="p3" style="font-size:14px;font-weight:bolder;margin-top:5px;"><span set-lan="html:kcal">
+                      <$k_label_calorie>
+                      千卡</span></p>
+                    <p class="p4" style="font-size:14px;font-weight:bolder;position:absolute;bottom:11px;"><span>
+                      <$partake>
+                      &nbsp;<u set-lan="html:people_attend">人参加</u></span></p>
+                  </div>
+                </div>
+              </li>
+            </template>
+            <div style="margin-left:10px;font-size:21px;margin-top:3px;margin-bottom:6px;" class="catid_39" set-lan="html:fat_loss">减脂</div>
+            <div id="ace_"></div>
+            <div style="margin-left:10px;font-size:21px;margin-top:3px;margin-bottom:6px;" class="catid_38" set-lan="html:molding">塑形</div>
+            <div id="ace__"></div>
+            <div style="margin-left:10px;font-size:21px;margin-top:3px;margin-bottom:6px;" class="catid_42" set-lan="html:yoga">瑜伽</div>
+            <div id="ace___"></div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="fangan_box"></div>
+</div>
+</body>
+<input type="hidden" id="page" value="1"/>
+<script>
+
+var org = '';
+
+var catid = getQueryString('catid')?getQueryString('catid'):0;
+
+$(document).ready(function(){
+
+	get_sport_data();
+
+	set_calendar();
+
+	$('#abc').click();
+
+	//a();
+
+	get_data();
+
+	bindTypeBtn();
+
+	if(catid != 0){
+
+		$('#catid_0').removeClass('active');
+
+		$('#catid_'+catid).addClass('active');
+
+	}else{
+
+		$('#catid_0').click();
+
+	}
+
+	var get = getQueryString('get');
+
+	if(get == 'run'){
+
+		$('#run_').click();
+
+	}else if(get == 'sport'){
+
+		$('#sport_').click();
+
+	}
+
+});
+
+function go_run(){
+
+	var u = navigator.userAgent;
+
+	var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+
+	var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+	if(isiOS && !isWeiXin()){
+
+		goo('http://www.yjxun.cn/plan/fit_sport_2.html');
+
+	}else{
+		//goo('http://www.yjxun.cn/plan/fit_sport.html');
+		if(isWeiXin()){
+			goo('http://www.yjxun.cn/plan/fit_sport.html');
+		}else{
+			goo('http://www.yjxun.cn/plan/fit_sport_.html');
+		}
+
+	}
+
+}
+
+window.onscroll = function(){
+
+	//$(document).scrollTop() 获取垂直滚动的距离
+
+	//$(document).scrollLeft() 这是获取水平滚动条的距离
+
+	if ($(document).scrollTop() <= 0){
+
+		console.log("滚动条已经到达顶部为0");
+
+	}
+
+	if ($(document).scrollTop() >= $(document).height() - $(window).height()){
+
+		//b();
+
+		console.log("滚动条已经到达底部为" + $(document).scrollTop());
+
+	}
+
+};
+
+$('#catid_0').click(function(){
+
+	var content = $('#ace').html();
+
+	$('#page').val(1);
+
+	var page = $('#page').val();
+
+	a();
+
+	/*$.ajax({
+
+		'url':'/index.php?m=sport&a=get_datas'+'&page='+page+'&catid=',
+
+		'type':'post',
+
+		'data':'judge=2',
+
+		'dataType':'json',
+
+		'success':function(data){
+
+			var contents = mytemplate_list(content,data);
+
+			$('#ace_').html(contents);
+
+			$('#page').val(page*1+1*1);
+
+			//layer.close(index);
+
+		}
+
+	})*/
+
+})
+
+$('#catid_38').click(function(){
+
+	$('#ace_').html('');$('#ace___').html('');
+
+	$('.catid_38').css('display','none');
+
+	$('.catid_39').css('display','none');
+
+	$('.catid_42').css('display','none');
+
+	var content = $('#ace').html();
+
+	$('#page').val(1);
+
+	var page = $('#page').val();
+
+	//if(gx != ''){$('#ac option[value='+gx+']').attr("selected",true);console.log($('#ac option[value='+gx+']').attr('value'));}
+
+	//var index = layer.load(1,{time:3*1000});
+
+	$.ajax({
+
+		'url':'/index.php?m=sport&a=get_datas'+'&page='+page+'&catid=38&pageSize=15',
+
+		'type':'post',
+
+		'data':'judge=2',
+
+		'dataType':'json',
+
+		'success':function(data){
+
+			var contents = mytemplate_list(content,data);
+
+			$('#ace_').html(contents);
+
+			$('#page').val(page*1+1*1);
+			StranBody();
+			//layer.close(index);
+
+		}
+
+	})
+
+})
+
+$('#catid_39').click(function(){	
+
+	$('#ace__').html('');$('#ace___').html('');
+
+	$('.catid_38').css('display','none');
+
+	$('.catid_39').css('display','none');
+
+	$('.catid_42').css('display','none');
+
+	//ChangeParam('catid','0');
+
+	var content = $('#ace').html();
+
+	$('#page').val(1);
+
+	var page = $('#page').val();
+
+	//if(gx != ''){$('#ac option[value='+gx+']').attr("selected",true);console.log($('#ac option[value='+gx+']').attr('value'));}
+
+	//var index = layer.load(1,{time:3*1000});
+
+	$.ajax({
+
+		'url':'/index.php?m=sport&a=get_datas'+'&page='+page+'&catid=39&pageSize=15',
+
+		'type':'post',
+
+		'data':'judge=2',
+
+		'dataType':'json',
+
+		'success':function(data){
+
+			var contents = mytemplate_list(content,data);
+
+			$('#ace_').html(contents);
+
+			$('#page').val(page*1+1*1);
+			StranBody();
+			//layer.close(index);
+
+		}
+
+	})
+
+})
+
+$('#catid_42').click(function(){
+
+	$('#ace_').html('');$('#ace__').html('');
+
+	$('.catid_38').css('display','none');
+
+	$('.catid_39').css('display','none');
+
+	$('.catid_42').css('display','none');
+
+	var content = $('#ace').html();
+
+	$('#page').val(1);
+
+	var page = $('#page').val();
+
+	//if(gx != ''){$('#ac option[value='+gx+']').attr("selected",true);console.log($('#ac option[value='+gx+']').attr('value'));}
+
+	//var index = layer.load(1,{time:3*1000});
+
+	$.ajax({
+
+		'url':'/index.php?m=sport&a=get_datas'+'&page='+page+'&catid=42&pageSize=15',
+
+		'type':'post',
+
+		'data':'judge=2',
+
+		'dataType':'json',
+
+		'success':function(data){
+
+			var contents = mytemplate_list(content,data);
+
+			$('#ace_').html(contents);
+
+			$('#page').val(page*1+1*1);
+			StranBody();
+			//layer.close(index);
+
+		}
+
+	})
+
+})
+
+
+
+/*js获取get参数*/
+
+function a(){
+
+	$('.catid_38').css('display','block');$('.catid_39').css('display','block');$('.catid_42').css('display','block');
+
+	var content = $('#ace').html();
+
+	var page = $('#page').val();
+
+	var gx = getQueryString('gx');
+
+	var qx = getQueryString('qx');
+
+	var bw = getQueryString('bw');
+
+	//if(gx != ''){$('#ac option[value='+gx+']').attr("selected",true);console.log($('#ac option[value='+gx+']').attr('value'));}
+
+	//var index = layer.load(1,{time:3*1000});
+
+	/*$.ajax({
+
+		'url':'/index.php?m=sport&a=get_datas&gx='+gx+'&qx='+qx+'&bw='+bw+'&page='+page+'&catid='+catid,
+
+		'type':'post',
+
+		'data':'judge=2',
+
+		'dataType':'json',
+
+		'success':function(data){
+
+			var contents = mytemplate_list(content,data);
+
+			$('#ace_').append(contents);
+
+			$('#page').val(page*1+1*1);
+
+			//c();
+
+			//layer.close(index);
+
+		}
+
+	})*/
+
+	$.ajax({
+
+		'url':'/index.php?m=sport&a=get_datas'+'&page='+page+'&catid=39&pageSize=15',
+
+		'type':'post',
+
+		'data':'judge=2',
+
+		'dataType':'json',
+
+		'success':function(data){
+
+			var contents = mytemplate_list(content,data);
+
+			$('#ace_').append(contents);
+
+			$('#page').val(page*1+1*1);
+
+			console.log(1);
+
+			$.ajax({
+
+				'url':'/index.php?m=sport&a=get_datas'+'&page='+page+'&catid=38&pageSize=15',
+
+				'type':'post',
+
+				'data':'judge=2',
+
+				'dataType':'json',
+
+				'success':function(data){
+
+					var contents = mytemplate_list(content,data);
+
+					$('#ace__').append(contents);
+
+					console.log(2);
+
+					$.ajax({
+
+						'url':'/index.php?m=sport&a=get_datas'+'&page='+page+'&catid=42&pageSize=15',
+
+						'type':'post',
+
+						'data':'judge=2',
+
+						'dataType':'json',
+
+						'success':function(data){
+
+							var contents = mytemplate_list(content,data);
+
+							$('#ace___').append(contents);
+
+							console.log(3);
+
+							//$('#page').val(page*1+1*1);
+
+							//layer.close(index);
+
+						}
+
+					})
+
+				}
+
+			})
+
+		}
+
+	})
+
+}
+
+function b(){
+
+	a();
+
+}
+
+function d(id,catid){
+
+	goo('./course_content.html?id='+id+'&catid='+catid);
+
+}
+
+function getQueryString(name) { 
+
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+
+	var r = window.location.search.substr(1).match(reg); 
+
+	if (r != null) return unescape(r[2]); return null; 
+
+}
+
+$('.fangan_option ul li').click(function(){
+
+	$(this).addClass('active').siblings().removeClass('active');
+
+	var _index = $(this).index();
+
+    $('.fangan_box').eq(_index).show().siblings('.fangan_box').hide();
+
+});
+
+$('.app_order_bg').eq(0).show().siblings('.app_order_bg').hide();
+
+$('.type_choice').click(function(){
+
+	$('.type_choice').removeClass('active');
+
+	$(this).addClass('active');
+
+})
+
+function get_data(){
+
+	$.ajax({
+
+		url:'/index.php?m=sport&a=get_datas'+org,
+
+		type:'POST',
+
+		data:'judge=15',
+
+		dataType:'json',
+
+		success:function(data){
+
+			//console.log(data.data);
+
+			var content_tpl = $('#video_list').html();
+
+			var contents = mytemplate_list(content_tpl,data.data);
+
+			$('#video_content').html(contents);
+
+		}
+
+	});	
+
+}
+
+function follow(add_userid,obj){
+
+	if(is_login() && ($(obj).find('span').text() != '自己' && $(obj).find('span').text() != '已关注')){
+
+		$.ajax({
+
+			'url':'/index.php?m=circle&a=get_datas',
+
+			'type':'post',
+
+			'data':'judge=13&add_userid='+add_userid,
+
+			'dataType':'json',
+
+			'success':function(data){
+
+				$(obj).find('span').text('已关注');
+
+				layer.open({
+
+					content: '关注成功~',
+
+					skin: 'msg',
+
+					time: 2 //2秒后自动关闭
+
+				});
+
+			}
+
+		})
+
+	}
+
+}
+
+function set_zan(count_z,id,catid,obj){
+
+	count_z = $('.count_z_'+id).attr('data-count');
+
+	zan({
+
+		dcatid:catid,
+
+		did:id,
+
+		type:'seeding',
+
+		success:function(status){
+
+			if (status==1) {
+
+				count_z=count_z*1+1*1;
+
+				$(obj).find('img').attr('src','/statics/circle/images/aixin_sx.png');
+
+			}else{
+
+				count_z=count_z*1-1*1;
+
+				$(obj).find('img').attr('src','/statics/circle/images/fav.png');
+
+			}
+
+			$('.count_z__'+id).text(count_z);
+
+			$('.count_z_'+id).attr('data-count',count_z);
+
+		}	
+
+	});
+
+}
+
+function bindTypeBtn(){
+
+	var type_btn_item = $('#type_btn .type-btn-item');
+
+	type_btn_item.each(function(i) {
+
+        $(type_btn_item[i]).click(function(){
+
+			$(type_btn_item).removeClass('active');
+
+			$(this).addClass('active');
+
+			var dataVal = $(this).attr('data-val');
+
+			org = '&org='+dataVal;
+
+			$('#video_content').empty();
+
+			get_data();
+
+		});
+
+    });
+
+}
+
+
+
+/****************/
+
+var myDate = new Date();
+
+var Year = myDate.getYear(); //获取当前年份(2位)
+
+myDate.getFullYear(); //获取完整的年份(4位,1970-????)
+
+myDate.getMonth(); //获取当前月份(0-11,0代表1月)
+
+myDate.getDate(); //获取当前日(1-31)
+
+myDate.getDay(); //获取当前星期X(0-6,0代表星期天)
+
+myDate.getTime(); //获取当前时间(从1970.1.1开始的毫秒数)
+
+myDate.getHours(); //获取当前小时数(0-23)
+
+myDate.getMinutes(); //获取当前分钟数(0-59)
+
+myDate.getSeconds(); //获取当前秒数(0-59)
+
+myDate.getMilliseconds(); //获取当前毫秒数(0-999)
+
+myDate.toLocaleDateString(); //获取当前日期
+
+var mytime=myDate.toLocaleTimeString(); //获取当前时间
+
+myDate.toLocaleString(); //获取日期与时间
+
+
+
+function set_calendar(){
+
+	var iii = 1;
+
+	var total_plan_day = 28;//总的训练时长
+
+	var loop_num = Math.ceil(total_plan_day / 7);//循环多少次 多少个ul
+
+	var new_day = myDate.getDate();//用户设置从几号开始
+
+	var month = myDate.getMonth() + 1;//当前月份
+
+	var date = new Date(myDate.getFullYear()+'/'+month+'/'+new_day).getDay();//获取对应星期几
+
+	var total_day = getDays();//获取当前月份的总天数
+
+	var last_total_day = DayNumOfMonth(Year,month*1-1*1);//获取上个月份的总天数
+
+	var to_day = myDate.getDate();//今天几号
+
+	var next_day = 7 - date;//剩余循环天数
+
+	var text = '<ul class="ul_css ul_page_1" ul-page=1>';//一个周期 7天
+
+	//last_total_day = last_total_day - new_day;
+
+	for(var i=date;i>=1;i--){
+
+		var _new_day = new_day - i;
+
+		if(_new_day <= 0){_new_day = last_total_day;_new_day -= Math.abs(new_day - i);  }
+
+		text += '<li>'+Number(_new_day)+'</li>';
+
+	}
+
+	var b = new_day;
+
+	for(var i=1;i<=next_day;i++){
+
+		if(b == to_day){
+
+			text += '<li class="date is_day_'+iii+'" >'+Number(b)+'</li>';/*onClick="open_b('+iii+')"*/
+
+			$('.div_boxs'+iii).css('display','block');
+
+		}else{
+
+			text += '<li class="is_day_'+iii+'" >'+Number(b)+'</li>';/*onClick="open_b('+iii+')"*/
+
+		}
+
+		b++;iii++;
+
+		if(b > 31){b = 1;}
+
+	}
+
+	var tem;
+
+	text += '</ul>';
+
+	tem = b;
+
+	var j = 1;
+
+	for(var i=loop_num;i>=1;i--){
+
+		j++;
+
+		text += '<ul class="ul_css ul_page_'+j+'"  ul-page='+j+'>';
+
+		var offset_count = Number(b)+7;
+
+		for(var k=b;k<offset_count;k++){
+
+			var css = '';
+
+			if(k == to_day){
+
+				text += '<li class="date is_day_'+iii+'" >'+Number(k)+'</li>';/*onClick="open_b('+iii+')"*/
+
+				$('.div_boxs'+iii).css('display','block');
+
+			}else{
+
+				if (tem > ((total_plan_day + new_day)-1)) { css = 'style="color:#CCC"';}
+
+				text += '<li class=is_day_'+iii+' '+css+' >'+Number(k)+'</li>';/*onClick="open_b('+iii+')"*/
+
+			}
+
+			b++;
+
+			tem++;
+
+			iii++;
+
+			if(k >= total_day){
+
+				offset_count = offset_count - k;
+
+				k = 0;
+
+				b = 1;
+
+			}
+
+		}
+
+		text += '</ul>';
+
+	}
+
+	$('.plan_date_box').append(text);
+
+}
+
+function getDays(){
+
+    var date = new Date();
+
+    var year = date.getFullYear();
+
+    var mouth = date.getMonth() + 1;
+
+    var days;
+
+    if (mouth == 2) {
+
+        days = year % 4 == 0 ? 29 : 28;
+
+    } else if (mouth == 1 || mouth == 3 || mouth == 5 || mouth == 7 || mouth == 8 || mouth == 10 || mouth == 12) {
+
+        days = 31;
+
+    } else {
+
+        days = 30;
+
+    }
+
+    return days;
+
+}
+
+var is_keeping = 0;
+
+function get_sport_data(){
+
+	if(is_login()){
+
+		$.ajax({
+
+			'url':'/index.php?m=sport&a=get_datas',
+
+			'type':'post',
+
+			'data':'judge=21',
+
+			'dataType':'json',
+
+			'success':function(data){
+
+				if(data.state == 1){
+
+					$('.fangan_box1_').css('display','block');
+
+					$('.fangan_box1').css('display','none');
+
+					var data_length = count(data.data);//数组长度 28天
+
+					var myDate = new Date();    
+
+ 					var date_time = myDate.toLocaleDateString();
+
+					date_time = date_time.replace(/\//g,'-').replace(/-?-/g,'-0');
+
+					//console.log(date_time);return;
+
+					$.each(data.data, function(key, val){
+
+						var new_days = DateDiff(date_time,key);
+
+						if(key.replace(/-/g,'') - date_time.replace(/-?-/g,'-0').replace(/-/g,'') == 1){var key_str = '明天';}else{var key_str = key;}
+
+						if(val[0].title != ''){var text = '训练日';}else{var text = '休息日';}
+
+						var str1 = '';
+
+						var str = '<div class="plan_box one_data">\
+									<p class="day day_">'+key_str+'<img src="/statics/sport/images/fangan_ready.png" class="day_l"></p>\
+									<div class="plan_box_">\
+										<p class="exe">\
+											<span class="train fl">'+text+'</span>\
+											<span class="stop fr" style="display: none;">未开始</span>\
+											<span class="speed fr" style="display: none;">完成&nbsp;1/2</span>\
+											<span class="finish fr">已结束</span>\
+										</p>';
+
+						var status = tab(key+' 00:00:00',date_time+' 00:00:00');
+
+						if(status == 2){
+
+							//已过去的时间
+
+							$.each(val,function(key1, val1){
+
+								if(val1.state == 1){
+
+									var state_img = '/statics/sport/images/finish_.png';
+
+								}else{
+
+									var state_img = '/statics/sport/images/finish__.png';
+
+								}
+
+								if(val1.title != ''){
+
+								str1 += '<div class="plan_line">\
+											<div class="plan_line_" onClick="location.href=\'./course_content.html?id='+val1.id+'&catid='+val1.catid+'&fangan=1\'">\
+												<div class="plan_ fl reset-item">\
+													<img src="'+val1.thumb+'" class="plan _reset" data-height="79">\
+												</div>\
+												<div class="plan_line_l fl">\
+													<p style="font-weight:bold;font-size:16px;font-family:fantasy;">'+val1.title+'</p>\
+													<p style="color:#7f7f7f">'+val1.total_time+'分钟 · '+val1.calorie+'千卡</p>\
+												</div>\
+												<img src="'+state_img+'" class="plan_line_r fr">\
+											</div>\
+										</div>';
+
+								}else{
+
+									str1 += '<div class="plan_line">\
+											<div class="plan_line_">\
+												<div class="plan_ fl">\
+													休息日\
+												</div>\
+											</div>\
+										</div>';
+
+								}
+
+							});
+
+							str1 += '<div class="diet" onClick="location.href='+'\'/diet/day_poster.html\''+'">\
+												<div class="diet_box">\
+													<img src="/statics/sport/images/tips.png" class="tips">今日健康食谱搭配，不用节食也能瘦身\
+												</div>\
+												<p>查看详情>></p>\
+											</div>\
+										</div>\
+									</div>';
+
+							$('.fangan_box1_').append(str+str1);
+
+							str = '';
+
+						}else if(status == 1){
+
+							//未开始
+
+							if(val[0].title != ''){var text = '训练日';}else{var text = '休息日';}
+
+							var str_ = '<div class="plan_box">\
+										<p class="day day_">'+key_str+'<img src="/statics/sport/images/fangan_ready.png" class="day_l"></p>\
+										<div class="plan_box_">\
+											<p class="exe">\
+												<span class="train fl">'+text+'</span>\
+												<span class="stop fr">未开始</span>\
+												<span class="speed fr" style="display: none;">完成&nbsp;1/2</span>\
+												<span class="finish fr" style="display: none;">已完成</span>\
+											</p>';
+
+							$.each(val,function(key1, val1){
+
+								if(val1.title != ''){
+
+								str1 += '<div class="plan_line" onClick="location.href=\'./course_content.html?id='+val1.id+'&catid='+val1.catid+'&fangan=1&difftime='+new_days+'\'">\
+											<div class="plan_line_">\
+												<div class="plan_ fl reset-item">\
+													<img src="'+val1.thumb+'" class="plan _reset" data-height="79">\
+												</div>\
+												<div class="plan_line_l fl">\
+													<p style="font-weight:bold;font-size:16px;font-family:fantasy;">'+val1.title+'</p>\
+													<p style="color:#7f7f7f">'+val1.total_time+'分钟 · '+val1.calorie+'千卡</p>\
+												</div>\
+											</div>\
+										</div>';
+
+								}else{
+
+									str1 += '<div class="plan_line">\
+											<div class="plan_line_">\
+												<div class="plan_ fl">\
+													休息日\
+												</div>\
+											</div>\
+										</div>';
+
+								}
+
+							});
+
+							str1 += '<div class="diet" onClick="location.href='+'\'/diet/day_poster.html\''+'">\
+												<div class="diet_box">\
+													<img src="/statics/sport/images/tips.png" class="tips">今日健康食谱搭配，不用节食也能瘦身\
+												</div>\
+												<p>查看详情>></p>\
+											</div>\
+										</div>\
+									</div>';
+
+							$('.fangan_box1_').append(str_+str1);
+
+							str_ = '';
+
+						}else if(status == 3){
+
+							//今天的课程
+
+							var to_str = '<div class="plan_box" id="to_days">\
+										<p class="day day_">今天<img src="/statics/sport/images/fangan_ready.png" class="day_l"><span class="day_r fr" onClick="reset_fangan()"><img src="/statics/sport/images/careful.png" class="careful">方案重置</span></p>\
+										<div class="plan_box_">\
+											<p class="exe">\
+												<span class="train fl">训练日</span>\
+												<span class="stop fr" style="display: none;">未开始</span>\
+												<span class="speed fr" id="jinxing_sss">进行中</span>\
+												<span class="finish fr" style="display: none;">已完成</span>\
+											</p>\
+											<div class="plan_line">';
+
+							$.each(val,function(key1, val1){
+
+								if(val1.title){
+
+									if(val1.state == 1){
+
+										var state_img = '/statics/sport/images/finish_.png';
+
+									}else{
+
+										var state_img = '/statics/sport/images/finish__.png';
+
+									}
+
+									if (val1.state == 0 && is_keeping == 0) {
+
+										if(is_keeping == 0)is_keeping=1;
+
+										str1 += '<div class="plan_ready" onClick="location.href=\'./course_content.html?id='+val1.id+'&catid='+val1.catid+'&fangan=1\'">\
+										<img src="'+val1.thumb+'" class="plan_ready_pic" style="height:129px">\
+										<div class="plan_ready_box">\
+											<p style="font-weight:bold;font-size:16px;font-family:fantasy;">'+val1.title+'</p>\
+											<p>'+val1.total_time+'分钟 · '+val1.calorie+'千卡</p>\
+											<img src="/statics/sport/images/plan_ready.png" class="plan_start">\
+										</div>\
+									</div>';
+
+									}else{
+
+										str1 += '<div class="plan_line_" onClick="location.href=\'./course_content.html?id='+val1.id+'&catid='+val1.catid+'&fangan=1\'">\
+										<div class="plan_ fl reset-item">\
+											<img src="'+val1.thumb+'" class="plan _reset" data-height="79">\
+										</div>\
+										<div class="plan_line_l fl">\
+											<p style="font-weight:bold;font-size:16px;font-family:fantasy;">'+val1.title+'</p>\
+											<p style="color:#7f7f7f">'+val1.total_time+'分钟 · '+val1.calorie+'千卡</p>\
+										</div>\
+										<img src="'+state_img+'" class="plan_line_r fr">\
+									</div>';
+
+									}
+
+								}else{
+
+									str1 += '<div class="plan_line">\
+											<div class="plan_line_">\
+												<div class="plan_ fl">\
+													休息日\
+												</div>\
+											</div>\
+										</div>';
+
+								}
+
+							});
+
+							str1 += '<div class="diet" onClick="location.href='+'\'/diet/day_poster.html\''+'">\
+												<div class="diet_box">\
+													<img src="/statics/sport/images/tips.png" class="tips">今日健康食谱搭配，不用节食也能瘦身\
+												</div>\
+												<p>查看详情>></p>\
+											</div>\
+										</div>\
+									</div>';
+
+							$('.fangan_box1_').append(to_str+str1);
+
+							to_str = '';
+
+						}
+
+					});
+
+					initImgs();
+
+					var a = $('#to_days .plan_box_ .plan_line').find('.plan_line_').length;
+
+					var b = 0;
+
+					for(var i=0;i<a;i++){
+
+						var tmp = $('#to_days .plan_line .plan_line_').eq(i).find('.plan_line_r').attr('src');
+
+						if(tmp == '/statics/sport/images/finish_.png'){
+
+							b++
+
+						}
+
+					}
+
+					if(a == b) $('#jinxing_sss').text('已完成');
+
+				}else{
+
+					$('.fangan_box1_').css('display','none');
+
+					$('.fangan_box1').css('display','block');
+
+				}
+
+				//$.scrollTo('#to_days',500);
+
+				mScroll('to_days');
+
+			}
+
+		});
+
+	}
+
+}
+
+function mScroll(id){
+
+	var add_h = $('#'+id).find('.day_').height() * 1 + 5 * 1;
+
+	$("html,body").stop(true);$("html,body").animate({scrollTop: $("#"+id).offset().top - add_h}, 500);
+
+}
+
+function count(obj) {
+
+    var objType = typeof obj;
+
+    if (objType == "string") {
+
+        return obj.length;
+
+    } else if (objType == "object") {
+
+        var objLen = 0;
+
+        for (var i in obj) {
+
+            objLen++;
+
+        }
+
+        return objLen;
+
+    }
+
+    return false;
+
+}
+
+function tab(date1,date2){
+
+	var status;
+
+	date1 = date1.replace(/-/g,'/');
+
+	date2 = date2.replace(/-/g,'/');
+
+	//tab('2015-10-10','2015-10-11');如果当前时间比之大 则 未到
+
+    var oDate1 = new Date(date1);
+
+    var oDate2 = new Date(date2);
+
+    if(oDate1.getTime() > oDate2.getTime()){
+
+        //console.log('第一个大');
+
+		status=1;
+
+    }else if(oDate1.getTime() < oDate2.getTime()){
+
+        //console.log('第二个大');
+
+		status=2;
+
+    }else if(oDate1.getTime() == oDate2.getTime()){
+
+		//相等
+
+		status=3;
+
+	}
+
+	return status;
+
+}
+
+function DateDiff(sDate1, sDate2) {
+
+	//sDate1和sDate2是2002-12-18格式  
+
+    var aDate, oDate1, oDate2, iDays
+
+	aDate = sDate1.split("-")
+
+	oDate1 = new Date(aDate[1] + '-' + aDate[2] + '-' + aDate[0]) //转换为12-18-2002格式  
+
+	aDate = sDate2.split("-")
+
+	oDate2 = new Date(aDate[1] + '-' + aDate[2] + '-' + aDate[0])
+
+	iDays = parseInt(Math.abs(oDate1 - oDate2) / 1000 / 60 / 60 / 24) //把相差的毫秒数转换为天数  
+
+	return iDays
+
+}
+
+function DayNumOfMonth(Year, Month) {
+
+    Month--;
+
+    var d = new Date(Year, Month, 1);
+
+    d.setDate(d.getDate() + 32 - d.getDate());
+
+    return (32 - d.getDate());
+
+}
+
+function reset_fangan(){
+
+	layer.open({
+
+		content: '<div><div><img src="/statics/sport/images/careful.png" width="50px" height="50px"/></div><span style="color:red">健身方案重置</span><div><ul style="color:#CCC;margin-top:10px;"><li>确认后将视为自动退出当前健身计划</li><li>退出后将删除有关数据记录</li></ul></div></div>',
+
+		btn: ['确认退出', '点错了'],
+
+		yes: function(index) {
+
+			$.ajax({
+
+				url:'/index.php?m=sport&a=get_datas',
+
+				type:'POST',
+
+				data:'judge=20&tuichu=1',
+
+				dataType:'json',
+
+				success:function(data){
+
+					location.reload();
+
+					layer.close(index);
+
+				}
+
+			})
+
+		}
+
+	});
+
+}
+
+</script>
+</html>

@@ -30,7 +30,7 @@
     }
 /*    .m-foot ul li.foot-cart{padding-top:1rem;}*/
     .m-foot ul li.foot-index font {
-        background: url(./images/hosnme.png) no-repeat center;
+        background: url(/h5page/mobile_hospital/images/hoang01.png) no-repeat center;
         background-size:80%;
     }
 
@@ -41,7 +41,7 @@
         height: 3rem;
 */
         background: url(./images/xiaoxse.png) no-repeat center;
-        background-size: 78%;
+        background-size: 75%;
     }
 
     .m-foot ul li.foot-member font {
@@ -51,11 +51,11 @@
 
     .m-foot ul li.foot-me font {
         background: url(./images/shooopi.png) no-repeat center;
-        background-size: 75%;
+        background-size: 72%;
     }
 	    .m-foot ul li.foot-product font {
         background: url(./images/hioyusd.png) no-repeat center;
-        background-size: 80%;
+        background-size: 75%;
     }
 	   .fa-angle-down0 {
         background: url(./images/hosnme.png) no-repeat center !important;
@@ -67,8 +67,8 @@
         background: url(/core_bs/img/tongxin1.png) no-repeat center !important;
         background-size: 80%!important;
 */
-		 background: url(./images/sehqu.png) no-repeat center !important;
-        background-size: 90%!important;
+		 background: url(/h5page/chronic_dis/images/dangshw.png) no-repeat center !important;
+        background-size: 75%!important;
     }
 
     .fa-angle-down2 {
@@ -76,16 +76,16 @@
         background: url(/core_bs/img/xiaoxin1.png) no-repeat center !important;
         background-size: 90%!important;
 */
-		 background: url(./images/huiyuans.png) no-repeat center !important;
+		 background: url(/h5page/chronic_dis/images/eihgh01.png) no-repeat center !important;
         background-size: 75% !important;
     }
 
     .fa-angle-down3 {
-        background: url(./images/huiyuans.png) no-repeat center !important;
-        background-size: 75% !important;
+        background: url(/h5page/chronic_dis/images/shanng01.png) no-repeat center !important;
+        background-size: 72% !important;
     }
 	 .fa-angle-down4 {
-        background: url(./images/huiyuans.png) no-repeat center !important;
+        background: url(/h5page/mobile_hospital/images/haoyodwe01.png) no-repeat center !important;
         background-size: 75% !important;
     }
 #m-footul .cur {
@@ -109,11 +109,11 @@
     <font></font>
       <p>我的问诊</p>
     </li>
-    <li class="foot-me"> 
+    <li class="foot-me" onclick="goo('//shop.yjxun.cn/?m=wb_shop2&f=circleN&target=top')"> 
      <font></font>
       <p>商城</p>
     </li>
-	 <li class="foot-product"> 
+	 <li class="foot-product" data-st="a"> 
     <font></font>
       <p>我的</p>
     </li>
@@ -149,11 +149,15 @@
 	   
 	   
 	   
-	    var arr=['#','#','#','#'];
+	    var arr=['/h5page/home_care/','/medical/index.html?target=top','/patient/talk_list.html','#','#'];
 	       $('#m-footul').children('li').click(function () {
                    var i = $(this).index() ;
 				   $(this).children('font').addClass(`fa-angle-down${i}`).parent().siblings().find('font').removeClass();
-				   $(this).addClass('cur').siblings().removeClass('cur');
+           $(this).addClass('cur').siblings().removeClass('cur');
+           if($(this).attr('data-st')=='a'){
+                      alert('申请会员查看更多详情');
+                     //  layer.msg('申请会员查看更多详情');
+                   }
 				  goo(arr[i],{is_auth:1}); 
             }); 
 	              var ulr=window.location.pathname;

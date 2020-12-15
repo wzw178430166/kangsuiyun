@@ -1,0 +1,247 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="keywords" content="">
+    <title>亲情号码</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!--<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">-->
+    <link rel="stylesheet" type="text/css" href="/statics/css/appstyle.css">
+    <script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/statics/js/global.js"></script>
+    <script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+    <!---公共CSS--->
+    <link rel="stylesheet" type="text/css" href="/statics/currency/plug/weui/style/weui.css">
+    <!---公共JS--->
+    <script type="text/javascript" src="/statics/fore/js/currency.js?v=202004209922"></script>
+    <script>
+    try{
+         jstojava.mycleargoback();jstojava.close_toobar();
+    }catch(e){} 
+    function goback(){
+        if(getQueryString('mobile')=='ios'){
+            goo('ios://goback');     
+            return;
+        }
+        try{
+            jstojava.goback();
+        }catch(e){
+            window.history.back();
+        }
+    }
+    </script>
+    <style>
+        body {
+            background: #fff;
+        }
+        .headerBoxCircle {
+            z-index: 999;
+        }
+        .mt_imgs {
+            width: 92%;
+            border-radius: .38rem;
+            margin: 1.2rem auto 1.3rem auto;
+            text-align: center;
+            padding-bottom: 1rem;
+            background: #f5f7f5;
+        }
+        .mt_bnt {
+            width: 92%;
+            height: 3.35rem;
+            line-height: 3.35rem;
+            background: #24da35;
+            color: #ffffff;
+            z-index: 2;
+            border-radius: 500px;
+            text-align: center;
+            outline: 0;
+            font-weight: 500;
+            border: 0;
+            font-size: 1.11rem;
+            position: fixed;
+            bottom: 1.8rem;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .mt_imgs img {
+            width: 6rem;
+            margin: 1.5rem auto 1.2rem auto;
+        }
+        .mt_imgs p {
+            font-size: 1.18rem;
+            color: #282828;
+            font-weight: 600;
+        }
+        .mt_imgs p:nth-child(3) {
+            color: #999999;
+            font-weight: 500;
+            font-size: 1.05rem;
+            margin-top: .7rem;
+            letter-spacing: .1rem;
+            padding: 0 .7rem;
+        }
+        .ji_lp {
+            width: 92%;
+            margin: 0 auto;
+        }
+        .j1 {
+            font-size: 1.12rem;
+            color: #2a2a2a;
+            font-weight: 500;
+            height: 3rem;
+            line-height: 3rem;
+        }
+        .lan_box {
+            width: 100%;
+        }
+        .ji_lp .lan_item {
+            display: flex;
+            margin-bottom: 1rem;
+            font-size: 1.11rem;
+            border-radius: .33rem;
+            background: #fafafa;
+            padding: .8rem 0;
+            border: 1px solid #e0e0e0;
+        }
+        .ji_lp .lan_item span:nth-child(1) {
+            text-align: center;
+            color: #ffffff;
+            width: 2rem;
+            font-weight: 500;
+            height: 2rem;
+            background: #24da35;
+            border-radius: 50%;
+            margin: 0 .8rem;
+            line-height: 2rem;
+        }
+        .ji_lp .lan_item span:nth-child(2) {
+            color: #2a2a2a;
+            height: 2rem;
+            line-height: 2rem;
+            font-weight: 500;
+            flex: 1;
+        }
+        .ji_lp .lan_item span:nth-child(2) input {
+            border: 0;
+            height: 100%;
+            outline: 0;
+            width: 100%;
+            background: #fafafa;
+        }
+        .ji_lp .lan_item span:nth-child(2) input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+           color:#4b4b4b;
+           font-size: 1.132rem;
+           font-weight: 500;
+       }
+       .ji_lp .lan_item span:nth-child(2) input::-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+           color:#4b4b4b;
+           font-size: 1.132rem;
+           font-weight: 500;
+       }
+       .ji_lp .lan_item span:nth-child(2) input::-moz-placeholder { /* Mozilla Firefox 19+ */
+           color: #4b4b4b;
+           font-size: 1.132rem;
+           font-weight: 500;
+       }
+       .ji_lp .lan_item span:nth-child(2) input::-ms-input-placeholder { /* Internet Explorer 10-11 */
+           color:#4b4b4b;
+           font-size: 1.132rem;
+           font-weight: 500;
+       }
+       .ji_lp .lan_item span:nth-child(2) input::-ms-input-placeholder { /* Microsoft Edge */
+           color:#4b4b4b;
+           font-size: 1.132rem;
+           font-weight: 500;
+       }
+   </style>
+</head>
+<body>
+    <div class="headerBoxCircle"> <img src="/statics/images/goback_b.png" onClick="goback()" class="left">
+      <p class="midden">亲情号码
+      </p0>
+  </div>
+  <div class="h50"></div>
+  <div class="mt_imgs"> <img src="/dev/wrist_watch/images/soss.png">
+      <p>设备使用SOS功能时，会依次拨打下列号码</p>
+      <p>可设置三个紧急号码，当第一个号码无法接通，会继续 拨打第二个号码，以此类推</p>
+  </div>
+  <form id="J_form">
+        <input type="hidden" name="dosubmit" value="1">
+      <div class="ji_lp">
+        <div class="lan_box" id="lan_box">
+          <div class="lan_item"><span>1</span><span>
+            <input type="text" placeholder="请输入第一个紧急号码" name="info[number1]" id="num1" value="">
+        </span></div>
+        <div class="lan_item"><span>2</span><span>
+            <input type="text" placeholder="请输入第二个紧急号码" name="info[number2]" id="num2" value="">
+        </span></div>
+        <div class="lan_item"><span>3</span><span>
+            <input type="text" placeholder="请输入第三个紧急号码" name="info[number3]" id="num3" value="">
+        </span></div>
+    </div>
+</div>
+<div class="mt_bnt" id="send">保存设置</div>
+</form>
+<div style="height: 6rem;"></div>
+<!-- loading toast -->
+<div id="loadingToast" style="display: none;">
+    <div class="weui-mask_transparent"></div>
+    <div class="weui-toast">
+        <i class="weui-loading weui-icon_toast"></i>
+        <p class="weui-toast__content">数据加载中</p>
+    </div>
+</div>
+<!--BEGIN toast-->
+<div id="toast" style="display: none;">
+    <div class="weui-mask_transparent"></div>
+    <div class="weui-toast">
+        <i class="weui-icon-success-no-circle weui-icon_toast"></i>
+        <p class="weui-toast__content">已完成</p>
+    </div>
+</div>
+<!--end toast-->
+<div class="weui-toptips weui-toptips_warn" id="topTips" style="display: none;">错误提示</div>
+</body>
+</html>
+<script>
+   $(function(){
+     getData();   
+     $('#send').on('click',function(){
+        weuiLoad({msg:'提交中...'});
+        $.ajax({
+         url: '/dev/wrist_watch/send.php?a=sos',
+         type: "POST",
+         dataType:"JSON",
+         data: $('#J_form').serialize(),
+         success: function(data){
+            weuiLoad({status:0});
+            if (1 == data.status) {
+                weuiSuccess({msg:data.erro});
+            } else {
+                weuiError({msg:data.erro});
+            }
+        }
+    });
+    });
+ })
+   function getData(){
+      var url = '/dev/wrist_watch/data.php?a=read_workdsd';
+      var html="";
+      $.ajax({
+        'url': url,
+        'data':'json',
+        'type': "GET",
+        'success': function (data) { 
+         var data = JSON.parse(data);
+         if (1 == data.status) {
+            var datas = JSON.parse(data.data.sosnumber);
+            $('#num1').val(datas.number1);
+            $('#num2').val(datas.number2);
+            $('#num3').val(datas.number3);
+        }
+    }
+}) 
+  }
+
+</script>

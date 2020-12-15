@@ -1,0 +1,530 @@
+<!--<head></head><body></body>-->
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="topcolor" rgba="44.172.252.1">
+<title set-lan="html:sphygmomanometer">血压计</title>
+<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<link rel="stylesheet" type="text/css" href="/statics/js/layer/1.9.3/skin/layer.css">
+<link rel="stylesheet" type="text/css" href="statics/css/style.css">
+<script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<script type="text/javascript" src="/statics/js/layer/1.9.3/layer.js"></script>
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+<script type="text/javascript" src="/statics/languages/20181105/languages.js"></script>
+<style>
+body { background-color: #f8f8f8; }
+.xueya_pro { width: 80%; overflow: hidden; margin: 6% auto 4% auto; }
+.xueya_pro .xueya_day { width: 100%; overflow: hidden; border: 1px solid #2cacfc; border-radius: 20px; }
+.xueya_day li { width: 33.3%; float: left; text-align: center; height: 35px; line-height: 35px; background-color: #2cacfc; color: #fff; border-right: 1px solid #2cacfc; }
+.xueya_day li:last-child { border-right: none; }
+.xueya_day .active { background-color: #fff; color: #317ce2; }
+/**/
+
+.xueya_pro_big { width: 100%; overflow: hidden; background-color: #fff; }
+.xueya_pic { width: 85%; overflow: hidden; position: relative; margin: 10px auto 0 auto; }
+.xueya_pic .pic { width: 100%; }
+.xueya_pic .xueya_pic_ { width: 27%; overflow: hidden; position: absolute; top: 50%; left: 30%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); }
+.xueya_pic .xueya_pic_ .num { font-size: 1.4rem; }
+.xueya_pic .xueya_pic_ span { font-size: 1rem; margin-left: 5px; line-height: 24px; }
+.xueya_pic_ .num_xl { width: 40%; float: right; }
+.xueya_pic_ .num_xl img { width: 43%; }
+.xueya_pic_ .num_xy { width: 100%; overflow: hidden; }
+.xueya_pic_ .num_xy_h { width: 54%; }
+.xueya_pic_ .num_xy_h img { width: 28%; float: left; margin-right: 0.3%; }
+.xueya_pic_ .num_xy_l { width: 36%; }
+.xueya_pic_ .num_xy_l img { width: 50%; }
+.xueya_pro .status { width: 100%; height: 30px; line-height: 30px; text-align: center; font-size: .9rem; color: #979696; margin-bottom: 5px; }
+.xueya_pro .status span { font-size: 1.2rem; }
+.xueya_more { width: 100%; overflow: hidden; }
+.xueya_more .more { width: 45%; height: 40px; line-height: 40px; text-align: center; border-radius: 5px; }
+.xueya_more .more img { vertical-align: sub; width: 20px; margin-right: 5px; }
+.xueya_more .more:first-child { background-color: #2a8cd5; color: #fff; }
+.xueya_more .bind_b { border: 1px solid #2a8cd5; color: #2a8cd5; }
+/*数据记录*/
+
+.explain { width: 100%; height: 35px; line-height: 35px; background-color: #f4f4f4; padding: 0px 3%; color: #565656; }
+.explain img { width: 20px; margin-right: 5px; vertical-align: sub; }
+.xueya_data { width: 100%; overflow: hidden; background-color: #fff; padding: 0px 2%; }
+.xueya_data .title { width: 100%; height: 44px; line-height: 44px; text-align: center; color: #808080; }
+.xueya_data .data_box, .data_line { width: 100%; overflow: hidden; }
+.xueya_data .data_line { border-top: 1px solid #e3e3e7; padding: 7px 3px 5px 3px; }
+.xueya_data .data_line td { padding: 8px 0px; }
+.xueya_data .line_1 span { color: #666; }
+.line_1 { width: 33%; display: inline-block; }
+.line_1 .line_1_p { background-color: #2cacfc; text-align: center; color: #fff; font-size: .9rem; border-radius: 3px; height: 22px; line-height: 18px; display: inherit; padding: 2px 10px; }
+.line_2 { width: 22%; display: inline-block; top: -14px; position: relative; }
+.line_3 { width: 20%; display: inline-block; color: #2cacfc; text-align: center; position: relative; top: -12px; text-align: right; }
+.line_4 { width: 20%; display: inline-block; text-align: right; }
+.t_ext { color: #fff !important; }
+.zhengchang { background-color: #f6ab48; width: 90%; margin: 0 auto; color: #fff; font-size: .8rem; text-align: center; border-radius: 3px; height: 25px; line-height: 25px; }
+/**/
+.hardware-instruct u { margin-right: 1rem;}
+.header_box .midden {
+    border-bottom: 1px solid #e6e6e6;
+}
+</style>
+</head>
+<script>
+
+function getCookie2(name) {
+
+	var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+
+	if (arr = document.cookie.match(reg))
+
+	return decodeURIComponent(arr[2]);
+
+	else return null;
+
+}
+
+var userid = getCookie2('GkvUY___userid');
+
+if(getUrlParam('weixin') == 1 && !userid){
+
+	$('body').hide();
+
+	goo('/?m=member&c=data_temp&a=go_login&forward='+encodeURIComponent(window.location.href));
+
+}
+
+</script>
+
+<body>
+<div class="header_box"> <img src="/statics/images/goback_b.png" onClick="goback()" class="left">
+  <p class="midden" set-lan="html:sphygmomanometer_data">血压计数据</p>
+  <div class="right_" onClick="goo('//shop.yjxun.cn/')" set-lan="html:go_to_buy">去商城购买</div>
+</div>
+<div class="h50"></div>
+<div>
+  <div class="xueya_pro_big">
+    <div class="xueya_pro">
+      <div class="xueya_day">
+        <ul>
+          
+          <!--<li onClick="goo('http://www.yjxun.cn/medical/history_data_mmhg.html?day=1&to_uid=0')">今天</li>
+
+                  <li class="active" onClick="goo('http://www.yjxun.cn/medical/history_data_mmhg.html?day=7&to_uid=0')">最近7天</li>
+
+                  <li class="active" onClick="goo('http://www.yjxun.cn/medical/history_data_mmhg.html?day=30&to_uid=0')">最近30天</li>-->
+          
+          <li onClick="goo('//www.yjxun.cn/medical/data_blood.html?day=1&to_uid=0')" set-lan="html:today">今天</li>
+          <li class="active" onClick="goo('//www.yjxun.cn/medical/data_blood.html?day=1&to_uid=0')" set-lan="html:7days">最近7天</li>
+          <li class="active" onClick="goo('//www.yjxun.cn/medical/data_blood.html?day=1&to_uid=0')" set-lan="html:30days">最近30天</li>
+        </ul>
+      </div>
+      <div class="xueya_pic"> <img src="statics/images/xueya.png" class="pic">
+        <div class="xueya_pic_">
+          <div class="num"><span set-lan="html:heart_rate">心率</span>&nbsp;
+            <div class="num_xl"><img src="statics/images/xueya_1.png"><img src="statics/images/xueya_2.png"></div>
+          </div>
+          <div class="num"><span set-lan="html:blood_pressure">血压</span></div>
+          <div class="num">
+            <div class="num_xy">
+              <div class="num_xy_h fl"> <img src="statics/images/xueya_1.png"><img src="statics/images/xueya_2.png"><img src="statics/images/xueya_0.png"> </div>
+              <div class="num_xy_l fr"> <img src="statics/images/xueya_1.png"><img src="statics/images/xueya_2.png"> </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="status"><span style="color:#f5a431;">血压正常</span>&nbsp;01-01&nbsp;14：30</div>
+      <div class="xueya_more">
+        <div class="more fl" onclick="show_write_more()"><img src="statics/images/write.png" ><u set-lan="html:manual_entry">手工录入</u></div>
+        
+        <!---->
+        
+        <div class="more fr bind_b" onClick="goo('//www.yjxun.cn/dev/bioland/bp_a223_bind.html?weixin=1')" id="bind_b"><img src="statics/images/binding.png"><u set-lan="html:binding_device">绑定设备</u></div>
+        
+        <!----> 
+        
+      </div>
+    </div>
+  </div>
+  <div class="explain">
+    <div class="hardware-instruct" id="J_instruct"><img src="statics/images/explain_.png"><u set-lan="html:sphygmomanometer_explain">血压计使用说明</u><u>视频说明</u></div>
+  </div>
+  <div class="xueya_data">
+    <p class="title" set-lan="html:data_record">数据记录</p>
+    <span id="insert_bp"></span> </div>
+</div>
+<div class="write_more">
+  <div class="write_more_down" onClick="hide_write_more()"> <img src="statics/images/down.png" /> </div>
+  <div class="setuser_box">
+    <div class="setuser cur" data-val="1" set-lan="html:user_1">用户1</div>
+    <div class="setuser" data-val="2" set-lan="html:user_2">用户2</div>
+    <input type="hidden" id="m_suser" value="1">
+  </div>
+  <div class="write_box">
+    <div class="write_box_">
+      <div class="write_box_l fl"><img src="statics/images/data_foot_3.png"><u set-lan="html:high_pressure">高压</u></div>
+      <input class="write_box_m fl" id="m_bpHp" type="number" placeholder="手工输入数据">
+      <div class="write_box_r fl">mmhg</div>
+    </div>
+    <div class="write_box_">
+      <div class="write_box_l fl"><img src="statics/images/data_foot_3.png"> <u set-lan="html:low_pressure">低压</u></div>
+      <input class="write_box_m fl" id="m_bpLp" type="number" placeholder="手工输入数据">
+      <div class="write_box_r fl">mmhg</div>
+    </div>
+    <div class="write_box_">
+      <div class="write_box_l fl"><img src="statics/images/heart_red.png"><u set-lan="html:heart_rate">心率</u></div>
+      <input class="write_box_m fl" id="m_hrRate" type="number" placeholder="手工输入数据">
+      <div class="write_box_r fl">bpm</div>
+    </div>
+    <div class="save" onClick="write_save()" set-lan="html:save">确认保存</div>
+  </div>
+</div>
+<div class="bg"></div>
+<div id="template" class="template">
+  <div class="data_line">
+    <div class="line_1">
+      <p class="line_1_p">用户<span class="t_ext"></span></p>
+      <p><span class="day"></span><span class="time"></span></p>
+    </div>
+    <div class="line_2">
+      <p class="zhengchang">血压正常</p>
+    </div>
+    <div class="line_3">心率:<span class="t_bp_rate">-</span></div>
+    <div class="line_4">
+      <p style="color:#2cacfc;">高压:<span class="t_high">-</span></p>
+      <p style="color:#f6ab48;">低压:<span class="t_low">-</span></p>
+    </div>
+  </div>
+</div>
+<div style="width: 90%;height: 60px;margin: 0 auto;margin-top: 3%;border-radius: 80px;background: #FFF;position: fixed;bottom: 1%;margin-left: 5%;display: none;" id='showDoc'>
+	<div style='width: 50px;height: 50px;border-radius: 50px;margin-top: 5px;margin-left: 5px;display: inline-block;float: left;'><img src='' id='docImg' style='width: 100%;height: 100%;border-radius: 50px;'/></div>
+	<div style='width: 52.5%;height: 100%;float: left;margin-top: 8px;margin-left: 3%;'>
+		<div>为您推荐 <span style="color: #E77E1A;" id='hospital_name'>广东省中医院</span><span id='dataDetail'>内科 李俊龙 主任医师</span></div>
+	</div>
+	<div style='padding: 3px 5px;float: right;border-radius: 30px;background: #2CACFC;color: #FFF;margin-right: 15px;margin-top: 15px;' id='goTalk'>咨询医生</div>
+</div>
+</body>
+</html>
+<script> 
+
+var userid_,ss2;
+
+$(function(){
+
+	$.ajax({
+
+		url:"//www.yjxun.cn/?m=member&c=data&a=set_ss_encode",
+
+		data:"",
+
+		success:function(daa){
+
+			userid_ = daa;
+
+			if(!userid_){
+
+				layer.open({
+
+					shadeClose: false,
+
+					content: '您还未登录医家讯账号？'
+
+					,btn: ['立即前往']
+
+					,yes: function(index){
+
+						goo('//www.yjxun.cn/member/login.html?forward='+encodeURIComponent(window.location.href));
+
+						layer.close(index);
+
+					}
+
+				});
+
+			}
+
+			get_data_back();
+
+		}
+
+	})
+	var hardwareInstruct = $('#J_instruct u');
+	hardwareInstruct.each(function(i) {
+        $(hardwareInstruct[i]).on('click',function(){
+			var url = '';
+			switch(parseInt(i)){
+				case 0:
+					url = '/dev/bioland/shuoming.html';
+					break;
+				case 1:
+					url = '/equipment/instruct_show.html?&id=1';
+					break;
+			}
+			goo(url);
+		});
+    });
+	
+})
+
+setInterval(function(){
+
+	get_data_back();
+
+},8000)
+
+$('.bg').css('height',window.screen.height-50);
+
+function show_write_more(){
+
+  $('.write_more').css("bottom",0-$('.write_more').height()-200);
+
+  $('.write_more').show();
+
+  window.setTimeout(function(){
+
+    $('.write_more').css({'transition':'all .5s',"bottom":0});
+
+    $('.bg').fadeIn(300);
+
+    $('#m_bpHp').focus();
+
+  },30);
+
+}
+
+function hide_write_more(){  
+
+ $('.write_more').css("bottom",0-$('.write_more').height()-200);
+
+  window.setTimeout(function(){
+
+    $('.write_more').css({'transition':'none'});
+
+    $('.write_more').hide();
+
+  },300);
+
+  
+
+  $('.bg').fadeOut(30);
+
+}
+var rDoc = 0;
+function get_data_back(){
+
+	var ttt = '<div class="data_line"><div class="line_1"><p class="line_1_p">用户<span class="t_ext"></span></p><p><span class="day"></span>&nbsp;<span class="time"></span></p></div><div class="line_2"><p class="zhengchang">血压正常</p></div><div class="line_3">心率:<span class="t_bp_rate">-</span></div><div class="line_4"><p style="color:#2cacfc;">高压:<span class="t_high">-</span></p><p style="color:#f6ab48;">低压:<span class="t_low">-</span></p></div></div>';
+
+	$.ajax({
+
+		url:"//www.yjxun.cn/?m=member&c=data_api&a=get_medical_mmhg_history&userid_="+userid+"&device_name=bp_a223&weixin=1",
+
+		data:"",
+
+		dataType:"json",
+
+		success:function(da){
+
+			$('.xueya_data').html('<p class="title">数据记录</p><span id="insert_bp"></span>');
+
+			var mmhg = da.mmhg;
+
+			var d,h,d2;
+
+			var newDate = new Date();
+
+			var a = $('#template');
+
+			for(var i in mmhg){
+
+				if(mmhg[i].high>0){
+
+					$(a).find('.zhengchang').css('background','#10ca38');
+					mmhg[i].state = '正常';
+					if(Number(mmhg[i].high) >= 160 || Number(mmhg[i].low) >= 110){
+
+						mmhg[i].state = '超高';
+
+						$(a).find('.zhengchang').css('background','#f94444');
+
+					}else if(Number(mmhg[i].high) >= 140 || Number(mmhg[i].low) >= 90){
+
+						mmhg[i].state = '偏高';
+
+						$(a).find('.zhengchang').css('background','#f5a431');
+
+					}else if(Number(mmhg[i].high) <= 90 || Number(mmhg[i].low) <= 60){
+
+						mmhg[i].state = '偏低';
+
+						$(a).find('.zhengchang').css('background','#2cacfc');
+
+					}
+
+					d = timestampToTime( Number(mmhg[i].add_time)).split(' ');
+					if(mmhg[i].bpDate) d2 = mmhg[i].bpDate.split(' ');
+					$(a).find('.day').html(d[0]);
+					$(a).find('.time').html(' '+d[1]);
+					if(d2[1]){
+						$(a).find('.day').html(d2[0]);
+						$(a).find('.time').html(' '+d2[1]);
+					}
+					if(ss2!=d2[0]) continue;
+					$(a).find('.t_high').html( Number(mmhg[i].high));
+
+					$(a).find('.t_low').html( Number(mmhg[i].low));
+
+					$(a).find('.t_bp_rate').html( Number(mmhg[i].bp_rate));
+
+					$(a).find('.zhengchang').html( '血压'+ (mmhg[i].state));
+
+					$(a).find('.t_ext').html( Number(mmhg[i].ext));
+
+					str = $('#template').html() + "";
+
+					$('#insert_bp').before(str);
+					if(mmhg[i].state != '正常' && rDoc == 0){
+						rDoc = 1;
+						RecommendDoc('血压'+ (mmhg[i].state));
+					}
+				}
+
+			}
+
+		}
+
+	})
+
+}
+function RecommendDoc(text){
+	$.ajax({
+		url:'/?m=sr&a=RecommendDoc',
+		type:'POST',
+		data:'ask='+text,
+		dataType:'json',
+		success:function(da){
+			$('#docImg').attr('src',da.image);
+			$('#hospital_name').text(da.hospital_name+' ');
+			$('#dataDetail').text('['+da.clinic_name+' '+da.name+' '+da.title+']');
+			$('#showDoc').show();
+			if((da.hospital_name).length < 10) $('#hospital_name').append('<br/>');
+			$('#goTalk').click(function(){
+				goo('/patient/sr_doctorDetail.html?docid='+da.id)
+			})
+		}
+	})
+}
+function write_save(){
+$('html,body').scrollTop(0);
+  var i = layer.confirm('确定保存此数据？', {
+
+    btn: ['确定','取消'] //按钮
+
+  }, function(){
+
+	layer.close(i);
+
+	var bpHp = Number($.trim($('#m_bpHp').val()));
+
+	var bpLp = Number($.trim($('#m_bpLp').val()));
+
+	var hrRate = Number($.trim($('#m_hrRate').val()));
+
+	var ext = Number($.trim($('#m_suser').val()));
+
+	$.ajax({
+
+		url:'//www.yjxun.cn/?m=member&c=data_api&a=measure&userid='+userid_+'&equipment=bioland&device_name=manual&device_number=1&data='+new Base64().encode('{"bpHp":"'+bpHp+'","bpLp":"'+bpLp+'","hrRate":"'+hrRate+'","ext":"'+ext+'"}'),
+
+		data:'',
+
+		success:function(daa){
+
+			layer.msg("数据保存成功",{time: 1000,offset: (window.screen.height*0.8)+"px"});
+
+			hide_write_more();
+
+			$('#m_bpHp').val("");
+
+			$('#m_bpLp').val("");
+
+			$('#m_hrRate').val("");
+
+			var timestamp1 = Date.parse( new Date())/1000;
+
+			get_data_back();
+
+		}
+
+	})
+
+  },function(){
+
+     layer.close(i);
+
+  });
+
+}
+
+$('.setuser').on("click",function(){
+
+  $(this).addClass('cur').siblings('.setuser').removeClass('cur');
+
+  $('#m_suser').val( $(this).data('val'));
+
+  $('#m_bpHp').focus();
+
+});
+
+	
+
+window.onresize = function(){
+
+	var v = document.getElementsByClassName('write_more')[0];
+
+	if( document.documentElement.clientHeight -v.clientHeight <=50){
+
+		v.style.bottom = 'auto';
+
+		v.style.top = '50px'; 
+
+	 }else{
+
+		v.style.bottom = '0px';
+
+		v.style.top = 'auto'; 
+
+	 }
+
+}
+
+function timestampToTime(timestamp) {
+
+	var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+
+	Y = date.getFullYear() + '-';
+
+	M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+
+	D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate() + ' ';
+
+	h = date.getHours() + ':';
+
+	m = date.getMinutes() + ':';
+
+	s = date.getSeconds();
+
+	if(m < 10) m = '0'+m;
+
+	if(s < 10) s = '0'+s;
+
+	return Y+M+D+' '+h+m+s;
+
+}
+var day2 = new Date();
+day2.setTime(day2.getTime());
+var month = (day2.getMonth()+1);
+var day = day2.getDate();
+month = month<10?'0'+month:month;
+day = day<10?'0'+day:day;
+ss2 = day2.getFullYear()+"-" + month + "-" + day;
+</script> 

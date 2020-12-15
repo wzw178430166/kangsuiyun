@@ -1,0 +1,193 @@
+{template $this->template,'header_common',$this->style}
+<script type="text/javascript" src="/statics/admin/common/js/region.js"></script>
+<style>
+.role-do ul { margin: 0; }
+.role-do ul li { overflow: hidden; border-bottom: 1px #eee solid; padding: 10px 0; }
+.role-do ul li .role-do-str { float: left; width: 90px; height: 30px; line-height: 30px; padding-left: 5px; }
+.role-do ul li .role-do-val { float: left; margin-right: 30px; }
+.role-do ul li .role-do-val .input-text { width: 160px; height: 30px; padding: 0; padding-left: 5px; border-radius: 3px; }
+.role-do ul li .role-do-val .input-textarea { width: 250px; height: 100px; border-radius: 3px; outline: none; resize: none; }
+.role-do-val label { float: left; margin: 5px 10px 0 0; }
+.role-do-val input[type="radio"] { margin: 0; margin-right: 5px; }
+.role-do-val select { width: 166px; height: 30px; }
+.role-do-val .input-tips { margin-left: 15px; color: #666; }
+.role-do-val .editor-inner { width: 600px; }
+.role-do-btn a { display: block; width: 80px; float: left; height: 30px; line-height: 30px; text-align: center; border-radius: 3px; margin-right: 10px; }
+.role-do-btn a.btn-send { background-color: #234686; color: #fff; }
+.role-do-btn a.btn-close { background-color: #e0e0e0; color: #666; }
+</style>
+<body>
+    {template $this->template,'header',$this->style}
+<div id="middle"> 
+  <div class="right" id="mainFrame">
+    <div class="right_cont">
+      <ul class="breadcrumb">
+        当前位置： <a href="/?m=nutrition">首页</a> <span class="divider">/</span> <a href="javascript:;">人员管理</a> <span class="divider">/</span> 人员信息
+      </ul>
+      <div class="title_right"><strong>人员信息</strong></div>
+      <div style="width:auto;margin:auto;">
+        <div class="data-content">
+          <form id="doForm">
+            <input type="hidden" name="userid" id="userid" value="0">
+            <input type="hidden" name="dosubmit" value="1">
+            <div class="role-do">
+              <ul>
+                <li>
+                  <div class="role-do-str">姓名</div>
+                  <div class="role-do-val">
+                    <input type="text" name="info[realname]" class="input-text" id="realname" value="" placeholder="请输入真实姓名">
+                  </div>
+                </li>
+                 <li>
+                  <div class="role-do-str">手机号码</div>
+                  <div class="role-do-val"><input type="text" name="username" class="input-text" id="username" value="" placeholder="请输入手机号码"><font class="input-tips">手机号码作为登录账号，默认密码：000000</font></div>
+                </li>
+                <li>
+                <div class="role-do-str">身份证号码</div>
+                  <div class="role-do-val"><input type="text" name="info[idcard]" class="input-text" id="idcard" value="" placeholder="请输入身份证号码"></div>
+                </li>
+                <li>
+                  <div class="role-do-str">性别</div>
+                  <div class="role-do-val">
+                  <label>
+                      <input type="radio" name="info[sex]" value="0">保密
+                    </label>
+                    <label>
+                      <input type="radio" name="info[sex]" value="1">男
+                    </label>
+                    <label>
+                      <input type="radio" name="info[sex]" value="2">
+                      女</label>
+                  </div>
+                </li>
+                <li>
+                  <div class="role-do-str">年龄</div>
+                  <div class="role-do-val"><input type="text" name="info[age]" class="input-text" id="age" value="" placeholder=""></div>
+                </li>
+                <li>
+                    <div class="role-do-str">地区</div>
+                    <div class="role-do-val">
+                        <div class="inner-region" id="J_region">
+                            <select name="region[province]" class="region-item" id="J_province"></select>
+                            <select name="region[city]" class="region-item" id="J_city"></select>
+                            <select name="region[area]" class="region-item" id="J_area"></select>
+                            <select name="region[street]" class="region-item" id="J_street"></select>
+                            <select name="region[community]" class="region-item" id="J_community"></select>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <input type="hidden" name="info[lng]" id="lng" value="">
+                    <input type="hidden" name="info[lat]" id="lat" value="">
+                    <div class="role-do-str">详细地址</div>
+                    <div class="role-do-val"><input type="text" name="info[address]" id="address" class="input-text" style=" width: 600px;"><span href="javascript:;" class="btn-select" id="J_location">定位</span></div>
+                </li>
+                <!--<li>
+                  <div class="role-do-str">介绍</div>
+                  <div class="role-do-val">
+                    <div class="editor-inner">
+                      <script id="container" name="content" type="text/plain">
+                        
+                    </script> 
+                    </div>
+                  </div>
+                </li>-->
+              </ul>
+            </div>
+          </form>
+          <div class="role-do-btn"> <a href="javascript:;" class="btn-send" id="J_send">确定</a> <a href="javascript:;" class="btn-close" id="J_close">关闭</a> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<!-- 配置文件 -->
+<script type="text/javascript" src="/statics/admin/common/ueditor/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="/statics/admin/common/ueditor/ueditor.all.js"></script>
+<script>
+var uid = getUrlParam('uid')?getUrlParam('uid'):0;
+$(function(){
+	//var ue = UE.getEditor('container');
+	if (0<uid) {
+		$('#userid').val(uid);
+		getData();
+	} else {
+		getRegionNode(1,0);
+	}
+	$('#J_send').on('click',function(){
+		var username = $.trim($('#username').val());
+		if (username == '') {
+			layer.msg('请输入手机号码');
+			return;
+		}
+		var index = layer.load(2,{time:3000});
+		var url = '/?m=nutrition&c=index&a=doMember&ajax=1';
+		$.ajax({
+			url: url,
+			type: "POST",
+			dataType:"JSON",
+			data: $('#doForm').serialize(),
+			success: function(data){
+				layer.close(index);
+				layer.msg(data.erro);
+				validateAuth(data.status);
+				if (data.status == 1) setTimeout(function(){window.location.href='/?m=nutrition'},1000);
+			}
+		});
+	});
+	$('#J_close').on('click',function(){
+		window.history.back();
+	});
+	$('#J_location').on('click',function(){
+		var url = '/?m=dataManage&c=doing&a=setLocation';
+		if (0 < uid) {
+			var address = $('#address').val();
+			var lng = $('#lng').val();
+			var lat = $('#lat').val();
+			var param = '{"address":"'+address+'","lng":'+lng+',"lat":'+lat+'}';
+			url += '&param='+encodeURIComponent(param);
+			url = encodeURI(encodeURI(url));
+		}
+		var lw = $(window).width()*0.9 + 'px';
+		var lh = $(window).height()*0.9 + 'px';
+		layer.open({
+			type: 2,
+			title: '获取地址',
+			shadeClose: true,
+			shade: 0.8,
+			area: [lw,lh],
+			content: url //iframe的url
+		}); 
+	});
+});
+function getData(){
+	var url = '/?m=nutrition&c=index&a=doMember&ajax=1&uid='+uid;
+	$.ajax({
+		url: url,
+		type: "GET",
+		dataType:"JSON",
+		success: function(data){
+			if (data.status==1) {
+				var current = data.data.member;
+				$('#realname').val(current.realname);
+				$('#username').val(current.username);
+				$('#idcard').val(current.idcard);
+				$('input[name="info[sex]"]').prop('checked',false);
+				$('input[name="info[sex]"]').eq(current.sex).prop('checked',true);
+				$('#age').val(current.age);
+				getRegionNode(1,0,current.province);
+				if (0<current.city) getRegionNode(current.province,1,current.city);
+				if (0<current.area) getRegionNode(current.city,2,current.area);
+				if (0<current.street) getRegionNode(current.area,3,current.street);
+				if (0<current.community) getRegionNode(current.street,4,current.community);
+				$('#address').val(current.address);
+				$('#lng').val(current.lng);
+				$('#lat').val(current.lat);
+			}
+		}
+	});
+}
+</script>
+</html>

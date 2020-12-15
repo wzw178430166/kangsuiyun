@@ -30,7 +30,7 @@
     }
     .m-foot ul li.foot-cart{padding-top:1rem;}
     .m-foot ul li.foot-index font {
-        background: url(https://lxj.yjxun.cn/doctor/images/homes.jpg) no-repeat center;
+        background: url(/h5page/mobile_hospital/images/hoang01.png) no-repeat center;
         background-size:80%;
     }
     .m-foot ul li.foot-product font {
@@ -59,21 +59,21 @@
     }
 
     .fa-angle-down1 {
-        background: url(/doctor/images/ren2.png) no-repeat center !important;
-        background-size: 80%!important;
+        background: url(/h5page/heal_pro/images/quanzi2002.png) no-repeat center !important;
+        background-size: 75%!important;
     }
 
     .fa-angle-down2 {
-        background: url(/doctor/images/xiaoxi2.png) no-repeat center !important;
+        background: url(/h5page/muyin/images/nffee.png) no-repeat center !important;
         background-size: 90%!important;
     }
 
     .fa-angle-down3 {
-        background: url(/doctor/images/xinwen2.png) no-repeat center !important;
+        background: url(/h5page/muyin/images/sahgdfg.png) no-repeat center !important;
         background-size: 75% !important;
     }
 	 .fa-angle-down4 {
-        background: url(/doctor/images/huiyuan2.png) no-repeat center !important;
+        background: url(/h5page/mobile_hospital/images/haoyodwe01.png) no-repeat center !important;
         background-size: 75% !important;
     }
 #m-footul .cur {
@@ -87,22 +87,20 @@
     <font></font>
       <p>首页</p>
     </li>
-    <li class="foot-product">
-
+    <li class="foot-product" data-st="a">
     <font></font>
       <p>社区</p>
-
     </li>
-    <li class="foot-cart" style="position:relative;">
+    <li class="foot-cart" style="position:relative;" data-st="a">
     <font></font>
       <p>胎心监测</p>
       <div id="newTi" style="display: none;width: .5rem;height: .5rem;background: #F00;position: absolute;top: 1.3rem;right: 1.3rem;border-radius: 50%;"></div>
     </li>
-    <li class="foot-member"> 
+    <li class="foot-member" data-st="a"> 
     <font></font>
       <p>商城</p>
     </li>
-    <li class="foot-me"> 
+    <li class="foot-me" data-st="a"> 
      <font></font>
       <p>我的</p>
     </li>
@@ -110,7 +108,7 @@
 </div>
 <script>
    $(function(){
-	    var arr=['/doctor/','/doctor/patient_list.html','/doctor/patient_list.html?talk=1','/edits/xs_knowledge.html','/doctor/set_up.html'];
+	    var arr=['/h5page/muyin/','#','#','#','#'];
 	       $('#m-footul').children('li').click(function () {
 	         try{
 	           if(location.href.indexOf('doctor/patient_list.html') != -1){
@@ -120,7 +118,12 @@
              }catch(e){ }
                    var i = $(this).index() ;
 				   $(this).children('font').addClass(`fa-angle-down${i}`).parent().siblings().find('font').removeClass();
-				   $(this).addClass('cur').siblings().removeClass('cur');
+           $(this).addClass('cur').siblings().removeClass('cur');
+           if($(this).attr('data-st')=='a'){
+                 alert('申请会员查看更多详情');
+                 return;
+                      //  layer.msg('申请会员查看更多详情');
+                 }
 				  goo(arr[i]); 
             }); 
 	              var ulr=window.location.pathname;

@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+    <link rel="stylesheet" type="text/css" href="/h5page/pharmacy/css/header_common.css">
+    <link rel="stylesheet" type="text/css" href="/h5page/pharmacy/css/left_.css">
+    <link rel="stylesheet" type="text/css" href="/h5page/pharmacy/css/index.css">
+    <link rel="stylesheet" href="/statics/dataManage/css/bootstrap.css">
+    <script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+    <script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/statics/js/layer_mobile/layer.js"></script>
+    <script type="text/javascript" src="/statics/js/global.js"></script>
+    <title>信息录入</title>
+    <style>
+        .query-btn .btn-item {
+            margin-left: 0px;
+        }
+
+        .query-btn .btn-item {
+            height: auto;
+            min-height: 26px;
+        }
+
+        .query-btn .btn-item {
+            height: auto;
+            min-height: 26px;
+            text-align: center;
+        }
+
+        .back_goo {
+            width: 2rem;
+            height: .9rem;
+            line-height: .9rem;
+            border: 1px solid #929292;
+            color: #7d7272;
+            text-align: center;
+            border-radius: .1rem;
+            margin: .5rem 0 .4rem .8rem
+        }
+
+        .back_goo svg {
+            width: .6rem;
+            height: .6rem;
+            vertical-align: middle;
+        }
+
+        .back_goo1 {
+            width: 2rem;
+            height: .9rem;
+            line-height: .9rem;
+            border: 1px solid #1890FF;
+            color: #ffffff;
+            text-align: center;
+            background: #1890FF;
+            border-radius: .1rem;
+            margin: .5rem 0 .4rem .2rem;
+        }
+
+        .back_goo1 svg {
+            width: .4rem;
+            height: .4rem;
+            vertical-align: middle;
+        }
+
+        .conten_con {
+            width: 100%;
+            display: flex;
+            height: 100vh;
+        }
+
+        .conten_con .cotent_con_left {
+            width: 65%;
+            border-right: 1px solid #e4e4e4;
+            height: 100vh;
+            overflow: auto;
+        }
+
+        .lines {
+            width: 96%;
+            border: 1px solid #efefef;
+            margin: .8rem auto .3rem auto;
+        }
+
+        .ctab_bottom {
+            width: 96%;
+            margin: 0 auto;
+        }
+
+        .ctab_bottom span {
+            float: right;
+            width: 3rem;
+            height: 1rem;
+            font-size: .38rem;
+            line-height: 1rem;
+            border: 1px solid #339EFC;
+            text-align: center;
+            border-radius: .07rem;
+        }
+
+        .ctab_bottom span:nth-child(1) {
+            background: #339EFC;
+            color: #ffffff;
+        }
+
+        .ctab_bottom span:nth-child(2) {
+            color: #339EFC;
+            margin-right: .2rem;
+        }
+
+        #menu {
+            background: #fff;
+        }
+
+        #menu ul {
+            /* justify-content: space-around; */
+            display: flex;
+            width: 100%;
+            margin: 0;
+        }
+
+        #menu li {
+            width: 50%;
+            height: 1.5rem;
+            line-height: 1.3rem;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background-color: #E0E0E0;
+            overflow: hidden;
+            font-size: .4rem;
+            color: #111111;
+        }
+
+        #menu li svg {
+            width: .8rem;
+            height: .8rem;
+            margin-right: .2rem;
+        }
+
+        #menu li .pstyle {
+            width: 100%;
+            height: 4px;
+            position: absolute;
+            background: #339EFC;
+            /* margin: .2rem auto 0 auto; */
+            top: 0;
+        }
+
+        #menu li.on {
+            /* color:#339EFC;     */
+            background: #ffffff;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        #tab-con .tab_itemst {
+            width: 100%;
+            /* height: 10rem; */
+            position: relative;
+            display: none;
+        }
+
+        #tab-con .on {
+            display: block;
+            background-color: #fff;
+        }
+
+        #tab-con .ae {
+            width: 3rem;
+            height: 3rem;
+            background: red;
+        }
+
+        .henline {
+            height: .3rem;
+            background: #ffffff;
+        }
+
+        .tab_itemst .tcontbox {
+            width: 100%;
+        }
+
+        .tab_itemst .tcontbox .tconp {
+            display: flex;
+            justify-content: space-between;
+            height: 3.2rem;
+            line-height: 3.2rem;
+            border-bottom: 1px solid #dcdcdc;
+            width: 93%;
+            margin: 0 auto;
+            padding: 0 .5rem;
+            font-size: 1.1rem;
+            color: #2b2b2b;
+        }
+
+        .mtable {
+            border: 1px solid #BBBBBB;
+            width: 96%;
+            margin: 0 auto;
+        }
+
+        .mtable tr th {
+            width: 20%;
+            background: #F5F5F5;
+            color: #1d1c1c;
+            padding: .3rem .2rem .3rem 0;
+            text-align: right;
+        }
+
+        .conten_con .cotent_con_right {
+            flex: 1;
+        }
+
+        .conb_br {
+            width: 100%;
+            height: 100vh;
+            align-items: center;
+            display: flex;
+        }
+
+        .conb_br .conb_left {
+            /* background: url(../images/iphonebor11.png) no-repeat center 1rem;background-size: 80%; */
+            width: 70%;
+            margin: 0 auto;
+            background-size: 80%;
+            overflow: hidden;position: relative;
+        }
+
+        .conb_br .conb_lefts {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .conts_imgs {
+            width: 18vh;
+            height: 33vh;
+            position: absolute;
+            top: 65vh;
+            transform: translate(-50%, -50%);
+            left: 14.5vh;
+        }
+
+        .conts_imgs img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .conb_br .conb_right {
+            width: 60%;
+            background: url(../images/con_right_bg.png) no-repeat bottom right;
+            background-size: 25%;
+            padding-top: 2rem;
+        }
+
+        .symptom {
+            padding: .22rem .5rem;
+            color: #ffffff;
+            font-size: .23rem;
+            background: #1890FF;
+            border: 1px solid #1890FF;
+            margin: .3rem 0 0 1rem;
+            border-radius: .07rem;
+            cursor: pointer;
+        }
+
+.svg-icons{width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-80%);}    
+.mi-title{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,70%);}      
+.mi-title p{font-size: .3rem;line-height: initial;text-align: center;}
+        /* 弹出层 */
+.itemdiv {
+    width: 100%;
+}
+
+.itemdiv .itemplected {
+    text-align: right;
+    color: #505050;
+    font-size: .7rem;
+    width: 96%;
+    height: 1rem;
+    line-height: 1rem;
+    margin-top: .8rem;
+}
+
+#cancel {
+    float: right;
+    padding: .05rem 1rem;
+    background: #1890FF;
+    border: 1px solid #1890FF;
+    color: #ffffff;
+    border-radius: .07rem;
+    font-size: .45rem;
+}
+.float-left{    
+    float: left;
+    color: #000000;
+    margin-left: 1rem;
+    font-size: .52rem;}
+.m_dit {
+    width: 93%;
+    margin: 0 auto;
+    height: 45vh;
+    font-size: 1.1rem;
+}
+
+.m_dit div {
+    width: 15%;
+    height: 1.3rem;
+    text-align: center;
+    float: left;
+    margin-right: .3rem;
+    font-size: .4rem;
+    line-height: 1.3rem;
+    margin-top: .5rem;
+    background: #F7F8F9;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    color: #1890FF;
+}
+
+.m_dit .contstyle {
+    background: #1890FF;
+    color: #ffffff;  
+}
+
+.itemdiv .itemplbtn {
+    width: 93%;
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem auto 1rem auto;
+}
+
+.itemdiv .itemplbtn div {
+    width: 48%;
+    height: 1.5rem;
+    border: 1px solid #f84b62;
+    text-align: center;
+    line-height: 1.5rem;
+    font-size: 1.1rem;
+    border-radius: 5px;
+}
+
+.itemdiv .itemplbtn div:nth-child(1) {
+    color: #ea3a21;
+}
+.itemdiv .itemplbtn div:nth-child(2) {
+    background: #f84b62;
+    color: #ffffff;
+}
+
+        #itemselect {
+    display: none;
+}
+@media screen and (min-width:1460px) and (max-width:1580px){
+    .svg-icons {
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-80%);
+}
+.mi-title {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-52%,70%);
+}
+}
+@media screen and (min-width:1580px) and (max-width:1680px){
+    /* .svg-icons {
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-62%,-80%);
+} */
+.svg-icons {
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-80%);
+}
+.mi-title {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-55%,70%);
+}
+}
+@media screen and (min-width:1680px) and (max-width:2880px){
+    /* .svg-icons {
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-75%,-80%);
+} */
+.svg-icons {
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-62%,-80%);
+}
+.mi-title {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-55%,70%);
+}
+}
+    </style>
+</head>
+
+<body>
+    <div class="outdiv">
+        <div class="left" id="left">
+            <!--#include file="left.html"-->
+        </div>
+        <div class="right_conter">
+            <div style="width:auto;margin:auto;">
+                <div class="conten_con">
+                    <div class="cotent_con_left">
+                        <div class="back_goo" onclick="goback()">
+                            <svg t="1607408152481" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" p-id="3504" width="48" height="48">
+                                <path
+                                    d="M438.4 297.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2L300.8 480H800c19.2 0 32 12.8 32 32 0 16-12.8 28.8-28.8 32H300.8l137.6 137.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2c-12.8 12.8-28.8 12.8-41.6 3.2l-3.2-3.2-192-192-3.2-3.2-3.2-3.2-3.2-3.2V499.2l3.2-3.2 3.2-3.2 3.2-3.2 192-192c12.8-12.8 32-12.8 44.8 0z"
+                                    fill="#bfbfbf" p-id="3505"></path>
+                            </svg>
+                            返回
+                        </div>
+
+                        <div id="menu">
+                            <ul>
+                                <li class="on">
+                                    <svg t="1607496296270" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" p-id="3627" width="48" height="48">
+                                        <path d="M363.57 734.627v-8.212a45.967 45.967 0 0 0 0 8.212z" p-id="3628"
+                                            fill="#8a8a8a"></path>
+                                        <path d="M346.567 546.43h18v50h-18z" p-id="3629" fill="#8a8a8a"></path>
+                                        <path
+                                            d="M448.826 567.383c49.752-32.503 82.924-90.177 82.95-155.784-0.005-101.245-79.041-183.615-176.192-183.615-97.172 0-176.227 82.37-176.227 183.62 0 65.613 33.175 123.29 82.953 155.79-84.334 37.802-143.539 125.221-143.539 226.79l0.001 0.053h46.891l-0.001-0.043c0-109.119 85.2-197.891 189.923-197.891 104.701 0 189.88 88.772 189.885 197.886l-0.001 0.048h46.891l0.001-0.06c-0.004-101.573-59.207-188.998-143.535-226.794zM226.248 411.614c0-74.307 58.018-134.757 129.332-134.757 71.298 0 129.302 60.451 129.306 134.754-0.03 74.339-58.034 134.819-129.306 134.819-71.317 0-129.332-60.477-129.332-134.816zM880.768 331.563h-249.25c-13.807 0-25 11.193-25 25s11.193 25 25 25h249.25c13.807 0 25-11.193 25-25s-11.193-25-25-25zM880.768 497.43h-249.25c-13.807 0-25 11.193-25 25s11.193 25 25 25h249.25c13.807 0 25-11.193 25-25s-11.193-25-25-25zM880.768 663.297h-249.25c-13.807 0-25 11.193-25 25s11.193 25 25 25h249.25c13.807 0 25-11.193 25-25s-11.193-25-25-25z"
+                                            p-id="3630" fill="#8a8a8a"></path>
+                                    </svg>
+                                    <span>用户信息</span>
+                                    <p class="pstyle"></p>
+                                </li>
+                                <li>
+                                    <svg t="1607496747404" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" p-id="5343" width="48" height="48">
+                                        <path
+                                            d="M263.571954 407.950226l141.236722 0 0 27.750017-141.236722 0L263.571954 407.950226 263.571954 407.950226zM263.571954 407.950226"
+                                            p-id="5344" fill="#8a8a8a"></path>
+                                        <path
+                                            d="M207.519334 463.453331l309.346487 0 0 28.900214L207.519334 492.353544 207.519334 463.453331 207.519334 463.453331zM207.519334 463.453331"
+                                            p-id="5345" fill="#8a8a8a"></path>
+                                        <path
+                                            d="M179.220824 520.362458l253.208932 0 0 27.753087-253.208932 0L179.220824 520.362458 179.220824 520.362458zM179.220824 520.362458"
+                                            p-id="5346" fill="#8a8a8a"></path>
+                                        <path
+                                            d="M179.113377 577.019853l112.651686 0 0 27.753087-112.651686 0L179.113377 577.019853 179.113377 577.019853zM179.113377 577.019853"
+                                            p-id="5347" fill="#8a8a8a"></path>
+                                        <path
+                                            d="M179.113377 633.381511l84.015486 0 0 28.02938-84.015486 0L179.113377 633.381511 179.113377 633.381511zM179.113377 633.381511"
+                                            p-id="5348" fill="#8a8a8a"></path>
+                                        <path
+                                            d="M179.193195 745.813187l84.523045 0 0 27.757181-84.523045 0L179.193195 745.813187 179.193195 745.813187zM179.193195 745.813187"
+                                            p-id="5349" fill="#8a8a8a"></path>
+                                        <path
+                                            d="M179.113377 689.767729l84.015486 0 0 28.048823-84.015486 0L179.113377 689.767729 179.113377 689.767729zM179.113377 689.767729"
+                                            p-id="5350" fill="#8a8a8a"></path>
+                                        <path
+                                            d="M550.752606 821.921585l-387.779837 0 0-450.686563 28.192086 0 28.193109 0 338.28661 0 0 131.47745c16.545838-16.000416 35.55682-29.463032 56.409754-39.767725l0-148.291394-394.696364 0 0-56.385195 56.386218 0 28.192086 0 366.504278 0 0 185.707562c9.208732-1.77032 18.618033-2.975774 28.192086-3.577478L698.632631 230.075049l-394.696364 0 0-56.386218 451.082582 0 0 270.235724c9.631358 1.839905 19.043728 4.293793 28.193109 7.328919l0-305.755706-507.467777 0 0 84.578304-84.579327 0 0 84.578304-84.578304 0L106.58655 878.503255l507.467777 0 0-11.781324C590.237899 855.749018 568.809867 840.485383 550.752606 821.921585z"
+                                            p-id="5351" fill="#8a8a8a"></path>
+                                        <path
+                                            d="M495.219825 716.91195c-2.681062-11.555174-4.436032-23.463388-5.212722-35.638685l-15.660678-4.006244-23.240307-44.301995-23.240307 44.301995-47.239907 12.084223 32.905434 34.384112-4.712325 50.194192 42.287105-21.473057 42.287105 21.473057-4.701069-50.194192L495.219825 716.91195z"
+                                            p-id="5352" fill="#8a8a8a"></path>
+                                        <path
+                                            d="M725.195613 461.901998c-115.207905 0-208.601992 93.39511-208.601992 208.601992s93.394087 208.601992 208.601992 208.601992c115.206882 0 208.601992-93.39511 208.601992-208.601992S840.402495 461.901998 725.195613 461.901998zM814.381865 640.053468 814.381865 640.053468c-6.828522 6.328126-14.569834 13.768585-23.016203 22.112624-8.450463 8.442276-17.196661 16.986883-26.13524 25.527396-8.839319 8.642844-17.496489 17.191544-25.724895 25.53149-8.240685 8.446369-15.59621 15.579837-22.018479 21.509896-3.114944 3.624551-7.945973 5.53711-14.376429 5.734608-6.426363 0.200568-11.458983-1.413186-15.07944-5.121648-3.713578-3.124154-8.04728-7.346315-13.066597-12.56313-5.027503-5.232165-10.060123-10.564613-15.181771-15.990183-5.019317-5.433756-9.841136-10.559497-14.368242-15.274892-4.617158-4.817726-8.240685-8.745175-10.949376-11.972683-8.745175-9.54233-9.653871-17.881253-2.815115-25.223474l3.418866-3.016707c1.912559-1.604544 3.713578-3.409656 5.519714-5.421476 1.818415-2.118244 3.623527-3.928472 5.536087-5.429663l3.419889-3.110851c3.610224-3.225461 7.230682-4.432962 10.649548-3.721765 3.414773 0.696872 6.529717 2.109034 9.238408 4.428869 1.420349 1.291412 3.526313 3.704368 6.541997 7.123234l9.247618 10.564613c3.213181 3.611248 6.336312 7.020904 9.344832 10.247388l6.439666 6.731308c2.305509 3.225461 5.425569 4.419659 9.348925 3.821025 3.816932-0.693802 7.436366-2.610454 10.650571-5.818519 9.151427-9.05012 18.904559-18.60473 29.150924-28.557406 10.350742-10.045797 20.697391-20.200064 31.260981-30.65723 4.115738-4.120854 8.236592-7.338129 12.365632-9.546424 4.112668-2.310625 8.433066-1.805112 13.068643 1.305739 0.902556 0.512676 3.114944 2.511193 6.53381 6.134721l6.53381 6.833639c3.607154 3.619434 4.317329 7.740288 2.006703 12.254092C819.619146 633.028471 817.102836 636.93443 814.381865 640.053468L814.381865 640.053468z"
+                                            p-id="5353" fill="#8a8a8a"></path>
+                                    </svg>
+                                    <span>编辑原件</span>
+                                    <p></p>
+                                </li>
+                                <!-- <li>
+                                    <svg style="width: .5rem;height: .5rem;" t="1607496803706" class="icon"
+                                        viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                        p-id="6137" width="32" height="32">
+                                        <path
+                                            d="M622.9504 824.8576c1.4592 56.4736 34.5088 107.0592 84.992 130.0736a140.9792 140.9792 0 0 0 151.3984-22.272c13.4656-7.3216 25.088-6.272 35.072 3.2768 9.9328 9.5488 9.9328 22.4512 0 38.6048a193.9968 193.9968 0 0 1-128.2048 48.512c-107.5968-0.0768-195.328-88.2176-197.2992-198.1952h-63.4368l90.5728-92.6208 90.5216 92.6208h-63.616zM96.9984 1019.5712c-24.9856 0-48.5888-8.448-66.7648-23.68C11.264 979.9168 0.896 958.592 0.896 935.936L0.256 84.992C0.256 38.912 42.752 1.3824 95.0016 1.3824L791.7568 0.9216c52.3008 0 94.72 37.504 94.72 83.6608l-0.768 413.6704c0 19.968-18.0992 36.2496-40.32 36.2496a38.0672 38.0672 0 0 1-27.136-10.496 35.5328 35.5328 0 0 1-10.624-25.8304L807.168 84.5824c0-5.888-12.8-6.2208-15.36-6.2208l-696.7296 0.4608c-9.984 0-17.8176 2.7392-17.8176 6.1952l0.5888 850.9184c0 4.5824 9.856 4.2496 19.1488 4.2496h373.6576c22.1952 0 40.96 19.1232 40.96 39.1424 0 20.0192-18.7648 40.2432-40.96 40.2432H96.9984zM909.312 817.92c-1.92-79.5136-65.4592-142.976-143.2576-143.104a139.5712 139.5712 0 0 0-84.3008 28.16c-17.2288 4.7104-29.184 1.792-35.9936-8.704-6.784-10.4704-5.4272-22.4512 4.1728-35.8656a193.92 193.92 0 0 1 204.032-17.3056c65.8432 33.536 108.032 101.6832 109.44 176.896h60.1088l-90.496 92.5952-90.7264-92.672h67.0208zM191.7952 228.9664c0-8.704 3.3792-16.9984 9.3696-23.1424 6.016-6.144 14.1568-9.6 22.6304-9.6h448.128c17.664 0 32 14.6688 32 32.7424s-14.336 32.7168-32 32.7168H223.7952c-8.4736 0-16.64-3.4304-22.6304-9.5744a33.1008 33.1008 0 0 1-9.3696-23.1424z m0 196.352c0-8.6784 3.3792-16.9984 9.3696-23.1424 6.016-6.144 14.1568-9.5744 22.6304-9.5744h448.128c17.664 0 32 14.6432 32 32.7168 0 18.0736-14.336 32.7424-32 32.7424H223.7952c-8.4736 0-16.64-3.456-22.6304-9.6a33.1008 33.1008 0 0 1-9.3696-23.1424z m0 196.352c0-8.6528 3.3792-16.9984 9.3696-23.1168 6.016-6.144 14.1568-9.6 22.6304-9.6h192.0512c17.664 0 32 14.6688 32 32.7424s-14.336 32.7168-32 32.7168H223.7952c-8.4736 0-16.64-3.456-22.6304-9.5744a33.1008 33.1008 0 0 1-9.3696-23.1424z"
+                                            p-id="6138" fill="#8a8a8a"></path>
+                                    </svg>
+                                    <span>流转过程</span>
+                                    <p></p>
+                                </li> -->
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="henline"></div>
+                        <div id="tab-con">
+                            <div class="tab_itemst on">
+
+                                <div class="tcontbox">
+                                    <table class="mtable" border="1" cellspacing="0">
+                                        <tr>
+                                            <th>身份证号：</th>
+                                            <td></td>
+                                            <th>姓名：</th>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th>医保卡号：</th>
+                                            <td></td>
+                                            <th>性别：</th>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th>手机号码：</th>
+                                            <td></td>
+                                            <th>年龄：</th>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th>联系地址：</th>
+                                            <td></td>
+                                            <th>出生日期：</th>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+
+                                    <p class="lines"></p>
+                                    <div class="ctab_bottom">
+                                        <span onclick="goo('/h5page/pharmacy/video.html')">下一步</span>
+                                        <span onclick="goo('/h5page/pharmacy/video.html')">扫描证件</span>
+                                    </div>
+                                    <div style="height: 2rem;"></div>
+                                </div>
+
+                            </div>
+                            <div class="tab_itemst"> 
+                                <div class="tcontbox">
+                                    <table class="mtable" border="1" cellspacing="0">
+                                        <tr style="height: 2rem;">
+                                            <th>病史：</th>
+                                            <td colspan="3"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>药物过敏：</th>
+                                            <td colspan="3"></td>
+                                        </tr>
+                                        <tr style="height: 4.2rem;">
+                                            <th>症状：</th>
+                                            <td colspan="3">
+                                                <span class="symptom" id="symptom">点击补充症状</span>
+                                            </td>
+                                        </tr>
+                                        <tr style="height: 2rem;">
+                                            <th>意向药物：</th>
+                                            <td colspan="3"></td>
+                                        </tr>
+                                    </table>
+
+                                    <p class="lines"></p>
+                                    <div class="ctab_bottom">
+                                        <span onclick="goo('/h5page/pharmacy/video.html')">下一步</span>
+                                        <span onclick="goo('/h5page/pharmacy/video.html')">扫描证件</span>
+                                    </div>
+                                    <div style="height: 2rem;"></div>
+                                </div>    
+                            </div>
+                            <!-- <div class="tab_itemst"> 3 </div> -->
+                        </div>
+                    </div>
+                    <div class="cotent_con_right">
+                        <div class="conb_br">
+                            <div class="conb_left">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="svg-icons" viewBox="64 64 896 896" width="282" height="282" style="fill: rgb(51, 51, 51);"><path d="M468 128H160c-17.7 0-32 14.3-32 32v308c0 4.4 3.6 8 8 8h332c4.4 0 8-3.6 8-8V136c0-4.4-3.6-8-8-8zm-56 284H192V192h220v220zm-138-74h56c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm194 210H136c-4.4 0-8 3.6-8 8v308c0 17.7 14.3 32 32 32h308c4.4 0 8-3.6 8-8V556c0-4.4-3.6-8-8-8zm-56 284H192V612h220v220zm-138-74h56c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm590-630H556c-4.4 0-8 3.6-8 8v332c0 4.4 3.6 8 8 8h332c4.4 0 8-3.6 8-8V160c0-17.7-14.3-32-32-32zm-32 284H612V192h220v220zm-138-74h56c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm194 210h-48c-4.4 0-8 3.6-8 8v134h-78V556c0-4.4-3.6-8-8-8H556c-4.4 0-8 3.6-8 8v332c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V644h78v102c0 4.4 3.6 8 8 8h190c4.4 0 8-3.6 8-8V556c0-4.4-3.6-8-8-8zM746 832h-48c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm142 0h-48c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8z"></path></svg>
+                                <!-- <img src="/m2/images/iphonebor11.png" class="iphones"> -->
+                                <img src="/h5page/pharmacy/images/iPhonegd.png" class="iphones">
+                                      <!-- <img src="/h5page/pharmacy/images/v2_qkozki.png" class="iphones"> -->
+                                <div class="mi-title">
+                                    <p>扫码注册可通过手机</p>
+                                    <p>进行信息录入</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="itemselect">
+        <div class="itemdiv">
+            <p class="itemplected">
+                <span class="float-left">是否有以下症状（可多选）</span>
+                <span id="cancel">确定</span> 
+            </p>
+            <div class="m_dit">
+                <div class="contstyle">口干</div>
+                <div>牙痛</div>
+                <div>咽喉炎</div>
+                <div>口腔溃疡</div>
+                <div>牙龈炎</div>
+                <div>牙龈肿痛</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            checkLogin("golink");
+            var $list = $("#menu").find("li");
+            var $div = $("#tab-con").children("div");
+            $list.click(function () {
+                var index = $(this).index();
+                $list.eq(index).addClass("on").siblings().removeClass("on");
+                $div.eq(index).addClass("on").siblings().removeClass("on");
+                $(this).find("p").addClass("pstyle").parent().siblings().find('p').removeClass(
+                    "pstyle");;
+            })
+
+            props('#itemselect', '#symptom', '片');
+
+        })
+
+        function props(content, btn, text) {
+			$(btn).click(function() {
+				var index = $(content).find('.m_dit').attr('data-itme');
+				var pageii = layer.open({
+					type: 1,
+					content: $(content).html(),
+					anim: 'up', //skin样式类名
+					style: 'position:fixed; left:0; bottom:0; width:100%; border: none; -webkit-animation-duration: .5s; animation-duration: .5s;',
+					success: function(elem) {
+
+						$(elem).find('.m_dit').children('div').eq(index).addClass('contstyle').siblings('div').removeClass(
+							'contstyle');
+						$(elem).find('.m_dit').children('div').click(function() {
+							index = $(this).index();
+							$(this).addClass('contstyle').siblings('div').removeClass('contstyle');
+						});
+
+						$(elem).find('#cancel').click(function() {
+							index = $(content).find('.m_dit').attr('data-itme');
+							layer.close(pageii)
+						})
+					},
+					end: function() {
+						$(content).find('.m_dit').attr('data-itme', index);
+						$(btn).children('span').html($(content).find('.m_dit div').eq(index).html());
+						$(btn).attr('data-index',index);
+					}
+				});
+			})
+		}
+    </script>
+</body>
+
+</html>

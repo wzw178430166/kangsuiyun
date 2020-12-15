@@ -1,0 +1,274 @@
+{template 'dataManage','header_common'}
+<style>
+.cell-username, .cell-product, .cell-addtime { width: 150px;}
+.o-state { padding-left: 12px; font-style: normal; margin-right: 8px;}
+.state-0 { color: #f89406; background: url('/statics/admin/common/images/icon_point2.png') no-repeat 0 center; background-size: 5px;}
+.state-1 { color: #009688; background: url('/statics/admin/common/images/icon_point.png') no-repeat 0 center; background-size: 5px;}
+</style>
+<body>
+{template 'dataManage','header'}
+<div id="middle"> {template 'dataManage','left'}
+  <div class="right" id="mainFrame">
+    <div class="right_cont">
+      <ul class="breadcrumb">
+        当前位置： <a href="/?m=dataManage">首页</a> <span class="divider">/</span> <a href="javascript:;">订单管理</a> <span class="divider">/</span> 充值订单
+      </ul>
+      <div class="title_right"><strong>充值订单</strong></div>
+      <div style="width: auto;margin:auto;">
+        <div class="query-module">
+          <div class="query-form">
+            <div class="form-item"> <font>订单号</font>
+              <div class="element">
+                <div class="element-text">
+                  <input type="text" id="k" value="">
+                </div>
+              </div>
+            </div>
+            <div class="form-item"> <font>状态</font>
+              <div class="element">
+                <div class="element-select">
+                  <select id="status">
+                  	<option value="">全部</option>
+                    <option value="waitPay">待付款</option>
+                    <option value="success">已付款</option>
+                    <option value="close">交易关闭</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="form-item"> <font>下单时间</font>
+              <div class="element">
+                <div class="element-date">
+                  <input type="text" id="st" value="">
+                  <span class="gap">到</span>
+                  <input type="text" id="et" value="">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="query-btn">
+            <div class="btn-item"> <a class="btn-query" id="J_query">查询</a> 
+              <!--<a class="btn-screen" id="J_screen" data-off="0">显示高级选项</a>--> 
+            </div>
+          </div>
+        </div>
+        <div class="data-content">
+          <div class="tb-container">
+            <table class="table table-bordered table-hover table-striped" id="rstb">
+             <thead>
+             	<tr align="center">
+                  <th><strong class="tb-head cell-check" data-val="check">
+                    <input type="checkbox" id="J_sel_all">
+                    </strong></th>
+                  <th><strong class="tb-head cell-orderid" data-val="orderid">订单号</strong></th>
+                  <th><strong class="tb-head cell-username" data-val="username">用户</strong></th>
+                  <th><strong class="tb-head cell-product" data-val="product">商品</strong></th>
+                  <th><strong class="tb-head cell-amount" data-val="amount">金额</strong></th>
+					<th><strong class="tb-head cell-pay_channel" data-val="pay_channel">付款方式</strong></th>
+                    <th><strong class="tb-head cell-pay_amount" data-val="pay_amount">实际付款</strong></th>
+                    <th><strong class="tb-head cell-status" data-val="status">状态</strong></th>
+                    <th><strong class="tb-head cell-createtime" data-val="createtime">下单时间</strong></th>
+                    <th><strong class="tb-head cell-operate" data-val="operate">操作</strong></th>
+                </tr>
+              </thead>
+              <tbody id="datas">
+              </tbody>
+            </table>
+          </div>
+          <div class="inner-page" id="innerPage"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<script>
+var page = 1;
+$(function(){
+	var date = new Date();
+	$('#st').val(date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate());
+	$('#et').val(date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate());
+	getData();
+	var screenHeight = $(window).height();
+	$('.first-container').css({height: screenHeight - 93});
+	var tbWidth = $(window).width() - 245;
+	$(".tb-container").css({width:tbWidth});
+	$("#rstb").css({maxWidth:tbWidth});
+	$("#rstb").colResizable({
+		resizeMode: 'overflow',
+		//minWidth: 15,
+		//headerOnly: true,
+		//dragCursor: '',
+		//liveDrag: true,
+		//draggingClass: 'tb-cell',
+		onResize: function(e,data){
+			//console.log($(e.currentTarget));
+			//$('.tb-cell').width();
+		}
+	});	
+	laydate.render({
+	  elem: '#et'
+	  ,format: 'yyyy-MM-dd'
+	  ,done: function(value,date,endDate){
+		  et = value;
+	  }
+	});
+	laydate.render({
+	  elem: '#st'
+	  ,format: 'yyyy-MM-dd'
+	  ,done: function(value,date,endDate){
+		  st = value;
+	  }
+	});
+	$('#J_query').on('click', function(){
+		page = 1;
+		getData();
+	});
+});
+function getData(){
+	var url = '/?m=dataManage&c=workOrder&a=rechargeOrder&ajax=1';
+	var k = $.trim($('#k').val());
+	if (k) url += '&k='+k;
+	var st = $.trim($('#st').val());
+	var et = $.trim($('#et').val());
+	if (st&&et) url += '&st='+st+'&et='+et;
+	var status = $.trim($('#status').val());
+	if (status) url += '&status='+status;
+	if (page > 1) url += '&page='+page;
+	var index = layer.load(2,{time:3000});
+	$.ajax({
+		url: url,
+		type: "GET",
+		dataType: "JSON",
+		success: function(data){
+			layer.close(index);
+			var html = '';
+			var pageCount = 0;
+			if (data.status==1) {
+				var datas = data.data.datas;
+				var member = data.data.member;
+				pageCount = data.data.pageCount;
+				for(var i in datas){
+					var info = datas[i];
+					var product = '';
+					switch(info.type){
+						case 'recharge':
+							product = '余额充值';
+							break;
+					}
+					var pay_channel = '';
+					switch(info.pay_channel){
+						case 'wechat':
+							pay_channel = '微信支付';
+							break;
+						case 'alipay':
+							pay_channel = '支付宝支付';
+							break;
+					}
+					var status = '';
+					var operate = '<a href="javascript:;" class="operate-btn btn-del" data-val="'+info.orderid+'">删除</a>';
+					switch(info.status){
+						case 'waitPay':
+							status = '待付款';
+							operate = '<a href="javascript:;" class="operate-btn btn-close" data-val="'+info.orderid+'">取消</a>';
+							break;
+						case 'success':
+							status = '已付款';
+							break;
+						case 'close':
+							status = '已取消';
+							break;
+					}
+					var _member = {};
+					if (member&&member[info.userid]) {
+						_member = member[info.userid];
+					} else {
+						_member = {"username":"","nickname":""};
+					}
+					html += '<tr align="center"><td><div class="tb-cell cell-check"><input type="checkbox" name="ids[]" value="'+info.out_trade_no+'"></div></td><td><div class="tb-cell cell-orderid">'+info.orderid+'</div></td><td><div class="tb-cell cell-username">'+_member.username+(_member.nickname?'('+_member.nickname+')':'')+'</div></td><td><div class="tb-cell cell-product">'+product+'</div></td><td><div class="tb-cell cell-amount">'+info.amount+'</div></td><td><div class="tb-cell cell-pay_channel">'+pay_channel+'</div></td><td><div class="tb-cell cell-pay_amount">'+info.pay_amount+'</div></td><td><div class="tb-cell cell-status">'+status+'</div></td><td><div class="tb-cell cell-createtime">'+info.createtime+'</div></td><td><div class="tb-cell cell-operate">'+operate+'</div></td></tr>';
+				}
+			} else {
+				html += '<tr align="center"><td colspan="'+($('.tb-head').length)+'">暂无数据</td></tr>';
+			}
+			$('#datas').html(html);
+			initWidth();
+			initOperate();
+			if (page == 1) initPage(pageCount);
+		}
+	});
+}
+function initOperate(){
+	$('.btn-close').unbind('click');
+	var _item = $('.btn-close');
+	_item.each(function(i) {
+		$(_item[i]).on('click',function(){
+			var orderid = $(this).attr('data-val');
+			layer.confirm('确定要取消订单?',{btn:["确定","取消"]},function(){
+				doOrderStatus(orderid,'close');
+			});
+		});
+        
+    });
+	$('.btn-del').unbind('click');
+	var _item2 = $('.btn-del');
+	_item2.each(function(i) {
+		var orderid = $(this).attr('data-val');
+		$(_item2[i]).on('click',function(){
+			layer.confirm('确定要删除订单?',{btn:["确定","取消"]},function(){
+				doOrderStatus(orderid,'delete');
+			});
+		});
+        
+    });
+}
+function doOrderStatus(orderid,status){
+	if (!orderid || !status) {
+		layer.msg('订单异常');
+		return;
+	}
+	var url = '/?m=dataManage&c=workOrder&a=doOrderRechargeState&ajax=1';
+	$.ajax({
+		url: url,
+		type: "POST",
+		dataType: "JSON",
+		data: {dosubmit:1,orderid:orderid,status:status},
+		success: function(data){
+			layer.msg(data.erro);
+			validateAuth(data.status);
+			if (data.status == 1) getData();
+		}
+	});
+}
+function initWidth(){
+	var _item = $('.tb-head');
+	_item.each(function(i) {
+        var w = $(this).width();
+		var v = $(this).attr('data-val');
+		$('.cell-'+v).width(w);
+    });
+}
+function initPage(pageCount) {
+	layui.use('laypage', function(){
+		var laypage = layui.laypage;
+		laypage.render({
+			elem: 'innerPage' //注意，这里的 test1 是 ID，不用加 # 号
+			,count: pageCount //数据总数，从服务端得到
+			//,limit: 10
+			,layout: ['prev', 'page','next', 'skip','count']//['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+			,prev: '<i class="icon-arrow arrow-l"></i>'
+			,next: '<i class="icon-arrow arrow-r"></i>'
+			,hash: 'page'//页面载入时就定位到指定页
+			,theme: '#234686'
+			,jump: function(obj, first){
+				//首次不执行
+				if (!first) {
+					//console.log(obj);
+					page = parseInt(obj.curr);
+					getData();
+				}
+			}
+		});
+	});
+}
+</script>
+</html>

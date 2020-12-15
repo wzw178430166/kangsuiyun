@@ -1,0 +1,339 @@
+<!--<head></head><body></body>-->
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="topcolor" rgba="44.172.252.1">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+<link rel="stylesheet" type="text/css" href="statics/css/fonts/font-awesome.min.css">
+<script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<script type="text/javascript" src="/statics/js/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="/statics/languages/20181105/languages.js"></script>
+<title set-lan="html:communication_list">沟通列表</title>
+</head>
+<script>
+try{
+	jstojava.mycleargoback();
+	jstojava.close_toobar();
+}catch(e){  }
+</script>
+<style>
+body{ background-color:#f7f9fa;}
+.bg15_f2f2f2{ height:15px; background-color:#f2f2f2;}
+/**/
+.talk_list{ width:100%; overflow:hidden; background-color:#fff;}
+.talk_list li{ width:100%; overflow:hidden; padding: 1.077rem 1rem; border-bottom:1px solid #f0f0f0;}
+.talk_list li:last-child{ border-bottom:none;}
+.talk_line .talk_line_l{ width:3.85rem; height:3.85rem; position:relative; float: left;}
+.talk_line .talk_line_l img{ width:3.85rem; height:3.85rem; border-radius:50%;}
+.talk_line .talk_line_l .point{ width:12.5px; height:12.5px; position:absolute; right:0; top:0; background-color:#f74c31; border-radius:15px;}
+.talk_line .talk_line_r{ overflow:hidden; margin-left: 5rem;}
+.talk_line .talk_line_r p{ width:100%; overflow:hidden; font-size: 1.154rem;}
+.talk_line .talk_line_r .name{ color:#333;}
+.talk_line .talk_line_r .name span{ margin-left:5px;}
+.talk_line .talk_line_r .messages{ display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; word-break: break-all; color:#bdbdbd; font-size: 1rem; margin-top: .692rem;}
+/*.empty-box { width: 100%; color: #666; font-size: 1rem; text-align: center; margin-top: 1.5rem; display: none;}*/
+.tixing_ {
+    width: 1.6rem;
+    height: 1.6rem;
+    line-height: 1.6rem;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #fd616c;
+    color: #fff;
+    position: absolute;
+    right: -0.5rem;
+    top: -0.5rem;
+    /*transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);*/
+}
+.visit-status { float: right; font-size: 1rem;}
+.visit-status0 { color: #c4c4c4}
+.visit-status1 { color: #2cacfc;}
+.visit-status2 { color: #ff9595;}
+.header_box span{position: absolute;top: 50%;-webkit-transform: translate(-50%,-50%);right: 1%;color: #FFF;}
+.empty-box {
+	position: relative;
+	width: 100%;
+	height: 100%; 
+	display: none;
+}
+.empty-box img { position: absolute;top: 50%;right: 50%;transform: translate(50%,13%);-webkit-transform: translate(50%,13%);width: 62%; }
+.empty-btn {    width: 60%;
+    height: 38px;
+    line-height: 38px;
+    margin-left: 20%;
+    border: 1px solid #2cacfc;
+    background: #2cacfc;
+    color: #FFF;
+    font-size: 16px;
+    text-align: center;
+    position: absolute;
+    transform: translate(50%,1000%);
+    -webkit-transform: translate(50%,1000%);
+    right: 50%;
+    border-radius: 5px;}
+/*顶部选项切换卡*/
+ul,li,header{display:block;margin:0;padding:0;border:0;}
+ul{list-style: none;}
+a{text-decoration:none;}
+/*iphone上的Safari解析input[typw="submit"]和input[type="submit"]按钮会以苹果浏览器默认的UI进行渲染，解决发放如下*/
+input,input[type="button"],input[type="submit"]，input[type="reset"]{-webkit-appearance:none;}
+/*header*/
+.favor-header-bar{background-color: #fff;padding:0 1.1rem;overflow: hidden;height:3.46rem;line-height: 3.46rem;border-bottom: 1px solid #e1e1e1;}
+.favor-header-bar li{display: block;width:33%;text-align: center;float: left;margin-left:-1px;height:2.3rem;line-height: 2.3rem;margin-top:0.58rem;border-right: 1px solid #e1e1e1;position: relative;}
+.favor-header-bar a{font-size:1.1rem;color:#333;display:block;padding-bottom: 0.5rem;width:85%;margin:0 auto;}
+.favor-header-bar li:last-child{border-right:none;}
+.favor-header-bar li.default a{color:#139dea;border-bottom: 2px solid #139dea;font-weight: bold;height: 2.8rem;}
+.favor-header-bar li span{position: absolute;display: block;width:33%;top:-0.4rem;right:0.2rem;max-width: 32px;}
+.noimg{position: absolute;right: 50%;transform: translate(50%,13%);-webkit-transform: translate(50%,13%);width: 62%;}
+.btn-empty {position: absolute;
+    /*top: 60%;*/
+	bottom: 0;
+    right: 50%;
+    transform: translate(50%,13%);
+    -webkit-transform: translate(50%,0);
+    width: 100%;
+    height: 3.3rem; line-height: 3.1rem; border-radius: 4px; text-align: center; background-color:#2cacfc; color: #fff; font-size: 1.2rem;}
+	.empty-box { text-align:center;}
+	.empty-box img { position: initial; transform: none; margin-top: 9%;}
+	.empty-box .btn-empty { position: initial; transform: none; margin: 0 auto;}
+</style>
+<body>
+	<div class="list_user_data"></div>
+	<div class="header_box">
+		<img src="/statics/images/goback_b.png" class="left">
+		<p class="midden" set-lan="html:my_consultation">我的咨询</p>
+		<span onClick="goo('./talk_list_history.html')" set-lan="html:history">历史</span>
+	</div>
+	<div class="h50"></div>
+<header class="favor-header-bar" style="display: none;">
+	<ul class="tabs">
+		<li class="default"><a href="javascript:void(0);">家庭医生</a><div class="tixing_" style="width: 0.6rem;height: 0.6rem;right: 10%;top: 1%;display: none;"></div></li>
+		<li><a href="javascript:void(0);">预约咨询</a><div class="tixing_" style="width: 0.6rem;height: 0.6rem;right: 10%;top: 1%;display: none;"></div></li>
+		<!--<li><a href="javascript:void(0);">孕产咨询</a></li>-->
+		<li><a href="javascript:void(0);">健康管理</a><div class="tixing_" style="width: 0.6rem;height: 0.6rem;right: 10%;top: 1%;display: none;"></div></li>
+	</ul>
+</header>
+    <div class="talk_list"><ul><img class="noimg" src="statics/images/no_talk.png"/>
+        <div class="btn-empty" onClick="goo('/patient/Dr_index2.html')">购买服务</div></ul></div>
+	<div class="talk_list" style="display: none;"><ul><img class="noimg" src="statics/images/no_talk.png"/><div class="btn-empty" onClick="goo('/patient/cm_html/fy_cm_lists.html')">立即预约</div></ul></div>
+    <div class="talk_list" style="display: none;"><ul><img class="noimg" src="statics/images/no_talk.png"/><div class="btn-empty" onClick="goo('/patient/index_2.html')">购买服务</div></ul></div>
+    <!--<div class="talk_list" style="display: none;"><ul><img class="noimg" src="statics/images/no_talk.png"/></ul></div>-->
+</body>
+</html>
+<script>
+var ua = window.navigator.userAgent.toLowerCase();
+if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+	if(getQueryString('WeChat_SpApi') == 1){
+		$('.header_boxl img').hide();
+		$('.header_box img').hide();
+		$('.index_foot').hide();
+	}
+}
+var go = getQueryString('go')?getQueryString('go'):0;
+var home = getQueryString('home')?getQueryString('home'):0;
+var userid_cookie = getCookie(cookie_pre+'__userid');
+$(function(){
+	get_data();
+	//if(userid_ == 2 || userid_ == 4 || userid_ == 5 || userid_ == 1 || userid_ == 3585){
+		$('.favor-header-bar').show();
+	//}
+	if(getQueryString('thide') == 1) $('.favor-header-bar').hide();
+	get_cm_fy_list();
+	get_healthy_da();
+	$('.favor-header-bar ul li').eq(go).click();
+})
+$('.favor-header-bar ul li').click(function(){
+	$('.favor-header-bar ul li').removeClass('default');
+	$(this).addClass('default');
+	$('.talk_list').hide();
+	$('.talk_list').eq($(this).index()).show();
+});
+$('.header_box img').click(function(){
+	setCookie('get_user_data',1);
+	if(home == 1){
+		goo('/index5');
+	}else{
+		goback();
+	}
+})
+function get_data(){
+	$.ajax({
+		url:'/?m=doctor&c=patient&a=get_talk_list',
+		type:'POST',
+		dataType:'json',
+		success:function(data){
+			if (data.status==1){
+				var visit = data.data.visit;
+				var visit_list = data.data.visit_list;
+				var doctor = data.data.doctor;
+				var txt = '';
+				for(var i in visit){
+					var type_txt = '';
+					var stype_txt = '';
+					switch(parseInt(visit[i].status)){
+						case 0:
+							type_txt = '待响应';
+							break;
+						case 1:
+							type_txt = '就诊中';
+							break;
+						case 2:
+							type_txt = '已结束';
+							break;
+					}
+					if(visit[i].stype == 1) stype_txt = '（签约）';
+					if(visit[i].stype == 2) stype_txt = '（快诊）';
+					var info = visit[i];
+					var realname = !$.isEmptyObject(doctor[info.userid_d])&&doctor[info.userid_d].realname?doctor[info.userid_d].realname:'';
+					var thumb = !$.isEmptyObject(doctor[info.userid_d])&&doctor[info.userid_d].thumb?doctor[info.userid_d].thumb:'/statics/images/member/nophoto.gif';
+					if(parseInt(visit[i].status) != 2){
+						var text = !$.isEmptyObject(visit_list)&&visit_list[info.id]?visit_list[info.id]:'暂无消息';
+						if(text.indexOf("syuy") > 0) text = '语音消息';
+						if(text.indexOf("sxy") > 0) text = '血压数据';
+						if(text.indexOf("sxl") > 0) text = '心率数据';
+						var cs_tx = '';
+						if(info.user_unread <= 0) cs_tx = 'display:none;';
+						txt += '<li onClick="$(this).find(\'.tixing_\').hide();goo(\'/?m=myim&a=get_dialogue&aa=goim&doctor=0&userid_d='+info.userid_d+'&userid='+userid_cookie+'&vid='+info.id+'\')">\
+						<div class="talk_line">\
+							<div class="talk_line_l fl">\
+								<div class="tixing_" style="'+cs_tx+'">'+info.user_unread+'</div>\
+								<img src="'+thumb+'"></div>\
+								<div class="talk_line_r">\
+									<p class="name">'+realname+'<span>医生'+stype_txt+'</span>\
+									<font class="visit-status visit-status'+visit[i].status+'">'+type_txt+'</font>\
+						</p><p class="messages">'+text+'</p></div></div></li>';
+						if(info.user_unread > 0) $('.favor-header-bar ul li').eq(0).find('.tixing_').show();
+					}
+				}
+				if ($.trim(txt) == '') {
+					//$('.empty-box').show();
+				} else {
+					$('.talk_list').eq(0).find('ul').html(txt);
+				}
+			} else {
+				//$('.empty-box').show();
+			}
+		}
+	})
+}
+function get_cm_fy_list(){
+	$.ajax({
+		url:'/?m=data&c=da_fun&a=get_cm_fy_list',
+		type:'POST',
+		data:'',
+		dataType:'json',
+		success:function(data){
+			var da = data[0];
+			if(!da || da.length == 0) return;
+			var txt = '';
+			var timestamp = Date.parse(new Date()) / 1000;
+			for(i in da){
+				var status =  '';
+				if(da[i].start_time < timestamp && da[i].end_time > timestamp) status = '<u style="color:#00CC00;">进行中</u>';
+				if(da[i].end_time < timestamp) status = '<u style="color:#FF6600;">已结束</u>';
+				if(da[i].start_time > timestamp) status = '<u style="color:#FFCC00;">未开始</u>';
+				var text = da[i].last_text?da[i].last_text:'暂无更多消息';
+				if(text.indexOf("syuy") > 0) text = '语音消息';
+				if(text.indexOf("sxy") > 0) text = '血压数据';
+				if(text.indexOf("sxl") > 0) text = '心率数据';
+				var cs_tx = '';
+				var stype = '在线咨询';
+				if(da[i].stype == 2) stype = '孕产咨询';
+				if(da[i].fr_unread <= 0) cs_tx = 'display:none;';
+				txt += '<li onClick="$(this).find(\'.tixing_\').hide();goo(\'/?m=myim&c=index_cm_fy&aa=goim&doctor=0&userid_d='+da[i].touid+'&userid='+da[i].fruid+'&vid='+da[i].id+'\')">\
+						<div class="talk_line">\
+							<div class="talk_line_l fl">\
+								<div class="tixing_" style="'+cs_tx+'">'+da[i].fr_unread+'</div>\
+								<img src="'+data[1][da[i].touid].thumb+'"></div>\
+								<div class="talk_line_r">\
+									<p class="name">'+data[1][da[i].touid].realname+'<span>医生 <font style="color: #bdbdbd;font-size: 1rem;">['+stype+']</font></span>\
+									<font class="visit-status visit-status">'+status+'</font>\
+						</p><p class="messages">'+text+'</p></div></div></li>';
+				if(da[i].fr_unread > 0) $('.favor-header-bar ul li').eq(1).find('.tixing_').show();
+			}
+			$('.talk_list').eq(1).find('ul').html(txt);
+		}
+	})
+}
+var all_data;
+function get_healthy_da(){
+	$.ajax({
+		url:'/?m=data&c=da_fun&a=get_healthy_da',
+		type:'POST',
+		data:'',
+		dataType:'json',
+		success:function(da){
+			if(da[1]){
+				var txt = '';
+			   for(i in da[1]){
+					txt += '<li onClick="send_tips()">\
+						<div class="talk_line">\
+							<div class="talk_line_l fl">\
+								<img src="/statics/myim_images/yisheng_user.png"></div>\
+								<div class="talk_line_r">\
+									<p class="name">'+da[1][i].name+'<span><font style="font-size:0.9rem;">(分配医生中)</font></span>\
+									<font class="visit-status visit-status"></font>\
+						</p><p class="messages">购买服务月数：['+da[1][i].num+'个月]</p></div></div></li>';
+				}
+				$('.talk_list').eq(2).find('ul').html(txt);
+			}
+			var data = da[0];
+			if(data || data.length > 0){
+				all_data = data;
+				var txt = '';
+				for(i in data){
+					for(j in data[i].datas){
+						var type_str = data[i].datas[j].type == 'bp'?'血压管理':'血糖管理';
+						var ddi = 'display:none;';
+						if(data[i].datas[j].uunread > 0){
+							$('.favor-header-bar ul li').eq(2).find('.tixing_').show();
+							ddi = 'display:block;';
+						}
+						txt += '<li onClick="$(this).find(\'.tixing_\').hide();goo(\'/?m=myim&c=index_healthy&vid='+data[i].datas[j].id+'&userid='+userid_+'&userid_d='+data[i].datas[j].doctorid+'&doctor=0\')">\
+							<div class="talk_line">\
+								<div class="talk_line_l fl">\
+									<div class="tixing_" style="'+ddi+'">'+data[i].datas[j].uunread+'</div>\
+									<img src="'+data[i].thumb+'"></div>\
+									<div class="talk_line_r">\
+										<p class="name">'+data[i].realname+'<span><font style="font-size:0.9rem;">('+type_str+')</font></span>\
+										<font class="visit-status visit-status">服务期：['+data[i].datas[j].deadline_+']</font>\
+							</p><p class="messages">购买：<span style="color:#2CACFC;" onClick="event.stopPropagation();g_cm_fy(this,'+i+');">[预约咨询]</span>&nbsp;&nbsp;<span style="color:#2CACFC;" onClick="event.stopPropagation();g_service(this,'+i+');">[医生服务]</span></p></div></div></li>';
+					}
+				}
+				
+					
+				$('.talk_list').eq(2).find('ul').html(txt);
+			}
+		}
+	})
+}
+function send_tips(){
+	layer.open({
+		content: '医生正在自动分配，请您耐心等待，<br/>稍后将会短信通知您。'
+		,skin: 'msg'
+		,time: 3 //2秒后自动关闭
+	});
+}
+function g_cm_fy(data,i){
+	if(all_data[i].is_cm_fy != 1){
+		layer.open({
+			content: '该医生暂未开通预约咨询。'
+			,skin: 'msg'
+			,time: 2 //2秒后自动关闭
+		});
+		return;
+	}
+	goo('/index5/fy_cm_detail.html?data='+new Base64().encode(JSON.stringify(all_data[i])));
+}
+function g_service(data,i){
+	goo('/patient/doctorDetail2.html?data='+new Base64().encode(JSON.stringify(all_data[i])));
+}
+</script>

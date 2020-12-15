@@ -1,0 +1,179 @@
+<!--<head></head><body></body>-->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<title>客户服务中心</title>
+<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+<script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<script type="text/javascript" src="/statics/js/cookie.js"></script>
+<script type="text/javascript" src="/statics/js/layer/3.1.1/mobile/layer.js"></script>
+<script type="text/javascript" src="/statics/languages/20181105/languages.js"></script>
+</head>
+<style>
+body { background-color: #f2f2f2; }
+.m-content { color: #333; }
+.consult-bg { width: 100%; }
+.consult-bg img { width: 100%; display: block; }
+.m-content-help, .m-content-common { background-color: #fff; margin-bottom: 1rem; }
+.m-content-help .help-title, .m-content-common .common-title { padding: .769rem .923rem; font-size: 1.1rem; }
+.m-content-help .help-item { padding-bottom: 1.23rem; }
+.m-content-help .help-item ul { overflow: hidden; }
+.m-content-help .help-item ul li { float: left; width: 33.33%; text-align: center; }
+.m-content-help .help-item ul li img { width: 3.73rem; height: 3.73rem; margin-bottom: .5rem;}
+.common-item ul { padding-left: 1rem; }
+.common-item ul li { height: 3.5rem; line-height: 3.5rem; color: #666; background: url('./statics/images/arrow_right.png') no-repeat 97% center; background-size: 1rem; position: relative;}
+.common-item ul li span {display: inline-block;
+    width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;}
+.common-item ul li:after { content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;border-bottom:1px solid #e0e0e0;-webkit-transform:scaleY(.5);transform:scaleY(.5);}
+.common-item ul li:last-child { border: 0;}
+.m-content-cs { padding: 1.076rem .923rem; background-color: #fff; margin-bottom: 1rem; }
+.m-content-cs .cs-title, .m-content-cs .cs-service-time { color: #666; }
+.m-content-cs .cs-title { font-size: .9rem; }
+.m-content-cs .cs-telphone { height: 3.076rem; line-height: 3.076rem; font-size: 1.5rem; color: #008cf8; }
+/*.m-content-cs .cs-telphone font { padding-right: 2rem; background: url(./statics/images/arrow_right2.png) no-repeat 100% center; background-size: 1rem; }*/
+.m-content-guestbook { height: 3.46rem; line-height: 3.45rem; text-align: center; background-color: #fff; margin-bottom: 5rem; }
+.m-content-guestbook .guestbook-btn { padding-left: 2rem; background: url(./statics/images/consult_icon.png) no-repeat 0 center; background-size: 1.4rem; color: #d81e06; }
+.m-content-guestbook .guestbook-btn2 { padding-left: 2rem; background: url(./statics/images/consult_icon2.png) no-repeat 0 center; background-size: 1.4rem; color: #d81e06; }
+</style>
+<body>
+	<div class="header_box" style="background: #FFF;border: 1px solid #F2F2F2;">
+		<img src="/statics/images/goback_b.png" onClick="goback()" class="left">
+		<p class="midden" style="color: #000;">客户服务中心</p>
+	</div>
+	<div class="h50"></div>
+	<div class="m-content">
+    	<div class="m-content-consult">
+			<div class="consult-bg"><a href="tel:4001012810"><img src="./statics/images/consult_bg.jpg"></a></div>
+        </div>
+        <div class="m-content-help">
+        	<div class="help-title">问题分类</div>
+            <div class="help-item">
+            	<ul id="helpType">
+                	<li data-val="2">
+                    	<img src="./statics/images/account_number.jpg" />
+                        <p>账号相关</p>
+                    </li>
+                    <li data-val="1">
+                    	<img src="./statics/images/hardware.jpg" />
+                        <p>硬件使用</p>
+                    </li>
+                    <li data-val="6">
+                    	<img src="./statics/images/service_item.jpg" />
+                        <p>服务条款</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="m-content-common">
+        	<div class="common-title">常见问题</div>
+            <div class="common-item">
+            	<ul id="common">
+                	
+                </ul>
+            </div>
+        </div>
+        <!--<div class="m-content-cs">
+        	<div class="cs-title">拨打客服热线</div>
+            <div class="cs-telphone" id="J_mobile"><font>400-1012-810</font></div>
+            <div class="cs-service-time">服务时间：10:00 ~ 18:00</div>
+        </div>-->
+        <div class="m-content-guestbook" id="J_guestbook" style='width: 49%;float: left;'>
+        	<span class="guestbook-btn">意见反馈</span>
+        </div>
+        <div class="m-content-guestbook" style='width: 49%;float: right;' id="J_consult">
+        	<span class="guestbook-btn2">在线咨询</span>
+        </div>
+    </div>
+<iframe src="/index2/footer.html" id="footer" frameborder="0" width="0" height="0"></iframe>
+<div style="height: 50px"></div>
+</body>
+</html>
+<script>
+get_frame();
+function get_frame(){
+	$.get('/index2/footer.html',function(data){
+      if(getUrlParam('mobile')=='ios' && getUrlParam('version')=='2019062702'){
+		return;
+	}
+		$('#footer').after(data);
+		setfoot(4)
+	});
+}
+var ua = window.navigator.userAgent.toLowerCase();
+if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+	if(getQueryString('WeChat_SpApi') == 1){
+		$('.header_boxl img').hide();
+		$('.header_box img').hide();
+		$('.index_foot').hide();
+	}
+}
+var help = {};
+$(function(){
+	get_data();
+	$('#J_consult').on('click',function(){
+		if(!userid_){
+			goo('/member/login.html?forward='+encodeURIComponent(window.location.href));
+			return;
+		}
+		goo('/?m=myim&c=customer_service');
+	});
+	$('#J_guestbook').on('click',function(){
+		goo('/member/setting/feedback.html');
+	});
+	
+	$('#J_mobile').on('click',function(){
+		window.location.href = 'tel:400-1012-810';
+	});
+	
+	var _item = $('#helpType li');
+	_item.each(function(i) {
+        $(_item[i]).on('click',function(){
+			var type = parseInt($(this).attr('data-val'));
+			var url = '/customer_service/help_list.html?&t='+type;
+			goo(url);
+		});
+    });
+});
+function get_data(){
+	var url = '/?m=data&c=da_fun&a=get_help_data&data=1';
+	$.ajax({
+		url: url,
+		type:'GET',
+		dataType:'json',
+		success:function(data){
+			var html = '';
+			if (data.status == 1) {
+				help = data.data.help;
+				for(var i in help){
+					var info = help[i];
+					html += '<li><span>'+info.title+'</span></li>';
+				}
+			} else {
+				html = '<li>暂无问题</li>';
+			}
+			$('#common').html(html);
+			initAction();
+		}
+	})
+}
+function initAction(){
+	var _item = $('#common li');
+	_item.each(function(i) {
+        $(_item[i]).on('click',function(){
+			var _help = help[i];
+			var title = new Base64().encode(_help.title);
+			var url = './help_detail.html?hid='+_help.id+'&title='+title;
+			goo(url);
+		});
+    });
+}
+</script>

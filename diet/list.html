@@ -1,0 +1,467 @@
+﻿<!--<head></head><body></body>-->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title set-lan="html:recipe_list">食谱列表</title>
+<meta name="keywords" content="医家讯,医家讯智能医疗设备,智能健康电子档案,个人健康、家庭健康,健康检测,心率监测,血糖监测,血压监测,睡眠监测,健康饮食,运动健美,亲友互动,运动圈子,医体健康,食动平衡,人工智能,健康管理,物联网,智能大数据">
+<meta name="description" content="医家讯智能医体健康平台通过智能紧急提醒、生命健康监测、智能穿戴设备及专业级智能医疗设备，结合物联网、云计算、健康大数据分析与呼叫中心，构建智能医体健康平台，让家人享受更健康、更安全、更舒心、更智慧化的生活，也让子女随时随地的了解父母的健康情况，及时表达爱心和孝心。">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/header_common.css">
+<link rel="stylesheet" type="text/css" href="css/content.css">
+<script type="text/javascript" src="/statics/js/jquery.min.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<script type="text/javascript" src="/statics/circle/js/global.js"></script>
+
+<!--<script type="text/javascript" src="/statics/js/layer/1.9.3/layer.js"></script>-->
+
+<script type="text/javascript" src="/statics/js/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="/statics/js/lazyload/jquery.lazyload.js"></script>
+<script type="text/javascript" src="/statics/js/ex/mytemplate_1.js"></script>
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+<script type="text/javascript" src="/statics/languages/20181105/languages.js"></script>
+<style>
+#search_item { /*position:relative; left:0; transition: left .3s;*/ }
+.zone_list_search { display: none; }
+.header_box { background-color: #ffffff; }
+.diet-fun-label .diet-fun-label-item.active { color: #2aabfe; background-color: #fff; }
+/**/
+
+.diet_hot { width: 100%; overflow: hidden; background-color: #fff; }
+.diet_hot .title { width: 100%; overflow: hidden; margin: 10px 0px; padding: 0px 10px; }
+.diet_hot .diet_hot_l { border-left: 2px solid #2cacfc; }
+.diet_hot .diet_hot_l i { margin-left: 10px; font-weight: bold; }
+.diet_hot .diet_hot_r { color: #7e7e80; font-weight: bold; }
+.diet_hot_box { width: 100%; overflow: hidden; padding: 10px; }
+.diet_hot_box li { width: 48.5%; overflow: hidden; margin-bottom: 10px; /*border: 1px solid #f2f2f2;*/ border-radius: 5px; box-shadow: 0px 2px 5px 0px #C1C1C1; }
+.diet_hot_box .diet_hot_box_ { width: 100%; overflow: hidden; padding-bottom: 10px; }
+.diet_hot_box_ .diet_hot_pic { width: 100%; height: 120px; position: relative; margin-bottom: 1.2rem }
+.diet_hot_pic .pic { width: 100%; height: 120px; }
+.diet_hot_pic .star { width: 2rem; height: 2rem; position: absolute; right: 10px; bottom: -1rem; }
+.diet_hot_box_ p { padding-left: 0.6rem; color: #333; font-weight: bolder; margin-bottom: 1.2rem; }
+.diet_hot_box_ p.diet-title { font-size: 1.15rem; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; height: 3rem; }
+.diet_hot_box_ p:first-child { font-size: 17px; }
+.diet_hot_box_ p:last-child { /*font-size:12px; color:#fdda36;*/ }
+/**/
+
+.fixed_box { width: 50px; /*height:100px;*/ position: fixed; bottom: 50px; right: 10px; z-index: 99999; text-align: center; }
+.fixed_box .fixed_box_ { padding: 5px; color: #fff; font-size: 1.2rem; background: rgba(240,154,41,0.7); border-radius: 3px; margin-bottom: 10px; }
+.fixed_box .fixed_box_:first-child { background: rgba(52,175,252,0.9); }
+.fixed_box .fixed_box_:last-child { background: rgba(0,220,55,0.9); }
+.diet_hot_box_ p.label-item { float: right; margin: 0; padding-right: 0.6rem; /*margin-top:5px;*/ }
+.diet_hot_box_ p.label-item span { padding: 0 13px; margin-left: 5px; border-radius: 20px; background-color: #fc7071; color: #fff; font-weight: normal; display: block; float: left; height: 1.4rem; line-height: 1.5rem; font-size: 0.89rem; }
+.header_box .midden {
+    border-bottom: 1px solid #e6e6e6;
+}
+</style>
+</head>
+<script>
+
+try{
+
+	jstojava.mycleargoback();
+
+	jstojava.close_toobar();
+
+}catch(e){  }
+
+</script>
+
+<body>
+<div class="header_box"> <img src="/statics/images/goback_b.png" onClick="goback()" class="left">
+  <p class="midden" set-lan="html:recipe_list">食谱列表</p>
+  <div class="right"> <img src="/diet/images/mess_.png">
+    <p set-lan="html:message">消息</p>
+  </div>
+</div>
+<div class="h50"></div>
+<div class="diet_hot">
+  <div class="diet_hot_box">
+    <ul id="list_content">
+    </ul>
+  </div>
+</div>
+<template class="template" id="list_template">
+  <li class="fl" onClick="goo('/diet/show.html?&catid=<$catid>&id=<$id>')">
+    <div class="diet_hot_box_">
+      <div class="diet_hot_pic"> 
+        
+        <!--<img src="statics/images/diet_rec_box_.png" class="pic">--> 
+        
+        <img src="/statics/images/bg_h2.gif" data-src="<$thumb>" data-height="120" onload="delayimg(this)" class="pic _reset"> <img src="./images/star.png" class="star"> </div>
+      <p class="diet-title">
+        <$title>
+      </p>
+      <p class="label-item">
+        <$label_html>
+      </p>
+      
+      <!--<p><$calorie>千卡·<$make_time>分钟</p>--> 
+      
+    </div>
+  </li>
+</template>
+</body>
+<script>
+
+var time_,fit_time,season,fun,sport,k;
+
+var page = 1;
+
+var loaded = 0;
+
+var scrollSet = 0;
+
+var search_item = $('#search_item li');
+
+var screen_width = $(window).width();
+
+var catid = getUrlParam('catid');
+
+catid = catid?catid:71;
+
+var label_v = '';
+
+var action = 'lists';
+
+var url = '/index.php?m=diet&c=index&a=get_data&ajax=1&catid='+catid;
+
+$(function(){
+
+	$("#catidSel").attr('value',catid);
+
+	fit_time = getUrlParam('fit_time');
+
+	season = getUrlParam('season');
+
+	fun = getUrlParam('fun');
+
+	sport = getUrlParam('sport');
+
+	k = getUrlParam('k');
+
+	//console.log(k);
+
+	get_data();
+
+	window.onscroll = function() { myscroll(); }
+
+	//bindSearchItem();
+
+	//initDietFunLabel();
+
+	//setSearchItemOffset();
+
+});
+
+function get_data(){
+
+	if ($('#content_label').attr('data-off')==1) {action = 'lists';}
+
+	ChangeParam('page',page,url);
+
+	if (fit_time) ChangeParam('fit_time',fit_time,url);
+
+	if (season) ChangeParam('season',season,url);
+
+	if (fun) ChangeParam('fun',fun,url);
+
+	if (sport) ChangeParam('sport',sport,url);
+
+	if (k) ChangeParam('k',k,url);
+
+	//var index = layer.open({type: 2,time:5});
+
+	$.ajax({ 
+
+		'url': url,
+
+		'dataType': 'json',
+
+		'data': 'action='+action,
+
+		'success':function(data){
+
+			//layer.close(index);
+
+			/*if ($('#content_label').attr('data-off')==0) {
+
+				//sport label
+
+				var list_label = $('#list_label').html();
+
+				list_label = mytemplate_list(list_label,data.label);
+
+				$('#content_label').append(list_label);
+
+				initDietFunLabel();
+
+			}*/
+
+			
+
+			var info = data.lists;
+
+			if ($.isEmptyObject(info)) {
+
+				return;
+
+			}
+
+			loaded = 0;
+
+			var list_template = $('#list_template').html();
+
+			list_template = mytemplate_list(list_template,info);
+
+			$('#list_content').append(list_template);
+
+			resetStyle();
+			StranBody();
+			//initImgs();
+
+		}
+
+	});
+
+}
+
+function getKeys(){
+
+	if(event.keyCode==13){
+
+		var key = $('#key').val();
+
+		ChangeParam('k',key,url);
+
+		get_data();
+
+	}
+
+}
+
+function initDietFunLabel(){
+
+	var width = length= 0;
+
+	var diet_fun_label = $('#content_label .diet-fun-label-item');
+
+	length = diet_fun_label.length;
+
+	diet_fun_label.each(function(i) {
+
+		$(diet_fun_label[i]).click(function(){
+
+			$(diet_fun_label).removeClass('active');	
+
+			$(this).addClass('active');
+
+			label_v = $(this).attr('data-val');
+
+			ChangeParam('label_v',label_v,url);
+
+			$('#list_content').empty();
+
+			page=1;
+
+			get_data();
+
+		});
+
+        width += Number($(this).innerWidth());
+
+    });
+
+	//console.log(width);
+
+	width = width + ((length-1)*10);
+
+	$('#content_label').css({'width':width});
+
+	$('#content_label').attr('data-off',1);//加载健身标签
+
+	if (width>$(window).width()) {$('.diet-fun-label').css({"overflow-x":"scroll"});}
+
+}
+
+function bindSearchItem(){
+
+	var lenght = Number(search_item.length);
+
+	if (lenght>3) {
+
+		var result = lenght*90;
+
+		$('#search_item').width(result);
+
+		$('#search_item_box').css({'overflow-x':'scroll'});
+
+		$('#search_item li').css({'width':'90px'});
+
+	}
+
+	
+
+	search_item.each(function(i) {
+
+        $(search_item[i]).click(function(){
+
+			$(search_item).removeClass('active');
+
+			$(this).addClass('active');
+
+			var dataIndex = $(this).attr('data-index');
+
+			var value = $(this).attr('data-val');
+
+			ChangeParam(dataIndex,value,url);
+
+			get_data();
+
+		});
+
+		
+
+    });
+
+}
+
+function setSearchItemOffset(){
+
+	search_item.each(function(i) {
+
+		var itemOffset = (i+1)*90;
+
+       if (itemOffset>screen_width && catid==$(this).attr('data-val')) {
+
+			moverScrollPostion();
+
+			return;
+
+		} 
+
+    });
+
+	
+
+}
+
+
+
+function moverScrollPostion(){
+
+	var end = $('#search_item').width()-$(window).width();
+
+	end = Math.abs(end);
+
+	var sib = document.getElementById('search_item_box');
+
+	if (sib.scrollLeft >= end) {
+
+		clearTimeout(time_);
+
+	}
+
+	scrollSet+=4;
+
+	document.getElementById('search_item_box').scrollLeft = scrollSet;
+
+	time_ = setTimeout('moverScrollPostion()',20);
+
+}
+
+function myscroll(){
+
+	if(loaded!=1){
+
+		var c=document.documentElement.clientHeight || document.body.clientHeight;
+
+		var t=$(window).scrollTop();
+
+		//console.log((t+c) + '----' + ($('body').height()+15));
+
+		//$('#test_data').text((t+c) + '----' + ($('body').height()+15));
+
+		if(t+c >= $('body').height()){
+
+			loaded=1;
+
+			//$('#gengxin_foot').css('display', 'block');
+
+			page ++;
+
+			window.setTimeout("get_data()",300);
+
+		}
+
+	}
+
+}
+
+
+
+function resetStyle(){
+
+	var imgs = $('img._reset');
+
+	imgs.each(function(i) {
+
+        var _height = $(this).parent().width()/1.5;
+
+		$(this).attr('data-height',_height);
+
+    });
+
+}
+
+
+
+function ChangeParam(name, value, url_) {
+
+	
+
+    var reg = new RegExp("(^|)" + name + "=([^&]*)(|$)");
+
+    var tmp = name + "=" + encodeURI(value);
+
+	
+
+    if (url_.match(reg) != null) {
+
+        url_ = url.replace(reg, tmp);
+
+		//console.log(url_);
+
+    } else {
+
+        if (url_.match("[\?]")) {
+
+            url_ = url_ + "&" + tmp;
+
+        } else {
+
+            url_ = url_ + "?" + tmp;
+
+        }
+
+    }
+
+	url = url_;
+
+}
+
+function getQueryString(name) {
+
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+
+	var r = window.location.search.substr(1).match(reg);
+
+	if (r != null) return unescape(r[2]); return null;
+
+}
+
+</script>
+</html>
