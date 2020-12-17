@@ -658,7 +658,7 @@ function checkLogin(ac) {
 	var status, erro;
 	var auth = getCookie(cookie_pre + 'auth');
 	if (ac && ac.indexOf('golink') > -1 && !auth) {
-		goo('/h5page/pharmacy/login.html?forward=' + encodeURIComponent(window.location.href));
+		goo('/pharmacy/login.html?forward=' + encodeURIComponent(window.location.href));
 		return false;
 	}
 	if (auth) {
@@ -953,10 +953,10 @@ function logout1(forward){
 			var domain = window.location.href.split(/http:\/\/([^\.]*)/);
 			if(domain[1]=="dr"){
 			
-				goo('/h5page/pharmacy/login.html?forward='+forward);
+				goo('/pharmacy/login.html?forward='+forward);
 				return;
 			} 
-			goo('/h5page/pharmacy/login.html?forward='+forward);
+			goo('/pharmacy/login.html?forward='+forward);
 		}
 	},300);
 }

@@ -1,0 +1,623 @@
+*{
+	-webkit-transition:all 0.5s linear;
+}
+body{
+    background-color: #D6E9FF;
+}
+div,img,input,h2,table,tr,td,select,i,option,button,a,dl,dd,ul,li,b{
+	margin:0;
+	padding:0;
+	font-style:normal;
+	font: 12px/1.6 tahoma,arial,sans-serif;
+	color:#333;
+	box-sizing: border-box;
+}
+ul{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+.wrap{
+    width: 70%;
+    position: absolute;
+    margin: 0 auto;
+    overflow: auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.wrap:before{/*margin嵌套问题*/
+	content:'';
+	display:table;
+}
+.logo{
+    width: 100%;
+    height: 10vh;
+    background: #ffffff;
+    /* margin-top: 30px; */
+    line-height: 10vh;
+}
+.logo a{
+	width:220px;
+	text-decoration: none;
+	display:inline-block;
+}
+.logo a img{
+    display: inline-block;
+    margin-left: 2rem;
+    width: 12rem;height: 8vh;
+}
+
+.register-wrap{
+	width:100%;
+	padding:40px 0;
+}
+.register-wrap:after{/*内容没有撑开盒子的处理方法*/
+	content:'';
+	display:block;
+	clear:both;
+}
+.register-wrap .pic{
+	width:40%;
+	padding: 20px 0 0 40px;
+	float:left;
+	display:inline-block;
+}
+.register-wrap .register{
+	width:400px;
+    display: block;
+    margin: 0 auto;
+    border:1px solid #ccc;
+    background-color: #ffffff;
+}
+.register-wrap .register .register-top{
+	
+	box-sizing: content-box;
+	padding: 8px 0 0 0;
+	display:block;
+	/*点击切换到扫码登录时隐藏*/
+}
+.register-top:after{
+	/*内容没有撑开盒子的处理方法*/
+	content:'';
+	display:block;
+	clear:both;
+}
+.register-wrap .register .register-top h2{
+	font-size: 14px;
+	color: #333;
+	height: 42px;
+	line-height: 42px;
+	font-weight:800;
+	letter-spacing: 1px;
+	float:left;
+	cursor: pointer;
+	width:119px;
+	text-align: center;
+	position:relative;
+} 
+.register-wrap .register .register-top h2.normal{
+	border-bottom: 2px solid #ffffff!important;
+	margin-left:10px;
+	top:4px;
+}
+.register-wrap .register .register-top h2.nopassword{
+	/* border-bottom: 2px solid #f55; */
+	margin-left:36px;
+	top:4px;
+}
+
+.register-wrap .register .register-top a{
+	display:inline-block;
+	float:right;
+	width:46px;
+	height:46px;
+	margin-right:8px;
+	background:url(/h5page/pharmacy/images/erweima_geg.png) no-repeat 0 0;
+	position: relative;
+}
+
+.register-wrap .register .register-top a .qrcondspan{
+    height: .55rem;padding: 0 .2rem;
+    font-size: .22rem;
+    text-align: center;
+    position: absolute;
+    color: rgba(58, 98, 215, 1);
+    left: -4rem;
+    background: #D6E9FF;
+    top: 0;
+    line-height: .55rem;
+	border: 1px solid #D6E9FF;}
+	
+@media screen and (min-width:576px) and (max-width:800px){
+    .register-wrap .register .register-top a .qrcondspan {
+    position: absolute;
+	left: -5.2rem;
+}
+}
+@media screen and (min-width:800px) and (max-width:1000px){
+    .register-wrap .register .register-top a .qrcondspan {
+    position: absolute;
+	left: -4.8rem;
+}
+}
+@media screen and (min-width:1000px) and (max-width:1500px){
+    .register-wrap .register .register-top a .qrcondspan {
+    position: absolute;
+	left: -4rem;
+}
+}
+@media screen and (min-width:1500px) and (max-width:2500px){
+    .register-wrap .register .register-top a .qrcondspan {
+    position: absolute;
+	left: -3rem;
+}
+}
+.register-wrap .register .register-top a .qrcondspan svg{width: 15px;
+    margin-right: .2rem;
+    height: 15px;
+    vertical-align: middle;}
+
+/*=======普通登录样式===========*/
+
+.register-wrap .register .register-con{
+	padding: 0 0 30px 38px;
+	 display:block; 
+	 /*切换到其他登录方式时，隐藏*/
+}
+.register-wrap .register .register-con:after{
+	/*内容没有撑开盒子的处理方法*/
+	content:'';
+	display:block;
+	clear:both;
+}
+.register-wrap .register .register-con ul{
+	margin-top:20px;
+}
+
+.register-wrap .register .register-con ul li {
+	margin-bottom:20px;
+	vertical-align: top;position: relative;
+	/* border:1px solid #ccc; */
+}
+.register-wrap .register .register-con ul li .form-icons{position: absolute;
+    left: 0;
+    top: 0;text-align: center;
+    width: 1rem;
+    line-height: 35px;border: 0;
+    height: 35px;
+}
+.register-wrap .register .register-con ul li .form-icons svg{     
+	width: 25px;
+    height: 25px;
+    vertical-align: middle;
+	}
+.register-con ul #rc-inner-num,#rc-inner-virity {
+	width:300px;
+	height:32px;
+	padding:0 6px;
+	color:#ff1877;
+	border:1px solid #ffd797;
+	display:none;
+}
+
+.register-con ul #rc-inner-num>i,#rc-inner-virity>i,#rc-innerError>i{
+	display:inline-block;
+	float:left;
+	width:20px;
+	height:20px;
+	margin:6px 10px;
+	border:none;
+	background:url(https://www.17sucai.com/preview/471626/2017-04-15/login/images/bz_16x16.png) no-repeat 0 0;
+}
+.register-con ul #rc-inner-num>span,#rc-inner-virity>span,#rc-innerError>span{
+	color:#ff1877;
+	display:inline-block;
+	float:left;
+	line-height:26px;
+}
+.register-wrap .register .register-con ul li  input{
+	width:300px;
+	height: 35px;
+	line-height:35px;
+    padding: 0 6px; 
+    font-size:100%;border-radius: .05rem;
+    display:inline-block;
+	vertical-align: top;
+}
+.register-wrap .register .register-con ul li  select{
+	width:300px;
+	height: 35px;
+	line-height:35px;
+    padding: 0 6px; 
+    font-size:100%;border-radius: .05rem;
+    display:inline-block;
+	vertical-align: top;
+}
+/*清除IE10中的text和password的默认图标*/
+::-ms-clear{ display:none; }
+::-ms-reveal{ display:none; }
+
+.register-wrap .register .register-con ul li i{
+	display:inline-block;
+	width:104px;
+	height:30px;
+	text-align: center;
+	line-height:30px;
+	margin-right:10px;
+	font-size:14px;
+	border:1px solid #ccc;
+	background:#eaeaea;
+	vertical-align: top;
+}
+.register-wrap .register .register-con ul li  .btn{
+	width:104px;
+	margin-left:10px;
+	height: 30px;
+    padding: 0 6px;
+    font-size:100%;
+    border-radius: 0;
+    /* display:inline-block; */
+    border:1px solid #ccc;
+    vertical-align: top;
+}
+.register-wrap .register .register-con ul li button{
+	display: inline;
+	border: none;
+	width: 300px;
+	height: 35px;
+	padding: 0 6px;
+	background: #3A62D7;
+	border-radius: 2px;
+	cursor: pointer;
+	color: #fff;
+}
+.register-wrap .register .register-con ul li.read{
+    padding-bottom:20px;
+    padding-top:.1rem ;
+}
+.register-wrap .register .register-con ul li.read input{
+	width: 18px;
+    height: 18px;
+    height: 18px\0;
+    width: 104px\0;
+    line-height: 18px\0;
+    margin-left: -45px\0;
+    line-height: 14px;
+    border: 1px solid #ecdfdf;
+    display: inline-block;
+    margin-right: .3rem;
+    margin-top: .05rem;
+    font-size: 14px;
+    border-radius: 0;
+    outline: none;
+    float: left;
+    vertical-align: top;
+}
+.register-wrap .register .register-con ul li.read b{
+	margin-left:-8px;
+	margin-left:-50px\0;
+	vertical-align: top\0;
+	color:#999;
+	float:left;
+}
+.register-wrap .register .register-con ul li.read a{
+	text-decoration: none;
+	float:right;
+	margin-right:60px;
+}
+ .register-wrap .register .register-con ul li a{
+	text-decoration: underline;
+}
+.register-wrap .register .register-con ul li a{
+	display:inline-block;
+	color:#999;
+} 
+ .register-wrap .register .register-con ul li a.haiwai{
+	float:left;
+}
+.register-wrap .register .register-con ul li a.zhuce{
+	float:right;
+	margin-right:60px;
+} 
+.register-wrap .register .register-con ul li.zjdl{
+	clear:both;
+	color:#999;
+	padding:20px 0;
+}
+.register-wrap .register .register-con ul li div{
+	width:100px;
+	height:36px;
+	float:left;
+	margin-right:6px;
+	border:1px solid #ccc;
+	cursor: pointer;
+}
+.register-wrap .register .register-con ul li div.qq{
+
+	background:url(../images/sprite_200x300.png) no-repeat 0 -120px ;
+}
+.register-wrap .register .register-con ul li div.weixin{
+	background:url(../images/sprite_200x300.png) no-repeat 0 -200px ;
+}
+.register-wrap .register .register-con ul li div.weibo{
+	background:url(../images/sprite_200x300.png) no-repeat 0 -160px;
+}
+
+/*=========手机号码无密码登录==========*/
+.register-wrap .register .login-con{
+	padding: 0 0 30px 38px;
+	display:none;
+	/*切换到其他登录方式时，隐藏*/
+}
+.login-con:after{
+	content:'';
+	display:block;
+	clear:both;
+}
+
+.login-con ul{
+	margin-top:20px;
+}
+.login-con ul:after{
+	content:'';
+	display:block;
+	clear:both;
+}
+.login-con ul li{
+	margin-bottom:10px;
+}
+.login-con ul #inner-num,#inner-virity {
+	width:300px;
+	height:32px;
+	padding:0 6px;
+	color:#ff1877;
+	border:1px solid #ffd797;
+	display:none;
+}
+.login-con ul #inner-num>i,#inner-virity>i{
+	display:inline-block;
+	float:left;
+	width:20px;
+	height:20px;
+	margin:6px 10px;
+	border:none;
+	background:url(../images/bz_16x16.png) no-repeat 0 0;
+}
+.login-con ul #inner-num>span,#inner-virity>span{
+	color:#ff1877;
+	display:inline-block;
+	float:left;
+	line-height:26px;
+}
+.login-con ul li.lg-num select{
+	height: 30px;
+	width:104px;
+	margin-right: 10px;
+	line-height: 1.5;
+	border: 1px solid #c4c4c4;
+	border-radius: 0;
+	color: #333;
+	font-size: 14px;
+	padding: 4px 35px 4px 10px; 
+	 /*将默认的select选择框样式清除*/
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-o-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
+
+	background:url('../images/arrow_29x30.png') no-repeat scroll right center #fff;
+	vertical-align: top;/*处理li中的元素错位问题*/
+	width:104px\0;
+	background:none\0;
+	padding: 4px 6px 4px 6px\0;
+}
+.login-con ul li.lg-num input{
+	width:180px;
+	height: 30px;
+	line-height:30px;
+    padding: 0 6px; 
+    font-size:100%;
+    display:inline-block;
+	vertical-align: top;
+}
+.login-con ul li.password input{
+	width:300px;
+	height: 30px;
+	line-height:30px;
+    padding: 0 6px; 
+    font-size:100%;
+    display:inline-block;
+}
+.register-wrap .register .login-con ul li button{
+	display: inline;
+	border: none;
+	width: 300px;
+	height: 30px;
+	padding: 0 6px;
+	background: #ff1877;
+	border-radius: 2px;
+	cursor: pointer;
+	color: #fff;
+}
+.register-wrap .register .login-con ul li button.getcode{
+	color:#333;
+	background:#f4f4f4;
+	border:1px solid #ccc;
+}
+.register-wrap .register .login-con ul li.read{
+	padding-bottom:20px;
+}
+.register-wrap .register .login-con ul li.read input{
+	width:14px;
+	height:14px; 
+	height:18px\0;
+	width:104px\0;
+	line-height:18px\0;
+	margin-left:-45px\0;/*IE8-11的兼容性*/
+	line-height:14px;
+	display:inline-block;
+	margin-right:10px;
+	font-size:14px;
+	border-radius: 0;
+	outline:none;
+	float:left;
+	vertical-align: top; 
+}
+.register-wrap .register .login-con ul li.read b{
+	margin-left:-8px;
+	margin-left:-50px\0;
+	vertical-align: top\0;
+	color:#999;
+	float:left;
+}
+.register-wrap .register .login-con ul li.read a{
+	text-decoration: none;
+	float:right;
+	margin-right:60px;
+}
+ .register-wrap .register .login-con ul li a{
+	text-decoration: underline;
+}
+.register-wrap .register .login-con ul li a{
+	display:inline-block;
+	color:#999;
+} 
+ .register-wrap .register .login-con ul li a.haiwai{
+	float:left;
+}
+.register-wrap .register .login-con ul li a.zhuce{
+	float:right;
+	margin-right:60px;
+} 
+.register-wrap .register .login-con ul li.zjdl{
+	clear:both;
+	color:#999;
+	padding:20px 0;
+}
+.register-wrap .register .login-con ul li div{
+	width:100px;
+	height:36px;
+	float:left;
+	margin-right:6px;
+	border:1px solid #ccc;
+	cursor: pointer;
+}
+.register-wrap .register .login-con ul li div.qq{
+	background:url(../images/sprite_200x300.png) no-repeat 0 -120px ;
+}
+.register-wrap .register .login-con ul li div.weixin{
+	background:url(../images/sprite_200x300.png) no-repeat 0 -200px ;
+}
+.register-wrap .register .login-con ul li div.weibo{
+	background:url(../images/sprite_200x300.png) no-repeat 0 -160px;
+}
+/*=========扫码登录==============*/
+.saoma{
+   /*  height: 380px; */
+    width: 350px;
+  	padding:0 0 30px 40px;
+  	display:none;
+  	/*该登录方式下，只有点击右上角图标才能切换到其他登录方式*/
+}
+.saoma>div{
+	border:none;
+}
+.saoma .screen-tu{
+	width:53px;
+	height:53px;
+	position:relative;
+	left:298px;
+	top:10px;
+	cursor: pointer;
+	background:url(/h5page/pharmacy/images/tubiao_bfbgf.png) no-repeat;
+	background-position:0 0 ;
+}
+.saoma .saoyisao{
+	position: relative;
+    height: 80px;
+    top: -20px;
+    width: 200px;
+    background: url(/h5page/pharmacy/images/bfgdg.png) no-repeat;
+}
+.saoma .qr-code{
+    width: 255px;
+    /* height: 204px; */
+    margin: 0 auto;
+    /* text-align: center; */
+    position: relative;
+    top: -30px;
+}
+.saoma .qr-code img{
+	display:block;
+}
+.saoma .link{
+	width:200px;
+	height: 30px;
+	bottom: 0;
+	position:relative;
+	left:50%;
+	margin-left:-85px;
+	height:30px;
+}
+.saoma .link a{
+	text-decoration: underline;
+	font-size: 18px;
+	line-height:30px;
+	font-family: Microsoft YaHei;
+	color:#333;
+	font-weight:bold;
+	letter-spacing: 1px;
+}
+
+/*========footer部分样式开始==========*/
+.footer{
+    width: 100%;
+    height: 10vh;
+    position: absolute;
+    line-height: 10vh;
+    text-align: center;
+    bottom: 0;
+    left: 0;
+    background-color: #ffffff;
+}
+.footer .footerspan{position: absolute;top: 50%;left: 50%;transform:translate(-50%,-50%);color:#000;}
+
+
+.layui-m-layer-msg .layui-m-layercont {
+    padding: 10px 20px;
+    color: #ffffff!important;
+}
+@media screen and (min-width:1366px) and (max-width:1500px){
+	.register-wrap .register .register-top a .qrcondspan {
+		position: absolute;
+		left: -3.1rem;
+	}
+  }
+
+@media screen and (min-width:1180px) and (max-width:2880px){
+	.register-wrap .register .register-con ul li.read input {
+		width: 18px;
+		height: 18px;
+		line-height: 14px;
+		border: 1px solid #ecdfdf;
+		display: inline-block;
+		margin-right: .3rem;
+		margin-top: -.03rem;
+		font-size: 14px;
+		border-radius: 0;
+		outline: none;
+		float: left;
+		vertical-align: top;
+	}
+	.register-wrap .register .register-top a .qrcondspan {
+		height: .45rem;
+		padding: 0 .2rem;
+		font-size: .2rem;
+		text-align: center;
+		line-height: .45rem;
+		border: 1px solid #D6E9FF;
+	}
+  }
