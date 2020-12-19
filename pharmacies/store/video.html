@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+        content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/header_common.css">
+<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/left_.css">
+<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/index.css">
+<link rel="stylesheet" href="/statics/dataManage/css/bootstrap.css">
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+<script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<script type="text/javascript" src="https://lxj.yjxun.cn/statics/admin/common/js/jQuery.print.js"></script>
+<title>视频问诊</title>
+<style>
+ .query-btn .btn-item {
+    margin-left: 0px;
+}
+.query-btn .btn-item {
+    height: auto;
+    min-height: 26px;
+}
+.query-btn .btn-item {
+    height: auto;
+    min-height: 26px;
+    text-align: center;
+}
+.matst_back{    
+    width: 98%;
+    margin: 0 auto;
+    margin-top: .5rem;}
+.gethome{    
+    width: 97%;
+    height: .7rem;
+    line-height: .7rem;
+    margin: .3rem auto 0 auto;}
+.gethome svg{float:right;width: .5rem;height: .5rem;vertical-align: middle;}
+.gethome span{float: right;
+    margin-left: .05rem;vertical-align: middle;
+    color: #836be0;}
+
+
+    .data-content {
+        width: 60%;
+    overflow: auto;
+    margin-right: 0;
+    padding-right: 0;
+    padding: 10px 0;
+    box-shadow: 0px 1px 3px 1px transparent;
+}
+.ct-notes {
+  width: 89%;
+    margin: 0 auto;
+    min-height: 865px;
+    background-color: #fff;
+    box-shadow: 0 0 25px #bfdeff;
+    border-radius: 10px;
+    box-sizing: border-box;
+
+}
+.ct-notes .ct-notes-head {
+	height: 50px;
+	line-height: 50px;
+	padding-left: 15px;
+	font-size: 14px;
+	color: #1c2337;
+	font-weight: 700;
+	border-bottom: 1px solid #e9ebee;
+	position: relative;
+}
+.ct-notes .ct-notes-tap {
+    height: 50px;
+    margin: 0 15px;
+    border-bottom: 1px solid #e9ebee;
+    position: relative;
+}
+.ct-notes-tap .tap-name {
+	color: #2c8df1;
+	height: 21px;
+	line-height: 12px;
+	border-bottom: 2px solid #2c8df1;
+	position: absolute;
+	left: 0;
+	top: 28px;
+	padding: 0 15px;
+}
+.ct-notes-hospital {
+    height: 75px;
+    margin: 0 10px 60px;
+    margin-bottom: 46px;
+}
+.ct-notes-hospital span {
+	display: inline-block;
+	height: 75px;
+	line-height: 75px;
+	color: #485060;
+	font-size: 16px;
+	float: left;
+	margin: 0 10px;
+}
+.ct-notes-info {
+    margin: 0 12px;
+    border-top: 1px solid #8d8d8d;
+    border-bottom: 1px solid #8d8d8d;
+}
+.ct-notes-info div {
+	height: 30px;
+	line-height: 30px;
+	box-sizing: border-box;
+}
+.ct-notes-medicines {
+    min-height: 405px;
+    margin: 10px 12px 0 12px;
+}
+.medicineTip, .medicineTip sup {
+	font-size: 16px;
+	color: #485060;
+}
+.medicine {
+	overflow: auto;
+	margin: 10px 0;
+}
+.medicine div div:last-child {
+    text-align: right;
+}
+.ct-notes-doctor {
+    border-top: 1px solid #8d8d8d;
+    margin: 0 10px;
+    height: 76px;
+}
+.ct-notes-doctor div {
+	height: 35px;
+	line-height: 35px;
+}
+.ct-notes-toolBar {
+	height: 60px;
+	border-top: 1px solid #e9ebee;
+}
+.ct-notes-toolBar button {
+	height: 36px;
+	width: 60px;
+	margin: 12px 0;
+	float: right;
+	text-align: center;
+	line-height: 36px;
+	border-radius: 5px;
+	cursor: pointer;
+	border: none;
+	padding: 0;
+}
+.ct-notes-toolBar .submit {
+	background-color: #2c8df1;
+	color: #fff;
+	margin-right: 18px;
+}
+.ct-notes-toolBar .cancel {
+	background-color: #fff;
+	color: #2c8df1;
+	margin-right: 16px;
+}
+.prescription-col-0, .prescription-col-1, .prescription-col-10, .prescription-col-11, .prescription-col-12, .prescription-col-13, .prescription-col-14, .prescription-col-15, .prescription-col-16, .prescription-col-17, .prescription-col-18, .prescription-col-19, .prescription-col-2, .prescription-col-20, .prescription-col-21, .prescription-col-22, .prescription-col-23, .prescription-col-24, .prescription-col-3, .prescription-col-4, .prescription-col-5, .prescription-col-6, .prescription-col-7, .prescription-col-8, .prescription-col-9 {
+	float: left;
+	font-size: 14px;
+}
+.prescription-col-2 {
+width: calc(100%/24*2);
+}
+.prescription-col-3 {
+width: calc(100%/24*3);
+}
+.prescription-col-4 {
+width: calc(100%/24*4);
+}
+.prescription-col-6 {
+width: calc(100%/24*6);
+}
+.prescription-col-7 {
+width: calc(100%/24*7);
+}
+.prescription-col-8 {
+width: calc(100%/24*8);
+}
+.prescription-col-10 {
+width: calc(100%/24*10);
+}
+.prescription-col-12 {
+width: calc(100%/24*12);
+}
+.prescription-col-14 {
+width: calc(100%/24*14);
+}
+.prescription-col-16 {
+width: calc(100%/24*16);
+}
+.prescription-col-20 {
+width: calc(100%/24*20);
+}
+.prescription-col-21 {
+width: calc(100%/24*21);
+}
+.prescription-col-22 {
+width: calc(100%/24*22);
+}
+.bottomBorder {
+	border-bottom: 1px solid #8d8d8d;
+}
+.drug-sign, .hospital-sign {
+	height: 100% !important;
+	width: 100%;
+	padding: 0;
+	border: none !important;
+	background-color: #fff;
+	box-sizing: border-box;
+	border-bottom: 1px solid #8d8d8d !important;
+	color: #000;
+	box-shadow: none !important;
+}
+.icon-print {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    background: url(https://lxj.yjxun.cn/statics/admin/common/images/icon_print.png) no-repeat center;
+    background-size: 25px;
+    cursor: pointer;
+}
+.back_goo{    width: 2rem;
+    height: .9rem;
+    line-height: .9rem;
+    border: 1px solid #929292;
+    color: #7d7272;
+    text-align: center;
+    border-radius: .1rem;
+    }
+.back_goo svg{width: .6rem;height: .6rem;vertical-align: middle;}
+
+.outs_div{width: 98%;margin: 0 auto;display: flex;justify-content: space-between;height: 85vh;overflow: hidden;}
+.outs_left{width: 46%;overflow: auto;}
+.cont_dor{width: 100%;height: 9rem;background: #F2EFEF;margin-top: .2rem;    border: 1px solid #aba5a5;padding-top: 2.3rem;}
+.cont_icon{width: 50%;margin: 0 auto;text-align: center;}
+.cont_icon svg{    width: 60px;
+    height: 60px;}
+.cont_dor p.mst_1{    font-size: .5rem;
+    text-align: center;margin: 0;height: 1rem;
+    color: #000000;}
+.cont_dor p.mst_2{    
+    font-size: .4rem;
+    text-align: center;
+    color: #A81414;}
+.cont_divobr{    
+    width: 99%; margin: 0 auto; border-radius: .05rem;
+    margin-top: .3rem;padding-bottom: .5rem;margin-bottom: .5rem;
+    box-shadow: 0px -1px 3px 2px #e6e6e6;}
+.cont_divobr .con_dbr1{        padding-left: .35rem;
+    font-size: .37rem;
+    height: .85rem;
+    line-height: .85rem;
+    padding-top: .1rem;
+}
+.cont_divobr .con_dbr2{   
+    height: 3rem;
+    text-indent: 2em;
+    margin: 0;
+    font-size: .35rem;
+    padding: 0 .2rem;
+    background: #FAFAFA;}
+.cont_divobr .con_dbr3{    
+    height: 1.2rem;
+    border-top: 1px solid #dcdcdc;
+    border-bottom: 1px solid #dcdcdc;}
+.con_dbr4{padding-left: .3rem;padding-right: .3rem;}
+.con_dbr4 p:first-child{    font-size: .38rem;
+    margin-top: 0.3rem;}
+.con_dbr4 p{font-size: .35rem;line-height: inherit;}
+.con_dbr4 p:not(:first-child){margin-bottom: .2rem;}
+
+@media (min-width: 1110px) {
+    .con_dbr4 p {
+        font-size: .35rem;
+        line-height: .5rem;
+    }
+}
+
+@media screen and (min-width:1180px) and (max-width:2880px){
+  .ct-notes .ct-notes-tap {
+    height: 50px;
+    margin: 0 35px;
+    border-bottom: 1px solid #e9ebee;
+    position: relative;
+}
+.ct-notes-info {
+    margin: 0 40px;
+    border-top: 1px solid #8d8d8d;
+    border-bottom: 1px solid #8d8d8d;
+}
+
+.ct-notes-hospital {
+    height: 75px;
+    margin: 0 35px 60px;
+    margin-bottom: 46px;
+}
+.ct-notes-medicines {
+    min-height: 405px;
+    margin: 20px 40px 0 40px;
+}
+.ct-notes-doctor {
+    border-top: 1px solid #8d8d8d;
+    margin: 0 40px;
+    height: 76px;
+}
+}
+</style>
+</head>
+<body>
+   <div class="outdiv">
+      <div class="left" id="left">
+          <!--#include file="left.html"-->
+      </div>
+       <div class="right_conter">
+        <div class="header_box" id="header">
+            <!--#include file="header.html"-->   
+               </div>
+               <div class="h8vh"></div>
+           <div style="width:auto;margin:auto;">
+            <div class="matst_back">
+                <div class="back_goo" onclick="goback()">
+                    <svg t="1607408152481" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3504" width="48" height="48"><path d="M438.4 297.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2L300.8 480H800c19.2 0 32 12.8 32 32 0 16-12.8 28.8-28.8 32H300.8l137.6 137.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2c-12.8 12.8-28.8 12.8-41.6 3.2l-3.2-3.2-192-192-3.2-3.2-3.2-3.2-3.2-3.2V499.2l3.2-3.2 3.2-3.2 3.2-3.2 192-192c12.8-12.8 32-12.8 44.8 0z" fill="#bfbfbf" p-id="3505"></path></svg>
+                    返回
+                </div>
+            </div>
+            <div class="outs_div">
+                <div class="outs_left">
+                    <div class="cont_dor">
+                        <div class="cont_icon">
+                            <svg t="1607501438126" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7771" id="mx_n_1607501438129" width="48" height="48"><path d="M0 0h1024v1024H0z" fill="#FFFFFF" fill-opacity="0" p-id="7772"></path><path d="M142.222 142.222h739.556q85.333 0 85.333 85.334v455.11q0 85.334-85.333 85.334H142.222q-85.333 0-85.333-85.333V227.556q0-85.334 85.333-85.334zM284.444 824.889h455.112q28.444 0 28.444 28.444 0 28.445-28.444 28.445H284.444q-28.444 0-28.444-28.445 0-28.444 28.444-28.444z" fill="#1296db" p-id="7773" data-spm-anchor-id="a313x.7781069.0.i23" class="selected"></path><path d="M443.506 316.871a30.379 30.379 0 0 0-30.18 0.057 30.04 30.04 0 0 0-15.104 25.998v224.37c0 10.724 5.746 20.622 15.076 25.998 9.358 5.376 20.85 5.405 30.208 0.057L639.06 481.195a30.009 30.009 0 0 0 0-52.054l-195.555-112.27z" fill="#FFFFFF" p-id="7774"></path></svg>
+                        </div>
+                        <p class="mst_1">即将安排医生接诊，请稍等</p>
+                        <p class="mst_2">预计需要等待30秒</p>
+                    </div>
+
+                    <div class="cont_divobr">
+                        <p class="con_dbr1">患者症状</p>
+                        <p class="con_dbr2">牙疼 牙周炎</p>
+                        <p class="con_dbr3"></p>
+                        <div class="con_dbr4">
+                            <p>特别提示</p>
+                            <p>1.处方有效期为3天，请及时取药</p>
+                            <p>2.本处方仅限于本药店及连锁店使用，自行下载配药不具有处方效力。</p>
+                            <p>3.按照卫生部、国家中医药管理局卫医发【2002】24号文件规定：为保障患者用药 安全，药品一经发出，不得退换。</p>
+                            <p>4.您的处方由门店发药药师审核，确认用药无误签字后方可生效。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="data-content">
+                    <div class="ct-notes">
+                      <div class="ct-notes-head">查看处方单<i class="icon-print" id="J_print"></i></div>
+                      <div class="ct-notes-tap">
+                        <div class="tap-name">处方1</div>
+                      </div>
+                      <div class="print-content" id="J_print_prescription">
+                      <!--startPrint-->
+                      <div class="ct-notes-hospital"> <span>普通</span> <span>东莞东城厚众门诊部</span> <span>门诊处方笺</span> </div>
+                      <div class="ct-notes-info"> <!-- <div nz-row class="bottomBorder"> <div class="prescription-col-2">费别:</div> <div class="prescription-col-4">自费</div> <div class="prescription-col-4">医疗证号:</div> <div class="prescription-col-6">1231231232321</div> <div class="prescription-col-3">处方号:</div> <div class="prescription-col-5">123123123211</div> </div> -->
+                        <div nz-row="">
+                          <div class="prescription-col-2">ID号:</div>
+                          <div class="prescription-col-22 bottomBorder">202012051134459350204</div>
+                        </div>
+                        <div nz-row="">
+                          <div class="prescription-col-2">姓名:</div>
+                          <div class="prescription-col-4 bottomBorder">李四</div>
+                          <div class="prescription-col-2">性别:</div>
+                          <div class="prescription-col-3 bottomBorder"> 女 </div>
+                          <div class="prescription-col-2">年龄:</div>
+                          <div class="prescription-col-3 bottomBorder">18</div>
+                          <div class="prescription-col-2">科室:</div>
+                          <div class="prescription-col-6 bottomBorder"></div>
+                        </div>
+                        <div nz-row="">
+                          <div class="prescription-col-2">地址:</div>
+                          <div class="prescription-col-22 bottomBorder">广州市</div>
+                        </div>
+                        <div nz-row="">
+                          <div class="prescription-col-2">电话:</div>
+                          <div class="prescription-col-8 bottomBorder">13719515575</div>
+                          <div class="prescription-col-2">日期:</div>
+                          <div class="prescription-col-12 bottomBorder">2020-12-05 11:34:45</div>
+                        </div>
+                        <div nz-row="">
+                          <div class="prescription-col-2">诊断:</div>
+                          <div class="prescription-col-22">头晕发烧</div>
+                        </div>
+                      </div>
+                      <!--ct-notes-info--->
+                      <div class="ct-notes-medicines">
+                        <div class="medicineTip"><sup>R</sup>P</div>
+                   
+                        <div class="medicine">
+                          <div nz-row="">
+                            <div class="prescription-col-14">达比加群酯胶囊（合资）</div>
+                            <div class="prescription-col-10">110mg*10粒/盒</div>
+                          </div>
+                          <div nz-row="">
+                              <div class="prescription-col-14">用法：()</div>
+                           <div class="prescription-col-10"></div>
+                          </div>
+                        </div>
+                    
+                      </div>
+                      <!--ct-notes-medicines--->
+                      <div class="ct-notes-doctor">
+                        <div nz-row="">
+                          <div class="prescription-col-2">医师:</div>
+                          <div class="prescription-col-3 bottomBorder"></div>
+                          <div class="prescription-col-4">主治医生:</div>
+                          <div class="prescription-col-3 bottomBorder">泽医生</div>
+                          <div class="prescription-col-4">主任医生:</div>
+                          <div class="prescription-col-3 bottomBorder"></div>
+                          <div class="prescription-col-2">药费:</div>
+                          <div class="prescription-col-3 bottomBorder">
+                            <php echo $datas['drug_money'];?>
+                          </div>
+                        </div>
+                        <div nz-row="">
+                          <div class="prescription-col-4">审核药师:</div>
+                          <div class="prescription-col-4 bottomBorder">
+                            <input type="text" name="drugstoreSignature" value="" autocomplete="off" disabled="disabled" class="drug-sign">
+                          </div>
+                          <div class="prescription-col-4">调配药师:</div>
+                          <div class="prescription-col-3 bottomBorder">
+                            <input type="text" name="hospitalSignature" value="" autocomplete="off" class="hospital-sign">
+                          </div>
+                          <div class="prescription-col-6">核对、发药药师:</div>
+                          <div class="prescription-col-3 bottomBorder"></div>
+                        </div>
+                      </div>
+                      <!--ct-notes-doctor-->
+                      <!--endPrint-->
+                      </div>
+                      <div class="ct-notes-toolBar">
+                        <button class="submit">确定</button>
+                        <button class="cancel closeDetail" id="J_cancel">取消</button>
+                      </div>
+                      <!----> 
+                    </div>
+                    <!---ct-notes end--> 
+                  </div>
+
+            </div>
+
+         
+         
+          </div>
+       </div>
+   </div>   
+
+   <script>
+
+    $(function(){
+        $('#J_print').on('click',function(){
+		$("#J_print_prescription").print({
+			globalStyles: true,
+			mediaPrint: false,
+			stylesheet: null,
+			noPrintSelector: ".no-print",
+			iframe: true,
+			append: null,
+			prepend: null,
+			manuallyCopyFormValues: true,
+			deferred: $.Deferred(),
+			timeout: 750,
+			title: null,
+			doctype: '<!doctype html>'
+		});
+	});
+    });
+
+    </script>
+</body>
+</html>

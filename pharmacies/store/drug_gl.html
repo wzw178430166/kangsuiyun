@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+        content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/header_common.css">
+<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/left_.css">
+<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/index.css">
+<link rel="stylesheet" href="/statics/admin/common/layui/css/layui.css" media="all">
+<link rel="stylesheet" href="/statics/dataManage/css/bootstrap.css">
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+<script type="text/javascript" src="/statics/js/laydate/laydate.js"></script>
+<script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<script type="text/javascript" src="/statics/admin/common/layui/layui.all.js"></script>
+<link id="layuicss-laydate" rel="stylesheet" href="https://www.519ksy.com/statics/admin/common/layui/css/modules/laydate/default/laydate.css?v=5.0.9" media="all">
+<script charset="utf-8" src="/statics/admin/common/js/colResizable.js"></script>
+<title>药品管理</title>
+<style>
+ .query-btn .btn-item {
+    margin-left: 0px;
+}
+.query-btn .btn-item {
+    height: auto;
+    min-height: 26px;
+}
+.query-btn .btn-item {
+    height: auto;
+    min-height: 26px;
+    text-align: center;
+}
+.mstboxgg{display: flex;
+    width: 97%;
+    margin: 0 auto;
+    justify-content: space-between;}
+.lefts_boxf{display: flex;}
+.gethome{    
+    width: 30%;
+    height: .8rem;
+    line-height: .8rem;
+    float: right;
+    margin: .3rem .5rem 0 0;}
+.gethome svg{float:right;width: .5rem;height: .5rem;vertical-align: middle;margin-top: .05rem;}
+.gethome span.so2{float: right;
+    margin-left: .05rem;vertical-align: middle;
+    color: #836be0;}
+    .gethome span.so1{float: right;
+    margin-left: .05rem;vertical-align: middle;
+    color: #000;}
+.back_goo{    
+    width: 2rem;
+    height: 1.1rem;
+    line-height: 1.1rem;
+    border: 1px solid #929292;
+    color: #7d7272;
+    text-align: center;
+    border-radius: .1rem;
+    margin: .5rem 0 .4rem 0rem;}
+.back_goo svg{width: .6rem;height: .6rem;vertical-align: middle;}
+.back_goo1{    
+    width: 2rem;
+    height: 1.1rem;
+    line-height: 1.1rem;
+    border: 1px solid #1890FF;
+    color: #ffffff;
+    text-align: center;
+    background: #1890FF;
+    border-radius: .1rem;
+    margin: .5rem 0 .4rem .2rem;}
+.back_goo1 svg{width: .4rem;height: .4rem;vertical-align: middle;}
+.cont_opricect a{display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin: 0 .2rem;
+    vertical-align: middle;}
+.cont_opricect a svg{width: 100%;height: 100%;}
+.cont_opricect input{    
+    vertical-align: middle;
+    width: 1.5rem;
+    height: .5rem;text-align: center;
+    line-height: .5rem;}
+    .mt_tdaz{    
+        display: inline-block;
+    width: .5rem;
+    height: .5rem;
+    margin: .3rem 0;}
+    .mt_tdaz img{width: 100%;}
+    .query-module {
+    width: 65%;
+    padding:0 .3rem .3rem .3rem;
+    margin: .3rem .3rem .3rem 0;
+    float: right;
+    border-radius: .05rem;
+    box-shadow: 1px 1px 4px 1px #d6d3d3;
+}
+.query-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.query-form .form-item {
+   margin-bottom: 0px; 
+    margin-left: 10px;margin-top: .3rem;
+}
+.query-btn .btn-item .btn-sais {
+    background: #0078FF;
+    border-color: #0078FF;
+    color: #ffffff;
+}
+</style>
+</head>
+<body>
+   <div class="outdiv">
+      <div class="left" id="left">
+         <!--#include file="left.html"-->
+      </div>
+       <div class="right_conter">
+           <div class="header_box" id="header">
+        <!--#include file="header.html"-->   
+           </div>
+           <div class="h8vh"></div>
+           <div style="width: auto;margin: 0;">
+    
+            <div class="query-module">
+                <div class="query-form">
+                  <div class="form-item"> <font>药品编号</font>
+                    <div class="element">
+                      <div class="element-text">
+                        <input type="text" id="k" value="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-item"> <font>药品名称</font>
+                    <div class="element">
+                      <div class="element-text">
+                        <input type="text" id="userid" value="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-item">
+                    <div class="query-btn">
+                        <div class="btn-item"> <a class="btn-sais" id="J_query" style="padding-left: 15px;">
+                          <svg style="width:20px;height:20px;vertical-align: middle;" t="1607394598323" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2669" width="48" height="48"><path d="M874.666667 814.933333l-209.066667-209.066666C704 554.666667 725.333333 494.933333 725.333333 426.666667c0-166.4-132.266667-298.666667-298.666666-298.666667s-298.666667 132.266667-298.666667 298.666667 132.266667 298.666667 298.666667 298.666666c68.266667 0 128-21.333333 179.2-59.733333l209.066666 209.066667c17.066667 17.066667 42.666667 17.066667 59.733334 0s17.066667-42.666667 0-59.733334zM426.666667 640c-119.466667 0-213.333333-93.866667-213.333334-213.333333s93.866667-213.333333 213.333334-213.333334 213.333333 93.866667 213.333333 213.333334-93.866667 213.333333-213.333333 213.333333z" fill="#ffffff" p-id="2670"></path></svg>
+                          搜索
+                          </a> 
+                      </div>
+                      </div>
+                  </div>
+             
+                </div>
+               
+              </div>
+         
+              <div class="data-content">
+                <div class="tb-container"  style="height: 200px;overflow: auto;">
+                    <table class="table" id="rstb">
+                        <caption class="caption">药品列表</caption>
+                        <thead>
+                            <tr align="center">
+                               <th><strong class="tb-head cell-orderid" data-val="orderid">药品编码</strong></th>
+                               <th><strong class="tb-head cell-username" data-val="username">类型</strong></th>
+                               <th><strong class="tb-head cell-product" data-val="product">名称</strong></th>
+                               <th><strong class="tb-head cell-amount" data-val="amount">通用名称</strong></th>
+                               <th><strong class="tb-head cell-pay_channel" data-val="pay_channel">价格</strong></th>
+                               <th><strong class="tb-head cell-pay_amount" data-val="pay_amount">规格</strong></th>
+                               <th><strong class="tb-head cell-status" data-val="status">生产厂家</strong></th>
+                               <th><strong class="tb-head cell-operate" data-val="operate">操作</strong></th>
+                           </tr>
+                         </thead>
+                       <tbody>
+                          <tr align="center">
+                              <td>1113454654654</td>
+                              <td>张三</td>
+                              <td>2020-02-03</td>
+                              <td>2</td>
+                              <td>233.5</td>
+                              <td>张主卧</td>
+                              <td>春雨</td>
+                              <td>
+                                <a href="#" class="mt_tdaz"><img src="/pharmacies/store/images/jiahoass.png"></a>
+                              </td>
+                          </tr>
+                          <tr align="center">
+                             <td>5113454654654</td>
+                             <td>张三</td>
+                             <td>2020-08-03</td>
+                             <td>2</td>
+                             <td>233.5</td>
+                             <td>张主卧</td>
+                             <td>春雨</td>
+                             <td>
+                                <a href="#" class="mt_tdaz"><img src="/pharmacies/store/images/jiahoass.png"></a>
+                             </td>
+                          </tr>
+                          <tr align="center">
+                             <td>5113454654654</td>
+                             <td>张三</td>
+                             <td>2020-08-03</td>
+                             <td>2</td>
+                             <td>233.5</td>
+                             <td>张主卧</td>
+                             <td>春雨</td>
+                             <td>
+                                <a href="#" class="mt_tdaz"><img src="/pharmacies/store/images/jiahoass.png"></a>
+                             </td>
+                          </tr>
+                          <tr align="center">
+                             <td>5113454654654</td>
+                             <td>张三</td>
+                             <td>2020-08-03</td>
+                             <td>2</td>
+                             <td>233.5</td>
+                             <td>张主卧</td>
+                             <td>春雨</td>
+                             <td>
+                                <a href="#" class="mt_tdaz"><img src="/pharmacies/store/images/jiahoass.png"></a>
+                             </td>
+                          </tr>
+                       </tbody>
+                    </table>
+                </div>
+              </div>
+              <div class="data-content">
+                <div class="tb-container"  style="height:48vh;overflow: auto;">
+                    <table class="table" id="rstbs">
+                        <caption class="caption">出库列表</caption>
+                        <thead>
+                            <tr align="center">
+                                <th><strong class="tb-head cell-orderid" data-val="orderid">药品编码</strong></th>
+                                <th><strong class="tb-head cell-username" data-val="username">类型</strong></th>
+                                <th><strong class="tb-head cell-product" data-val="product">名称</strong></th>
+                                <th><strong class="tb-head cell-amount" data-val="amount">通用名称</strong></th>
+                                <th><strong class="tb-head cell-pay_channel" data-val="pay_channel">价格</strong></th>
+                                <th><strong class="tb-head cell-pay_amount" data-val="pay_amount">规格</strong></th>
+                                <th><strong class="tb-head cell-status" data-val="status">生产厂家</strong></th>
+                                <th><strong class="tb-head cell-operate" data-val="operate">操作</strong></th>
+                            </tr>
+                         </thead>
+                       <tbody>
+                          <tr align="center">
+                              <td>1113454654654</td>
+                              <td>张三</td>
+                              <td>2020-02-03</td>
+                              <td>2</td>
+                              <td>233.5</td>
+                              <td>张主卧</td>
+                              <td>广州市第一人民医院</td>
+                             <td>
+                                 <div class="cont_opricect" style="display: flex;justify-content: center;margin: .2rem 0;align-items: center;">
+                                <a href="#">
+                                    <svg t="1607413584732" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6081" width="48" height="48"><path d="M512 55.296C256 55.296 51.2 260.096 51.2 512s204.8 456.704 460.8 456.704 456.704-204.8 456.704-456.704S763.904 55.296 512 55.296zM512 929.792C281.6 929.792 94.208 742.4 94.208 512S281.6 94.208 512 94.208 929.792 281.6 929.792 512C925.696 742.4 742.4 929.792 512 929.792zM738.304 490.496 281.6 490.496c-13.312 0-21.504 8.192-21.504 21.504 0 13.312 8.192 21.504 21.504 21.504l456.704 0c12.288 0 21.504-8.192 21.504-21.504C759.808 498.688 750.592 490.496 738.304 490.496z" p-id="6082" fill="#d81e06"></path></svg>  
+                                </a>
+                                <input type="text" value="1">
+                                <a href="#">
+                                    <svg t="1607413618167" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6982" width="48" height="48" data-spm-anchor-id="a313x.7781069.0.i33"><path d="M874.23 149.77a512 512 0 1 0 0 724.46 512.884 512.884 0 0 0 0-724.46zM832.83 832.828a453.507 453.507 0 1 1 0-641.658 454.317 454.317 0 0 1 0 641.658z" p-id="6983" fill="#1296db"></path><path d="M758.791 482.532H541.468V265.21a29.468 29.468 0 0 0-58.936 0v217.323H265.21a29.468 29.468 0 0 0 0 58.936h217.323V758.79a29.468 29.468 0 0 0 58.936 0V541.468H758.79a29.468 29.468 0 0 0 0-58.936z" p-id="6984" fill="#1296db"></path></svg> 
+                                </a>
+                            </div>
+                             </td>
+                          </tr>
+                     
+                       </tbody>
+                    </table>
+                </div>
+              </div>
+
+           </div>
+       </div>
+   </div>   
+   <script>
+    var page = 1;
+    checkLogin("golink");
+    $(function(){
+        //getleft();
+        //gethearder();
+        var date = new Date();
+        $('#st').val(date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate());
+        $('#et').val(date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate());
+        getData();
+        var screenHeight = $(window).height();
+        $('.first-container').css({height: screenHeight - 93});
+        var tbWidth = $(window).width() - 245;
+        $(".tb-container").css({width:tbWidth});
+        // $("#rstb").css({maxWidth:tbWidth});
+        // $("#rstb").colResizable({
+        //     resizeMode: 'overflow',
+        //     //minWidth: 15,
+        //     //headerOnly: true,
+        //     //dragCursor: '',
+        //     //liveDrag: true,
+        //     //draggingClass: 'tb-cell',
+        //     onResize: function(e,data){
+        //         //console.log($(e.currentTarget));
+        //         //$('.tb-cell').width();
+        //     }
+        // });	
+     
+        $('#J_query').on('click', function(){
+            page = 1;
+            getData();
+        });
+    });
+    function getData(){
+        var url = '/?m=dataManage&c=member&a=memberList2&ajax=1';
+        var k = $.trim($('#k').val());
+        if (k) url += '&k='+k;
+        var st = $.trim($('#st').val());
+        var et = $.trim($('#et').val());
+        if (st&&et) url += '&st='+st+'&et='+et;
+        var status = $.trim($('#status').val());
+        if (status) url += '&status='+status;
+        if (page > 1) url += '&page='+page;
+        var index = layer.load(2,{time:3000});
+        $.ajax({
+            url: url,
+            type: "GET",
+            dataType: "JSON",
+            success: function(data){
+                console.log(data);
+                layer.close(index);
+                var html = '';
+                var pageCount = 0;
+                if (data.status==1) {
+                    var datas = data.data.datas;
+                    var member = data.data.member;
+                    pageCount = data.data.pageCount;
+                    for(var i in datas){
+                        var info = datas[i];
+                        var product = '';
+                        switch(info.type){
+                            case 'recharge':
+                                product = '余额充值';
+                                break;
+                        }
+                        var pay_channel = '';
+                        switch(info.pay_channel){
+                            case 'wechat':
+                                pay_channel = '微信支付';
+                                break;
+                            case 'alipay':
+                                pay_channel = '支付宝支付';
+                                break;
+                        }
+                        var status = '';
+                        var operate = '<a href="javascript:;" class="operate-btn btn-del" data-val="'+info.orderid+'">删除</a>';
+                        switch(info.status){
+                            case 'waitPay':
+                                status = '待付款';
+                                operate = '<a href="javascript:;" class="operate-btn btn-close" data-val="'+info.orderid+'">取消</a>';
+                                break;
+                            case 'success':
+                                status = '已付款';
+                                break;
+                            case 'close':
+                                status = '已取消';
+                                break;
+                        }
+                        var _member = {};
+                        if (member&&member[info.userid]) {
+                            _member = member[info.userid];
+                        } else {
+                            _member = {"username":"","nickname":""};
+                        }
+                        html += '<tr align="center"><td><div class="tb-cell cell-check"><input type="checkbox" name="ids[]" value="'+info.out_trade_no+'"></div></td><td><div class="tb-cell cell-orderid">'+info.orderid+'</div></td><td><div class="tb-cell cell-username">'+_member.username+(_member.nickname?'('+_member.nickname+')':'')+'</div></td><td><div class="tb-cell cell-product">'+product+'</div></td><td><div class="tb-cell cell-amount">'+info.amount+'</div></td><td><div class="tb-cell cell-pay_channel">'+pay_channel+'</div></td><td><div class="tb-cell cell-pay_amount">'+info.pay_amount+'</div></td><td><div class="tb-cell cell-status">'+status+'</div></td><td><div class="tb-cell cell-createtime">'+info.createtime+'</div></td><td><div class="tb-cell cell-operate">'+operate+'</div></td></tr>';
+                    }
+                } else {
+                    html += '<tr align="center"><td colspan="'+($('.tb-head').length)+'">暂无数据</td></tr>';
+                }
+                $('#datas').html(html);
+                initWidth();
+                initOperate();
+                if (page == 1) initPage(pageCount);
+            }
+        });
+    }
+    function initOperate(){
+        $('.btn-close').unbind('click');
+        var _item = $('.btn-close');
+        _item.each(function(i) {
+            $(_item[i]).on('click',function(){
+                var orderid = $(this).attr('data-val');
+                layer.confirm('确定要取消订单?',{btn:["确定","取消"]},function(){
+                    doOrderStatus(orderid,'close');
+                });
+            });
+            
+        });
+        $('.btn-del').unbind('click');
+        var _item2 = $('.btn-del');
+        _item2.each(function(i) {
+            var orderid = $(this).attr('data-val');
+            $(_item2[i]).on('click',function(){
+                layer.confirm('确定要删除订单?',{btn:["确定","取消"]},function(){
+                    doOrderStatus(orderid,'delete');
+                });
+            });
+            
+        });
+    }
+    function doOrderStatus(orderid,status){
+        if (!orderid || !status) {
+            layer.msg('订单异常');
+            return;
+        }
+        var url = '/?m=dataManage&c=workOrder&a=doOrderRechargeState&ajax=1';
+        $.ajax({
+            url: url,
+            type: "POST",
+            dataType: "JSON",
+            data: {dosubmit:1,orderid:orderid,status:status},
+            success: function(data){
+                layer.msg(data.erro);
+                validateAuth(data.status);
+                if (data.status == 1) getData();
+            }
+        });
+    }
+    function initWidth(){
+        var _item = $('.tb-head');
+        _item.each(function(i) {
+            var w = $(this).width();
+            var v = $(this).attr('data-val');
+            $('.cell-'+v).width(w);
+        });
+    }
+    function initPage(pageCount) {
+        layui.use('laypage', function(){
+            var laypage = layui.laypage;
+            laypage.render({
+                elem: 'innerPage' //注意，这里的 test1 是 ID，不用加 # 号
+                ,count: pageCount //数据总数，从服务端得到
+                //,limit: 10
+                ,layout: ['prev', 'page','next', 'skip','count']//['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+                ,prev: '<i class="icon-arrow arrow-l"></i>'
+                ,next: '<i class="icon-arrow arrow-r"></i>'
+                ,hash: 'page'//页面载入时就定位到指定页
+                ,theme: '#234686'
+                ,jump: function(obj, first){
+                    //首次不执行
+                    if (!first) {
+                        //console.log(obj);
+                        page = parseInt(obj.curr);
+                        getData();
+                    }
+                }
+            });
+        });
+    }
+    function gethearder() {
+            $('#header').load('/pharmacies/store/header.html', function () {
+            });
+        }
+        function getleft(){
+            $('#left').load('/pharmacies/store/left.html', function () {
+            });
+        }
+    </script>
+</body>
+</html>

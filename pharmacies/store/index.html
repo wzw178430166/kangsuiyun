@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/store/css/header_common.css">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/store/css/left_.css">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/store/css/index.css">
+    <!-- <link rel="stylesheet" href="/statics/dataManage/css/bootstrap.css"> -->
+    <link rel="stylesheet" type="text/css" href="/statics/currency/plug/swiper/css/swiper.min.css">
+    <script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+    <!-- <script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script> -->
+    <script type="text/javascript" src="/statics/js/global.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="/statics/js/TouchSlide.1.1.js"></script> -->
+    <script type="text/javascript" src="/statics/currency/plug/swiper/js/swiper.min.js"></script>
+    <title>药房-门店端</title>
+    <style>
+        .matst_back {
+            width: 95%;
+            display: flex;
+            justify-content: space-between;
+            margin: 0 auto;
+            margin-top: .5rem;
+        }
+
+        .back_goo {
+            width: 2rem;
+            height: .9rem;
+            line-height: .9rem;
+            border: 1px solid #929292;
+            color: #7d7272;
+            text-align: center;
+            border-radius: .1rem;
+        }
+
+        .back_goo svg {
+            width: .6rem;
+            height: .6rem;
+            vertical-align: middle;
+        }
+
+        #menu {
+            padding-top: .1rem;
+            background: #fff;
+        }
+
+        #menu ul {
+            display: flex;
+            flex-wrap: wrap;
+            margin: .2rem 0 0 .3rem;
+        }
+
+        #menu li {
+            width: 2rem;
+            height: .7rem;
+            margin-right: .5rem;
+            line-height: .7rem;
+            text-align: center;
+            background-color: #f9f8f8;
+            overflow: hidden;
+            font-size: .25rem;
+            color: #111111;
+            border: 1px solid #dcd8d8;
+            border-radius: .05rem;
+        }
+
+        #menu li .pstyle {
+            width: 70%;
+            height: 2px;
+            background: #339EFC;
+            margin: .5rem auto 0 auto;
+        }
+
+        #menu li.on {
+            color: #ffffff;
+            background: #339EFC;
+            border: 1px solid #339EFC;
+        }
+
+        .henline {
+            height: .7rem;
+            background: #f6f6f6;
+        }
+
+        .limit-box {
+            position: relative;
+            width: 95%;
+            margin: 20px auto;
+            height: 38vh;
+            overflow: hidden;
+            box-shadow: 0px 1px 3px 1px #eae8e8;
+            border-radius: .15rem;
+        }
+
+        /* limit-buy-hd */
+        .limit-buy-hd {
+            height: 1rem;
+            background: #ffffff;
+            border-bottom: 1px solid #e6e6e6;
+            line-height: 1rem;
+        }
+
+        .limit-buy-hd h2 {
+            float: left;
+            overflow: hidden;
+            display: inline;
+            width: 5rem;
+            height: 1rem;
+            color: #000;
+            font-weight: 600;
+            line-height: 1rem;
+            font-size: 0.35rem;
+            padding: 0 0 0 22px;
+            margin: 0;
+        }
+
+        /* limit-buy-nav */
+        .limit-buy-nav {
+            float: right;
+            width: 33px;
+            margin: .25rem .5rem 0 0;
+        }
+
+        .limit-buy-nav span {
+            float: left;
+            width: 44px;
+            height: 21px;
+            font-size: 14px;
+            line-height: 21px;
+            text-align: center
+        }
+
+        .limit-buy-nav em {
+            margin-right: 1px;
+            color: #ea5501;
+            font-weight: 700
+        }
+
+        .limit-buy-nav .prev,
+        .limit-buy-nav .next {
+            float: left;
+            overflow: hidden;
+            width: 8px;
+            height: 9px;
+            margin: 6px 0 0;
+            background: url(/pharmacies/store/images/arrowbg1.png) no-repeat -59px -180px
+        }
+
+        .limit-buy-nav .next {
+            background-position: -52px -180px
+        }
+
+        /* limit-buy-bd */
+        .limit-buy-bd {
+            overflow: hidden;
+            width: 9000%;
+            z-index: 1;
+            height: 3.6rem;
+        }
+
+
+        .products {
+            width: 100%;
+            margin: 0;
+            /* position: relative; */
+            display: inline;
+            float: right;
+            margin-bottom: 20rem;
+            padding-right: 1rem;
+            padding-bottom: .5rem;
+        }
+
+        .products li {
+            float: left;
+            position: relative;
+            width: 16.66%;
+            padding: 0px 0px 0;
+            margin-left: .3rem;
+            height: 3.6rem;
+            width: 3.13rem;
+            /* border: 1px solid #ccc; */
+            /* border-radius: .5rem; */
+            overflow: hidden;
+            -moz-box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem rgba(0, 0, 0, 0.36);
+            /* -webkit-box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem rgba(0, 0, 0, 0.36); */
+            /* box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem rgba(0, 0, 0, 0.36); */
+            display: inline-block;
+        }
+
+        .products li .pic {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            height: 1.7rem;
+            margin: 0 auto .18rem;
+        }
+
+        .products li .pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain
+        }
+
+        .products li .price {
+            padding: 0;
+            width: 100%;
+            height: 26px;
+            line-height: 26px;
+            font-size: .28rem;
+            margin: 0;
+            font-weight: 800;
+            color: #d22c2c;
+            padding-top: .001rem;
+            text-align: center;
+        }
+
+        .products li .name {
+            height: .8rem;
+            margin: 0 0 2px;
+            line-height: .4rem;
+            width: 80%;
+            overflow: hidden;
+            margin: 0 auto;
+            word-wrap: break-word;
+            text-align: center;
+            overflow: hidden;
+            display: inline-block;
+            font-size: .25rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            cursor: pointer;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .products li .name a {
+            display: inline-block;
+            width: 100%;
+            word-wrap: break-word;
+            height: 100%;
+            line-height: .4rem;
+        }
+
+
+
+
+        @media screen and (min-width:560px) and (max-width:1000px) {
+            .mst-content {
+                width: 95%;
+                margin: 0 auto;
+                height: 22vh;
+                padding-top: 1rem;
+                overflow: hidden;
+            }
+
+            .limit-box {
+                position: relative;
+                width: 90%;
+                margin: 20px auto;
+                height: 25vh;
+                overflow: hidden;
+                box-shadow: 0px 1px 3px 1px #eae8e8;
+                border-radius: .15rem;
+            }
+        }
+
+        .mst-content {
+            width: 95%;
+            margin: 0 auto;
+            height: 46vh;
+            overflow: hidden;
+            display: flex;
+            padding-top: .5rem;
+            margin-top: 1.6vh;
+            justify-content: space-between;
+        }
+
+        .mst-left {
+            width: 52%;position: relative;
+        }
+
+        .mst-left .mst-left-top {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .mst-left-top-left div:nth-child(1) {
+            font-size: .56rem;
+            color: #2b1e1e;
+            font-weight: 600;
+        }
+
+        .mst-left-top-left div:nth-child(2) {
+            font-size: .36rem;
+            margin-top: .44rem;
+            margin-bottom: .35rem;
+        }
+
+        .mst-left-top-right .kaisuh {
+            width: 2rem;
+            height: .7rem;
+            border-radius: .06rem;
+            text-align: center;
+            line-height: .7rem;
+            border: 1px solid rgb(0, 120, 255);
+        }
+
+        .mst-left-top-right .kaisuh svg {
+            width: .4rem;
+            height: .4rem;
+            vertical-align: middle;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 27vh;
+            border-radius: 10px;
+            /*--swiper-theme-color: #ff6600;!* 设置Swiper风格 *!
+            --swiper-preloader-color: #00ff33;!* 单独设置预加载圆圈的颜色 *!*/
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide img[src=""] {
+            opacity: 0;
+        }
+
+        .swiper-wrapper {
+            /*height: auto; display: none;*/
+        }
+
+        .mst-right {
+            width: 46%;
+        }
+
+
+
+        .products1 {
+            width: 100%;
+            margin: 0;height: 130%;
+            /* position: relative; */
+            display: inline;
+            float: right;
+            /* margin-bottom: 20rem; */
+            /* padding-right: 1rem; */
+            padding-bottom:.5rem;
+        }
+
+        .products1 li .name {
+            height: .7rem;
+            line-height: .7rem;
+            font-size: .31rem;
+            padding-left: .3rem;
+            margin: 0 0 2px;
+            line-height: .7rem;
+            width: 80%;
+            overflow: hidden;
+            text-align: center;
+            color: #000;
+            display: inline-block;
+            display: -webkit-box;
+
+        }
+
+        .limit-box1 {
+            position: relative;
+            width: 95%;
+            margin: 0px auto;
+            height: 99%;
+            overflow: hidden;
+            box-shadow: 0px 1px 3px 1px #eae8e8;
+            border-radius: .15rem;
+        }
+
+        .panel-default>.panel-heading+.panel-collapse>.panel-body {
+            border-top-color: #ddd;
+            white-space: pre-line;
+        }
+
+        .panel-body {
+            padding: 0rem .2rem .2rem .3rem;
+            /* text-indent: 1em; */
+        }
+
+        .sangege {
+            float: right;
+            font-size: 14px;
+            /* vertical-align: middle; */
+            color: #757171;
+            margin-top: .05rem;
+        }
+
+        .panel-title>.small,
+        .panel-title>.small>a,
+        .panel-title>a,
+        .panel-title>small,
+        .panel-title>small>a {
+            color: inherit;
+            font-size: 15px;
+            text-decoration: none;
+        }
+
+        .panel-default>.panel-heading {
+            color: #333;
+            background-color: #ffffff;
+            border-color: #ddd;
+        }
+
+        .panel-default>.panel-heading+.panel-collapse>.panel-body {
+            border-top-color: #ddd;
+            width: 100%;
+        }
+
+        #accordion1 .panel-body {
+            width: 100%;   
+        }
+
+        @media screen and (min-width:1300px) and (max-width:2500px) {
+            .limit-box {
+                height: 38vh;
+            }
+
+            .products li .name {
+                font-size: .27rem;
+            }
+
+            .products li .price {
+                font-size: .32rem;
+                margin-top: .2rem;
+            }
+            
+                .products li .pic {
+                    margin-top: .3rem;
+                }
+                .mst-left-top-left div:nth-child(2) {
+            font-size: .36rem;
+            margin-top: .6rem;
+            margin-bottom: .53rem;
+        }
+        }
+
+        /* @media screen and (min-width:1800px) and (max-width:2880px){
+    .limit-box {
+    height: 37vh;
+}
+.products li .name {
+    font-size: .27rem;
+}
+.products li .price {
+    font-size: .32rem;
+}
+} */
+.selects {
+    background: #ffffff;
+}
+.selects2 {
+    background: #ffffff;
+}
+    </style>
+</head>
+
+<body>
+    <div class="outdiv">
+        <div class="left" id="left">
+            <!--#include file="left.html"-->
+        </div>
+        <div class="right_conter">
+            <div class="header_box" id="header">
+                <!--#include file="header.html"-->
+            </div>
+            <div class="h8vh"></div>
+            <div style="width:auto;margin:auto;">
+                <div class="mst-content">
+                    <div class="mst-left">
+                        <div class="mst-left-top">
+                            <div class="mst-left-top-left">
+                                <div>早上好，欢迎光临</div>
+                                <div><span id="datast">-</span>，欢迎您使用处方问诊服务台</div>
+                            </div>
+                            <div class="mst-left-top-right">
+                                <div class="kaisuh">
+                                    <svg t="1607771766945" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" p-id="1151" width="32" height="32">
+                                        <path
+                                            d="M512 981.333333c259.2 0 469.333333-210.133333 469.333333-469.333333S771.2 42.666667 512 42.666667 42.666667 252.8 42.666667 512s210.133333 469.333333 469.333333 469.333333z m0-42.666666C276.352 938.666667 85.333333 747.648 85.333333 512S276.352 85.333333 512 85.333333s426.666667 191.018667 426.666667 426.666667-191.018667 426.666667-426.666667 426.666667z"
+                                            p-id="1152" fill="#bfbfbf"></path>
+                                        <path
+                                            d="M298.666667 533.333333h426.666666a21.333333 21.333333 0 1 0 0-42.666666H298.666667a21.333333 21.333333 0 0 0 0 42.666666z"
+                                            p-id="1153" fill="#bfbfbf"></path>
+                                        <path
+                                            d="M490.666667 298.666667v426.666666a21.333333 21.333333 0 1 0 42.666666 0V298.666667a21.333333 21.333333 0 1 0-42.666666 0z"
+                                            p-id="1154" fill="#bfbfbf"></path>
+                                    </svg>
+                                    开处方药
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mst-left-top-bottom">
+                            <!--banner-->
+                            <div class="swiper-container">
+                                <div class="swiper-wrapper" id="advert">
+                                    <div class="swiper-slide">
+                                        <img data-src="/pharmacies/store/images/v2_qkr63a.png" class="swiper-lazy" />
+                                        <div class="swiper-lazy-preloader"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--banner-->
+                        </div>
+                    </div>
+                    <div class="mst-right">
+
+                        <div class="limit-box1" id="J-lb1">
+                            <div class="limit-buy-hd">
+                                <h2>通知公告</h2>
+                                <div class="limit-buy-nav" id="J-lbn1" style="width: 26px;">
+                                    <a href="javascript:void(0)" class="prev">
+                                    </a>
+                                    <span style="visibility: hidden;width:10px;">
+                                        <em id="J-lbcp1">1</em>/4
+                                    </span>
+                                    <a href="javascript:void(0)" class="next"></a>
+                                </div>
+                            </div>
+
+                            <div class="limit-buy-bd" id="limit-buy1"
+                                style="height:100%;overflow: auto;display: flex;width: 200%;">
+                                <div class="panel-group products1" id="accordion1">
+                                    <div class="panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">
+                                                    关于5.1劳动节放假通知
+                                                </a>
+                                                <span class="sangege">2020年03月02日</span>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseOne" class="panel-collapse collapse in">
+                                            <div class="panel-body">
+                                                集团各部门（中心）、分（子）公司： 2020年五一劳动节即将来临，根据国家相关规定，现将放假事宜安排如下： 一、放假时间安排
+                                                2020年5月1日.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo">
+                                                    关于省领导即将来视察的注意事项通知...
+                                                </a>
+                                                <span class="sangege">2020年06月08日</span>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseTwo" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                                                cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+                                                vice lomo.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion1"
+                                                    href="#collapseThree">
+                                                    关于国庆节放假通知
+                                                </a>
+                                                <span class="sangege">2020年09月02日</span>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseThree" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                                                cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+                                                vice lomo.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel-group products1" id="accordion2">
+                                    <div class="panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion2"
+                                                    href="#collapseOne2">
+                                                    关于档馆复工的通知
+                                                </a>
+                                                <span class="sangege">2020年03月02日</span>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseOne2" class="panel-collapse collapse in">
+                                            <div class="panel-body">
+                                                根据国家相关规定，现将放假事宜安排如下
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion2"
+                                                    href="#collapseTwo2">
+                                                    关于5.1劳动节放假通知
+                                                </a>
+                                                <span class="sangege">2020年06月08日</span>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseTwo2" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                                                cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+                                                vice lomo.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion2"
+                                                    href="#collapseThree2">
+                                                    关于元旦放假通知
+                                                </a>
+                                                <span class="sangege">2020年09月02日</span>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseThree2" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                                                cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+                                                vice lomo.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+                <div class="limit-box" id="J-lb">
+                    <div class="limit-buy-hd">
+                        <h2>热销药品</h2>
+                        <div class="limit-buy-nav" id="J-lbn">
+                            <a href="javascript:void(0)" class="prev"></a>
+                            <span style="visibility: hidden;width:10px;">
+                                <em id="J-lbcp">1</em>/4
+                            </span>
+                            <a href="javascript:void(0)" class="next"></a>
+                        </div>
+                    </div>
+                    <div id="menu">
+                        <ul>
+                            <li class="on">家庭常备
+                            </li>
+                            <li>心血管科
+                            </li>
+                            <li>营养滋补
+                            </li>
+                            <li>医疗器械
+                            </li>
+                            <div class="clear"></div>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <!-- <a href="javascript:void(0);" class="btn-prev"></a> -->
+
+                    <div class="limit-buy-bd" id="limit-buy">
+                        <ul class="products">
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="/pharmacies/store/images/v2_qkr77q1.png" /></a></p>
+                                <p class="name">沙美特罗替卡松粉吸入剂(舒利迭)</p>
+                                <p class="price">￥202.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="/pharmacies/store/images/v2_qkr77q2.png" /></a></p>
+                                <p class="name">丹参酮胶囊(希力)</p>
+                                <p class="price">￥30.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="/pharmacies/store/images/v2_qkr77q3.png" /></a></p>
+                                <p class="name">艾司奥美拉唑镁肠溶片(耐信)</p>
+                                <p class="price">￥68.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="/pharmacies/store/images/v2_qkr77q4.png" /></a></p>
+                                <p class="name">感冒灵颗粒(999)</p>
+                                <p class="price">￥14.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="/pharmacies/store/images/v2_qkr77q5.png" /></a></p>
+                                <p class="name">百令胶囊(百令)</p>
+                                <p class="price">￥68.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="/pharmacies/store/images/v2_qkr77q6.png" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥226.00</p>
+                            </li>
+                        </ul>
+
+                        <ul class="products">
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/06.jpg"
+                                            alt="saff家纺 超柔珊瑚绒毯子 休闲多用毯 盖毯 垫毯 夏凉毯 空调毯180cm*200cm 紫" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥308.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/07.jpg"
+                                            alt="美的（Midea）微波炉EG7KCGW2-NW" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥68.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/08.jpg"
+                                            alt="伟峰（WEIFENG）三脚架WT-3110A" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥18.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/09.jpg"
+                                            alt="力博得（Lebond）电动牙刷M.tic绿" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥8.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/10.jpg"
+                                            alt="【大唐西域】干果阿妈特级精选和田枣120g*5袋 新疆特产大枣/红枣" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥28.00</p>
+                            </li>
+                        </ul>
+
+                        <ul class="products">
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/05.jpg"
+                                            alt="欧利萨斯 潮流秋冬新品棉鞋休闲男鞋保暖高帮工装男靴子马丁靴 8379 黑色" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥8.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/04.jpg"
+                                            alt="泸州老窖传世窖（A5）( 两瓶套装))52度" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥18.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/03.jpg"
+                                            alt="三洋（SANYO）32英寸LED电视32CE530ALED" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥158.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/02.jpg"
+                                            alt="宏碁（acer）14.0英寸笔记本电脑 V5-471G-32364G50Mabb（i3-2367M/4G/500G/14寸高清屏/DVD刻录/GT620M 1G独显/无线/蓝牙/USB3.0/Linux BE)天空蓝" /></a>
+                                </p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥68.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/01.jpg"
+                                            alt="SWISSGEAR瑞士军刀超值三剑客套餐 商务拉杆箱+多功能双肩包+运动腰包" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥88.00</p>
+                            </li>
+                        </ul>
+
+                        <ul class="products">
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/10.jpg"
+                                            alt="saff家纺 超柔珊瑚绒毯子 休闲多用毯 盖毯 垫毯 夏凉毯 空调毯180cm*200cm 紫" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥38.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/09.jpg"
+                                            alt="美的（Midea）微波炉EG7KCGW2-NW" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥98.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/08.jpg"
+                                            alt="伟峰（WEIFENG）三脚架WT-3110A" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥18.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/07.jpg"
+                                            alt="力博得（Lebond）电动牙刷M.tic绿" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥38.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/06.jpg"
+                                            alt="【大唐西域】干果阿妈特级精选和田枣120g*5袋 新疆特产大枣/红枣" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥68.00</p>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <!-- <a href="javascript:void(0);" class="btn-next"></a> -->
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="/statics/public/js/public.js?v=123"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            request('/?m=pharmacy&c=prescription&a=lists&ajax=1','get',{
+                dataType:'JSONP',
+                success:function(res){
+                    console.log(res);
+                },
+                error:function(res){
+                    console.log(res);
+                }
+            });
+            $('#datast').text(getCurrentDate());
+            var lb = $("#limit-buy"),
+                lb_cur = 1,
+                lbp_w = lb.find(".products").width();
+            lb_timer = null;
+            t = 1;
+
+            function showLimitBuyProducts() {
+                if (lb_cur < 1) {
+                    lb_cur = 4;
+                } else if (lb_cur > 4) {
+                    lb_cur = 1;
+                }
+                $("#J-lbcp").html(lb_cur);
+                $('#menu ul li').eq(lb_cur - 1).addClass('on').siblings().removeClass('on');
+                $('#menu ul li').each(function(){
+                   $(this).click(function(){
+                    $(this).addClass('on').siblings().removeClass('on');
+                    var lb_cured=$(this).index();
+                    var productstt = $("#limit-buy .products").hide().eq(lb_cured - 1).show();
+                   
+                    
+                   });
+                })
+                var products = $("#limit-buy .products").hide().eq(lb_cur - 1).show(),
+                    ta = products.find("textarea");
+
+                if (ta.length) {
+                    products.html(ta.val());
+                }
+            }
+            lb_timer = setInterval(function () {
+                lb_cur++;
+                showLimitBuyProducts();
+            }, 5000);
+
+            $("#J-lbn .prev, #J-lb .btn-prev").click(function () {
+                lb_cur--;
+                showLimitBuyProducts();
+            });
+            $("#J-lbn .next, #J-lb .btn-next").click(function () {
+                lb_cur++;
+                showLimitBuyProducts();
+            });
+        });
+
+
+        $(function () {
+            banner();
+            var lb = $("#limit-buy1"),
+                lb_cur = 1,
+                lbp_w = lb.find(".products1").width();
+            lb_timer = null;
+            t = 1;
+
+            function showLimitBuyProducts() {
+                if (lb_cur < 1) {
+                    lb_cur = 2;
+                } else if (lb_cur > 2) {
+                    lb_cur = 1;
+                }
+                $("#J-lbcp1").html(lb_cur);
+                var products = $("#limit-buy1 .products1").hide().eq(lb_cur - 1).show(),
+                    ta = products.find("textarea");
+
+                if (ta.length) {
+                    products.html(ta.val());
+                }
+            }
+            // lb_timer = setInterval(function () {
+            //     lb_cur++;
+            //     showLimitBuyProducts();
+            // }, 205000);
+
+            $("#J-lbn1 .prev, #J-lb1 .btn-prev").click(function () {
+                lb_cur--;
+                showLimitBuyProducts();
+            });
+            $("#J-lbn1 .next, #J-lb1 .btn-next").click(function () {
+                lb_cur++;
+                showLimitBuyProducts();
+            });
+        })
+
+        function banner() {
+            var mySwiper = new Swiper('.swiper-container', {
+                //autoplay:true,//等同于以下设置
+                autoplay: {
+                    delay: 3000,
+                    stopOnLastSlide: false,
+                    disableOnInteraction: true,
+                },
+                loop: true,
+                lazy: true,
+                on: {
+                    lazyImageReady: function (slideEl, imageEl) {
+                        resizeImg({
+                            selector: '.swiper-slide',
+                            model: 'fill'
+                        });
+                    }
+                },
+            });
+        }
+   
+      
+        
+function getCurrentDate() {
+
+var myDate = new Date();
+
+var year = myDate.getFullYear(); //年
+
+var month = myDate.getMonth() + 1; //月
+
+var day = myDate.getDate(); //日
+
+var days = myDate.getDay();
+
+switch(days) {
+
+      case 1:
+
+            days = '星期一';
+
+            break;
+
+      case 2:
+
+            days = '星期二';
+
+            break;
+
+      case 3:
+
+            days = '星期三';
+
+            break;
+
+      case 4:
+
+            days = '星期四';
+
+            break;
+
+      case 5:
+
+            days = '星期五';
+
+            break;
+
+      case 6:
+
+            days = '星期六';
+
+            break;
+
+      case 0:
+
+            days = '星期日';
+
+            break;
+
+
+
+}
+
+var str = year + "年" + month + "月" + day + "日  " + days;
+
+return str;
+
+}
+    </script>
+</body>
+
+</html>

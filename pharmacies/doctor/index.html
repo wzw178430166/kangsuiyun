@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/doctor/css/header_common.css">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/doctor/css/left_.css">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/doctor/css/index.css">
+    <!-- <link rel="stylesheet" href="/statics/dataManage/css/bootstrap.css"> -->
+    <script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+    <!-- <script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script> -->
+    <script type="text/javascript" src="/statics/js/layer_mobile/layer.js"></script>
+    <script type="text/javascript" src="/statics/admin/common/layui/layui.all.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/statics/js/global.js"></script>
+    <title>药房-医生端</title>
+    <style>
+        .matst_back {
+            width: 95%;
+            display: flex;
+            justify-content: space-between;
+            margin: 0 auto;
+            margin-top: .5rem;
+        }
+
+        .back_goo {
+            width: 2rem;
+            height: .9rem;
+            line-height: .9rem;
+            border: 1px solid #929292;
+            color: #7d7272;
+            text-align: center;
+            border-radius: .1rem;
+        }
+
+        .back_goo svg {
+            width: .6rem;
+            height: .6rem;
+            vertical-align: middle;
+        }
+
+        #menu {
+            padding-top: .1rem;
+            background: #fff;
+        }
+
+        #menu ul {
+            display: flex;
+            flex-wrap: wrap;
+            margin: .2rem 0 0 .3rem;
+        }
+
+        #menu li {
+            width: 2rem;
+            height: .7rem;
+            margin-right: .5rem;
+            line-height: .7rem;
+            text-align: center;
+            background-color: #f9f8f8;
+            overflow: hidden;
+            font-size: .25rem;
+            color: #111111;
+            border: 1px solid #dcd8d8;
+            border-radius: .05rem;
+        }
+
+        #menu li .pstyle {
+            width: 70%;
+            height: 2px;
+            background: #339EFC;
+            margin: .5rem auto 0 auto;
+        }
+
+        #menu li.on {
+            color: #ffffff;
+            background: #339EFC;
+            border: 1px solid #339EFC;
+        }
+
+        .henline {
+            height: .7rem;
+            background: #f6f6f6;
+        }
+
+        .limit-box {
+            position: relative;
+            width: 95%;
+            margin: 20px auto;
+            height: 38vh;
+            overflow: hidden;
+            box-shadow: 0px 1px 3px 1px #eae8e8;
+            border-radius: .15rem;
+        }
+
+        /* limit-buy-hd */
+        .limit-buy-hd {
+            height: 1rem;
+            background: #ffffff;
+            border-bottom: 1px solid #e6e6e6;
+            line-height: 1rem;
+        }
+
+        .limit-buy-hd h2 {
+            float: left;
+            overflow: hidden;
+            display: inline;
+            width: 5rem;
+            height: 1rem;
+            color: #000;
+            font-weight: 600;
+            line-height: 1rem;
+            font-size: 0.35rem;
+            padding: 0 0 0 22px;
+            margin: 0;
+        }
+
+        /* limit-buy-nav */
+        .limit-buy-nav {
+            float: right;
+            width: 33px;
+            margin: .25rem .5rem 0 0;
+        }
+
+        .limit-buy-nav span {
+            float: left;
+            width: 44px;
+            height: 21px;
+            font-size: 14px;
+            line-height: 21px;
+            text-align: center
+        }
+
+        .limit-buy-nav em {
+            margin-right: 1px;
+            color: #ea5501;
+            font-weight: 700
+        }
+
+        .limit-buy-nav .prev,
+        .limit-buy-nav .next {
+            float: left;
+            overflow: hidden;
+            width: 8px;
+            height: 9px;
+            margin: 6px 0 0;
+            background: url(/pharmacies/doctor/images/arrowbg1.png) no-repeat -59px -180px
+        }
+
+        .limit-buy-nav .next {
+            background-position: -52px -180px
+        }
+
+        /* limit-buy-bd */
+        .limit-buy-bd {
+            overflow: hidden;
+            width: 9000%;
+            z-index: 1;
+            height: 3.6rem;
+        }
+
+
+        .products {
+            width: 100%;
+            margin: 0;
+            /* position: relative; */
+            display: inline;
+            float: right;
+            margin-bottom: 20rem;
+            padding-right: 1rem;
+            padding-bottom: .5rem;
+        }
+
+        .products li {
+            float: left;
+            position: relative;
+            width: 16.66%;
+            padding: 0px 0px 0;
+            margin-left: .3rem;
+            height: 3.6rem;
+            width: 3.13rem;
+            /* border: 1px solid #ccc; */
+            /* border-radius: .5rem; */
+            overflow: hidden;
+            -moz-box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem rgba(0, 0, 0, 0.36);
+            /* -webkit-box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem rgba(0, 0, 0, 0.36); */
+            /* box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem rgba(0, 0, 0, 0.36); */
+            display: inline-block;
+        }
+
+        .products li .pic {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            height: 1.7rem;
+            margin: 0 auto .18rem;
+        }
+
+        .products li .pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain
+        }
+
+        .products li .price {
+            padding: 0;
+            width: 100%;
+            height: 26px;
+            line-height: 26px;
+            font-size: .28rem;
+            margin: 0;
+            font-weight: 800;
+            color: #d22c2c;
+            padding-top: .001rem;
+            text-align: center;
+        }
+
+        .products li .name {
+            height: .8rem;
+            margin: 0 0 2px;
+            line-height: .4rem;
+            width: 80%;
+            overflow: hidden;
+            margin: 0 auto;
+            word-wrap: break-word;
+            text-align: center;
+            overflow: hidden;
+            display: inline-block;
+            font-size: .25rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            cursor: pointer;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .products li .name a {
+            display: inline-block;
+            width: 100%;
+            word-wrap: break-word;
+            height: 100%;
+            line-height: .4rem;
+        }
+
+
+
+
+        @media screen and (min-width:560px) and (max-width:1000px) {
+            .mst-content {
+                width: 95%;
+                margin: 0 auto;
+                height: 22vh;
+                padding-top: 1rem;
+                overflow: hidden;
+            }
+
+            .limit-box {
+                position: relative;
+                width: 90%;
+                margin: 20px auto;
+                height: 25vh;
+                overflow: hidden;
+                box-shadow: 0px 1px 3px 1px #eae8e8;
+                border-radius: .15rem;
+            }
+        }
+
+        .mst-content {
+            width: 95%;
+            margin: 0 auto;
+            height: 46vh;
+            overflow: hidden;
+            display: flex;
+            padding-top: .5rem;
+            margin-top: 1.6vh;
+            justify-content: space-between;
+        }
+
+        .mst-left {
+            width: 52%;
+            position: relative;
+        }
+
+        .mst-left .mst-left-top {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .mst-left-top-left div:nth-child(1) {
+            font-size: .56rem;
+            color: #2b1e1e;
+            font-weight: 600;
+        }
+
+        .mst-left-top-left div:nth-child(2) {
+            font-size: .36rem;
+            margin-top: .44rem;
+            margin-bottom: .35rem;
+        }
+
+        .mst-left-top-right .kaisuh {
+            width: 2rem;
+            height: .7rem;
+            border-radius: .06rem;
+            text-align: center;
+            line-height: .7rem;
+            border: 1px solid rgb(0, 120, 255);
+        }
+
+        .mst-left-top-right .kaisuh svg {
+            width: .4rem;
+            height: .4rem;
+            vertical-align: middle;
+        }
+
+        .mst-left-top-bottom{    
+            display: flex;
+    justify-content: space-between;
+    height: 18vh;
+    margin-top: 6vh;
+   }
+.mst-left-r{width: 48%;background: url(/pharmacies/doctor/images/v2_q8xa46.png) no-repeat center; border-radius: .2rem;
+    box-shadow: 0px 1px 3px 1px #eae8e8;background-size: contain;padding-left: .6rem;}
+.mst-right-r{width: 48%;background: url(/pharmacies/doctor/images/v2_q8xa46.png) no-repeat center; border-radius: .2rem;padding-left: .6rem;
+    box-shadow: 0px 1px 3px 1px #eae8e8;background-size: contain;}
+       
+   .mst-t-lefts .lis-pst{font-size: .45rem;
+    color: #000000;
+    font-weight: 600;}
+   .mst-t-lefts .lis-fiont{font-size: .4rem;color: #7d7676;margin-top:-.2rem}
+    .mst-right {
+            width: 46%;
+        }
+
+
+        .products1 {
+            width: 100%;
+            margin: 0;
+            height: 130%;
+            /* position: relative; */
+            display: inline;
+            float: right;
+            /* margin-bottom: 20rem; */
+            /* padding-right: 1rem; */
+            padding-bottom: .5rem;
+        }
+
+        .products1 li .name {
+            height: .7rem;
+            line-height: .7rem;
+            font-size: .31rem;
+            padding-left: .3rem;
+            margin: 0 0 2px;
+            line-height: .7rem;
+            width: 80%;
+            overflow: hidden;
+            text-align: center;
+            color: #000;
+            display: inline-block;
+            display: -webkit-box;
+
+        }
+
+        .limit-box1 {
+            position: relative;
+            width: 95%;
+            margin: 0px auto;
+            height: 99%;
+            overflow: hidden;
+            box-shadow: 0px 1px 3px 1px #eae8e8;
+            border-radius: .15rem;
+        }
+
+        .panel-default>.panel-heading+.panel-collapse>.panel-body {
+            border-top-color: #ddd;
+            white-space: pre-line;
+        }
+
+        .panel-body {
+            padding: 0rem .2rem .2rem .3rem;
+            /* text-indent: 1em; */
+        }
+
+        .sangege {
+            float: right;
+            font-size: 14px;
+            /* vertical-align: middle; */
+            color: #757171;
+            margin-top: .05rem;
+        }
+
+        .panel-title>.small,
+        .panel-title>.small>a,
+        .panel-title>a,
+        .panel-title>small,
+        .panel-title>small>a {
+            color: inherit;
+            font-size: 15px;
+            text-decoration: none;
+        }
+
+        .panel-default>.panel-heading {
+            color: #333;
+            background-color: #ffffff;
+            border-color: #ddd;
+        }
+
+        .panel-default>.panel-heading+.panel-collapse>.panel-body {
+            border-top-color: #ddd;
+            width: 100%;
+        }
+
+        #accordion1 .panel-body {
+            width: 100%;
+        }
+
+        @media screen and (min-width:1300px) and (max-width:2500px) {
+            .limit-box {
+                height: 38vh;
+            }
+
+            .products li .name {
+                font-size: .27rem;
+            }
+
+            .products li .price {
+                font-size: .32rem;
+                margin-top: .2rem;
+            }
+
+            .products li .pic {
+                margin-top: .3rem;
+            }
+
+            .mst-left-top-left div:nth-child(2) {
+                font-size: .36rem;
+                margin-top: .6rem;
+                margin-bottom: .53rem;
+            }
+        }
+
+        /* @media screen and (min-width:1800px) and (max-width:2880px){
+    .limit-box {
+    height: 37vh;
+}
+.products li .name {
+    font-size: .27rem;
+}
+.products li .price {
+    font-size: .32rem;
+}
+} */
+        .selects {
+            background: #ffffff;
+        }
+
+        .selects2 {
+            background: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outdiv">
+        <div class="left" id="left">
+            <!--#include file="left.html"-->
+        </div>
+        <div class="right_conter">
+            <div class="header_box" id="header">
+                <!--#include file="header.html"-->
+            </div>
+            <div class="h8vh"></div>
+            <div style="width:auto;margin:auto;">
+                <div class="mst-content">
+                    <div class="mst-left">
+                        <div class="mst-left-top">
+                            <div class="mst-left-top-left">
+                                <div>李医生，早上好</div>
+                                <div><span id="datast">-</span>，欢迎您使用处方问诊服务台</div>
+                            </div>
+                            <div class="mst-left-top-right" onclick="goo_t('/pharmacies/doctor/interrogation_doc.html')">
+                                <div class="kaisuh">
+                                    <svg t="1607771766945" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" p-id="1151" width="32" height="32">
+                                        <path
+                                            d="M512 981.333333c259.2 0 469.333333-210.133333 469.333333-469.333333S771.2 42.666667 512 42.666667 42.666667 252.8 42.666667 512s210.133333 469.333333 469.333333 469.333333z m0-42.666666C276.352 938.666667 85.333333 747.648 85.333333 512S276.352 85.333333 512 85.333333s426.666667 191.018667 426.666667 426.666667-191.018667 426.666667-426.666667 426.666667z"
+                                            p-id="1152" fill="#bfbfbf"></path>
+                                        <path
+                                            d="M298.666667 533.333333h426.666666a21.333333 21.333333 0 1 0 0-42.666666H298.666667a21.333333 21.333333 0 0 0 0 42.666666z"
+                                            p-id="1153" fill="#bfbfbf"></path>
+                                        <path
+                                            d="M490.666667 298.666667v426.666666a21.333333 21.333333 0 1 0 42.666666 0V298.666667a21.333333 21.333333 0 1 0-42.666666 0z"
+                                            p-id="1154" fill="#bfbfbf"></path>
+                                    </svg>
+                                    开处方药
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mst-left-top-bottom">
+                            <div class="mst-left-r" onclick="goo_t('/pharmacies/doctor/interrogation_doc.html')">
+                                <div class="mst-t-lefts">
+                                    <p class="lis-pst">待接诊</p>
+                                    <div class="lis-fiont">2人</div>
+                                </div>
+                                <div class="mst-t-rights">
+                                  
+                                </div>
+                            </div>   
+                            <div class="mst-right-r">
+
+                                <div class="mst-t-lefts">
+                                    <p class="lis-pst">今天服务人数</p>
+                                    <div class="lis-fiont">32人</div>
+                                </div>
+                                <div class="mst-t-rights">
+                                  
+                                </div>
+                            </div>   
+                        </div>
+                    </div>
+                    <div class="mst-right">
+
+                        <div class="limit-box1" id="J-lb1">
+                            <div class="limit-buy-hd">
+                                <h2>通知公告</h2>
+                                <div class="limit-buy-nav" id="J-lbn1" style="width: 26px;">
+                                    <a href="javascript:void(0)" class="prev">
+                                    </a>
+                                    <span style="visibility: hidden;width:10px;">
+                                        <em id="J-lbcp1">1</em>/4
+                                    </span>
+                                    <a href="javascript:void(0)" class="next"></a>
+                                </div>
+                            </div>
+
+                            <div class="limit-buy-bd" id="limit-buy1"
+                                style="height:100%;overflow: auto;display: flex;width: 200%;">
+                                <div class="panel-group products1" id="accordion1">
+                                    <div class="panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">
+                                                    关于5.1劳动节放假通知
+                                                </a>
+                                                <span class="sangege">2020年03月02日</span>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseOne" class="panel-collapse collapse in">
+                                            <div class="panel-body">
+                                                集团各部门（中心）、分（子）公司： 2020年五一劳动节即将来临，根据国家相关规定，现将放假事宜安排如下： 一、放假时间安排
+                                                2020年5月1日.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo">
+                                                    关于省领导即将来视察的注意事项通知...
+                                                </a>
+                                                <span class="sangege">2020年06月08日</span>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseTwo" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                                                cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+                                                vice lomo.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion1"
+                                                    href="#collapseThree">
+                                                    关于国庆节放假通知
+                                                </a>
+                                                <span class="sangege">2020年09月02日</span>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseThree" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                                                cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+                                                vice lomo.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel-group products1" id="accordion2">
+                                    <div class="panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion2"
+                                                    href="#collapseOne2">
+                                                    关于档馆复工的通知
+                                                </a>
+                                                <span class="sangege">2020年03月02日</span>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseOne2" class="panel-collapse collapse in">
+                                            <div class="panel-body">
+                                                根据国家相关规定，现将放假事宜安排如下
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion2"
+                                                    href="#collapseTwo2">
+                                                    关于5.1劳动节放假通知
+                                                </a>
+                                                <span class="sangege">2020年06月08日</span>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseTwo2" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                                                cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+                                                vice lomo.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion2"
+                                                    href="#collapseThree2">
+                                                    关于元旦放假通知
+                                                </a>
+                                                <span class="sangege">2020年09月02日</span>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseThree2" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                                                cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+                                                vice lomo.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+                <div class="limit-box" id="J-lb">
+                    <div class="data-content" style="height: 85%;box-shadow: 0px 1px 3px 1px transparent;">
+                        <div class="tb-container">
+                            <table class="table">
+                                <caption class="caption">订单列表</caption>
+                                <thead>
+                                    <tr align="center">
+                                        <th style="text-align: center;">
+                                            <strong class="tb-head cell-check" data-val="check">
+                                                <input type="checkbox" id="J_sel_all"
+                                                    style="width: 15px;height: 15px;border:1px solid #666">
+                                            </strong>
+                                        </th>
+                                        <th style="text-align: center;"><strong class="tb-head cell-orderid" data-val="orderid">处方单号</strong></th>
+                                        <th style="text-align: center;"><strong class="tb-head cell-username" data-val="username">申请用户</strong></th>
+                                        <th style="text-align: center;"><strong class="tb-head cell-product" data-val="product">申请日期</strong></th>
+                                        <th style="text-align: center;"><strong class="tb-head cell-amount" data-val="amount">药品数量</strong></th>
+                                        <th style="text-align: center;"><strong class="tb-head cell-pay_channel"
+                                                data-val="pay_channel">药品金额</strong></th>
+                                        <th style="text-align: center;"><strong class="tb-head cell-pay_amount" data-val="pay_amount">医生</strong>
+                                        </th>
+                                        <th style="text-align: center;"><strong class="tb-head cell-status" data-val="status">医生接入点</strong></th>
+                                        <th style="text-align: center;"><strong class="tb-head cell-createtime" data-val="createtime">审核状态</strong>
+                                        </th>
+                                        <th style="text-align: center;"><strong class="tb-head cell-operate" data-val="operate">操作</strong></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="datas">
+                                    <tr align="center">
+                                        <td>
+                                            <strong class="tb-head cell-check" data-val="check">
+                                                <input type="checkbox" id="J_sel_all"
+                                                    style="width: 15px;height: 15px;border:1px solid #666">
+                                            </strong>
+                                        </td>
+                                        <td>1113454654654</td>
+                                        <td>张三</td>
+                                        <td>2020-02-03</td>
+                                        <td>2</td>
+                                        <td>233.5</td>
+                                        <td>张主卧</td>
+                                        <td>春雨</td>
+                                        <td><span style="color: #48a54b;">已审核</span></td>
+                                        <td>
+                                            <a href="#">查看</a>
+                                            <a href="#">配药</a>
+                                            <a href="#">删除</a>
+                                        </td>
+                                    </tr>
+                                    <tr align="center">
+                                        <td>
+                                            <strong class="tb-head cell-check" data-val="check">
+                                                <input type="checkbox" id="J_sel_all"
+                                                    style="width: 15px;height: 15px;border:1px solid #666">
+                                            </strong>
+                                        </td>
+                                        <td>5113454654654</td>
+                                        <td>张三</td>
+                                        <td>2020-08-03</td>
+                                        <td>2</td>
+                                        <td>233.5</td>
+                                        <td>张主卧</td>
+                                        <td>春雨</td>
+                                        <td><span style="color: #ff9d38;">未审核</span></td>
+                                        <td>
+                                            <a href="#">查看</a>
+                                            <a href="#">药师审核</a>
+                                            <a href="#">删除</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- <table class="table table-bordered table-hover table-striped" id="rstb">
+                           <thead>
+                               <tr align="center">
+                                  <th><strong class="tb-head cell-check" data-val="check">
+                                  <input type="checkbox" id="J_sel_all">
+                                  </strong></th>
+                                  <th><strong class="tb-head cell-orderid" data-val="orderid">处方单号</strong></th>
+                                  <th><strong class="tb-head cell-username" data-val="username">申请用户</strong></th>
+                                  <th><strong class="tb-head cell-product" data-val="product">申请日期</strong></th>
+                                  <th><strong class="tb-head cell-amount" data-val="amount">药品数量</strong></th>
+                                  <th><strong class="tb-head cell-pay_channel" data-val="pay_channel">药品金额</strong></th>
+                                  <th><strong class="tb-head cell-pay_amount" data-val="pay_amount">医生</strong></th>
+                                  <th><strong class="tb-head cell-status" data-val="status">医生接入点</strong></th>
+                                  <th><strong class="tb-head cell-createtime" data-val="createtime">审核状态</strong></th>
+                                  <th><strong class="tb-head cell-operate" data-val="operate">操作</strong></th>
+                              </tr>
+                            </thead>
+                            <tbody id="datas">
+                            </tbody>
+                          </table> -->
+                        </div>
+                        <div class="inner-page" id="innerPage"></div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var page = 1;
+        $(function () {
+            $('#datast').text(getCurrentDate());
+            getData();
+            var lb = $("#limit-buy1"),
+                lb_cur = 1,
+                lbp_w = lb.find(".products1").width();
+            lb_timer = null;
+            t = 1;
+
+            function showLimitBuyProducts() {
+                if (lb_cur < 1) {
+                    lb_cur = 2;
+                } else if (lb_cur > 2) {
+                    lb_cur = 1;
+                }
+                $("#J-lbcp1").html(lb_cur);
+                var products = $("#limit-buy1 .products1").hide().eq(lb_cur - 1).show(),
+                    ta = products.find("textarea");
+
+                if (ta.length) {
+                    products.html(ta.val());
+                }
+            }
+            // lb_timer = setInterval(function () {
+            //     lb_cur++;
+            //     showLimitBuyProducts();
+            // }, 205000);
+
+            $("#J-lbn1 .prev, #J-lb1 .btn-prev").click(function () {
+                lb_cur--;
+                showLimitBuyProducts();
+            });
+            $("#J-lbn1 .next, #J-lb1 .btn-next").click(function () {
+                lb_cur++;
+                showLimitBuyProducts();
+            });
+        })
+
+       
+
+
+
+        function getCurrentDate() {
+
+            var myDate = new Date();
+
+            var year = myDate.getFullYear(); //年
+
+            var month = myDate.getMonth() + 1; //月
+
+            var day = myDate.getDate(); //日
+
+            var days = myDate.getDay();
+
+            switch (days) {
+
+                case 1:
+
+                    days = '星期一';
+
+                    break;
+
+                case 2:
+
+                    days = '星期二';
+
+                    break;
+
+                case 3:
+
+                    days = '星期三';
+
+                    break;
+
+                case 4:
+
+                    days = '星期四';
+
+                    break;
+
+                case 5:
+
+                    days = '星期五';
+
+                    break;
+
+                case 6:
+
+                    days = '星期六';
+
+                    break;
+
+                case 0:
+
+                    days = '星期日';
+
+                    break;
+
+
+
+            }
+
+            var str = year + "年" + month + "月" + day + "日  " + days;
+
+            return str;
+
+        }
+
+        function initPage(pageCount) {
+            layui.use('laypage', function () {
+                var laypage = layui.laypage;
+                laypage.render({
+                    elem: 'innerPage' //注意，这里的 test1 是 ID，不用加 # 号
+                        ,
+                    count: pageCount //数据总数，从服务端得到
+                        ,
+                    limit: 15,
+                    layout: ['prev', 'page', 'next', 'skip',
+                        'count'] //['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+                        ,
+                    prev: '<i class="icon-arrow arrow-l"></i>',
+                    next: '<i class="icon-arrow arrow-r"></i>',
+                    hash: 'page' //页面载入时就定位到指定页
+                        ,
+                    theme: '#234686',
+                    jump: function (obj, first) {
+                        //首次不执行
+                        if (!first) {
+                            //console.log(obj);
+                            page = parseInt(obj.curr);
+                            getData();
+                        }
+                    }
+                });
+            });
+        }
+
+        function getData() {
+            var url = '/?m=dataManage&c=member&a=memberList2&ajax=1';
+            console.log(url);
+            if (page > 1) url += '&page=' + page;
+            var k = $.trim($('#k').val());
+            var userid = parseInt($.trim($('#userid').val()));
+            var st = $.trim($('#st').val());
+            var et = $.trim($('#et').val());
+            if (k) url += '&k=' + k;
+            if (0 < userid) url += '&userid=' + userid;
+            if (st) url += '&st=' + st;
+            if (et) url += '&et=' + et;
+            var index = layer.load(2, {
+                time: 3000
+            });
+            $.ajax({
+                url: url,
+                type: "GET",
+                dataType: "JSON",
+                success: function (data) {
+                    layer.close(index);
+                    console.log(data);
+                    validateAuth(data.status);
+                    var html = '';
+                    var pageCount = 0;
+                    if (1 == data.status) {
+                        datas = data.data.datas;
+                        var locate = data.data.locate;
+                        var device = data.data.device;
+                        var operateState = data.data.operateState;
+                        pageCount = data.data.pageCount;
+                        for (var i in datas) {
+                            var info = datas[i];
+                            var _locate = {};
+                            var deviceStr = '';
+                            var serviceStr = '';
+                            var serviceState = 0;
+                            var _operateState = {};
+                            html +=
+                                '<tr align="center"><td><div class="tb-cell cell-check"><input type="checkbox" name="ids[]" value="' +
+                                info.userid + '"></div></td><td><div class="tb-cell cell-userid">' + info
+                                .userid +
+                                '</div></td><td><div class="tb-cell cell-username"><a href="/?m=dataManage&c=member&a=memberDetail&uid=' +
+                                info.userid + '" target="_bank">' + info.username +
+                                '</a></div></td><td><div class="tb-cell cell-nickname">' + info.nickname +
+                                '</div></td><td><div class="tb-cell cell-remarks">' + (info.remarks ? info
+                                    .remarks : '') + '</div></td><td><div class="tb-cell cell-sex">' + (info
+                                    .sexStr ? info.sexStr : '') +
+                                '</div></td><td><div class="tb-cell cell-age">' + (info.age ? info.age :
+                                '') + '</div></td><td><div class="tb-cell cell-mobile">' + info.mobile +
+                                '</div></td><td><div class="tb-cell cell-locate btn-locate" data-lng="' +
+                                _locate.lng + '" data-lat="' + _locate.lat + '" data-time="' + _locate
+                                .time + '">' + _locate.address +
+                                '</div></td><td><div class="tb-cell cell-device"><i class="h-state state-' +
+                                info.is_device + ' btn-device" data-state="' + info.is_device + '">' +
+                                deviceStr +
+                                '</i></div></td><td><div class="tb-cell cell-service"><i class="h-state state-' +
+                                serviceState + ' btn-service" data-state="' + serviceState + '">' +
+                                serviceStr +
+                                '</i></div></td><td><div class="tb-cell cell-state"><i class="o-state state-' +
+                                _operateState.state + '">' + _operateState.stateStr +
+                                '</i></div></td><td><div class="tb-cell cell-online">' + _operateState
+                                .last_time + '</div></td><td><div class="tb-cell cell-regdate">' + info
+                                .regdate +
+                                '</div></td><td><div class="tb-cell cell-operate"><a href="/?m=dataManage&c=member&a=doMember&uid=' +
+                                info.userid +
+                                '" class="operate-btn btn-edit">修改</a>  <a href="javascript:;" class="operate-btn btn-pass">重置密码</a></div></td></tr>';
+                        }
+                    } else {
+                        html += '<tr align="center"><td colspan="' + ($('.tb-head').length) +
+                            '">暂无数据</td></tr>';
+                    }
+                    $('#datas').html(html);
+                    initWidth();
+                    initOperate();
+                    if (page == 1) initPage(pageCount);
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
