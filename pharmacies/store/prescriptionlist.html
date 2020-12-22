@@ -45,6 +45,22 @@
     position: relative;
     left: -30px;}
     .cell-check input[type="checkbox"] {width: 15px;height: 15px;border:1px solid #666}
+    .layui-laypage a, .layui-laypage span {
+    height: 23px;
+    line-height: 23px;
+}
+.layui-input {
+    height: 24px!important;
+}
+.layui-laypage button, .layui-laypage input {
+    height: 24px;
+    line-height: 24px;
+    vertical-align: middle;
+}
+.btn-batch {
+    padding: 10px;
+    background-color: #ffffff;
+}
 </style>
 </head>
 <body>
@@ -201,6 +217,7 @@
                     <tbody id="datas">
                     </tbody>
                   </table> -->
+                  <div class="btn-batch"> <span id="J_sel_all2" data-off="0">全选/取消</span> <a href="javascript:;" class="batch-del" id="J_batch_del">删除</a></div>
                 </div>
                 <div class="inner-page" id="J_page"></div>
               </div>
@@ -216,7 +233,33 @@
         getData();
         //getleft();
         //gethearder();
-        
+    $('#J_batch_del').on('click',function(){
+    var pids = setSel();
+		if (false == pids) return;
+		var index = layer.confirm('确定删除该记录?',{btn:["删除","取消"]},function(){
+			layer.close(index);
+			layer.prompt({title: '操作密码', formType: 1}, function(pass,index){
+				var url = '/?m=dataManage&c=member&a=delMember&ajax=1';
+				var formParam = {"dosubmit":1,"pid":pids,'password':pass};
+				$.post(url,formParam,function(data){
+					layer.msg(data.erro);
+					validateAuth(data.status);
+					if (data.status == 1) {
+						layer.close(index);
+						getData();
+					}
+				},'json');
+
+			});
+
+		});
+	});
+        $('#J_sel_all').on('click',function(){
+          setSelCss();
+        });
+        $('#J_sel_all2').on('click',function(){
+          setSelCss();
+        });
         laydate.render({
           elem: '#et'
           ,format: 'yyyy-MM-dd'
@@ -236,6 +279,28 @@
             getData();
         });
     });
+    function setSelCss(){
+      var off = parseInt($('#J_sel_all2').attr('data-off'));
+      var _item = $('input[name="ids[]"]');
+      _item.each(function(i) {
+        $(this).prop('checked',off==0?true:false);
+        });
+      $('#J_sel_all').prop('checked',off==0?true:false);
+      $('#J_sel_all2').attr('data-off',off==0?1:0);
+    }
+    function setSel(){
+	var selected = $('input[name="ids[]"]:checked');
+	if (0 >= selected.length) {
+		layer.msg('请选择');
+		return false;
+	}
+	var str = '';
+	selected.each(function(i) {
+		str += $(this).val()+',';
+	});
+	str = str.substring(0,str.length - 1);
+  return str;
+}
     function getData(){
         var url = '/?m=pharmacy&c=prescription&a=lists&ajax=1';
         var query = {};//查询参数
@@ -267,14 +332,37 @@
                   html += '<tr align="center"><td colspan="'+($('.tb-head').length)+'">暂无数据</td></tr>';
                 }
                 $('#data').html(html);
-                if(1==page) layuiPage({total:res.total});
+                // if(1==page) layuiPage({total:res.total});
+                if (page == 1) initPage(res.total);
             },
             error:function(res){
                 console.log(res);
             }
         });
     }
-    
+    function initPage(pageCount) {
+	layui.use('laypage', function(){
+		var laypage = layui.laypage;
+		laypage.render({
+			elem: 'J_page' //注意，这里的 test1 是 ID，不用加 # 号
+			,count: pageCount //数据总数，从服务端得到
+			,limit: 15
+			,layout: ['prev', 'page','next', 'skip','count']//['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+			,prev: '<i class="icon-arrow arrow-l"></i>'
+			,next: '<i class="icon-arrow arrow-r"></i>'
+			,hash: 'page'//页面载入时就定位到指定页
+			,theme: '#234686'
+			,jump: function(obj, first){
+				//首次不执行
+				if (!first) {
+					//console.log(obj);
+					page = parseInt(obj.curr);
+					getData();
+				}
+			}
+		});
+	});
+}
     function gethearder() {
             $('#header').load('/pharmacies/store/header.html', function () {
             });
