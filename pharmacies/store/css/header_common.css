@@ -24,7 +24,7 @@ body{background: #ffffff;}
 .selects{   
     border: 0;
     font-size: .27rem;
-    width: 100px;
+    width: 150px;
     outline: none;
     height: 40px;
     margin-top: -.2rem;
@@ -32,6 +32,18 @@ body{background: #ffffff;}
     line-height: 40px;
     border-bottom: 1px solid #e8e8e8;}
 
+@media (min-width: 1600px) {
+    .selects{   
+        border: 0;
+        font-size: .27rem;
+        width: 170px;
+        outline: none;
+        height: 40px;
+        margin-top: -.2rem;
+        margin-right: .5rem;
+        line-height: 40px;
+        border-bottom: 1px solid #e8e8e8;} 
+}
 .selects2{
     border: 0;
     font-size: .3rem;

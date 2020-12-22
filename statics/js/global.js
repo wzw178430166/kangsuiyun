@@ -658,7 +658,7 @@ function checkLogin(ac) {
 	var status, erro;
 	var auth = getCookie(cookie_pre + 'auth');
 	if (ac && ac.indexOf('golink') > -1 && !auth) {
-		goo('/pharmacy/login.html?forward=' + encodeURIComponent(window.location.href));
+		goo('/pharmacies/login.html?forward=' + encodeURIComponent(window.location.href));
 		return false;
 	}
 	if (auth) {
@@ -944,7 +944,7 @@ function logout(forward){
 		}
 	},300);
 }
-function logout1(forward){
+function logout1(forward){   //测试
 	$.get('/index.php?m=member&a=logout&app=1&forward=');
 	setTimeout(function(){
 		try{
@@ -953,10 +953,22 @@ function logout1(forward){
 			var domain = window.location.href.split(/http:\/\/([^\.]*)/);
 			if(domain[1]=="dr"){
 			
-				goo('/pharmacy/login.html?forward='+forward);
+				goo('/pharmacies/login.html?forward='+forward);
 				return;
 			} 
-			goo('/pharmacy/login.html?forward='+forward);
+			goo('/pharmacies/login.html?forward='+forward);
+		}
+	},300);
+}
+function logout2(forward){   //正式
+	$.get('/?m=corp&c=authed&a=logout&ajax=1');
+	setTimeout(function(){
+		try{
+			jstojava.logout();
+		}catch(d){
+			var url = '/pharmacies/login.html';
+			if (forward) url += '&forward='+forward;
+			goo(url);
 		}
 	},300);
 }

@@ -8,7 +8,7 @@
     </div>
 </div>
 <div class="pstateet">
-    <div class="boawo_item" onclick="goo('/pharmacies/store/orderlist.html')">
+    <div class="boawo_item" onclick="goo('/pharmacies/store/prescriptionlist.html?&status=WAIT_VERIFY')">
         <div class="widget svg_icon_path sthond">
             <span class="icon svg-icon-wrap svg-md svg-md-control_point_duplicate-wrap"
             style="width: 24px; height: 24px; min-width: 24px; min-height: 24px;"><svg
@@ -22,11 +22,11 @@
         </div>
         <div class="widget rounded_rect hcenter vmiddle clickable sdjfdoi">
             <div class="text" style="padding: 0px;">
-                <p>新订单</p>
+                <p>待审核处方</p>
             </div>
             
         </div>
-        <div class="wdihje">20</div>
+        <div class="wdihje">21</div>
     </div>
 
     <div class="boawo_item" onclick="goo('/pharmacies/store/prescriptionlist.html')">
@@ -102,7 +102,7 @@
         </div>
     </div>
 
-    <div class="boawo_item" onclick="logout1()">
+    <div class="boawo_item" onclick="logout2()">
         <div class="widget svg_icon_path sthond">
             <span class="icon svg-icon-wrap svg-fa5 svg-fa5-sign-in-alt-fas-wrap"
             style="width: 24px; height: 24px; min-width: 24px; min-height: 24px;"><svg
@@ -131,3 +131,10 @@
      
 
 </div>
+<script type="text/javascript">
+    function logout(){
+        var url = '/?m=corp&c=authed&a=logout&system=pharmacy&forward='+encodeURIComponent(window.location.href);
+        //alert(url);return;
+        goo(url);
+    }
+</script>

@@ -116,3 +116,18 @@
 
    
 }
+@media (min-width: 1600px){
+    .left{
+        width: 220px;
+    }
+    .text_view .text p:last-child, .rounded_rect .text p:last-child, .circle_rect .text p:last-child, .mtooltip .text p:last-child {
+        margin-bottom: 0;
+        font-size: .27rem!important;
+    }
+    .boawo_item .wdihje {
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+        font-size: .23rem; 
+    }
+}

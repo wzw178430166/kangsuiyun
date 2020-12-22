@@ -57,6 +57,7 @@
 </head>
 
 <body>
+      <!--#include file="banner.html"-->
     <div class="outdiv">
         <div class="right_conter">
             <div class="header_box" id="header">
@@ -72,7 +73,14 @@
             </div>
         </div>
     </div>
-
+  <script>
+   $(function(){
+    var bartime=setTimeout(function(){  
+           $('#swior-box').show();
+            banner2();
+            },10000);
+   })
+  </script>
 </body>
 
 </html>

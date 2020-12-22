@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="cn">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
         content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
     <link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
-    <link rel="stylesheet" type="text/css" href="/pharmacies/doctor/css/header_common.css?v=123">
-    <link rel="stylesheet" type="text/css" href="/pharmacies/doctor/css/left_.css?v=124">
-    <link rel="stylesheet" type="text/css" href="/pharmacies/doctor/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/pharmacy/css/header_common.css">
+    <link rel="stylesheet" type="text/css" href="/pharmacy/css/left_.css">
+    <link rel="stylesheet" type="text/css" href="/pharmacy/css/index.css">
     <!-- <link rel="stylesheet" href="/statics/dataManage/css/bootstrap.css"> -->
+    <link rel="stylesheet" type="text/css" href="/statics/currency/plug/swiper/css/swiper.min.css">
     <script type="text/javascript" src="/statics/js/setFontSize.js"></script>
     <!-- <script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script> -->
-    <script type="text/javascript" src="/statics/js/layer_mobile/layer.js"></script>
-    <script type="text/javascript" src="/statics/admin/common/layui/layui.all.js"></script>
+    <script type="text/javascript" src="/statics/js/global.js"></script>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/statics/js/global.js"></script>
-    <title>药房-医生端</title>
+    <!-- <script type="text/javascript" src="/statics/js/TouchSlide.1.1.js"></script> -->
+    <script type="text/javascript" src="/statics/currency/plug/swiper/js/swiper.min.js"></script>
+    <title>药房-门店端</title>
     <style>
         .matst_back {
             width: 95%;
@@ -148,7 +148,7 @@
             width: 8px;
             height: 9px;
             margin: 6px 0 0;
-            background: url(/pharmacies/doctor/images/arrowbg1.png) no-repeat -59px -180px
+            background: url(/pharmacy/images/arrowbg1.png) no-repeat -59px -180px
         }
 
         .limit-buy-nav .next {
@@ -282,8 +282,7 @@
         }
 
         .mst-left {
-            width: 52%;
-            position: relative;
+            width: 52%;position: relative;
         }
 
         .mst-left .mst-left-top {
@@ -318,36 +317,43 @@
             vertical-align: middle;
         }
 
-        .mst-left-top-bottom{    
-            display: flex;
-    justify-content: space-between;
-    height: 18vh;
-    margin-top: 6vh;
-   }
-.mst-left-r{width: 48%;background: url(/pharmacies/doctor/images/v2_q8xa46.png) no-repeat center; border-radius: .2rem;
-    box-shadow: 0px 1px 3px 1px #eae8e8;background-size: contain;padding-left: .6rem;}
-.mst-right-r{width: 48%;background: url(/pharmacies/doctor/images/v2_q8xa46.png) no-repeat center; border-radius: .2rem;padding-left: .6rem;
-    box-shadow: 0px 1px 3px 1px #eae8e8;background-size: contain;}
-       
-   .mst-t-lefts .lis-pst{font-size: .45rem;
-    color: #000000;
-    font-weight: 600;}
-   .mst-t-lefts .lis-fiont{font-size: .4rem;color: #7d7676;margin-top:-.2rem}
-    .mst-right {
+        .swiper-container {
+            width: 100%;
+            height: 27vh;
+            border-radius: 10px;
+            /*--swiper-theme-color: #ff6600;!* 设置Swiper风格 *!
+            --swiper-preloader-color: #00ff33;!* 单独设置预加载圆圈的颜色 *!*/
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide img[src=""] {
+            opacity: 0;
+        }
+
+        .swiper-wrapper {
+            /*height: auto; display: none;*/
+        }
+
+        .mst-right {
             width: 46%;
         }
 
 
+
         .products1 {
             width: 100%;
-            margin: 0;
-            height: 130%;
+            margin: 0;height: 130%;
             /* position: relative; */
             display: inline;
             float: right;
             /* margin-bottom: 20rem; */
             /* padding-right: 1rem; */
-            padding-bottom: .5rem;
+            padding-bottom:.5rem;
         }
 
         .products1 li .name {
@@ -416,7 +422,7 @@
         }
 
         #accordion1 .panel-body {
-            width: 100%;
+            width: 100%;   
         }
 
         @media screen and (min-width:1300px) and (max-width:2500px) {
@@ -432,16 +438,15 @@
                 font-size: .32rem;
                 margin-top: .2rem;
             }
-
-            .products li .pic {
-                margin-top: .3rem;
-            }
-
-            .mst-left-top-left div:nth-child(2) {
-                font-size: .36rem;
-                margin-top: .6rem;
-                margin-bottom: .53rem;
-            }
+            
+                .products li .pic {
+                    margin-top: .3rem;
+                }
+                .mst-left-top-left div:nth-child(2) {
+            font-size: .36rem;
+            margin-top: .6rem;
+            margin-bottom: .53rem;
+        }
         }
 
         /* @media screen and (min-width:1800px) and (max-width:2880px){
@@ -455,13 +460,12 @@
     font-size: .32rem;
 }
 } */
-        .selects {
-            background: #ffffff;
-        }
-
-        .selects2 {
-            background: #ffffff;
-        }
+.selects {
+    background: #ffffff;
+}
+.selects2 {
+    background: #ffffff;
+}
     </style>
 </head>
 
@@ -480,10 +484,10 @@
                     <div class="mst-left">
                         <div class="mst-left-top">
                             <div class="mst-left-top-left">
-                                <div>李医生，早上好</div>
+                                <div>早上好，欢迎光临</div>
                                 <div><span id="datast">-</span>，欢迎您使用处方问诊服务台</div>
                             </div>
-                            <div class="mst-left-top-right" onclick="goo_t('/pharmacies/doctor/interrogation_doc.html')">
+                            <div class="mst-left-top-right">
                                 <div class="kaisuh">
                                     <svg t="1607771766945" class="icon" viewBox="0 0 1024 1024" version="1.1"
                                         xmlns="http://www.w3.org/2000/svg" p-id="1151" width="32" height="32">
@@ -502,25 +506,16 @@
                             </div>
                         </div>
                         <div class="mst-left-top-bottom">
-                            <div class="mst-left-r" onclick="goo_t('/pharmacies/doctor/interrogation_doc.html')">
-                                <div class="mst-t-lefts">
-                                    <p class="lis-pst">待接诊</p>
-                                    <div class="lis-fiont">2人</div>
+                            <!--banner-->
+                            <div class="swiper-container">
+                                <div class="swiper-wrapper" id="advert">
+                                    <div class="swiper-slide">
+                                        <img data-src="/pharmacy/images/v2_qkr63a.png" class="swiper-lazy" />
+                                        <div class="swiper-lazy-preloader"></div>
+                                    </div>
                                 </div>
-                                <div class="mst-t-rights">
-                                  
-                                </div>
-                            </div>   
-                            <div class="mst-right-r">
-
-                                <div class="mst-t-lefts">
-                                    <p class="lis-pst">今天服务人数</p>
-                                    <div class="lis-fiont">32人</div>
-                                </div>
-                                <div class="mst-t-rights">
-                                  
-                                </div>
-                            </div>   
+                            </div>
+                            <!--banner-->
                         </div>
                     </div>
                     <div class="mst-right">
@@ -608,7 +603,7 @@
                                         <div id="collapseOne2" class="panel-collapse collapse in">
                                             <div class="panel-body">
                                                 根据国家相关规定，现将放假事宜安排如下
-
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -661,100 +656,190 @@
                 </div>
 
                 <div class="limit-box" id="J-lb">
-                    <div class="data-content" style="height: 85%;box-shadow: 0px 1px 3px 1px transparent;">
-                        <div class="tb-container">
-                            <table class="table">
-                                <caption class="caption">订单列表</caption>
-                                <thead>
-                                    <tr align="center">
-                                        <th style="text-align: center;">
-                                            <strong class="tb-head cell-check" data-val="check">
-                                                <input type="checkbox" id="J_sel_all"
-                                                    style="width: 15px;height: 15px;border:1px solid #666">
-                                            </strong>
-                                        </th>
-                                        <th style="text-align: center;"><strong class="tb-head cell-orderid" data-val="orderid">处方单号</strong></th>
-                                        <th style="text-align: center;"><strong class="tb-head cell-username" data-val="username">申请用户</strong></th>
-                                        <th style="text-align: center;"><strong class="tb-head cell-product" data-val="product">申请日期</strong></th>
-                                        <th style="text-align: center;"><strong class="tb-head cell-amount" data-val="amount">药品数量</strong></th>
-                                        <th style="text-align: center;"><strong class="tb-head cell-pay_channel"
-                                                data-val="pay_channel">药品金额</strong></th>
-                                        <th style="text-align: center;"><strong class="tb-head cell-pay_amount" data-val="pay_amount">医生</strong>
-                                        </th>
-                                        <th style="text-align: center;"><strong class="tb-head cell-status" data-val="status">医生接入点</strong></th>
-                                        <th style="text-align: center;"><strong class="tb-head cell-createtime" data-val="createtime">审核状态</strong>
-                                        </th>
-                                        <th style="text-align: center;"><strong class="tb-head cell-operate" data-val="operate">操作</strong></th>
-                                    </tr>
-                                </thead>
-                                <tbody id="datas">
-                                    <tr align="center">
-                                        <td>
-                                            <strong class="tb-head cell-check" data-val="check">
-                                                <input type="checkbox" id="J_sel_all"
-                                                    style="width: 15px;height: 15px;border:1px solid #666">
-                                            </strong>
-                                        </td>
-                                        <td>1113454654654</td>
-                                        <td>张三</td>
-                                        <td>2020-02-03</td>
-                                        <td>2</td>
-                                        <td>233.5</td>
-                                        <td>张主卧</td>
-                                        <td>春雨</td>
-                                        <td><span style="color: #48a54b;">已审核</span></td>
-                                        <td>
-                                            <a href="#">查看</a>
-                                            <a href="#">配药</a>
-                                            <a href="#">删除</a>
-                                        </td>
-                                    </tr>
-                                    <tr align="center">
-                                        <td>
-                                            <strong class="tb-head cell-check" data-val="check">
-                                                <input type="checkbox" id="J_sel_all"
-                                                    style="width: 15px;height: 15px;border:1px solid #666">
-                                            </strong>
-                                        </td>
-                                        <td>5113454654654</td>
-                                        <td>张三</td>
-                                        <td>2020-08-03</td>
-                                        <td>2</td>
-                                        <td>233.5</td>
-                                        <td>张主卧</td>
-                                        <td>春雨</td>
-                                        <td><span style="color: #ff9d38;">未审核</span></td>
-                                        <td>
-                                            <a href="#">查看</a>
-                                            <a href="#">药师审核</a>
-                                            <a href="#">删除</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <!-- <table class="table table-bordered table-hover table-striped" id="rstb">
-                           <thead>
-                               <tr align="center">
-                                  <th><strong class="tb-head cell-check" data-val="check">
-                                  <input type="checkbox" id="J_sel_all">
-                                  </strong></th>
-                                  <th><strong class="tb-head cell-orderid" data-val="orderid">处方单号</strong></th>
-                                  <th><strong class="tb-head cell-username" data-val="username">申请用户</strong></th>
-                                  <th><strong class="tb-head cell-product" data-val="product">申请日期</strong></th>
-                                  <th><strong class="tb-head cell-amount" data-val="amount">药品数量</strong></th>
-                                  <th><strong class="tb-head cell-pay_channel" data-val="pay_channel">药品金额</strong></th>
-                                  <th><strong class="tb-head cell-pay_amount" data-val="pay_amount">医生</strong></th>
-                                  <th><strong class="tb-head cell-status" data-val="status">医生接入点</strong></th>
-                                  <th><strong class="tb-head cell-createtime" data-val="createtime">审核状态</strong></th>
-                                  <th><strong class="tb-head cell-operate" data-val="operate">操作</strong></th>
-                              </tr>
-                            </thead>
-                            <tbody id="datas">
-                            </tbody>
-                          </table> -->
+                    <div class="limit-buy-hd">
+                        <h2>热销药品</h2>
+                        <div class="limit-buy-nav" id="J-lbn">
+                            <a href="javascript:void(0)" class="prev"></a>
+                            <span style="visibility: hidden;width:10px;">
+                                <em id="J-lbcp">1</em>/4
+                            </span>
+                            <a href="javascript:void(0)" class="next"></a>
                         </div>
-                        <div class="inner-page" id="innerPage"></div>
                     </div>
+                    <div id="menu">
+                        <ul>
+                            <li class="on">家庭常备
+                            </li>
+                            <li>心血管科
+                            </li>
+                            <li>营养滋补
+                            </li>
+                            <li>医疗器械
+                            </li>
+                            <div class="clear"></div>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <!-- <a href="javascript:void(0);" class="btn-prev"></a> -->
+
+                    <div class="limit-buy-bd" id="limit-buy">
+                        <ul class="products">
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="/pharmacy/images/v2_qkr77q1.png" /></a></p>
+                                <p class="name">沙美特罗替卡松粉吸入剂(舒利迭)</p>
+                                <p class="price">￥202.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="/pharmacy/images/v2_qkr77q2.png" /></a></p>
+                                <p class="name">丹参酮胶囊(希力)</p>
+                                <p class="price">￥30.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="/pharmacy/images/v2_qkr77q3.png" /></a></p>
+                                <p class="name">艾司奥美拉唑镁肠溶片(耐信)</p>
+                                <p class="price">￥68.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="/pharmacy/images/v2_qkr77q4.png" /></a></p>
+                                <p class="name">感冒灵颗粒(999)</p>
+                                <p class="price">￥14.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="/pharmacy/images/v2_qkr77q5.png" /></a></p>
+                                <p class="name">百令胶囊(百令)</p>
+                                <p class="price">￥68.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="/pharmacy/images/v2_qkr77q6.png" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥226.00</p>
+                            </li>
+                        </ul>
+
+                        <ul class="products">
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/06.jpg"
+                                            alt="saff家纺 超柔珊瑚绒毯子 休闲多用毯 盖毯 垫毯 夏凉毯 空调毯180cm*200cm 紫" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥308.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/07.jpg"
+                                            alt="美的（Midea）微波炉EG7KCGW2-NW" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥68.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/08.jpg"
+                                            alt="伟峰（WEIFENG）三脚架WT-3110A" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥18.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/09.jpg"
+                                            alt="力博得（Lebond）电动牙刷M.tic绿" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥8.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/10.jpg"
+                                            alt="【大唐西域】干果阿妈特级精选和田枣120g*5袋 新疆特产大枣/红枣" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥28.00</p>
+                            </li>
+                        </ul>
+
+                        <ul class="products">
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/05.jpg"
+                                            alt="欧利萨斯 潮流秋冬新品棉鞋休闲男鞋保暖高帮工装男靴子马丁靴 8379 黑色" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥8.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/04.jpg"
+                                            alt="泸州老窖传世窖（A5）( 两瓶套装))52度" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥18.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/03.jpg"
+                                            alt="三洋（SANYO）32英寸LED电视32CE530ALED" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥158.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/02.jpg"
+                                            alt="宏碁（acer）14.0英寸笔记本电脑 V5-471G-32364G50Mabb（i3-2367M/4G/500G/14寸高清屏/DVD刻录/GT620M 1G独显/无线/蓝牙/USB3.0/Linux BE)天空蓝" /></a>
+                                </p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥68.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/01.jpg"
+                                            alt="SWISSGEAR瑞士军刀超值三剑客套餐 商务拉杆箱+多功能双肩包+运动腰包" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥88.00</p>
+                            </li>
+                        </ul>
+
+                        <ul class="products">
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/10.jpg"
+                                            alt="saff家纺 超柔珊瑚绒毯子 休闲多用毯 盖毯 垫毯 夏凉毯 空调毯180cm*200cm 紫" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥38.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/09.jpg"
+                                            alt="美的（Midea）微波炉EG7KCGW2-NW" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥98.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/08.jpg"
+                                            alt="伟峰（WEIFENG）三脚架WT-3110A" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥18.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/07.jpg"
+                                            alt="力博得（Lebond）电动牙刷M.tic绿" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥38.00</p>
+                            </li>
+                            <li>
+                                <p class="pic"><a href="#" target="_blank"><img
+                                            src="https://www.jsdaima.com/Uploads/js/201812/1543832943/images/06.jpg"
+                                            alt="【大唐西域】干果阿妈特级精选和田枣120g*5袋 新疆特产大枣/红枣" /></a></p>
+                                <p class="name">布地奈德福莫特罗吸入粉雾剂 </p>
+                                <p class="price">￥68.00</p>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <!-- <a href="javascript:void(0);" class="btn-next"></a> -->
                 </div>
 
 
@@ -762,12 +847,67 @@
             </div>
         </div>
     </div>
-
+    <script type="text/javascript" src="/statics/public/js/public.js?v=123"></script>
     <script type="text/javascript">
-        var page = 1;
-        $(function () {
+        $(document).ready(function () {
+            request('/?m=pharmacy&c=prescription&a=lists&ajax=1','get',{
+                dataType:'JSON',
+                success:function(res){
+                    console.log(res);
+                },
+                error:function(res){
+                    console.log(res);
+                }
+            });
             $('#datast').text(getCurrentDate());
-            getData();
+            var lb = $("#limit-buy"),
+                lb_cur = 1,
+                lbp_w = lb.find(".products").width();
+            lb_timer = null;
+            t = 1;
+
+            function showLimitBuyProducts() {
+                if (lb_cur < 1) {
+                    lb_cur = 4;
+                } else if (lb_cur > 4) {
+                    lb_cur = 1;
+                }
+                $("#J-lbcp").html(lb_cur);
+                $('#menu ul li').eq(lb_cur - 1).addClass('on').siblings().removeClass('on');
+                $('#menu ul li').each(function(){
+                   $(this).click(function(){
+                    $(this).addClass('on').siblings().removeClass('on');
+                    var lb_cured=$(this).index();
+                    var productstt = $("#limit-buy .products").hide().eq(lb_cured - 1).show();
+                   
+                    
+                   });
+                })
+                var products = $("#limit-buy .products").hide().eq(lb_cur - 1).show(),
+                    ta = products.find("textarea");
+
+                if (ta.length) {
+                    products.html(ta.val());
+                }
+            }
+            lb_timer = setInterval(function () {
+                lb_cur++;
+                showLimitBuyProducts();
+            }, 5000);
+
+            $("#J-lbn .prev, #J-lb .btn-prev").click(function () {
+                lb_cur--;
+                showLimitBuyProducts();
+            });
+            $("#J-lbn .next, #J-lb .btn-next").click(function () {
+                lb_cur++;
+                showLimitBuyProducts();
+            });
+        });
+
+
+        $(function () {
+            banner();
             var lb = $("#limit-buy1"),
                 lb_cur = 1,
                 lbp_w = lb.find(".products1").width();
@@ -803,184 +943,94 @@
             });
         })
 
-       
-
-
-
-        function getCurrentDate() {
-
-            var myDate = new Date();
-
-            var year = myDate.getFullYear(); //年
-
-            var month = myDate.getMonth() + 1; //月
-
-            var day = myDate.getDate(); //日
-
-            var days = myDate.getDay();
-
-            switch (days) {
-
-                case 1:
-
-                    days = '星期一';
-
-                    break;
-
-                case 2:
-
-                    days = '星期二';
-
-                    break;
-
-                case 3:
-
-                    days = '星期三';
-
-                    break;
-
-                case 4:
-
-                    days = '星期四';
-
-                    break;
-
-                case 5:
-
-                    days = '星期五';
-
-                    break;
-
-                case 6:
-
-                    days = '星期六';
-
-                    break;
-
-                case 0:
-
-                    days = '星期日';
-
-                    break;
-
-
-
-            }
-
-            var str = year + "年" + month + "月" + day + "日  " + days;
-
-            return str;
-
-        }
-
-        function initPage(pageCount) {
-            layui.use('laypage', function () {
-                var laypage = layui.laypage;
-                laypage.render({
-                    elem: 'innerPage' //注意，这里的 test1 是 ID，不用加 # 号
-                        ,
-                    count: pageCount //数据总数，从服务端得到
-                        ,
-                    limit: 15,
-                    layout: ['prev', 'page', 'next', 'skip',
-                        'count'] //['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
-                        ,
-                    prev: '<i class="icon-arrow arrow-l"></i>',
-                    next: '<i class="icon-arrow arrow-r"></i>',
-                    hash: 'page' //页面载入时就定位到指定页
-                        ,
-                    theme: '#234686',
-                    jump: function (obj, first) {
-                        //首次不执行
-                        if (!first) {
-                            //console.log(obj);
-                            page = parseInt(obj.curr);
-                            getData();
-                        }
+        function banner() {
+            var mySwiper = new Swiper('.swiper-container', {
+                //autoplay:true,//等同于以下设置
+                autoplay: {
+                    delay: 3000,
+                    stopOnLastSlide: false,
+                    disableOnInteraction: true,
+                },
+                loop: true,
+                lazy: true,
+                on: {
+                    lazyImageReady: function (slideEl, imageEl) {
+                        resizeImg({
+                            selector: '.swiper-slide',
+                            model: 'fill'
+                        });
                     }
-                });
+                },
             });
         }
+   
+      
+        
+function getCurrentDate() {
 
-        function getData() {
-            var url = '/?m=dataManage&c=member&a=memberList2&ajax=1';
-            console.log(url);
-            if (page > 1) url += '&page=' + page;
-            var k = $.trim($('#k').val());
-            var userid = parseInt($.trim($('#userid').val()));
-            var st = $.trim($('#st').val());
-            var et = $.trim($('#et').val());
-            if (k) url += '&k=' + k;
-            if (0 < userid) url += '&userid=' + userid;
-            if (st) url += '&st=' + st;
-            if (et) url += '&et=' + et;
-            var index = layer.load(2, {
-                time: 3000
-            });
-            $.ajax({
-                url: url,
-                type: "GET",
-                dataType: "JSON",
-                success: function (data) {
-                    layer.close(index);
-                    console.log(data);
-                    validateAuth(data.status);
-                    var html = '';
-                    var pageCount = 0;
-                    if (1 == data.status) {
-                        datas = data.data.datas;
-                        var locate = data.data.locate;
-                        var device = data.data.device;
-                        var operateState = data.data.operateState;
-                        pageCount = data.data.pageCount;
-                        for (var i in datas) {
-                            var info = datas[i];
-                            var _locate = {};
-                            var deviceStr = '';
-                            var serviceStr = '';
-                            var serviceState = 0;
-                            var _operateState = {};
-                            html +=
-                                '<tr align="center"><td><div class="tb-cell cell-check"><input type="checkbox" name="ids[]" value="' +
-                                info.userid + '"></div></td><td><div class="tb-cell cell-userid">' + info
-                                .userid +
-                                '</div></td><td><div class="tb-cell cell-username"><a href="/?m=dataManage&c=member&a=memberDetail&uid=' +
-                                info.userid + '" target="_bank">' + info.username +
-                                '</a></div></td><td><div class="tb-cell cell-nickname">' + info.nickname +
-                                '</div></td><td><div class="tb-cell cell-remarks">' + (info.remarks ? info
-                                    .remarks : '') + '</div></td><td><div class="tb-cell cell-sex">' + (info
-                                    .sexStr ? info.sexStr : '') +
-                                '</div></td><td><div class="tb-cell cell-age">' + (info.age ? info.age :
-                                '') + '</div></td><td><div class="tb-cell cell-mobile">' + info.mobile +
-                                '</div></td><td><div class="tb-cell cell-locate btn-locate" data-lng="' +
-                                _locate.lng + '" data-lat="' + _locate.lat + '" data-time="' + _locate
-                                .time + '">' + _locate.address +
-                                '</div></td><td><div class="tb-cell cell-device"><i class="h-state state-' +
-                                info.is_device + ' btn-device" data-state="' + info.is_device + '">' +
-                                deviceStr +
-                                '</i></div></td><td><div class="tb-cell cell-service"><i class="h-state state-' +
-                                serviceState + ' btn-service" data-state="' + serviceState + '">' +
-                                serviceStr +
-                                '</i></div></td><td><div class="tb-cell cell-state"><i class="o-state state-' +
-                                _operateState.state + '">' + _operateState.stateStr +
-                                '</i></div></td><td><div class="tb-cell cell-online">' + _operateState
-                                .last_time + '</div></td><td><div class="tb-cell cell-regdate">' + info
-                                .regdate +
-                                '</div></td><td><div class="tb-cell cell-operate"><a href="/?m=dataManage&c=member&a=doMember&uid=' +
-                                info.userid +
-                                '" class="operate-btn btn-edit">修改</a>  <a href="javascript:;" class="operate-btn btn-pass">重置密码</a></div></td></tr>';
-                        }
-                    } else {
-                        html += '<tr align="center"><td colspan="' + ($('.tb-head').length) +
-                            '">暂无数据</td></tr>';
-                    }
-                    $('#datas').html(html);
-                    initWidth();
-                    initOperate();
-                    if (page == 1) initPage(pageCount);
-                }
-            });
-        }
+var myDate = new Date();
+
+var year = myDate.getFullYear(); //年
+
+var month = myDate.getMonth() + 1; //月
+
+var day = myDate.getDate(); //日
+
+var days = myDate.getDay();
+
+switch(days) {
+
+      case 1:
+
+            days = '星期一';
+
+            break;
+
+      case 2:
+
+            days = '星期二';
+
+            break;
+
+      case 3:
+
+            days = '星期三';
+
+            break;
+
+      case 4:
+
+            days = '星期四';
+
+            break;
+
+      case 5:
+
+            days = '星期五';
+
+            break;
+
+      case 6:
+
+            days = '星期六';
+
+            break;
+
+      case 0:
+
+            days = '星期日';
+
+            break;
+
+
+
+}
+
+var str = year + "年" + month + "月" + day + "日  " + days;
+
+return str;
+
+}
     </script>
 </body>
 

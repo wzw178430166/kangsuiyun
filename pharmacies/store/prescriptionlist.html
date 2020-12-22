@@ -5,8 +5,8 @@
 <meta name="viewport"
         content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
-<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/header_common.css">
-<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/left_.css">
+<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/header_common.css?v=125">
+<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/left_.css?v=124">
 <link rel="stylesheet" type="text/css" href="/pharmacies/store/css/index.css">
 <link rel="stylesheet" href="/statics/admin/common/layui/css/layui.css" media="all">
 <link rel="stylesheet" href="/statics/dataManage/css/bootstrap.css">
@@ -44,6 +44,7 @@
     height: 30px;
     position: relative;
     left: -30px;}
+    .cell-check input[type="checkbox"] {width: 15px;height: 15px;border:1px solid #666}
 </style>
 </head>
 <body>
@@ -123,22 +124,22 @@
                             <tr align="center">
                                <th>
                                <strong class="tb-head cell-check" data-val="check">
-                               <input type="checkbox" id="J_sel_all" style="width: 15px;height: 15px;border:1px solid #666">
+                               <input type="checkbox" id="J_sel_all">
                                </strong>
                                </th>
-                               <th><strong class="tb-head cell-orderid" data-val="orderid">处方单号</strong></th>
-                               <th><strong class="tb-head cell-username" data-val="username">申请用户</strong></th>
-                               <th><strong class="tb-head cell-product" data-val="product">申请日期</strong></th>
-                               <th><strong class="tb-head cell-amount" data-val="amount">药品数量</strong></th>
-                               <th><strong class="tb-head cell-pay_channel" data-val="pay_channel">药品金额</strong></th>
-                               <th><strong class="tb-head cell-pay_amount" data-val="pay_amount">医生</strong></th>
-                               <th><strong class="tb-head cell-status" data-val="status">医生接入点</strong></th>
-                               <th><strong class="tb-head cell-createtime" data-val="createtime">审核状态</strong></th>
+                               <th><strong class="tb-head cell-prescription_no" data-val="prescription_no">处方单号</strong></th>
+                               <th><strong class="tb-head cell-user_nickname" data-val="user_nickname">申请用户</strong></th>
+                               <th><strong class="tb-head cell-create_time" data-val="create_time">申请日期</strong></th>
+                               <th><strong class="tb-head cell-drug_total_quantity" data-val="drug_total_quantity">药品数量</strong></th>
+                               <th><strong class="tb-head cell-drug_total_price" data-val="drug_total_price">药品金额</strong></th>
+                               <th><strong class="tb-head cell-doctor_name" data-val="doctor_name">医生</strong></th>
+                               <th><strong class="tb-head cell-1" data-val="1">医生接入点</strong></th>
+                               <th><strong class="tb-head cell-status" data-val="status">审核状态</strong></th>
                                <th><strong class="tb-head cell-operate" data-val="operate">操作</strong></th>
                            </tr>
                          </thead>
-                       <tbody>
-                          <tr align="center">
+                       <tbody id="data">
+                          <!-- <tr align="center">
                               <td>
                                 <strong class="tb-head cell-check" data-val="check">
                                     <input type="checkbox" id="J_sel_all" style="width: 15px;height: 15px;border:1px solid #666">
@@ -177,7 +178,7 @@
                                  <a href="/pharmacies/store/review_p.html">药师审核</a>
                                  <a href="#">删除</a>
                              </td>
-                          </tr>
+                          </tr> -->
                        </tbody>
                     </table>
                   <!-- <table class="table table-bordered table-hover table-striped" id="rstb">
@@ -201,7 +202,7 @@
                     </tbody>
                   </table> -->
                 </div>
-                <div class="inner-page" id="innerPage"></div>
+                <div class="inner-page" id="J_page"></div>
               </div>
 
 
@@ -210,31 +211,12 @@
    </div>   
    <script>
     var page = 1;
-    checkLogin("golink");
     $(function(){
+        checkLogin("golink");
+        getData();
         //getleft();
         //gethearder();
-        var date = new Date();
-        $('#st').val(date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate());
-        $('#et').val(date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate());
-        getData();
-        var screenHeight = $(window).height();
-        $('.first-container').css({height: screenHeight - 93});
-        var tbWidth = $(window).width() - 245;
-        $(".tb-container").css({width:tbWidth});
-        $("#rstb").css({maxWidth:tbWidth});
-        $("#rstb").colResizable({
-            resizeMode: 'overflow',
-            //minWidth: 15,
-            //headerOnly: true,
-            //dragCursor: '',
-            //liveDrag: true,
-            //draggingClass: 'tb-cell',
-            onResize: function(e,data){
-                //console.log($(e.currentTarget));
-                //$('.tb-cell').width();
-            }
-        });	
+        
         laydate.render({
           elem: '#et'
           ,format: 'yyyy-MM-dd'
@@ -255,151 +237,44 @@
         });
     });
     function getData(){
-        var url = '/?m=dataManage&c=member&a=memberList2&ajax=1';
-        var k = $.trim($('#k').val());
-        if (k) url += '&k='+k;
-        var st = $.trim($('#st').val());
-        var et = $.trim($('#et').val());
-        if (st&&et) url += '&st='+st+'&et='+et;
-        var status = $.trim($('#status').val());
-        if (status) url += '&status='+status;
-        if (page > 1) url += '&page='+page;
-        var index = layer.load(2,{time:3000});
-        $.ajax({
-            url: url,
-            type: "GET",
-            dataType: "JSON",
-            success: function(data){
-                console.log(data);
-                layer.close(index);
+        var url = '/?m=pharmacy&c=prescription&a=lists&ajax=1';
+        var query = {};//查询参数
+        var status = getQueryString('status');
+        if (status) query.status = status;
+        request(url,'get',{
+            query: query,
+            dataType:"JSONP",
+            success:function(res){
                 var html = '';
-                var pageCount = 0;
-                if (data.status==1) {
-                    var datas = data.data.datas;
-                    var member = data.data.member;
-                    pageCount = data.data.pageCount;
-                    for(var i in datas){
-                        var info = datas[i];
-                        var product = '';
-                        switch(info.type){
-                            case 'recharge':
-                                product = '余额充值';
-                                break;
-                        }
-                        var pay_channel = '';
-                        switch(info.pay_channel){
-                            case 'wechat':
-                                pay_channel = '微信支付';
-                                break;
-                            case 'alipay':
-                                pay_channel = '支付宝支付';
-                                break;
-                        }
-                        var status = '';
-                        var operate = '<a href="javascript:;" class="operate-btn btn-del" data-val="'+info.orderid+'">删除</a>';
-                        switch(info.status){
-                            case 'waitPay':
-                                status = '待付款';
-                                operate = '<a href="javascript:;" class="operate-btn btn-close" data-val="'+info.orderid+'">取消</a>';
-                                break;
-                            case 'success':
-                                status = '已付款';
-                                break;
-                            case 'close':
-                                status = '已取消';
-                                break;
-                        }
-                        var _member = {};
-                        if (member&&member[info.userid]) {
-                            _member = member[info.userid];
-                        } else {
-                            _member = {"username":"","nickname":""};
-                        }
-                        html += '<tr align="center"><td><div class="tb-cell cell-check"><input type="checkbox" name="ids[]" value="'+info.out_trade_no+'"></div></td><td><div class="tb-cell cell-orderid">'+info.orderid+'</div></td><td><div class="tb-cell cell-username">'+_member.username+(_member.nickname?'('+_member.nickname+')':'')+'</div></td><td><div class="tb-cell cell-product">'+product+'</div></td><td><div class="tb-cell cell-amount">'+info.amount+'</div></td><td><div class="tb-cell cell-pay_channel">'+pay_channel+'</div></td><td><div class="tb-cell cell-pay_amount">'+info.pay_amount+'</div></td><td><div class="tb-cell cell-status">'+status+'</div></td><td><div class="tb-cell cell-createtime">'+info.createtime+'</div></td><td><div class="tb-cell cell-operate">'+operate+'</div></td></tr>';
-                    }
+                if (0<res.total) {
+                  rows = res.rows;
+                  for(var k in rows){
+                      var info = rows[k];
+                      var operate = '';
+                      
+                      if ('WAIT_VERIFY' == info.status) operate += '<a href="/pharmacies/store/review_p.html?&prescription_no='+info.prescription_no+'" class="operate-btn btn-verify">审核</a>';
+                      operate += '<a href="/pharmacies/store/payment.html?&prescription_no='+info.prescription_no+'" class="operate-btn">查看</a> <a href="" class="operate-btn btn-delete">删除</a>';//操作
+                      
+                      html += '<tr align="center"><td><div class="tb-cell cell-check"><input type="checkbox" name="ids[]" value="'+info.id+'"></div></td><td><div class="tb-cell cell-prescription_no">'+info.prescription_no+'</div></td><td><div class="tb-cell cell-user_name">'+info.user_nickname+'</div></td><td><div class="tb-cell cell-create_time">'+info.create_time+'</div></td><td><div class="tb-cell cell-drug_total_quantity">'+info.drug_total_quantity+'</div></td><td><div class="tb-cell cell-drug_total_price">'+info.drug_total_price+'</div></td><td><div class="tb-cell cell-doctor_name">'+info.doctor_name+'</div></td><td><div class="tb-cell cell-1"></div></td><td><div class="tb-cell cell-status status-'+info.status+'">';
+                      if(info.status_str=='待审核'){
+                        html+='<span style="color:#ff9d38;">'+info.status_str+'</span>'  
+                      }else if(info.status_str=='已审核'){
+                        html+='<span style="color:#48a54b;">'+info.status_str+'</span>'  
+                      }
+                      html+='</div></td><td><div class="tb-cell cell-operate">'+operate+'</div></td></tr>';
+                  }
                 } else {
-                    html += '<tr align="center"><td colspan="'+($('.tb-head').length)+'">暂无数据</td></tr>';
+                  html += '<tr align="center"><td colspan="'+($('.tb-head').length)+'">暂无数据</td></tr>';
                 }
-                $('#datas').html(html);
-                initWidth();
-                initOperate();
-                if (page == 1) initPage(pageCount);
+                $('#data').html(html);
+                if(1==page) layuiPage({total:res.total});
+            },
+            error:function(res){
+                console.log(res);
             }
         });
     }
-    function initOperate(){
-        $('.btn-close').unbind('click');
-        var _item = $('.btn-close');
-        _item.each(function(i) {
-            $(_item[i]).on('click',function(){
-                var orderid = $(this).attr('data-val');
-                layer.confirm('确定要取消订单?',{btn:["确定","取消"]},function(){
-                    doOrderStatus(orderid,'close');
-                });
-            });
-            
-        });
-        $('.btn-del').unbind('click');
-        var _item2 = $('.btn-del');
-        _item2.each(function(i) {
-            var orderid = $(this).attr('data-val');
-            $(_item2[i]).on('click',function(){
-                layer.confirm('确定要删除订单?',{btn:["确定","取消"]},function(){
-                    doOrderStatus(orderid,'delete');
-                });
-            });
-            
-        });
-    }
-    function doOrderStatus(orderid,status){
-        if (!orderid || !status) {
-            layer.msg('订单异常');
-            return;
-        }
-        var url = '/?m=dataManage&c=workOrder&a=doOrderRechargeState&ajax=1';
-        $.ajax({
-            url: url,
-            type: "POST",
-            dataType: "JSON",
-            data: {dosubmit:1,orderid:orderid,status:status},
-            success: function(data){
-                layer.msg(data.erro);
-                validateAuth(data.status);
-                if (data.status == 1) getData();
-            }
-        });
-    }
-    function initWidth(){
-        var _item = $('.tb-head');
-        _item.each(function(i) {
-            var w = $(this).width();
-            var v = $(this).attr('data-val');
-            $('.cell-'+v).width(w);
-        });
-    }
-    function initPage(pageCount) {
-        layui.use('laypage', function(){
-            var laypage = layui.laypage;
-            laypage.render({
-                elem: 'innerPage' //注意，这里的 test1 是 ID，不用加 # 号
-                ,count: pageCount //数据总数，从服务端得到
-                //,limit: 10
-                ,layout: ['prev', 'page','next', 'skip','count']//['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
-                ,prev: '<i class="icon-arrow arrow-l"></i>'
-                ,next: '<i class="icon-arrow arrow-r"></i>'
-                ,hash: 'page'//页面载入时就定位到指定页
-                ,theme: '#234686'
-                ,jump: function(obj, first){
-                    //首次不执行
-                    if (!first) {
-                        //console.log(obj);
-                        page = parseInt(obj.curr);
-                        getData();
-                    }
-                }
-            });
-        });
-    }
+    
     function gethearder() {
             $('#header').load('/pharmacies/store/header.html', function () {
             });
@@ -408,6 +283,7 @@
             $('#left').load('/pharmacies/store/left.html', function () {
             });
         }
+        
     </script>
 </body>
 </html>

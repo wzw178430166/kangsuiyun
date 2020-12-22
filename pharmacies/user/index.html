@@ -97,7 +97,7 @@
             height: 38vh;
             overflow: hidden;
             border-radius: .15rem;
-            margin-top: 8vh;
+            margin-top: 5vh;
         }
         .limit-box-item{width: 48%;height: 100%;}
         .limit-box-item img{width: 100%;height: 100%;
@@ -278,7 +278,7 @@
         .mst-content {
             width: 95%;
             margin: 0 auto;
-            height: 36vh;
+            height: 39vh;
             overflow: hidden;
             display: flex;
             padding-top: .5rem;
@@ -287,7 +287,7 @@
         }
 
         .mst-left {
-            width: 52%;position: relative;
+            width: 65%;position: relative;
         }
 
         .mst-left .mst-left-top {
@@ -324,7 +324,7 @@
 
         .swiper-container {
             width: 100%;
-            height: 32vh;
+            height: 100vh;
             border-radius: 10px;
             /*--swiper-theme-color: #ff6600;!* 设置Swiper风格 *!
             --swiper-preloader-color: #00ff33;!* 单独设置预加载圆圈的颜色 *!*/
@@ -336,6 +336,12 @@
             height: 100%;
         }
 
+        .swiper-slide2 img {
+            display: block;
+            width: 100%;
+            height:36vh;
+        }
+
         .swiper-slide img[src=""] {
             opacity: 0;
         }
@@ -345,14 +351,14 @@
         }
 
         .mst-right {
-            width: 46%;position: relative;
+            width: 35%;position: relative;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
         }
    .mst-right-item1{  width: 80%;
-    height: 12vh;
-    line-height: 12vh;
+    height: 15vh;
+    line-height: 15vh;
     text-align: center;
     position: absolute;
     color: #ffffff;
@@ -366,8 +372,8 @@
     .mst-right-item1 svg{vertical-align: middle;}
     .mst-right-item2 {
     width: 80%;
-    height: 12vh;
-    line-height: 12vh;
+    height: 15vh;
+    line-height: 15vh;
     text-align: center;
     position: absolute;
     font-size: .6rem;
@@ -504,6 +510,7 @@
 </head>
 
 <body>
+      <!--#include file="banner.html"-->
     <div class="outdiv">
         <div class="right_conter">
             <div class="header_box" id="header">
@@ -515,9 +522,9 @@
                     <div class="mst-left">
                         <div class="mst-left-top-bottom">
                             <!--banner-->
-                            <div class="swiper-container">
+                            <div class="swiper-container swiper-1">
                                 <div class="swiper-wrapper" id="advert">
-                                    <div class="swiper-slide">
+                                    <div class="swiper-slide swiper-slide2">
                                         <img data-src="/pharmacies/user/images/v2_qkr63a.png" class="swiper-lazy" />
                                         <div class="swiper-lazy-preloader"></div>
                                     </div>
@@ -558,7 +565,15 @@
     </div>
 
     <script type="text/javascript">
+    var bar=getUrlParam('bar');
+
         $(document).ready(function () {
+
+        var bartime=setTimeout(function(){  
+           $('#swior-box').show();
+            banner2();
+            },10000);
+
             $('#datast').text(getCurrentDate());
             var lb = $("#limit-buy"),
                 lb_cur = 1,
@@ -636,7 +651,7 @@
         })
 
         function banner() {
-            var mySwiper = new Swiper('.swiper-container', {
+            var mySwiper = new Swiper('.swiper-1', {
                 //autoplay:true,//等同于以下设置
                 autoplay: {
                     delay: 3000,
@@ -645,14 +660,6 @@
                 },
                 loop: true,
                 lazy: true,
-                on: {
-                    lazyImageReady: function (slideEl, imageEl) {
-                        resizeImg({
-                            selector: '.swiper-slide',
-                            model: 'fill'
-                        });
-                    }
-                },
             });
         }
    

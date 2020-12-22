@@ -1,4 +1,4 @@
-.left{width: 200px;
+.left{width: 210px;
     height: 100%;
     left: 0px;
     top: 0px;position: relative;
@@ -60,28 +60,28 @@
     color: #ffffff;
     line-height: .8rem;
     font-size: .3rem;
-    text-align: center;
-    margin-right: .6rem;
+    text-align: center;position: relative;left: -10px;
+    /* margin-right: .6rem; */
     background: #f77147;}
    .cont_bottoms{position: absolute;bottom: 0;width: 100%;text-align: center;}
    .cont_bottoms p{height: .5rem;line-height: .5rem;color: #ffffff;}
-   .cont_bottoms p:nth-child(1){margin-bottom: .1rem;font-size: .43rem;}
-   .cont_bottoms p:nth-child(2){margin-bottom: .8rem;font-size: .43rem;}
-   .cont_bottoms p:nth-child(3){margin-bottom: .2rem;font-size: .4rem;}
+   .cont_bottoms p:nth-child(1){margin-bottom: .1rem;font-size: .33rem;}
+   .cont_bottoms p:nth-child(2){margin-bottom: .8rem;font-size: .4rem;}
+   .cont_bottoms p:nth-child(3){margin-bottom: .2rem;font-size: .3rem;}
 
 
 
 
 @media (min-width: 1110px) {
     .boawo_item .wdihje {
-        width: .6rem;
-        height: .6rem;
+        width: 35px;
+        height: 35px;
         border-radius: 50%;
         color: #ffffff;
-        line-height: .6rem;
-        font-size: .3rem;
+        line-height: 35px;
+        font-size: .28rem;
         text-align: center;
-        margin-right: .3rem;
+        /* margin-right: .3rem; */
         background: #f77147;
     }
     .header_img {
@@ -103,7 +103,7 @@
     }
     .text_view .text p:last-child, .rounded_rect .text p:last-child, .circle_rect .text p:last-child, .mtooltip .text p:last-child {
         margin-bottom: 0;
-        font-size: .31rem!important;
+        font-size: .3rem!important;
     }
     .boawo_item {
         display: flex;
@@ -115,4 +115,19 @@
     }
 
    
+}
+@media (min-width: 1600px) {
+    .left{
+        width: 220px;
+    }
+    .text_view .text p:last-child, .rounded_rect .text p:last-child, .circle_rect .text p:last-child, .mtooltip .text p:last-child {
+        margin-bottom: 0;
+        font-size: .27rem!important;
+    }
+    .boawo_item .wdihje {
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+        font-size: .23rem; 
+    }
 }

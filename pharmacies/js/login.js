@@ -14,7 +14,7 @@ var screen=document.getElementById('screen');
 //获取普通登录对应的div
 var rc=document.getElementById('rc');
 //获取无密码登录对应的div
-var lc=document.getElementById('lc');
+var lc=document.getElementById('lc');  
 //获取扫码登录对应的div
 var sm=document.getElementById('sm');
 var forward = getUrlParam('forward');
@@ -182,93 +182,33 @@ loginBtn.onclick=function(e){
 	if(passFlag&&nFlag){
 		var phone = inputPhone.value;
 		var pass = inputPassword.value;
-		// $.post('./js/validate.php',{phone:phone,pass:pass},function(data){
-		// 	if(data=='0'){
-		// 		$('#rc-innerError').eq(0).show();
-		// 	}else{
-		// 		window.location.href='../main/index.html';
-		// 	}
-		// });
-		var index = layer.open({type: 2,time:5});
-        $.post('/index.php?m=member&c=index&a=login&ajax=1',$('#loginForm').serialize(),function(data){
-
-			layer.close(index);
-		
-			if (data.status == 1) {
-			
-				layer.open({
-		
-					content: '登录成功'
-		
-					,skin: 'msg'
-		
-					,time: 2 //2秒后自动关闭
-		
-				});
-				
-				if(miniprogram == 1){
-					var weChatUid = {};
-					weChatUid.uid = getCookie('GkvUY___userid');
-					weChatUid.uidAuth = getCookie('GkvUY__userid');
-					wx.miniProgram.postMessage({ data: weChatUid});
-					wx.miniProgram.switchTab({url:'../index/index'});
-					return;
-				}
-				
-				/*if (username == '13719515575' || username == '13553370247') {
-					console.log(data.synloginstr);return;
-					$('.login_box').append(data.synloginstr);//执行其他应用登录接口js
-				}*/
-				
-				$('.login_box').append(data.synloginstr);//执行其他应用登录接口js
-				if(getUrlParam('mobile')=='ios'){
-		
-					goo('ios://setlogin=>'+JSON.stringify(data));
-		
-				}else{
-		
-					try{ 
-		
-						jstojava.setlogin( JSON.stringify(data) );	
-		
-						return;
-		
-					}catch(e){}
-		
-				}
-		
-				setTimeout(function(){
-					if(data.forward == 'apps'){window.location.href = '/index.php?m=admin&a=apps';}
-					window.location.href='/pharmacies/store/'
-					// 	//window.location.href = data.forward ? data.forward :'/pharmacy/';
-				},500);
-		
-			} else if (data.status == 2) {
-				$('#rc-innerError').eq(0).show();
-				// layer.open({
-		
-				// 	content: '用户名或密码错误!'
-		
-				// 	,btn: '再试一次' //2秒后自动关闭
-		
-				// });
-		
-			} else {
-		
-				layer.open({
-		
-					content: '登录失败!'
-		
-					,btn: '关闭' //2秒后自动关闭
-		
-				});
-		
-			}
-		
-		},'json');
-
-
-
+        request('/?m=corp&c=authed&a=login&ajax=1','post',{
+        	data:{dosubmit:1,username:phone,password:pass,is_code:0},
+        	success: function(res){
+        		if (1 == res.status) {
+        			var forward = getUrlParam('forward');
+        			if (forward) {
+        				url = forward;
+        			} else {
+        				var data = res.data;
+        				switch(data.role_id){
+        					case 1:
+        						break;
+        					default:
+        						url = '/pharmacies/store/';
+        						break;
+        				}
+        			}
+        			window.location.href = url;
+        		} else {
+        			layer.open({
+					    content: res.erro
+					    ,skin: 'msg'
+					    ,time: 2 //2秒后自动关闭
+					});
+        		}
+        	}
+        });
 	}
 }
 

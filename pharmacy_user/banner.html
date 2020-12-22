@@ -1,0 +1,58 @@
+<style>
+
+.swiper-container {
+            width: 100%;
+            height: 32vh;
+            border-radius: 10px;
+            /*--swiper-theme-color: #ff6600;!* 设置Swiper风格 *!
+            --swiper-preloader-color: #00ff33;!* 单独设置预加载圆圈的颜色 *!*/
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide img[src=""] {
+            opacity: 0;
+        }
+
+        .swiper-wrapper {
+            /*height: auto; display: none;*/
+        }
+</style>
+<div class="swiper-box">
+    <div class="swiper-container">
+        <div class="swiper-wrapper" id="advert">
+            <div class="swiper-slide">
+                <img data-src="/pharmacy/images/v2_qkr63a.png" class="swiper-lazy" />
+                <div class="swiper-lazy-preloader"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    banner2();
+    function banner2() {
+            var mySwiper = new Swiper('.swiper-container', {
+                //autoplay:true,//等同于以下设置
+                autoplay: {
+                    delay: 3000,
+                    stopOnLastSlide: false,
+                    disableOnInteraction: true,
+                },
+                loop: true,
+                lazy: true,
+                on: {
+                    lazyImageReady: function (slideEl, imageEl) {
+                        resizeImg({
+                            selector: '.swiper-slide',
+                            model: 'fill'
+                        });
+                    }
+                },
+            });
+        }
+</script>
