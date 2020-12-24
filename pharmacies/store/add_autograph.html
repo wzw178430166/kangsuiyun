@@ -8,10 +8,13 @@
 <link rel="stylesheet" type="text/css" href="/pharmacies/store/css/header_common.css?v=124">
 <link rel="stylesheet" type="text/css" href="/pharmacies/store/css/left_.css?v=125">
 <link rel="stylesheet" type="text/css" href="/pharmacies/store/css/index.css?v=126">
+<link rel="stylesheet" href="/statics/admin/common/layui/css/layui.css" media="all">
 <link rel="stylesheet" href="/statics/dataManage/css/bootstrap.css">
 <script type="text/javascript" src="/statics/js/setFontSize.js"></script>
-<script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="/statics/js/global.js"></script>
+<script  src="/statics/public/plug/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/statics/admin/common/layui/layui.all.js"></script>
+<script  src="/statics/public/plug/jSignature/src/jSignature.js"></script>
 <title>新增签名</title>
 <style>
  .query-btn .btn-item {
@@ -193,7 +196,9 @@
                               <table class="mtable" border="1" cellspacing="0">
                                 <tr>
                                     <th>姓名：</th>
-                                    <td colspan="3"> 李四 </td>
+                                    <td colspan="3"> 
+                                    <input type="text" name="name" id="name" style="width: 90%;height: 100%;border: 0;box-shadow: 0 0px 0px rgba(0, 0, 0, 0.075);">    
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>签名类型：</th>
@@ -201,19 +206,26 @@
                                 </tr>
                                 <tr style="height: 6rem;">
                                     <th>签名区域：</th>
-                                    <td colspan="2" style="border: 0;"> </td>
-                                    <td style="width: 2rem;position: relative;border: 0;"><span class="reseted">重签</span></td>
+                                    <td colspan="2" style="border: 0;width: 70%;height: 100%;position: relative;" id="signature">
+                                      <div style="display:none;position:absolute;top: 0;left: 0;width: 100%;height: 100%;" id="stypimg">
+                                      <img src="#" id="uimg" style="width: 100%;height: 100%;">
+                                    </div>
+                                    </td>
+                                    <td style="width: 2rem;position: relative;border: 0;"><span class="reseted" id="reseted">重签</span></td>
                                 </tr>
                                 <tr>
-                                    <th>设置：</th>
-                                    <td colspan="3">  设置为默认常用签名 </td>
+                                    <th>设置为默认常用签名：</th>
+                                    <td colspan="3">  
+                                      <label style="float: left;">是 <input type="radio" name="is_default" value="0" checked></label> 
+                                      <label>否 <input type="radio" name="is_default" value="1"></label>
+                                    </td>
                                 </tr>
                               </table>
 
                               <p class="lines"></p>
                               <div class="ctab_bottom">
                                 
-                                  <span class="mspans">
+                                  <span class="mspans" id="mspans">
                                     <svg t="1607410816622" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5142" width="48" height="48"><path d="M793.6 42.656H42.656v938.656h938.656V230.368l-187.744-187.744z m-153.6 256v-128h42.656V384H341.312V170.656h213.344v128H640zM341.344 896v-213.344h341.344V896H341.344zM896 896h-128v-298.656H256V896H128V128h128v341.344h512v-332.8l128 128V896z" p-id="5143" fill="#ffffff"></path></svg>  
                                     提交签名</span>
                               </div>
@@ -230,6 +242,68 @@
           </div>
        </div>
    </div>   
- 
+ <script>
+     var id = getQueryString('id')?getQueryString('id'):0;
+    var $sigdiv;
+	$(function(){
+        console.log(id);
+        if (0<id) getData();
+        var signature = [];
+        var $sigdiv = $("#signature").jSignature({'UndoButton':true});
+        var name=Cookies.get('verify_user_name');
+        $('#name').val(name);
+
+
+
+        $('#mspans').click(function () {
+            var uname= $('#name').val();
+            var res = $sigdiv.jSignature('getData','default');//导出结果 参数二为导出格式 默认为默认格式base64
+            //console.log(res);return;
+            //$('#signature_value').val(res);
+            var ifdeford=$('[name="is_default"]:checked').val();
+            var parm={user_id: Cookies.get('verify_user_id'),base64:res,name:uname,is_default:ifdeford,dosubmit:1};
+            if(id){parm.id=id};
+            request('/?m=pharmacy&c=signature&a=doSignature&ajax=1','post',{
+            dataType: 'json',
+            data: parm,
+            success: function(res){
+                alert(res.erro);
+                window.location.href="/pharmacies/store/autographk_list.html";
+            }
+        });
+        });
+
+
+
+
+        $('#reseted').click(function() {
+        $('#stypimg').hide();
+        $sigdiv.jSignature('reset');
+        $('#signature_id').val(0);
+        $('#signature_value').val('');
+        });
+    });
+    function getData(){
+        request('/?m=pharmacy&c=signature&a=doSignature&ajax=1','get',{
+            dataType: 'jsonp',
+            data: {id: id},
+            success: function(res){
+              if(1==res.status){
+                var data=res.data;
+                $('#name').val(data.name);
+                $('#stypimg').show();
+                $('#uimg').attr('src',data.img);
+                $("[name='is_default'][value='" + data.is_default + "']").prop("checked", true);
+                //   layer.open({
+                //      title: '信息'
+                //     ,content: res
+                //     });  
+            }
+            }
+        });
+     
+    }
+    
+ </script>
 </body>
 </html>

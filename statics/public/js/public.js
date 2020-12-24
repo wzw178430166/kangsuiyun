@@ -31,7 +31,7 @@ function request(url,type,param){
 		alert('请正确输入请求地址');
 		return;
 	}
-	var type = arguments[1]?arguments[1]:'GET';
+	var type = arguments[1]?arguments[1].toUpperCase():'GET';
 	var param = arguments[2]?arguments[2]:{};
 	var dataType = param.dataType?param.dataType:'JSON';//JSON JSONP
 	var data = param.data?param.data:$(param.formEle).serialize();
@@ -133,6 +133,35 @@ function serviceArea(param){
 	  area: ['45%', '55%'],
 	  content: url //iframe的url
 	}); 
+}
+/*layui*/
+function layuiPage(param){
+	var param = arguments[0]?arguments[0]:{};
+	var ele = param.ele?param.ele:'J_page';
+	var total = param.total?parseInt(param.total):0;
+	var limit = param.limit?param.limit:10;
+	layui.use('laypage', function(){
+		var laypage = layui.laypage;
+		//console.log(total+'----'+limit+'-----'+ele);
+        laypage.render({
+            elem: ele //注意，这里的 test1 是 ID，不用加 # 号
+            ,count: total //数据总数，从服务端得到
+            ,limit: limit
+            ,layout: ['prev', 'page','next', 'skip','count']//['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+            ,prev: '<i class="icon-arrow arrow-l"></i>'
+            ,next: '<i class="icon-arrow arrow-r"></i>'
+            ,hash: 'page'//页面载入时就定位到指定页
+            ,theme: '#234686'
+            ,jump: function(obj, first){
+                //首次不执行
+                if (!first) {
+                    //console.log(obj);
+                    page = parseInt(obj.curr);
+                    getData();
+                }
+            }
+        });
+    });
 }
 /*easyui*/
 function easyuiCombogrid(param){

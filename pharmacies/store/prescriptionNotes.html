@@ -13,6 +13,7 @@
 <script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="/statics/js/global.js"></script>
 <script type="text/javascript" src="https://lxj.yjxun.cn/statics/admin/common/js/jQuery.print.js"></script>
+<script src="/statics/public/js/public.js?v=234"></script>
 <title>查看处方笺</title>
 <style>
  .query-btn .btn-item {
@@ -119,7 +120,7 @@
 .ct-notes-doctor {
 	border-top: 1px solid #8d8d8d;
 	margin: 0 60px;
-	height: 76px;
+	height: 76px;padding-top: 15px;
 }
 .ct-notes-doctor div {
 	height: 35px;
@@ -270,17 +271,17 @@ width: calc(100%/24*22);
                 <div class="ct-notes-info"> <!-- <div nz-row class="bottomBorder"> <div class="prescription-col-2">费别:</div> <div class="prescription-col-4">自费</div> <div class="prescription-col-4">医疗证号:</div> <div class="prescription-col-6">1231231232321</div> <div class="prescription-col-3">处方号:</div> <div class="prescription-col-5">123123123211</div> </div> -->
                   <div nz-row="">
                     <div class="prescription-col-2">ID号:</div>
-                    <div class="prescription-col-22 bottomBorder">202012051134459350204</div>
+                    <div class="prescription-col-22 bottomBorder" id="prescription_no">-</div>
                   </div>
                   <div nz-row="">
                     <div class="prescription-col-2">姓名:</div>
-                    <div class="prescription-col-4 bottomBorder">李四</div>
+                    <div class="prescription-col-4 bottomBorder" id="user_nickname">-</div>
                     <div class="prescription-col-2">性别:</div>
-                    <div class="prescription-col-3 bottomBorder"> 女 </div>
+                    <div class="prescription-col-3 bottomBorder" id="sex"> - </div>
                     <div class="prescription-col-2">年龄:</div>
-                    <div class="prescription-col-3 bottomBorder">18</div>
+                    <div class="prescription-col-3 bottomBorder" id="age">-</div>
                     <div class="prescription-col-2">科室:</div>
-                    <div class="prescription-col-6 bottomBorder"></div>
+                    <div class="prescription-col-6 bottomBorder" id="hospital_department_name">-</div>
                   </div>
                   <div nz-row="">
                     <div class="prescription-col-2">地址:</div>
@@ -288,62 +289,50 @@ width: calc(100%/24*22);
                   </div>
                   <div nz-row="">
                     <div class="prescription-col-2">电话:</div>
-                    <div class="prescription-col-8 bottomBorder">13719515575</div>
+                    <div class="prescription-col-8 bottomBorder" id="mobile">-</div>
                     <div class="prescription-col-2">日期:</div>
-                    <div class="prescription-col-12 bottomBorder">2020-12-05 11:34:45</div>
+                    <div class="prescription-col-12 bottomBorder" id="verify_time">-</div>
                   </div>
                   <div nz-row="">
                     <div class="prescription-col-2">诊断:</div>
-                    <div class="prescription-col-22">头晕发烧</div>
+                    <div class="prescription-col-22" id="diagnose">-</div>
                   </div>
                 </div>
                 <!--ct-notes-info--->
                 <div class="ct-notes-medicines">
                   <div class="medicineTip"><sup>R</sup>P</div>
-             
-                  <div class="medicine">
-                    <div nz-row="">
-                      <div class="prescription-col-14">达比加群酯胶囊（合资）</div>
-                      <div class="prescription-col-10">110mg*10粒/盒</div>
-                    </div>
-                    <div nz-row="">
-                        <div class="prescription-col-14">用法：()</div>
-                     <div class="prescription-col-10"></div>
-                    </div>
+                  <div id="medicined">
+                    <!-- <div class="medicine">
+                      <div nz-row="">
+                        <div class="prescription-col-14">达比加群酯胶囊（合资）</div>
+                        <div class="prescription-col-10">110mg*10粒/盒</div>
+                      </div>
+                      <div nz-row="">
+                          <div class="prescription-col-14">用法：()</div>
+                       <div class="prescription-col-10"></div>
+                      </div>
+                    </div> -->
                   </div>
+         
               
                 </div>
                 <!--ct-notes-medicines--->
                 <div class="ct-notes-doctor">
                   <div nz-row="">
                     <div class="prescription-col-2">医师:</div>
-                    <div class="prescription-col-3 bottomBorder"></div>
-                    <div class="prescription-col-4">主治医生:</div>
-                    <div class="prescription-col-3 bottomBorder">泽医生</div>
-                    <div class="prescription-col-4">主任医生:</div>
-                    <div class="prescription-col-3 bottomBorder"></div>
-                    <div class="prescription-col-2">药费:</div>
+                    <div class="prescription-col-3 bottomBorder" id="doctor_name"></div>
+                    <div class="prescription-col-2">审核药师:</div>
+                    <div class="prescription-col-3 bottomBorder" id="verify_name"></div>
+                    <div class="prescription-col-2">签名文件:</div>
                     <div class="prescription-col-3 bottomBorder">
-                      <php echo $datas['drug_money'];?>
+                      <img src="#" style="width: 100px;height: 30px;vertical-align: middle;" id="verify_sign" onerror="Javascript:this.src='/pharmacies/store/images/babac.png'">
                     </div>
-                  </div>
-                  <div nz-row="">
-                    <div class="prescription-col-4">审核药师:</div>
-                    <div class="prescription-col-4 bottomBorder">
-                      <input type="text" name="drugstoreSignature" value="" autocomplete="off" disabled="disabled" class="drug-sign">
-                    </div>
-                    <div class="prescription-col-4">调配药师:</div>
-                    <div class="prescription-col-3 bottomBorder">
-                      <input type="text" name="hospitalSignature" value="" autocomplete="off" class="hospital-sign">
-                    </div>
-                    <div class="prescription-col-6">核对、发药药师:</div>
-                    <div class="prescription-col-3 bottomBorder"></div>
                   </div>
                 </div>
                 <!--ct-notes-doctor-->
                 <!--endPrint-->
                 </div>
-                <div class="ct-notes-toolBar">
+                <div class="ct-notes-toolBar" style="display: none;">
                   <button class="submit">确定</button>
                   <button class="cancel closeDetail" id="J_cancel">取消</button>
                 </div>
@@ -357,9 +346,9 @@ width: calc(100%/24*22);
    </div>   
 
    <script>
-
+    var prescription_no = getQueryString('prescription_no');
     $(function(){
-        $('#J_print').on('click',function(){
+    $('#J_print').on('click',function(){
 		$("#J_print_prescription").print({
 			globalStyles: true,
 			mediaPrint: false,
@@ -375,8 +364,52 @@ width: calc(100%/24*22);
 			doctype: '<!doctype html>'
 		});
 	});
+  getData();
     });
-
+    function getData(){
+        var url = '/?m=pharmacy&c=prescription&a=detail&ajax=1';
+        var query = {prescription_no:prescription_no};//查询参数
+        request(url,'get',{
+            query: query,
+            dataType:"JSONP",
+            success:function(res){
+            var row = res.data.row;  //处方
+            var drug = res.data.drug;
+            $('#prescription_no').text(row.prescription_no);
+            $('#user_nickname').text(row.user_nickname);
+            $('#sex').text(row.sex);
+            $('#hospital_department_name').text(row.hospital_department_name);
+            $('#diagnose').text(row.diagnose); 
+            $('#verify_time').text(row.verify_time);
+            $('#mobile').text(row.mobile);
+            $('#doctor_name').text(row.doctor_name);
+            $('#verify_name').text(row.verify_name);
+            $("#verify_sign").attr('src',row.verify_sign);
+            $('#age').text(row.age);
+            var html='';
+            for(var i in drug){
+              var info=drug[i];
+              html+='<div class="medicine">\
+                      <div nz-row="">\
+                        <div class="prescription-col-14">'+info.drug_name+'</div>\<div class="prescription-col-10">';
+                          if(info.drug_sku_properties==''){info.drug_sku_properties='-'}else{
+                            info.drug_sku_properties=info.drug_sku_properties;
+                          }
+                          html+=info.drug_sku_properties+'/'+info.drug_unit+'</div>\
+                      </div>\
+                      <div nz-row="">\
+                          <div class="prescription-col-14">用法：('+info.drug_usage+')</div>\
+                       <div class="prescription-col-10"></div>\
+                      </div>\
+                    </div>'
+            }
+            $('#medicined').html(html);
+            },
+            error:function(res){
+                console.log(res);
+            }
+        });
+    }
     </script>
 </body>
 </html>

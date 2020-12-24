@@ -61,6 +61,10 @@
     padding: 10px;
     background-color: #ffffff;
 }
+input {
+    -webkit-appearance: listitem;
+    -webkit-rtl-ordering: logical;
+}
 </style>
 </head>
 <body>
@@ -79,6 +83,7 @@
               <svg t="1607394397077" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1709" width="48" height="48"><path d="M422.63 891.821V623.712h178.74v268.109h223.424V534.342h134.054L512 132.179 65.152 534.342h134.054V891.82H422.63z" p-id="1710" fill="#707070"></path></svg>
             </div>
             <div class="query-module">
+              <form style="margin: 0;font-size: .2rem;line-height: inherit;">
                 <div class="query-form">
                   <div class="form-item"> <font>处方单号</font>
                     <div class="element">
@@ -87,51 +92,53 @@
                       </div>
                     </div>
                   </div>
-                  <div class="form-item"> <font>关键词</font>
+                  <div class="form-item"> <font>状态</font>
+                    <div class="element">
+                      <div class="element-select">
+                        <select id="status">
+                          <option value="">全部</option>
+                          <option value="WAIT_VERIFY">待审核</option>
+                          <option value="PASSED">已审核</option>
+                          <option value="FAIL">审核不通过</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="form-item"> <font>关键词</font>
                     <div class="element">
                       <div class="element-text">
                         <input type="text" id="userid" value="">
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                   <div class="form-item"> <font>时间范围</font>
                     <div class="element">
                       <div class="element-date" style="display: flex;align-items: center;">
-                        <input type="text" id="st" value="" lay-key="2">
+                        <input type="text" id="st" value="" lay-key="2" style="border: 1px solid #e7e7eb;">
                         <svg t="1607933029386" class="icon" viewBox="0 0 1219 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1232" width="48" height="48"><path d="M901.261256 252.731379h-568.966822c-11.309806 0-20.474755 9.412979-20.474755 21.025708V780.626709c0 11.614763 9.166981 21.025709 20.474755 21.025709h568.964789c11.307773 0 20.468656-9.410946 20.468655-21.025709V273.757087c0.008132-11.61273-9.162915-21.025709-20.466622-21.025708z m0.14028 517.980189c0 5.861257-4.529615 10.61044-10.118445 10.610441H342.268532c-5.588829 0-10.116411-4.749184-10.116411-10.610441V283.666129c0-5.855158 4.529615-10.604341 10.116411-10.604342h549.014559c5.588829 0 10.118444 4.749184 10.118445 10.604342v487.045439z" p-id="1233" fill="#bfbfbf"></path><path d="M474.629659 201.903323h20.330409v118.593374h-20.330409zM738.589522 201.903323h20.330409v118.593374h-20.330409zM331.385664 422.150775h570.270002v20.330408H331.385664z" p-id="1234" fill="#bfbfbf"></path></svg>
-                        <span class="gap">到</span>
-                        <input type="text" id="et" value="" lay-key="1">
+                        <span class="gap" style="position: relative;left: -15px;">到</span>
+                        <input type="text" id="et" value="" lay-key="1" style="border: 1px solid #e7e7eb;">
                         <svg t="1607933029386" class="icon" viewBox="0 0 1219 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1232" width="48" height="48"><path d="M901.261256 252.731379h-568.966822c-11.309806 0-20.474755 9.412979-20.474755 21.025708V780.626709c0 11.614763 9.166981 21.025709 20.474755 21.025709h568.964789c11.307773 0 20.468656-9.410946 20.468655-21.025709V273.757087c0.008132-11.61273-9.162915-21.025709-20.466622-21.025708z m0.14028 517.980189c0 5.861257-4.529615 10.61044-10.118445 10.610441H342.268532c-5.588829 0-10.116411-4.749184-10.116411-10.610441V283.666129c0-5.855158 4.529615-10.604341 10.116411-10.604342h549.014559c5.588829 0 10.118444 4.749184 10.118445 10.604342v487.045439z" p-id="1233" fill="#bfbfbf"></path><path d="M474.629659 201.903323h20.330409v118.593374h-20.330409zM738.589522 201.903323h20.330409v118.593374h-20.330409zM331.385664 422.150775h570.270002v20.330408H331.385664z" p-id="1234" fill="#bfbfbf"></path></svg>
                       </div>
                     </div>
                   </div>
-                  <div class="form-item"> <font>状态</font>
-                    <div class="element">
-                      <div class="element-select">
-                        <select id="status">
-                            <option value="">全部</option>
-                          <option value="waitPay">0</option>
-                          <option value="success">1</option>
-                          <option value="close">2</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
+            
                 </div>
                 <div class="query-btn">
                   <div class="btn-item"> <a class="btn-sais" id="J_query" style="padding-left: 15px;">
                     <svg style="width:20px;height:20px;vertical-align: middle;" t="1607394598323" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2669" width="48" height="48"><path d="M874.666667 814.933333l-209.066667-209.066666C704 554.666667 725.333333 494.933333 725.333333 426.666667c0-166.4-132.266667-298.666667-298.666666-298.666667s-298.666667 132.266667-298.666667 298.666667 132.266667 298.666667 298.666667 298.666666c68.266667 0 128-21.333333 179.2-59.733333l209.066666 209.066667c17.066667 17.066667 42.666667 17.066667 59.733334 0s17.066667-42.666667 0-59.733334zM426.666667 640c-119.466667 0-213.333333-93.866667-213.333334-213.333333s93.866667-213.333333 213.333334-213.333334 213.333333 93.866667 213.333333 213.333334-93.866667 213.333333-213.333333 213.333333z" fill="#ffffff" p-id="2670"></path></svg>
                     筛选
                     
-                    </a> <a href="#" class="btn-rest" style="margin-left: 10px;">重置</a>
-                    <span class="btn-adds">
+                    </a> <a href="#" class="btn-rest" style="margin-left: 10px;" id="rests">
+                                            <input type="reset"> </a>
+                    <!-- <span class="btn-adds">
                         添加
                         <svg t="1607343289035" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1155" data-spm-anchor-id="a313x.7781069.0.i6" width="48" height="48"><path d="M512 981.333333c259.2 0 469.333333-210.133333 469.333333-469.333333S771.2 42.666667 512 42.666667 42.666667 252.8 42.666667 512s210.133333 469.333333 469.333333 469.333333z m0-42.666666C276.352 938.666667 85.333333 747.648 85.333333 512S276.352 85.333333 512 85.333333s426.666667 191.018667 426.666667 426.666667-191.018667 426.666667-426.666667 426.666667z" p-id="1156" fill="#e6e6e6" data-spm-anchor-id="a313x.7781069.0.i7" class=""></path><path d="M298.666667 533.333333h426.666666a21.333333 21.333333 0 1 0 0-42.666666H298.666667a21.333333 21.333333 0 0 0 0 42.666666z" p-id="1157" fill="#707070" data-spm-anchor-id="a313x.7781069.0.i2" class="selected"></path><path d="M490.666667 298.666667v426.666666a21.333333 21.333333 0 1 0 42.666666 0V298.666667a21.333333 21.333333 0 1 0-42.666666 0z" p-id="1158" fill="#707070" data-spm-anchor-id="a313x.7781069.0.i1" class="selected"></path></svg>
-                    </span>
+                    </span> -->
                 </div>
-             
                 </div>
               </div>
+            </form>
               <div class="data-content">
                 <div class="tb-container">
                     <table class="table">
@@ -229,29 +236,43 @@
    <script>
     var page = 1;
     $(function(){
-        checkLogin("golink");
+    checkLogin("golink");
+    var pages=getQueryString('page');
+    if (getQueryString('page')) page=pages;
+    if (getQueryString('status')) $('#status').val(getQueryString('status'));
         getData();
         //getleft();
         //gethearder();
+    $('#rests').click(function(){
+        query = {};
+    });
     $('#J_batch_del').on('click',function(){
     var pids = setSel();
+    console.log(pids);
 		if (false == pids) return;
 		var index = layer.confirm('确定删除该记录?',{btn:["删除","取消"]},function(){
-			layer.close(index);
-			layer.prompt({title: '操作密码', formType: 1}, function(pass,index){
-				var url = '/?m=dataManage&c=member&a=delMember&ajax=1';
-				var formParam = {"dosubmit":1,"pid":pids,'password':pass};
-				$.post(url,formParam,function(data){
-					layer.msg(data.erro);
-					validateAuth(data.status);
-					if (data.status == 1) {
+      layer.close(index);
+      var url = '/?m=pharmacy&c=prescription&a=delete&ajax=1';
+      var querst={"dosubmit":1,"id":pids};
+      request(url,'get',{
+          query: querst,
+          dataType:"JSONP",
+          success:function(res){
+          layer.msg(res.erro);
+					//validateAuth(data.status);
+					if (res.status == 1) {
 						layer.close(index);
 						getData();
 					}
-				},'json');
+            },
+            error:function(res){
+                console.log(res);
+            }
+        });
 
-			});
-
+			// layer.prompt({title: '操作密码', formType: 1}, function(pass,index){
+		
+			// });
 		});
 	});
         $('#J_sel_all').on('click',function(){
@@ -303,9 +324,18 @@
 }
     function getData(){
         var url = '/?m=pharmacy&c=prescription&a=lists&ajax=1';
-        var query = {};//查询参数
-        var status = getQueryString('status');
+        if (page > 1) url += '&page='+page;
+        var query = {};
+        var status = $('#status').val();
         if (status) query.status = status;
+        var k = $.trim($('#k').val());
+        if (k) query.k= k;
+        var st = $.trim($('#st').val());
+        var et = $.trim($('#et').val());
+        if (st&&et) {
+          query.st= st;
+          query.et= et;
+        }
         request(url,'get',{
             query: query,
             dataType:"JSONP",
@@ -318,7 +348,7 @@
                       var operate = '';
                       
                       if ('WAIT_VERIFY' == info.status) operate += '<a href="/pharmacies/store/review_p.html?&prescription_no='+info.prescription_no+'" class="operate-btn btn-verify">审核</a>';
-                      operate += '<a href="/pharmacies/store/payment.html?&prescription_no='+info.prescription_no+'" class="operate-btn">查看</a> <a href="" class="operate-btn btn-delete">删除</a>';//操作
+                      operate += '<a href="/pharmacies/store/payment.html?&prescription_no='+info.prescription_no+'" class="operate-btn">查看</a> ';//操作
                       
                       html += '<tr align="center"><td><div class="tb-cell cell-check"><input type="checkbox" name="ids[]" value="'+info.id+'"></div></td><td><div class="tb-cell cell-prescription_no">'+info.prescription_no+'</div></td><td><div class="tb-cell cell-user_name">'+info.user_nickname+'</div></td><td><div class="tb-cell cell-create_time">'+info.create_time+'</div></td><td><div class="tb-cell cell-drug_total_quantity">'+info.drug_total_quantity+'</div></td><td><div class="tb-cell cell-drug_total_price">'+info.drug_total_price+'</div></td><td><div class="tb-cell cell-doctor_name">'+info.doctor_name+'</div></td><td><div class="tb-cell cell-1"></div></td><td><div class="tb-cell cell-status status-'+info.status+'">';
                       if(info.status_str=='待审核'){
@@ -332,8 +362,8 @@
                   html += '<tr align="center"><td colspan="'+($('.tb-head').length)+'">暂无数据</td></tr>';
                 }
                 $('#data').html(html);
-                // if(1==page) layuiPage({total:res.total});
-                if (page == 1) initPage(res.total);
+                if(1==page) layuiPage({total:res.total});
+                //if (page == 1) initPage(res.total);
             },
             error:function(res){
                 console.log(res);
@@ -341,12 +371,12 @@
         });
     }
     function initPage(pageCount) {
-	layui.use('laypage', function(){
+  	layui.use('laypage', function(){
 		var laypage = layui.laypage;
 		laypage.render({
 			elem: 'J_page' //注意，这里的 test1 是 ID，不用加 # 号
 			,count: pageCount //数据总数，从服务端得到
-			,limit: 15
+			,limit: 4
 			,layout: ['prev', 'page','next', 'skip','count']//['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
 			,prev: '<i class="icon-arrow arrow-l"></i>'
 			,next: '<i class="icon-arrow arrow-r"></i>'

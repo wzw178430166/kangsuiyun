@@ -26,7 +26,7 @@
             </div>
             
         </div>
-        <div class="wdihje">21</div>
+        <div class="wdihje" id="snum">-</div>
     </div>
 
     <div class="boawo_item" onclick="goo('/pharmacies/store/prescriptionlist.html')">
@@ -137,4 +137,19 @@
         //alert(url);return;
         goo(url);
     }
+    $(function(){
+        var querys={};
+        var urls = '/?m=pharmacy&c=data&a=getPending';
+        request(urls,'get',{
+          dataType:"JSONP",
+          query: querys,
+          success:function(res){
+            var num=res.data.prescription;
+           $('#snum').text(num);
+          },
+          error:function(res){
+              console.log(res);
+          }
+      });
+    })
 </script>

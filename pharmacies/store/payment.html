@@ -12,6 +12,7 @@
 <script type="text/javascript" src="/statics/js/setFontSize.js"></script>
 <script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="/statics/js/global.js"></script>
+<script src="/statics/public/js/public.js?v=234"></script>
 <title>开处方后支付</title>
 <style>
  .query-btn .btn-item {
@@ -76,7 +77,7 @@
 }
 .prescription-col-21 { width: calc(100%/24*21);
 }
-.data-table>div { padding: 0 0 0 20px; line-height: 30px; color: #485060; font-size: 13px; height: 30px; box-sizing: border-box; background-color: #f9f9f9; border: 1px solid #ddd; border-right: none; border-bottom: none; }
+.data-table>div { padding: 0 0 0 5px; line-height: 30px; color: #485060; font-size: 13px; height: 30px; box-sizing: border-box; background-color: #f9f9f9; border: 1px solid #ddd; border-right: none; border-bottom: none; }
 .data-state { position: absolute; top: 35px; right: 5px; border: 2px dotted #ffa710; color: #ffa710; padding: 0 10px; height: 33px; line-height: 29px; transform: rotate(30deg); -ms-transform: rotate(30deg); -o-tranform: rotate(30deg); -webkit-transform: rotate(30deg); -moz-transform: rotate(30deg); }
 
 .back_goo{    width: 3.5rem;
@@ -110,17 +111,21 @@
       </div>
        <div class="right_conter">
            <div style="width:auto;margin:auto;">
-            <div class="back_goo" onclick="goo('/pharmacies/store/distribution.html')">
+            <!-- <div class="back_goo" onclick="goo('/pharmacies/store/distribution.html')">
                 <svg t="1607408152481" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3504" width="48" height="48"><path d="M438.4 297.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2L300.8 480H800c19.2 0 32 12.8 32 32 0 16-12.8 28.8-28.8 32H300.8l137.6 137.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2c-12.8 12.8-28.8 12.8-41.6 3.2l-3.2-3.2-192-192-3.2-3.2-3.2-3.2-3.2-3.2V499.2l3.2-3.2 3.2-3.2 3.2-3.2 192-192c12.8-12.8 32-12.8 44.8 0z" fill="#bfbfbf" p-id="3505"></path></svg>
                 返回处方列表
-            </div>
+            </div> -->
+            <div class="back_goo" onclick="goo('/pharmacies/store/prescriptionlist.html')">
+              <svg t="1607408152481" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3504" width="48" height="48"><path d="M438.4 297.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2L300.8 480H800c19.2 0 32 12.8 32 32 0 16-12.8 28.8-28.8 32H300.8l137.6 137.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2c-12.8 12.8-28.8 12.8-41.6 3.2l-3.2-3.2-192-192-3.2-3.2-3.2-3.2-3.2-3.2V499.2l3.2-3.2 3.2-3.2 3.2-3.2 192-192c12.8-12.8 32-12.8 44.8 0z" fill="#bfbfbf" p-id="3505"></path></svg>
+              返回处方列表
+          </div>
             <div class="data-content">
               <div class="ct-prescription" >
                 <div class="ct-prescription-content">
                   <div class="prescription-tool">
                     <!--<div nz-button="" nztype="primary" class="tool-item chargeback">退单</div>-->
-                    <div nz-button="" nztype="primary" class="tool-itemsed toPrint" id="J_pay" onclick="goo('/pharmacies/store/issued_success.html')">去支付</div>
-                    <div nz-button="" nztype="primary" class="tool-item toOrdonnance" id="J_notes" onclick="goo('/pharmacies/store/prescriptionNotes.html')">查看处方笺</div>
+                    <div nz-button="" nztype="primary" class="tool-itemsed toPrint" id="J_sh" style="display: none;">审核</div>
+                    <div nz-button="" nztype="primary" class="tool-item toOrdonnance" id="J_notes">查看处方笺</div>
                   </div>
                   <!--prescription-tool-->
                   <!--startPrint-->
@@ -128,32 +133,32 @@
                     <div class="data-head">处方信息</div>
                     <div nz-row="" class="data-table"> <!-- 第一行 -->
                       <div class="prescription-col-4">处方单号:</div>
-                      <div class="prescription-col-8"> <?php echo $datas['prescription_no']?> </div>
+                      <div class="prescription-col-8" id="prescription_no"></div>
                       <div class="prescription-col-4">支付状态:</div>
-                      <div class="prescription-col-8"> <?php echo $order['statusStr']?> </div>
+                      <div class="prescription-col-8" id="pays"> </div>
                       <!-- 第二行 -->
                       <div class="prescription-col-4">取药方式:</div>
-                      <div class="prescription-col-8">邮寄</div>
+                      <div class="prescription-col-8">到店</div>
                       <div class="prescription-col-4">订单支付时间:</div>
-                      <div class="prescription-col-8"><span class="noValue no-print"><?php echo $order['pay_time']?></span></div>
+                      <div class="prescription-col-8"><span class="noValue no-print" id="pay_time"></span></div>
                       <!-- 第三行 -->
                       <div class="prescription-col-4">审核状态:</div>
                       <div class="prescription-col-20">
-                          <span>审核通过</span>
-                          <div class="data-state">审核通过</div>
+                          <span id="examine">---</span>
+                          <div class="data-state" id="examineicon">---</div>
                       </div>
                     </div>
                     <!--data-table--->
                     <div class="data-head">患者信息</div>
                     <div nz-row="" class="data-table"> <!-- 第一行 -->
                       <div class="prescription-col-4">姓名:</div>
-                      <div class="prescription-col-8"> 李四</div>
+                      <div class="prescription-col-8" id="name"> --</div>
                       <div class="prescription-col-4">联系电话:</div>
-                      <div nz-col="" class="prescription-col-8">18320084545</div>
+                      <div nz-col="" class="prescription-col-8" id="mobile">---</div>
                     </div>
                     <!--data-table--->
                     <div class="data-head">药品信息</div>
-                    <div nz-row="" class="data-table"> <!-- 第一行 -->
+                    <div class="data-table" id="drug-msg"> <!-- 第一行 -->
                       <div class="prescription-col-3">序号</div>
                       <div class="prescription-col-7">药品名称</div>
                       <div class="prescription-col-4">药商药品编码</div>
@@ -161,33 +166,36 @@
                       <div class="prescription-col-4">单价（元）</div>
                       <div class="prescription-col-4">价格（元）</div>
                     </div>
-                    <div nz-row="" class="data-table tbody">
+                    <div id="tobody">
+ 
+                    </div>
+                    <!-- <div class="data-table tbody">
                         <div class="prescription-col-3">1</div>
                         <div class="prescription-col-7">达比加群酯胶囊（合资）</div>
                         <div class="prescription-col-4">2</div>
                         <div class="prescription-col-2">0</div>
                         <div class="prescription-col-4">172.10</div>
                         <div class="prescription-col-4">172.10</div>
-                      </div>
-                      <div nz-row="" class="data-table tbody">
+                      </div> -->
+                      <!-- <div class="data-table tbody">
                         <div class="prescription-col-3">2</div>
                         <div class="prescription-col-7">丁苯酞软胶囊（国产）</div>
                         <div class="prescription-col-4">5</div>
                         <div class="prescription-col-2">0</div>
                         <div class="prescription-col-4">189.60</div>
                         <div class="prescription-col-4">189.60</div>
-                      </div>
-                    <div nz-row="" class="data-table tbody">
+                      </div> -->
+                    <div class="data-table tbody">
                       <div class="prescription-col-3">总价</div>
-                      <div class="prescription-col-21"><?php echo $datas['drug_money']?></div>
+                      <div class="prescription-col-21" id="total"><?php echo $datas['drug_money']?></div>
                     </div>
                     <!--data-table--->
                     <div class="data-head">物流信息</div>
                     <div nz-row="" class="data-table">
                       <div class="prescription-col-4">收件人地址:</div>
-                      <div class="prescription-col-20"><?php echo $logistics['consignee'].' '.$logistics['consignee_telephone'].' '.$logistics['consignee_area'].' '.$logistics['consignee_address']?></div>
+                      <div class="prescription-col-20"></div>
                       <div class="prescription-col-4">物流信息:</div>
-                      <div class="prescription-col-20"> <?php echo $logistics?$logistics['logistics_name'].' '.$logistics['logistics_no']:''?></div>
+                      <div class="prescription-col-20"></div>
                     </div>
                     <!--data-table--->
                     <!--<div class="data-head">订单记录</div>
@@ -215,19 +223,64 @@
    </div>   
    <script>
     var page = 1;
+    var prescription_no = getQueryString('prescription_no');
     $(function(){
-       // getleft();
-       // gethearder();
+      getData();
+      $('#J_sh').click(function (){
+        goo('/pharmacies/store/review_p.html?&prescription_no='+prescription_no);
+      })
+      $('#J_notes').click(function (){
+        goo('/pharmacies/store/prescriptionNotes.html?&prescription_no='+prescription_no);
+      })
     });
-
-    function gethearder() {
-            $('#header').load('/pharmacies/store/header.html', function () {
-            });
-        }
-        function getleft(){
-            $('#left').load('/pharmacies/store/left.html', function () {
-            });
-        }
+    function getData(){
+      var url = '/?m=pharmacy&c=prescription&a=detail&ajax=1';
+      var query = {prescription_no:prescription_no};//查询参数
+      request(url,'get',{
+          query: query,
+          dataType:"JSONP",
+          success:function(res){
+            console.log(res);
+            var row = res.data.row;  //处方
+            $('#prescription_no').text(row.prescription_no);
+            row.pay_time=row.pay_time==0?'---':row.pay_time;
+            $('#pay_time').text(row.pay_time);
+            $('#name').text(row.full_name);
+            if(row.mobile)$('#mobile').text(row.mobile);
+            $('#examine').text(row.status_str);
+            $('#examineicon').text(row.status_str);
+            $('#pays').text(row.pay_status_str);
+            if(row.status=='WAIT_VERIFY'){
+              $('#J_sh').show();
+            }
+            var drug = res.data.drug;
+            var html = '';
+            var total=0;
+            if (0<Object.keys(drug).length) {
+              for(var k in drug){
+                  var info = drug[k];
+                  var num=Number(k)+1;
+                  html += '<div class="data-table tbody">\
+                        <div class="prescription-col-3">'+num+'</div>\
+                        <div class="prescription-col-7">'+info.drug_name+'</div>\
+                        <div class="prescription-col-4">'+info.prescription_no+'</div>\
+                        <div class="prescription-col-2">'+info.drug_quantity+'</div>\
+                        <div class="prescription-col-4">'+info.drug_price+'</div>\
+                        <div class="prescription-col-4">'+info.drug_sub_price+'</div>\
+                      </div>';
+                  total+=parseFloat(info.drug_sub_price);
+              }
+            } else {
+              html += '<tr align="center"><td colspan="'+($('.tb-head').length)+'">暂无数据</td></tr>';
+            }
+            $('#tobody').html(html);
+            $('#total').text(total);
+          },
+          error:function(res){
+              console.log(res);
+          }
+      });
+    }
     </script>
 </body>
 </html>
