@@ -1,0 +1,77 @@
+<!-- <div class="headers_box">
+    <div class="header_left">
+      药师端
+    </div>
+    <div class="header_right">
+        <span class="header_pei">当前登录药师:</span>
+        <span>
+          <select class="selects">
+          <option>李明</option>
+        </select>
+       </span>
+       <span class="header_pei">状态:</span>
+       <span> 
+       <span class="conter_round"></span>    
+       <select class="selects2">
+        <option>在线</option>
+      </select>
+    </span>
+    </div>
+</div> -->
+<div class="headers_box">
+  <div class="header_left">
+    药师端
+  </div>
+  <div class="header_right">
+      <span class="header_pei">当前审核配药人:</span>
+      <span id="J_select_staff">
+
+        <!-- <select class="selects" id="J_select_staff">
+        
+        </select> -->
+     </span>
+     <!-- <span class="header_pei">状态:</span>
+     <span> 
+     <span class="conter_round"></span>    
+     <select class="selects2">
+      <option>在线</option>
+    </select>
+  </span> -->
+  </div>
+</div>
+<script type="text/javascript" src="/statics/public/js/cookie.js"></script>
+<script type="text/javascript" src="/statics/public/js/public.js"></script>
+<script type="text/javascript">
+// request('/?m=pharmacy&c=data&a=getStaff&ajax=1','',{
+//   dataType:'jsonp',
+//   success:function(res){
+//     var html = '';
+//     if (0<Object.keys(res.data).length) {
+//       for(var k in res.data){
+//         var info = res.data[k];
+//         var selected = Cookies.get('verify_user_id')==info.user_id?'selected':'';
+//         html += '<option value="'+info.user_id+'" '+selected+'>'+info.full_name+'</option>';
+//       }
+//       if (!Cookies.get('verify_user_id')) {
+//         Cookies.set('verify_user_id',res.data[0].user_id);
+//         Cookies.set('verify_user_name',res.data[0].full_name);
+//       } 
+//     } else {
+//       html += '<option value="0">无药师</option>';
+//     }
+//     $('#J_select_staff').html(html);
+//   }
+// });
+// $('#J_select_staff').on('change',function(){
+//   Cookies.set('verify_user_id',$(this).val());
+//   Cookies.set('verify_user_name',$(this).text());
+// });
+$(function() {
+  var strs=Cookies.get('full_name');
+  console.log(strs);
+  if(strs==''||strs==undefined){
+    strs='未登陆';
+  }
+  $('#J_select_staff').text(strs);
+})
+</script>

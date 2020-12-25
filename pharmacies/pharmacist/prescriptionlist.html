@@ -347,9 +347,8 @@ input {
                       var info = rows[k];
                       var operate = '';
                       
-                      // if ('WAIT_VERIFY' == info.status) operate += '<a href="/pharmacies/store/review_p.html?&prescription_no='+info.prescription_no+'" class="operate-btn btn-verify">审核</a>';
-
-                      operate += '<a href="/pharmacies/store/payment.html?&prescription_no='+info.prescription_no+'" class="operate-btn">查看</a> ';//操作
+                      if ('WAIT_VERIFY' == info.status) operate += '<a href="/pharmacies/pharmacist/review_p.html?&prescription_no='+info.prescription_no+'" class="operate-btn btn-verify">审核</a>';
+                      operate += '<a href="/pharmacies/pharmacist/payment.html?&prescription_no='+info.prescription_no+'" class="operate-btn">查看</a> ';//操作
                       
                       html += '<tr align="center"><td><div class="tb-cell cell-check"><input type="checkbox" name="ids[]" value="'+info.id+'"></div></td><td><div class="tb-cell cell-prescription_no">'+info.prescription_no+'</div></td><td><div class="tb-cell cell-user_name">'+info.user_nickname+'</div></td><td><div class="tb-cell cell-create_time">'+info.create_time+'</div></td><td><div class="tb-cell cell-drug_total_quantity">'+info.drug_total_quantity+'</div></td><td><div class="tb-cell cell-drug_total_price">'+info.drug_total_price+'</div></td><td><div class="tb-cell cell-doctor_name">'+info.doctor_name+'</div></td><td><div class="tb-cell cell-1"></div></td><td><div class="tb-cell cell-status status-'+info.status+'">';
                       if(info.status_str=='待审核'){

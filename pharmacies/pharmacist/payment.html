@@ -115,7 +115,7 @@
                 <svg t="1607408152481" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3504" width="48" height="48"><path d="M438.4 297.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2L300.8 480H800c19.2 0 32 12.8 32 32 0 16-12.8 28.8-28.8 32H300.8l137.6 137.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2c-12.8 12.8-28.8 12.8-41.6 3.2l-3.2-3.2-192-192-3.2-3.2-3.2-3.2-3.2-3.2V499.2l3.2-3.2 3.2-3.2 3.2-3.2 192-192c12.8-12.8 32-12.8 44.8 0z" fill="#bfbfbf" p-id="3505"></path></svg>
                 返回处方列表
             </div> -->
-            <div class="back_goo" onclick="goo('/pharmacies/store/prescriptionlist.html')">
+            <div class="back_goo" onclick="goo('/pharmacies/pharmacist/prescriptionlist.html?&status=WAIT_VERIFY')">
               <svg t="1607408152481" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3504" width="48" height="48"><path d="M438.4 297.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2L300.8 480H800c19.2 0 32 12.8 32 32 0 16-12.8 28.8-28.8 32H300.8l137.6 137.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2c-12.8 12.8-28.8 12.8-41.6 3.2l-3.2-3.2-192-192-3.2-3.2-3.2-3.2-3.2-3.2V499.2l3.2-3.2 3.2-3.2 3.2-3.2 192-192c12.8-12.8 32-12.8 44.8 0z" fill="#bfbfbf" p-id="3505"></path></svg>
               返回处方列表
           </div>
@@ -124,7 +124,7 @@
                 <div class="ct-prescription-content">
                   <div class="prescription-tool">
                     <!--<div nz-button="" nztype="primary" class="tool-item chargeback">退单</div>-->
-                    <!-- <div nz-button="" nztype="primary" class="tool-itemsed toPrint" id="J_sh" style="display: none;">审核</div> -->
+                    <div nz-button="" nztype="primary" class="tool-itemsed toPrint" id="J_sh" style="display: none;">审核</div>
                     <div nz-button="" nztype="primary" class="tool-item toOrdonnance" id="J_notes">查看处方笺</div>
                   </div>
                   <!--prescription-tool-->
@@ -227,10 +227,10 @@
     $(function(){
       getData();
       $('#J_sh').click(function (){
-        goo('/pharmacies/store/review_p.html?&prescription_no='+prescription_no);
+        goo('/pharmacies/pharmacist/review_p.html?&prescription_no='+prescription_no);
       })
       $('#J_notes').click(function (){
-        goo('/pharmacies/store/prescriptionNotes.html?&prescription_no='+prescription_no);
+        goo('/pharmacies/pharmacist/prescriptionNotes.html?&prescription_no='+prescription_no);
       })
     });
     function getData(){
@@ -250,9 +250,9 @@
             $('#examine').text(row.status_str);
             $('#examineicon').text(row.status_str);
             $('#pays').text(row.pay_status_str);
-            // if(row.status=='WAIT_VERIFY'){
-            //   $('#J_sh').show();
-            // }
+            if(row.status=='WAIT_VERIFY'){
+              $('#J_sh').show();
+            }
             var drug = res.data.drug;
             var html = '';
             var total=0;

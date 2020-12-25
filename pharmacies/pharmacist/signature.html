@@ -1,0 +1,176 @@
+<style type="text/css">
+	.cover { position: fixed; /*left: 0; top: 0; width: 100%; height: 100%;*/ display: none; }
+	.cover .cover-bg { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,.8);}
+	.cover .cover-content { position: absolute; }
+	.cover-signature .cover-head,.cover-password .cover-head {
+	    position: absolute;
+	    left: 0;
+	    top: 0;
+	    width: 100%;
+	    background-color: #eee;
+	    padding: 0 .3rem;
+	}
+	.cover-head h2 {
+	    font-size: .3rem;
+	    margin: 0;
+	}
+	.cover-signature,.cover-password { left: 0; top: 0; width: 100%; height: 100%; z-index: 99; }
+	.cover-signature .cover-content,.cover-password .cover-content { width: 20rem; padding: 1.5rem 1rem .5rem; background-color: #fff; border-radius: 0 0 .2rem .2rem; left: 50%; top: 50%; transform: translate(-50%,-50%); z-index: 100; }
+	.cover-password .cover-content { width: 10rem; padding-top: 1.1rem;}
+	.cover-password .form-item p {
+        font-size: .5rem;
+        line-height: .8rem;
+	}
+	.cover-password .form-val input[type="password"] {
+        width: 7.5rem;
+        height: 1rem;
+	}
+	.ct-user-signature {
+	    margin-bottom: .5rem;
+	    overflow: hidden;
+	}
+	.ct-user-signature .ct-form-text {
+	    width: 2.5rem;
+	    padding-right: .5rem;
+	    display: block;
+	    font-size: .4rem;
+	    float: left;
+	    line-height: .8rem;
+	}
+	.ct-user-signature .ct-form-val {  
+    	margin-left: 2.5rem;
+	}
+	.ct-form-val select { height: .8rem; }
+	.ct-signature { position: relative; }
+	.ct-signature .signature-content { border: 2px dotted black; background-color: lightgrey; }
+	.signature-content canvas { width: 17.8rem !important; height: 50vh !important; }
+	.ct-signature .ct-signature-tool { position: absolute; top: -.8rem; right: 0; cursor: pointer; }
+	.ct-signature-tool .tool-reset { font-size: .3rem; }
+	.cover .ct-operate {
+	    margin-top: .5rem;
+	    text-align: right;
+	}
+	.ct-operate .operate-btn {
+		display: inline-block;
+	    margin: 0;
+	    padding: .15rem .5rem;
+	    margin-left: .3rem;
+	    border: 1px #999 solid;
+	    font-size: .4rem;
+	    color: #666;
+	    border-radius: .1rem;
+	}
+	.operate-btn.btn-confirm { color: #fff; border-color: #2196F3; background-color: #2196F3; }
+</style>
+<div class="cover cover-signature" id="coverSignature">
+	<div class="cover-bg" onclick="hideCover('#coverSignature')"></div>
+	<div class="cover-content">
+		<div class="cover-head">
+			<h2>电子签名</h2>
+		</div>
+		<div class="ct-user-signature">
+			<span class="ct-form-text">选择签名</span>
+			<div class="ct-form-val">
+				<select id="signature_id">
+					<option value="0">无</option>
+				</select>
+			</div>
+		</div>
+		<div class="ct-signature">
+			<input type="hidden" id="signature_value" value="">
+			<div class="ct-signature-tool">
+				<div class="tool-reset" onclick="resetSignature()">重新签名</div>
+			</div>
+		    <div class="signature-content" id="signature"></div>
+		</div>
+		<div class="ct-operate">
+			<div class="operate-btn btn-confirm" onclick="confirmSignature()">确定</div>
+			<div class="operate-btn" onclick="hideCover('#coverSignature')">取消</div>
+		</div>
+	</div>
+</div>
+<div class="cover cover-password" id="coverPassword">
+	<div class="cover-bg" onclick="hideCover('#coverPassword')"></div>
+	<div class="cover-content">
+		<div class="cover-head">
+			<h2>验证密码</h2>
+		</div>
+		<div class="cover-form">
+		    <div class="form-item">
+		        <p>审核药师请输入二次密码进行验证</p>
+		        <div class="form-val"><input type="password" id="checkPassword" value=""></div>
+		    </div>
+		</div>
+		<div class="ct-operate">
+			<div class="operate-btn btn-confirm" onclick="confirm()">确定</div>
+			<div class="operate-btn" onclick="hideCover('#coverPassword')">取消</div>
+		</div>
+	</div>
+</div>
+
+<script  src="/statics/public/plug/jquery/jquery-3.3.1.min.js"></script>
+<script  src="/statics/public/plug/jSignature/src/jSignature.js"></script>
+<script>
+    var signature = [];
+    var $sigdiv = $("#signature").jSignature({'UndoButton':true});
+    request('/?m=corp&c=data&a=getSignature&ajax=1','',{
+        dataType: 'jsonp',
+        data: {user_id: Cookies.get('verify_user_id')},
+        success: function(res){
+            if (0<Object.keys(res.data).length) {
+                var html = '';
+                for(var k in res.data){
+                    var info = res.data[k];
+                    html += '<option value="'+info.id+'">'+info.name+'</option>';
+                }
+                $('#signature_id').append(html);
+            }
+        }
+    });
+    function hideCover(ele){
+    	$(ele).hide();
+    }
+    function confirm(){
+        var checkPassword = $.trim($('#checkPassword').val());
+        if (!checkPassword) {
+            /*layer.open({
+                content: '请输入验证密码'
+                ,skin: 'msg'
+                ,time: 2 //2秒后自动关闭
+            });*/
+            alert('请输入验证密码');
+            return;
+        }
+        doForm();
+    }
+    function confirmSignature(){
+    	var res = $sigdiv.jSignature('getData','default');//导出结果 参数二为导出格式 默认为默认格式base64
+    	$('#signature_value').val(res);
+    	$('#coverPassword').show();
+    }
+    function resetSignature(){
+        $sigdiv.jSignature('reset');
+        $('#signature_id').val(0);
+        $('#signature_value').val('');
+    }
+    function callSignature(){
+    	var verify_user_id = parseInt(Cookies.get('verify_user_id'));
+		if (isNaN(verify_user_id) || 0==verify_user_id) {
+			alert('请选择审核药师');
+			return;
+		}
+    	$('#coverSignature').show();
+    }
+    $('#preservation').on('click',function(){
+        layer.close(layerSign);
+        layerPassword = layer.open({
+            type: 1,
+            title:'验证密码',
+            content: $('#itemselect').html()
+        });
+    });
+    $('#determine').on('click',function(){
+        layer.closeAll();
+        doForm();
+    });
+</script>

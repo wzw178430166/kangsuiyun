@@ -258,12 +258,19 @@
         $('#mspans').click(function () {
             var uname= $('#name').val();
             var res = $sigdiv.jSignature('getData','default');//导出结果 参数二为导出格式 默认为默认格式base64
+            var len=res.length;
+         
             //console.log(res);return;
             //$('#signature_value').val(res);
             var ifdeford=$('[name="is_default"]:checked').val();
             var parm={user_id: Cookies.get('verify_user_id'),base64:res,name:uname,is_default:ifdeford,dosubmit:1};
             if(id){parm.id=id};
-            request('/?m=pharmacy&c=signature&a=doSignature&ajax=1','post',{
+            if(len>=2314&&len<=5000){
+            alert('请重新签名');
+            console.log(len);
+            return;
+            }else{
+                request('/?m=pharmacy&c=signature&a=doSignature&ajax=1','post',{
             dataType: 'json',
             data: parm,
             success: function(res){
@@ -271,6 +278,8 @@
                 window.location.href="/pharmacies/store/autographk_list.html";
             }
         });
+             }
+             console.log(len);
         });
 
 

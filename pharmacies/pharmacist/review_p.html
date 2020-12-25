@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+        content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/header_common.css?v=124">
+<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/left_.css?v=127">
+<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/index.css">
+<link rel="stylesheet" href="/statics/admin/common/layui/css/layui.css" media="all">
+<link rel="stylesheet" href="/statics/dataManage/css/bootstrap.css">
+<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+<script type="text/javascript" src="/statics/js/laydate/laydate.js"></script>
+<script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/statics/js/layer_mobile/layer.js"></script>
+<script type="text/javascript" src="/statics/js/global.js"></script>
+<script type="text/javascript" src="/statics/admin/common/layui/layui.all.js"></script>
+<link id="layuicss-laydate" rel="stylesheet" href="https://www.519ksy.com/statics/admin/common/layui/css/modules/laydate/default/laydate.css?v=5.0.9" media="all">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+
+<title>审核处方</title>
+<style>
+ .query-btn .btn-item {
+    margin-left: 0px;
+}
+.query-btn .btn-item {
+    height: auto;
+    min-height: 26px;
+}
+.query-btn .btn-item {
+    height: auto;
+    min-height: 26px;
+    text-align: center;
+}
+.mstboxgg{display: flex;
+    width: 97%;
+    margin: 0 auto;
+    justify-content: space-between;}
+.lefts_boxf{display: flex;}
+.gethome{    
+    width: 30%;
+    height: .8rem;
+    line-height: .8rem;
+    float: right;
+    margin: .3rem .5rem 0 0;}
+.gethome svg{float:right;width: .5rem;height: .5rem;vertical-align: middle;margin-top: .05rem;}
+.gethome span.so2{float: right;
+    margin-left: .05rem;vertical-align: middle;
+    color: #836be0;}
+    .gethome span.so1{float: right;
+    margin-left: .05rem;vertical-align: middle;
+    color: #000;}
+.back_goo{    
+    width: 2rem;
+    height: .9rem;
+    line-height:.9rem;
+    border: 1px solid #929292;
+    color: #7d7272;
+    text-align: center;
+    border-radius: .1rem;
+    margin: .5rem 0 .4rem 0rem;}
+.back_goo svg{width: .6rem;height: .6rem;vertical-align: middle;}
+
+.cont_opricect a{display: inline-block;
+    width: .5rem;
+    height: .5rem;
+    margin: 0 .2rem;
+    vertical-align: middle;}
+.cont_opricect a svg{width: 100%;height: 100%;}
+.cont_opricect input{    
+    vertical-align: middle;
+    width: 1.5rem;
+    height: .5rem;text-align: center;
+    line-height: .5rem;}
+
+    .datmen_m{display: flex;}
+    .datmen_m_left{width: 68%;padding-right: .3rem;}
+    .datmen_m_right{flex: 1;display: flex;justify-content: space-around;}
+    .datmen_m_right .datam_div1{width: 48%;height: 7rem;margin-top: 1.5rem;}
+    .datmen_m_right .datam_div1 img{width: 100%;}
+    .datmen_m_right .datam_div2{width: 48%;height: 7rem;margin-top: 1.5rem;}
+    .datmen_m_right .datam_div2 img{width: 100%;}
+    .datamen_titel{display: flex;height: .8rem;line-height: .8rem;align-items: center; margin: .2rem 0;position: relative;}
+    .datamen_span{    
+    display: inline-block;
+    width: .1rem;
+    margin-left: 0;
+    height: .4rem;
+    background: #2c8df2;}
+    .datamen_span1{color: #2c8df2;
+    font-size: .4rem;
+    height: .6rem;margin-left: .2rem;
+    line-height: .6rem;}
+    .datamen_msgs{display: flex;flex-wrap: wrap;}
+    .datamen_msgs .dataitem {margin-right: .5rem;}
+    .datamen_msgs .dataitem span:nth-child(1){margin-right: .2rem;}
+    .datamen_font{width: 100%;}
+    .datamen_font .datamen_plist{float: left;font-size: .35rem;margin-right: 1rem;}
+    .datamen_font .datamen_plist span:nth-child(1){margin-right: .2rem;}
+    .datamen_contdiv{clear: both;margin-top: 0.8rem;}
+    .datame_texts{width: 100%;height: 3rem;}
+    .datame_texts textarea{width: 100%;height: 100%;border: 1px solid #f3f1f1;}
+    .datame_bottom{width: 100%;height: 3rem;display: flex;justify-content: center;align-items: center;}
+    .datame_bottom span:nth-child(1){   
+        padding: .08rem .3rem;border: 1px solid #c3c3c3;color: #666;border-radius: .02rem;margin-right: .5rem;}
+    .datame_bottom span:nth-child(2){    
+    padding: .08rem .3rem;
+    border: 1px solid #2c8df2;
+    background: #2c8df2;
+    color: #ffffff;
+    border-radius: .02rem;}
+    .datame_dit{display: flex;justify-content: space-evenly;margin-top: .3rem;}
+    .datame_dit1{display: flex;justify-content: space-evenly;margin-top: .3rem;  height: .7rem;
+    line-height: .7rem;}
+    .datame_dit span{width: 1.5rem;
+    text-align: center;
+    height: .6rem;
+    line-height: .6rem;
+    border-radius: .05rem;
+    border: 1px solid #2c8df2;
+    font-size: .2rem;
+    color: #2c8df2;}
+    .datame_dit span:nth-child(1){margin-right: .2rem;}
+    .data-content{margin: .2rem auto 2rem auto;}
+
+</style>
+</head>
+<body>
+   <div class="outdiv">
+      <div class="left" id="left">
+         <!--#include file="left.html"-->
+      </div>
+       <div class="right_conter">
+           <div class="header_box" id="header">
+        <!--#include file="header.html"-->   
+           </div>
+           <div class="h8vh"></div>
+           <div style="width: auto;margin: 0;">
+            <div class="mstboxgg">
+                <div class="lefts_boxf">
+                    <div class="back_goo" onclick="goback()">
+                        <svg t="1607408152481" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3504" width="48" height="48"><path d="M438.4 297.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2L300.8 480H800c19.2 0 32 12.8 32 32 0 16-12.8 28.8-28.8 32H300.8l137.6 137.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2c-12.8 12.8-28.8 12.8-41.6 3.2l-3.2-3.2-192-192-3.2-3.2-3.2-3.2-3.2-3.2V499.2l3.2-3.2 3.2-3.2 3.2-3.2 192-192c12.8-12.8 32-12.8 44.8 0z" fill="#bfbfbf" p-id="3505"></path></svg>
+                        返回
+                    </div>
+                </div>
+            </div>
+         
+              <div class="data-content">
+                <div class="datmen_m">
+                   <div class="datmen_m_left">
+                      <p class="datamen_titel">
+                          <span class="datamen_span"></span>
+                          <span class="datamen_span1">患者信息</span>
+                      </p>
+                      <div class="datamen_msgs">
+                          <div class="dataitem">
+                              <span>患者姓名:</span>
+                              <span class="row-full_name">-</span>
+                          </div>
+                          <div class="dataitem">
+                            <span>性别:</span>
+                            <span class="row-sex">-</span>
+                        </div>
+                        <div class="dataitem">
+                            <span>年龄:</span>
+                            <span class="row-age">-</span>
+                        </div>
+                        <div class="dataitem">
+                            <span>电话:</span>
+                            <span class="row-user_name">-</span>
+                        </div>
+                      </div>
+                      <p class="datamen_titel">
+                        <span class="datamen_span"></span>
+                        <span class="datamen_span1">处方信息</span>
+                    </p>
+                    <div class="datamen_font">
+                        <div class="datamen_plist">
+                            <span>处方来源:</span>
+                            <span class="row-hospital_name">-</span>
+                        </div>
+                        <div class="datamen_plist">
+                            <span>处方编号:</span>
+                            <span class="row-prescription_no">-</span>
+                        </div>
+                        <div class="datamen_plist">
+                            <span>开具时间:</span>
+                            <span class="row-create_time">-</span>
+                        </div>
+                    </div>
+                    <div class="datamen_contdiv">
+                        <span style="float: left;font-size: .35rem;margin-right: .3rem;">临床诊断:</span>
+                        <div class="row-diagnose"></div>
+                    </div>
+                    <p class="datamen_titel">
+                        <span class="datamen_span"></span>
+                        <span class="datamen_span1">药店信息</span>
+                    </p>
+                    <div class="datamen_msgs">
+                        <div class="dataitem">
+                            <span>门店名称:</span>
+                            <span class="row-store_name">-</span>
+                        </div>
+                        <div class="dataitem">
+                          <span>门店上传药师姓名:</span>
+                          <span class="row-operator">-</span>
+                      </div>
+                      <div class="dataitem">
+                          <span>上传时间:</span>
+                          <span class="row-create_time">-</span>
+                      </div>
+                    </div>
+                   </div>
+                   <div class="datmen_m_right">
+                       <div class="datam_div1">
+                           <img src="/pharmacies/store/images/timg1.jpg">
+                           <div class="datame_dit">
+                               <span>客户视频</span>
+                               <span>药师视频</span>
+                           </div>
+                       </div>
+                       <div class="datam_div2" onclick="goo('/pharmacies/pharmacist/pharmacistsk.html')">
+                        <img src="/pharmacies/store/images/timg1.jpg">
+                        <div class="datame_dit1">处方图片</div>
+                       </div>
+                   </div>
+                </div> 
+                <p class="datamen_titel">
+                    <span class="datamen_span"></span>
+                    <span class="datamen_span1">原始药品信息</span>
+                  
+                         <!-- <div class="custom-control custom-switch"  style="float: right;
+                         color: #2196F3;
+                         position: absolute;
+                         font-size: .3rem;
+                         right: 0;" >
+                            <input type="checkbox" class="custom-control-input" id="customSwitch1" name="kaiguans">
+                            <label class="custom-control-label" for="customSwitch1">药师调配</label>
+                          </div> -->
+                </p>   
+                <div class="tb-container"  style="height: 200px;overflow: auto;">
+                    <table class="table" id="rstb">
+                        <thead>
+                            <tr align="center">
+                               <th><strong class="tb-head cell-drug_name" data-val="drug_name">药品名称</strong></th>
+                               <th><strong class="tb-head cell-drug_sku_properties" data-val="drug_sku_properties">规格</strong></th>
+                               <th><strong class="tb-head cell-drug_usage" data-val="drug_usage">用法</strong></th>
+                               <th><strong class="tb-head cell-drug_quantity" data-val="drug_quantity">数量</strong></th>
+                               <th><strong class="tb-head cell-drug_price" data-val="drug_price">单价</strong></th>
+                               <th><strong class="tb-head cell-drug_sub_price" data-val="drug_sub_price">小计</strong></th>
+                           </tr>
+                         </thead>
+                       <tbody id="drug">
+                          <tr align="center">
+                              <td>1113454654654</td>
+                              <td>张三</td>
+                              <td>2020-02-03</td>
+                              <td>2</td>
+                              <td>233.5</td>
+                              <td>张主卧</td>
+                              <td>春雨</td>
+                          </tr>
+                          
+                       </tbody>
+                    </table>
+
+                </div>
+                <p class="datamen_titel">
+                    <span class="datamen_span"></span>
+                    <span class="datamen_span1">审核意见</span>
+                </p>  
+               <div class="datame_texts">
+                   <textarea placeholder="请填写审核意见" id="opinion"></textarea>
+                   <input type="hidden" id="status" value="">
+               </div>
+               <div class="datame_bottom">
+                   <span id="J_fail">审核不通过</span>
+                   <span id="J_pass">审核通过</span>
+               </div>
+              </div>
+           
+
+           </div>
+       </div>
+   </div>   
+       <!--#include file="signature.html"-->
+   <script>
+    var prescription_no = getQueryString('prescription_no');
+    $(function(){
+        //var $sigdiv = $("#signature").jSignature({'UndoButton':true});
+        //getleft();
+        //gethearder();
+        getData();
+        $('#J_pass').on('click',function(){
+          $('#status').val('PASSED');
+          callSignature();
+        });
+        $('#J_fail').on('click',function(){
+          $('#status').val('FAIL');
+          callSignature();
+        });
+    });
+    function doForm(){
+      var verify_user_id = parseInt(Cookies.get('verify_user_id'));
+      if (isNaN(verify_user_id) || 0==verify_user_id) {
+        alert('请选择审核药师');
+        return;
+      }
+      var status = $('#status').val();
+      var opinion = $('#opinion').val();
+      var signature_id = $('#signature_id').val();
+      var signature_value = $('#signature_value').val();
+      var checkPassword = $('#checkPassword').val();
+      request('/?m=pharmacy&c=prescription&a=verify&ajax=1','POST',{
+        //dataType: 'jsonp',
+        data: {dosubmit:1,prescription_no:prescription_no,status:status,opinion:opinion,verify_user_id:verify_user_id,signature_id:signature_id,signature_value:signature_value,password:checkPassword},
+        success: function(res){
+          /*layer.open({
+              content: res.erro
+              ,skin: 'msg'
+              ,time: 2 //2秒后自动关闭
+          });*/
+          alert(res.erro);
+          setTimeout(function(){
+            if (1 == res.status) goo('/pharmacies/store/prescriptionlist.html');
+          },1000);
+        }
+      });
+    }
+    function getData(){
+      var url = '/?m=pharmacy&c=prescription&a=detail&ajax=1';
+      var query = {prescription_no:prescription_no};//查询参数
+      request(url,'get',{
+          query: query,
+          dataType:"JSONP",
+          success:function(res){
+            var row = res.data.row;
+            for(var k in row){
+              var value = row[k];
+              $('.row-'+k).text(value);
+            }
+            var drug = res.data.drug;
+            var html = '';
+            if (0<Object.keys(drug).length) {
+              for(var k in drug){
+                  var info = drug[k];
+                  html += '<tr align="center"><td><div class="tb-cell cell-drug_name">'+info.drug_name+'</div></td><td><div class="tb-cell cell-drug_sku_properties">'+info.drug_sku_properties+'</div></td><td><div class="tb-cell cell-drug_usage">'+info.drug_usage+'</div></td><td><div class="tb-cell cell-drug_quantity">'+info.drug_quantity+'</div></td><td><div class="tb-cell cell-drug_price">'+info.drug_price+'</div></td><td><div class="tb-cell cell-drug_sub_price">'+info.drug_sub_price+'</div></td></tr>';
+              }
+            } else {
+              html += '<tr align="center"><td colspan="'+($('.tb-head').length)+'">暂无数据</td></tr>';
+            }
+            $('#drug').html(html);
+          },
+          error:function(res){
+              console.log(res);
+          }
+      });
+    }
+    function gethearder() {
+            $('#header').load('/pharmacies/store/header.html', function () {
+            });
+        }
+        function getleft(){
+            $('#left').load('/pharmacies/store/left.html', function () {
+            });
+        }
+    </script>
+</body>
+</html>
