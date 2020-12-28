@@ -5,9 +5,9 @@
 <meta name="viewport"
         content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
-<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/header_common.css?v=124">
-<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/left_.css?v=125">
-<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/index.css">
+<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/header_common.css?v=126">
+<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/left_.css?v=123">
+<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/index.css?v=166">
 <link rel="stylesheet" href="/statics/dataManage/css/bootstrap.css">
 <script type="text/javascript" src="/statics/js/setFontSize.js"></script>
 <script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
@@ -187,38 +187,38 @@
                               <table class="mtable" border="1" cellspacing="0">
                                 <tr>
                                     <td class="thumbnail">
-                                        <img src="/pharmacies/store/images/v2_qkyk3b.png">
+                                        <img src="/pharmacies/store/images/babac.png" id="img" onerror="Javascript:this.src='/pharmacies/store/images/babac.png'">
                                     </td>
                                     <td colspan="3"></td>
                                 </tr>
                                 <tr>
                                     <th>姓名：</th>
-                                    <td>  张三 </td>
+                                    <td><span id="name">-</span></td>
                                     <th>编号：</th>
-                                    <td>  3FDF44F</td>
+                                    <td><span id="pid">-</span></td>
                                 </tr>
                                 <tr>
                                     <th>出生日期：</th>
-                                    <td>  1989年12月12日</td>
+                                    <td><span id="birth">-</span></td>
                                     <th>性别：</th>
-                                    <td>  男</td>
+                                    <td> <span id="sex">-</span></td>
                                 </tr>
                                 <tr>
                                     <th>证件类型：</th>
-                                    <td>  身份证</td>
+                                    <td><span id="certificates_type">-</span></td>
                                     <th>证件号码：</th>
-                                    <td>  440683119899255510</td>
+                                    <td><span id="idcard">-</span></td>
                                 </tr>
                                 <tr>
                                     <th>工作单位：</th>
-                                    <td>  XXX大药房</td>
+                                    <td><span id="work_unit">-</span></td>
                                     <th>入职日期：</th>
-                                    <td>  2020年3月12日</td>
+                                    <td><span id="entry_date">-</span></td>
                                 </tr>
                               </table>
 
                               <p class="lines"></p>
-                              <div class="ctab_bottom" onclick="goo('/pharmacies/store/adit_basic_settings.html')">
+                              <div class="ctab_bottom" id="ctab_btn">
                                   <span>编辑信息</span>
                               </div>
                               <div style="height: .3rem;"></div>
@@ -234,8 +234,40 @@
           </div>
        </div>
    </div>   
+   <script type="text/javascript" src="/statics/public/js/cookie.js"></script>
+   <script type="text/javascript" src="/statics/public/js/public.js"></script>
     <script>
-        
+          $(function() {
+            getDate();
+
+          })
+
+
+    function getDate() {
+            request('/?m=pharmacy&c=pharmacist&a=doPharmacist&ajax=1','',{
+            dataType:'jsonp',
+            success:function(res){
+                var strs = '';
+                if (0<Object.keys(res.data).length) {
+                 $('#name').text(res.data.name);
+                 $('#birth').text(res.data.birth);
+                 $('#certificates_type').text(res.data.certificates_type);
+                 $('#entry_date').text(res.data.entry_date);
+                 $('#idcard').text(res.data.idcard);
+                 $('#pid').text(res.data.pid);
+                 if(res.data.sex==1){strs='男'}
+                 if(res.data.sex==2){strs='女'}
+                 $('#sex').text(strs);
+                 $('#work_unit').text(res.data.work_unit);
+                 $('#img').attr('src',res.data.img);
+                 console.log(res.data);
+                } 
+                $('#ctab_btn').click(function() {
+                   goo('/pharmacies/store/adit_basic_settings.html?useid='+res.data.useid);
+                })
+            }
+            });
+    }
     </script>
 </body>
 </html>

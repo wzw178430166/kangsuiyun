@@ -74,11 +74,11 @@
 
 @media (min-width: 1110px) {
     .boawo_item .wdihje {
-        width: 35px;
-        height: 35px;
+        width: 32px;
+        height: 32px;
         border-radius: 50%;
         color: #ffffff;
-        line-height: 35px;
+        line-height: 32px;
         font-size: .28rem;
         text-align: center;
         /* margin-right: .3rem; */
@@ -129,5 +129,23 @@
         height: 32px;
         line-height: 32px;
         font-size: .23rem; 
+    }
+}
+
+@media screen and (min-width:1610px) and (max-width:2880px){
+    .left{
+        width: 220px;
+    }
+    .query-form .form-item .element {
+        margin-left: 80px!important;
+        height: auto;
+        min-height: 26px;
+        _height: 26px;
+    }
+    .query-form .form-item font {
+        float: left;
+        width: 80px!important;
+        padding-top: 4px;
+        position: relative;
     }
 }

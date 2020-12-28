@@ -7,7 +7,10 @@
 
 
 .template{display: none;}
-.table tr th { font-weight:normal;}
+.table tr th { font-weight:normal;font-size: .28rem;}
+.table th, .table td {
+  font-size: .26rem!important;
+}
 a { color: #459ae9; font-size: 10px;}
 .search-module { overflow: hidden; margin-bottom: 5px; /*padding: 0 12px;*/ }
 .search-module .search-item { float: left; margin-right: 15px;}
@@ -43,7 +46,7 @@ a { color: #459ae9; font-size: 10px;}
     box-shadow: 0px 1px 3px 1px #eae8e8;}
     .caption{    
       text-align: left;
-      font-size: .43rem;
+      font-size: .37rem;
       margin-top: .4rem;
       margin-bottom: .3rem;}
 /*.data-content table { width: 100%; border-color: #ddd;}
@@ -122,7 +125,7 @@ display: none; }
     .query-btn .btn-item .btn-adds svg{width: 30px;height: 30px;margin-left: .1rem;}
 /*do*/
 .role-do-val select { width: 166px; height: 33px;}
-.operate-btn { margin-right: 3px; color: #459ae9; }
+.operate-btn { margin-right: 3px; color: #459ae9;font-size: .26rem;}
 .tabs-wrap { background-color: #f1f1f1; color: #666; border-bottom: 1px #ddd solid; padding-top: 2px; padding-left: 5px; }
 .tabs-wrap ul { overflow: hidden; margin: 0; }
 .tabs-wrap ul li { list-style-type: none; height: 35px; float: left; line-height: 35px; padding: 0 10px; margin-right: 5px; border: 1px #d4d4d4 solid; border-bottom: 0; border-radius: 4px 4px 0 0; cursor: pointer; }

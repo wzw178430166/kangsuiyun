@@ -5,9 +5,9 @@
 <meta name="viewport"
         content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
-<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/header_common.css?v=124">
-<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/left_.css?v=123">
-<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/index.css?v=116">
+<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/header_common.css?v=125">
+<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/left_.css?v=124">
+<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/index.css">
 <link rel="stylesheet" href="/statics/admin/common/layui/css/layui.css" media="all">
 <link rel="stylesheet" href="/statics/dataManage/css/bootstrap.css">
 <script type="text/javascript" src="/statics/js/setFontSize.js"></script>
@@ -69,33 +69,10 @@ input {
     overflow: hidden;
     width: 97%;
     padding: 0rem .3rem 0rem .3rem;
-    margin: .35rem auto 0 auto;
+    margin: .2rem auto;
     border-radius: .05rem;
     box-shadow: 0px 1px 3px 1px #eae8e8;
 }
-.tb-container{
-    height: 61vh;
-    overflow: auto;
-}
-.query-module {
-    width: 97%;
-    padding: .3rem .3rem 0 .3rem;
-    margin: 0 auto;
-    border-radius: .05rem;
-    box-shadow: 1px 1px 4px 1px #d6d3d3;
-}
-@media screen and (min-width:1610px) and (max-width:2880px){
-  .tb-container {
-    height: 70vh;
-    overflow: auto;
-}
-}
-.table th, .table td {
-    padding: 5px 5px;
-    font-size: .28rem;
-    border-top: 1px solid #dddddd;
-}
-.table th, .table td div{height: 23px;line-height: 25px;}
 </style>
 </head>
 <body>
@@ -114,7 +91,7 @@ input {
               <svg t="1607394397077" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1709" width="48" height="48"><path d="M422.63 891.821V623.712h178.74v268.109h223.424V534.342h134.054L512 132.179 65.152 534.342h134.054V891.82H422.63z" p-id="1710" fill="#707070"></path></svg>
             </div>
             <div class="query-module">
-              <form style="margin: 0;font-size: .2rem;line-height: inherit;position: relative;">
+              <form style="margin: 0;font-size: .2rem;line-height: inherit;">
                 <div class="query-form">
                   <div class="form-item"> <font>处方单号</font>
                     <div class="element">
@@ -145,23 +122,17 @@ input {
                   <div class="form-item"> <font>时间范围</font>
                     <div class="element">
                       <div class="element-date" style="display: flex;align-items: center;">
-                        <div style="display: inline-block;width: 110px;border: 1px solid #e7e7eb;height: 100%;">
-                          <input type="text" id="st" value="" lay-key="2" style="border:0;">
-                        </div>
-                       
+                        <input type="text" id="st" value="" lay-key="2" style="border: 1px solid #e7e7eb;">
                         <svg t="1607933029386" class="icon" viewBox="0 0 1219 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1232" width="48" height="48"><path d="M901.261256 252.731379h-568.966822c-11.309806 0-20.474755 9.412979-20.474755 21.025708V780.626709c0 11.614763 9.166981 21.025709 20.474755 21.025709h568.964789c11.307773 0 20.468656-9.410946 20.468655-21.025709V273.757087c0.008132-11.61273-9.162915-21.025709-20.466622-21.025708z m0.14028 517.980189c0 5.861257-4.529615 10.61044-10.118445 10.610441H342.268532c-5.588829 0-10.116411-4.749184-10.116411-10.610441V283.666129c0-5.855158 4.529615-10.604341 10.116411-10.604342h549.014559c5.588829 0 10.118444 4.749184 10.118445 10.604342v487.045439z" p-id="1233" fill="#bfbfbf"></path><path d="M474.629659 201.903323h20.330409v118.593374h-20.330409zM738.589522 201.903323h20.330409v118.593374h-20.330409zM331.385664 422.150775h570.270002v20.330408H331.385664z" p-id="1234" fill="#bfbfbf"></path></svg>
                         <span class="gap" style="position: relative;left: -15px;">到</span>
-
-                        <div style="display: inline-block;width: 110px;border: 1px solid #e7e7eb;height: 100%;">
-                          <input type="text" id="et" value="" lay-key="1" style="border: 0;">
-                        </div>
+                        <input type="text" id="et" value="" lay-key="1" style="border: 1px solid #e7e7eb;">
                         <svg t="1607933029386" class="icon" viewBox="0 0 1219 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1232" width="48" height="48"><path d="M901.261256 252.731379h-568.966822c-11.309806 0-20.474755 9.412979-20.474755 21.025708V780.626709c0 11.614763 9.166981 21.025709 20.474755 21.025709h568.964789c11.307773 0 20.468656-9.410946 20.468655-21.025709V273.757087c0.008132-11.61273-9.162915-21.025709-20.466622-21.025708z m0.14028 517.980189c0 5.861257-4.529615 10.61044-10.118445 10.610441H342.268532c-5.588829 0-10.116411-4.749184-10.116411-10.610441V283.666129c0-5.855158 4.529615-10.604341 10.116411-10.604342h549.014559c5.588829 0 10.118444 4.749184 10.118445 10.604342v487.045439z" p-id="1233" fill="#bfbfbf"></path><path d="M474.629659 201.903323h20.330409v118.593374h-20.330409zM738.589522 201.903323h20.330409v118.593374h-20.330409zM331.385664 422.150775h570.270002v20.330408H331.385664z" p-id="1234" fill="#bfbfbf"></path></svg>
                       </div>
                     </div>
                   </div>
             
                 </div>
-                <div class="query-btn" style="width: 20%;position: absolute;right: 0;top: 0;">
+                <div class="query-btn">
                   <div class="btn-item"> <a class="btn-sais" id="J_query" style="padding-left: 15px;">
                     <svg style="width:20px;height:20px;vertical-align: middle;" t="1607394598323" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2669" width="48" height="48"><path d="M874.666667 814.933333l-209.066667-209.066666C704 554.666667 725.333333 494.933333 725.333333 426.666667c0-166.4-132.266667-298.666667-298.666666-298.666667s-298.666667 132.266667-298.666667 298.666667 132.266667 298.666667 298.666667 298.666666c68.266667 0 128-21.333333 179.2-59.733333l209.066666 209.066667c17.066667 17.066667 42.666667 17.066667 59.733334 0s17.066667-42.666667 0-59.733334zM426.666667 640c-119.466667 0-213.333333-93.866667-213.333334-213.333333s93.866667-213.333333 213.333334-213.333334 213.333333 93.866667 213.333333 213.333334-93.866667 213.333333-213.333333 213.333333z" fill="#ffffff" p-id="2670"></path></svg>
                     筛选
@@ -177,16 +148,16 @@ input {
               </div>
             </form>
               <div class="data-content">
-                <div class="tb-container">
+                <div class="tb-container" style="height: 300px; overflow: auto; ">
                     <table class="table">
                         <caption class="caption">处方列表</caption>
                         <thead>
                             <tr align="center">
-                               <!-- <th>
+                               <th>
                                <strong class="tb-head cell-check" data-val="check">
                                <input type="checkbox" id="J_sel_all">
                                </strong>
-                               </th> -->
+                               </th>
                                <th><strong class="tb-head cell-prescription_no" data-val="prescription_no">处方单号</strong></th>
                                <th><strong class="tb-head cell-user_nickname" data-val="user_nickname">申请用户</strong></th>
                                <th><strong class="tb-head cell-create_time" data-val="create_time">申请日期</strong></th>
@@ -199,71 +170,11 @@ input {
                            </tr>
                          </thead>
                        <tbody id="data">
-                          <!-- <tr align="center">
-                              <td>
-                                <strong class="tb-head cell-check" data-val="check">
-                                    <input type="checkbox" id="J_sel_all" style="width: 15px;height: 15px;border:1px solid #666">
-                                    </strong>
-                              </td>
-                              <td>1113454654654</td>
-                              <td>张三</td>
-                              <td>2020-02-03</td>
-                              <td>2</td>
-                              <td>233.5</td>
-                              <td>张主卧</td>
-                              <td>春雨</td>
-                              <td><span style="color: #48a54b;">已审核</span></td>
-                             <td>
-                                <a href="/pharmacies/store/pharmacy_see.html">查看</a>
-                                <a href="/pharmacies/store/distribution.html">配药</a>
-                                <a href="#">删除</a>
-                             </td>
-                          </tr>
-                          <tr align="center">
-                            <td>
-                                <strong class="tb-head cell-check" data-val="check">
-                                    <input type="checkbox" id="J_sel_all" style="width: 15px;height: 15px;border:1px solid #666">
-                                    </strong>
-                            </td>
-                             <td>5113454654654</td>
-                             <td>张三</td>
-                             <td>2020-08-03</td>
-                             <td>2</td>
-                             <td>233.5</td>
-                             <td>张主卧</td>
-                             <td>春雨</td>
-                             <td><span style="color: #ff9d38;">未审核</span></td>
-                             <td>
-                                 <a href="/pharmacies/store/payment.html">查看</a>
-                                 <a href="/pharmacies/store/review_p.html">药师审核</a>
-                                 <a href="#">删除</a>
-                             </td>
-                          </tr> -->
                        </tbody>
                     </table>
-                  <!-- <table class="table table-bordered table-hover table-striped" id="rstb">
-                   <thead>
-                       <tr align="center">
-                          <th><strong class="tb-head cell-check" data-val="check">
-                          <input type="checkbox" id="J_sel_all">
-                          </strong></th>
-                          <th><strong class="tb-head cell-orderid" data-val="orderid">处方单号</strong></th>
-                          <th><strong class="tb-head cell-username" data-val="username">申请用户</strong></th>
-                          <th><strong class="tb-head cell-product" data-val="product">申请日期</strong></th>
-                          <th><strong class="tb-head cell-amount" data-val="amount">药品数量</strong></th>
-                          <th><strong class="tb-head cell-pay_channel" data-val="pay_channel">药品金额</strong></th>
-                          <th><strong class="tb-head cell-pay_amount" data-val="pay_amount">医生</strong></th>
-                          <th><strong class="tb-head cell-status" data-val="status">医生接入点</strong></th>
-                          <th><strong class="tb-head cell-createtime" data-val="createtime">审核状态</strong></th>
-                          <th><strong class="tb-head cell-operate" data-val="operate">操作</strong></th>
-                      </tr>
-                    </thead>
-                    <tbody id="datas">
-                    </tbody>
-                  </table> -->
-                  <!-- <div class="btn-batch"> <span id="J_sel_all2" data-off="0">全选/取消</span> <a href="javascript:;" class="batch-del" id="J_batch_del">删除</a></div> -->
+                  <div class="btn-batch"> <span id="J_sel_all2" data-off="0">全选/取消</span> <a href="javascript:;" class="batch-del" id="J_batch_del">删除</a></div>
                 </div>
-                <div class="inner-page" id="J_page"></div>
+                <!-- <div class="inner-page" id="J_page"></div> -->
               </div>
 
 
@@ -272,18 +183,9 @@ input {
    </div>   
    <script>
     var page = 1;
-    var ss=window.location.href;
-    //getCaption(ss,0);
-
-console.log(getCaption(ss));
-    console.log(getCaption(ss,0));
     $(function(){
-      
-  
-      
     checkLogin("golink");
     var pages=getQueryString('page');
-
     if (getQueryString('page')) page=pages;
     if (getQueryString('status')) $('#status').val(getQueryString('status'));
         getData();
@@ -393,12 +295,11 @@ console.log(getCaption(ss));
                       var info = rows[k];
                       var operate = '';
                       
-                       if ('WAIT_VERIFY' == info.status) operate += '<a href="/pharmacies/store/review_p.html?&prescription_no='+info.prescription_no+'" class="operate-btn btn-verify">审核</a>';
+                      // if ('WAIT_VERIFY' == info.status) operate += '<a href="/pharmacies/store/review_p.html?&prescription_no='+info.prescription_no+'" class="operate-btn btn-verify">审核</a>';
 
-                      //operate += '<a href="/pharmacies/store/payment.html?&prescription_no='+info.prescription_no+'" class="operate-btn">查看</a> ';//操作
+                      operate += '<a href="/pharmacies/store/payment.html?&prescription_no='+info.prescription_no+'" class="operate-btn">查看</a> ';//操作
                       
-                      //<td><div class="tb-cell cell-check"><input type="checkbox" name="ids[]" value="'+info.id+'"></div></td>
-                      html += '<tr align="center"><td><div class="tb-cell cell-prescription_no">'+info.prescription_no+'</div></td><td><div class="tb-cell cell-user_name">'+info.user_nickname+'</div></td><td><div class="tb-cell cell-create_time">'+info.create_time+'</div></td><td><div class="tb-cell cell-drug_total_quantity">'+info.drug_total_quantity+'</div></td><td><div class="tb-cell cell-drug_total_price">'+info.drug_total_price+'</div></td><td><div class="tb-cell cell-doctor_name">'+info.doctor_name+'</div></td><td><div class="tb-cell cell-1"></div></td><td><div class="tb-cell cell-status status-'+info.status+'">';
+                      html += '<tr align="center"><td><div class="tb-cell cell-check"><input type="checkbox" name="ids[]" value="'+info.id+'"></div></td><td><div class="tb-cell cell-prescription_no">'+info.prescription_no+'</div></td><td><div class="tb-cell cell-user_name">'+info.user_nickname+'</div></td><td><div class="tb-cell cell-create_time">'+info.create_time+'</div></td><td><div class="tb-cell cell-drug_total_quantity">'+info.drug_total_quantity+'</div></td><td><div class="tb-cell cell-drug_total_price">'+info.drug_total_price+'</div></td><td><div class="tb-cell cell-doctor_name">'+info.doctor_name+'</div></td><td><div class="tb-cell cell-1"></div></td><td><div class="tb-cell cell-status status-'+info.status+'">';
                       if(info.status_str=='待审核'){
                         html+='<span style="color:#ff9d38;">'+info.status_str+'</span>'  
                       }else if(info.status_str=='已审核'){
@@ -410,11 +311,8 @@ console.log(getCaption(ss));
                   html += '<tr align="center"><td colspan="'+($('.tb-head').length)+'">暂无数据</td></tr>';
                 }
                 $('#data').html(html);
-              //  if(1==page) layuiPage({total:res.total});
-                if (page == 1) initPage(res.total);
-
-              //  $(".layui-laypage-skip").find("input").val(2);
-
+                if(1==page) layuiPage({total:res.total});
+                //if (page == 1) initPage(res.total);
             },
             error:function(res){
                 console.log(res);
@@ -427,30 +325,23 @@ console.log(getCaption(ss));
 		laypage.render({
 			elem: 'J_page' //注意，这里的 test1 是 ID，不用加 # 号
 			,count: pageCount //数据总数，从服务端得到
-			,limit: 12
+			,limit: 4
 			,layout: ['prev', 'page','next', 'skip','count']//['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
 			,prev: '<i class="icon-arrow arrow-l"></i>'
 			,next: '<i class="icon-arrow arrow-r"></i>'
 			,hash: 'page'//页面载入时就定位到指定页
-      ,theme: '#234686'
-      ,curr: location.hash.replace('#!page=','') //获取起始页
-      ,hash: 'page' //自定义hash值
+			,theme: '#234686'
 			,jump: function(obj, first){
 				//首次不执行
 				if (!first) {
-        page = parseInt(obj.curr);
-        getData();
-        }
+					//console.log(obj);
+					page = parseInt(obj.curr);
+					getData();
+				}
 			}
-    });
+		});
 	});
 }
-function getCaption(obj){
-var index=obj.lastIndexOf("\#!page=");
-obj=obj.substring(index+7,obj.length);
-return obj;
-}
-
     function gethearder() {
             $('#header').load('/pharmacies/store/header.html', function () {
             });
