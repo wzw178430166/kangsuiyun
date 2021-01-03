@@ -128,8 +128,8 @@
 
         #menu li {
             width: 50%;
-            height: 1.5rem;
-            line-height: 1.3rem;
+            height: 1rem;
+            line-height: 1rem;
             justify-content: center;
             display: flex;
             align-items: center;
@@ -137,7 +137,7 @@
             position: relative;
             background-color: #E0E0E0;
             overflow: hidden;
-            font-size: .4rem;
+            font-size: .3rem;
             color: #111111;
         }
 
@@ -234,8 +234,8 @@
         .conb_br .conb_left {
             width: 96%;
             margin: .3rem auto;
-            height: 2rem;
-            line-height: 2rem;
+            height: 1.2rem;
+            line-height: 1.2rem;
             display: flex;
         }
         .conb_left_btn{
@@ -266,7 +266,7 @@
     align-items: center;
     flex-wrap: wrap;}
   .conb_left_title p{    
-      font-size: .45rem;
+      font-size: .35rem;
     width: 100%;
     padding: 0;
     margin: 0;
@@ -569,7 +569,7 @@
     color: #000000;
     font-size: .42rem;
     font-weight: 700;
-    height: 1.2rem;
+    height: 1.2rem;width: 85%;overflow: hidden;
     line-height: 1.2rem;
 }
 .content_baocim{
@@ -912,12 +912,12 @@
                                         <span id="cancel">确定</span> 
                                     </p>
                                     <div class="m_dit" style="display:block;">
-                                        <div class="contstyle">高血压</div>
+                                        <div>高血压</div>
                                         <div>二型糖尿病</div>
-                                        <div>冠心病</div>
+                                        <div>一型糖尿病</div>
                                         <div>哮喘</div>
                                         <div>冠心病</div>
-                                        <div>二型糖尿病</div>
+                                        <div>心悸</div>
                                     </div>
                                 </div>
 
@@ -1122,6 +1122,23 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div id="itemselect3" style="display: none;">
+                                    <div class="itemdiv">
+                                        <p class="itemplected"><span id="cancel">取消</span> </p>
+                                        <div class="m_dit m_ditBoxNew2">
+                                            <div class="contstyle">小时</div>
+                                            <div>日</div>
+                                            <div>周</div>
+                                            <div>月</div>
+                                            <div>季度</div>
+                                            <div>年</div>
+                                        </div>
+                                        <div class="itemplbtn">
+                                            <!-- <div>自定义</div> -->
+                                            <div id="preservation" style="width: 98%;">保存</div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div id="afterMeal">
                                     <div class="itemdiv">
                                         <p class="itemplected"><span id="cancel">取消</span> </p>
@@ -1247,7 +1264,7 @@
                                 </div>
                                 <div class="inner-page" id="innerPage"></div>
                               </div>
-                              <div class="btn_qim">
+                              <div class="btn_qim" id="J_sure">
                                 确定并签注处方
                             </div>
                             </div>
@@ -1258,13 +1275,28 @@
             </div>
         </div>
     </div>
-
+      <!--#include file="signature.html"-->
     <script>
        var page = 1;
+       var lens=0;
         $(function () {
             checkLogin("golink");
             var $list = $("#menu").find("li");
             var $div = $("#tab-con").children("div");
+            var $cont=$('.m_dit').children('div');
+            $('#J_sure').on('click',function(){
+                    if(lens>0){
+                        $('#status').val('PASSED');
+                        callSignature();
+                    }else{
+                        layer.open({
+                                    content:'请先添加药品',
+                                    skin: 'msg',
+                                    time: 2 //2秒后自动关闭
+                             });
+                    }
+                 }); 
+          
             $list.click(function () {
                 var index = $(this).index();
                 $list.eq(index).addClass("on").siblings().removeClass("on");
@@ -1272,7 +1304,12 @@
                 $(this).find("p").addClass("pstyle").parent().siblings().find('p').removeClass(
                     "pstyle");
             })
-            var index=0;
+            $cont.click(function () {
+                var index = $(this).index();
+                var texts=$(this).text();
+                $('#titles').val(texts);
+            }) 
+            var index=-9;
             $('#conteded').find('.m_dit').children('div').eq(index).addClass('contstyle').siblings('div').removeClass('contstyle');
 			$('#conteded').find('.m_dit').children('div').click(function() {
 							index = $(this).index();
@@ -1296,10 +1333,15 @@
                 getData();
             });
          
-            $('#sendf').click(function() {
-                    Preservation();
-                    alert('保存成功');
-                    return;
+            $('#sendf').click(function(e) {
+                var ids=$(this).attr('data-id');
+                Preservation(ids);
+                layer.open({
+                                    content:'保存成功',
+                                    skin: 'msg',
+                                    time: 2 //2秒后自动关闭
+                             });
+                return;
               });
 
             $('#quxiaos').click(function() {
@@ -1323,11 +1365,12 @@
 						that.children('.contnitem').html(num);
 					}
 				}
-			});
+            });
+            props('#itemselect3', '#itemp5', '小时');
 			props('#itemselect', '#itemp1', '片');
 			props('#afterMeal', '#itemp2', '饭前口服');
 			props('#cycle', '#itemp3', '每日1次');
-			getDrugDetails();
+		//	getDrugDetails();
 		})
 
 		function props(content, btn, text) {
@@ -1366,38 +1409,14 @@
 				});
 			})
 		}
+      
+	
 
-		function getDrugDetails() {
-			$.ajax({
-				url: '/?m=doctor&a=getDrugDetails',
-				type: 'POST',
-				data: 'id=' + id,
-				dataType: 'json',
-				success: function(re) {
-					var data = re.data;
-					$('.content_title').text(data.trade_name + ' ' + data.specification);
-					$('.content_sub').text(data.enterprise);
-					$('.content_instruction').text(data.sales_status);
-				}
-			})
-			var E = getCookies('drugE' + id);
-			var F = getCookies('drugF' + id);
-			if(E!=null && E!='undefined') $('#conseltext').text(E);
-			if(F!=null && F!='undefined')  $('#msg').val(F);
-		}
-
-		function Preservation() {
-			var drug = getCookies('drug_')? getCookies('drug_') : ',';
-			drug = drug.indexOf(','+id+',')==-1? drug+ id + ',' : drug;
-			setCookie("drug_", drug );
-			setCookie('drugA' + id, '每日' + $('.contnitem').eq(0).text() + '次');
-			setCookie('drugB' + id, '每次' + $('.contnitem').eq(1).text() + $('#pill').text());
-			setCookie('drugC' + id, $('#itemp2 span').text());
-			setCookie('drugD' + id, $('.contnitem').eq(2).text());
-			setCookie('drugE' + id, $('#conseltext').text());
-			setCookie('drugF' + id, $('#msg').val());
-			goback();
-			//goo('/drug/addpn.html');
+		function Preservation(ids) {
+            var userdrug='每'+$('#timeDate').eq(0).text()+$('.contnitem').eq(1).text()+'次';
+            $('#mfrequncy_'+ids).text(userdrug);
+            var userevery= $('.contnitem').eq(2).text()+$('#pill').text();
+            $('#each_dose_'+ids).text('每次'+userevery);
 		}
 
 		function getCookies(cookieName) {
@@ -1443,7 +1462,7 @@
 
         function getData() {
             $('.loading').show();
-            var url = '/?m=pharmacy&c=drug&a=lists&ajax=1';
+            var url = '/?m=pharmacy&c=doctor&a=druglists&ajax=1';
             page=parseInt($('#datas').attr('data-page'));
             if (1 <= page){
                 url += '&page=' + page;
@@ -1473,7 +1492,6 @@
                         if (data.rows.length == 0) {
                             $('#datas').attr('data-loaded', 1);
                         }
-                        console.log(data);
                         var html = '';
                         for (var i in datas) {
                             var info = datas[i];
@@ -1531,7 +1549,7 @@
                                 });
                                 break;
                             }
-                            
+   
                             var strs = '<tr align="center" data-val="' + info.id + '">\
                                             <td>' + info.id + '</td>\
                                             <td>' + info.characteristic + '</td>\
@@ -1544,20 +1562,16 @@
                                         </tr>\
                                         <tr id="info_'+info.id+'">\
                                             <td colspan="8" style="padding: .2rem 0;">\
-                                                — 用法用量：<span> 每日1次</span>，<span>每次2粒</span>  <span class="sadit" onclick="adits(this,'+info.id+')">修改用量</span>\
+                                                — 用法用量：<span id="mfrequncy_'+info.id+'"> '+info.mfrequency+'</span>，<span id="each_dose_'+info.id+'">每次2'+info.each_dose_unit+'</span>  <span class="sadit" onclick="getDrugDetails(this,'+info.id+')">修改用量</span>\
                                             </td></tr>';
                         }
                     }
                     $('#copydata').append(strs);
+                    lens=$('#copydata').children('tr').length;
                     return;
                 });
 
             });
-        }
-        function adits(e,index) {
-            console.log(e);
-            alert(index);
-            $('#cont_donet').show();
         }
         function options(that,index) {
             if ($(that).hasClass('icon_plus')) {
@@ -1568,6 +1582,7 @@
               if(num==0){
                 $(that).parents('tr').remove();
                 $('#info_'+index).remove();
+                $('#cont_donet').hide();
               } 
                 }
             } else if ($(that).hasClass('icon_reduce')) {
@@ -1577,7 +1592,25 @@
             }
         }
 
-
+        function getDrugDetails(e,index) {
+           $('#sendf').attr('data-id',index);
+            $('#cont_donet').show();
+			$.ajax({
+				url: '/?m=pharmacy&c=doctor&a=getDrugDetails',
+				type: 'POST',
+				data: 'id=' + index,
+				dataType: 'json',
+				success: function(re) {
+					var data = re.data;
+					$('.content_title').text(data.trade_name + ' ' + data.specification);
+					$('.content_sub').text(data.enterprise);
+					$('.content_instruction').text(data.sales_status);
+				}
+			})
+			var E = getCookies('drugE' + id);
+			var F = getCookies('drugF' + id);
+            if(E!=null && E!='undefined') $('#conseltext').text(E);
+		}
     </script>
 </body>
 
