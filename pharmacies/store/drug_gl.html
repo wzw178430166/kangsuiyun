@@ -471,7 +471,13 @@
                                     <svg t="1607413618167" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6982" width="48" height="48" data-spm-anchor-id="a313x.7781069.0.i33"><path d="M874.23 149.77a512 512 0 1 0 0 724.46 512.884 512.884 0 0 0 0-724.46zM832.83 832.828a453.507 453.507 0 1 1 0-641.658 454.317 454.317 0 0 1 0 641.658z" p-id="6983" fill="#1296db"></path><path d="M758.791 482.532H541.468V265.21a29.468 29.468 0 0 0-58.936 0v217.323H265.21a29.468 29.468 0 0 0 0 58.936h217.323V758.79a29.468 29.468 0 0 0 58.936 0V541.468H758.79a29.468 29.468 0 0 0 0-58.936z" p-id="6984" fill="#1296db"></path></svg></a>\
                             </div>';
                         if (info.id == ids) {
-                            if (0<$('[name="id['+ids+']"]').length) break;
+                            var int=$('[name="id['+ids+']"]').val();
+                            int++;
+                            if (0<$('[name="id['+ids+']"]').length){
+                                $('[name="id['+ids+']"]').val(int);
+                                break;
+                            }
+                            
                             var strs = '<tr align="center" data-val="' + info.id + '">\
                                             <td>' + info.id + '</td>\
                                             <td>' + info.characteristic + '</td>\

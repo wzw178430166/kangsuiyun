@@ -158,8 +158,9 @@ input {
                             <table class="table" id="rstb">
                                 <thead>
                                     <tr align="center">
-                                       <th><strong class="tb-head cell-orderid" data-val="orderid">签名名称</strong></th>
-                                       <th><strong class="tb-head cell-username" data-val="username">签名类型</strong></th>
+                                       <th><strong class="tb-head cell-orderid" data-val="orderid">签名文件</strong></th>
+                                       <th><strong class="tb-head cell-qmtype" data-val="qmtype">签名类型</strong></th>
+                                       <th><strong class="tb-head cell-username" data-val="username">签名名称</strong></th>
                                        <th><strong class="tb-head cell-product" data-val="product">创建时间</strong></th>
                                        <th><strong class="tb-head cell-amount" data-val="amount">状态</strong></th>
                                        <th><strong class="tb-head cell-operate" data-val="operate">操作</strong></th>
@@ -249,14 +250,15 @@ input {
                       var info = rows[k];
                       html += '<tr align="center">\
                                       <td><img src="'+info.img+'" style="width:100px;height:30px;" onerror="Javascript:this.src=\'/pharmacies/store/images/babac.png\'"></td>\
+                                      <td>药剂师签名</td>\
                                       <td>'+info.name+'</td>\
                                       <td>'+info.create_time+'</td>\
                                       <td>'+info.status_str+'</td>\
                                       <td>';
-                      if(info.is_default==0){
+                      if(info.is_default==1){
                         html +='<a href="javascript:;" class="commonlyused">常用签名</a>';
                       }else{
-                        html +='<a href="#" class="set-common" data-ids="'+info.id+'"  data-default="0">设置为常用签名</a>';  
+                        html +='<a href="#" class="set-common" data-ids="'+info.id+'"  data-default="1">设置为常用签名</a>';  
                       }
                        html +='</td>\
                                      <td>\

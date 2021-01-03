@@ -84,12 +84,15 @@ class signature extends authority{
 				$img = 'SUCCESS' == $res['status']?$res['data']['src']:'';
 				$info['img'] = $img;
 			}
+			$this->default_db->update('`is_default`=0',1);//['store_id'=>$this->store_id]'
+			//exit();
 			if ($row) {//编辑
 				$res = $this->default_db->update($info,$where);
 			} else {//新增
 				$info['create_time'] = $info['update_time'];
 				$res = $this->default_db->insert($info,true);
 			}
+		
 			if ($res) {
 				$status = 1;
 				$erro = '保存成功';
@@ -117,6 +120,7 @@ class signature extends authority{
 				'is_default'=>$_POST['is_default'],
 			];
 			if ($row) {//编辑
+				$this->default_db->update('`is_default`=0',1);//['store_id'=>$this->store_id]
 				$res = $this->default_db->update($info,$where);
 			}
 			if ($res) {

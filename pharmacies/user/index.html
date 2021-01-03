@@ -567,12 +567,45 @@
     <script type="text/javascript">
     var bar=getUrlParam('bar');
 
-        $(document).ready(function () {
+window.onload=function(){
 
-        var bartime=setTimeout(function(){  
-           $('#swior-box').show();
-            banner2();
-            },10000);
+            (function($){
+        funObj = {
+            timeUserFun:'timeUserFun',
+        }
+        $[funObj.timeUserFun] = function(time){
+            var time = time || 2;   
+            var userTime = time*60;
+            var objTime = {
+                init:0,
+                time:function(){
+                    objTime.init += 1;
+                    if(objTime.init == userTime){
+                       // 用户到达未操作事件 做一些处理
+                       document.getElementById('swior-box').style.display='block';
+                       banner2();     
+                    }
+                },
+                eventFun:function(){
+                    clearInterval(testUser);
+                    objTime.init = 0;
+                    testUser = setInterval(objTime.time,1000);
+                }
+            }
+ 
+            var testUser = setInterval(objTime.time,1000);
+ 
+            var body = document.querySelector('html');
+            body.addEventListener("click",objTime.eventFun);
+            body.addEventListener("keydown",objTime.eventFun);
+            body.addEventListener("mousemove",objTime.eventFun);
+            body.addEventListener("mousewheel",objTime.eventFun);
+        }
+    })(window)
+
+    // 直接调用 参数代表分钟数,可以有一位小数，不传参默认2分钟
+    timeUserFun(0.3);
+
 
             $('#datast').text(getCurrentDate());
             var lb = $("#limit-buy"),
@@ -618,7 +651,8 @@
                 lb_cur++;
                 showLimitBuyProducts();
             });
-        });
+       
+        }
 
 
         $(function () {

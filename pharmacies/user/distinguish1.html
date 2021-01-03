@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/user/css/header_common.css">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/user/css/left_.css">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/user/css/index.css">
+    <!-- <link rel="stylesheet" href="/statics/dataManage/css/bootstrap.css"> -->
+    <link rel="stylesheet" type="text/css" href="/statics/currency/plug/swiper/css/swiper.min.css">
+    <script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+    <!-- <script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script> -->
+    <script type="text/javascript" src="/statics/js/global.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="/statics/js/TouchSlide.1.1.js"></script> -->
+    <script type="text/javascript" src="/statics/currency/plug/swiper/js/swiper.min.js"></script>
+    <script type="text/javascript" src="/statics/js/layer_mobile/layer.js"></script>
+    <title>药房-用户端人面识别</title>
+    <style>
+   .cont-box{width:auto;margin:auto;text-align: center;}
+   .cont-box p{line-height: .5rem;}
+   .cont-box p:nth-child(1){    
+       font-size: .9rem;
+    color: #0078FF;
+    margin-top: 7vh;}
+    .cont-box p:nth-child(2){    
+        font-size: .47rem;
+    color: #393737;
+    margin-top: 4vh;}
+    .cont-box p:nth-child(3){    
+        font-size: .4rem;
+    color: #828797;
+    margin-top: 2vh;}
+    .cont-box p:nth-child(4){    
+        margin: 0 auto;
+    width: 8rem;}
+    .cont-box p:nth-child(4) img{    
+    width: 100%;} 
+    .cont-box p.cont-hide{    
+     width: 3rem;
+    margin: 0 auto;
+    height: 1rem;
+    font-size: .2rem;
+    margin-top: 5vh;
+    line-height: 1rem;
+    color: #EC5C5C;
+    text-align: center;
+    border-radius: .1rem;
+    border: 1px solid #D2D1D1;
+    background-color: #F7F1F1;}
+
+    .header_box .midden {
+	font-size: 1.195rem;
+}
+.header_box .left {
+	width: 20px;
+	height: 20px;
+}
+.mdr {
+	width: 80%;
+	display: flex;
+	justify-content: space-around;
+	margin: 0 auto;
+	position: relative;
+	margin-top: 2.32rem;
+}
+.mdr .md-item {
+	width: 2.34rem;
+	position: relative;
+	height: 2.34rem;
+	border-radius: 50%;
+	background: #dddbdb;
+	text-align: center;
+	line-height: 2.34rem;
+}
+.mdr .md-item span {
+	color: #aaaaaa;
+	font-size: 1.432rem;
+}
+.mdr .md-item p {
+	width: 4.68rem;
+	margin-top: .532rem;
+	color: #2185ff;
+	margin-left: -50%;
+	font-weight: 500;
+	font-size: 1.025rem;
+	height: 2.11rem;
+	line-height: 2.11rem;
+}
+.mdr .mtee {
+	flex: 1;
+	position: relative;
+}
+.mdr .mtee .mit {
+	width: 100%;
+	height: 1px;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background: #dedbdb;
+}
+.conts {
+	width: 100%;
+	position: relative;
+}
+.circle {
+	width: 18rem;
+	height: 18rem;
+	position: absolute;
+	border-radius: 50%;
+	background: #3877fa;
+	left: 50%;
+	transform: translateX(-50%);
+	top: 4rem;
+	z-index: 8; 
+	overflow: hidden;
+}
+.pie_left, .pie_right {
+	width: 18rem;
+	height: 18rem;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.lefted, .righted {
+	display: block;
+	width: 18rem;
+	height: 18rem;
+	background: #a9a9a7;
+	border-radius: 50%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.pie_right, .righted {
+	clip: rect(0,auto,auto,9rem);
+}
+.pie_left, .lefted {
+	clip: rect(0,9rem,auto,0);
+}
+.mask {
+	width: 17.3rem;
+	height: 17.3rem;
+	border-radius: 50%;
+	left: 0.35rem;
+	top: 0.35rem;
+	background: #FFF;
+	/*    background: #FFF url(images/ssg.png) no-repeat center 2rem;*/
+/*    background-size: 96%;*/
+	position: absolute;
+	text-align: center;
+	line-height: 165px;
+	font-size: 16px;
+	transition: all ease-in;
+	overflow: hidden;
+}
+#nums {
+	display: none;
+}
+.footedmsg {
+	width: 100%;
+	text-align: center;
+	position: fixed;
+	bottom: 4rem; 
+}
+.footedmsg p:nth-child(1) {
+	    width: 87%;
+    font-size: 1.825rem;
+    color: #090808;
+    margin: 0 auto;
+    /* height: 2.65rem; */
+    line-height: 2rem;
+	margin-bottom: 1rem;
+}
+.footedmsg p:nth-child(2) {
+	width: 80%;
+	font-size: 1.05rem;
+	color: #666;
+	margin-top: 1.85rem;
+	margin: 0 auto;
+	height: 2.66rem;
+}
+.mdstyle {
+	background: url("images/eaek.svg")no-repeat center!important;
+	background-size: cover!important;
+}
+.mdstyle .mdstyle_nu {
+	visibility: hidden
+}
+#video {
+	margin: 0 auto 0 auto;
+	display: block;
+	position: relative;
+	visibility: hidden; 
+	/* border-radius: 50%; */
+}
+.maskxiankuang {
+	width: 17rem;
+	height: 17rem;
+	position: absolute;
+	top: 1.8rem;
+	z-index: 7;
+	left: 0;
+	right: 0;
+}
+.masksuccess {
+	width: 17rem;
+	height: 17rem;
+	position: relative;
+	top: 0.15rem;
+	z-index: 8;
+	left: 0;
+	right: 0;
+	display: none;
+}
+     .cont-face{width: 100%;margin: 0 auto;display:flex;justify-content:center;margin-top: .6rem;} 
+    </style>
+</head>
+
+<body>
+    <div class="outdiv">
+        <div class="right_conter">
+            <div class="header_box" id="header">
+                <!--#include file="header.html"-->
+            </div>
+            <div class="h8vh"></div>
+            <div class="cont-box">
+                <p>个人基本信息录入</p>
+                <p>请按照指引将身份证放置于感应区域进行基本信息录入</p>
+            <div class="cont-face">
+
+                <div class="cont-face-left">
+                    <div class="conts">
+                        <video id="video" muted></video> 
+                    </div>
+                </div>
+                <div class="cont-face-right" style="display: none;">
+                   <canvas id="canvas"></canvas>
+                </div>
+            </div>
+                <p onclick="goo('/pharmacies/user/index.html')" class="cont-hide">取消开处方</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function chack(){
+        var events = navigator.userAgent;
+        // if(events.indexOf('iPhone')>-1){
+        //     layer.open({
+        //         content: '网页版人像识别暂不支持Iphone 手机' ,time: 200,skin: 'msg'
+        //     });
+        //     setTimeout(function(){ goback(); },3000);  
+        //     return false;
+        //         //根据尺寸进行判断 苹果的型号
+        //     if(screen.height == 812 && screen.width == 375){ // 进行操作，改变样式
+        //         const obj = document.getElementById('sendxBtn')
+        //         obj.setAttribute("style", "padding:5px 10px 20px;")
+        //         console.log("苹果X");
+        //     }else if(screen.height == 736 && screen.width == 414){
+        //         console.log("iPhone7P - iPhone8P - iPhone6");
+        //     }else if(screen.height == 667 && screen.width == 375){
+        //         console.log("iPhone7 - iPhone8 - iPhone6");
+        //     }else if(screen.height == 568 && screen.width == 320){
+        //         console.log("iPhone5");
+        //     }else{
+        //         console.log("iPhone4");
+        //     }
+        // }else if(events.indexOf("iPad")>-1){
+        //     console.log("平板"); 
+        // }
+            return true; 
+        }
+            
+        var indexCurrent = 0;
+        var sendPhoto_Time = 0;
+        var sendPhoto_limit = 5;
+        var step = 1;//Number( getUrlParam('step')); 
+        var faceimg = [];
+        let promise;
+        $(function() {
+            // if(!userid_){  
+            //     goo('/member/login.html?forward='+encodeURIComponent('/aipface/item1.html'));
+            // }else{
+            //     sync_member(); 
+            // } 
+            set_step(step);
+            if(chack()){
+                getMedia();
+            }
+        });
+        function set_step(i){
+            if(i &&  i>0){
+                var str;
+                $('.md-item').removeClass('mdstyle');
+                $('.md-item').eq(i-1).addClass('mdstyle');
+                switch(i){
+                    case 1: str = '请保持正面面向摄像头'; break;
+                    case 2: str = '请将脸旋转，将侧脸保持面向摄像头'; break;
+                    case 3: str = '请将另一侧脸保持面向摄像头'; break; 
+                }
+                $('#text').html(str);
+            }
+        }
+        function set_animate(){ 
+            setInterval(function(){
+                if(indexCurrent<100){
+                  indexCurrent++;
+                }else{
+                  indexCurrent=0;
+                }
+                $("#nums").find('span').text(indexCurrent);
+                $('.circle').each(function(index, el) {
+                  var num = $(this).find('span').text() * 3.6;
+                  if (num<=180) {
+                    $(this).find('.righted').css('transform', "rotate(" + num + "deg)");
+                    $(this).find('.lefted').css('transform', "rotate(" + 0 + "deg)");
+                  } else {
+                    $(this).find('.righted').css('transform', "rotate(180deg)");
+                    $(this).find('.lefted').css('transform', "rotate(" + (num - 180) + "deg)");
+                  };
+                });
+            },100);
+        }
+        function getMedia() {
+            $('.masksuccess').fadeOut();
+            $('.maskxiankuang').show();
+            let constraints = {
+                 video: { 
+                    width: 600,
+                    height: 600 
+                 },
+                 audio: true
+             };
+            //获得video摄像头区域
+             let video = document.getElementById("video");
+           // 避免数据没有获取到
+             promise = navigator.mediaDevices.getUserMedia(constraints);
+             // 成功调用
+             promise.then(function (MediaStream) {
+                /* 使用这个MediaStream */
+                video.srcObject = MediaStream;
+                video.play();
+                set_animate();
+                window.setTimeout(function(){
+                     console.log($('#video').width() +'>'+ $('#video').height()); // 对象 
+                     if( $('#video').width() > $('#video').height() ){ 
+                            $('#video').css({'width':'auto','height':'100%' });
+                            $('#video').css({'-webkit-transform': 'rotateY(180deg)','-moz-transform': 'rotateY(180deg)'});
+                        }else{
+                            $('#video').css({'width':'100%','height':'auto','margin': '0 auto 0 auto' });
+                        }   
+                    $('#video').css({'visibility':'visible'});
+                },300);
+                // window.setTimeout(function(){
+                //      sendPhoto(); 
+                // },1000); 
+                window.setInterval(function(){
+                    takePhoto(); 
+                },3000); 
+             }) 
+            // 失败调用
+             promise.catch(function (err) {
+                 /* 处理error */
+                 console.log(err); // 拒签});
+             })
+        }
+        
+         function takePhoto() {
+             //获得Canvas对象
+             let video = document.getElementById("video");
+             let canvas = document.getElementById("canvas");
+             canvas.width = video.videoWidth;
+             canvas.height = video.videoHeight;
+             console.log(canvas);
+             let ctx = canvas.getContext('2d');
+             ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+         }
+            
+        function sendPhoto(){
+            sendPhoto_Time ++;
+            if(sendPhoto_Time>sendPhoto_limit){
+                layer.open({
+                    content: '网络异常,请稍后再试' ,time: 1,skin: 'msg'
+                });
+                setTimeout(function(){ goback(); },2000);
+                //document.getElementById("video").load(); 
+                $('.pie_left,.pie_right').hide();
+                return;  
+            }
+            takePhoto(); 
+            
+            var base64 = getBase64Image(); 
+            var sbase64 = base64;
+            sbase64 = sbase64.replace('data:image/jpeg;base64,','');    
+            sbase64 = encodeURIComponent(sbase64);     
+        
+            $('#cc').attr('src',base64);   
+            return;
+            $.ajax({ 
+                'url':'/?m=srapi&c=aipface&a=detect_base'
+                ,'type':'POST' 
+                ,'data':'image='+sbase64
+                ,'dataType':'json'
+                ,'success':function(da){
+                    sendPhoto_back(da);
+                }
+            });
+        }	
+        function sendPhoto_back(da){ 
+            if(da.status!=1 || da.result.face_num!=1){
+                setTimeout(function(){ sendPhoto();},2000);
+                return;
+            }
+            console.log(da.data);
+            var yaw = da.result.face_list[0].angle.yaw;
+            var face_token = da.result.face_list[0].face_token;
+        
+            switch(step){
+                case 3:
+                    if((yaw>-10 && yaw<0) || (yaw>0 && yaw<10) || yaw==0){    
+                       layer.open({
+                            content: '请将另一侧脸保持面向摄像头' ,time: 2,skin: 'msg'
+                        });
+                        setTimeout(function(){ sendPhoto();},3000);
+                        return; 
+                    }
+                    break;
+                case 2:
+                    if( (yaw>-10 && yaw<0) || (yaw>0 && yaw<10) || yaw==0){  
+                       layer.open({
+                            content: '请将脸旋转，将侧脸保持面向摄像头' ,time: 2,skin: 'msg'
+                        });	
+                        setTimeout(function(){ sendPhoto();},3000);
+                        return;
+                    } 
+                    break;
+                case 1:
+                    if(yaw<-10 || yaw>10){
+                       layer.open({
+                            content: '请保持正面面向摄像头' ,time: 2,skin: 'msg'
+                        });	
+                        setTimeout(function(){ sendPhoto();},3000);
+                        return;
+                    }
+                    break;	
+            }
+            var video = document.getElementById("video");
+            //video.load();
+            faceimg.push(face_token);
+            $('.maskxiankuang').hide();
+            $('.masksuccess').fadeIn();
+            
+            step +=1; 
+            if(step<=3){
+                sendPhoto_Time = 0;
+                setTimeout(function(){ 
+                    set_step(step); 
+                    $('.masksuccess').fadeOut();
+                    $('.maskxiankuang').show();  
+                },1000);  
+                setTimeout(function(){ sendPhoto();},3000); 
+                return;
+            }
+            if(faceimg.length==3){
+                //promise && promise.stop(); 
+                $.ajax({ 
+                    'url':'/?m=srapi&c=aipface&a=register'
+                    ,'type':'POST' 
+                    ,'data':'image='+faceimg.join(",")
+                    ,'dataType':'json' 
+                    ,'success':function(da){
+                        console.log(da);
+                    }
+                });
+            }
+        }
+         function getBase64Image(img) {  
+            var canvas = document.getElementById("canvas");  
+            var ctx = canvas.getContext("2d"); 
+            var dataURL = canvas.toDataURL('image/jpeg',1);    
+            
+            return dataURL;
+        } 
+            
+        
+        </script>
+</body>
+
+</html>

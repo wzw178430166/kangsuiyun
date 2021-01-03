@@ -12,7 +12,7 @@ body{background: #ffffff;}
     padding: 0 1rem;}
 .header_right{position: absolute;
     right: 7rem;}
-.header_right .header_pei{font-size: .32rem;}   
+.header_right .header_pei{font-size: .28rem;}   
 /* .conter_round{position: relative;height: 100%;} */
 .conter_round{vertical-align: middle;
     width: .25rem;

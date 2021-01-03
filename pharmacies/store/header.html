@@ -1,13 +1,13 @@
 <div class="headers_box">
-    <div class="header_left">
+    <div class="header_left" onclick="goo('/pharmacies/store/index.html')">
         药房门店
     </div>
     <div class="header_right">
-        <span class="header_pei">当前审核配药人:</span>
-        <span>
-          <select class="selects" id="J_select_staff">
+        <span class="header_pei">当前登录账号:</span>
+        <span id="J_select_staff" style="font-size:.28rem">
+          <!-- <select class="selects" id="J_select_staff">
           
-          </select>
+          </select> -->
        </span>
        <!-- <span class="header_pei">状态:</span>
        <span> 
@@ -25,6 +25,7 @@
     dataType:'jsonp',
     success:function(res){
       var html = '';
+      var str=Cookies.get('verify_user_name');
       if (0<Object.keys(res.data).length) {
         for(var k in res.data){
           var info = res.data[k];
@@ -38,7 +39,7 @@
       } else {
         html += '<option value="0">无药师</option>';
       }
-      $('#J_select_staff').html(html);
+      $('#J_select_staff').html(str);
     }
   });
   $('#J_select_staff').on('change',function(){

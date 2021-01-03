@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="/pharmacies/user/css/index.css">
     <!-- <link rel="stylesheet" href="/statics/dataManage/css/bootstrap.css"> -->
     <link rel="stylesheet" type="text/css" href="/statics/currency/plug/swiper/css/swiper.min.css">
+    <link rel="stylesheet" href="/statics/admin/common/layui/css/layui.css" media="all">
     <script type="text/javascript" src="/statics/js/setFontSize.js"></script>
     <!-- <script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script> -->
     <script type="text/javascript" src="/statics/js/global.js"></script>
@@ -19,29 +20,10 @@
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- <script type="text/javascript" src="/statics/js/TouchSlide.1.1.js"></script> -->
     <script type="text/javascript" src="/statics/currency/plug/swiper/js/swiper.min.js"></script>
-    <title>药房-用户端</title>
+    <script type="text/javascript" src="/statics/admin/common/layui/layui.all.js"></script>
+    <title>药房-门店端</title>
     <style>
-   .matst_back {
-    width: 95%;
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    margin-top: .5rem;
-}
-.back_goo {
-    width: 2rem;
-    height: .9rem;
-    line-height: .9rem;
-    border: 1px solid #929292;
-    color: #7d7272;
-    text-align: center;
-    border-radius: .1rem;
-}
-.back_goo svg {
-    width: .6rem;
-    height: .6rem;
-    vertical-align: middle;
-}   
+      
    .cont-box{width:auto;margin:auto;text-align: center;}
    .cont-box p{line-height: .5rem;}
    .cont-box p:nth-child(1){    
@@ -83,23 +65,28 @@
                 <!--#include file="header.html"-->
             </div>
             <div class="h8vh"></div>
-            <div class="matst_back">
-                <div class="back_goo" onclick="goback()">
-                    <svg t="1607408152481" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3504" width="48" height="48"><path d="M438.4 297.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2L300.8 480H800c19.2 0 32 12.8 32 32 0 16-12.8 28.8-28.8 32H300.8l137.6 137.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2c-12.8 12.8-28.8 12.8-41.6 3.2l-3.2-3.2-192-192-3.2-3.2-3.2-3.2-3.2-3.2V499.2l3.2-3.2 3.2-3.2 3.2-3.2 192-192c12.8-12.8 32-12.8 44.8 0z" fill="#bfbfbf" p-id="3505"></path></svg>
-                    返回
-                </div>
-            </div>
             <div class="cont-box">
                 <p>个人基本信息录入</p>
                 <p>请按照指引将身份证放置于感应区域进行基本信息录入</p>
                 <p>若长时间为读取到个人信息，请尝试退出重新进入</p>
                 <p><img src="/pharmacies/user/images/v2_qlizks.png"></p>
-                <p onclick="goo('/pharmacies/user/distinguish1.html')">下一步</p>
+                <p onclick="goo('/pharmacies/store/index.html')">取消开处方</p>
             </div>
         </div>
     </div>
   <script>
-
+   $(function(){
+    var bartime=setTimeout(function(){  
+        layer.open({
+                        title: '信息录入',
+                        content: "录入成功，马上进行视频问诊",
+                        yes: function(index, layero){
+                            window.location.href = '/pharmacies/store/video_user.html';
+                        }
+                 }); 
+           
+            },1500);
+   })
   </script>
 </body>
 

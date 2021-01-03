@@ -107,9 +107,9 @@ class prescription extends authority{
 				//var_dump($res);die;
 			}
 
-			//是否验证处方属于该门店
+			//是否验证处方属于该门店FAIL
 			$where = ['prescription_no'=>$prescription_no];
-			$info = ['status'=>'PASSED','verify_status'=>'PASSED','verify_user_id'=>$admin['user_id'],'verify_name'=>$admin['full_name'],'verify_time'=>SYS_TIME,'verify_reason'=>$_POST['opinion'],'verify_sign'=>$verify_sign];
+			$info = ['status'=>$_POST['status'],'verify_status'=>$_POST['status'],'verify_user_id'=>$admin['user_id'],'verify_name'=>$admin['full_name'],'verify_time'=>SYS_TIME,'verify_reason'=>$_POST['opinion'],'verify_sign'=>$verify_sign];
 			$this->default_db->load('prescription');
 			$res = $this->default_db->update($info,$where);
 			if ($res) {
