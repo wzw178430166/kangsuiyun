@@ -113,25 +113,25 @@
 <script>
     var signature = [];
     var $sigdiv = $("#signature").jSignature({'UndoButton':true});
-    // request('/?m=corp&c=data&a=getSignature&ajax=1','',{
-    //     dataType: 'jsonp',
-    //     data: {user_id: Cookies.get('verify_user_id')},
-    //     success: function(res){
-    //         if (0<Object.keys(res.data).length) {
-    //             var html = '';
-    //             for(var k in res.data){
-    //                 var info = res.data[k];
-    //                 html += '<option value="'+info.id+'">'+info.name+'</option>';
-    //             }
-    //             $('#signature_id').append(html);
-    //         }
-    //     }
-    // });
+    request('/?m=corp&c=data&a=getSignature&ajax=1','',{
+        dataType: 'jsonp',
+        data: {user_id: Cookies.get('verify_user_id')},
+        success: function(res){
+            if (0<Object.keys(res.data).length) {
+                var html = '';
+                for(var k in res.data){
+                    var info = res.data[k];
+                    html += '<option value="'+info.id+'">'+info.name+'</option>';
+                }
+                $('#signature_id').append(html);
+            }
+        }
+    });
     function hideCover(ele){
     	$(ele).hide();
     }
     function confirm(){
-		var checkPassword = $.trim($('#checkPassword').val());	
+        var checkPassword = $.trim($('#checkPassword').val());
         if (!checkPassword) {
             /*layer.open({
                 content: '请输入验证密码'
@@ -144,17 +144,12 @@
         doForm();
     }
     function confirmSignature(){
-    	var res = $sigdiv.jSignature('getData','default');//导出结果 参数二为导出格式 默认为默认格式base64
-		$('#signature_value').val(res);
-        if(12298<res.length){
-			$('#coverSignature').hide();
-			//    layer.open({
-            //     content: '保存成功'
-            //     ,skin: 'msg'
-            //     ,time: 2 //2秒后自动关闭
-            //   });
-		  //	layer.closeAll();
-            doForm();
+		var res = $sigdiv.jSignature('getData','default');//导出结果 参数二为导出格式 默认为默认格式base64
+		console.log(res.length);
+		if(12498<res.length){
+         	$('#signature_value').val(res);
+	    	$('#coverPassword').show();
+          //  doForm();
 		}else{
 			layer.open({
                 content: '请签名'
@@ -163,9 +158,8 @@
 			});
 			return;
 		}
-
-
-    //	$('#coverPassword').show();
+    
+		
     }
     function resetSignature(){
         $sigdiv.jSignature('reset');
@@ -173,6 +167,11 @@
         $('#signature_value').val('');
     }
     function callSignature(){
+    	var verify_user_id = parseInt(Cookies.get('verify_user_id'));
+		if (isNaN(verify_user_id) || 0==verify_user_id) {
+			alert('请选择审核药师');
+			return;
+		}
     	$('#coverSignature').show();
     }
     $('#preservation').on('click',function(){

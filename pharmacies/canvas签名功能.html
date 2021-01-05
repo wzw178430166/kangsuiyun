@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+	<title></title>
+</head>
+<body>
+<div id="signature"></div>
+</body>
+<script  src="/statics/public/plug/jquery/jquery-3.3.1.min.js"></script>
+<script  src="/statics/public/plug/jSignature/src/jSignature.js"></script>
+<script>
+	var $sigdiv;
+	$(function(){
+		$sigdiv = $("#signature").jSignature({'UndoButton':true})
+		//$sigdiv.jSignature('reset');//重置
+		var plugins = $sigdiv.jSignature('listPlugins','export');//导出格式
+		console.log(plugins);
+		//var res = $sigdiv.jSignature('getData','default');//导出结果 参数二为导出格式 默认为默认格式base64
+	});
+</script>
+</html>

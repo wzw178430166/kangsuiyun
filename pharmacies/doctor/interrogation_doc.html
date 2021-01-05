@@ -885,7 +885,6 @@
                                             <td></td>
                                         </tr>
                                     </table>
-
                                     <!-- <p class="lines"></p>
                                     <div class="ctab_bottom">
                                         <span onclick="goo('/pharmacy/video.html')">下一步</span>
@@ -904,10 +903,9 @@
                                     </div>
                                     <div class="topBox">
                                         <div style="margin-top: .45rem">临床诊断</div>
-                                        <input tyle="text" placeholder="请输入临床诊断" id="titles">
+                                        <input tyle="text" placeholder="请输入临床诊断" id="rpText">
                                     </div>
                                 </div>    
-                                
                                 <div class="itemdiv" id="conteded">
                                     <p class="itemplected">
                                         <span class="float-left">常见病</span>
@@ -922,7 +920,6 @@
                                         <div>心悸</div>
                                     </div>
                                 </div>
-
                             </div>
                             <div class="tab_itemst">
                                 <div class="query-module">
@@ -950,9 +947,7 @@
                                           </div>
                                           </div>
                                       </div>
-                                 
                                     </div>
-                                   
                                   </div>
                                 <div class="data-content">
                                     <div class="tb-container"  style="height: 300px;overflow: auto;" id="tb-containers">
@@ -983,42 +978,7 @@
                                                     <a href="#" class="mt_tdaz"><img src="/pharmacy/images/jiahoass.png"></a>
                                                   </td>
                                               </tr>
-                                              <tr align="center">
-                                                 <td>5113454654654</td>
-                                                 <td>张三</td>
-                                                 <td>2020-08-03</td>
-                                                 <td>2</td>
-                                                 <td>233.5</td>
-                                                 <td>张主卧</td>
-                                                 <td>春雨</td>
-                                                 <td>
-                                                    <a href="#" class="mt_tdaz"><img src="/pharmacy/images/jiahoass.png"></a>
-                                                 </td>
-                                              </tr>
-                                              <tr align="center">
-                                                 <td>5113454654654</td>
-                                                 <td>张三</td>
-                                                 <td>2020-08-03</td>
-                                                 <td>2</td>
-                                                 <td>233.5</td>
-                                                 <td>张主卧</td>
-                                                 <td>春雨</td>
-                                                 <td>
-                                                    <a href="#" class="mt_tdaz"><img src="/pharmacy/images/jiahoass.png"></a>
-                                                 </td>
-                                              </tr>
-                                              <tr align="center">
-                                                 <td>5113454654654</td>
-                                                 <td>张三</td>
-                                                 <td>2020-08-03</td>
-                                                 <td>2</td>
-                                                 <td>233.5</td>
-                                                 <td>张主卧</td>
-                                                 <td>春雨</td>
-                                                 <td>
-                                                    <a href="#" class="mt_tdaz"><img src="/pharmacy/images/jiahoass.png"></a>
-                                                 </td>
-                                              </tr> -->
+                                         -->
                                            </tbody>
                                         </table>
                                     </div>
@@ -1247,19 +1207,6 @@
                                                 — 用法用量：<span> 每日1次</span>，<span>每次2粒</span>  <span class="sadit">修改用量</span>      
                                             </td>
                                         </tr> -->
-                                          <!-- <tr align="center">
-                                             <td>5113454654654</td>
-                                             <td>张三</td>
-                                             <td>2020-08-03</td>
-                                             <td>2</td>
-                                             <td>233.5</td>
-                                             <td>张主卧</td>
-                                             <td>
-                                                 <a href="#">
-                                                    <svg t="1608271763467" class="icon" style="width:20px;height:20px;    vertical-align: middle;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2377" width="32" height="32"><path d="M512 32C246.912 32 32 246.912 32 512c0 265.088 214.912 480 480 480s480-214.912 480-480c0-265.088-214.912-480-480-480z m256 512H256v-64h512v64z" fill="#F70000" p-id="2378"></path></svg>
-                                                 </a>
-                                             </td>
-                                          </tr> -->
                                        </tbody>
                                     </table>
                              
@@ -1282,11 +1229,23 @@
        var page = 1;
        var lens=0;
         $(function () {
+         //   getIDcard();
             checkLogin("golink");
             var $list = $("#menu").find("li");
             var $div = $("#tab-con").children("div");
             var $cont=$('.m_dit').children('div');
             $('#J_sure').on('click',function(){
+                var titles = $.trim($('#title').val());	
+                var rpText = $.trim($('#rpText').val());	
+                if (!titles||!rpText) {
+                    layer.open({
+                        content: '请填写完整处方信息'
+                        ,skin: 'msg'
+                        ,time: 2 //2秒后自动关闭
+                    });
+                    return;
+                }
+             lens=$('#copydata').children('tr').length;
                     if(lens>0){
                         $('#status').val('PASSED');
                         callSignature();
@@ -1309,7 +1268,7 @@
             $cont.click(function () {
                 var index = $(this).index();
                 var texts=$(this).text();
-                $('#titles').val(texts);
+                $('#rpText').val(texts);
             }) 
             var index=-9;
             $('#conteded').find('.m_dit').children('div').eq(index).addClass('contstyle').siblings('div').removeClass('contstyle');
@@ -1540,10 +1499,7 @@
                                     <svg t="1607413618167" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6982" width="48" height="48" data-spm-anchor-id="a313x.7781069.0.i33"><path d="M874.23 149.77a512 512 0 1 0 0 724.46 512.884 512.884 0 0 0 0-724.46zM832.83 832.828a453.507 453.507 0 1 1 0-641.658 454.317 454.317 0 0 1 0 641.658z" p-id="6983" fill="#1296db"></path><path d="M758.791 482.532H541.468V265.21a29.468 29.468 0 0 0-58.936 0v217.323H265.21a29.468 29.468 0 0 0 0 58.936h217.323V758.79a29.468 29.468 0 0 0 58.936 0V541.468H758.79a29.468 29.468 0 0 0 0-58.936z" p-id="6984" fill="#1296db"></path></svg></a>\
                             </div>';
                         if (info.id == ids) {
-                          //  var int=$('[name="id['+ids+']"]').val();
-                          //  int++;
                             if (0<$('[name="id['+ids+']"]').length){
-                               // $('[name="id['+ids+']"]').val(int);
                                layer.open({
                                     content:'已经添加药品',
                                     skin: 'msg',
@@ -1563,12 +1519,13 @@
                                             <td>' + operate + '</td>\
                                         </tr>\
                                         <tr id="info_'+info.id+'">\
-                                            <td colspan="8" style="padding: .2rem 0;">\
-                                                — 用法用量：<span id="mfrequncy_'+info.id+'"> '+info.mfrequency+'</span>，<span id="each_dose_'+info.id+'">每次2'+info.each_dose_unit+'</span>  <span class="sadit" onclick="getDrugDetails(this,'+info.id+')">修改用量</span>\
+                                            <td colspan="8" style="padding: .2rem 0;" class="userids" ids="'+info.id+'">\
+                                                — 用法用量：<span id="mfrequncy_'+info.id+'">'+info.mfrequency+'</span>，<span id="each_dose_'+info.id+'">每次2'+info.each_dose_unit+'</span>  <span class="sadit" onclick="getDrugDetails(this,'+info.id+')">修改用量</span>\
                                             </td></tr>';
                         }
                     }
                     $('#copydata').append(strs);
+                    getDrugDetails(this,ids);
                     lens=$('#copydata').children('tr').length;
                     return;
                 });
@@ -1612,7 +1569,44 @@
 			var E = getCookies('drugE' + id);
 			var F = getCookies('drugF' + id);
             if(E!=null && E!='undefined') $('#conseltext').text(E);
-		}
+        }
+        
+     function doForm(){
+                 var data = '',
+                    ids = '',
+                    use='',
+				    dname = '';
+    $('#copydata .userids').each(function(e) {
+				ids = ids + $(this).attr('ids') + ',';
+                data=data+$(this).children('#mfrequncy_'+$(this).attr('ids')).text()+'_'+$(this).children('#each_dose_'+$(this).attr('ids')).text()+'|';  
+      })
+      request('/?m=pharmacy&c=doctor&a=addDrugPN','POST',{
+       // dataType: 'jsonp',
+        data:'ids=' + ids + '&data=' + data + '&title=' + $('#title').val() + '&pnname=' + $('#rpText').val(),
+        success: function(res){
+          if(1 == res.status){
+            layer.open({
+                content: '保存成功'
+                ,skin: 'msg'
+                ,time: 2 //2秒后自动关闭
+              });
+          }
+    
+        //   setTimeout(function(){
+        //     if (1 == res.status) goo('/pharmacies/store/prescriptionlist.html');
+        //   },1000);
+        }
+      });
+    }  
+    function getIDcard(){    
+        request('/?m=data&c=da_fun&a=lookImgCard','get',{
+        dataType: 'jsonp',
+        // + '&data=' + data + '&title=' + $('#title').val() + '&pnname=' + $('#rpText').val()+'&dname='+dname + '&ac=' + ac + '&eids=' + eids
+        success: function(res){
+           console.log(res);
+        }
+      });
+    }
     </script>
 </body>
 

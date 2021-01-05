@@ -1004,13 +1004,13 @@
                                         <!-- <div class="contSelect"> <span>盒</span> </div> -->
                                     </div>
                                 </div>
-                                <!--<div class="content_div">
+                                <!-- <div class="content_div">
                                     <p class="conteTitle">用药周期<span>非必须,可辅助计算药品数量</span> </p>
                                     <div class="content_usage">
                                         <div class="contSelect conttxt" id="itemp3"> <span id="conseltext">未选择</span> <img src="https://lxj.yjxun.cn/drug/images/lower.svg" alt=""
                                              class="contImgae" id="cont3"> </div>
                                     </div>
-                                 </div>-->
+                                </div> -->
                             </div>
 
                                 <!-- <p class="Preservation" onClick="Preservation()">保存</p> -->
@@ -1383,7 +1383,6 @@
             $('#mfrequncy_'+ids).text(userdrug);
             var userevery= $('.contnitem').eq(2).text()+$('#pill').text();
             $('#each_dose_'+ids).text('每次'+userevery);
-            $('#info_'+ids).attr('data',$('.contnitem').eq(0).text() + '_' + $('#timeDate').text() + '_' + $('.contnitem').eq(1).text() + '_' + $('.contnitem').eq(2).text() + '_' + $('#pill').text() + '_' + $('#itemp2 span').text() + '_' + $('#contnitem').text() + '|');
 		}
 
 		function getCookies(cookieName) {
@@ -1504,9 +1503,8 @@
                                 <a href="#" class="icon_reduce" onclick="options(this,' + info.id + ')" style="display:none">\
                                     <svg t="1607413618167" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6982" width="48" height="48" data-spm-anchor-id="a313x.7781069.0.i33"><path d="M874.23 149.77a512 512 0 1 0 0 724.46 512.884 512.884 0 0 0 0-724.46zM832.83 832.828a453.507 453.507 0 1 1 0-641.658 454.317 454.317 0 0 1 0 641.658z" p-id="6983" fill="#1296db"></path><path d="M758.791 482.532H541.468V265.21a29.468 29.468 0 0 0-58.936 0v217.323H265.21a29.468 29.468 0 0 0 0 58.936h217.323V758.79a29.468 29.468 0 0 0 58.936 0V541.468H758.79a29.468 29.468 0 0 0 0-58.936z" p-id="6984" fill="#1296db"></path></svg></a>\
                             </div>';
-                          //  console.log(info.rid);
                         if (info.id == ids) {
-                            if (0<$('[name="idsd['+ids+']"]').length){
+                            if (0<$('[name="id['+ids+']"]').length){
                                layer.open({
                                     content:'已经添加药品',
                                     skin: 'msg',
@@ -1525,7 +1523,7 @@
                                             <td>' + info.enterprise + '</td>\
                                             <td>' + operate + '</td>\
                                         </tr>\
-                                        <tr class="dataDrug" id="info_'+info.id+'" data="'+$('.contnitem').eq(0).text() + '_' + $('#timeDate').text() + '_' + $('.contnitem').eq(1).text() + '_' + $('.contnitem').eq(2).text() + '_' + $('#pill').text() + '_' + $('#itemp2 span').text() + '_' + $('#contnitem').text() + '|'+'">\
+                                        <tr id="info_'+info.id+'">\
                                             <td colspan="8" style="padding: .2rem 0;" class="userids" ids="'+info.id+'">\
                                                 — 用法用量：<span id="mfrequncy_'+info.id+'">'+info.mfrequency+'</span>，<span id="each_dose_'+info.id+'">每次2'+info.each_dose_unit+'</span>  <span class="sadit" onclick="getDrugDetails(this,'+info.id+')">修改用量</span>\
                                             </td></tr>';
@@ -1558,13 +1556,13 @@
             }
         }
 
-        function getDrugDetails(e,index,pnid) {
+        function getDrugDetails(e,index) {
            $('#sendf').attr('data-id',index);
             $('#cont_donet').show();
 			$.ajax({
 				url: '/?m=pharmacy&c=doctor&a=getDrugDetails',
 				type: 'POST',
-				data: 'pnid='+pnid+'&id=' + index,
+				data: 'id=' + index,
 				dataType: 'json',
 				success: function(re) {
                     var data = re.data;
@@ -1653,11 +1651,11 @@
                     if(i==pnid){
                         var operate;
                         for(var k in info){
-                            operate = '<div class="cont_opricect" id="contedk_' + info[k].rid + '" style="display: flex;justify-content: center;margin: .2rem 0;align-items: center;">\
-                                <a href="#" class="icon_plus" onclick="options(this,' + info[k].rid + ')">\
+                            operate = '<div class="cont_opricect" id="contedk_' + info[k].id + '" style="display: flex;justify-content: center;margin: .2rem 0;align-items: center;">\
+                                <a href="#" class="icon_plus" onclick="options(this,' + info[k].id + ')">\
                                     <svg t="1607413584732" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6081" width="48" height="48"><path d="M512 55.296C256 55.296 51.2 260.096 51.2 512s204.8 456.704 460.8 456.704 456.704-204.8 456.704-456.704S763.904 55.296 512 55.296zM512 929.792C281.6 929.792 94.208 742.4 94.208 512S281.6 94.208 512 94.208 929.792 281.6 929.792 512C925.696 742.4 742.4 929.792 512 929.792zM738.304 490.496 281.6 490.496c-13.312 0-21.504 8.192-21.504 21.504 0 13.312 8.192 21.504 21.504 21.504l456.704 0c12.288 0 21.504-8.192 21.504-21.504C759.808 498.688 750.592 490.496 738.304 490.496z" p-id="6082" fill="#d81e06"></path></svg></a>\
-                                <input type="text" name="idsd['+info[k].rid+']" value="1" class="contnitem" style="display:none">\
-                                <a href="#" class="icon_reduce" onclick="options(this,' + info[k].rid + ')" style="display:none">\
+                                <input type="text" name="idsd['+info[k].id+']" value="1" class="contnitem" style="display:none">\
+                                <a href="#" class="icon_reduce" onclick="options(this,' + info[k].id + ')" style="display:none">\
                                     <svg t="1607413618167" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6982" width="48" height="48" data-spm-anchor-id="a313x.7781069.0.i33"><path d="M874.23 149.77a512 512 0 1 0 0 724.46 512.884 512.884 0 0 0 0-724.46zM832.83 832.828a453.507 453.507 0 1 1 0-641.658 454.317 454.317 0 0 1 0 641.658z" p-id="6983" fill="#1296db"></path><path d="M758.791 482.532H541.468V265.21a29.468 29.468 0 0 0-58.936 0v217.323H265.21a29.468 29.468 0 0 0 0 58.936h217.323V758.79a29.468 29.468 0 0 0 58.936 0V541.468H758.79a29.468 29.468 0 0 0 0-58.936z" p-id="6984" fill="#1296db"></path></svg></a>\
                             </div>';
                             html += '<tr align="center" data-val="' + info[k].rid + '">\
@@ -1670,9 +1668,9 @@
                                             <td>' + info[k].dname + '</td>\
                                             <td>' + operate + '</td>\
                                         </tr>\
-                                        <tr class="dataDrug" id="info_'+info[k].rid+'" data="'+$('.contnitem').eq(0).text() + '_' + $('#timeDate').text() + '_' + $('.contnitem').eq(1).text() + '_' + $('.contnitem').eq(2).text() + '_' + $('#pill').text() + '_' + $('#itemp2 span').text() + '_' + $('#contnitem').text() + '|'+'">\
-                                            <td colspan="8" style="padding: .2rem 0;" class="userids" ids="'+info[k].rid+'">\
-                                                — 用法用量：<span id="mfrequncy_'+info[k].rid+'">'+info[k].data1+'</span>，<span id="each_dose_'+info[k].rid+'">'+info[k].data2+'</span>  <span class="sadit" onclick="getDrugDetails(this,'+info[k].rid+','+pnid+')">修改用量</span>\
+                                        <tr id="info_'+info[k].id+'">\
+                                            <td colspan="8" style="padding: .2rem 0;" class="userids" ids="'+info[k].id+'">\
+                                                — 用法用量：<span id="mfrequncy_'+info[k].id+'">'+info[k].data1+'</span>，<span id="each_dose_'+info[k].id+'">'+info[k].data2+'</span>  <span class="sadit" onclick="getDrugDetails(this,'+info[k].rid+')">修改用量</span>\
                                             </td></tr>';
                         }
                         $('#title').val(info[k].title);

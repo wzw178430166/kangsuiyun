@@ -76,11 +76,12 @@
         .conten_con .cotent_con_left {
                 width: 50%;
                 border: 1px solid #e4e4e4;
-                height: 90vh;
+                height: 50vh;
                 border-bottom-left-radius: .1rem;
                 border-bottom-right-radius: .1rem;
-                overflow: auto;
+                overflow: hidden;
                 order: 2;
+                flex: 1;
         }
 
         .lines {
@@ -117,6 +118,10 @@
 
         #menu {
             background: #fff;
+    position: fixed;
+    z-index: 6;
+    width:39.4%;
+    overflow: hidden;
         }
 
         #menu ul {
@@ -184,7 +189,7 @@
         }
 
         .henline {
-            height: .3rem;
+            height: 1.3rem;
             background: #ffffff;
         }
 
@@ -584,7 +589,7 @@
 }
 .contend_box{width: 100%;display:flex;justify-content: space-between;}
 .content_div .contnts {
-    height: 2.5rem;width: 85%;
+    height: 4.5rem;width: 85%;
     overflow: scroll;
     border-bottom: 1px solid #ccc;
 }
@@ -798,309 +803,10 @@
             <div class="h8vh"></div>
             <div style="width:auto;margin:auto;">
                 <div class="conten_con">
-                    <div class="cotent_con_left">
-
-                        <div id="menu">
-                            <ul>
-                                <li class="on">
-                                    <svg style="width: 30px;height: 30px;" t="1607496747404" class="icon" viewBox="0 0 1024 1024" version="1.1"
-                                        xmlns="http://www.w3.org/2000/svg" p-id="5343" width="48" height="48">
-                                        <path
-                                            d="M263.571954 407.950226l141.236722 0 0 27.750017-141.236722 0L263.571954 407.950226 263.571954 407.950226zM263.571954 407.950226"
-                                            p-id="5344" fill="#8a8a8a"></path>
-                                        <path
-                                            d="M207.519334 463.453331l309.346487 0 0 28.900214L207.519334 492.353544 207.519334 463.453331 207.519334 463.453331zM207.519334 463.453331"
-                                            p-id="5345" fill="#8a8a8a"></path>
-                                        <path
-                                            d="M179.220824 520.362458l253.208932 0 0 27.753087-253.208932 0L179.220824 520.362458 179.220824 520.362458zM179.220824 520.362458"
-                                            p-id="5346" fill="#8a8a8a"></path>
-                                        <path
-                                            d="M179.113377 577.019853l112.651686 0 0 27.753087-112.651686 0L179.113377 577.019853 179.113377 577.019853zM179.113377 577.019853"
-                                            p-id="5347" fill="#8a8a8a"></path>
-                                        <path
-                                            d="M179.113377 633.381511l84.015486 0 0 28.02938-84.015486 0L179.113377 633.381511 179.113377 633.381511zM179.113377 633.381511"
-                                            p-id="5348" fill="#8a8a8a"></path>
-                                        <path
-                                            d="M179.193195 745.813187l84.523045 0 0 27.757181-84.523045 0L179.193195 745.813187 179.193195 745.813187zM179.193195 745.813187"
-                                            p-id="5349" fill="#8a8a8a"></path>
-                                        <path
-                                            d="M179.113377 689.767729l84.015486 0 0 28.048823-84.015486 0L179.113377 689.767729 179.113377 689.767729zM179.113377 689.767729"
-                                            p-id="5350" fill="#8a8a8a"></path>
-                                        <path
-                                            d="M550.752606 821.921585l-387.779837 0 0-450.686563 28.192086 0 28.193109 0 338.28661 0 0 131.47745c16.545838-16.000416 35.55682-29.463032 56.409754-39.767725l0-148.291394-394.696364 0 0-56.385195 56.386218 0 28.192086 0 366.504278 0 0 185.707562c9.208732-1.77032 18.618033-2.975774 28.192086-3.577478L698.632631 230.075049l-394.696364 0 0-56.386218 451.082582 0 0 270.235724c9.631358 1.839905 19.043728 4.293793 28.193109 7.328919l0-305.755706-507.467777 0 0 84.578304-84.579327 0 0 84.578304-84.578304 0L106.58655 878.503255l507.467777 0 0-11.781324C590.237899 855.749018 568.809867 840.485383 550.752606 821.921585z"
-                                            p-id="5351" fill="#8a8a8a"></path>
-                                        <path
-                                            d="M495.219825 716.91195c-2.681062-11.555174-4.436032-23.463388-5.212722-35.638685l-15.660678-4.006244-23.240307-44.301995-23.240307 44.301995-47.239907 12.084223 32.905434 34.384112-4.712325 50.194192 42.287105-21.473057 42.287105 21.473057-4.701069-50.194192L495.219825 716.91195z"
-                                            p-id="5352" fill="#8a8a8a"></path>
-                                        <path
-                                            d="M725.195613 461.901998c-115.207905 0-208.601992 93.39511-208.601992 208.601992s93.394087 208.601992 208.601992 208.601992c115.206882 0 208.601992-93.39511 208.601992-208.601992S840.402495 461.901998 725.195613 461.901998zM814.381865 640.053468 814.381865 640.053468c-6.828522 6.328126-14.569834 13.768585-23.016203 22.112624-8.450463 8.442276-17.196661 16.986883-26.13524 25.527396-8.839319 8.642844-17.496489 17.191544-25.724895 25.53149-8.240685 8.446369-15.59621 15.579837-22.018479 21.509896-3.114944 3.624551-7.945973 5.53711-14.376429 5.734608-6.426363 0.200568-11.458983-1.413186-15.07944-5.121648-3.713578-3.124154-8.04728-7.346315-13.066597-12.56313-5.027503-5.232165-10.060123-10.564613-15.181771-15.990183-5.019317-5.433756-9.841136-10.559497-14.368242-15.274892-4.617158-4.817726-8.240685-8.745175-10.949376-11.972683-8.745175-9.54233-9.653871-17.881253-2.815115-25.223474l3.418866-3.016707c1.912559-1.604544 3.713578-3.409656 5.519714-5.421476 1.818415-2.118244 3.623527-3.928472 5.536087-5.429663l3.419889-3.110851c3.610224-3.225461 7.230682-4.432962 10.649548-3.721765 3.414773 0.696872 6.529717 2.109034 9.238408 4.428869 1.420349 1.291412 3.526313 3.704368 6.541997 7.123234l9.247618 10.564613c3.213181 3.611248 6.336312 7.020904 9.344832 10.247388l6.439666 6.731308c2.305509 3.225461 5.425569 4.419659 9.348925 3.821025 3.816932-0.693802 7.436366-2.610454 10.650571-5.818519 9.151427-9.05012 18.904559-18.60473 29.150924-28.557406 10.350742-10.045797 20.697391-20.200064 31.260981-30.65723 4.115738-4.120854 8.236592-7.338129 12.365632-9.546424 4.112668-2.310625 8.433066-1.805112 13.068643 1.305739 0.902556 0.512676 3.114944 2.511193 6.53381 6.134721l6.53381 6.833639c3.607154 3.619434 4.317329 7.740288 2.006703 12.254092C819.619146 633.028471 817.102836 636.93443 814.381865 640.053468L814.381865 640.053468z"
-                                            p-id="5353" fill="#8a8a8a"></path>
-                                    </svg>
-                                    <span>处方信息</span>
-                                    <p></p>
-                                </li>
-                                <li>
-                                    <svg style="width: 25px;height: 25px;" t="1608260311389" class="icon" viewBox="0 0 1118 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1473" width="32" height="32"><path d="M581.818182 187.671273 581.818182 528.290909 824.366545 671.232 847.965091 631.156364 628.363636 500.549818 628.363636 187.671273Z" p-id="1474" fill="#8a8a8a"></path><path d="M202.053818 744.96 149.038545 744.96C233.797818 910.615273 406.202182 1024 605.090909 1024c282.763636 0 512-229.236364 512-512 0-282.763636-229.236364-512-512-512C354.117818 0 145.314909 180.596364 101.515636 418.909091L0 418.909091l116.363636 139.636364L232.727273 418.909091 148.945455 418.909091C192.093091 206.475636 379.904 46.545455 605.090909 46.545455c257.070545 0 465.454545 208.384 465.454545 465.454545s-208.384 465.454545-465.454545 465.454545C432.919273 977.454545 282.530909 883.944727 202.053818 744.96z" p-id="1475" fill="#8a8a8a"></path></svg>
-                                    <span>药品添加</span>
-                                    <p></p>
-                                </li>
-                            </ul>
-                            <div class="clear"></div>
-                        </div>
-                        <div class="henline"></div>
-                        <div id="tab-con">
-                            <div class="tab_itemst on"> 
-                                <div class="tcontbox">
-                                    <!-- <span class="symptom" id="symptom">点击补充症状</span> -->
-                                    <div class="topBox">
-                                        <div style="margin-top: .45rem">处方单名称</div>
-                                        <input tyle="text" placeholder="请输入处方单名称" id="title">
-                                    </div>
-                                    <div class="topBox">
-                                        <div style="margin-top: .45rem">临床诊断</div>
-                                        <input tyle="text" placeholder="请输入临床诊断" id="rpText">
-                                    </div>
-                                </div>    
-                                <div class="itemdiv" id="conteded">
-                                    <p class="itemplected">
-                                        <span class="float-left">常见病</span>
-                                        <span id="cancel">确定</span> 
-                                    </p>
-                                    <div class="m_dit" style="display:block;">
-                                        <div>高血压</div>
-                                        <div>二型糖尿病</div>
-                                        <div>一型糖尿病</div>
-                                        <div>哮喘</div>
-                                        <div>冠心病</div>
-                                        <div>心悸</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab_itemst">
-                                <div class="query-module" id="m-serrch">
-                                    <div class="query-form">
-                                      <div class="form-item"> <font>药品编号</font>
-                                        <div class="element">
-                                          <div class="element-text">
-                                            <input type="text" id="k" value="">
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="form-item"> <font>药品名称</font>
-                                        <div class="element">
-                                          <div class="element-text">
-                                            <input type="text" id="amount" value="">
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="form-item">
-                                        <div class="query-btn">
-                                            <div class="btn-item"> <a class="btn-sais" id="J_query" style="padding-left: 15px;">
-                                              <svg style="width:20px;height:20px;vertical-align: middle;" t="1607394598323" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2669" width="48" height="48"><path d="M874.666667 814.933333l-209.066667-209.066666C704 554.666667 725.333333 494.933333 725.333333 426.666667c0-166.4-132.266667-298.666667-298.666666-298.666667s-298.666667 132.266667-298.666667 298.666667 132.266667 298.666667 298.666667 298.666666c68.266667 0 128-21.333333 179.2-59.733333l209.066666 209.066667c17.066667 17.066667 42.666667 17.066667 59.733334 0s17.066667-42.666667 0-59.733334zM426.666667 640c-119.466667 0-213.333333-93.866667-213.333334-213.333333s93.866667-213.333333 213.333334-213.333334 213.333333 93.866667 213.333333 213.333334-93.866667 213.333333-213.333333 213.333333z" fill="#ffffff" p-id="2670"></path></svg>
-                                              搜索
-                                              </a> 
-                                          </div>
-                                          </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                <div class="data-content" id="tb-drugslist">
-                                    <div class="tb-container"  style="height: 300px;overflow: auto;" id="tb-containers3">
-                                        <table class="table" id="rstb">
-                                            <caption class="caption">药品列表</caption>
-                                            <thead>
-                                                <tr align="center">
-                                                   <th><strong class="tb-head cell-orderid" data-val="orderid">药品编码</strong></th>
-                                                   <th><strong class="tb-head cell-username" data-val="username">类型</strong></th>
-                                                   <th><strong class="tb-head cell-product" data-val="product">名称</strong></th>
-                                                   <th><strong class="tb-head cell-amount" data-val="amount">通用名称</strong></th>
-                                                   <th><strong class="tb-head cell-pay_channel" data-val="pay_channel">价格</strong></th>
-                                                   <th><strong class="tb-head cell-pay_amount" data-val="pay_amount">规格</strong></th>
-                                                   <th><strong class="tb-head cell-status" data-val="status">生产厂家</strong></th>
-                                                   <th><strong class="tb-head cell-operate" data-val="operate">操作</strong></th>
-                                               </tr>
-                                             </thead>
-                                           <tbody id="datas" data-page="2" data-loaded="0">
-                                              <!-- <tr align="center">
-                                                  <td>1113454654654</td>
-                                                  <td>张三</td>
-                                                  <td>2020-02-03</td>
-                                                  <td>2</td>
-                                                  <td>233.5</td>
-                                                  <td>张主卧</td>
-                                                  <td>春雨</td>
-                                                  <td>
-                                                    <a href="#" class="mt_tdaz"><img src="/pharmacy/images/jiahoass.png"></a>
-                                                  </td>
-                                              </tr> -->
-                                           </tbody>
-                                        </table>
-                                    </div>
-                                  </div>   
-                                 <div class="cont_donet" id="cont_donet" style="display: none;height: 41vh;overflow: auto;margin: 0;padding: 0;">
-                                  <div class="content_div">
-                                    <div class="contemt_botx">
-                                        <p class="content_title">贝前列素钠片（国产） 20ug*10片/盒</p>
-                                        <span class="content_baocim" id="sendf">保存</span>
-                                    </div>
-                                 
-
-                                    <p class="content_sub">深圳万乐药业有限公司</p>
-                                    <div class="contend_box">
-                                        <div class="contnts">
-                                            <p class="content_instruction">
-                                                下列情况禁用
-    　　1.妊娠或可能妊娠的妇女禁服本品（有关妊娠期间用药的安全性尚未确定）。
-    　　2.出血的患者（如血友病、毛细血管脆弱症、上消化道出血、尿路出血、咯血、眼底出血等患者服用本品可能导致出血增加）。
-                                            </p>
-                                        </div>
-                                        <div class="quxiao" id="quxiaos">取消</div>
-                                    </div>
-                                  
-                                </div>
-                                <div class="content_div">
-                                    <p class="conteTitle">用量/数量</p>
-                                    <!-- <div class="content_usage">
-                                        <div>每日</div>
-                                        <div class="cotNumeer"> <i class="icon_reduce"></i> <span class="contnitem">1</span> <i class="icon_plus"></i>
-                                        </div>
-                                        <div>次</div>
-                                    </div> -->
-                                    <div class="content_usage">
-                                        <div>每</div>
-                                        <div class="cotNumeer"> <i class="icon_reduce"></i> <span class="contnitem" style="width: 1rem;">2</span> <i class="icon_plus"></i>
-                                        </div>
-                                        <div class="contSelect" id="itemp5" style="margin: 0 .2rem;text-align: left;padding-left: .4rem;">
-                                            <span id="timeDate">小时</span>
-                                            <img src="https://lxj.yjxun.cn/drug/images/lower.svg" alt="" class="contImgae" id="cont1">
-                                        </div>
-                                        <div class="cotNumeer" style="margin-right: .5rem;"> <i class="icon_reduce"></i> <span class="contnitem" style="width: 1rem;">2</span> <i class="icon_plus"></i>
-                                        </div>
-                                        <div>次</div>
-                                    </div>
-                                    <div class="content_usage">
-                                        <div>每次</div>
-                                        <div class="cotNumeer"> <i class="icon_reduce"></i> <span class="contnitem">1</span> <i class="icon_plus"></i>
-                                        </div>
-                                        <div class="contSelect" id="itemp1"> <span id="pill">片</span> <img src="https://lxj.yjxun.cn/drug/images/lower.svg" alt="" class="contImgae"
-                                             id="cont1"> </div>
-                                    </div>
-                                </div>
-                            
-                                <div class="content_div">
-                                    <p class="conteTitle">用法</p>
-                                    <div class="content_usage">
-                                        <div class="contSelect conttext" id="itemp2"> <span>饭前口服</span> <img src="https://lxj.yjxun.cn/drug/images/lower.svg" alt="" class="contImgae"
-                                             id="cont2"> </div>
-                                    </div>
-                                </div>
-                            
-                                <div class="content_div">
-                                    <p class="conteTitle">药品数量</p>
-                                    <div class="content_usage">
-                                        <div>数量</div>
-                                        <div class="cotNumeer"> <i class="icon_reduce"></i> <span class="contnitem" id="contnitem">1</span> <i class="icon_plus"></i>
-                                        </div>
-                                        <!-- <div class="contSelect"> <span>盒</span> </div> -->
-                                    </div>
-                                </div>
-                                <!--<div class="content_div">
-                                    <p class="conteTitle">用药周期<span>非必须,可辅助计算药品数量</span> </p>
-                                    <div class="content_usage">
-                                        <div class="contSelect conttxt" id="itemp3"> <span id="conseltext">未选择</span> <img src="https://lxj.yjxun.cn/drug/images/lower.svg" alt=""
-                                             class="contImgae" id="cont3"> </div>
-                                    </div>
-                                 </div>-->
-                            </div>
-
-                                <!-- <p class="Preservation" onClick="Preservation()">保存</p> -->
-                                <div id="itemselect">
-                                    <div class="itemdiv">
-                                        <p class="itemplected"><span id="cancel">取消</span> </p>
-                                        <div class="m_dit">
-                                            <div class="contstyle">片</div>
-                                            <div>粒</div>
-                                            <div>支</div>
-                                            <div>包</div>
-                                            <div>块</div>
-                                            <div>枚</div>
-                                            <div>丸</div>
-                                            <div>袋</div>
-                                            <div>滴</div>
-                                            <div>喷</div>
-                                            <div>瓶</div>
-                                            <div>贴</div>
-                                            <div>毫升</div>
-                                        </div>
-                                        <div class="itemplbtn">
-                                            <!-- <div>自定义</div> -->
-                                            <div id="preservation" style="width: 98%;">保存</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="itemselect3" style="display: none;">
-                                    <div class="itemdiv">
-                                        <p class="itemplected"><span id="cancel">取消</span> </p>
-                                        <div class="m_dit m_ditBoxNew2">
-                                            <div class="contstyle">小时</div>
-                                            <div>日</div>
-                                            <div>周</div>
-                                            <div>月</div>
-                                            <div>季度</div>
-                                            <div>年</div>
-                                        </div>
-                                        <div class="itemplbtn">
-                                            <!-- <div>自定义</div> -->
-                                            <div id="preservation" style="width: 98%;">保存</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="afterMeal">
-                                    <div class="itemdiv">
-                                        <p class="itemplected"><span id="cancel">取消</span> </p>
-                                        <div class="m_dit">
-                                            <div class="contstyle">饭前口服</div>
-                                            <div>饭后口服</div>
-                                            <div>参中口服</div>
-                                            <div>空腹口服</div>
-                                            <div>需要时外用</div>
-                                            <div>睡前外用</div>
-                                        </div>
-                                        <div class="itemplbtn">
-                                            <!-- <div>自定义</div> -->
-                                            <div id="preservation" style="width: 98%;">保存</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="cycle">
-                                    <div class="itemdiv">
-                                        <p class="itemplected"><span id="cancel">取消</span> </p>
-                                        <div class="m_dit" data-item="0">
-                                            <div class_="contstyle">每日1次</div>
-                                            <div>每日2次</div>
-                                            <div>每日3次</div>
-                                            <div>每日4次</div>
-                                            <div>隔日1次</div>
-                                            <div>每周1次</div>
-                                            <div>每周2次</div>
-                                            <div>每小时1次</div>
-                                            <div>每2小时1次</div>
-                                            <div>每3小时1次</div>
-                                        </div>
-                                        <div class="itemplbtn">
-                                            <!-- <div>自定义</div> -->
-                                            <div id="preservation" style="width: 98%;">保存</div>
-                                        </div>
-                                    </div>
-                                </div>  
-                            
-                            </div>
-                        </div>
-                    </div>
                     <div class="cotent_con_right">
                         <div class="conb_br">
-                            <div class="data-content" id="tb-containers4">
-                                <div class="tb-container" style="height: 43vh;overflow: auto;">
+                            <div class="data-content" id="tb-containers4" style="display: flex;">
+                                <div class="tb-container" style="height: 50vh;overflow: auto;flex: 1;">
                                     <table class="table" id="rstb">
                                         <caption class="caption">处方模板 <span id="m-history" style="float: right;font-size: .25rem;padding-right: .5rem;cursor: pointer;">历史处方单</span></caption>
                                         <thead>
@@ -1124,12 +830,237 @@
                                         </tbody>
                                     </table>
                                 </div>
+                                <div class="cotent_con_left">
+
+                                    <div id="menu">
+                                        <ul>
+                                            <li class="on">
+                                                <svg style="width: 30px;height: 30px;" t="1607496747404" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                                    xmlns="http://www.w3.org/2000/svg" p-id="5343" width="48" height="48">
+                                                    <path
+                                                        d="M263.571954 407.950226l141.236722 0 0 27.750017-141.236722 0L263.571954 407.950226 263.571954 407.950226zM263.571954 407.950226"
+                                                        p-id="5344" fill="#8a8a8a"></path>
+                                                    <path
+                                                        d="M207.519334 463.453331l309.346487 0 0 28.900214L207.519334 492.353544 207.519334 463.453331 207.519334 463.453331zM207.519334 463.453331"
+                                                        p-id="5345" fill="#8a8a8a"></path>
+                                                    <path
+                                                        d="M179.220824 520.362458l253.208932 0 0 27.753087-253.208932 0L179.220824 520.362458 179.220824 520.362458zM179.220824 520.362458"
+                                                        p-id="5346" fill="#8a8a8a"></path>
+                                                    <path
+                                                        d="M179.113377 577.019853l112.651686 0 0 27.753087-112.651686 0L179.113377 577.019853 179.113377 577.019853zM179.113377 577.019853"
+                                                        p-id="5347" fill="#8a8a8a"></path>
+                                                    <path
+                                                        d="M179.113377 633.381511l84.015486 0 0 28.02938-84.015486 0L179.113377 633.381511 179.113377 633.381511zM179.113377 633.381511"
+                                                        p-id="5348" fill="#8a8a8a"></path>
+                                                    <path
+                                                        d="M179.193195 745.813187l84.523045 0 0 27.757181-84.523045 0L179.193195 745.813187 179.193195 745.813187zM179.193195 745.813187"
+                                                        p-id="5349" fill="#8a8a8a"></path>
+                                                    <path
+                                                        d="M179.113377 689.767729l84.015486 0 0 28.048823-84.015486 0L179.113377 689.767729 179.113377 689.767729zM179.113377 689.767729"
+                                                        p-id="5350" fill="#8a8a8a"></path>
+                                                    <path
+                                                        d="M550.752606 821.921585l-387.779837 0 0-450.686563 28.192086 0 28.193109 0 338.28661 0 0 131.47745c16.545838-16.000416 35.55682-29.463032 56.409754-39.767725l0-148.291394-394.696364 0 0-56.385195 56.386218 0 28.192086 0 366.504278 0 0 185.707562c9.208732-1.77032 18.618033-2.975774 28.192086-3.577478L698.632631 230.075049l-394.696364 0 0-56.386218 451.082582 0 0 270.235724c9.631358 1.839905 19.043728 4.293793 28.193109 7.328919l0-305.755706-507.467777 0 0 84.578304-84.579327 0 0 84.578304-84.578304 0L106.58655 878.503255l507.467777 0 0-11.781324C590.237899 855.749018 568.809867 840.485383 550.752606 821.921585z"
+                                                        p-id="5351" fill="#8a8a8a"></path>
+                                                    <path
+                                                        d="M495.219825 716.91195c-2.681062-11.555174-4.436032-23.463388-5.212722-35.638685l-15.660678-4.006244-23.240307-44.301995-23.240307 44.301995-47.239907 12.084223 32.905434 34.384112-4.712325 50.194192 42.287105-21.473057 42.287105 21.473057-4.701069-50.194192L495.219825 716.91195z"
+                                                        p-id="5352" fill="#8a8a8a"></path>
+                                                    <path
+                                                        d="M725.195613 461.901998c-115.207905 0-208.601992 93.39511-208.601992 208.601992s93.394087 208.601992 208.601992 208.601992c115.206882 0 208.601992-93.39511 208.601992-208.601992S840.402495 461.901998 725.195613 461.901998zM814.381865 640.053468 814.381865 640.053468c-6.828522 6.328126-14.569834 13.768585-23.016203 22.112624-8.450463 8.442276-17.196661 16.986883-26.13524 25.527396-8.839319 8.642844-17.496489 17.191544-25.724895 25.53149-8.240685 8.446369-15.59621 15.579837-22.018479 21.509896-3.114944 3.624551-7.945973 5.53711-14.376429 5.734608-6.426363 0.200568-11.458983-1.413186-15.07944-5.121648-3.713578-3.124154-8.04728-7.346315-13.066597-12.56313-5.027503-5.232165-10.060123-10.564613-15.181771-15.990183-5.019317-5.433756-9.841136-10.559497-14.368242-15.274892-4.617158-4.817726-8.240685-8.745175-10.949376-11.972683-8.745175-9.54233-9.653871-17.881253-2.815115-25.223474l3.418866-3.016707c1.912559-1.604544 3.713578-3.409656 5.519714-5.421476 1.818415-2.118244 3.623527-3.928472 5.536087-5.429663l3.419889-3.110851c3.610224-3.225461 7.230682-4.432962 10.649548-3.721765 3.414773 0.696872 6.529717 2.109034 9.238408 4.428869 1.420349 1.291412 3.526313 3.704368 6.541997 7.123234l9.247618 10.564613c3.213181 3.611248 6.336312 7.020904 9.344832 10.247388l6.439666 6.731308c2.305509 3.225461 5.425569 4.419659 9.348925 3.821025 3.816932-0.693802 7.436366-2.610454 10.650571-5.818519 9.151427-9.05012 18.904559-18.60473 29.150924-28.557406 10.350742-10.045797 20.697391-20.200064 31.260981-30.65723 4.115738-4.120854 8.236592-7.338129 12.365632-9.546424 4.112668-2.310625 8.433066-1.805112 13.068643 1.305739 0.902556 0.512676 3.114944 2.511193 6.53381 6.134721l6.53381 6.833639c3.607154 3.619434 4.317329 7.740288 2.006703 12.254092C819.619146 633.028471 817.102836 636.93443 814.381865 640.053468L814.381865 640.053468z"
+                                                        p-id="5353" fill="#8a8a8a"></path>
+                                                </svg>
+                                                <span>处方信息</span>
+                                                <p></p>
+                                            </li>
+                                            <li>
+                                                <svg style="width: 25px;height: 25px;" t="1608260311389" class="icon" viewBox="0 0 1118 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1473" width="32" height="32"><path d="M581.818182 187.671273 581.818182 528.290909 824.366545 671.232 847.965091 631.156364 628.363636 500.549818 628.363636 187.671273Z" p-id="1474" fill="#8a8a8a"></path><path d="M202.053818 744.96 149.038545 744.96C233.797818 910.615273 406.202182 1024 605.090909 1024c282.763636 0 512-229.236364 512-512 0-282.763636-229.236364-512-512-512C354.117818 0 145.314909 180.596364 101.515636 418.909091L0 418.909091l116.363636 139.636364L232.727273 418.909091 148.945455 418.909091C192.093091 206.475636 379.904 46.545455 605.090909 46.545455c257.070545 0 465.454545 208.384 465.454545 465.454545s-208.384 465.454545-465.454545 465.454545C432.919273 977.454545 282.530909 883.944727 202.053818 744.96z" p-id="1475" fill="#8a8a8a"></path></svg>
+                                                <span>药品添加</span>
+                                                <p></p>
+                                            </li>
+                                        </ul>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="henline"></div>
+                                    <div id="tab-con" style="overflow: auto;height: 100%;">
+                                        <div class="tab_itemst on"> 
+                                            <div class="tcontbox">
+                                                <!-- <span class="symptom" id="symptom">点击补充症状</span> -->
+                                                <div class="topBox">
+                                                    <div style="margin-top: .45rem">处方单名称</div>
+                                                    <input tyle="text" placeholder="请输入处方单名称" id="title">
+                                                </div>
+                                                <div class="topBox">
+                                                    <div style="margin-top: .45rem">临床诊断</div>
+                                                    <input tyle="text" placeholder="请输入临床诊断" id="rpText">
+                                                </div>
+                                            </div>    
+                                            <div class="itemdiv" id="conteded">
+                                                <p class="itemplected">
+                                                    <span class="float-left">常见病</span>
+                                                    <span id="cancel">确定</span> 
+                                                </p>
+                                                <div class="m_dit" style="display:block;">
+                                                    <div>高血压</div>
+                                                    <div>二型糖尿病</div>
+                                                    <div>一型糖尿病</div>
+                                                    <div>哮喘</div>
+                                                    <div>冠心病</div>
+                                                    <div>心悸</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab_itemst">
+                                            <div class="query-module" id="m-serrch">
+                                                <div class="query-form">
+                                                  <div class="form-item"> <font>药品编号</font>
+                                                    <div class="element">
+                                                      <div class="element-text">
+                                                        <input type="text" id="k" value="">
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="form-item"> <font>药品名称</font>
+                                                    <div class="element">
+                                                      <div class="element-text">
+                                                        <input type="text" id="amount" value="">
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="form-item">
+                                                    <div class="query-btn">
+                                                        <div class="btn-item"> <a class="btn-sais" id="J_query" style="padding-left: 15px;">
+                                                          <svg style="width:20px;height:20px;vertical-align: middle;" t="1607394598323" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2669" width="48" height="48"><path d="M874.666667 814.933333l-209.066667-209.066666C704 554.666667 725.333333 494.933333 725.333333 426.666667c0-166.4-132.266667-298.666667-298.666666-298.666667s-298.666667 132.266667-298.666667 298.666667 132.266667 298.666667 298.666667 298.666666c68.266667 0 128-21.333333 179.2-59.733333l209.066666 209.066667c17.066667 17.066667 42.666667 17.066667 59.733334 0s17.066667-42.666667 0-59.733334zM426.666667 640c-119.466667 0-213.333333-93.866667-213.333334-213.333333s93.866667-213.333333 213.333334-213.333334 213.333333 93.866667 213.333333 213.333334-93.866667 213.333333-213.333333 213.333333z" fill="#ffffff" p-id="2670"></path></svg>
+                                                          搜索
+                                                          </a> 
+                                                      </div>
+                                                      </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            <div class="data-content" id="tb-drugslist">
+                                                <div class="tb-container"  style="height: 365px;overflow: auto;" id="tb-containers3">
+                                                    <table class="table" id="rstb">
+                                                        <caption class="caption">药品列表</caption>
+                                                        <thead>
+                                                            <tr align="center">
+                                                               <th><strong class="tb-head cell-orderid" data-val="orderid">药品编码</strong></th>
+                                                               <th><strong class="tb-head cell-username" data-val="username">类型</strong></th>
+                                                               <th><strong class="tb-head cell-product" data-val="product">名称</strong></th>
+                                                               <th><strong class="tb-head cell-amount" data-val="amount">通用名称</strong></th>
+                                                               <th><strong class="tb-head cell-pay_channel" data-val="pay_channel">价格</strong></th>
+                                                               <th><strong class="tb-head cell-pay_amount" data-val="pay_amount">规格</strong></th>
+                                                               <th><strong class="tb-head cell-status" data-val="status">生产厂家</strong></th>
+                                                               <th><strong class="tb-head cell-operate" data-val="operate">操作</strong></th>
+                                                           </tr>
+                                                         </thead>
+                                                       <tbody id="datas" data-page="2" data-loaded="0">
+                                                          <!-- <tr align="center">
+                                                              <td>1113454654654</td>
+                                                              <td>张三</td>
+                                                              <td>2020-02-03</td>
+                                                              <td>2</td>
+                                                              <td>233.5</td>
+                                                              <td>张主卧</td>
+                                                              <td>春雨</td>
+                                                              <td>
+                                                                <a href="#" class="mt_tdaz"><img src="/pharmacy/images/jiahoass.png"></a>
+                                                              </td>
+                                                          </tr> -->
+                                                       </tbody>
+                                                    </table>
+                                                </div>
+                                              </div>   
+                                    
+            
+                                            <!-- <p class="Preservation" onClick="Preservation()">保存</p> -->
+                                            <div id="itemselect">
+                                                <div class="itemdiv">
+                                                    <p class="itemplected"><span id="cancel">取消</span> </p>
+                                                    <div class="m_dit">
+                                                        <div class="contstyle">片</div>
+                                                        <div>粒</div>
+                                                        <div>支</div>
+                                                        <div>包</div>
+                                                        <div>块</div>
+                                                        <div>枚</div>
+                                                        <div>丸</div>
+                                                        <div>袋</div>
+                                                        <div>滴</div>
+                                                        <div>喷</div>
+                                                        <div>瓶</div>
+                                                        <div>贴</div>
+                                                        <div>毫升</div>
+                                                    </div>
+                                                    <div class="itemplbtn">
+                                                        <!-- <div>自定义</div> -->
+                                                        <div id="preservation" style="width: 98%;">保存</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="itemselect3" style="display: none;">
+                                                <div class="itemdiv">
+                                                    <p class="itemplected"><span id="cancel">取消</span> </p>
+                                                    <div class="m_dit m_ditBoxNew2">
+                                                        <div class="contstyle">小时</div>
+                                                        <div>日</div>
+                                                        <div>周</div>
+                                                        <div>月</div>
+                                                        <div>季度</div>
+                                                        <div>年</div>
+                                                    </div>
+                                                    <div class="itemplbtn">
+                                                        <!-- <div>自定义</div> -->
+                                                        <div id="preservation" style="width: 98%;">保存</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="afterMeal">
+                                                <div class="itemdiv">
+                                                    <p class="itemplected"><span id="cancel">取消</span> </p>
+                                                    <div class="m_dit">
+                                                        <div class="contstyle">饭前口服</div>
+                                                        <div>饭后口服</div>
+                                                        <div>参中口服</div>
+                                                        <div>空腹口服</div>
+                                                        <div>需要时外用</div>
+                                                        <div>睡前外用</div>
+                                                    </div>
+                                                    <div class="itemplbtn">
+                                                        <!-- <div>自定义</div> -->
+                                                        <div id="preservation" style="width: 98%;">保存</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="cycle">
+                                                <div class="itemdiv">
+                                                    <p class="itemplected"><span id="cancel">取消</span> </p>
+                                                    <div class="m_dit" data-item="0">
+                                                        <div class_="contstyle">每日1次</div>
+                                                        <div>每日2次</div>
+                                                        <div>每日3次</div>
+                                                        <div>每日4次</div>
+                                                        <div>隔日1次</div>
+                                                        <div>每周1次</div>
+                                                        <div>每周2次</div>
+                                                        <div>每小时1次</div>
+                                                        <div>每2小时1次</div>
+                                                        <div>每3小时1次</div>
+                                                    </div>
+                                                    <div class="itemplbtn">
+                                                        <!-- <div>自定义</div> -->
+                                                        <div id="preservation" style="width: 98%;">保存</div>
+                                                    </div>
+                                                </div>
+                                            </div>  
+                                        
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
 
                             <div class="data-content-box"  id="tb-containers">
                             <div class="data-content" style="box-shadow: 0px 1px 3px 1px transparent;width: 100%;padding: 0;margin: 0;">
-                                <div class="tb-container" style="height: 37.5vh; overflow: auto; ">
+                                <div class="tb-container" style="height:30.5vh; overflow: auto; ">
                                     <table class="table">
                                         <caption class="caption">处方列表</caption>
                                         <thead>
@@ -1168,9 +1099,89 @@
                                 <div class="inner-page" id="innerPage"></div>
                               </div>
                               <div class="btn_qim" id="J_sure">
-                                发送并签注处方
+                                确认并签注处方
                             </div>
                             </div>
+
+                            <div class="cont_donet" id="cont_donet" style="display: none;height: 37vh;overflow: auto;margin: 0;padding: 0;display:flex;">
+                          
+                            <div style="flex:1;">
+                                <div class="content_div">
+                                    <div class="contemt_botx">
+                                        <p class="content_title">贝前列素钠片（国产） 20ug*10片/盒</p>
+                                        <span class="content_baocim" id="sendf">保存</span>
+                                    </div>
+                                 
+  
+                                    <p class="content_sub">深圳万乐药业有限公司</p>
+                                    <div class="contend_box">
+                                        <div class="contnts">
+                                            <p class="content_instruction">
+                                                下列情况禁用
+    　　1.妊娠或可能妊娠的妇女禁服本品（有关妊娠期间用药的安全性尚未确定）。
+    　　2.出血的患者（如血友病、毛细血管脆弱症、上消化道出血、尿路出血、咯血、眼底出血等患者服用本品可能导致出血增加）。
+                                            </p>
+                                        </div>
+                                        <div class="quxiao" id="quxiaos">取消</div>
+                                    </div>
+                                  
+                                </div>
+                            
+                            </div>    
+                            <div style="flex:1;">   
+                              <div class="content_div">
+                                  <p class="conteTitle">用量/数量</p>
+                                  <!-- <div class="content_usage">
+                                      <div>每日</div>
+                                      <div class="cotNumeer"> <i class="icon_reduce"></i> <span class="contnitem">1</span> <i class="icon_plus"></i>
+                                      </div>
+                                      <div>次</div>
+                                  </div> -->
+                                  <div class="content_usage">
+                                      <div>每</div>
+                                      <div class="cotNumeer"> <i class="icon_reduce"></i> <span class="contnitem" style="width: 1rem;" id="numId">2</span> <i class="icon_plus"></i>
+                                      </div>
+                                      <div class="contSelect" id="itemp5" style="margin: 0 .2rem;text-align: left;padding-left: .4rem;">
+                                          <span id="timeDate">小时</span>
+                                          <img src="https://lxj.yjxun.cn/drug/images/lower.svg" alt="" class="contImgae" id="cont1">
+                                      </div>
+                                      <div class="cotNumeer" style="margin-right: .5rem;"> <i class="icon_reduce"></i> <span class="contnitem" style="width: 1rem;" id="xsNum">2</span> <i class="icon_plus"></i>
+                                      </div>
+                                      <div>次</div>
+                                  </div>
+                                  <div class="content_usage">
+                                      <div>每次</div>
+                                      <div class="cotNumeer"> <i class="icon_reduce"></i> <span class="contnitem" id="mcNum">1</span> <i class="icon_plus"></i>
+                                      </div>
+                                      <div class="contSelect" id="itemp1"> <span id="pill">片</span> <img src="https://lxj.yjxun.cn/drug/images/lower.svg" alt="" class="contImgae"
+                                           id="cont1"> </div>
+                                  </div>
+                              </div>
+                              <div class="content_div">
+                                  <p class="conteTitle">用法</p>
+                                  <div class="content_usage">
+                                      <div class="contSelect conttext" id="itemp2"> <span>饭前口服</span> <img src="https://lxj.yjxun.cn/drug/images/lower.svg" alt="" class="contImgae"
+                                           id="cont2"> </div>
+                                  </div>
+                              </div>
+                              <div class="content_div">
+                                  <p class="conteTitle">药品数量</p>
+                                  <div class="content_usage">
+                                      <div>数量</div>
+                                      <div class="cotNumeer"> <i class="icon_reduce"></i> <span class="contnitem" id="contnitem">1</span> <i class="icon_plus"></i>
+                                      </div>
+                                      <!-- <div class="contSelect"> <span>盒</span> </div> -->
+                                  </div>
+                              </div>
+                              <!--<div class="content_div">
+                                  <p class="conteTitle">用药周期<span>非必须,可辅助计算药品数量</span> </p>
+                                  <div class="content_usage">
+                                      <div class="contSelect conttxt" id="itemp3"> <span id="conseltext">未选择</span> <img src="https://lxj.yjxun.cn/drug/images/lower.svg" alt=""
+                                           class="contImgae" id="cont3"> </div>
+                                  </div>
+                               </div>-->
+                            </div> 
+                          </div>
 
                             <div class="data-content" id="tb-history" style="display: none;">
                                 <div class="tb-container" style="height: 87.3vh;overflow: auto;">
@@ -1207,8 +1218,9 @@
             </div>
         </div>
     </div>
-      <!--#include file="signature.html"-->
+      <!--#include file="signature1.html"-->
     <script>
+        var pnidChar = '';
        var page = 1;
        var page1= 1;
        var lens=0;
@@ -1300,6 +1312,8 @@
             });
          
             $('#sendf').click(function(e) {
+                $('#tb-containers').fadeIn(300);
+                $('#cont_donet').hide();
                 var ids=$(this).attr('data-id');
                 Preservation(ids);
                 layer.open({
@@ -1311,6 +1325,7 @@
               });
 
             $('#quxiaos').click(function() {
+                $('#tb-containers').fadeIn(300);
                 $('#cont_donet').hide();
             });
 
@@ -1379,11 +1394,11 @@
 	
 
 		function Preservation(ids) {
-            var userdrug='每'+$('#timeDate').eq(0).text()+$('.contnitem').eq(1).text()+'次';
+            var userdrug='每'+$('#numId').text()+$('#timeDate').eq(0).text()+$('#xsNum').text()+'次';
             $('#mfrequncy_'+ids).text(userdrug);
-            var userevery= $('.contnitem').eq(2).text()+$('#pill').text();
+            var userevery= $('#mcNum').text()+$('#pill').text();
             $('#each_dose_'+ids).text('每次'+userevery);
-            $('#info_'+ids).attr('data',$('.contnitem').eq(0).text() + '_' + $('#timeDate').text() + '_' + $('.contnitem').eq(1).text() + '_' + $('.contnitem').eq(2).text() + '_' + $('#pill').text() + '_' + $('#itemp2 span').text() + '_' + $('#contnitem').text() + '|');
+            $('#info_'+ids).attr('data',$('#numId').text() + '_' + $('#timeDate').text() + '_' + $('#xsNum').text() + '_' + $('#mcNum').text() + '_' + $('#pill').text() + '_' + $('#itemp2 span').text() + '_' + $('#contnitem').text() + '|');
 		}
 
 		function getCookies(cookieName) {
@@ -1532,7 +1547,7 @@
                         }
                     }
                     $('#copydata').append(strs);
-                    getDrugDetails(this,ids);
+                   // getDrugDetails(this,ids);
                     lens=$('#copydata').children('tr').length;
                     return;
                 });
@@ -1560,6 +1575,7 @@
 
         function getDrugDetails(e,index,pnid) {
            $('#sendf').attr('data-id',index);
+            $('#tb-containers').fadeOut(300);
             $('#cont_donet').show();
 			$.ajax({
 				url: '/?m=pharmacy&c=doctor&a=getDrugDetails',
@@ -1589,11 +1605,26 @@
         
      function doForm(){
         $('#coverSignature').hide();
+        $('#coverPassword').hide();
         layer.open({
                 content: '保存成功'
                 ,skin: 'msg'
                 ,time: 2 //2秒后自动关闭
               });
+        var doid = '';
+		var dodata = '';
+		$('#copydata .dataDrug').each(function(){
+			doid += $(this).attr('id')+',';
+			dodata += $(this).attr('data');
+        })
+        $.ajax({
+				url:'/?m=pharmacy&c=doctor&a=editDrugDetails',
+				type:'POST',
+				data:'pnid='+pnidChar+'&doid='+doid+'&dodata='+dodata,
+				success:function(res){
+
+                }
+			})
     //  var data = '',
     //                 ids = '',
     //                 use='',
@@ -1645,7 +1676,10 @@
     function operates_temp(obj){
         $('.edites').each(function(){
             $(this).click(function(){
+            $('#cont_donet').hide();
+            $('#tb-containers').fadeIn(300);
             var pnid=$(this).attr('data-pnid');
+                pnidChar = pnid;
             var id=$(this).attr('data-id');
             var html='';
                 for(var i in obj){
