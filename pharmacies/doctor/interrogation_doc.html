@@ -862,9 +862,13 @@
                                     <table class="mtable" border="1" cellspacing="0">
                                         <tr>
                                             <th>身份证号：</th>
-                                            <td></td>
+                                            <td>
+                                                <span id="idcard"></span>
+                                            </td>
                                             <th>姓名：</th>
-                                            <td></td>
+                                            <td>
+                                                <span id="name"></span>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th>医保卡号：</th>
@@ -1050,13 +1054,13 @@
                                         <!-- <div class="contSelect"> <span>盒</span> </div> -->
                                     </div>
                                 </div>
-                                <div class="content_div">
+                                <!--<div class="content_div">
                                     <p class="conteTitle">用药周期<span>非必须,可辅助计算药品数量</span> </p>
                                     <div class="content_usage">
                                         <div class="contSelect conttxt" id="itemp3"> <span id="conseltext">未选择</span> <img src="https://lxj.yjxun.cn/drug/images/lower.svg" alt=""
                                              class="contImgae" id="cont3"> </div>
                                     </div>
-                                </div>
+                                </div>-->
                             </div>
 
                                 <!-- <p class="Preservation" onClick="Preservation()">保存</p> -->
@@ -1155,10 +1159,10 @@
                                        <span>性别：<span>女</span></span>
                                        <span>年龄：<span>34岁</span></span>
                                    </p>
-                                   <p class="conb_left_t_b">
+                                   <!-- <p class="conb_left_t_b">
                                     <span>牙痛</span>
                                     <span>牙髓炎</span>
-                                </p>
+                                </p> -->
                                </div> 
                             </div>
                             <div class="conb_left_video" onclick="goo('/pharmacies/doctor/video_user.html')">
@@ -1175,7 +1179,7 @@
                             </div>
                             <div class="data-content-box">
                             <div class="data-content" style="box-shadow: 0px 1px 3px 1px transparent;width: 100%;padding: 0;margin: 0;">
-                                <div class="tb-container" style="height: 37.5vh; overflow: auto; ">
+                                <div class="tb-container" style="height: 40.5vh; overflow: auto; ">
                                     <table class="table">
                                         <caption class="caption">处方列表</caption>
                                         <thead>
@@ -1229,7 +1233,7 @@
        var page = 1;
        var lens=0;
         $(function () {
-         //   getIDcard();
+          // getIDcard();
             checkLogin("golink");
             var $list = $("#menu").find("li");
             var $div = $("#tab-con").children("div");
@@ -1578,8 +1582,9 @@
 				    dname = '';
     $('#copydata .userids').each(function(e) {
 				ids = ids + $(this).attr('ids') + ',';
-                data=data+$(this).children('#mfrequncy_'+$(this).attr('ids')).text()+'_'+$(this).children('#each_dose_'+$(this).attr('ids')).text()+'|';  
-      })
+                //data=data+$(this).children('#mfrequncy_'+$(this).attr('ids')).text()+'_'+$(this).children('#each_dose_'+$(this).attr('ids')).text()+'|';
+        data += $('.contnitem').eq(0).text() + '_' + $('#timeDate').text() + '_' + $('.contnitem').eq(1).text() + '_' + $('.contnitem').eq(2).text() + '_' + $('#pill').text() + '_' + $('#itemp2 span').text() + '_' + $('#contnitem').text() + '|';
+    })
       request('/?m=pharmacy&c=doctor&a=addDrugPN','POST',{
        // dataType: 'jsonp',
         data:'ids=' + ids + '&data=' + data + '&title=' + $('#title').val() + '&pnname=' + $('#rpText').val(),
@@ -1599,13 +1604,28 @@
       });
     }  
     function getIDcard(){    
-        request('/?m=data&c=da_fun&a=lookImgCard','get',{
-        dataType: 'jsonp',
-        // + '&data=' + data + '&title=' + $('#title').val() + '&pnname=' + $('#rpText').val()+'&dname='+dname + '&ac=' + ac + '&eids=' + eids
-        success: function(res){
-           console.log(res);
-        }
-      });
+      $.ajax({
+				url: '/?m=data&c=da_fun&a=lookImgCard',
+				type: 'POST',
+				dataType: 'json',
+				success: function(res) {
+                  //  var data=JSON.parse(re);
+                
+                  console.log(res);
+                //  var idcardmsg=res.
+                 var data=res.words_result;
+                 for(var i in data){
+
+                    $('#name').text(data[i].words);
+                    console.log(i);
+                 }
+                  $('#idcard').text(res.log_id); 
+            
+
+                 
+                    
+				}
+			})
     }
     </script>
 </body>

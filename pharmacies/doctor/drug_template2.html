@@ -6,9 +6,9 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
     <link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
-    <link rel="stylesheet" type="text/css" href="/pharmacies/doctor/css/header_common.css?v=128">
-    <link rel="stylesheet" type="text/css" href="/pharmacies/doctor/css/left_.css?v=127">
-    <link rel="stylesheet" type="text/css" href="/pharmacies/doctor/css/index.css?v=128">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/doctor/css/header_common.css?v=129">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/doctor/css/left_.css?v=125">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/doctor/css/index.css?v=124">
     <link rel="stylesheet" href="/statics/dataManage/css/bootstrap.css">
     <script type="text/javascript" src="/statics/js/setFontSize.js"></script>
     <script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
@@ -69,15 +69,15 @@
         .conten_con {
             width: 100%;
             display: flex;
-            height: 91vh;
+            height: 92vh;
             overflow: hidden;
         }
 
         .conten_con .cotent_con_left {
                 width: 50%;
-                border: 1px solid #e4e4e4;
+                 border-left: 1px solid #e4e4e4;
                 height: 50vh;
-                border-bottom-left-radius: .1rem;
+                border-bottom-left-radius: 0;
                 border-bottom-right-radius: .1rem;
                 overflow: hidden;
                 order: 2;
@@ -117,10 +117,10 @@
         }
 
         #menu {
-            background: #fff;
-    position: fixed;
+    background: #fff;
+    /* position: fixed; */
     z-index: 6;
-    width:39.4%;
+    width:100%;
     overflow: hidden;
         }
 
@@ -189,7 +189,7 @@
         }
 
         .henline {
-            height: 1.3rem;
+            height: .3rem;
             background: #ffffff;
         }
 
@@ -228,12 +228,12 @@
             flex: 1;
             order: 1;
             height: 100%;
-            overflow: auto;
+            overflow: hide;
         }
 
         .conb_br {
             width: 100%;
-            /* height: 100vh; */
+            height: 92vh;
         }
      
         .conb_br .conb_left {
@@ -302,7 +302,7 @@
     background: #EC5C5C;}
     .data-content-box{
         box-shadow: 0px 1px 3px 1px #eae8e8;
-        width: 97%;
+        width: 97%;height: 38vh;
         padding: 0rem 0 .2rem .3rem;
         margin: .2rem auto;
         border-radius: .05rem;
@@ -382,7 +382,7 @@
     float: left;
     color: #000000;
     margin-left: .5rem;
-    font-size: .45rem;}
+    font-size: .38rem;}
 .m_dit {
     width: 93%;
     margin: 0 auto;
@@ -481,6 +481,7 @@
     left: 50%;
     transform: translate(-55%,70%);
 }
+
 }
 @media screen and (min-width:1680px) and (max-width:2880px){
     /* .svg-icons {
@@ -509,7 +510,7 @@
 }
 .topBox {
     width: 90%;
-    height: 2.3rem;
+    height: 1.7rem;
     margin: .3rem auto;
     border: 1px solid #EEE;
     border-radius: 3px;
@@ -523,7 +524,7 @@
     width: 80%;
     text-align: center;
     font-size: .4rem;
-    margin-top: .4rem;
+    margin-top: .2rem;
 }
 .topBox div{font-size: .3rem;}
 .query-form .form-item .element .element-text {
@@ -563,7 +564,7 @@
 
 .content_div {
     width: 90%;
-    padding-top: .2rem;
+    /* padding-top: .2rem; */
     margin: 0 auto;
 }
 
@@ -788,6 +789,12 @@
     height: 20px;
     margin: .3rem 0;
 }
+.data-content {
+    padding: 0rem .0rem 0rem .3rem!important;
+}
+.caption{
+    font-size: .38rem;
+}
     </style>
 </head>
 
@@ -806,7 +813,7 @@
                     <div class="cotent_con_right">
                         <div class="conb_br">
                             <div class="data-content" id="tb-containers4" style="display: flex;">
-                                <div class="tb-container" style="height: 50vh;overflow: auto;flex: 1;">
+                                <div class="tb-container" style="height: 49vh;overflow: auto;flex: 1;">
                                     <table class="table" id="rstb">
                                         <caption class="caption">处方模板 <span id="m-history" style="float: right;font-size: .25rem;padding-right: .5rem;cursor: pointer;">历史处方单</span></caption>
                                         <thead>
@@ -835,7 +842,7 @@
                                     <div id="menu">
                                         <ul>
                                             <li class="on">
-                                                <svg style="width: 30px;height: 30px;" t="1607496747404" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                                <svg style="width: 25px;height: 25px;" t="1607496747404" class="icon" viewBox="0 0 1024 1024" version="1.1"
                                                     xmlns="http://www.w3.org/2000/svg" p-id="5343" width="48" height="48">
                                                     <path
                                                         d="M263.571954 407.950226l141.236722 0 0 27.750017-141.236722 0L263.571954 407.950226 263.571954 407.950226zM263.571954 407.950226"
@@ -872,7 +879,7 @@
                                                 <p></p>
                                             </li>
                                             <li>
-                                                <svg style="width: 25px;height: 25px;" t="1608260311389" class="icon" viewBox="0 0 1118 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1473" width="32" height="32"><path d="M581.818182 187.671273 581.818182 528.290909 824.366545 671.232 847.965091 631.156364 628.363636 500.549818 628.363636 187.671273Z" p-id="1474" fill="#8a8a8a"></path><path d="M202.053818 744.96 149.038545 744.96C233.797818 910.615273 406.202182 1024 605.090909 1024c282.763636 0 512-229.236364 512-512 0-282.763636-229.236364-512-512-512C354.117818 0 145.314909 180.596364 101.515636 418.909091L0 418.909091l116.363636 139.636364L232.727273 418.909091 148.945455 418.909091C192.093091 206.475636 379.904 46.545455 605.090909 46.545455c257.070545 0 465.454545 208.384 465.454545 465.454545s-208.384 465.454545-465.454545 465.454545C432.919273 977.454545 282.530909 883.944727 202.053818 744.96z" p-id="1475" fill="#8a8a8a"></path></svg>
+                                                <svg style="width: 20px;height: 20px;" t="1608260311389" class="icon" viewBox="0 0 1118 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1473" width="32" height="32"><path d="M581.818182 187.671273 581.818182 528.290909 824.366545 671.232 847.965091 631.156364 628.363636 500.549818 628.363636 187.671273Z" p-id="1474" fill="#8a8a8a"></path><path d="M202.053818 744.96 149.038545 744.96C233.797818 910.615273 406.202182 1024 605.090909 1024c282.763636 0 512-229.236364 512-512 0-282.763636-229.236364-512-512-512C354.117818 0 145.314909 180.596364 101.515636 418.909091L0 418.909091l116.363636 139.636364L232.727273 418.909091 148.945455 418.909091C192.093091 206.475636 379.904 46.545455 605.090909 46.545455c257.070545 0 465.454545 208.384 465.454545 465.454545s-208.384 465.454545-465.454545 465.454545C432.919273 977.454545 282.530909 883.944727 202.053818 744.96z" p-id="1475" fill="#8a8a8a"></path></svg>
                                                 <span>药品添加</span>
                                                 <p></p>
                                             </li>
@@ -880,16 +887,16 @@
                                         <div class="clear"></div>
                                     </div>
                                     <div class="henline"></div>
-                                    <div id="tab-con" style="overflow: auto;height: 100%;">
-                                        <div class="tab_itemst on"> 
+                                    <div id="tab-con">
+                                        <div class="tab_itemst on" style="width:100%;height:42vh;overflow: auto;"> 
                                             <div class="tcontbox">
                                                 <!-- <span class="symptom" id="symptom">点击补充症状</span> -->
                                                 <div class="topBox">
-                                                    <div style="margin-top: .45rem">处方单名称</div>
+                                                    <div style="margin-top: .3rem">处方单名称</div>
                                                     <input tyle="text" placeholder="请输入处方单名称" id="title">
                                                 </div>
                                                 <div class="topBox">
-                                                    <div style="margin-top: .45rem">临床诊断</div>
+                                                    <div style="margin-top: .3rem">临床诊断</div>
                                                     <input tyle="text" placeholder="请输入临床诊断" id="rpText">
                                                 </div>
                                             </div>    
@@ -937,7 +944,7 @@
                                                 </div>
                                               </div>
                                             <div class="data-content" id="tb-drugslist">
-                                                <div class="tb-container"  style="height: 365px;overflow: auto;" id="tb-containers3">
+                                                <div class="tb-container"  style="height: 47vh;overflow: auto;" id="tb-containers3">
                                                     <table class="table" id="rstb">
                                                         <caption class="caption">药品列表</caption>
                                                         <thead>
@@ -1103,31 +1110,9 @@
                             </div>
                             </div>
 
-                            <div class="cont_donet" id="cont_donet" style="display: none;height: 37vh;overflow: auto;margin: 0;padding: 0;display:flex;">
+                            <div class="cont_donet" id="cont_donet" style="display: none;height:37vh;overflow: auto;margin: 0;padding: 0;display:none;">
+                                <div style="display:flex;">
                           
-                            <div style="flex:1;">
-                                <div class="content_div">
-                                    <div class="contemt_botx">
-                                        <p class="content_title">贝前列素钠片（国产） 20ug*10片/盒</p>
-                                        <span class="content_baocim" id="sendf">保存</span>
-                                    </div>
-                                 
-  
-                                    <p class="content_sub">深圳万乐药业有限公司</p>
-                                    <div class="contend_box">
-                                        <div class="contnts">
-                                            <p class="content_instruction">
-                                                下列情况禁用
-    　　1.妊娠或可能妊娠的妇女禁服本品（有关妊娠期间用药的安全性尚未确定）。
-    　　2.出血的患者（如血友病、毛细血管脆弱症、上消化道出血、尿路出血、咯血、眼底出血等患者服用本品可能导致出血增加）。
-                                            </p>
-                                        </div>
-                                        <div class="quxiao" id="quxiaos">取消</div>
-                                    </div>
-                                  
-                                </div>
-                            
-                            </div>    
                             <div style="flex:1;">   
                               <div class="content_div">
                                   <p class="conteTitle">用量/数量</p>
@@ -1139,13 +1124,13 @@
                                   </div> -->
                                   <div class="content_usage">
                                       <div>每</div>
-                                      <div class="cotNumeer"> <i class="icon_reduce"></i> <span class="contnitem" style="width: 1rem;" id="numId">2</span> <i class="icon_plus"></i>
+                                      <div class="cotNumeer"> <i class="icon_reduce"></i> <span class="contnitem" style="width: 1rem;" id="numId">1</span> <i class="icon_plus"></i>
                                       </div>
                                       <div class="contSelect" id="itemp5" style="margin: 0 .2rem;text-align: left;padding-left: .4rem;">
                                           <span id="timeDate">小时</span>
                                           <img src="https://lxj.yjxun.cn/drug/images/lower.svg" alt="" class="contImgae" id="cont1">
                                       </div>
-                                      <div class="cotNumeer" style="margin-right: .5rem;"> <i class="icon_reduce"></i> <span class="contnitem" style="width: 1rem;" id="xsNum">2</span> <i class="icon_plus"></i>
+                                      <div class="cotNumeer" style="margin-right: .5rem;"> <i class="icon_reduce"></i> <span class="contnitem" style="width: 1rem;" id="xsNum">1</span> <i class="icon_plus"></i>
                                       </div>
                                       <div>次</div>
                                   </div>
@@ -1181,7 +1166,31 @@
                                   </div>
                                </div>-->
                             </div> 
-                          </div>
+                            <div style="flex:1;">
+                                <div class="content_div">
+                                    <div class="contemt_botx">
+                                        <p class="content_title">贝前列素钠片（国产） 20ug*10片/盒</p>
+                                        <span class="content_baocim" id="sendf">保存</span>
+                                    </div>
+                                 
+  
+                                    <p class="content_sub">深圳万乐药业有限公司</p>
+                                    <div class="contend_box">
+                                        <div class="contnts">
+                                            <p class="content_instruction">
+                                                下列情况禁用
+    　　1.妊娠或可能妊娠的妇女禁服本品（有关妊娠期间用药的安全性尚未确定）。
+    　　2.出血的患者（如血友病、毛细血管脆弱症、上消化道出血、尿路出血、咯血、眼底出血等患者服用本品可能导致出血增加）。
+                                            </p>
+                                        </div>
+                                        <div class="quxiao" id="quxiaos">取消</div>
+                                    </div>
+                                  
+                                </div>
+                            
+                            </div> 
+                        </div>
+                        </div>
 
                             <div class="data-content" id="tb-history" style="display: none;">
                                 <div class="tb-container" style="height: 87.3vh;overflow: auto;">
@@ -1515,7 +1524,7 @@
                         var operate = '<div class="cont_opricect" id="contedk_' + info.id + '" style="display: flex;justify-content: center;margin: .2rem 0;align-items: center;">\
                                 <a href="#" class="icon_plus" onclick="options(this,' + info.id + ')">\
                                     <svg t="1607413584732" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6081" width="48" height="48"><path d="M512 55.296C256 55.296 51.2 260.096 51.2 512s204.8 456.704 460.8 456.704 456.704-204.8 456.704-456.704S763.904 55.296 512 55.296zM512 929.792C281.6 929.792 94.208 742.4 94.208 512S281.6 94.208 512 94.208 929.792 281.6 929.792 512C925.696 742.4 742.4 929.792 512 929.792zM738.304 490.496 281.6 490.496c-13.312 0-21.504 8.192-21.504 21.504 0 13.312 8.192 21.504 21.504 21.504l456.704 0c12.288 0 21.504-8.192 21.504-21.504C759.808 498.688 750.592 490.496 738.304 490.496z" p-id="6082" fill="#d81e06"></path></svg></a>\
-                                <input type="text" name="id['+info.id+']" value="1" class="contnitem" style="display:none">\
+                                <input type="text" name="idsd['+info.id+']" value="1" class="contnitem" style="display:none">\
                                 <a href="#" class="icon_reduce" onclick="options(this,' + info.id + ')" style="display:none">\
                                     <svg t="1607413618167" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6982" width="48" height="48" data-spm-anchor-id="a313x.7781069.0.i33"><path d="M874.23 149.77a512 512 0 1 0 0 724.46 512.884 512.884 0 0 0 0-724.46zM832.83 832.828a453.507 453.507 0 1 1 0-641.658 454.317 454.317 0 0 1 0 641.658z" p-id="6983" fill="#1296db"></path><path d="M758.791 482.532H541.468V265.21a29.468 29.468 0 0 0-58.936 0v217.323H265.21a29.468 29.468 0 0 0 0 58.936h217.323V758.79a29.468 29.468 0 0 0 58.936 0V541.468H758.79a29.468 29.468 0 0 0 0-58.936z" p-id="6984" fill="#1296db"></path></svg></a>\
                             </div>';
@@ -1540,9 +1549,9 @@
                                             <td>' + info.enterprise + '</td>\
                                             <td>' + operate + '</td>\
                                         </tr>\
-                                        <tr class="dataDrug" id="info_'+info.id+'" data="'+$('.contnitem').eq(0).text() + '_' + $('#timeDate').text() + '_' + $('.contnitem').eq(1).text() + '_' + $('.contnitem').eq(2).text() + '_' + $('#pill').text() + '_' + $('#itemp2 span').text() + '_' + $('#contnitem').text() + '|'+'">\
+                                        <tr class="dataDrug" id="info_'+info.id+'" data-dname="'+info.trade_name+'" data="'+1+ '_' + $('#timeDate').text() + '_1' + $('.contnitem').eq(1).text() + '_' + $('.contnitem').eq(2).text() + '_' + $('#pill').text() + '_' + $('#itemp2 span').text() + '_' + $('#contnitem').text() + '|'+'">\
                                             <td colspan="8" style="padding: .2rem 0;" class="userids" ids="'+info.id+'">\
-                                                — 用法用量：<span id="mfrequncy_'+info.id+'">'+info.mfrequency+'</span>，<span id="each_dose_'+info.id+'">每次2'+info.each_dose_unit+'</span>  <span class="sadit" onclick="getDrugDetails(this,'+info.id+')">修改用量</span>\
+                                                — 用法用量：<span id="mfrequncy_'+info.id+'">'+info.mfrequency+'</span>，<span id="each_dose_'+info.id+'">每次1'+info.each_dose_unit+'</span>  <span class="sadit" onclick="getDrugDetails(this,'+info.id+')">修改用量</span>\
                                             </td></tr>';
                         }
                     }
@@ -1554,13 +1563,48 @@
 
             });
         }
-        function options(that,index) {
+        function options(that,index,pnids) {
             if ($(that).hasClass('icon_plus')) {
                 var num = parseInt($(that).next('.contnitem').val());
                 num--;
               if (num >= 0) { 
               $(that).next('.contnitem').val(num);
               if(num==0){
+            //     $.ajax({
+			// 	url: '/?m=pharmacy&c=doctor&a=delete',
+			// 	type: 'POST',
+			// 	data: 'pnid='+pnid+'&id=' + index,
+			// 	dataType: 'json',
+			// 	success: function(re) {
+            //         var data = re.data;
+            //         if (data) {
+            //         $('.content_title').text(data.trade_name + ' ' + data.specification);
+			// 		$('.content_sub').text(data.enterprise);
+			// 		$('.content_instruction').text(data.sales_status);
+            //         }else{
+            //             layer.open({
+            //             content: '没有药品信息'
+            //             ,skin: 'msg'
+            //             ,time: 2 //2秒后自动关闭
+            //         });
+            //             $('#cont_donet').hide();
+            //         }
+			// 	}
+			// })
+                $.ajax({
+                    url:'/?m=pharmacy&c=doctor&a=delete',
+                    type: 'POST',
+                    dataType:'json',
+                    data:{'id':index,'pnid':pnids},
+                    success:function(res){
+                        alert('删除成功');
+                    //     layer.open({
+                    //     content: res.erro
+                    //     ,skin: 'msg'
+                    //     ,time: 2 //2秒后自动关闭
+                    // });
+                    }
+                });
                 $(that).parents('tr').remove();
                 $('#info_'+index).remove();
                 $('#cont_donet').hide();
@@ -1584,10 +1628,21 @@
 				dataType: 'json',
 				success: function(re) {
                     var data = re.data;
+                    var data2= re.data2.data_str;
+                        data2 = data2.split("_"); 
+                    console.log(data2);
                     if (data) {
                     $('.content_title').text(data.trade_name + ' ' + data.specification);
 					$('.content_sub').text(data.enterprise);
-					$('.content_instruction').text(data.sales_status);
+                    $('.content_instruction').text(data.sales_status);
+                    $('#numId').text(data2[0]);
+                    $('#timeDate').text(data2[1]);
+                    $('#xsNum').text(data2[2]);
+                    $('#mcNum').text(data2[3]);
+                    $('#pill').text(data2[4]);
+                    $('#itemp2 span').text(data2[5]);
+                    $('#contnitem').text(data2[6]);
+
                     }else{
                         layer.open({
                         content: '没有药品信息'
@@ -1612,17 +1667,23 @@
                 ,time: 2 //2秒后自动关闭
               });
         var doid = '';
-		var dodata = '';
+        var dodata = '';
+        var dname='';
+        var title=$('#title').val();
+        var rpText=$('#rpText').val();
 		$('#copydata .dataDrug').each(function(){
 			doid += $(this).attr('id')+',';
-			dodata += $(this).attr('data');
+            dodata += $(this).attr('data');
+            dname += $(this).attr('data-dname')+',';
         })
         $.ajax({
 				url:'/?m=pharmacy&c=doctor&a=editDrugDetails',
 				type:'POST',
-				data:'pnid='+pnidChar+'&doid='+doid+'&dodata='+dodata,
+				data:'pnid='+pnidChar+'&doid='+doid+'&dodata='+dodata+'&title='+title+'&dname='+dname+'&rpText='+rpText,
 				success:function(res){
-
+                    setTimeout(function(){
+                        location.reload();
+                    },500);
                 }
 			})
     //  var data = '',
@@ -1649,7 +1710,6 @@
             request(url, 'get', {
                 dataType: "json",
                 success: function (data) {
-                    console.log(data);
                     if (0 < Object.keys(data).length) {
                         var html = '';
                         for (var i in data) {
@@ -1657,7 +1717,7 @@
                             html+='<tr align="center">\
                                           <td>'+i+'</td>\
                                           <td>'+info[0].title+'</td>\
-                                          <td>'+info[0].rptext+'</td>\
+                                          <td>'+info[0].pnname+'</td>\
                                           <td>\
                                             <a href="#" class="edites" data-pnid="'+i+'"><img src="/pharmacies/doctor/images/aditse.png"></a>\
                                           </td>\
@@ -1676,6 +1736,7 @@
     function operates_temp(obj){
         $('.edites').each(function(){
             $(this).click(function(){
+           // getAllPN();
             $('#cont_donet').hide();
             $('#tb-containers').fadeIn(300);
             var pnid=$(this).attr('data-pnid');
@@ -1685,10 +1746,14 @@
                 for(var i in obj){
                     var info=obj[i];
                     if(i==pnid){
+                        var data2;
                         var operate;
                         for(var k in info){
+                            data2 = info[k].data_str;
+                            data2 = data2.split("_"); 
+                            console.log(data2[1]);
                             operate = '<div class="cont_opricect" id="contedk_' + info[k].rid + '" style="display: flex;justify-content: center;margin: .2rem 0;align-items: center;">\
-                                <a href="#" class="icon_plus" onclick="options(this,' + info[k].rid + ')">\
+                                <a href="#" class="icon_plus" onclick="options(this,' + info[k].rid + ','+pnid+')">\
                                     <svg t="1607413584732" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6081" width="48" height="48"><path d="M512 55.296C256 55.296 51.2 260.096 51.2 512s204.8 456.704 460.8 456.704 456.704-204.8 456.704-456.704S763.904 55.296 512 55.296zM512 929.792C281.6 929.792 94.208 742.4 94.208 512S281.6 94.208 512 94.208 929.792 281.6 929.792 512C925.696 742.4 742.4 929.792 512 929.792zM738.304 490.496 281.6 490.496c-13.312 0-21.504 8.192-21.504 21.504 0 13.312 8.192 21.504 21.504 21.504l456.704 0c12.288 0 21.504-8.192 21.504-21.504C759.808 498.688 750.592 490.496 738.304 490.496z" p-id="6082" fill="#d81e06"></path></svg></a>\
                                 <input type="text" name="idsd['+info[k].rid+']" value="1" class="contnitem" style="display:none">\
                                 <a href="#" class="icon_reduce" onclick="options(this,' + info[k].rid + ')" style="display:none">\
@@ -1704,13 +1769,13 @@
                                             <td>' + info[k].dname + '</td>\
                                             <td>' + operate + '</td>\
                                         </tr>\
-                                        <tr class="dataDrug" id="info_'+info[k].rid+'" data="'+$('.contnitem').eq(0).text() + '_' + $('#timeDate').text() + '_' + $('.contnitem').eq(1).text() + '_' + $('.contnitem').eq(2).text() + '_' + $('#pill').text() + '_' + $('#itemp2 span').text() + '_' + $('#contnitem').text() + '|'+'">\
+                                        <tr class="dataDrug" id="info_'+info[k].rid+'" data-dname="'+info[k].dname+'" data="'+data2[0]+ '_' + data2[1]+ '_' + data2[2] + '_' + data2[3] + '_' + data2[4] + '_' + data2[5] + '_' + data2[6] + '|'+'">\
                                             <td colspan="8" style="padding: .2rem 0;" class="userids" ids="'+info[k].rid+'">\
-                                                — 用法用量：<span id="mfrequncy_'+info[k].rid+'">'+info[k].data1+'</span>，<span id="each_dose_'+info[k].rid+'">'+info[k].data2+'</span>  <span class="sadit" onclick="getDrugDetails(this,'+info[k].rid+','+pnid+')">修改用量</span>\
+                                                — 用法用量：<span id="mfrequncy_'+info[k].rid+'">每'+data2[0]+data2[1]+data2[2]+'次</span>，<span id="each_dose_'+info[k].rid+'">每次'+data2[3]+data2[4]+'</span>  <span class="sadit" onclick="getDrugDetails(this,'+info[k].rid+','+pnid+')">修改用量</span>\
                                             </td></tr>';
                         }
                         $('#title').val(info[k].title);
-                        $('#rpText').val(info[k].rptext);
+                        $('#rpText').val(info[k].pnname);
                         $('#copydata').html(html);
                     }
                 }

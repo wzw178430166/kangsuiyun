@@ -1,22 +1,138 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-	<title></title>
-</head>
-<body>
-<div id="signature"></div>
-</body>
-<script  src="/statics/public/plug/jquery/jquery-3.3.1.min.js"></script>
-<script  src="/statics/public/plug/jSignature/src/jSignature.js"></script>
-<script>
-	var $sigdiv;
-	$(function(){
-		$sigdiv = $("#signature").jSignature({'UndoButton':true})
-		//$sigdiv.jSignature('reset');//重置
-		var plugins = $sigdiv.jSignature('listPlugins','export');//导出格式
-		console.log(plugins);
-		//var res = $sigdiv.jSignature('getData','default');//导出结果 参数二为导出格式 默认为默认格式base64
-	});
-</script>
+    <head>
+        <meta charset="UTF-8">
+        <title>标题</title>
+        <link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/doctor/css/header_common.css?v=128">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/doctor/css/left_.css?v=127">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/doctor/css/index.css?v=128">
+    <link rel="stylesheet" href="/statics/dataManage/css/bootstrap.css">
+    <script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+    <script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/statics/js/layer_mobile/layer.js"></script>
+    <script type="text/javascript" src="/statics/js/global.js"></script>
+    </head>
+
+    <body onkeydown="keyLogin()">
+
+            <div class="register-content register-content_j">
+                用户名<input id="loginName" type="text" placeholder="请输入用户名">
+                密    码<input id="password" type="password" placeholder="请输入密码">
+            </div>
+            <input id="remember_password" type="checkbox" />记住密码
+            <div class="reg-btn" id="login">登 录</div>
+
+        </div>
+    </body>
+
+    <script type="text/javascript">
+
+        $(function() {
+			getCookie();
+			$('#login').click(function(){
+				login();
+			});
+        });
+
+        // 回车键登陆
+        function keyLogin(){
+            if (event.keyCode==13){
+                document.getElementById("login").click();
+            }
+        };
+
+        // 用户名密码登陆
+        function login(){
+
+            if($("#loginName").val() == ""){
+                alert("请输入用户名");
+                return;
+            }
+            if($("#password").val() == ""){
+                alert("请输入密码");
+                return;
+            }
+
+            $.post("login!login.action",
+            {
+                "account.loginName" : $("#loginName").val(),
+                "account.passwd" : $("#password").val()
+            },function(data) {
+                saveInfo();
+                doLogin(data);
+            }, "json");
+        }
+
+        // 登陆后跳转
+        function doLogin(data){
+            if (data != null && data.success) {
+                location.href = 'login!doIndex.action';
+            } 
+            else {
+                if(data.message != null && data.message != ""){
+                    alert(data.message);
+                    doReset();
+                }else if(data.msg != null && data.msg != ""){
+                    alert(data.msg);
+                    doReset();
+                }
+            }
+        }
+
+         // 保存Cookie
+        function saveInfo() {
+            try {
+                 // 保存按键是否选中
+                 var isSave = document.getElementById('remember_password').checked;
+                 if (isSave) {
+                     var username = $("#loginName").val();
+                     var password = $("#password").val();
+                     if (username != "" && password != "") {
+                         SetCookie(username, password);
+                     }
+                 } else {
+                     SetCookie("", "");
+                 }
+
+             } catch (e) {}
+         }
+
+         // 保存Cookie
+         function SetCookie(username, password) {
+             var Then = new Date();
+             Then.setTime(Then.getTime() + 1866240000000);
+             document.cookie += ("username=" + username + "%%" + password + ";expires=" + Then.toGMTString());
+         }
+
+        // 获取登陆的用户名和密码
+        function getCookie() {
+             var nmpsd;
+             var nm;
+             var psd;
+             var cookieString = new String(document.cookie);
+             var cookieHeader = "username=";
+             var beginPosition = cookieString.indexOf(cookieHeader);
+             cookieString = cookieString.substring(beginPosition);
+             var ends = cookieString.indexOf(";");
+             if (ends != -1) {
+                 cookieString = cookieString.substring(0, ends);
+             }
+             if (beginPosition > -1) {
+                 nmpsd = cookieString.substring(cookieHeader.length);
+                 if (nmpsd != "") {
+                     beginPosition = nmpsd.indexOf("%%");
+                     nm = nmpsd.substring(0, beginPosition);
+                     psd = nmpsd.substring(beginPosition + 2);
+                     $("#loginName").val(nm)
+                     $("#password").val(psd)
+
+                     if (nm != "" && psd != "") {
+                         document.getElementById('remember_password').checked = true;
+                     }
+                 }
+             }
+        }
+
+    </script>
 </html>

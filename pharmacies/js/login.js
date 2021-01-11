@@ -87,7 +87,7 @@ var inputPassword=document.getElementsByName('password')[0];
 var loginBtn=document.getElementById('login-btn');
 
 
-//用户名输入框验证
+//用户名输入框验证 
 //手机输入正确标识位
 var nFlag=false;
 inputPhone.onblur=function(){

@@ -437,6 +437,11 @@
     transform: translate(-55%,70%);
 }
 }
+.orderList .infoFooter, .orderList li, td, th {
+    padding: 0;
+    width: 35%;
+    padding-left: .2rem;
+}
     </style>
 </head>
 
@@ -533,27 +538,41 @@
                                     <table class="mtable" border="1" cellspacing="0">
                                         <tr>
                                             <th>身份证号：</th>
-                                            <td></td>
+                                            <td><span id="idcard"></span></td>
                                             <th>姓名：</th>
-                                            <td></td>
+                                            <td><span id="name"></span></td>
                                         </tr>
                                         <tr>
                                             <th>医保卡号：</th>
-                                            <td></td>
+                                            <td>
+                                                <span id="sbcard"></span>
+                                            </td>
                                             <th>性别：</th>
-                                            <td></td>
+                                            <td>
+                                                <span id="sex">
+
+                                                </span>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th>手机号码：</th>
                                             <td></td>
                                             <th>年龄：</th>
-                                            <td></td>
+                                            <td>
+                                                <span id="age"></span>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th>联系地址：</th>
-                                            <td></td>
+                                            <td>
+                                                <span id="addren">
+
+                                                </span>
+                                            </td>
                                             <th>出生日期：</th>
-                                            <td></td>
+                                            <td>
+                                                <span id="both"></span>
+                                            </td>
                                         </tr>
                                     </table>
 
@@ -639,6 +658,21 @@
 
     <script>
         $(function () {
+            renderAll().then(function(value) {
+             var idcards=value[0].words_result;
+             var sbcards=value[1].words_result;
+             for(var i in idcards){
+                                $('#name').text(idcards['姓名'].words);
+                                $('#sex').text(idcards['性别'].words);
+                                $('#both').text(idcards['出生'].words);
+                                $('#addren').text(idcards['住址'].words);
+                                $('#age').text(idcards['出生'].words);
+                                $('#idcard').text(idcards['公民身份号码'].words); 
+                              } 
+                              for(var i in sbcards){
+                                $('#sbcard').text(sbcards[4].words);
+                              } 
+                   })
             checkLogin("golink");
             var $list = $("#menu").find("li");
             var $div = $("#tab-con").children("div");
@@ -683,7 +717,62 @@
 					}
 				});
 			})
-		}
+        }
+        
+        function getIDcard(){    
+                      $.ajax({
+                            url: '/?m=data&c=da_fun&a=lookImgCard',
+                            type: 'POST',
+                            dataType: 'json',
+                            success: function(res) {
+                            //  var data=JSON.parse(re);
+                            console.log(res);
+                            //  var idcardmsg=res.
+                            var data=res.words_result;
+                            for(var i in data){
+                                $('#name').text(data['姓名'].words);
+                                $('#sex').text(data['性别'].words);
+                                $('#both').text(data['出生'].words);
+                                $('#addren').text(data['住址'].words);
+                                $('#age').text(data['出生'].words);
+                                console.log(i);
+                            }
+                            $('#idcard').text(res.log_id); 
+                            
+                                
+                            }
+                        })
+
+                        
+
+
+
+
+
+                   }
+
+                    var url = '/?m=data&c=da_fun&a=lookImgCard';
+                    var url1 = '/?m=data&c=da_fun&a=lookImgCard&type=2';
+                    function getJSON(url) {
+                    return new Promise(function(resolve, reject) {
+                        $.ajax({
+                            url: url,
+                            type: 'POST',
+                            dataType: 'json',
+                            success: function(res) {
+                                resolve(res);  
+                            },
+                            error:function(error){
+                                reject(new Error(error)); 
+                            }
+                        })
+                    })
+                }
+                    function renderAll() {
+                        return Promise.all([getJSON(url), getJSON(url1)]);
+                    }
+
+                 
     </script>
 </body>
 

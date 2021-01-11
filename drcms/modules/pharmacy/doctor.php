@@ -10,6 +10,45 @@ class doctor extends authority{
 	public function init(){
 		$this->index();
 	}
+	public function inquirylists(){  
+		if ($this->ajax) {
+			$where = 1;
+			if($_GET[k]) $where .= ' AND `id`='.$_GET[k];
+			$keyword = $_GET['amount'];
+			if($_GET[amount]) $where .= ' AND (`gmp_validity` = "'.$keyword.'" OR `gmp_validity` like "%'.$keyword.'%")';
+	
+			if ($_GET['st']&&$_GET['et']) {
+				$res = dateToTimeStamp(['st'=>$_GET['st'],'et'=>$_GET['et']]);
+	 	    	$where .= ' AND `created_time`>='.$res['st'].' AND `created_time`<='.$res['et'];
+			}
+			$this->default_db->load('con_pn');
+			$rows = $this->default_db->listinfo($where,'created_time desc',$this->page,$this->pageSize);
+			if ($rows) {
+				$total = $this->default_db->number;
+				$res = getDictionary(['category_id'=>[10,14],'is_value'=>1,'value_category'=>[14]]);
+				$sex = $res['data'][10]?:[];
+				$statuss = $res['data'][14]?:[];
+				//var_dump($statuss);die;
+				$sex_str = '';
+				foreach ($rows as $k => $v) {
+					if($rows[$k]['sex']  == 1) $sex_str = '男';
+					if($rows[$k]['sex']  == 2) $sex_str = '女';
+					if($rows[$k]['sex']  == 3) $sex_str = '保密';
+					$rows[$k]['sex'] = $sex[$v['sex']]['name']?:$sex_str;
+					$rows[$k]['status_str'] = $statuss[$v['status']]['name']?:'';
+					$rows[$k]['created_time'] = date('Y-m-d H:i:s',$v['created_time']);
+				}
+			} else {
+				$total = 0;
+				$rows = [];
+			}
+			//$jsonData = ['status'=>1,'rows'=>$rows,'total'=>$total];
+			//exit(json_encode($jsonData));
+			output(1,'',['type'=>'json','data'=>['rows'=>$rows,'total'=>$total]]);
+		} else {
+			include template($this->template,'drug',$this->style);
+		}
+	}
 	public function druglists(){
 		if ($this->ajax) {
 			$where = 1;
@@ -47,7 +86,17 @@ class doctor extends authority{
 	}
   
 	public function getDrugDetails(){
+        $pnid = intval($_POST['pnid']);
 		$id = intval($_POST['id']);
+        if($pnid){
+            $this->default_db->load('drug_pn');
+            $da = $this->default_db->get_one('`pnid` = '.$pnid.' AND `rid` = '.$id);
+            if($id){
+                $this->default_db->load('drug');
+                $da2 = $this->default_db->get_one('`id` = '.$id,'id,trade_name,specification,enterprise,characteristic,sales_status,vip_price,drug_category,origin_category,gmp_validity,each_dose,each_dose_unit,mfrequency,mdays,mcountunit,drug_use');
+            }
+            exit(json_encode(array('status'=>1,'data'=>$da2,'data2'=>$da)));
+        }
 		if($id){
 			$this->default_db->load('drug');
 			$da = $this->default_db->get_one('`id` = '.$id,'id,trade_name,specification,enterprise,characteristic,sales_status,vip_price,drug_category,origin_category,gmp_validity,each_dose,each_dose_unit,mfrequency,mdays,mcountunit,drug_use');
@@ -55,7 +104,19 @@ class doctor extends authority{
 		}
 		exit('{"status":"-1"}');
 	}
-
+	public function editDrugDetails(){
+        $this->default_db->load('drug_pn');
+        $doid = explode(',',trim($_POST['doid'],','));
+        $dname= explode(',',trim($_POST['dname'],','));
+        $dodata = explode('|',trim($_POST['dodata'],'|'));
+        foreach($doid as $k=>$v){
+            $tv = str_replace('info_','',$v);
+            $td = $dodata[$k];
+            $da = $this->default_db->get_one('`rid` = '.$tv.' AND `pnid` = "'.$_POST['pnid'].'"');
+            if($da) $this->default_db->update('`title` = "'.$_POST['title'].'",`pnname` = "'.$_POST['rpText'].'",`dname` = "'.$dname[$k].'",`data_str` = "'.$td.'"','`rid` = '.$tv.' AND `pnid` = "'.$_POST['pnid'].'"');
+            else $this->default_db->insert(array('data_str'=>$td,'rid'=>$tv,'pnid'=>$_POST['pnid'],'title'=>$_POST['title'],'pnname'=>$_POST['rpText'],'dname'=>$dname[$k],'add_time'=>time(),'userid'=>$this->userid));
+        }
+    }
 	public function addDrugPN(){
 		$ac = $_POST['ac'];
 		$ids = explode(',',trim($_POST['ids'],','));
@@ -106,111 +167,6 @@ class doctor extends authority{
 		exit(json_encode($data));
 	}
 
-	public function docGetDrug(){
-        $user_id = intval($_POST['user_id']);
-        $where = '`user_id` = '.$user_id.' AND ';
-        if(!$user_id) $where = '';
-	    $this->default_db->load('member_prescription');
-	    $da = $this->default_db->listinfo($where.'`doctor_user_id` = '.$this->user_id,'create_time DESC',$this->page,20);
-
-	    foreach($da as $v){
-            $pid[$v['prescription_no']] = $v['prescription_no'];
-            $pnDid[$v['id']] = $v['id'];
-            $pnddd[$v['id']] = $v['prescription_no'];
-        }
-        $this->default_db->load('member_prescription_data');
-        $pnDataD = $this->default_db->select(array('prescription_id'=>array('in',$pnDid)));
-	    foreach($pnDataD as $v) $pnMsg[$v['prescription_no']][$v['drug_id']] = $v['data_str'];
-
-        $this->default_db->load('order3_prescription');
-        $pidArr = $this->default_db->select(array('prescription_no'=>array('in',$pid)));
-        foreach($pidArr as $v){
-            $oid[$v['order_no']] = $v['order_no'];
-            $pnDataDa[$v['order_no']] = $v;
-        }
-        $this->default_db->load('order3');
-        if($_POST['sdate'] && $_POST['edate']) {
-            $whereArr = array('order_no' => array('in', $oid), 'create_time' => array('>', strtotime($_POST['sdate'].' 00:00:00')), 'create_time' => array('<', strtotime($_POST['edate'].' 23:59:59')));
-            $whereStr = '`order_no` in ('.implode(',',$oid).') AND `create_time` > '.strtotime($_POST['sdate'].' 00:00:00').' AND `create_time` < '.strtotime($_POST['edate'].' 23:59:59');
-            if($_GET['status'] >= 1){
-                $whereArr['status'] = intval($_GET['status']);
-                $whereStr .= ' AND `status` = '.intval($_GET['status']);
-            }
-            $datas = $this->default_db->select($whereStr,'*','','create_time DESC');
-            if($_GET['status'] > 0) $payTxt = '`status` = '.intval($_GET['status']);else $payTxt = '';
-            $payMoney = $this->default_db->select($payTxt,'id,status,pay_money');
-        }else{
-            $whereArr = array('order_no'=>array('in',$oid));
-            if($_GET['status'] >= 1) $whereArr['status'] = intval($_GET['status']);
-            $datas = $this->default_db->select($whereArr,'*','','create_time DESC');
-            if($_GET['status'] > 0) $payTxt = '`status` = '.intval($_GET['status']);else $payTxt = '';
-            $payMoney = $this->default_db->select($payTxt,'id,status,pay_money');
-        }
-        $payMoneyNum = 0;
-        foreach($payMoney as $v) $payMoneyNum += $v['pay_money'];
-        if ($datas) {
-            $status = 1;
-            $order_ids = array();
-            $statuss = array('已取消','待付款','已付款','已发货','交易成功');
-            foreach($datas as $k=>$r){
-                $order_ids[] = $r['id'];
-                $datas[$k]['order_no_'] = $r['order_no'];
-                $datas[$k]['order_no'] = substr_cut($r['order_no'],5,5);
-                $datas[$k]['user_name'] = substr_cut($r['user_name'],3,4);
-                $datas[$k]['create_time'] = date('Y-m-d H:i:s',$r['create_time']);
-                $datas[$k]['statusStr'] = $statuss[$r['status']];
-            }
-            if ($order_ids) {
-                $where2 = array('order_id'=>array('in',$order_ids));
-                $this->default_db->load('order3_data');
-                $_product = $this->default_db->select($where2);
-                foreach($_product as $r){
-                    $r['product_img'] = '/drug/images/yaopin.jpg';
-                    $product[$r['order_id']][] = $r;
-                }
-            }
-            $merchant = array(1=>array('id'=>1,'name'=>'乐享健官方店'));
-        } else {
-            $status = 0;
-            $datas = $product = $merchant = array();
-        }
-        if(!$_GET['status'] || $_GET['status'] == 1){
-            $where = '';
-            $this->default_db->load('member_prescription');
-            $newDa = $this->default_db->listinfo($where.'`doctor_user_id` = '.$this->user_id.' AND `process` = 1','create_time DESC',$this->page,20);
-            foreach($newDa as $v){
-                $pid[$v['prescription_no']] = $v['prescription_no'];
-                $pnDid2[$v['id']] = $v['id'];
-                $userId[$v['user_id']] =$v['user_id'];
-                $pnDid_[$v['id']] = $v['user_id'];
-            }
-            $this->default_db->load('member_prescription_data');
-            $pnDataD = $this->default_db->select(array('prescription_id'=>array('in',$pnDid2)));
-            foreach($pnDataD as $v){
-                $v['user_id'] = $pnDid_[$v['prescription_id']];
-                $pnDataD_[$v['prescription_no']][] = $v;
-                $pnMsg[$v['prescription_no']][$v['drug_id']] = $v['data_str'];
-                $memberDa2_[$v['prescription_no']] = $v['user_id'];
-                $tmpData = explode('_',$v['data_str']);
-                $payMoneyNum += $tmpData[6] * $v['drug_price'];
-            }
-            $this->default_db->load('member');
-            $memberDa = $this->default_db->select(array('userid'=>array('in',$userId)),'userid,username,nickname');
-            foreach($memberDa as $v){
-                $v['username'] = substr_cut($v['username'],3,4);
-                $memberDa_[$v['userid']] = $v;
-            }
-            if($memberDa) $status = 1;
-        }
-        $jsonData = array(
-            'status'=>$status,
-            'data'=>array('pnddd'=>$pnddd,'memberDa2_'=>$memberDa2_,'pnDataD'=>$pnDataD_,'memberDa'=>$memberDa_,'datas'=>$datas,'product'=>$product,'merchant'=>$merchant,'pnMsg'=>$pnMsg,'pnDataDa'=>$pnDataDa),
-            'payMoneyNum'=>$payMoneyNum
-        );
-        exit(json_encode($jsonData));
-	}
-
-
 	public function doDefault(){
 		if ($this->ajax) {
 			$id = intval($_POST['id']);
@@ -234,10 +190,11 @@ class doctor extends authority{
 		}
 	}
 	public function delete(){
-		$id = array_filter(explode(',', $_POST['id']));
-		if ($id) {
-			$where = ['id'=>['in',$id]];
-			$this->default_db->load('drug');
+		$id = intval($_POST['id']);
+		$pnid = intval($_POST['pnid']);
+		if ($id&&$pnid) {
+			$where = array('rid'=>$id,'pnid'=>$pnid);
+			$this->default_db->load('drug_pn');
 			$res = $this->default_db->delete($where);
 			if ($res) {
 				$status = 1;

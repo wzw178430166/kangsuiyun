@@ -97,7 +97,7 @@
 		</div>
 		<div class="cover-form">
 		    <div class="form-item">
-		        <p>审核药师请输入二次密码进行验证</p>
+		        <p>医生请输入二次密码进行验证</p>
 		        <div class="form-val"><input type="password" id="checkPassword" value=""></div>
 		    </div>
 		</div>
@@ -168,10 +168,10 @@
     }
     function callSignature(){
     	var verify_user_id = parseInt(Cookies.get('verify_user_id'));
-		if (isNaN(verify_user_id) || 0==verify_user_id) {
-			alert('请选择审核药师');
-			return;
-		}
+		// if (isNaN(verify_user_id) || 0==verify_user_id) {
+		// 	alert('请选择审核药师');
+		// 	return;
+		// }
     	$('#coverSignature').show();
     }
     $('#preservation').on('click',function(){
