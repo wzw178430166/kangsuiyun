@@ -1,705 +1,764 @@
 <!DOCTYPE html>
 <html lang="cn">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport"
+    <meta charset="UTF-8">
+    <meta name="viewport"
         content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
-<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/header_common.css?v=129">
-<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/left_.css?v=128">
-<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/index.css?v=177">
-<link rel="stylesheet" href="/statics/admin/common/layui/css/layui.css" media="all">
-<link rel="stylesheet" href="/statics/dataManage/css/bootstrap.css">
-<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
-<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
-<script type="text/javascript" src="/statics/js/laydate/laydate.js"></script>
-<script src="/statics/public/plug/jquery/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="/statics/js/global.js"></script>
-<script type="text/javascript" src="/statics/admin/common/layui/layui.all.js"></script>
-<link id="layuicss-laydate" rel="stylesheet" href="https://www.519ksy.com/statics/admin/common/layui/css/modules/laydate/default/laydate.css?v=5.0.9" media="all">
-<!-- <link rel="stylesheet" href="/statics/css/font_1805932_ysrcp4y0uy9.css"> -->
-<!-- <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-<link rel="stylesheet" href="https://at.alicdn.com/t/font_1805932_ysrcp4y0uy9.css">
-<!-- <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"> -->
-<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>编辑信息</title>
-<style>
- .query-btn .btn-item {
-    margin-left: 0px;
-}
-.query-btn .btn-item {
-    height: auto;
-    min-height: 26px;
-}
-.query-btn .btn-item {
-    height: auto;
-    min-height: 26px;
-    text-align: center;
-}
+    <link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/store/css/header_common.css">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/store/css/left_.css">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/store/css/index.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1805932_ysrcp4y0uy9.css">
+    <!-- <link rel="stylesheet" href="/statics/dataManage/css/bootstrap.css"> -->
+    <link rel="stylesheet" type="text/css" href="/statics/currency/plug/swiper/css/swiper.min.css">
+    <script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+    <!-- <script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script> -->
+    <script type="text/javascript" src="/statics/js/global.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="/statics/js/TouchSlide.1.1.js"></script> -->
+    <script type="text/javascript" src="/statics/currency/plug/swiper/js/swiper.min.js"></script>
+    <title>药房</title>
+    <style>
+        .query-btn .btn-item {
+            margin-left: 0px;
+        }
 
-  
-.matst_back {
-    width: 95%;
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    margin-top: .5rem;
-}
-.back_goo {
-    width: 2rem;
-    height: .9rem;
-    line-height: .9rem;
-    border: 1px solid #929292;
-    color: #7d7272;
-    text-align: center;
-    border-radius: .1rem;
-}
-.back_goo svg {
-    width: .6rem;
-    height: .6rem;
-    vertical-align: middle;
-} 
-.conten_con{width: 100%;display: flex;height: 100vh;}
-.conten_con .cotent_con_left{width: 100%;border-right: 1px solid #e4e4e4;}
+        .query-btn .btn-item {
+            height: auto;
+            min-height: 26px;
+        }
 
-.lines{width: 96%;;margin: .8rem auto .3rem auto;}
+        .query-btn .btn-item {
+            height: auto;
+            min-height: 26px;
+            text-align: center;
+        }
 
-.ctab_bottom{    
-    width: 96%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;}
-.ctab_bottom span{float: right;
-    width: 3rem;
-    height: 1rem;
-    font-size: .38rem;
-    line-height: 1rem;
-    border: 1px solid #339EFC;
-    text-align: center;
-    border-radius: .07rem;}
-.ctab_bottom span:nth-child(1){background: #339EFC;color: #ffffff;}
-.ctab_bottom span:nth-child(2){color: #339EFC;margin-right: .2rem;}
 
-.clear {
-    clear: both;
-}
-#tab-con .tab_itemst {
-    width: 100%;
-    /* height: 10rem; */
-    position: relative;
-    display: none;
-}
-#tab-con .on {
-    display: block;
-    background-color: #fff;
-}
-#tab-con .ae {
-    width: 3rem;
-    height: 3rem;
-    background: red;
-}
-.henline {
-    height: .3rem;
-    background: #ffffff;
-}
-.tab_itemst .tcontbox {
-    width: 100%;
-}
-.tab_itemst .tcontbox .tconp {
-    display: flex;
-    justify-content: space-between;
-    height: 3.2rem;
-    line-height: 3.2rem;
-    border-bottom: 1px solid #dcdcdc;
-    width: 93%;
-    margin: 0 auto;
-    padding: 0 .5rem;
-    font-size: 1.1rem;
-    color: #2b2b2b;
-}
-.mtable{border: 1px solid #BBBBBB;width: 90%;margin: 0 auto;}
-.mtable tr th{width: 20%;
-    background: #F5F5F5;
-    color: #1d1c1c;
-    padding: .3rem .2rem .3rem 0;
-    text-align: right;}
+        .matst_back {
+            width: 95%;
+            display: flex;
+            justify-content: space-between;
+            margin: 0 auto;
+            margin-top: .5rem;
+        }
 
-.conb_br{    
-    width: 100%;
-    height: 100vh;
-    align-items: center;
-    display: flex;}
-.conb_br .conb_left{
-    /* background: url(../images/iphonebor11.png) no-repeat center 1rem;background-size: 80%; */
-    width: 70%;
-    margin: 0 auto;
-    background-size: 80%;
-    overflow: hidden;
-}
-    .conb_br .conb_lefts{
-        width: 100%;overflow: hidden;
-    }
-    .conts_imgs{width: 18vh;
-        height: 33vh;
-        position: absolute;
-        top: 65vh;
-        transform: translate(-50%,-50%);
-        left: 14.5vh;}
-    .conts_imgs img{width: 100%;height: 100%;object-fit: cover;} 
-.conb_br .conb_right{    width: 60%;
-    background: url(../images/con_right_bg.png) no-repeat bottom right;
-    background-size: 25%;
-    padding-top: 2rem;}
+        .back_goo {
+            width: 2rem;
+            height: .9rem;
+            line-height: .9rem;
+            border: 1px solid #929292;
+            color: #7d7272;
+            text-align: center;
+            border-radius: .1rem;
+        }
 
-.nav-content{width:90%;display: flex;height: 2rem;line-height: 2rem;align-items: center;margin: 0 auto;position: relative;}
-.nav-content .sub-keep{position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 2.5rem;
-    height: .9rem;
-    border-radius: .1rem;
-    line-height: .9rem;
-    text-align: center;
-    background: #1890FF;
-    color: #ffffff;
-    font-size: .3rem;}
-.nav-content .nav-icon{    
-    width: .1rem;
-    height: .5rem;
-    background: #EC6565;}
-.nav-content .nav-title{padding: 0 .2rem;
-    color: #191616;
-    font-size: .38rem;
-    font-weight: 600;}
-.nav-content .nav-line{flex: 1;height: 1px;background: #e4e4e4;}
-.mtable tr td.thumbnail{padding: .2rem;border: 0;}
-.mtable tr td.thumbnail img{width: 100%;height: 4.9rem;}
-.mtable tr td{padding: 0 .2rem;}
-.mtable tr td .m-input{  
-    width: 100%;
-    border: 1px solid #ffffff;
-    height: .7rem;line-height: .7rem;padding-bottom: 0;
-    outline: 0;padding-left: .1rem;
-    border-top: 0;
-    }
-    textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
-    background-color: #ffffff;
-    border: 1px solid #cccccc;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    box-shadow: inset 0 0px 1px rgba(0, 0, 0, 0.075);
-    -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
-    -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
-    -o-transition: border linear 0.2s, box-shadow linear 0.2s;
-    transition: border linear 0.2s, box-shadow linear 0.2s;
-}
-form{
-    margin: 0 ;padding: 0;
-    font-size: .33rem; 
-     font-weight: 200;
-   line-height: initial!important;}
-   .selectst {
-    border: 0;
-    font-size: .27rem;
-    width: 230px;
-    outline: none;
-    height: 35px;
-    vertical-align: middle;
-    /* margin-top: -.2rem; */
-    /* margin-right: 1rem; */
-    line-height: 35px;
-    border: 1px solid #e8e8e8;
-}
+        .back_goo svg {
+            width: .6rem;
+            height: .6rem;
+            vertical-align: middle;
+        }
 
-.upload-content .modal-dialog {
-       width: 100%;
-   }
-   
-   .show {
-       text-align: center;
-   }
-   
-   .upload-content .content-img-list {
-       display: inline-block;
-       padding: 0;
-   }
-   
-   .upload-content .content-img .gcl {
-       font-size: 25px;
-       color: #aaa;
-   }
-   
-   .upload-content .content-img-list-item {
-       position: relative;
-       display: inline-block;
-       width: 150px;
-      /* height: 150px;  */
-       margin: 7px;
-       border: 1px dashed #DEDEDE;
-       border-radius: 4px;
-       background-color: #fff;
-       vertical-align: middle;
-       /* line-height: 150px; */
-   }
-   
-   .upload-content .content-img-list-item .hide {
-       display: none;
-   }
-   
-   .upload-content .content-img-list-item div {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    height: 100%;
-   }
-   
-   .upload-content .content-img-list-item .delete-btn,
-   .upload-content .content-img-list-item .big-btn {
-       color: #fff;
-       cursor: pointer;
-       margin: 0 5px;
-   }
-   
-   .upload-content .content-img-list-item img {
-       width: 100%;
-   }
-   /*.upload-content .upload-tips {
+        .conten_con {
+            width: 100%;
+            display: flex;
+            height: 100vh;
+        }
+
+        .conten_con .cotent_con_left {
+            width: 100%;
+            border-right: 1px solid #e4e4e4;
+        }
+
+        .lines {
+            width: 96%;
+            ;
+            margin: .8rem auto .3rem auto;
+        }
+
+        .ctab_bottom {
+            width: 96%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .ctab_bottom span {
+            float: right;
+            width: 3rem;
+            height: 1rem;
+            font-size: .38rem;
+            line-height: 1rem;
+            border: 1px solid #339EFC;
+            text-align: center;
+            border-radius: .07rem;
+        }
+
+        .ctab_bottom span:nth-child(1) {
+            background: #339EFC;
+            color: #ffffff;
+        }
+
+        .ctab_bottom span:nth-child(2) {
+            color: #339EFC;
+            margin-right: .2rem;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        #tab-con .tab_itemst {
+            width: 100%;
+            /* height: 10rem; */
+            position: relative;
+            display: none;
+        }
+
+        #tab-con .on {
+            display: block;
+            background-color: #fff;
+        }
+
+        #tab-con .ae {
+            width: 3rem;
+            height: 3rem;
+            background: red;
+        }
+
+        .henline {
+            height: .3rem;
+            background: #ffffff;
+        }
+
+        .tab_itemst .tcontbox {
+            width: 100%;
+        }
+
+        .tab_itemst .tcontbox .tconp {
+            display: flex;
+            justify-content: space-between;
+            height: 3.2rem;
+            line-height: 3.2rem;
+            border-bottom: 1px solid #dcdcdc;
+            width: 93%;
+            margin: 0 auto;
+            padding: 0 .5rem;
+            font-size: 1.1rem;
+            color: #2b2b2b;
+        }
+
+        .mtable {
+            border: 1px solid #BBBBBB;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .mtable tr th {
+            width: 20%;
+            background: #F5F5F5;
+            color: #1d1c1c;
+            padding: .3rem .2rem .3rem 0;
+            text-align: right;
+        }
+
+        .conb_br {
+            width: 100%;
+            height: 100vh;
+            align-items: center;
+            display: flex;
+        }
+
+        .conb_br .conb_left {
+            /* background: url(../images/iphonebor11.png) no-repeat center 1rem;background-size: 80%; */
+            width: 70%;
+            margin: 0 auto;
+            background-size: 80%;
+            overflow: hidden;
+        }
+
+        .conb_br .conb_lefts {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .conts_imgs {
+            width: 18vh;
+            height: 33vh;
+            position: absolute;
+            top: 65vh;
+            transform: translate(-50%, -50%);
+            left: 14.5vh;
+        }
+
+        .conts_imgs img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .conb_br .conb_right {
+            width: 60%;
+            background: url(../images/con_right_bg.png) no-repeat bottom right;
+            background-size: 25%;
+            padding-top: 2rem;
+        }
+
+        .nav-content {
+            width: 90%;
+            display: flex;
+            height: 2rem;
+            line-height: 2rem;
+            align-items: center;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .nav-content .sub-keep {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2.5rem;
+            height: .9rem;
+            border-radius: .1rem;
+            line-height: .9rem;
+            text-align: center;
+            background: #1890FF;
+            color: #ffffff;
+            font-size: .3rem;
+        }
+
+        .nav-content .nav-icon {
+            width: .1rem;
+            height: .5rem;
+            background: #EC6565;
+        }
+
+        .nav-content .nav-title {
+            padding: 0 .2rem;
+            color: #191616;
+            font-size: .38rem;
+            font-weight: 600;
+        }
+
+        .nav-content .nav-line {
+            flex: 1;
+            height: 1px;
+            background: #e4e4e4;
+        }
+
+        .mtable tr td.thumbnail {
+            padding: .2rem;
+            border: 0;
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        /* .mtable tr td.thumbnail img{width: 100%;height: 4.9rem;} */
+        .mtable tr td.thumbnail img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .mtable tr td {
+            padding: 0 .2rem;
+        }
+
+        .mtable tr td .m-input {
+            width: 100%;
+            border: 1px solid #ffffff;
+            height: .7rem;
+            line-height: .7rem;
+            padding-bottom: 0;
+            outline: 0;
+            padding-left: .1rem;
+            border-top: 0;
+        }
+
+        textarea,
+        input[type="text"],
+        input[type="password"],
+        input[type="datetime"],
+        input[type="datetime-local"],
+        input[type="date"],
+        input[type="month"],
+        input[type="time"],
+        input[type="week"],
+        input[type="number"],
+        input[type="email"],
+        input[type="url"],
+        input[type="search"],
+        input[type="tel"],
+        input[type="color"],
+        .uneditable-input {
+            background-color: #ffffff;
+            border: 1px solid #cccccc;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            box-shadow: inset 0 0px 1px rgba(0, 0, 0, 0.075);
+            -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+            -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+            -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+            transition: border linear 0.2s, box-shadow linear 0.2s;
+        }
+
+        form {
+            margin: 0;
+            padding: 0;
+            font-size: .33rem;
+            font-weight: 200;
+            line-height: initial !important;
+        }
+
+        .selectst {
+            border: 0;
+            font-size: .27rem;
+            width: 230px;
+            outline: none;
+            height: 35px;
+            vertical-align: middle;
+            /* margin-top: -.2rem; */
+            /* margin-right: 1rem; */
+            line-height: 35px;
+            border: 1px solid #e8e8e8;
+        }
+
+        .show {}
+
+        .upload-content {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .upload-content .modal-dialog {
+            width: 80%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: 0 auto;
+            transform: translate(-50%, -50%) !important;
+        }
+
+        .show {
+            text-align: center;
+        }
+
+        .upload-content .content-img-list {
+            display: inline-block;
+            padding: 0;
+        }
+
+        .upload-content .content-img .gcl {
+            font-size: 25px;
+            color: #aaa;
+        }
+
+        .upload-content .content-img-list-item {
+            position: relative;
+            display: inline-block;
+            width: 150px;
+            /* height: 150px;  */
+            margin: 7px;
+            border: 1px dashed #DEDEDE;
+            border-radius: 4px;
+            background-color: #fff;
+            vertical-align: middle;
+            /* line-height: 150px; */
+        }
+
+        .upload-content .content-img-list-item .hide {
+            display: none;
+        }
+
+        .upload-content .content-img-list-item div {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            height: 100%;
+        }
+
+        .upload-content .content-img-list-item .delete-btn,
+        .upload-content .content-img-list-item .big-btn {
+            color: #fff;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+
+        .upload-content .content-img-list-item img {
+            width: 100%;
+        }
+
+        /*.upload-content .upload-tips {
        padding-top: 10px;
        text-align: right;
        width: 100%;
    }*/
-   /*图片上传按钮*/
-   
-   .upload-content .file {
-       position: relative;
-       display: inline-block;
-       border: 1px dashed #DEDEDE;
-       border-radius: 4px;
-       width: 150px;
-       height: 150px;
-       line-height: 150px;
-       text-align: center;
-       background-color: #fff;
-       vertical-align: top;
-       margin: 7px;
-   }
-   
-   .upload-content .file input {
-       position: absolute;
-       right: 0;
-       top: 0;
-       opacity: 0;
-       cursor: pointer;
-       width: 150px;
-       height: 150px;
-   }
-   
-   .upload-content .file:hover {
-       border: 1px dashed #3a75dc;
-   }
-   
-   #imgPreview {
-       width: 40%;
-       height: 180px;
-       margin: 10px auto 0px auto;
-       border: 1px solid black;
-       text-align: center;
-   }
-   
-   #imgSpan {
-       position: absolute;
-       top: 60px;
-       left: 40px;
-   }
-   
-   .filepath {
-       width: 100%;
-       height: 100%;
-       opacity: 0;
-   }
+        /*图片上传按钮*/
 
+        .upload-content .file {
+            position: relative;
+            display: inline-block;
+            border: 1px dashed #DEDEDE;
+            border-radius: 4px;
+            width: 150px;
+            height: 150px;
+            line-height: 150px;
+            text-align: center;
+            background-color: #fff;
+            vertical-align: top;
+            margin: 7px;
+        }
 
+        .upload-content .file input {
+            position: absolute;
+            right: 0;
+            top: 0;
+            opacity: 0;
+            cursor: pointer;
+            width: 150px;
+            height: 150px;
+        }
 
-.upload-content .content-img-list {
-    display: inline-block;
-    padding: 0;
-    margin: 0;
-}
-.modal.fade.in {
-    top: 50%;
-    transform: translateY(-50%);
-}
-.mtable tr td input{font-size: .3rem;}
-</style>
+        .upload-content .file:hover {
+            border: 1px dashed #3a75dc;
+        }
+
+        #imgPreview {
+            width: 40%;
+            height: 180px;
+            margin: 10px auto 0px auto;
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        #imgSpan {
+            position: absolute;
+            top: 60px;
+            left: 40px;
+        }
+
+        .filepath {
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+        }
+
+        .upload-content .content-img-list {
+            display: inline-block;
+            padding: 0;
+            margin: 0;
+        }
+
+        .modal-open .modal {
+            overflow-x: hidden;
+            overflow-y: auto;
+            padding-left: 0 !important;
+            /* display: flex; */
+        }
+    </style>
 </head>
+
 <body>
-   <div class="outdiv">
-      <div class="left" id="left">
-          <!--#include file="left.html"-->
-      </div>
-       <div class="right_conter">
-           <div style="width:auto;margin:auto;">
-            <div class="conten_con">
-                <div class="cotent_con_left">
-                    <div class="header_box" id="header">
-                        <!--#include file="header.html"-->   
-                      </div>
-                      <div class="h8vh"></div>
-                      <div class="matst_back">
-                        <div class="back_goo" onclick="goback()">
-                            <svg t="1607408152481" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3504" width="48" height="48"><path d="M438.4 297.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2L300.8 480H800c19.2 0 32 12.8 32 32 0 16-12.8 28.8-28.8 32H300.8l137.6 137.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2c-12.8 12.8-28.8 12.8-41.6 3.2l-3.2-3.2-192-192-3.2-3.2-3.2-3.2-3.2-3.2V499.2l3.2-3.2 3.2-3.2 3.2-3.2 192-192c12.8-12.8 32-12.8 44.8 0z" fill="#bfbfbf" p-id="3505"></path></svg>
-                            返回
+    <div class="outdiv">
+        <div class="left" id="left">
+            <!--#include file="left.html"-->
+        </div>
+        <div class="right_conter">
+            <div style="width:auto;margin:auto;">
+                <div class="conten_con">
+                    <div class="cotent_con_left">
+                        <div class="header_box" id="header">
+                            <!--#include file="header.html"-->
                         </div>
-                    </div>
-                   <form id="J_form">
-                     <div class="nav-content">
-                         <div class="nav-icon"></div>
-                         <div class="nav-title">基础信息</div>
-                         <div class="nav-line"></div>
-                         <div class="sub-keep" id="sub-keep">保存信息</div>
-                     </div>         
-                      <div id="tab-con">
-                        <div class="tab_itemst on"> 
-                     
-                          <div class="tcontbox">
-                              <table class="mtable" border="1" cellspacing="0">
-                                <tr>
-                                    <td class="thumbnail">
-                                        <div class="upload-content">
-                                            <div class="content-img" style="text-align: center;">
-                                                <ul class="content-img-list"></ul>
-                                                <div class="file" id="files">
-                                                    <i class="gcl gcladd"></i>
-                                                    <input type="file" name="file" accept="image/*" id="upload" multiple="">
-                                                </div>
-                                            </div>
-                                            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="bs-example-modal-lg">
-                                                <div class="modal-dialog modal-lg" role="document">
-                                                    <div class="modal-content">
-                                
+                        <div class="h8vh"></div>
+                        <div class="matst_back">
+                            <div class="back_goo" onclick="goback()">
+                                <svg t="1607408152481" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg" p-id="3504" width="48" height="48">
+                                    <path
+                                        d="M438.4 297.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2L300.8 480H800c19.2 0 32 12.8 32 32 0 16-12.8 28.8-28.8 32H300.8l137.6 137.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2c-12.8 12.8-28.8 12.8-41.6 3.2l-3.2-3.2-192-192-3.2-3.2-3.2-3.2-3.2-3.2V499.2l3.2-3.2 3.2-3.2 3.2-3.2 192-192c12.8-12.8 32-12.8 44.8 0z"
+                                        fill="#bfbfbf" p-id="3505"></path>
+                                </svg>
+                                返回
+                            </div>
+                        </div>
+                        <form id="J_form">
+                            <div class="nav-content">
+                                <div class="nav-icon"></div>
+                                <div class="nav-title">基础信息</div>
+                                <div class="nav-line"></div>
+                                <div class="sub-keep" id="sub-keep">保存信息</div>
+                            </div>
+                            <div id="tab-con">
+                                <div class="tab_itemst on">
+
+                                    <div class="tcontbox">
+                                        <table class="mtable" border="1" cellspacing="0">
+                                            <tr>
+                                                <td class="thumbnail">
+                                                    <div class="upload-content">
+                                                        <div class="content-img">
+                                                            <ul class="content-img-list"></ul>
+                                                            <div class="file" id="files">
+                                                                <i class="gcl gcladd"></i>
+                                                                <input type="file" name="myFile[]" accept="image/*"
+                                                                    id="upload" multiple="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal fade bs-example-modal-lg" tabindex="-1"
+                                                            role="dialog" aria-labelledby="myLargeModalLabel">
+                                                            <div class="modal-dialog modal-lg" role="document">
+                                                                <div class="modal-content">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td colspan="3"></td>
-                                </tr>
-                                <tr>
-                                    <th>姓名：</th>
-                                    <td>
-                                        <input type="text" class="m-input" id="name">
-                                    </td>
-                                    <td></td>
-                                    <td> </td>
-                                </tr>
-                                <tr>
-                                    <th>编号：</th>
-                                    <td>  <input type="text" class="m-input" id="pid"></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>出生日期：</th>
-                                    <td> <input type="text" class="m-input" id="birth"></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>证件类型：</th>
-                                    <td> 
-                                    <select class="selectst" id="certificates_types">
-                                      <option>身份证</option>
-                                    </select>
-                                    </td>
-                                    <td></td>
-                                    <td> </td>
-                                </tr>
-                                <tr>
-                                    <th>证件号码：</th>
-                                    <td> <input type="text" class="m-input" id="idcard"></td>
-                                    <td></td>
-                                    <td> </td>
-                                </tr>
-                                <tr>
-                                    <th>工作单位：</th>
-                                    <td> <input type="text" class="m-input" id="work_unit"></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>性别：</th>
-                                    <td>
-                                        <label style="float: left;margin-right: .15rem;"> 男 <input type="radio" name="sex" id="radio1"></label>
-                                        <label> 女  <input type="radio" name="sex" id="radio2" id="radio2"></label>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th>入职日期：</th>
-                                    <td> <input type="text" class="m-input" id="entry_date"></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                              </table>
+                                                </td>
+                                                <td colspan="3"></td>
+                                            </tr>
+                                            <tr>
+                                                <th>姓名：</th>
+                                                <td>
+                                                    <input type="text" class="m-input" id="name" name="name">
+                                                </td>
+                                                <td></td>
+                                                <td> </td>
+                                            </tr>
+                                            <tr>
+                                                <th>编号：</th>
+                                                <td> <input type="text" class="m-input" id="pid" name="pid"></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th>出生日期：</th>
+                                                <td> <input type="text" class="m-input" id="birth" name="birth"></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th>证件类型：</th>
+                                                <td>
+                                                    <select class="selectst" id="certificates_types" name="idtype">
+                                                        <option value="1">身份证</option>
+                                                    </select>
+                                                </td>
+                                                <td></td>
+                                                <td> </td>
+                                            </tr>
+                                            <tr>
+                                                <th>证件号码：</th>
+                                                <td> <input type="text" class="m-input" id="idcard" name="idcard"></td>
+                                                <td></td>
+                                                <td> </td>
+                                            </tr>
+                                            <tr>
+                                                <th>工作单位：</th>
+                                                <td> <input type="text" class="m-input" id="work_unit" name="work_unit"></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th>性别：</th>
+                                                <td>
+                                                    <label style="float: left;margin-right: .15rem;"> 男 <input
+                                                            type="radio" name="sex" id="radio1" value="1"></label>
+                                                    <label> 女 <input type="radio" name="sex" id="radio2" value="2"></label>
+                                                </td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th>入职日期：</th>
+                                                <td> <input type="text" class="m-input" id="entry_date"  name="entry_date"></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        </table>
 
-                              <p class="lines"></p>
-                            
-                              <div style="height: .3rem;"></div>
-                          </div>
-                    
-                        </div>
-                       
-                      </div>
-                    </form>
+                                        <p class="lines"></p>
+
+                                        <div style="height: .3rem;"></div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
-             
+
             </div>
-            
-          </div>
-       </div>
-   </div>   
-   <script type="text/javascript" src="/statics/public/js/cookie.js"></script>
-   <script type="text/javascript" src="/statics/public/js/public.js"></script>
-    <script>
-    $(function() {
-     
-var imgFile = []; //文件流
-var imgSrc = []; //图片路径
-var imgName = []; //图片名字
-$(function() {
-    // 鼠标经过显示删除按钮
-    $('.content-img-list').on('mouseover', '.content-img-list-item', function() {
-        $(this).children('div').removeClass('hide');
-    });
-    // 鼠标离开隐藏删除按钮
-    $('.content-img-list').on('mouseleave', '.content-img-list-item', function() {
-        $(this).children('div').addClass('hide');
-    });
-    // 单个图片删除
-    $(".content-img-list").on("click", '.content-img-list-item a .gcllajitong', function() {
-        var index = $(this).parent().parent().parent().index();
-        imgSrc.splice(index, 1);
-        imgFile.splice(index, 1);
-        imgName.splice(index, 1);
-        var boxId = ".content-img-list";
-        addNewContent(boxId);
-        if (imgSrc.length < 1) { //显示上传按钮
-            $('.content-img .file').show();
-        }
-    });
-    
+        </div>
+    </div>
 
-   
-
-    $(".content-img-list").on("click", '.content-img-list-item a .gclfangda', function() {
-        $('#bs-example-modal-lg').addClass('in');
-        console.log(6666668888);
-        $('#bs-example-modal-lg').show();
-        var index = $(this).parent().parent().parent().index();
-        $(".modal-content").html("");
-        var bigimg = $(".modal-content").html();
-        $(".modal-content").html(bigimg + '<div class="show"><img src="' + imgSrc[index] + '" alt=""><div>');
-        // $(".modal-content").append(
-        //     '<div class="show"><img src="' + imgSrc[a] + '" alt=""><div>'
-        // );
-
-       setTimeout(function() {
-        $('.modal-backdrop').each(function() {
-        $(this).click(function() {
-            $('#bs-example-modal-lg').css('display','none');
-            $(this).css('display','none');
-        });
-    });
-       },1000);
- 
-       
-
-    });
-
-
-  
-});
-//图片上传
-$('#upload').on('change', function(e) {
-    var imgSize = this.files[0].size;
-//    if (imgSize > 1024 * 500 * 1) { //1M
-//         return alert("上传图片不能超过500KB");
-//     };
-    if (this.files[0].type != 'image/png' && this.files[0].type != 'image/jpeg' && this.files[0].type != 'image/gif') {
-        return alert("图片上传格式不正确");
-    }
-
-    var imgBox = '.content-img-list';
-    var fileList = this.files;
-    for (var i = 0; i < fileList.length; i++) {
-        var imgSrcI = getObjectURL(fileList[i]);
-        imgName.push(fileList[i].name);
-        imgSrc.push(imgSrcI);
-        imgFile.push(fileList[i]);
-    }
-    addNewContent(imgBox);
-    this.value = null; //上传相同图片
-});
-
-//提交请求
-$('#btn-submit-upload').on('click', function() {
-    // FormData上传图片
-    $('#files').hide();
-    console.log(666);
-    var formFile = new FormData();
-    // formFile.append("type", type);
-    // formFile.append("content", content);
-    // formFile.append("mobile", mobile);
-    // 遍历图片imgFile添加到formFile里面
-    $.each(imgFile, function(i, file) {
-        formFile.append('myFile[]', file);
-    });
-    console.log(imgFile);
-    //    $.ajax({
-    //        url: '',
-    //        type: 'POST',
-    //        data: formFile,
-    //        async: true,
-    //        cache: false,
-    //        contentType: false,
-    //        processData: false,
-    //        // traditional:true,
-    //        dataType:'json',
-    //        success: function(res) {
-    //            console.log(res);
-    //            if(res.code==0){
-    //                alert("已提交")
-    //    //             $("#adviceContent").val("");
-    // 			// $("#contact").val("");
-    //            }else{
-    //                alert(res.message);
-    //                $('.content-img .file').show();
-    //                $("#adviceContent").val("");
-    //                $("#cotentLength").text("0/240");
-    // 			$("#contact").val("");
-    // 			imgSrc = [];imgFile = [];imgName = [];
-    // addNewContent(".content-img-list");
-
-});
-
-//删除
-function removeImg(obj, index) {
-    imgSrc.splice(index, 1);
-    imgFile.splice(index, 1);
-    imgName.splice(index, 1);
-    var boxId = ".content-img-list";
-    addNewContent(boxId);
-}
-
-//图片展示
-function addNewContent(obj) {
-     console.log(imgSrc);
-     console.log(imgFile);
-     $('#files').hide();
-    $(obj).html("");
-    for (var a = 0; a < imgSrc.length; a++) { 
-        var oldBox = $(obj).html();
-        $(obj).html(oldBox + '<li class="content-img-list-item"><img src="' + imgSrc[a] + '" alt="">' +
-            '<div class="hide"><a index="' + a + '" class="delete-btn"><i class="gcl gcllajitong"></i></a>' +
-            '<a index="' + a + '" class="big-btn" type="button" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="gcl gclfangda"></i></a></div></li>');
-        break;
-        }
-}
-
-//建立可存取到file的url
-function getObjectURL(file) {
-    var url = null;
-    if (window.createObjectURL != undefined) { // basic
-        url = window.createObjectURL(file);
-    } else if (window.URL != undefined) { // mozilla(firefox)
-        url = window.URL.createObjectURL(file);
-    } else if (window.webkitURL != undefined) { // webkit or chrome
-        url = window.webkitURL.createObjectURL(file);
-    }
-    return url;
-}
-
-
-         laydate.render({
-          elem: '#birth'
-          ,format: 'yyyy-MM-dd'
-          ,done: function(value,date,endDate){
-              et = value;
-          }
-        });
-        laydate.render({
-          elem: '#entry_date'
-          ,format: 'yyyy-MM-dd'
-          ,done: function(value,date,endDate){
-              et = value;
-          }
-        });  
-        //   request('/?m=pharmacy&c=data&a=getStaff&ajax=1','',{
-        //         dataType:'jsonp',
-        //         success:function(res){
-        //             var html = '';
-        //             if (0<Object.keys(res.data).length) {
-        //             for(var k in res.data){
-        //                 var info = res.data[k];
-        //                 var selected = Cookies.get('verify_user_id')==info.user_id?'selected':'';
-        //                 html += '<option value="'+info.user_id+'" '+selected+'>'+info.full_name+'</option>';
-        //             }
-        //             if (!Cookies.get('verify_user_id')) {
-        //                 Cookies.set('verify_user_id',res.data[0].user_id);
-        //                 Cookies.set('verify_user_name',res.data[0].full_name);
-        //             } 
-        //             } else {
-        //             html += '<option value="0">无药师</option>';
-        //             }
-        //             $('#J_select_staff').html(html);
-        //         }
-        //         });
-           
+    <script type="text/javascript">
+        var useid= getUrlParam('useid');
+        var imgFile = []; //文件流
+        var imgSrc = []; //图片路径
+        var imgName = []; //图片名字
+        $(function () {
             getDate();
-            $('#sub-keep').click(function() {
-                $('#files').hide();
-                console.log(666);
-                var formFile = new FormData();
-                // formFile.append("type", type);
-                // formFile.append("content", content);
-                // formFile.append("mobile", mobile);
-                // 遍历图片imgFile添加到formFile里面
-                $.each(imgFile, function(i, file) {
-                    formFile.append('myFile[]', file);
-                });
-                console.log(imgFile);
-            var url='/?m=pharmacy&c=pharmacist&a=doPharmacist&ajax=1';
-            var name=$('#name').val();
-            var birth=$('#birth').val();
-            var certificates_type=$('#certificates_type').val();
-            var entry_date=$('#entry_date').val();
-            var idcard=$('#idcard').val();
-            var pid=$('#pid').val();
-            //     $('#sex').text(res.data.sex);
-            var work_unit=$('#work_unit').val();
-           //      $('#img').attr('src',res.data.img);
-            var parms={'name':name,'birth':birth,'certificates_type':certificates_type,'entry_date':entry_date,'idcard':idcard,'pid':pid,'work_unit':work_unit};
-            request(url,'post',{
-            data:parms,
-            dataType:'json',
-            success:function(res){
-               alert(res.erro);
-            }
-            }); 
+            // 鼠标经过显示删除按钮
+            $('.content-img-list').on('mouseover', '.content-img-list-item', function () {
+                $(this).children('div').removeClass('hide');
             });
-          })
+            // 鼠标离开隐藏删除按钮
+            $('.content-img-list').on('mouseleave', '.content-img-list-item', function () {
+                $(this).children('div').addClass('hide');
+            });
+            // 单个图片删除
+            $(".content-img-list").on("click", '.content-img-list-item a .gcllajitong', function () {
+                var index = $(this).parent().parent().parent().index();
+                imgSrc.splice(index, 1);
+                imgFile.splice(index, 1);
+                imgName.splice(index, 1);
+                var boxId = ".content-img-list";
+                addNewContent(boxId);
+                if (imgSrc.length < 1) { //显示上传按钮
+                    $('.content-img .file').show();
+                }
+            });
 
+            $(".content-img-list").on("click", '.content-img-list-item a .gclfangda', function () {
+                var index = $(this).parent().parent().parent().index();
+                $(".modal-content").html("");
+                var bigimg = $(".modal-content").html();
+                $(".modal-content").html(bigimg + '<div class="show"><img src="' + imgSrc[index] +
+                    '" alt=""><div>');
+                // $(".modal-content").append(
+                //     '<div class="show"><img src="' + imgSrc[a] + '" alt=""><div>'
+                // );
+            });
 
-    function getDate() {
+        });
+
+        //图片上传
+        $('#upload').on('change', function (e) {
+            var imgSize = this.files[0].size;
+            // if (imgSize > 1024 * 500 * 1) { 
+            //     return alert("上传图片不能超过500KB");
+            // };
+            if (this.files[0].type != 'image/png' && this.files[0].type != 'image/jpeg' && this.files[0].type !=
+                'image/gif') {
+                return alert("图片上传格式不正确");
+            }
+
+            var imgBox = '.content-img-list';
+            var fileList = this.files;
+            for (var i = 0; i < fileList.length; i++) {
+                var imgSrcI = getObjectURL(fileList[i]);
+                imgName.push(fileList[i].name);
+                imgSrc.push(imgSrcI);
+                imgFile.push(fileList[i]);
+            }
+            addNewContent(imgBox);
+            this.value = null; //上传相同图片
+        });
+
+        //提交请求
+        $('#sub-keep').on('click', function () {
+            // FormData上传图片
+          //  $('#files').hide();
+            console.log(666);
+            var formFile = new FormData();
+            // formFile.append("type", type);
+            // formFile.append("content", content);
+            // formFile.append("mobile", mobile);
+            // 遍历图片imgFile添加到formFile里面
+            $.each(imgFile, function (i, file) {
+                formFile.append('myFile[]', file);
+            });
+            formFile.append('name', $('#name').val()); 
+            formFile.append('pid', $('#pid').val()); 
+            formFile.append('birth', $('#birth').val()); 
+            formFile.append('certificates_types', $('#certificates_types').val()); 
+            formFile.append('idcard', $('#idcard').val()); 
+            formFile.append('work_unit', $('#work_unit').val()); 
+            formFile.append('entry_date', $('#entry_date').val()); 
+            formFile.append('useid', useid); 
+            formFile.append('sex', $("input[name='sex']:checked").val()); 
+               $.ajax({
+                   url: '/?m=pharmacy&c=pharmacist&a=aditePharmacist&ajax=1',
+                   type: 'POST',
+                   data: formFile,
+                   async: true,
+                   cache: false,
+                   contentType: false,
+                   processData: false,
+                   // traditional:true,
+                   dataType:'json',
+                   success: function(res) {
+                       console.log(res);
+                    //    if(res.code==0){
+                    //        alert("已提交")
+                    // //         $("#adviceContent").val("");
+            		// 	// $("#contact").val("");
+                    //    }else{
+                    //        alert(res.message);
+                    //        $('.content-img .file').show();
+                    //        $("#adviceContent").val("");
+                    //        $("#cotentLength").text("0/240");
+            		// 	$("#contact").val("");
+            		// 	imgSrc = [];imgFile = [];imgName = [];
+                    //     addNewContent(".content-img-list");
+                    //    }
+                    }
+        });
+           })
+
+        //删除
+        function removeImg(obj, index) {
+            imgSrc.splice(index, 1);
+            imgFile.splice(index, 1);
+            imgName.splice(index, 1);
+            var boxId = ".content-img-list";
+            addNewContent(boxId);
+        }
+
+        //图片展示
+        function addNewContent(obj) {
+            console.log(imgSrc);
+            $('#files').hide();
+            $(obj).html("");
+            for (var a = 0; a < imgSrc.length; a++) {
+                var oldBox = $(obj).html();
+                $(obj).html(oldBox + '<li class="content-img-list-item"><img src="' + imgSrc[a] + '" alt="">' +
+                    '<div class="hide"><a index="' + a +
+                    '" class="delete-btn"><i class="gcl gcllajitong"></i></a>' +
+                    '<a index="' + a +
+                    '" class="big-btn" type="button" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="gcl gclfangda"></i></a></div></li>'
+                );
+                break;
+            }
+        }
+
+        //建立可存取到file的url
+        function getObjectURL(file) {
+            var url = null;
+            if (window.createObjectURL != undefined) { // basic
+                url = window.createObjectURL(file);
+            } else if (window.URL != undefined) { // mozilla(firefox)
+                url = window.URL.createObjectURL(file);
+            } else if (window.webkitURL != undefined) { // webkit or chrome
+                url = window.webkitURL.createObjectURL(file);
+            }
+            return url;
+        }
+
+        function getDate() {
             request('/?m=pharmacy&c=pharmacist&a=doPharmacist&ajax=1','',{
             dataType:'jsonp',
             success:function(res){
@@ -723,21 +782,10 @@ function getObjectURL(file) {
             }
             });
     }
-    function upload_back2(i, id, file_id) {
-		if (i.indexOf("upload_cache") == -1) {
-			i = 'upload_cache/' + i;
-		}
-		console.log(i + '|' + id + '|' + file_id);
-		try {
-			$('#parentFileBox_' + id + ' #fileBox_' + file_id + ' .viewThumb').append('<img src="' + i + '" />');
-			$('#diyFileUrl_' + file_id).val(i);
-			$('#parentFileBox_' + id + ' #fileBox_' + file_id).show();
-			//alert($('#parentFileBox_'+id+' #fileBox_'+file_id+' input').val());
-			//layer.msg("上传成功")
-		} catch (e) {
-			alert('-3|' + e);
-		}
-	}
+
+
+
     </script>
 </body>
+
 </html>
