@@ -218,7 +218,13 @@
             padding: .3rem .2rem .3rem 0;
             text-align: right;
         }
-
+        .mtable td, .mtable th{
+            padding: 0;
+            width: 40%;
+        }
+        .mtable td, .mtable th span{
+            padding-left: 10px;
+        }
         .conten_con .cotent_con_right {
             flex: 1;
             order: 1;
@@ -273,7 +279,7 @@
     line-height: 30px;}
     .conb_left_title p span{margin-right: .12rem;}
   .conb_left_video{width: 96%;margin: 0 auto;border: 1px solid #666;
- background:url(/pharmacies/doctor/images/v2_qkt5y5.png) no-repeat;background-size: 100%;height: 34vh;position: relative;
+ background:url(/pharmacies/doctor/images/v2_qkt5y5.png) no-repeat;background-size: cover;height: 34vh;position: relative;
 }
 .conb_option{position: absolute;bottom: 1vh;left: 3vh;display:flex;}
 .conb_option_item{text-align: center;margin-right: .2rem;}
@@ -872,21 +878,33 @@
                                         </tr>
                                         <tr>
                                             <th>医保卡号：</th>
-                                            <td></td>
+                                            <td>
+                                                <span id="mi-card-no"></span>  
+                                            </td>
                                             <th>性别：</th>
-                                            <td></td>
+                                            <td>
+                                               <span id="sex"></span>     
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th>手机号码：</th>
-                                            <td></td>
+                                            <td>
+                                                <span id="mobies"></span>     
+                                            </td>
                                             <th>年龄：</th>
-                                            <td></td>
+                                            <td>
+                                                <span id="age"></span>     
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th>联系地址：</th>
-                                            <td></td>
+                                            <td>
+                                                <span id="address"></span>     
+                                            </td>
                                             <th>出生日期：</th>
-                                            <td></td>
+                                            <td>
+                                                <span id="both"></span>     
+                                            </td>
                                         </tr>
                                     </table>
                                     <!-- <p class="lines"></p>
@@ -1018,13 +1036,13 @@
                                     </div> -->
                                     <div class="content_usage">
                                         <div>每</div>
-                                        <div class="cotNumeer"> <i class="icon_reduce"></i> <span class="contnitem" style="width: 1rem;">2</span> <i class="icon_plus"></i>
+                                        <div class="cotNumeer"> <i class="icon_reduce"></i> <span class="contnitem" style="width: 1rem;" id="numId">1</span> <i class="icon_plus"></i>
                                         </div>
                                         <div class="contSelect" id="itemp5" style="margin: 0 .2rem;text-align: left;padding-left: .4rem;">
                                             <span id="timeDate">小时</span>
                                             <img src="https://lxj.yjxun.cn/drug/images/lower.svg" alt="" class="contImgae" id="cont1">
                                         </div>
-                                        <div class="cotNumeer" style="margin-right: .5rem;"> <i class="icon_reduce"></i> <span class="contnitem" style="width: 1rem;">2</span> <i class="icon_plus"></i>
+                                        <div class="cotNumeer" style="margin-right: .5rem;"> <i class="icon_reduce"></i> <span class="contnitem" style="width: 1rem;">1</span> <i class="icon_plus"></i>
                                         </div>
                                         <div>次</div>
                                     </div>
@@ -1232,8 +1250,9 @@
     <script>
        var page = 1;
        var lens=0;
+       var id=getUrlParam('id');
         $(function () {
-          // getIDcard();
+            getIDcard({id});
             checkLogin("golink");
             var $list = $("#menu").find("li");
             var $div = $("#tab-con").children("div");
@@ -1375,13 +1394,18 @@
 			})
 		}
       
-	
+	   
 
 		function Preservation(ids) {
-            var userdrug='每'+$('#timeDate').eq(0).text()+$('.contnitem').eq(1).text()+'次';
+            var userdrug='每'+$('#numId').text()+$('#timeDate').eq(0).text()+$('.contnitem').eq(1).text()+'次';
             $('#mfrequncy_'+ids).text(userdrug);
             var userevery= $('.contnitem').eq(2).text()+$('#pill').text();
             $('#each_dose_'+ids).text('每次'+userevery);
+            var itemp2=$('#itemp2').text();
+            var contnitem=$('#contnitem').text();
+            var dadas=$('#itemp2').text().replace(/\s/g,"");
+            var datas=$('#numId').text()+'_'+$('#timeDate').eq(0).text()+'_'+$('.contnitem').eq(1).text()+'_'+$('.contnitem').eq(2).text()+'_'+$('#pill').text()+'_'+dadas+'_'+$('#contnitem').text()+'|';
+             $('#info_'+ids).attr('data',datas);
 		}
 
 		function getCookies(cookieName) {
@@ -1587,7 +1611,7 @@
     })
       request('/?m=pharmacy&c=doctor&a=addDrugPN','POST',{
        // dataType: 'jsonp',
-        data:'ids=' + ids + '&data=' + data + '&title=' + $('#title').val() + '&pnname=' + $('#rpText').val(),
+        data:'ids=' + ids + '&data=' + data + '&title=' + $('#title').val() + '&pnname=' + $('#rpText').val()+'&id='+id,
         success: function(res){
           if(1 == res.status){
             layer.open({
@@ -1603,30 +1627,59 @@
         }
       });
     }  
-    function getIDcard(){    
+    function getIDcard(param){    
       $.ajax({
-				url: '/?m=data&c=da_fun&a=lookImgCard',
-				type: 'POST',
+				url: '/?m=pharmacy&c=doctor&a=getUsermsg',
+                type: 'POST',
+                data:{id:param.id},
 				dataType: 'json',
 				success: function(res) {
                   //  var data=JSON.parse(re);
-                
                   console.log(res);
                 //  var idcardmsg=res.
-                 var data=res.words_result;
-                 for(var i in data){
-
-                    $('#name').text(data[i].words);
-                    console.log(i);
+                 if(res.status==1){
+                    var info=res.data;
+                    $('#idcard').text(info.idcard);
+                    $('#name').text(info.name);
+                    $('#mi-card-no').text(info.mi_card_no);
+                    $('#sex').text(info.sex);
+                    $('#mobies').text(info.mobies);
+                    $('#age').text(info.ages);
+                    $('#address').text(info.address);
+                    $('#both').text(getFromIdCard(info.idcard,1));
                  }
-                  $('#idcard').text(res.log_id); 
-            
-
-                 
                     
 				}
 			})
     }
+    function getFromIdCard(UUserCard, num) {
+            if (num == 1) {
+                //获取出生日期
+                birth = UUserCard.substring(6, 10) + "-" + UUserCard.substring(10, 12) + "-" + UUserCard.substring(12, 14);
+                return birth;
+            }
+            if (num == 2) {
+                //获取性别
+                if (parseInt(UUserCard.substr(16, 1)) % 2 == 1) {
+                    //男
+                    return "男";
+                } else {
+                    //女
+                    return "女";
+                }
+            }
+            if (num == 3) {
+                //获取年龄
+                var myDate = new Date();
+                var month = myDate.getMonth() + 1;
+                var day = myDate.getDate();
+                var age = myDate.getFullYear() - UUserCard.substring(6, 10) - 1;
+                if (UUserCard.substring(10, 12) < month || UUserCard.substring(10, 12) == month && UUserCard.substring(12, 14) <= day) {
+                    age++;
+                }
+                return age;
+            }
+        }
     </script>
 </body>
 

@@ -16,7 +16,6 @@ class doctor extends authority{
 			if($_GET[k]) $where .= ' AND `id`='.$_GET[k];
 			$keyword = $_GET['amount'];
 			if($_GET[amount]) $where .= ' AND (`gmp_validity` = "'.$keyword.'" OR `gmp_validity` like "%'.$keyword.'%")';
-	
 			if ($_GET['st']&&$_GET['et']) {
 				$res = dateToTimeStamp(['st'=>$_GET['st'],'et'=>$_GET['et']]);
 	 	    	$where .= ' AND `created_time`>='.$res['st'].' AND `created_time`<='.$res['et'];
@@ -42,13 +41,45 @@ class doctor extends authority{
 				$total = 0;
 				$rows = [];
 			}
-			//$jsonData = ['status'=>1,'rows'=>$rows,'total'=>$total];
-			//exit(json_encode($jsonData));
 			output(1,'',['type'=>'json','data'=>['rows'=>$rows,'total'=>$total]]);
 		} else {
 			include template($this->template,'drug',$this->style);
 		}
 	}
+
+	public function detail(){
+		$prescription_no = $_GET['pnid'];
+		$where = ['prescription_no'=>$prescription_no];
+		$this->default_db->load('drug_pn_user');
+		$row = $this->default_db->get_one($where);
+		$drug = [];
+		if ($row) {
+			$res = getDictionary(['category_id'=>[10,14,15],'is_value'=>1,'value_category'=>[14,15]]);
+			$sex = $res['data'][10]?:[];
+			$statuss = $res['data'][14]?:[];
+			$payStatuss = $res['data'][15]?:[];
+			$row['sex'] = $sex[$row['sex']]['name']?:'';
+			$row['status_str'] = $statuss[$row['status']]['name']?:'';
+			$row['pay_status_str'] = $payStatuss[$row['pay_status']]['name']?:'';
+			$row['create_time'] = date('Y-m-d H:i:s',$row['create_time']);
+			$drug = $this->default_db->select($where);
+		} else {
+			$row = [];
+		}
+		output(1,'',['format'=>2,'data'=>['row'=>$row,'drug'=>$drug]]);
+	}
+
+
+
+	public function getUsermsg(){
+		$id = intval($_POST['id']);
+		if($id){
+			$this->default_db->load('con_pn');
+			$da = $this->default_db->get_one('`id` = '.$id);
+			exit(json_encode(array('status'=>1,'data'=>$da)));
+		}
+	}
+
 	public function druglists(){
 		if ($this->ajax) {
 			$where = 1;
@@ -119,6 +150,7 @@ class doctor extends authority{
     }
 	public function addDrugPN(){
 		$ac = $_POST['ac'];
+		$id = $_POST['id'];
 		$ids = explode(',',trim($_POST['ids'],','));
 		$data = explode('|',trim($_POST['data'],'|'));
 		$title = $_POST['title'];
@@ -149,7 +181,12 @@ class doctor extends authority{
     		}
     		//var_dump($this->default_db->error());
     		//创建正式处方单
-    		//$this->default_db->load('prescription');
+			$this->default_db->load('drug_pn_user');
+			foreach($ids as $k=>$v){
+    			if($v){
+    				$this->default_db->insert(array('userid'=>$user_id,'data_str'=>$data[$k],'pnname'=>$pnname,'title'=>$title,'dname'=>$drug[$v]['trade_name'],'add_time'=>$time,'pnid'=>$pnid,'rid'=>$v,'uid'=>$id));
+    			}
+			}
 		}
 		
         exit('{"status":"1","pnid":"'.$pnid.'","title":"'.$title.'"}');

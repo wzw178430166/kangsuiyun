@@ -661,12 +661,13 @@
             renderAll().then(function(value) {
              var idcards=value[0].words_result;
              var sbcards=value[1].words_result;
+             idcards['公民身份号码'].words='440114199504210018';
              for(var i in idcards){
                                 $('#name').text(idcards['姓名'].words);
-                                $('#sex').text(idcards['性别'].words);
-                                $('#both').text(idcards['出生'].words);
+                                $('#sex').text(getFromIdCard(idcards['公民身份号码'].words,2));
+                                $('#both').text(getFromIdCard(idcards['公民身份号码'].words,1));
                                 $('#addren').text(idcards['住址'].words);
-                                $('#age').text(idcards['出生'].words);
+                                $('#age').text(getFromIdCard(idcards['公民身份号码'].words,3));
                                 $('#idcard').text(idcards['公民身份号码'].words); 
                               } 
                               for(var i in sbcards){
@@ -687,7 +688,34 @@
             props('#itemselect', '#symptom', '片');
 
         })
-
+        function getFromIdCard(UUserCard, num) {
+            if (num == 1) {
+                //获取出生日期
+                birth = UUserCard.substring(6, 10) + "-" + UUserCard.substring(10, 12) + "-" + UUserCard.substring(12, 14);
+                return birth;
+            }
+            if (num == 2) {
+                //获取性别
+                if (parseInt(UUserCard.substr(16, 1)) % 2 == 1) {
+                    //男
+                    return "男";
+                } else {
+                    //女
+                    return "女";
+                }
+            }
+            if (num == 3) {
+                //获取年龄
+                var myDate = new Date();
+                var month = myDate.getMonth() + 1;
+                var day = myDate.getDate();
+                var age = myDate.getFullYear() - UUserCard.substring(6, 10) - 1;
+                if (UUserCard.substring(10, 12) < month || UUserCard.substring(10, 12) == month && UUserCard.substring(12, 14) <= day) {
+                    age++;
+                }
+                return age;
+            }
+        }
         function props(content, btn, text) {
 			$(btn).click(function() {
 				var index = $(content).find('.m_dit').attr('data-itme');
@@ -718,38 +746,6 @@
 				});
 			})
         }
-        
-        function getIDcard(){    
-                      $.ajax({
-                            url: '/?m=data&c=da_fun&a=lookImgCard',
-                            type: 'POST',
-                            dataType: 'json',
-                            success: function(res) {
-                            //  var data=JSON.parse(re);
-                            console.log(res);
-                            //  var idcardmsg=res.
-                            var data=res.words_result;
-                            for(var i in data){
-                                $('#name').text(data['姓名'].words);
-                                $('#sex').text(data['性别'].words);
-                                $('#both').text(data['出生'].words);
-                                $('#addren').text(data['住址'].words);
-                                $('#age').text(data['出生'].words);
-                                console.log(i);
-                            }
-                            $('#idcard').text(res.log_id); 
-                            
-                                
-                            }
-                        })
-
-                        
-
-
-
-
-
-                   }
 
                     var url = '/?m=data&c=da_fun&a=lookImgCard';
                     var url1 = '/?m=data&c=da_fun&a=lookImgCard&type=2';
@@ -768,7 +764,7 @@
                         })
                     })
                 }
-                    function renderAll() {
+                 function renderAll() {
                         return Promise.all([getJSON(url), getJSON(url1)]);
                     }
 

@@ -6,9 +6,9 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
     <link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
-    <link rel="stylesheet" type="text/css" href="/pharmacies/store/css/header_common.css?v=129">
-    <link rel="stylesheet" type="text/css" href="/pharmacies/store/css/left_.css?v=127">
-    <link rel="stylesheet" type="text/css" href="/pharmacies/store/css/index.css?v=122">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/doctor/css/header_common.css?v=129">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/doctor/css/left_.css?v=127">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/doctor/css/index.css?v=122">
     <link rel="stylesheet" href="/statics/admin/common/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="/statics/dataManage/css/bootstrap.css">
     <script type="text/javascript" src="/statics/js/setFontSize.js"></script>
@@ -20,7 +20,7 @@
         href="https://www.519ksy.com/statics/admin/common/layui/css/modules/laydate/default/laydate.css?v=5.0.9"
         media="all">
     <script charset="utf-8" src="/statics/admin/common/js/colResizable.js"></script>
-    <title>药品管理</title>
+    <title>处方药单</title>
     <style>
         .query-btn .btn-item {
             margin-left: 0px;
@@ -245,13 +245,13 @@
                             <caption class="caption">处方单列表</caption>
                             <thead>
                                 <tr align="center">
-                                    <th><strong class="tb-head cell-orderid" data-val="orderid">药品编码</strong></th>
-                                    <th><strong class="tb-head cell-username" data-val="username">类型</strong></th>
-                                    <th><strong class="tb-head cell-product" data-val="product">名称</strong></th>
-                                    <th><strong class="tb-head cell-amount" data-val="amount">通用名称</strong></th>
+                                    <th><strong class="tb-head cell-orderid" data-val="orderid">处方编码</strong></th>
+                                    <th><strong class="tb-head cell-username" data-val="username">处方单名称</strong></th>
+                                    <th><strong class="tb-head cell-product" data-val="product">临床诊断</strong></th>
+                                    <th><strong class="tb-head cell-amount" data-val="amount">患者ID</strong></th>
                                     <th><strong class="tb-head cell-pay_channel" data-val="pay_channel">价格</strong></th>
-                                    <th><strong class="tb-head cell-pay_amount" data-val="pay_amount">规格</strong></th>
-                                    <th><strong class="tb-head cell-status" data-val="status">生产厂家</strong></th>
+                                    <th><strong class="tb-head cell-doctor" data-val="doctor">医生</strong></th>
+                                    <th><strong class="tb-head cell-stauts" data-val="stauts">审核状态</strong></th>
                                     <th style="width: 15%;"><strong class="tb-head cell-operate"
                                             data-val="operate">操作</strong></th>
                                 </tr>
@@ -326,9 +326,8 @@
         });
 
         function getData() {
-            console.log(page);
             $('.loading').show();
-            var url = '/?m=pharmacy&c=drug&a=lists&ajax=1';
+            var url = '/?m=pharmacy&c=drug&a=prescribelists&ajax=1';
             page=parseInt($('#datas').attr('data-page'));
             if (1 <= page){
                 url += '&page=' + page;
@@ -362,21 +361,21 @@
                         var html = '';
                         for (var i in datas) {
                             var info = datas[i];
-                            html += '<tr align="center" data-val="' + info.id + '">\
-                              <td>' + info.id + '</td>\
-                              <td>' + info.characteristic + '</td>\
-                              <td>' + info.trade_name + '</td>\
-                              <td>' + info.gmp_validity + '</td>\
-                              <td>' + info.commodity_code + '</td>\
-                              <td>' + info.mfrequency + '</td>\
-                              <td>' + info.enterprise + '</td>\
-                              <td class="cell-operate"><a href="#" class="mt_tdaz" data-id="' + info.id +
-                                '" data-index="' + i + '"><img src="/pharmacies/doctor/images/look2.png"></a><a href="#" class="mt_tdaz" data-id="' + info.id +
-                                '" data-index="' + i + '"><img src="/pharmacies/doctor/images/delect2.png"></a></td>\
+                            html += '<tr align="center" data-val="' + info.pnid + '">\
+                              <td>' + info.pnid + '</td>\
+                              <td>' + info.title + '</td>\
+                              <td>' + info.pnname + '</td>\
+                              <td>' + info.uid + '</td>\
+                              <td>' + info.to_uid + '</td>\
+                              <td>' + info.to_uid + '</td>\
+                              <td>' + info.to_uid + '</td>\
+                              <td class="cell-operate"><a href="/pharmacies/doctor/payment.html?pnid='+info.pnid+'">查看</a></td>\
                           </tr>';
                         }
                         $('#datas').append(html);
-
+                        if(0==Object.keys(datas).length){
+                            $('#datas').html('<tr align="center"><td colspan="6">无数据</td></tr>');
+                        }
                     } else {
                         if (1 == page) {
                             $('.m-empty').show();
@@ -445,36 +444,7 @@
                 $(that).prev('.contnitem').val(num)
             }
         }
-
-        function initPage(pageCount) {
-            layui.use('laypage', function () {
-                var laypage = layui.laypage;
-                laypage.render({
-                    elem: 'innerPage' //注意，这里的 test1 是 ID，不用加 # 号
-                        ,
-                    count: pageCount //数据总数，从服务端得到
-                        //,limit: 10
-                        ,
-                    layout: ['prev', 'page', 'next', 'skip',
-                            'count'
-                        ] //['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
-                        ,
-                    prev: '<i class="icon-arrow arrow-l"></i>',
-                    next: '<i class="icon-arrow arrow-r"></i>',
-                    hash: 'page' //页面载入时就定位到指定页
-                        ,
-                    theme: '#234686',
-                    jump: function (obj, first) {
-                        //首次不执行
-                        if (!first) {
-                            //console.log(obj);
-                            page = parseInt(obj.curr);
-                            getData();
-                        }
-                    }
-                });
-            });
-        }
+   
 
         function myscroll() {
             var loaded = parseInt($('#datas').attr('data-loaded'));

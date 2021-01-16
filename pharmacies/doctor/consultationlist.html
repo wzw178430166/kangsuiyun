@@ -184,7 +184,7 @@
     line-height: 1rem;
     margin-bottom: .3rem;
 }
-.cell-operate a{display: inline-block;width: 40px;text-align: center;font-size: .3rem;}
+.cell-operate a{display: inline-block;width: 40px;text-align: center;font-size: .3rem;margin-right: 15px;}
 .query-form .form-item font {
     float: left;
     width: 65px;
@@ -351,19 +351,19 @@
                         if (data.rows.length == 0) {
                             $('#datas').attr('data-loaded', 1);
                         }
-                        console.log(data);
                         var html = '';
+                        const genRandom = (min, max) => (Math.random() * (max - min + 1) | 0) + min;
                         for (var i in datas) {
                             var info = datas[i];
                             html += '<tr align="center" data-val="' + info.id + '">\
                               <td>' + info.oid + '</td>\
                               <td>' + info.name + '</td>\
-                              <td>' + info.age + '</td>\
+                              <td>' + info.ages + '</td>\
                               <td>' + info.sex + '</td>\
                               <td>' + info.created_time + '</td>\
                               <td>' + info.pnid + '</td>\
                               <td class="cell-operate"><a href="#" class="mt_tdaz" data-id="' + info.id +
-                                '" data-index="' + i + '">挂断</a><a href="#">接通</a></td>\
+                                '" data-index="' + i + '">挂断</a><a href="/pharmacies/doctor/interrogation_doc.html?id='+info.oid+'&oid='+genRandom(1,10)+'">接通</a></td>\
                           </tr>';
                         }
                         $('#datas').append(html);

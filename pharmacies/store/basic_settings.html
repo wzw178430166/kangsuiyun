@@ -251,6 +251,7 @@
                 if (0<Object.keys(res.data).length) {
                  $('#name').text(res.data.name);
                  $('#birth').text(res.data.birth);
+                 if(res.data.certificates_type==1){res.data.certificates_type="身份证";}
                  $('#certificates_type').text(res.data.certificates_type);
                  $('#entry_date').text(res.data.entry_date);
                  $('#idcard').text(res.data.idcard);

@@ -16,6 +16,7 @@
     <!-- <script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script> -->
     <script type="text/javascript" src="/statics/js/global.js"></script>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="/statics/js/layer_mobile/layer.js"></script>
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- <script type="text/javascript" src="/statics/js/TouchSlide.1.1.js"></script> -->
@@ -332,6 +333,7 @@
         .upload-content {
             width: 100%;
             margin: 0 auto;
+            position: relative;
         }
 
         .upload-content .modal-dialog {
@@ -408,7 +410,7 @@
         .upload-content .file {
             position: relative;
             display: inline-block;
-            border: 1px dashed #DEDEDE;
+            /* border: 1px dashed #DEDEDE; */
             border-radius: 4px;
             width: 150px;
             height: 150px;
@@ -417,6 +419,8 @@
             background-color: #fff;
             vertical-align: top;
             margin: 7px;
+            background:url(/pharmacies/store/images/icon334.jpg) no-repeat;
+            background-size: cover!important;
         }
 
         .upload-content .file input {
@@ -465,6 +469,7 @@
             padding-left: 0 !important;
             /* display: flex; */
         }
+        .myimgsgt{position:absolute;width: 80%;height: 90%;top: 50%;left: 50%;transform: translate(-50%,-50%);display: none;}
     </style>
 </head>
 
@@ -506,11 +511,12 @@
                                         <table class="mtable" border="1" cellspacing="0">
                                             <tr>
                                                 <td class="thumbnail">
-                                                    <div class="upload-content">
+                                                    <div class="upload-content" id="upload-content">
+                                                        <img src="" class="myimgsgt" id="myimgsgt">
                                                         <div class="content-img">
                                                             <ul class="content-img-list"></ul>
                                                             <div class="file" id="files">
-                                                                <i class="gcl gcladd"></i>
+                                                                <!-- <i class="gcl gcladd"></i> -->
                                                                 <input type="file" name="myFile[]" accept="image/*"
                                                                     id="upload" multiple="">
                                                             </div>
@@ -565,7 +571,8 @@
                                             </tr>
                                             <tr>
                                                 <th>工作单位：</th>
-                                                <td> <input type="text" class="m-input" id="work_unit" name="work_unit"></td>
+                                                <td> <input type="text" class="m-input" id="work_unit" name="work_unit">
+                                                </td>
                                                 <td></td>
                                                 <td></td>
                                             </tr>
@@ -574,14 +581,16 @@
                                                 <td>
                                                     <label style="float: left;margin-right: .15rem;"> 男 <input
                                                             type="radio" name="sex" id="radio1" value="1"></label>
-                                                    <label> 女 <input type="radio" name="sex" id="radio2" value="2"></label>
+                                                    <label> 女 <input type="radio" name="sex" id="radio2"
+                                                            value="2"></label>
                                                 </td>
                                                 <td></td>
                                                 <td></td>
                                             </tr>
                                             <tr>
                                                 <th>入职日期：</th>
-                                                <td> <input type="text" class="m-input" id="entry_date"  name="entry_date"></td>
+                                                <td> <input type="text" class="m-input" id="entry_date"
+                                                        name="entry_date"></td>
                                                 <td></td>
                                                 <td></td>
                                             </tr>
@@ -605,7 +614,7 @@
     </div>
 
     <script type="text/javascript">
-        var useid= getUrlParam('useid');
+        var useid = getUrlParam('useid');
         var imgFile = []; //文件流
         var imgSrc = []; //图片路径
         var imgName = []; //图片名字
@@ -671,7 +680,7 @@
         //提交请求
         $('#sub-keep').on('click', function () {
             // FormData上传图片
-          //  $('#files').hide();
+            //  $('#files').hide();
             console.log(666);
             var formFile = new FormData();
             // formFile.append("type", type);
@@ -681,43 +690,47 @@
             $.each(imgFile, function (i, file) {
                 formFile.append('myFile[]', file);
             });
-            formFile.append('name', $('#name').val()); 
-            formFile.append('pid', $('#pid').val()); 
-            formFile.append('birth', $('#birth').val()); 
-            formFile.append('certificates_types', $('#certificates_types').val()); 
-            formFile.append('idcard', $('#idcard').val()); 
-            formFile.append('work_unit', $('#work_unit').val()); 
-            formFile.append('entry_date', $('#entry_date').val()); 
-            formFile.append('useid', useid); 
-            formFile.append('sex', $("input[name='sex']:checked").val()); 
-               $.ajax({
-                   url: '/?m=pharmacy&c=pharmacist&a=aditePharmacist&ajax=1',
-                   type: 'POST',
-                   data: formFile,
-                   async: true,
-                   cache: false,
-                   contentType: false,
-                   processData: false,
-                   // traditional:true,
-                   dataType:'json',
-                   success: function(res) {
-                       console.log(res);
+            formFile.append('info[name]', $('#name').val());
+            formFile.append('info[pid]', $('#pid').val());
+            formFile.append('info[birth]', $('#birth').val());
+            formFile.append('info[certificates_type]', $('#certificates_types').val());
+            formFile.append('info[idcard]', $('#idcard').val());
+            formFile.append('info[work_unit]', $('#work_unit').val());
+            formFile.append('info[entry_date]', $('#entry_date').val());
+            formFile.append('useid', useid);
+            formFile.append('info[sex]', $("input[name='sex']:checked").val());
+            $.ajax({
+                url: '/?m=pharmacy&c=pharmacist&a=aditePharmacist&ajax=1',
+                type: 'POST',
+                data: formFile,
+                async: true,
+                cache: false,
+                contentType: false,
+                processData: false,
+                // traditional:true,
+                dataType: 'json',
+                success: function (res) {
+                    layer.open({
+                                    content:res.erro,
+                                    skin: 'msg',
+                                    time: 2 //2秒后自动关闭
+                             });               
                     //    if(res.code==0){
                     //        alert("已提交")
                     // //         $("#adviceContent").val("");
-            		// 	// $("#contact").val("");
+                    // 	// $("#contact").val("");
                     //    }else{
                     //        alert(res.message);
                     //        $('.content-img .file').show();
                     //        $("#adviceContent").val("");
                     //        $("#cotentLength").text("0/240");
-            		// 	$("#contact").val("");
-            		// 	imgSrc = [];imgFile = [];imgName = [];
+                    // 	$("#contact").val("");
+                    // 	imgSrc = [];imgFile = [];imgName = [];
                     //     addNewContent(".content-img-list");
                     //    }
-                    }
-        });
-           })
+                }
+            });
+        })
 
         //删除
         function removeImg(obj, index) {
@@ -759,32 +772,55 @@
         }
 
         function getDate() {
-            request('/?m=pharmacy&c=pharmacist&a=doPharmacist&ajax=1','',{
-            dataType:'jsonp',
-            success:function(res){
-                if (0<Object.keys(res.data).length) {
-                 $('#name').val(res.data.name);
-                 $('#birth').val(res.data.birth);
-                 $('#certificates_type').val(res.data.certificates_type);
-                 $('#entry_date').val(res.data.entry_date);
-                 $('#idcard').val(res.data.idcard);
-                 $('#pid').val(res.data.pid);
-            //     $('#sex').text(res.data.sex);
-                if(res.data.sex==1){$("#radio1").prop("checked",true);}
-                if(res.data.sex==2){$("#radio2").prop("checked",true);}
-                 $('#work_unit').val(res.data.work_unit);
-           //      $('#img').attr('src',res.data.img);
-                 console.log(res.data);
-                } 
-                $('#ctab_btn').click(function() {
-                   goo('/pharmacies/store/adit_basic_settings.html?useid='+res.data.useid);
-                })
-            }
+            request('/?m=pharmacy&c=pharmacist&a=doPharmacist&ajax=1', '', {
+                dataType: 'jsonp',
+                success: function (res) {
+                    if (0 < Object.keys(res.data).length) {
+                        $('#name').val(res.data.name);
+                        $('#birth').val(res.data.birth);
+                        $('#certificates_type').val(res.data.certificates_type);
+                        $('#entry_date').val(res.data.entry_date);
+                        $('#idcard').val(res.data.idcard);
+                        $('#pid').val(res.data.pid);
+                        if(validateImage(res.data.img)){
+                        // $('#files').hide();
+                    //    $('#myimgsgt').show().attr('src',res.data.img);
+                        $('#files').css('background', 'url(' + res.data.img + ') no-repeat');
+                        }else{
+                        $('#files').css('background', 'url(/pharmacies/store/images/icon334.jpg) no-repeat');    
+                        }
+                        //     $('#sex').text(res.data.sex);
+                        if (res.data.sex == 1) {
+                            $("#radio1").prop("checked", true);
+                        }
+                        if (res.data.sex == 2) {
+                            $("#radio2").prop("checked", true);
+                        }
+                        $('#work_unit').val(res.data.work_unit);
+                        //      $('#img').attr('src',res.data.img);
+                        console.log(res.data);
+                    }
+                    $('#ctab_btn').click(function () {
+                        goo('/pharmacies/store/adit_basic_settings.html?useid=' + res.data.useid);
+                    })
+                }
             });
-    }
+        }
 
-
-
+        function validateImage(url) {
+            var xmlHttp;
+            if (window.ActiveXObject) {
+                xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+            } else if (window.XMLHttpRequest) {
+                xmlHttp = new XMLHttpRequest();
+            }
+            xmlHttp.open("Get", url, false);
+            xmlHttp.send();
+            if (xmlHttp.status == 404)
+                return false;
+            else
+                return true;
+        }
     </script>
 </body>
 
