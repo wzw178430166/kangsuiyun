@@ -714,7 +714,10 @@
                                     content:res.erro,
                                     skin: 'msg',
                                     time: 2 //2秒后自动关闭
-                             });               
+                             });
+            setTimeout(function(){  
+                            window.location.href = '/pharmacies/store/basic_settings.html';
+                      },1000);               
                     //    if(res.code==0){
                     //        alert("已提交")
                     // //         $("#adviceContent").val("");

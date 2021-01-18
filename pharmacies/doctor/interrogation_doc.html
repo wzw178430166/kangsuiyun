@@ -783,6 +783,10 @@
     text-align: center;
     line-height: .5rem;
 }
+@media screen and (min-width:1610px) and (max-width:2880px){
+    #tb-tash{height: 36.5vh!important;}
+}
+
     </style>
 </head>
 
@@ -1197,7 +1201,7 @@
                             </div>
                             <div class="data-content-box">
                             <div class="data-content" style="box-shadow: 0px 1px 3px 1px transparent;width: 100%;padding: 0;margin: 0;">
-                                <div class="tb-container" style="height: 40.5vh; overflow: auto; ">
+                                <div class="tb-container" style="height: 40.5vh; overflow: auto; " id="tb-tash">
                                     <table class="table">
                                         <caption class="caption">处方列表</caption>
                                         <thead>
@@ -1621,9 +1625,9 @@
               });
           }
     
-        //   setTimeout(function(){
-        //     if (1 == res.status) goo('/pharmacies/store/prescriptionlist.html');
-        //   },1000);
+          setTimeout(function(){
+            if (1 == res.status) goo('/pharmacies/doctor/consultationlist.html');
+          },1000);
         }
       });
     }  

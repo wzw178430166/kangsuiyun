@@ -273,7 +273,7 @@
         .mst-content {
             width: 95%;
             margin: 0 auto;
-            height: 46vh;
+            height: 38vh;
             overflow: hidden;
             display: flex;
             padding-top: .5rem;
@@ -320,9 +320,12 @@
 
         .mst-left-top-bottom{    
             display: flex;
+    position: absolute;
     justify-content: space-between;
     height: 18vh;
-    margin-top: 6vh;
+    /* margin-top: 6vh; */
+    width: 100%;
+    bottom: 3px;
    }
 .mst-left-r{width: 48%;background: url(/pharmacies/doctor/images/v2_q8xa46.png) no-repeat center; border-radius: .2rem;
     box-shadow: 0px 1px 3px 1px #eae8e8;background-size: contain;padding-left: .6rem;}
@@ -421,7 +424,7 @@
 
         @media screen and (min-width:1300px) and (max-width:2500px) {
             .limit-box {
-                height: 38vh;
+                height: 47vh;
             }
 
             .products li .name {
@@ -462,6 +465,17 @@
         .selects2 {
             background: #ffffff;
         }
+        .caption {
+    text-align: left;
+    font-size: .43rem;
+    margin-top: 0!important;
+    margin-bottom: .3rem;
+    padding-top: 5px!important;
+}
+.first-prescription th{border: 0!important;}
+.table th, .table td a {
+    font-size: .26rem;
+}
     </style>
 </head>
 
@@ -486,7 +500,7 @@
                         
                         </div>
                         <div class="mst-left-top-bottom">
-                            <div class="mst-left-r" onclick="goo_t('/pharmacies/doctor/interrogation_doc.html')">
+                            <div class="mst-left-r" onclick="goo_t('/pharmacies/pharmacist/prescriptionlist.html?&status=WAIT_VERIFY')">
                                 <div class="mst-t-lefts">
                                     <p class="lis-pst">待处理</p>
                                     <div class="lis-fiont">2人</div>
@@ -650,13 +664,7 @@
                             <table class="table">
                                 <caption class="caption">订单列表</caption>
                                 <thead>
-                                    <tr align="center">
-                                        <th style="text-align: center;">
-                                            <strong class="tb-head cell-check" data-val="check">
-                                                <input type="checkbox" id="J_sel_all"
-                                                    style="width: 15px;height: 15px;border:1px solid #666">
-                                            </strong>
-                                        </th>
+                                    <tr align="center" class="first-prescription">
                                         <th style="text-align: center;"><strong class="tb-head cell-orderid" data-val="orderid">处方单号</strong></th>
                                         <th style="text-align: center;"><strong class="tb-head cell-username" data-val="username">申请用户</strong></th>
                                         <th style="text-align: center;"><strong class="tb-head cell-product" data-val="product">申请日期</strong></th>
@@ -673,12 +681,6 @@
                                 </thead>
                                 <tbody id="datas">
                                     <tr align="center">
-                                        <td>
-                                            <strong class="tb-head cell-check" data-val="check">
-                                                <input type="checkbox" id="J_sel_all"
-                                                    style="width: 15px;height: 15px;border:1px solid #666">
-                                            </strong>
-                                        </td>
                                         <td>1113454654654</td>
                                         <td>张三</td>
                                         <td>2020-02-03</td>
@@ -686,20 +688,13 @@
                                         <td>233.5</td>
                                         <td>张主卧</td>
                                         <td>春雨</td>
-                                        <td><span style="color: #48a54b;">已审核</span></td>
+                                        <td><span style="color: #ff9d38;">未审核</span></td>
                                         <td>
                                             <a href="#">查看</a>
                                             <a href="#">配药</a>
-                                            <a href="#">删除</a>
                                         </td>
                                     </tr>
                                     <tr align="center">
-                                        <td>
-                                            <strong class="tb-head cell-check" data-val="check">
-                                                <input type="checkbox" id="J_sel_all"
-                                                    style="width: 15px;height: 15px;border:1px solid #666">
-                                            </strong>
-                                        </td>
                                         <td>5113454654654</td>
                                         <td>张三</td>
                                         <td>2020-08-03</td>
@@ -711,7 +706,6 @@
                                         <td>
                                             <a href="#">查看</a>
                                             <a href="#">药师审核</a>
-                                            <a href="#">删除</a>
                                         </td>
                                     </tr>
                                 </tbody>

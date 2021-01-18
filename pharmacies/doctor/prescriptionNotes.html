@@ -5,9 +5,9 @@
 <meta name="viewport"
         content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
-<link rel="stylesheet" type="text/css" href="/pharmacies/doctor/css/header_common.css?v=124">
-<link rel="stylesheet" type="text/css" href="/pharmacies/doctor/css/left_.css?v=126">
-<link rel="stylesheet" type="text/css" href="/pharmacies/doctor/css/index.css">
+<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/header_common.css?v=124">
+<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/left_.css?v=126">
+<link rel="stylesheet" type="text/css" href="/pharmacies/store/css/index.css">
 <link rel="stylesheet" href="/statics/dataManage/css/bootstrap.css">
 <script type="text/javascript" src="/statics/js/setFontSize.js"></script>
 <script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
@@ -346,7 +346,7 @@ width: calc(100%/24*22);
    </div>   
 
    <script>
-    var prescription_no = getQueryString('pnid');
+    var prescription_no = getQueryString('prescription_no');
     $(function(){
     $('#J_print').on('click',function(){
 		$("#J_print_prescription").print({
@@ -367,7 +367,7 @@ width: calc(100%/24*22);
   getData();
     });
     function getData(){
-        var url = '/?m=pharmacy&c=doctor&a=detail&ajax=1';
+        var url = '/?m=pharmacy&c=prescription&a=detail&ajax=1';
         var query = {prescription_no:prescription_no};//查询参数
         request(url,'get',{
             query: query,
