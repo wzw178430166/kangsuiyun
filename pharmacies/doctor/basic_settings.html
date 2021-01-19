@@ -244,7 +244,7 @@
 
 
     function getDate() {
-            request('/?m=pharmacy&c=pharmacist&a=doPharmacist&ajax=1','',{
+            request('/?m=pharmacy&c=doctor&a=doPharmacist&ajax=1','',{
             dataType:'jsonp',
             success:function(res){
                 var strs = '';
@@ -264,7 +264,7 @@
                  console.log(res.data);
                 } 
                 $('#ctab_btn').click(function() {
-                   goo('/pharmacies/store/adit_basic_settings.html?useid='+res.data.useid);
+                   goo('/pharmacies/doctor/adit_basic_settings.html?useid='+res.data.useid);
                 })
             }
             });

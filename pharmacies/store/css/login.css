@@ -36,17 +36,20 @@ a{
     height: 10vh;
     background: #ffffff;
     /* margin-top: 30px; */
-    line-height: 10vh;
+	line-height: 10vh;
+	position: relative;
 }
 .logo a{
-	width:220px;
-	text-decoration: none;
-	display:inline-block;
+	width: 220px;
+    text-decoration: none;
+    display: inline-block;left: 4%!important;
+    transform: translateY(-50%);
+    position: absolute;
+    top: 50%;
 }
 .logo a img{
-    display: inline-block;
-    margin-left: 2rem;
-    width: 12rem;height: 8vh;
+    display: inline-block!important;
+    width: 12rem!important;height: 8vh!important;object-fit: contain!important;
 }
 
 .register-wrap{
@@ -576,11 +579,11 @@ a{
 .footer{
     width: 100%;
     height: 10vh;
-    position: absolute;
+    position: fixed;
     line-height: 10vh;
     text-align: center;
     bottom: 0;
-    left: 0;
+    left: 0;    font-size:14px;
     background-color: #ffffff;
 }
 .footer .footerspan{position: absolute;top: 50%;left: 50%;transform:translate(-50%,-50%);color:#000;}

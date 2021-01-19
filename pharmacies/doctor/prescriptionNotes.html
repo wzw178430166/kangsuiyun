@@ -45,7 +45,7 @@
 }
 .ct-notes {
 	margin: 0 auto;
-	width:93%;
+	width:70%;
 	min-height: 865px;
 	background-color: #fff;
 	box-shadow: 0 0 44px #bfdeff;
@@ -242,7 +242,7 @@ width: calc(100%/24*22);
     height: .6rem;
     vertical-align: middle;
 } 
-
+.ct-notes-doctor div img{width: 100%;height: 100%;}
 </style>
 </head>
 <body>
@@ -275,13 +275,13 @@ width: calc(100%/24*22);
                   </div>
                   <div nz-row="">
                     <div class="prescription-col-2">姓名:</div>
-                    <div class="prescription-col-4 bottomBorder" id="user_nickname">-</div>
+                    <div class="prescription-col-4 bottomBorder" id="user_nickname" style="width: 26.5%;">-</div>
                     <div class="prescription-col-2">性别:</div>
                     <div class="prescription-col-3 bottomBorder" id="sex"> - </div>
                     <div class="prescription-col-2">年龄:</div>
                     <div class="prescription-col-3 bottomBorder" id="age">-</div>
                     <div class="prescription-col-2">科室:</div>
-                    <div class="prescription-col-6 bottomBorder" id="hospital_department_name">-</div>
+                    <div class="prescription-col-6 bottomBorder" id="hospital_department_name"  style="width: 15%;">-</div>
                   </div>
                   <div nz-row="">
                     <div class="prescription-col-2">地址:</div>
@@ -320,10 +320,12 @@ width: calc(100%/24*22);
                 <div class="ct-notes-doctor">
                   <div nz-row="">
                     <div class="prescription-col-2">医师:</div>
-                    <div class="prescription-col-3 bottomBorder" id="doctor_name"></div>
-                    <div class="prescription-col-2">审核药师:</div>
-                    <div class="prescription-col-3 bottomBorder" id="verify_name"></div>
-                    <div class="prescription-col-2">签名文件:</div>
+                    <div class="prescription-col-3 bottomBorder" id="doctor_name">
+                      <img src="/pharmacies/store/images/babac.png" onerror="Javascript:this.src='/pharmacies/store/images/babac.png'">
+                    </div>
+                    <div class="prescription-col-2" style="width: 14%;">审核药师:</div>
+                    <div class="prescription-col-3 bottomBorder" id="verify_name" style="width: 23%;"></div>
+                    <div class="prescription-col-2" style="width: 14%;">签名文件:</div>
                     <div class="prescription-col-3 bottomBorder">
                       <img src="#" style="width: 100px;height: 30px;vertical-align: middle;" id="verify_sign" onerror="Javascript:this.src='/pharmacies/store/images/babac.png'">
                     </div>
@@ -382,7 +384,7 @@ width: calc(100%/24*22);
             $('#diagnose').text(row.diagnose); 
             $('#verify_time').text(row.verify_time);
             $('#mobile').text(row.mobile);
-            $('#doctor_name').text(row.doctor_name);
+            $('#doctor_name').children('img').attr('src',row.doc_sign);
             $('#verify_name').text(row.verify_name);
             $("#verify_sign").attr('src',row.verify_sign);
             $('#age').text(row.age);

@@ -97,7 +97,7 @@
 		</div>
 		<div class="cover-form">
 		    <div class="form-item">
-		        <p>审核药师请输入二次密码进行验证</p>
+		        <p>医生请输入二次密码进行验证</p>
 		        <div class="form-val"><input type="password" id="checkPassword" value=""></div>
 		    </div>
 		</div>
@@ -147,14 +147,15 @@
     	var res = $sigdiv.jSignature('getData','default');//导出结果 参数二为导出格式 默认为默认格式base64
 		$('#signature_value').val(res);
         if(12298<res.length){
-			$('#coverSignature').hide();
+			$('#coverPassword').show();
+			//$('#coverSignature').hide();
 			//    layer.open({
             //     content: '保存成功'
             //     ,skin: 'msg'
             //     ,time: 2 //2秒后自动关闭
             //   });
 		  //	layer.closeAll();
-            doForm();
+         //   doForm();
 		}else{
 			layer.open({
                 content: '请签名'

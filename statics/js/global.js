@@ -317,7 +317,7 @@ function goo_t(url,full){
 
 
 
-function goo(url,full){
+function goo(url,full,target){
   	var ua_ = window.navigator.userAgent.toLowerCase();
   	// && ua_.match(/MicroMessenger/i) == 'micromessenger'
 	// if(!userid_){
@@ -326,10 +326,14 @@ function goo(url,full){
 	// 		return;
 	// 	}
 	// }
+	if(target == '_blank'){
+		window.open(url);            
+		return;  
+	} 
 	if(url != '#'){
 		try{ 
 			jstojava.isok(); 
-			//url += "&target=_blank"
+			//url += "&target=_blank" 
 		}catch(e){}
 		//alert(url);
 		if (full) {

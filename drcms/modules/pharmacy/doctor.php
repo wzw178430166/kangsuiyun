@@ -180,13 +180,73 @@ class doctor extends authority{
     			}
     		}
     		//var_dump($this->default_db->error());
-    		//创建正式处方单
+    		
 			$this->default_db->load('drug_pn_user');
+			$drug_total_quantity = $drug_total_price = 0;
 			foreach($ids as $k=>$v){
     			if($v){
+    			    $data_str = explode('_',$data[$k]);
+    			    $drug_total_quantity += $data_str[6];
+    			    $drug_total_price += $drug[$v]['vip_price'] * $data_str[6];
     				$this->default_db->insert(array('userid'=>$user_id,'data_str'=>$data[$k],'pnname'=>$pnname,'title'=>$title,'dname'=>$drug[$v]['trade_name'],'add_time'=>$time,'pnid'=>$pnid,'rid'=>$v,'uid'=>$id));
     			}
 			}
+
+				//电子签名
+				$signature_id = intval($_POST['signature_id']);
+				if ($signature_id) {
+					$this->default_db->load('signature');
+					$signature = $this->default_db->get_one(['id'=>$signature_id],'id,img');
+					$verify_sign = $signature['img'];
+				} else {
+					$signature_value = $_POST['signature_value'];
+					//var_dump($signature_value);die;
+					//电子签名数据转为本地图片
+					$res = imgDown(['type'=>'base64','img'=>$signature_value,'user_id'=>$verify_user_id]);
+					$verify_sign = 'SUCCESS' == $res['status']?$res['data']['src']:'';
+					//var_dump($res);die;
+				}
+			
+			//创建正式处方单
+			$info = [
+    	        'prescription_no'=>$pnid,
+    	        'store_id'=>1,
+    	        'store_name'=>'',
+    	        'user_nickname'=>'测试'.date('YmdHis'),
+    	        'doctor_user_id'=>$this->admin_user_id,
+    	        'doctor_name'=>$this->admin_user_nickname,
+    	        'hospital_name'=>'',
+    	        'full_name'=>'测试'.date('YmdHis'),
+    	        'sex'=>37,
+    	        'age'=>25,
+    	        'diagnose'=>$pnname,
+    	        'drug_total_quantity'=>$drug_total_quantity,
+				'drug_total_price'=>$drug_total_price,
+				'doc_sign'=>$verify_sign,
+    	        'create_time'=>time(),
+    	    ];
+    	    $this->default_db->load('prescription');
+    	    $prescription_id = $this->default_db->insert($info,true);
+    	    if (0<$prescription_id) {
+    	        $this->default_db->load('prescription_drug');
+    	        foreach($ids as $v){
+    	            $data_str = explode('_',$data[$k]);
+    	            $info2 = [
+        	            'prescription_id'=>$prescription_id,
+        	            'prescription_no'=>$pnid,
+        	            'drug_id'=>$v,
+        	            'drug_name'=>$drug[$v]['trade_name'],
+        	            'drug_sku_properties'=>'规格：'.$drug[$v]['specification'],
+        	            'drug_price'=>$drug[$v]['vip_price'],
+        	            'drug_quantity'=>$data_str[6],
+        	            'drug_sub_price'=>bcmul($data_str[6],$drug[$v]['vip_price'],2),
+        	            'drug_unit'=>$data_str[4],
+        	            'drug_usage'=>$data[$k],
+        	        ];
+        	        $this->default_db->insert($info2,true);
+    	        }
+    	        
+    	    }
 		}
 		
         exit('{"status":"1","pnid":"'.$pnid.'","title":"'.$title.'"}');
@@ -247,7 +307,114 @@ class doctor extends authority{
 		output($status,$erro);
 	}
 
-
+	public function doPharmacist(){
+		//  var_dump($_FILES);
+		 if ($_POST['dosubmit']) {
+			 $id = intval($_POST['id']);
+			 $where = ['id'=>$id];
+			 $this->default_db->load('pharmacy_doc');
+			 $row = $this->default_db->get_one($where,'id');
+			 $info = [
+				 'name'=>$_POST['name'],
+				 //'img'=>$img,
+				 'is_default'=>$_POST['is_default'],
+				 'update_time'=>SYS_TIME,
+			 ];
+			 if ($_POST['base64']) {
+				 //下载图片
+				 $res = imgDown(['type'=>'base64','img'=>$_POST['base64'],'user_id'=>$_POST['user_id']]);
+				 $img = 'SUCCESS' == $res['status']?$res['data']['src']:'';
+				 $info['img'] = $img;
+			 }
+			 if ($row) {//编辑
+				 $res = $this->default_db->update($info,$where);
+			 } else {//新增
+				 $info['create_time'] = $info['update_time'];
+				 $res = $this->default_db->insert($info,true);
+			 }
+			 if ($res) {
+				 $status = 1;
+				 $erro = '保存成功';
+			 } else {
+				 $status = 1;
+				 $erro = '保存失败';
+			 }
+			 output($status,$erro);
+		 } else {
+			 $id = intval($_GET['id']);
+			 $where = ['id'=>$id];
+			 $this->default_db->load('pharmacy_doc');
+			 $row = $this->default_db->get_one($where);
+			 if (!$row) $row = [];
+			 output(1,'',['format'=>2,'data'=>$row]);
+		 }
+	 }
+	
+	 public function aditePharmacist(){   // 修改个人信息  上传图片
+		if ($this->ajax) {
+			$id = intval($_POST['useid']);
+			$where = ['useid'=>$id];
+			$res = $this->uploadFile(['file'=>$_FILES['myFile']]);
+			$this->default_db->load('pharmacy_doc');
+			$row = $this->default_db->get_one($where,'useid');
+			$info = $_POST['info'];
+			$info['update_time'] = SYS_TIME;
+			$info['img'] = $res['data']['url'][0];
+			//var_dump($where);die;
+			if ($row) {//编辑
+				$res = $this->default_db->update($info,$where);
+			//	var_dump($this->default_db->error());die;
+			}else{
+				 //添加
+				 $info['useid'] = $id;
+				 $res = $this->default_db->insert($info,true);
+			}
+			if ($res) {
+				$status = 1;
+				$erro = '保存成功';
+			} else {
+				$status = 0;
+				$erro = '保存失败';
+			}
+			output($status,$erro);
+		}
+	 }
+	 public function uploadFile($param = []){
+	    $data = [];
+	    if ($param['file']) {
+	        $files = $param['file'];
+	        //var_dump($files);die;
+	        $filePath = 'upload_tmp';
+	        $documentRoot = drcms_PATH.$filePath;
+	        if (!is_dir($documentRoot)) mkdir($documentRoot);//创建路径
+	        if (is_array($files['tmp_name'])) {
+	           foreach($files['tmp_name'] as $k=>$v){
+	                $type = $files['type'][$k];
+	                $ext = explode("/",$type);
+	                //var_dump($ext);die;
+	                $ext = $ext[1];
+	                $filename = date('YmdHis').'.'.$ext;
+	                //var_dump($documentRoot.$filename);die;
+                    if (move_uploaded_file($v,$documentRoot.'/'.$filename)) {
+                        $data['url'][$k] = '/'.$filePath.'/'.$filename;
+                    }
+	           }
+	        } else {
+	            $ext = explode("/",$files['type']);
+	            $ext = $ext[1];
+	            $filename = date('YmdHis').'.'.$ext;
+    			if (move_uploaded_file($files["tmp_name"],$documentRoot.'/'.$filename)) {
+    			    $data['url'] = '/'.$filePath.$filename;
+    			}
+	        }
+	        $status = 'SUCCESS';
+	        $erro = '';
+	    } else {
+	        $status = 'FAIL';
+	        $erro = '';
+	    }
+	    return ['status'=>$status,'erro'=>$erro,'data'=>$data];
+	}
 	public function doDrug(){
 		if ($_POST['dosubmit']) {
 			$id = intval($_POST['id']);
