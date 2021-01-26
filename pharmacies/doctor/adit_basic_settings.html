@@ -615,20 +615,17 @@
 
     <script type="text/javascript">
         var useid = getUrlParam('useid');
-        var imgFile = []; //文件流
-        var imgSrc = []; //图片路径
-        var imgName = []; //图片名字
+        var imgFile = []; 
+        var imgSrc = []; 
+        var imgName = []; 
         $(function () {
             getDate();
-            // 鼠标经过显示删除按钮
             $('.content-img-list').on('mouseover', '.content-img-list-item', function () {
                 $(this).children('div').removeClass('hide');
             });
-            // 鼠标离开隐藏删除按钮
             $('.content-img-list').on('mouseleave', '.content-img-list-item', function () {
                 $(this).children('div').addClass('hide');
             });
-            // 单个图片删除
             $(".content-img-list").on("click", '.content-img-list-item a .gcllajitong', function () {
                 var index = $(this).parent().parent().parent().index();
                 imgSrc.splice(index, 1);
@@ -681,12 +678,10 @@
         $('#sub-keep').on('click', function () {
             // FormData上传图片
             //  $('#files').hide();
-            console.log(666);
             var formFile = new FormData();
             // formFile.append("type", type);
             // formFile.append("content", content);
             // formFile.append("mobile", mobile);
-            // 遍历图片imgFile添加到formFile里面
             $.each(imgFile, function (i, file) {
                 formFile.append('myFile[]', file);
             });
@@ -718,24 +713,10 @@
             setTimeout(function(){  
                             window.location.href = '/pharmacies/doctor/basic_settings.html';
                       },1000);               
-                    //    if(res.code==0){
-                    //        alert("已提交")
-                    // //         $("#adviceContent").val("");
-                    // 	// $("#contact").val("");
-                    //    }else{
-                    //        alert(res.message);
-                    //        $('.content-img .file').show();
-                    //        $("#adviceContent").val("");
-                    //        $("#cotentLength").text("0/240");
-                    // 	$("#contact").val("");
-                    // 	imgSrc = [];imgFile = [];imgName = [];
-                    //     addNewContent(".content-img-list");
-                    //    }
                 }
             });
         })
 
-        //删除
         function removeImg(obj, index) {
             imgSrc.splice(index, 1);
             imgFile.splice(index, 1);
@@ -744,7 +725,6 @@
             addNewContent(boxId);
         }
 
-        //图片展示
         function addNewContent(obj) {
             console.log(imgSrc);
             $('#files').hide();
@@ -761,14 +741,13 @@
             }
         }
 
-        //建立可存取到file的url
         function getObjectURL(file) {
             var url = null;
-            if (window.createObjectURL != undefined) { // basic
+            if (window.createObjectURL != undefined) { 
                 url = window.createObjectURL(file);
-            } else if (window.URL != undefined) { // mozilla(firefox)
+            } else if (window.URL != undefined) { 
                 url = window.URL.createObjectURL(file);
-            } else if (window.webkitURL != undefined) { // webkit or chrome
+            } else if (window.webkitURL != undefined) { 
                 url = window.webkitURL.createObjectURL(file);
             }
             return url;
@@ -800,7 +779,6 @@
                             $("#radio2").prop("checked", true);
                         }
                         $('#work_unit').val(res.data.work_unit);
-                        //      $('#img').attr('src',res.data.img);
                         console.log(res.data);
                     }
                     $('#ctab_btn').click(function () {

@@ -271,13 +271,13 @@
             <div class="cont-face" style="position: absolute;
             bottom: 16%;
             left: 0;
-            width: 26%;">
+            width: 94%;">
                 <div class="cont-face-left">
                     <div class="conts">
                         <video id="video" muted></video> 
                     </div>
                 </div>
-                <div class="cont-face-right" style="display: none;">
+                <div class="cont-face-right">
                    <canvas id="canvas"></canvas>
                 </div>
             </div>
@@ -404,9 +404,12 @@
                 // window.setTimeout(function(){
                 //      sendPhoto(); 
                 // },3000); 
+
                 window.setInterval(function(){
                     takePhoto(); 
-                },1000); 
+                },2000); 
+             //   takePhoto(); 
+
              }) 
             // 失败调用
              promise.catch(function (err) {
@@ -423,7 +426,11 @@
              canvas.height = video.videoHeight;
              console.log(canvas);
              let ctx = canvas.getContext('2d');
-             ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+             ctx.scale(1, -1);
+             ctx.translate(0, -canvas.height);
+             ctx.scale(-1, 1);
+             ctx.translate(-canvas.width, 0);
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
          }
             
         function sendPhoto(){
@@ -470,22 +477,15 @@
                   if(0==words_result_num&&0==Object.keys(words_result).length){
                       alert('识别失败');
                   }else{
-                   for(let k in words_result){
-                    words_result[k].words=escape(words_result[k].words);
-                   }
-                    words_result=JSON.stringify(words_result);
+                //    for(let k in words_result){
+                //     words_result[k].words=escape(words_result[k].words);
+                //    }
+                //     words_result=JSON.stringify(words_result);
                     layer.open({
                                     content:'识别成功',
                                     skin: 'msg',
                                     time: 2 //2秒后自动关闭
                              });
-                      setTimeout(function(){
-                        goo('/pharmacies/user/identification.html?im_card='+words_result)  
-                      },1000);       
-                  }
-                }
-            }); 
-                  }else if(sucssed==0){
                     var row = [];
                     for(let item in words_result){ 
                           var key = escape(item);
@@ -493,25 +493,56 @@
                           var words = escape(info.words);
                           row[key] = {words:words};
                         }
+                      setTimeout(function(){
+                        goo('/pharmacies/user/text.html?im_card='+row)  
+                      },1000);       
+                  }
+                }
+            }); 
+                  }else if(sucssed==0){
+                    console.log(words_result);   
+                    // let rows = [];
+                    // for(let item in words_result){ 
+                    //       var key = escape(item);
+                    //       var info = words_result[item];
+                    //       var words = escape(info.words);
+                    //       rows[key] = {words:words};
+                    //     }
+                    // console.log(rows);
+                    var rows=[];
+                    for(var key in words_result){
+                        var into= escape(key);
+                        var words=escape(words_result[key].words);
+                        rows[into]={words:words}
+                    }
+                    console.log(66666);
+                    console.log(rows);
+
                     layer.open({
                                     content:'识别成功',
                                     skin: 'msg',
                                     time: 2 //2秒后自动关闭
                              });
 
-                     row2 = JSON.stringify(row);
-                     console.log(row2);
-                  //    return;
-                      setTimeout(function(){
-                        console.log(row2);
-                        goo('/pharmacies/user/identification.html?id_card='+row2)  
-                      },1000);       
-
+                    setTimeout(function(){
+                     //  var sss = JSON.stringify(rows);    
+                       goo('/pharmacies/user/identification.html?id_card='+json2str(rows))
+                     
+                    },1000);
                   }
                    // sendPhoto_back(da);
                 }
             });
-        }	
+        }
+        function json2str(o) {    
+            var arr = [];
+            var fmt = function(s) {
+                if (typeof s == 'object' && s != null) return json2str(s);
+                return /^(string|number)$/.test(typeof s) ? "'" + s + "'" : s;
+            }
+            for (var i in o) arr.push("'" + i + "':" + fmt(o[i]));
+            return '{ '+ arr.join(',') + '}';
+        }
         function sendPhoto_back(da){ 
             if(da.status!=1 || da.result.face_num!=1){
                 setTimeout(function(){ sendPhoto();},2000);
@@ -584,7 +615,7 @@
             var canvas = document.getElementById("canvas");  
             var ctx = canvas.getContext("2d"); 
             var dataURL = canvas.toDataURL('image/jpeg',1);    
-            
+            console.log(dataURL);
             return dataURL;
         } 
             
@@ -599,10 +630,12 @@
         //          }); 
            
         //     },1500);
-        var datast={"words_result":{"\u59d3\u540d":{"words":"\u97e6\u5c0f\u5b9d","location":{"top":63,"left":139,"width":84,"height":31}},"\u6c11\u65cf":{"words":"\u6c49","location":{"top":113,"left":267,"width":20,"height":30}},"\u4f4f\u5740":{"words":"\u5317\u4eac\u5e02\u4e1c\u57ce\u533a\u666f\u5c71\u524d\u88574\u53f7\u7d2b\u7981\u57ce\u656c\u4e8b\u623f","location":{"top":208,"left":130,"width":279,"height":74}},"\u516c\u6c11\u8eab\u4efd\u53f7\u7801":{"words":"","location":{"top":0,"left":0,"width":0,"height":0}},"\u51fa\u751f":{"words":"","location":{"top":0,"left":0,"width":0,"height":0}},"\u6027\u522b":{"words":"\u7537","location":{"top":114,"left":139,"width":25,"height":30}}},"log_id":1353892940119801856,"words_result_num":6,"idcard_number_type":0,"image_status":"unknown","nid":451};
 
-        console.log(datast);
+
+
+
         
+
         </script>
 </body>
 

@@ -201,10 +201,17 @@ body{font-size:14px;font-family:"微软雅黑";color:#666;}
 
 
 <script type="text/javascript" lang="javascript">
+  var id_card = getQueryString('id_card');
+  var im_card = getQueryString('im_card');
   var clearmsg = false;
   var ispoint = true;
+  //var obj = id_card.parseJSON(); //由JSON字符串转换为JSON对象
+  //id_card= eval('(' + id_card + ')');
+  var obj = eval('(' + id_card + ')');
+  //var obj = JSON.parse(id_card); //由JSON字符串转换为JSON对象
+  console.log(obj['姓名'].words);
+
   function show(obj){
-  
     var data =	obj.value;
     var text = document.getElementById("text");
     if(text.value=='请输入手机号'){text.value="";}

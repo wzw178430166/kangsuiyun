@@ -285,95 +285,18 @@
             </div>
         </div>
     </div>
-     
       <div class="idform">
-          
       </div>
-    
-
     <script>
-        function chack(){
-        var events = navigator.userAgent;
-        // if(events.indexOf('iPhone')>-1){
-        //     layer.open({
-        //         content: '网页版人像识别暂不支持Iphone 手机' ,time: 200,skin: 'msg'
-        //     });
-        //     setTimeout(function(){ goback(); },3000);  
-        //     return false;
-        //         //根据尺寸进行判断 苹果的型号
-        //     if(screen.height == 812 && screen.width == 375){ // 进行操作，改变样式
-        //         const obj = document.getElementById('sendxBtn')
-        //         obj.setAttribute("style", "padding:5px 10px 20px;")
-        //         console.log("苹果X");
-        //     }else if(screen.height == 736 && screen.width == 414){
-        //         console.log("iPhone7P - iPhone8P - iPhone6");
-        //     }else if(screen.height == 667 && screen.width == 375){
-        //         console.log("iPhone7 - iPhone8 - iPhone6");
-        //     }else if(screen.height == 568 && screen.width == 320){
-        //         console.log("iPhone5");
-        //     }else{
-        //         console.log("iPhone4");
-        //     }
-        // }else if(events.indexOf("iPad")>-1){
-        //     console.log("平板"); 
-        // }
-            return true; 
-        }
-            
         var indexCurrent = 0;
         var sendPhoto_Time = 0;
         var sendPhoto_limit = 5;
-        var step = 1;//Number( getUrlParam('step')); 
         var faceimg = [];
         let promise;
-        var row2;
         $(function() {
-            // if(!userid_){  
-            //     goo('/member/login.html?forward='+encodeURIComponent('/aipface/item1.html'));
-            // }else{
-            //     sync_member(); 
-            // } 
-            set_step(step);
-            if(chack()){
                 getMedia();
-            }
         });
-        function set_step(i){
-            if(i &&  i>0){
-                var str;
-                $('.md-item').removeClass('mdstyle');
-                $('.md-item').eq(i-1).addClass('mdstyle');
-                switch(i){
-                    case 1: str = '请保持正面面向摄像头'; break;
-                    case 2: str = '请将脸旋转，将侧脸保持面向摄像头'; break;
-                    case 3: str = '请将另一侧脸保持面向摄像头'; break; 
-                }
-                $('#text').html(str);
-            }
-        }
-        function set_animate(){ 
-            setInterval(function(){
-                if(indexCurrent<100){
-                  indexCurrent++;
-                }else{
-                  indexCurrent=0;
-                }
-                $("#nums").find('span').text(indexCurrent);
-                $('.circle').each(function(index, el) {
-                  var num = $(this).find('span').text() * 3.6;
-                  if (num<=180) {
-                    $(this).find('.righted').css('transform', "rotate(" + num + "deg)");
-                    $(this).find('.lefted').css('transform', "rotate(" + 0 + "deg)");
-                  } else {
-                    $(this).find('.righted').css('transform', "rotate(180deg)");
-                    $(this).find('.lefted').css('transform', "rotate(" + (num - 180) + "deg)");
-                  };
-                });
-            },100);
-        }
         function getMedia() {
-            $('.masksuccess').fadeOut();
-            $('.maskxiankuang').show();
             let constraints = {
                  video: { 
                     width: 600,
@@ -390,7 +313,6 @@
                 /* 使用这个MediaStream */
                 video.srcObject = MediaStream;
                 video.play();
-                set_animate();
                 window.setTimeout(function(){
                      console.log($('#video').width() +'>'+ $('#video').height()); // 对象 
                      if( $('#video').width() > $('#video').height() ){ 
@@ -422,23 +344,22 @@
              canvas.width = video.videoWidth;
              canvas.height = video.videoHeight;
              let ctx = canvas.getContext('2d');
+            //  ctx.scale(1, -1);
+            //  ctx.translate(0, -canvas.height);
+            //  ctx.scale(-1, 1);
+            //  ctx.translate(-canvas.width, 0);
              ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
          }
             
         function sendPhoto(){
             sendPhoto_Time ++;
-            console.log(6666);
             if(sendPhoto_Time>sendPhoto_limit){
-                // layer.open({
-                //     content: '网络异常,请稍后再试' ,time: 1,skin: 'msg'
-                // });
                 layer.open({
-                                    content:'网络异常,请稍后再试',
-                                    skin: 'msg',
-                                    time: 2 //2秒后自动关闭
+                                content:'网络异常,请稍后再试',
+                                skin: 'msg',
+                                time: 2 
                              });
                 setTimeout(function(){ goback(); },2000);
-                //document.getElementById("video").load(); 
                 $('.pie_left,.pie_right').hide();
                 return;  
             }
@@ -447,8 +368,6 @@
             var sbase64 = base64;
             sbase64 = sbase64.replace('data:image/jpeg;base64,','');    
             sbase64 = encodeURIComponent(sbase64);     
-            $('#cc').attr('src',base64);   
-            //return;
             $.ajax({ 
                 'url':'/?m=data&c=da_fun&a=lookImgCard'
                 ,'type':'POST' 
@@ -459,7 +378,7 @@
                 var words_result= da.words_result;
                 var nid=da.nid;
                 if(0>sucssed||words_result['公民身份号码'].words==''){
-              //     if(0>sucssed){
+                  // if(0>sucssed){
                              layer.open({
                                     content:'识别失败',
                                     skin: 'msg',
@@ -509,79 +428,10 @@
                       },1000);       
 
                   }
-
-                   // sendPhoto_back(da);
                 }
             });
         }	
-        function sendPhoto_back(da){ 
-            if(da.status!=1 || da.result.face_num!=1){
-                setTimeout(function(){ sendPhoto();},2000);
-                return;
-            }
-            console.log(da.data);
-            var yaw = da.result.face_list[0].angle.yaw;
-            var face_token = da.result.face_list[0].face_token;
-        
-            switch(step){
-                case 3:
-                    if((yaw>-10 && yaw<0) || (yaw>0 && yaw<10) || yaw==0){    
-                       layer.open({
-                            content: '请将另一侧脸保持面向摄像头' ,time: 2,skin: 'msg'
-                        });
-                        setTimeout(function(){ sendPhoto();},3000);
-                        return; 
-                    }
-                    break;
-                case 2:
-                    if( (yaw>-10 && yaw<0) || (yaw>0 && yaw<10) || yaw==0){  
-                       layer.open({
-                            content: '请将脸旋转，将侧脸保持面向摄像头' ,time: 2,skin: 'msg'
-                        });	
-                        setTimeout(function(){ sendPhoto();},3000);
-                        return;
-                    } 
-                    break;
-                case 1:
-                    if(yaw<-10 || yaw>10){
-                       layer.open({
-                            content: '请保持正面面向摄像头' ,time: 2,skin: 'msg'
-                        });	
-                        setTimeout(function(){ sendPhoto();},3000);
-                        return;
-                    }
-                    break;	
-            }
-            var video = document.getElementById("video");
-            //video.load();
-            faceimg.push(face_token);
-            $('.maskxiankuang').hide();
-            $('.masksuccess').fadeIn();
-            
-            step +=1; 
-            if(step<=3){
-                sendPhoto_Time = 0;
-                setTimeout(function(){ 
-                    set_step(step); 
-                    $('.masksuccess').fadeOut();
-                    $('.maskxiankuang').show();  
-                },1000);  
-                setTimeout(function(){ sendPhoto();},3000); 
-                return;
-            }
-            if(faceimg.length==3){
-                //promise && promise.stop(); 
-                $.ajax({ 
-                    'url':'/?m=srapi&c=aipface&a=register'
-                    ,'type':'POST' 
-                    ,'data':'image='+faceimg.join(",")
-                    ,'dataType':'json' 
-                    ,'success':function(da){
-                        console.log(da);
-                    }
-                });
-            }
-        }
+ 
          function getBase64Image(img) {  
             var canvas = document.getElementById("canvas");  
             var ctx = canvas.getContext("2d"); 
@@ -589,19 +439,7 @@
             
             return dataURL;
         } 
-            
-        
-        // setTimeout(function(){  
-        // layer.open({
-        //                 title: '信息录入',
-        //                 content: "录入成功，马上进行视频问诊",
-        //                 yes: function(index, layero){
-        //                     window.location.href = '/pharmacies/user/video_user.html';
-        //                 }
-        //          }); 
-           
-        //     },1500);
-
+     
 
         </script>
 </body>

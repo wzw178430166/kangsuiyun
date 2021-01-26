@@ -71,7 +71,45 @@ class doctor extends authority{
 		output(1,'',['format'=>2,'data'=>['row'=>$row,'drug'=>$drug]]);
 	}
 
+	public function getReceive(){
+		$where = [
+			'status'=>1,
+		];
+		$wheres = [
+			'status'=>3,
+		];
+		$this->default_db->load('con_pn');
+		$rows1 = $this->default_db->select($where,'id,nid','','id asc');
+		$rows2 = $this->default_db->select($wheres,'id,nid','','id asc');
+		$num1 = count($rows1);
+		$num2 = count($rows2);
+		$data = ['incomplete_num'=>$num1,'complete_num'=>$num2];
+		exit(json_encode(array('status'=>1,'data'=>$data)));
+	}
 
+	public function doHangup(){
+		$nid = intval($_POST['nid']);
+		$where = ['nid'=>$nid];
+		$infos = [
+			'status'=>3,
+		];
+		$this->default_db->load('con_pn');
+		$rows = $this->default_db->get_one($where,'nid');
+	
+		if ($rows) {
+			 $res=$this->default_db->update($infos,$where);
+			 var_dump($this->default_db->error());die;
+		}
+		if ($res) {
+			$status = 1;
+			$erro = '保存成功';
+		} else {
+			$status = 1;
+			$erro = '保存失败';
+		}
+		output($status,$erro);
+	}
+    
 
 	public function getUsermsg(){
 		$nid = intval($_POST['nid']);

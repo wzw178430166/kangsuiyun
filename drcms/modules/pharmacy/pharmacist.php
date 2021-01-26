@@ -225,6 +225,43 @@ class pharmacist extends authority{
 			output($status,$erro);
 		}
 	}
+
+	public function doHangup(){   //首页待审核
+		// $nid = intval($_POST['nid']);
+		// $where = ['nid'=>$nid];
+		// $infos = [
+		// 	'status'=>3,
+		// ];
+		// $this->default_db->load('prescription');
+		// $rows = $this->default_db->get_one($where,'nid');
+	
+		// if ($rows) {
+		// 	 $res=$this->default_db->update($infos,$where);
+		// 	 var_dump($this->default_db->error());die;
+		// }
+		// if ($res) {
+		// 	$status = 1;
+		// 	$erro = '保存成功';
+		// } else {
+		// 	$status = 1;
+		// 	$erro = '保存失败';
+		// }
+		// output($status,$erro);
+		$where = [
+			'status'=>'WAIT_VERIFY',
+		];
+		$where2 = [
+			'status'=>'PASSED',
+		];
+		$this->default_db->load('prescription');
+		$rows1 = $this->default_db->select($where,'*');
+		$num1 = count($rows1);
+		$rows2 = $this->default_db->select($where2,'*');
+		$num2 = count($rows2);
+		$data = ['wait_num'=>$num1,'pass_num'=>$num2];
+		exit(json_encode(array('status'=>1,'data'=>$data)));
+	}
+
 	public function delete(){
 		$id = array_filter(explode(',', $_POST['id']));
 		if ($id) {

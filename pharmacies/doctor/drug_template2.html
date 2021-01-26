@@ -1155,16 +1155,8 @@
                                       <div>数量</div>
                                       <div class="cotNumeer"> <i class="icon_reduce"></i> <span class="contnitem" id="contnitem">1</span> <i class="icon_plus"></i>
                                       </div>
-                                      <!-- <div class="contSelect"> <span>盒</span> </div> -->
                                   </div>
                               </div>
-                              <!--<div class="content_div">
-                                  <p class="conteTitle">用药周期<span>非必须,可辅助计算药品数量</span> </p>
-                                  <div class="content_usage">
-                                      <div class="contSelect conttxt" id="itemp3"> <span id="conseltext">未选择</span> <img src="https://lxj.yjxun.cn/drug/images/lower.svg" alt=""
-                                           class="contImgae" id="cont3"> </div>
-                                  </div>
-                               </div>-->
                             </div> 
                             <div style="flex:1;">
                                 <div class="content_div">
@@ -1686,24 +1678,6 @@
                     },500);
                 }
 			})
-    //  var data = '',
-    //                 ids = '',
-    //                 use='',
-	// 			    dname = '';
-    // $('#copydata .userids').each(function(e) {
-	// 			ids = ids + $(this).attr('ids') + ',';
-    //             data=data+$(this).children('#mfrequncy_'+$(this).attr('ids')).text()+'_'+$(this).children('#each_dose_'+$(this).attr('ids')).text()+'|';  
-    //   })
-    //   request('/?m=pharmacy&c=doctor&a=addDrugPN','POST',{
-    //     data:'ids=' + ids + '&data=' + data + '&title=' + $('#title').val() + '&pnname=' + $('#rpText').val(),
-    //     success: function(res){
-    //       layer.open({
-    //             content: res.erro
-    //             ,skin: 'msg'
-    //             ,time: 2
-    //           });
-    //     }
-    //   });
     }  
     function getAllPN(){    
             var url = '/?m=pharmacy&c=doctor&a=getAllPN';
@@ -1791,7 +1765,6 @@
                 query: query,
                 dataType: "JSON",
                 success: function (data) {
-                    console.log(data);
                     if (1 == data.status) {
                         var datas = data.rows;
                         var html = '';

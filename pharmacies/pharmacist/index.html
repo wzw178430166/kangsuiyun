@@ -318,25 +318,47 @@
             vertical-align: middle;
         }
 
-        .mst-left-top-bottom{    
+        .mst-left-top-bottom {
             display: flex;
-    position: absolute;
-    justify-content: space-between;
-    height: 18vh;
-    /* margin-top: 6vh; */
-    width: 100%;
-    bottom: 3px;
-   }
-.mst-left-r{width: 48%;background: url(/pharmacies/doctor/images/v2_q8xa46.png) no-repeat center; border-radius: .2rem;
-    box-shadow: 0px 1px 3px 1px #eae8e8;background-size: contain;padding-left: .6rem;}
-.mst-right-r{width: 48%;background: url(/pharmacies/doctor/images/v2_q8xa46.png) no-repeat center; border-radius: .2rem;padding-left: .6rem;
-    box-shadow: 0px 1px 3px 1px #eae8e8;background-size: contain;}
-       
-   .mst-t-lefts .lis-pst{font-size: .45rem;
-    color: #000000;
-    font-weight: 600;}
-   .mst-t-lefts .lis-fiont{font-size: .4rem;color: #7d7676;margin-top:-.2rem}
-    .mst-right {
+            position: absolute;
+            justify-content: space-between;
+            height: 18vh;
+            /* margin-top: 6vh; */
+            width: 100%;
+            bottom: 3px;
+        }
+
+        .mst-left-r {
+            width: 48%;
+            background: url(/pharmacies/doctor/images/v2_q8xa46.png) no-repeat center;
+            border-radius: .2rem;
+            box-shadow: 0px 1px 3px 1px #eae8e8;
+            background-size: contain;
+            padding-left: .6rem;
+        }
+
+        .mst-right-r {
+            width: 48%;
+            background: url(/pharmacies/doctor/images/v2_q8xa46.png) no-repeat center;
+            border-radius: .2rem;
+            padding-left: .6rem;
+            box-shadow: 0px 1px 3px 1px #eae8e8;
+            background-size: contain;
+        }
+
+        .mst-t-lefts .lis-pst {
+            font-size: .45rem;
+            color: #000000;
+            font-weight: 600;
+        }
+
+        .mst-t-lefts .lis-fiont {
+            font-size: .4rem;
+            color: #7d7676;
+            margin-top: -.2rem
+        }
+
+        .mst-right {
             width: 46%;
         }
 
@@ -446,6 +468,7 @@
                 margin-bottom: .53rem;
             }
         }
+
         .selects {
             background: #ffffff;
         }
@@ -453,22 +476,29 @@
         .selects2 {
             background: #ffffff;
         }
+
         .caption {
-    text-align: left;
-    font-size: .43rem;
-    margin-top: 0!important;
-    margin-bottom: .3rem;
-    padding-top: 15px!important;
-}
-.first-prescription th{border: 0!important;}
-.table th, .table td a {
-    font-size: .26rem;
-}
-.table tr th {
-    font-weight: normal;
-    border: 0!important;
-    text-align: center;
-}
+            text-align: left;
+            font-size: .43rem;
+            margin-top: 0 !important;
+            margin-bottom: .3rem;
+            padding-top: 15px !important;
+        }
+
+        .first-prescription th {
+            border: 0 !important;
+        }
+
+        .table th,
+        .table td a {
+            font-size: .26rem;
+        }
+
+        .table tr th {
+            font-weight: normal;
+            border: 0 !important;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -511,25 +541,26 @@
                             </div> -->
                         </div>
                         <div class="mst-left-top-bottom">
-                            <div class="mst-left-r" onclick="goo_t('/pharmacies/pharmacist/prescriptionlist.html?&status=WAIT_VERIFY')">
+                            <div class="mst-left-r"
+                                onclick="goo_t('/pharmacies/pharmacist/prescriptionlist.html?&status=WAIT_VERIFY')">
                                 <div class="mst-t-lefts">
                                     <p class="lis-pst">待审核</p>
-                                    <div class="lis-fiont">2人</div>
+                                    <div class="lis-fiont"><span id="whait_pass">-</span>人</div>
                                 </div>
                                 <div class="mst-t-rights">
-                                  
+
                                 </div>
-                            </div>   
+                            </div>
                             <div class="mst-right-r">
 
                                 <div class="mst-t-lefts">
                                     <p class="lis-pst">今天服务人数</p>
-                                    <div class="lis-fiont">32人</div>
+                                    <div class="lis-fiont"><span id="whait_complete">-</span>人</div>
                                 </div>
                                 <div class="mst-t-rights">
-                                  
+
                                 </div>
-                            </div>   
+                            </div>
                         </div>
                     </div>
                     <div class="mst-right">
@@ -679,7 +710,8 @@
                                     <th><strong class="tb-head cell-username" data-val="username">申请用户</strong></th>
                                     <th><strong class="tb-head cell-product" data-val="product">申请日期</strong></th>
                                     <th><strong class="tb-head cell-amount" data-val="amount">药品数量</strong></th>
-                                    <th><strong class="tb-head cell-pay_channel" data-val="pay_channel">药品金额</strong></th>
+                                    <th><strong class="tb-head cell-pay_channel" data-val="pay_channel">药品金额</strong>
+                                    </th>
                                     <th><strong class="tb-head cell-pay_amount" data-val="pay_amount">药师</strong></th>
                                     <th><strong class="tb-head cell-status" data-val="status">审核状态</strong></th>
                                     <th style="width: 15%;"><strong class="tb-head cell-operate"
@@ -758,11 +790,11 @@
             console.log(page);
             $('.loading').show();
             var url = '/?m=pharmacy&c=prescription&a=lists&ajax=1&status=PASSED';
-            page=parseInt($('#datas').attr('data-page'));
-            if (1 <= page){
+            page = parseInt($('#datas').attr('data-page'));
+            if (1 <= page) {
                 url += '&page=' + page;
-            }else{
-                page=1; 
+            } else {
+                page = 1;
             }
             var query = {};
             var amount = $('#amount').val();
@@ -789,36 +821,33 @@
                         }
                         console.log(data);
                         var html = '';
-                        // for (var i in datas) {
-                        //     var info = datas[i];
-                        //     html += '<tr align="center" data-val="' + info.id + '">\
-                        //       <td>' + info.id + '</td>\
-                        //       <td>' + info.characteristic + '</td>\
-                        //       <td>' + info.trade_name + '</td>\
-                        //       <td>' + info.gmp_validity + '</td>\
-                        //       <td>' + info.commodity_code + '</td>\
-                        //       <td>' + info.mfrequency + '</td>\
-                        //       <td>' + info.enterprise + '</td>\
-                        //       <td class="cell-operate"><a href="#" class="mt_tdaz" data-id="' + info.id +
-                        //         '" data-index="' + i + '">查看</a></td>\
-                        //   </tr>';
-                        // }
-                     for(var k in datas){
-                      var info = datas[k];
-                      var operate = '';
-                      operate += '<a href="/pharmacies/pharmacist/payment.html?&prescription_no='+info.prescription_no+'" class="operate-btn">查看</a> ';//操作
-                    //    if ('WAIT_VERIFY' == info.status) operate += '<a href="/pharmacies/store/review_p.html?&prescription_no='+info.prescription_no+'" class="operate-btn btn-verify">审核</a>';
-                      //<td><div class="tb-cell cell-check"><input type="checkbox" name="ids[]" value="'+info.id+'"></div></td>
-                      html += '<tr align="center"><td><div class="tb-cell cell-prescription_no">'+info.prescription_no+'</div></td><td><div class="tb-cell cell-user_name">'+info.user_nickname+'</div></td><td><div class="tb-cell cell-create_time">'+info.create_time+'</div></td><td><div class="tb-cell cell-drug_total_quantity">'+info.drug_total_quantity+'</div></td><td><div class="tb-cell cell-drug_total_price">'+info.drug_total_price+'</div></td><td><div class="tb-cell cell-1"></div></td><td><div class="tb-cell cell-status status-'+info.status+'">';
-                        if(info.status_str=='待审核'){
-                        html+='<span style="color:#ff9d38;">'+info.status_str+'</span>'  
-                      }else if(info.status_str=='已审核'){
-                        html+='<span style="color:#48a54b;">'+info.status_str+'</span>'  
-                      }else if(info.status=='FAIL'){
-                        html+='<span style="color:#d21212;">审核不通过</span>'  
-                      }
-                      html+='</div></td><td><div class="tb-cell cell-operate">'+operate+'</div></td></tr>';
-                  }
+                        for (var k in datas) {
+                            var info = datas[k];
+                            var operate = '';
+                            operate += '<a href="/pharmacies/pharmacist/payment.html?&prescription_no=' +
+                                info.prescription_no + '" class="operate-btn">查看</a> '; //操作
+                            //    if ('WAIT_VERIFY' == info.status) operate += '<a href="/pharmacies/store/review_p.html?&prescription_no='+info.prescription_no+'" class="operate-btn btn-verify">审核</a>';
+                            //<td><div class="tb-cell cell-check"><input type="checkbox" name="ids[]" value="'+info.id+'"></div></td>
+                            html += '<tr align="center"><td><div class="tb-cell cell-prescription_no">' +
+                                info.prescription_no +
+                                '</div></td><td><div class="tb-cell cell-user_name">' + info.user_nickname +
+                                '</div></td><td><div class="tb-cell cell-create_time">' + info.create_time +
+                                '</div></td><td><div class="tb-cell cell-drug_total_quantity">' + info
+                                .drug_total_quantity +
+                                '</div></td><td><div class="tb-cell cell-drug_total_price">' + info
+                                .drug_total_price +
+                                '</div></td><td><div class="tb-cell cell-1"></div></td><td><div class="tb-cell cell-status status-' +
+                                info.status + '">';
+                            if (info.status_str == '待审核') {
+                                html += '<span style="color:#ff9d38;">' + info.status_str + '</span>'
+                            } else if (info.status_str == '已审核') {
+                                html += '<span style="color:#48a54b;">' + info.status_str + '</span>'
+                            } else if (info.status == 'FAIL') {
+                                html += '<span style="color:#d21212;">审核不通过</span>'
+                            }
+                            html += '</div></td><td><div class="tb-cell cell-operate">' + operate +
+                                '</div></td></tr>';
+                        }
                         $('#datas').append(html);
 
                     } else {
@@ -828,7 +857,7 @@
                             $('.loading').hide();
                         }
                     }
-                 //   operates(data.rows);
+                    //   operates(data.rows);
                 },
                 error: function (res) {
                     console.log(res);
@@ -923,8 +952,25 @@
             return str;
 
         }
+        showUnreadNews();
 
-
+        function showUnreadNews() {
+            $(document).ready(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/?m=pharmacy&c=pharmacist&a=doHangup",
+                    dataType: "json",
+                    success: function (data) {
+                        var res = data.data;
+                        if (data.status == 1) {
+                            $('#whait_pass').text(res.pass_num);
+                            $('#whait_complete').text(res.wait_num);
+                        }
+                    }
+                });
+            });
+        }
+        setInterval('showUnreadNews()', 4000);
     </script>
 </body>
 
