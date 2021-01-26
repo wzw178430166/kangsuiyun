@@ -271,9 +271,9 @@
         }
 
         .mst-content {
-            width: 95%;
+            width: 97%;
             margin: 0 auto;
-            height: 38vh;
+            height: 37vh;
             overflow: hidden;
             display: flex;
             padding-top: .5rem;
@@ -299,7 +299,7 @@
 
         .mst-left-top-left div:nth-child(2) {
             font-size: .36rem;
-            margin-top: .44rem;
+            margin-top: .64rem;
             margin-bottom: .35rem;
         }
 
@@ -371,7 +371,7 @@
 
         .limit-box1 {
             position: relative;
-            width: 95%;
+            width: 99%;
             margin: 0px auto;
             height: 99%;
             overflow: hidden;
@@ -446,18 +446,6 @@
                 margin-bottom: .53rem;
             }
         }
-
-        /* @media screen and (min-width:1800px) and (max-width:2880px){
-    .limit-box {
-    height: 37vh;
-}
-.products li .name {
-    font-size: .27rem;
-}
-.products li .price {
-    font-size: .32rem;
-}
-} */
         .selects {
             background: #ffffff;
         }
@@ -470,11 +458,16 @@
     font-size: .43rem;
     margin-top: 0!important;
     margin-bottom: .3rem;
-    padding-top: 5px!important;
+    padding-top: 15px!important;
 }
 .first-prescription th{border: 0!important;}
 .table th, .table td a {
     font-size: .26rem;
+}
+.table tr th {
+    font-weight: normal;
+    border: 0!important;
+    text-align: center;
 }
     </style>
 </head>
@@ -489,7 +482,9 @@
                 <!--#include file="header.html"-->
             </div>
             <div class="h8vh"></div>
-            <div style="width:auto;margin:auto;">
+            <div style="width:auto;margin:auto;height: 90vh;
+            display: flex;
+            flex-wrap: wrap;">
                 <div class="mst-content">
                     <div class="mst-left">
                         <div class="mst-left-top">
@@ -674,80 +669,39 @@
                     </div>
                 </div>
 
-                <div class="limit-box" id="J-lb">
-                    <div class="data-content" style="height: 85%;box-shadow: 0px 1px 3px 1px transparent;">
-                        <div class="tb-container">
-                            <table class="table">
-                                <caption class="caption">处方单列表</caption>
-                                <thead>
-                                    <tr align="center" class="first-prescription">
-                                        <th style="text-align: center;"><strong class="tb-head cell-orderid" data-val="orderid">处方单号</strong></th>
-                                        <th style="text-align: center;"><strong class="tb-head cell-username" data-val="username">申请用户</strong></th>
-                                        <th style="text-align: center;"><strong class="tb-head cell-product" data-val="product">申请日期</strong></th>
-                                        <th style="text-align: center;"><strong class="tb-head cell-amount" data-val="amount">药品数量</strong></th>
-                                        <th style="text-align: center;"><strong class="tb-head cell-pay_channel"
-                                                data-val="pay_channel">药品金额</strong></th>
-                                        <th style="text-align: center;"><strong class="tb-head cell-pay_amount" data-val="pay_amount">医生</strong>
-                                        </th>
-                                        <th style="text-align: center;"><strong class="tb-head cell-status" data-val="status">医生接入点</strong></th>
-                                        <th style="text-align: center;"><strong class="tb-head cell-createtime" data-val="createtime">审核状态</strong>
-                                        </th>
-                                        <th style="text-align: center;"><strong class="tb-head cell-operate" data-val="operate">操作</strong></th>
-                                    </tr>
-                                </thead>
-                                <tbody id="datas">
-                                    <tr align="center">
-                                        <td>1113454654654</td>
-                                        <td>张三</td>
-                                        <td>2020-02-03</td>
-                                        <td>2</td>
-                                        <td>233.5</td>
-                                        <td>张主卧</td>
-                                        <td>春雨</td>
-                                        <td><span style="color: #ff9d38;">未审核</span></td>
-                                        <td>
-                                            <a href="#">查看</a>
-                                            <a href="#">配药</a>
-                                        </td>
-                                    </tr>
-                                    <tr align="center">
-                                        <td>5113454654654</td>
-                                        <td>张三</td>
-                                        <td>2020-08-03</td>
-                                        <td>2</td>
-                                        <td>233.5</td>
-                                        <td>张主卧</td>
-                                        <td>春雨</td>
-                                        <td><span style="color: #ff9d38;">未审核</span></td>
-                                        <td>
-                                            <a href="#">查看</a>
-                                            <a href="#">药师审核</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <!-- <table class="table table-bordered table-hover table-striped" id="rstb">
-                           <thead>
-                               <tr align="center">
-                                  <th><strong class="tb-head cell-check" data-val="check">
-                                  <input type="checkbox" id="J_sel_all">
-                                  </strong></th>
-                                  <th><strong class="tb-head cell-orderid" data-val="orderid">处方单号</strong></th>
-                                  <th><strong class="tb-head cell-username" data-val="username">申请用户</strong></th>
-                                  <th><strong class="tb-head cell-product" data-val="product">申请日期</strong></th>
-                                  <th><strong class="tb-head cell-amount" data-val="amount">药品数量</strong></th>
-                                  <th><strong class="tb-head cell-pay_channel" data-val="pay_channel">药品金额</strong></th>
-                                  <th><strong class="tb-head cell-pay_amount" data-val="pay_amount">医生</strong></th>
-                                  <th><strong class="tb-head cell-status" data-val="status">医生接入点</strong></th>
-                                  <th><strong class="tb-head cell-createtime" data-val="createtime">审核状态</strong></th>
-                                  <th><strong class="tb-head cell-operate" data-val="operate">操作</strong></th>
-                              </tr>
+                <div class="data-content">
+                    <div class="tb-container" style="height: 49vh;overflow: auto;" id="tb-containers">
+                        <table class="table" id="rstb">
+                            <caption class="caption">处方单列表</caption>
+                            <thead>
+                                <tr align="center">
+                                    <th><strong class="tb-head cell-orderid" data-val="orderid">处方单号</strong></th>
+                                    <th><strong class="tb-head cell-username" data-val="username">申请用户</strong></th>
+                                    <th><strong class="tb-head cell-product" data-val="product">申请日期</strong></th>
+                                    <th><strong class="tb-head cell-amount" data-val="amount">药品数量</strong></th>
+                                    <th><strong class="tb-head cell-pay_channel" data-val="pay_channel">药品金额</strong></th>
+                                    <th><strong class="tb-head cell-pay_amount" data-val="pay_amount">医生</strong></th>
+                                    <th><strong class="tb-head cell-status" data-val="status">审核状态</strong></th>
+                                    <th style="width: 15%;"><strong class="tb-head cell-operate"
+                                            data-val="operate">操作</strong></th>
+                                </tr>
                             </thead>
-                            <tbody id="datas">
+                            <tbody id="datas" data-page="1" data-loaded="0">
+                                <!-- <tr align="center">
+                              <td>1113454654654</td>
+                              <td>张三</td>
+                              <td>2020-02-03</td>
+                              <td>2</td>
+                              <td>233.5</td>
+                              <td>张主卧</td>
+                              <td>春雨</td>
+                              <td>
+                                <a href="#" class="mt_tdaz"><img src="/pharmacies/store/images/jiahoass.png"></a>
+                              </td>
+                          </tr>
+                      -->
                             </tbody>
-                          </table> -->
-                        </div>
-                        <div class="inner-page" id="innerPage"></div>
+                        </table>
                     </div>
                 </div>
 
@@ -760,6 +714,9 @@
     <script type="text/javascript">
         var page = 1;
         $(function () {
+            document.getElementById('tb-containers').onscroll = function () {
+                myscroll();
+            };
             $('#datast').text(getCurrentDate());
             getData();
             var lb = $("#limit-buy1"),
@@ -797,9 +754,112 @@
             });
         })
 
-       
+        function getData() {
+            console.log(page);
+            $('.loading').show();
+            var url = '/?m=pharmacy&c=prescription&a=lists&ajax=1&status=WAIT_VERIFY';
+            page=parseInt($('#datas').attr('data-page'));
+            if (1 <= page){
+                url += '&page=' + page;
+            }else{
+                page=1; 
+            }
+            var query = {};
+            var amount = $('#amount').val();
+            if (amount) query.amount = amount;
+            var k = $.trim($('#k').val());
+            if (k) query.k = k;
+            var st = $.trim($('#st').val());
+            var et = $.trim($('#et').val());
+            if (st && et) {
+                query.st = st;
+                query.et = et;
+            }
+            request(url, 'get', {
+                query: query,
+                dataType: "JSONP",
+                success: function (data) {
+                    if (1 == data.status) {
+                        $('.m-empty').hide();
+                        $('#datas').attr('data-loaded', 0);
+                        $('.loading').hide();
+                        var datas = data.rows;
+                        if (data.rows.length == 0) {
+                            $('#datas').attr('data-loaded', 1);
+                        }
+                        console.log(data);
+                        var html = '';
+                        // for (var i in datas) {
+                        //     var info = datas[i];
+                        //     html += '<tr align="center" data-val="' + info.id + '">\
+                        //       <td>' + info.id + '</td>\
+                        //       <td>' + info.characteristic + '</td>\
+                        //       <td>' + info.trade_name + '</td>\
+                        //       <td>' + info.gmp_validity + '</td>\
+                        //       <td>' + info.commodity_code + '</td>\
+                        //       <td>' + info.mfrequency + '</td>\
+                        //       <td>' + info.enterprise + '</td>\
+                        //       <td class="cell-operate"><a href="#" class="mt_tdaz" data-id="' + info.id +
+                        //         '" data-index="' + i + '">查看</a></td>\
+                        //   </tr>';
+                        // }
+                     for(var k in datas){
+                      var info = datas[k];
+                      var operate = '';
+                      operate += '<a href="/pharmacies/doctor/payment.html?&prescription_no='+info.prescription_no+'" class="operate-btn">查看</a> ';//操作
+                    //    if ('WAIT_VERIFY' == info.status) operate += '<a href="/pharmacies/store/review_p.html?&prescription_no='+info.prescription_no+'" class="operate-btn btn-verify">审核</a>';
+                      //<td><div class="tb-cell cell-check"><input type="checkbox" name="ids[]" value="'+info.id+'"></div></td>
+                      html += '<tr align="center"><td><div class="tb-cell cell-prescription_no">'+info.prescription_no+'</div></td><td><div class="tb-cell cell-user_name">'+info.user_nickname+'</div></td><td><div class="tb-cell cell-create_time">'+info.create_time+'</div></td><td><div class="tb-cell cell-drug_total_quantity">'+info.drug_total_quantity+'</div></td><td><div class="tb-cell cell-drug_total_price">'+info.drug_total_price+'</div></td><td><div class="tb-cell cell-1"></div></td><td><div class="tb-cell cell-status status-'+info.status+'">';
+                        if(info.status_str=='待审核'){
+                        html+='<span style="color:#ff9d38;">'+info.status_str+'</span>'  
+                      }else if(info.status_str=='已审核'){
+                        html+='<span style="color:#48a54b;">'+info.status_str+'</span>'  
+                      }else if(info.status=='FAIL'){
+                        html+='<span style="color:#d21212;">审核不通过</span>'  
+                      }
+                      html+='</div></td><td><div class="tb-cell cell-operate">'+operate+'</div></td></tr>';
+                  }
+                        $('#datas').append(html);
 
+                    } else {
+                        if (1 == page) {
+                            $('.m-empty').show();
+                        } else {
+                            $('.loading').hide();
+                        }
+                    }
+                 //   operates(data.rows);
+                },
+                error: function (res) {
+                    console.log(res);
+                }
+            });
+        }
 
+        function myscroll() {
+            var loaded = parseInt($('#datas').attr('data-loaded'));
+            var page = parseInt($('#datas').attr('data-page'));
+            var tbcontainers = document.getElementById('tb-containers');
+            var datas = document.getElementById('datas');
+            if (0 == loaded) {
+                //变量scrollTop是滚动条滚动时，距离顶部的距离
+                var scrollTop = tbcontainers.scrollTop || datas.scrollTop;
+                //var scrollTop = document.getElementById('J_coupon').scrollTop;
+                //变量windowHeight是可视区的高度
+                var windowHeight = tbcontainers.clientHeight || datas.clientHeight;
+                //var windowHeight = document.getElementById('J_coupon').clientHeight;
+                //变量scrollHeight是滚动条的总高度
+                var scrollHeight = tbcontainers.scrollHeight || datas.scrollHeight;
+                //var scrollHeight = document.getElementById('datas').scrollHeight;
+                //console.log(scrollTop+'**'+windowHeight+'**'+scrollHeight);return;
+                if (scrollTop + windowHeight == scrollHeight) {
+                    page++;
+                    $('#datas').attr('data-loaded', 1);
+                    $('#datas').attr('data-page', page);
+                    window.setTimeout("getData()", 300);
+                }
+            }
+        }
 
         function getCurrentDate() {
 
@@ -856,9 +916,6 @@
                     days = '星期日';
 
                     break;
-
-
-
             }
 
             var str = year + "年" + month + "月" + day + "日  " + days;
@@ -867,114 +924,7 @@
 
         }
 
-        function initPage(pageCount) {
-            layui.use('laypage', function () {
-                var laypage = layui.laypage;
-                laypage.render({
-                    elem: 'innerPage' //注意，这里的 test1 是 ID，不用加 # 号
-                        ,
-                    count: pageCount //数据总数，从服务端得到
-                        ,
-                    limit: 15,
-                    layout: ['prev', 'page', 'next', 'skip',
-                        'count'] //['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
-                        ,
-                    prev: '<i class="icon-arrow arrow-l"></i>',
-                    next: '<i class="icon-arrow arrow-r"></i>',
-                    hash: 'page' //页面载入时就定位到指定页
-                        ,
-                    theme: '#234686',
-                    jump: function (obj, first) {
-                        //首次不执行
-                        if (!first) {
-                            //console.log(obj);
-                            page = parseInt(obj.curr);
-                            getData();
-                        }
-                    }
-                });
-            });
-        }
 
-        function getData() {
-            var url = '/?m=dataManage&c=member&a=memberList2&ajax=1';
-            console.log(url);
-            if (page > 1) url += '&page=' + page;
-            var k = $.trim($('#k').val());
-            var userid = parseInt($.trim($('#userid').val()));
-            var st = $.trim($('#st').val());
-            var et = $.trim($('#et').val());
-            if (k) url += '&k=' + k;
-            if (0 < userid) url += '&userid=' + userid;
-            if (st) url += '&st=' + st;
-            if (et) url += '&et=' + et;
-            var index = layer.load(2, {
-                time: 3000
-            });
-            $.ajax({
-                url: url,
-                type: "GET",
-                dataType: "JSON",
-                success: function (data) {
-                    layer.close(index);
-                    console.log(data);
-                    validateAuth(data.status);
-                    var html = '';
-                    var pageCount = 0;
-                    if (1 == data.status) {
-                        datas = data.data.datas;
-                        var locate = data.data.locate;
-                        var device = data.data.device;
-                        var operateState = data.data.operateState;
-                        pageCount = data.data.pageCount;
-                        for (var i in datas) {
-                            var info = datas[i];
-                            var _locate = {};
-                            var deviceStr = '';
-                            var serviceStr = '';
-                            var serviceState = 0;
-                            var _operateState = {};
-                            html +=
-                                '<tr align="center"><td><div class="tb-cell cell-check"><input type="checkbox" name="ids[]" value="' +
-                                info.userid + '"></div></td><td><div class="tb-cell cell-userid">' + info
-                                .userid +
-                                '</div></td><td><div class="tb-cell cell-username"><a href="/?m=dataManage&c=member&a=memberDetail&uid=' +
-                                info.userid + '" target="_bank">' + info.username +
-                                '</a></div></td><td><div class="tb-cell cell-nickname">' + info.nickname +
-                                '</div></td><td><div class="tb-cell cell-remarks">' + (info.remarks ? info
-                                    .remarks : '') + '</div></td><td><div class="tb-cell cell-sex">' + (info
-                                    .sexStr ? info.sexStr : '') +
-                                '</div></td><td><div class="tb-cell cell-age">' + (info.age ? info.age :
-                                '') + '</div></td><td><div class="tb-cell cell-mobile">' + info.mobile +
-                                '</div></td><td><div class="tb-cell cell-locate btn-locate" data-lng="' +
-                                _locate.lng + '" data-lat="' + _locate.lat + '" data-time="' + _locate
-                                .time + '">' + _locate.address +
-                                '</div></td><td><div class="tb-cell cell-device"><i class="h-state state-' +
-                                info.is_device + ' btn-device" data-state="' + info.is_device + '">' +
-                                deviceStr +
-                                '</i></div></td><td><div class="tb-cell cell-service"><i class="h-state state-' +
-                                serviceState + ' btn-service" data-state="' + serviceState + '">' +
-                                serviceStr +
-                                '</i></div></td><td><div class="tb-cell cell-state"><i class="o-state state-' +
-                                _operateState.state + '">' + _operateState.stateStr +
-                                '</i></div></td><td><div class="tb-cell cell-online">' + _operateState
-                                .last_time + '</div></td><td><div class="tb-cell cell-regdate">' + info
-                                .regdate +
-                                '</div></td><td><div class="tb-cell cell-operate"><a href="/?m=dataManage&c=member&a=doMember&uid=' +
-                                info.userid +
-                                '" class="operate-btn btn-edit">修改</a>  <a href="javascript:;" class="operate-btn btn-pass">重置密码</a></div></td></tr>';
-                        }
-                    } else {
-                        html += '<tr align="center"><td colspan="' + ($('.tb-head').length) +
-                            '">暂无数据</td></tr>';
-                    }
-                    $('#datas').html(html);
-                    initWidth();
-                    initOperate();
-                    if (page == 1) initPage(pageCount);
-                }
-            });
-        }
     </script>
 </body>
 

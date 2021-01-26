@@ -196,7 +196,7 @@ width: calc(100%/24*21);
 width: calc(100%/24*22);
 }
 .bottomBorder {
-	border-bottom: 1px solid #8d8d8d;
+	border-bottom: 1px solid #8d8d8d;padding-bottom: 2px;;
 }
 .drug-sign, .hospital-sign {
 	height: 100% !important;
@@ -384,6 +384,8 @@ width: calc(100%/24*22);
             $('#diagnose').text(row.diagnose); 
             $('#verify_time').text(row.verify_time);
             $('#mobile').text(row.mobile);
+            console.log(row.doc_sign);
+            if(row.doc_sign==null||row.doc_sign==''){row.doc_sign="/pharmacies/store/images/babac.png"}
             $('#doctor_name').children('img').attr('src',row.doc_sign);
             $('#verify_name').text(row.verify_name);
             $("#verify_sign").attr('src',row.verify_sign);

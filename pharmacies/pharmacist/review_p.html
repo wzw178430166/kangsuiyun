@@ -125,7 +125,9 @@
     color: #2c8df2;}
     .datame_dit span:nth-child(1){margin-right: .2rem;}
     .data-content{margin: .2rem auto 2rem auto;}
-
+    .table tr th {
+    border: 0;
+}
 </style>
 </head>
 <body>
@@ -291,8 +293,6 @@
     var prescription_no = getQueryString('prescription_no');
     $(function(){
         //var $sigdiv = $("#signature").jSignature({'UndoButton':true});
-        //getleft();
-        //gethearder();
         getData();
         $('#J_pass').on('click',function(){
           $('#status').val('PASSED');
@@ -325,7 +325,7 @@
           });*/
           alert(res.erro);
           setTimeout(function(){
-            if (1 == res.status) goo('/pharmacies/store/prescriptionlist.html');
+            if (1 == res.status) goo('/pharmacies/pharmacist/prescriptionlist.html?&status=WAIT_VERIFY');
           },1000);
         }
       });
@@ -359,14 +359,7 @@
           }
       });
     }
-    function gethearder() {
-            $('#header').load('/pharmacies/store/header.html', function () {
-            });
-        }
-        function getleft(){
-            $('#left').load('/pharmacies/store/left.html', function () {
-            });
-        }
+   
     </script>
 </body>
 </html>
