@@ -362,11 +362,12 @@
                               <td>' + info.sex + '</td>\
                               <td>' + info.update_time + '</td>\
                               <td>' + info.pnid + '</td>\
-                              <td class="cell-operate"><a href="#" class="mt_tdaz" data-id="' + info.id +
+                              <td class="cell-operate"><a href="#" class="mt_tdaz" data-nid="' + info.nid +
                                 '" data-index="' + i + '">挂断</a><a class="connect" href="javascript:;" data-nid='+info.nid+'>接通</a></td>\
                           </tr>';
                         }
                         $('#datas').append(html);
+                       Hangup();
                        OptionSel();
                     } else {
                         if (1 == page) {
@@ -382,7 +383,41 @@
                 }
             });
         }
-
+        function Hangup(){
+           $('.mt_tdaz').each(function(){
+               $(this).click(function(){
+                var nid=$(this).data('nid');
+                layer.confirm('确定挂断吗?', {icon: 3, title:'提示'}, function(index){
+                          console.log(nid);
+                          var urls = '/?m=pharmacy&c=doctor&a=doHangup';
+                            $.ajax({
+                            url: urls,
+                            type: "POST",
+                            dataType: "JSON",
+                            data: {nid},
+                            success: function (data) {
+                                console.log(data);
+                                if (1 == data.status) {
+                                    layer.open({
+                                    content: data.erro,
+                                    skin: 'msg',
+                                    time: 2
+                                });  
+                                } else {
+                                layer.open({
+                                    content: data.erro,
+                                    skin: 'msg',
+                                    time: 2
+                                });
+                                }
+                            }
+                            });
+                           layer.close(index);
+                           window.location.reload();
+                           });
+               });
+           });
+        }
         function OptionSel(){
                  $('.connect').each(function(){
                       $(this).click(function(){
