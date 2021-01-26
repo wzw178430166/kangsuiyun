@@ -285,7 +285,7 @@ width: calc(100%/24*22);
                   </div>
                   <div nz-row="">
                     <div class="prescription-col-2">地址:</div>
-                    <div class="prescription-col-22 bottomBorder">广州市</div>
+                    <div class="prescription-col-22 bottomBorder" id="address">广州市</div>
                   </div>
                   <div nz-row="">
                     <div class="prescription-col-2">电话:</div>
@@ -381,13 +381,15 @@ width: calc(100%/24*22);
             $('#user_nickname').text(row.user_nickname);
             $('#sex').text(row.sex);
             $('#hospital_department_name').text(row.hospital_department_name);
-            $('#diagnose').text(row.diagnose); 
-            $('#verify_time').text(row.verify_time);
+            $('#diagnose').text(row.diagnose);  
+          //  $('#verify_time').text(timestampToTime(row.verify_time));
+            $('#verify_time').text(row.create_time);
             $('#mobile').text(row.mobile);
             $('#doctor_name').children('img').attr('src',row.doc_sign);
             $('#verify_name').text(row.verify_name);
             $("#verify_sign").attr('src',row.verify_sign);
             $('#age').text(row.age);
+            $('#address').text(row.address);
             var html='';
             for(var i in drug){
               var info=drug[i];
@@ -411,6 +413,16 @@ width: calc(100%/24*22);
                 console.log(res);
             }
         });
+    }
+    function timestampToTime(timestamp) {
+        var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+        var Y = date.getFullYear() + '-';
+        var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1):date.getMonth()+1) + '-';
+        var D = (date.getDate()< 10 ? '0'+date.getDate():date.getDate())+ ' ';
+        var h = (date.getHours() < 10 ? '0'+date.getHours():date.getHours())+ ':';
+        var m = (date.getMinutes() < 10 ? '0'+date.getMinutes():date.getMinutes()) + ':';
+        var s = date.getSeconds() < 10 ? '0'+date.getSeconds():date.getSeconds();
+        return Y+M+D+h+m+s;
     }
     </script>
 </body>

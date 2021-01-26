@@ -285,7 +285,7 @@ width: calc(100%/24*22);
                   </div>
                   <div nz-row="">
                     <div class="prescription-col-2">地址:</div>
-                    <div class="prescription-col-22 bottomBorder">广州市</div>
+                    <div class="prescription-col-22 bottomBorder" id="address">广州市</div>
                   </div>
                   <div nz-row="">
                     <div class="prescription-col-2">电话:</div>
@@ -382,8 +382,9 @@ width: calc(100%/24*22);
             $('#sex').text(row.sex);
             $('#hospital_department_name').text(row.hospital_department_name);
             $('#diagnose').text(row.diagnose); 
-            $('#verify_time').text(row.verify_time);
+            $('#verify_time').text(row.create_time);
             $('#mobile').text(row.mobile);
+            $('#address').text(row.address);
             console.log(row.doc_sign);
             if(row.doc_sign==null||row.doc_sign==''){row.doc_sign="/pharmacies/store/images/babac.png"}
             $('#doctor_name').children('img').attr('src',row.doc_sign);

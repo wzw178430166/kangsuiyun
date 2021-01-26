@@ -245,6 +245,29 @@ class pharmacist extends authority{
 		output($status,$erro);
 	}
 
+	public function getAllNum(){  
+	    $nid = intval($_GET['nid']);
+		$where = [
+			'status'=>1,
+		];
+		$this->default_db->load('con_pn');
+		$rows = $this->default_db->select($where,'id,nid','','id asc');
+		$num = $time = 0;
+		$sort = 1;
+		if ($rows) {
+		    foreach ($rows as $k=>$v) {
+		        if ($v['nid'] == $nid) {
+		            $sort = ($k + 1);
+		            break;
+		        }
+		    }
+		    $num = count($rows);
+		    $time = $sort * 60*2;
+		}
+		$data = ['len'=>$num,'time'=>$time,'sort'=>$sort];
+		output(1,'',['data'=>$data]);
+	}
+
 
 	public function doVerify(){
 		if ($_POST['dosubmit']) {

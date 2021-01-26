@@ -251,7 +251,7 @@
                 </div>
 
                 <div class="data-content">
-                    <div class="tb-container" style="height: 70vh;overflow: auto;" id="tb-containers">
+                    <div class="tb-container" style="height: 75vh;overflow: auto;" id="tb-containers">
                         <table class="table" id="rstb">
                             <caption class="caption">问诊列表</caption>
                             <thead>
@@ -320,7 +320,7 @@
 
         function getData() {
             $('.loading').show();
-            var url = '/?m=pharmacy&c=doctor&a=inquirylists&ajax=1';
+            var url = '/?m=pharmacy&c=doctor&a=inquirylists&ajax=1'; 
             page=parseInt($('#datas').attr('data-page'));
             if (1 <= page){
                 url += '&page=' + page;
@@ -356,18 +356,18 @@
                         for (var i in datas) {
                             var info = datas[i];
                             html += '<tr align="center" data-val="' + info.id + '">\
-                              <td>' + info.oid + '</td>\
+                              <td>' + info.id + '</td>\
                               <td>' + info.name + '</td>\
                               <td>' + info.ages + '</td>\
                               <td>' + info.sex + '</td>\
-                              <td>' + info.created_time + '</td>\
+                              <td>' + info.update_time + '</td>\
                               <td>' + info.pnid + '</td>\
                               <td class="cell-operate"><a href="#" class="mt_tdaz" data-id="' + info.id +
-                                '" data-index="' + i + '">挂断</a><a href="/pharmacies/doctor/interrogation_doc.html?id='+info.oid+'&oid='+genRandom(1,10)+'">接通</a></td>\
+                                '" data-index="' + i + '">挂断</a><a class="connect" href="javascript:;" data-nid='+info.nid+'>接通</a></td>\
                           </tr>';
                         }
                         $('#datas').append(html);
-
+                       OptionSel();
                     } else {
                         if (1 == page) {
                             $('.m-empty').show();
@@ -381,6 +381,33 @@
                     console.log(res);
                 }
             });
+        }
+
+        function OptionSel(){
+                 $('.connect').each(function(){
+                      $(this).click(function(){
+                          var nid=$(this).data('nid');
+                          var urls = '/?m=pharmacy&c=doctor&a=doStatus&ajax=1';
+                            $.ajax({
+                            url: urls,
+                            type: "POST",
+                            dataType: "JSON",
+                            data: {nid,status:2},
+                            success: function (data) {
+                                if (1 == data.status) {
+                                    goo('/pharmacies/doctor/interrogation_doc.html?&nid=' + nid);
+                                } else {
+                                layer.open({
+                                    content: data.erro,
+                                    skin: 'msg',
+                                    time: 2
+                                });
+                                }
+                            }
+                            });
+                      });
+                 });
+           
         }
      
         function myscroll() {

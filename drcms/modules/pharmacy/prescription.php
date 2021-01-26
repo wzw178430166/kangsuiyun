@@ -13,6 +13,7 @@ class prescription extends authority{
 	public function lists(){
 		if ($this->ajax) {
 			$where = ['store_id'=>$this->store_id];
+			if ($_GET['nid']) $where['user_id'] = $_GET['nid'];
 			if ($_GET['k']) $where['prescription_no'] = $_GET['k'];
 			if ($_GET['status']) $where['status'] = $_GET['status'];
 			if ($_GET['st']&&$_GET['et']) {

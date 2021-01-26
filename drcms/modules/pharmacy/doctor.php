@@ -12,7 +12,9 @@ class doctor extends authority{
 	}
 	public function inquirylists(){  
 		if ($this->ajax) {
-			$where = 1;
+			$where =  [
+				'status'=>1,
+			];;
 			if($_GET[k]) $where .= ' AND `id`='.$_GET[k];
 			$keyword = $_GET['amount'];
 			if($_GET[amount]) $where .= ' AND (`gmp_validity` = "'.$keyword.'" OR `gmp_validity` like "%'.$keyword.'%")';
@@ -72,10 +74,10 @@ class doctor extends authority{
 
 
 	public function getUsermsg(){
-		$id = intval($_POST['id']);
-		if($id){
+		$nid = intval($_POST['nid']);
+		if($nid){
 			$this->default_db->load('con_pn');
-			$da = $this->default_db->get_one('`id` = '.$id);
+			$da = $this->default_db->get_one('`nid` = '.$nid);
 			exit(json_encode(array('status'=>1,'data'=>$da)));
 		}
 	}
@@ -150,11 +152,27 @@ class doctor extends authority{
     }
 	public function addDrugPN(){
 		$ac = $_POST['ac'];
-		$id = $_POST['id'];
+		$nid = $_POST['nid'];
 		$ids = explode(',',trim($_POST['ids'],','));
 		$data = explode('|',trim($_POST['data'],'|'));
 		$title = $_POST['title'];
-        $pnname = $_POST['pnname'];
+		$pnname = $_POST['pnname'];
+		$full_name = $_POST['full_name'];
+		$mobile = $_POST['mobile'];
+		$age = $_POST['age'];
+		$sex = 1==$_POST['sex']?37:38;
+		$address = $_POST['address'];
+
+
+		$where = ['nid'=>$nid];
+		$infos = [
+			'status'=>3,
+		];
+		$this->default_db->load('con_pn');
+		$rows = $this->default_db->get_one($where,'nid');
+		if ($rows) {
+			 $this->default_db->update($infos,$where);
+		}
 		/*if($ac == 'edit'){
 			$eids = explode(',',trim($_POST['eids'],','));
 			$da = $this->default_db->delete('`id` in ('.trim($_POST['eids'],',').')');
@@ -188,7 +206,7 @@ class doctor extends authority{
     			    $data_str = explode('_',$data[$k]);
     			    $drug_total_quantity += $data_str[6];
     			    $drug_total_price += $drug[$v]['vip_price'] * $data_str[6];
-    				$this->default_db->insert(array('userid'=>$user_id,'data_str'=>$data[$k],'pnname'=>$pnname,'title'=>$title,'dname'=>$drug[$v]['trade_name'],'add_time'=>$time,'pnid'=>$pnid,'rid'=>$v,'uid'=>$id));
+    				$this->default_db->insert(array('userid'=>$user_id,'data_str'=>$data[$k],'pnname'=>$pnname,'title'=>$title,'dname'=>$drug[$v]['trade_name'],'add_time'=>$time,'pnid'=>$pnid,'rid'=>$v,'uid'=>$nid));
     			}
 			}
 
@@ -212,13 +230,16 @@ class doctor extends authority{
     	        'prescription_no'=>$pnid,
     	        'store_id'=>1,
     	        'store_name'=>'',
-    	        'user_nickname'=>'测试'.date('YmdHis'),
+    	        'user_nickname'=>$full_name,
     	        'doctor_user_id'=>$this->admin_user_id,
     	        'doctor_name'=>$this->admin_user_nickname,
     	        'hospital_name'=>'',
-    	        'full_name'=>'测试'.date('YmdHis'),
-    	        'sex'=>37,
-    	        'age'=>25,
+				'full_name'=>$full_name,
+				'address'=>$address,
+				'sex'=>$sex,
+				'user_id'=>$nid,
+				'age'=>$age,
+				'mobile'=>$mobile,
     	        'diagnose'=>$pnname,
     	        'drug_total_quantity'=>$drug_total_quantity,
 				'drug_total_price'=>$drug_total_price,
@@ -229,7 +250,7 @@ class doctor extends authority{
     	    $prescription_id = $this->default_db->insert($info,true);
     	    if (0<$prescription_id) {
     	        $this->default_db->load('prescription_drug');
-    	        foreach($ids as $v){
+    	        foreach($ids as $k=>$v){
     	            $data_str = explode('_',$data[$k]);
     	            $info2 = [
         	            'prescription_id'=>$prescription_id,
@@ -251,6 +272,7 @@ class doctor extends authority{
 		
         exit('{"status":"1","pnid":"'.$pnid.'","title":"'.$title.'"}');
 	}
+
 
 	public function getAllPN(){   
 		$where = '`display` = 0';
@@ -415,6 +437,78 @@ class doctor extends authority{
 	    }
 	    return ['status'=>$status,'erro'=>$erro,'data'=>$data];
 	}
+
+	public function consultation(){
+		if ($_POST['dosubmit']) {
+			$id = intval($_POST['id']);
+			$where = ['id'=>$id];
+			$this->default_db->load('con_pn');
+			$row = $this->default_db->get_one($where,'id');
+			//var_dump($row);die;
+			$info = [
+				'name'=>$_POST['name'],
+				'nid'=>$_POST['nid'],
+				'ages'=>$_POST['ages'],
+				'sex'=>$_POST['sex'],
+				//'pnid'=>$_POST['pnid'],both
+				'both'=>$_POST['both'],
+				'idcard'=>$_POST['idcard'],
+				'nation'=>$_POST['nation'],
+				'address'=>$_POST['address'],
+				'mi_card_no'=>$_POST['mi_card_no'],
+				'phone'=>$_POST['phone'],
+				'update_time'=>date('YmdHis',time()),
+			];
+			if ($row) {//编辑
+				$res = $this->default_db->update($info,$where);
+			} else {//新增
+				$info['pnid'] = date('YmdHis',time());
+				$info['created_time'] = date('YmdHis',time());
+				$res = $this->default_db->insert($info,true);
+			//	var_dump($this->default_db->error());die;
+			}
+			if ($res) {
+				$status = 1;
+				$erro = '保存成功';
+			} else {
+				$status = 1;
+				$erro = '保存失败';
+			}
+			output($status,$erro);
+		} else {
+			$id = intval($_GET['nid']);
+			$where = ['nid'=>$id];
+			$this->default_db->load('con_pn');
+			$row = $this->default_db->get_one($where);
+			if (!$row) $row = [];
+			output(1,'',['status'=>2,'data'=>$row]);
+		}
+	} 
+	
+	public function doStatus(){
+		if ($this->ajax) {
+			$id = intval($_POST['nid']);
+			$where = ['nid'=>$id];
+			$this->default_db->load('con_pn');
+			$row = $this->default_db->get_one($where,'nid');
+			$info = [
+				'status'=>$_POST['status'],
+			];
+			if ($row) {//编辑
+				$res = $this->default_db->update($info,$where);
+			}
+			if ($res) {
+				$status = 1;
+				$erro = '保存成功';
+			} else {
+				$status = -1;
+				$erro = '保存失败';
+			}
+			output($status,$erro);
+		}
+	}
+
+
 	public function doDrug(){
 		if ($_POST['dosubmit']) {
 			$id = intval($_POST['id']);

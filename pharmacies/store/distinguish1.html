@@ -5,23 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport"
         content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-    <link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css?v=132">
-    <link rel="stylesheet" type="text/css" href="/pharmacies/user/css/header_common.css?v=132">
-    <link rel="stylesheet" type="text/css" href="/pharmacies/user/css/left_.css?v=132">
-    <link rel="stylesheet" type="text/css" href="/pharmacies/user/css/index.css?v=132">
+    <link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/store/css/header_common.css">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/store/css/left_.css">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/store/css/index.css">
     <!-- <link rel="stylesheet" href="/statics/dataManage/css/bootstrap.css"> -->
-    <link rel="stylesheet" type="text/css" href="/statics/currency/plug/swiper/css/swiper.min.css?v=132">
+    <link rel="stylesheet" type="text/css" href="/statics/currency/plug/swiper/css/swiper.min.css">
     <script type="text/javascript" src="/statics/js/setFontSize.js"></script>
     <!-- <script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script> -->
-    <script type="text/javascript" src="/statics/js/global.js?v=132"></script>
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css?v=132">
+    <script type="text/javascript" src="/statics/js/global.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- <script type="text/javascript" src="/statics/js/TouchSlide.1.1.js"></script> -->
     <script type="text/javascript" src="/statics/currency/plug/swiper/js/swiper.min.js"></script>
     <!-- <script type="text/javascript" src="/statics/js/layer_mobile/layer.js"></script> -->
     <!-- <script type="text/javascript" src="/statics/admin/common/layui/layui.all.js"></script> -->
-    <script type="text/javascript" src="/statics/js/layer_mobile/layer.js?v=132"></script>
+    <script type="text/javascript" src="/statics/js/layer_mobile/layer.js"></script>
     <title>药房-用户端人面识别</title>
     <style>
    .cont-box{width:auto;margin:auto;text-align: center;}
@@ -459,12 +459,13 @@
                 var words_result= da.words_result;
                 var nid=da.nid;
                 if(0>sucssed||words_result['公民身份号码'].words==''){
-              //     if(0>sucssed){
+                 //   if(0>sucssed){
                              layer.open({
                                     content:'识别失败',
                                     skin: 'msg',
                                     time: 2 //2秒后自动关闭
                              });
+                              
             //     $.ajax({    //其他证件识别
             //     'url':'/?m=data&c=da_fun&a=lookImgCard&type=2'
             //     ,'type':'POST' 
@@ -505,11 +506,10 @@
                    //  row2 = JSON.stringify(row);
                       setTimeout(function(){
                      //   console.log(row2);
-                        goo('/pharmacies/user/identification.html?nid='+nid)  
+                        goo('/pharmacies/user/identification.html?nid='+nid+'&video='+'store')  
                       },1000);       
 
                   }
-
                    // sendPhoto_back(da);
                 }
             });

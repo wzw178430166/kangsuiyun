@@ -6,9 +6,9 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
     <link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
-    <link rel="stylesheet" type="text/css" href="/pharmacies/user/css/header_common.css">
-    <link rel="stylesheet" type="text/css" href="/pharmacies/user/css/left_.css">
-    <link rel="stylesheet" type="text/css" href="/pharmacies/user/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/user/css/header_common.css?v=123">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/user/css/left_.css?v=123">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/user/css/index.css?v=123">
     <!-- <link rel="stylesheet" href="/statics/dataManage/css/bootstrap.css"> -->
     <link rel="stylesheet" type="text/css" href="/statics/currency/plug/swiper/css/swiper.min.css">
     <script type="text/javascript" src="/statics/js/setFontSize.js"></script>
@@ -535,7 +535,7 @@
                     </div>
                     <div class="mst-right">
                         
-                      <div class="mst-right-item1" onclick="goo('/pharmacies/user/distinguish.html')">
+                      <div class="mst-right-item1" onclick="goo('/pharmacies/user/distinguish1.html')">
                         <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" viewBox="0 0 24 24" width="47" height="47" style="fill: rgb(255, 255, 255);"><path d="M9 11.24V7.5a2.5 2.5 0 0 1 5 0v3.74c1.21-.81 2-2.18 2-3.74C16 5.01 13.99 3 11.5 3S7 5.01 7 7.5c0 1.56.79 2.93 2 3.74zm9.84 4.63l-4.54-2.26c-.17-.07-.35-.11-.54-.11H13v-6c0-.83-.67-1.5-1.5-1.5S10 6.67 10 7.5v10.74l-3.43-.72c-.08-.01-.15-.03-.24-.03-.31 0-.59.13-.79.33l-.79.8 4.94 4.94c.27.27.65.44 1.06.44h6.79c.75 0 1.33-.55 1.44-1.28l.75-5.27c.01-.07.02-.14.02-.2 0-.62-.38-1.16-.91-1.38z"></path></svg>
                         开处方
                         </div>
@@ -546,6 +546,8 @@
 
                     </div>
                 </div>
+
+            
 
                 <div class="limit-box" id="J-lb">
                  
@@ -566,7 +568,13 @@
 
     <script type="text/javascript">
     var bar=getUrlParam('bar');
+   //你好，这是我们开发紧的项目：药房系统：前台：用户端： 点击开处方： 扫身份证识别。输入手机号码：然后下一步就排队问诊。因为我地做了优化当用户量大的时候视频依然可以顺畅接通。 然后：医生接通视频。对话：医生了解情况：开处方。然后等待处方流转。到审方，审核完：开具处方成功。 返回首页。
 
+  //门店端: 查看处方列表。可以查看刚刚医生开的药，然后去执药。
+
+  //用户就简便操作。  
+  
+  //门店端：支持切换登录角色。 所有这里也有个开处方流程 ，
 window.onload=function(){
 
             (function($){

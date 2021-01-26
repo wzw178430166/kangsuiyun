@@ -193,7 +193,7 @@
                     <div class="data-head">物流信息</div>
                     <div nz-row="" class="data-table">
                       <div class="prescription-col-4">收件人地址:</div>
-                      <div class="prescription-col-20"></div>
+                      <div class="prescription-col-20" id="address"></div>
                       <div class="prescription-col-4">物流信息:</div>
                       <div class="prescription-col-20"></div>
                     </div>
@@ -249,7 +249,9 @@
             if(row.mobile)$('#mobile').text(row.mobile);
             $('#examine').text(row.status_str);
             $('#examineicon').text(row.status_str);
+            if(row.status_str=="已审核"){$('#examineicon').css({'border':"2px dotted #4CAF50","color":"#4CAF50"});}
             $('#pays').text(row.pay_status_str);
+            $('#address').text(row.address);
             // if(row.status=='WAIT_VERIFY'){
             //   $('#J_sh').show();
             // }
@@ -274,7 +276,7 @@
               html += '<tr align="center"><td colspan="'+($('.tb-head').length)+'">暂无数据</td></tr>';
             }
             $('#tobody').html(html);
-            $('#total').text(total);
+            $('#total').text(parseFloat(total).toFixed(2));
           },
           error:function(res){
               console.log(res);

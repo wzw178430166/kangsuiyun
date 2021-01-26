@@ -1,65 +1,273 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>摄像头拍照</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/user/css/header_common.css">
+    <script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+    <script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/statics/js/global.js"></script>
+    <title>药房-用户端</title>
+<style type="text/css">
+*{margin:0;padding:0;}
+body{font-size:14px;font-family:"微软雅黑";color:#666;}
+#container h3{text-align:center;margin-top:5px;}
+.text{width:280px;border:1px solid #c2c2c2;height:50px;border-radius:5px;margin:10px;font-size:24px;text-align:right;background:#ffffff;}
+.buttons{    position: relative;
+    width: 100%;
+    display: flex;margin-top: .7rem;
+    flex-wrap: wrap;
+    justify-content: space-evenly;}
+.button{    width: 85px;
+    height: 50px;
+    margin-bottom: 5px;
+    border: 1px solid #ddd;
+    border-radius: 1px;
+    font-weight: bold;
+    color: #1e395b;
+    margin-top: .2rem;
+    border-radius: .1rem;
+    background: #eaf1f9;}
+.ling{width:180px;}
+
+.container-box{    
+  width: 90%;
+    height: 60vh;
+    border-radius: 5px;
+    display: flex;
+    position: absolute;
+    top: 50%;
+    background: #ffffff;
+    left: 50%;
+    transform: translate(-50%,-50%);}
+.container-left{    width: 70%;
+    height: 100%;
+    flex: 1;
+    border: 1px solid #e6e6e6;
+    margin-right: .3rem;
+    background: #f1f1f1;}
+.container-right{width: 300px;
+    height: 100%;
+    background: #0078FF;
+}
+
+.container-title{width: 100%;height: 3rem;line-height: 3rem;color: #ffffff;background:#0078FF;padding-left: 1rem;}
+
+.container-table{width: 100%;}
+
+.container-table tr.table-title{    width: 100%;
+    height: 1.3rem;
+    line-height: 1.3rem;
+    color: #ffffff;
+    font-size: .35rem;
+    background: #0078FF;}
+    /* .container-table tr.table-title td {
+    width: 100%;
+} */
+    .container-table tr.table-title td{  padding-left: .8rem;}
+.container-table tr th{        width: 6%;
+    text-align: right;
+    height: 1rem;font-size: .35rem;
+    line-height: 1rem;
+}
+.container-table tr td{width: 20%;
+    font-size: .35rem;
+    padding-left: .2rem;}
+.matst_back {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-top: .5rem;
+}
+.back_goo {
+    width: 2rem;
+    height: .9rem;
+    line-height: .9rem;
+    border: 1px solid #929292;
+    color: #7d7272;
+    text-align: center;
+    border-radius: .1rem;
+}
+.back_goo svg {
+    width: .6rem;
+    height: .6rem;
+    vertical-align: middle;
+}   
+.bottoms-btn{width: 100%;display: flex;justify-content: space-evenly;margin-top: .5rem;}
+.bottoms-btn .bottoms-bakgs{width: 40%;height: 2rem;line-height: 2rem;background:#025CEE;color: #ffffff;text-align: center;border-radius: .1rem;}
+.bottoms-btn .bottoms-sure{width: 40%;height: 2rem;line-height: 2rem;background:#0689BD;color: #ffffff;text-align: center;border-radius: .1rem;}
+.cont_box{position: relative;width: 100%;height:70vh;}
+</style>
+
 </head>
 <body>
-  <video id="video" width="480" height="320" controls>
-  </video>
-  <div>
-    <button id="capture">拍照</button>
-  </div>
-  <canvas id="canvas" width="480" height="320"></canvas>
-  <script>
-    //访问用户媒体设备的兼容方法
-    function getUserMedia(constraints, success, error) {
-      if (navigator.mediaDevices.getUserMedia) {
-        //最新的标准API
-        navigator.mediaDevices.getUserMedia(constraints).then(success).catch(error);
-      } else if (navigator.webkitGetUserMedia) {
-        //webkit核心浏览器
-        navigator.webkitGetUserMedia(constraints,success, error)
-      } else if (navigator.mozGetUserMedia) {
-        //firfox浏览器
-        navigator.mozGetUserMedia(constraints, success, error);
-      } else if (navigator.getUserMedia) {
-        //旧版API
-        navigator.getUserMedia(constraints, success, error);
-      }
+  <div class="outdiv">
+    <div class="right_conter">
+        <div class="header_box" id="header">
+            <!--#include file="header.html"-->
+        </div>
+        <div class="h8vh"></div>
+        <div class="matst_back">
+            <div class="back_goo" onclick="goback()">
+                <svg t="1607408152481" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3504" width="48" height="48"><path d="M438.4 297.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2L300.8 480H800c19.2 0 32 12.8 32 32 0 16-12.8 28.8-28.8 32H300.8l137.6 137.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2c-12.8 12.8-28.8 12.8-41.6 3.2l-3.2-3.2-192-192-3.2-3.2-3.2-3.2-3.2-3.2V499.2l3.2-3.2 3.2-3.2 3.2-3.2 192-192c12.8-12.8 32-12.8 44.8 0z" fill="#bfbfbf" p-id="3505"></path></svg>
+                返回
+            </div>
+        </div>
+        <div class="cont_box">
+        <form name="computer">
+          <div id="container" class="container-box">
+            <div class="container-left">
+              <table class="container-table">
+                <tr class="table-title">
+                  <td colspan="4">个人信息</td>
+                </tr>
+                <tr style="height: 1rem;">
+                  <td colspan="4"></td>
+                </tr>
+                <tr>
+                  <th>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:</th>
+                  <td>45454</td>
+                  <th>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</th>
+                  <td>4545</td>
+                </tr>
+                <tr>
+                  <th>民&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;族:</th>
+                  <td>4545</td>
+                  <th>出生日期：</th>
+                  <td>454545</td>
+                </tr>
+                <tr>
+                  <th>身份证号:</th>
+                  <td colspan="3">个人信息</td>
+                </tr>
+                <tr style="height: 1rem;">
+                  <td colspan="4"></td>
+                </tr>
+                <tr class="table-title">
+                  <td colspan="4">绑定手机</td>
+                </tr>
+                <tr>
+                  <td colspan="4">
+                    <input type="text" id="text" name="text" class="text" disabled="disabled" value="请输入手机号" style="font-size: .32rem;
+                    text-align: left;
+                    padding-left: .2rem;
+                    margin-top: 1rem;
+                    height: 40px;">
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="container-right">
+                  <div class="buttons">
+                    <!-- <input type="button" value="." class="button" id="." onClick="point()" style="visibility: hidden;"> 
+                    <input type="button" value="CE" class="button" id="ce" onClick="funclear()" style="visibility: hidden;">
+                    <input type="button" value="C" class="button" id="c" onClick="funclear()" style="visibility: hidden;">
+                    <input type="button" value="/" class="button" id="/" onClick="show(this)" style="visibility: hidden;"> -->
+                    <input type="button" value="7" class="button" id="7" onClick="show(this)">
+                    <input type="button" value="8" class="button" id="8" onClick="show(this)">
+                    <input type="button" value="9" class="button" id="9" onClick="show(this)">
+                    <!-- <input type="button" value="*" class="button" id="*" onClick="show(this)" style="visibility: hidden;">  -->
+                    <input type="button" value="4" class="button" id="4" onClick="show(this)">
+                    <input type="button" value="5" class="button" id="5" onClick="show(this)">
+                    <input type="button" value="6" class="button" id="6" onClick="show(this)">
+                 <!-- <input type="button" value="-" class="button" id="-" onClick="show(this)" style="visibility: hidden;">  -->
+                    <input type="button" value="1" class="button" id="1" onClick="show(this)">
+                    <input type="button" value="2" class="button" id="2" onClick="show(this)">
+                    <input type="button" value="3" class="button" id="3" onClick="show(this)">
+                    <!-- <input type="button" value="+" class="button" id="+" onClick="show(this)" style="visibility: hidden;">  -->
+                    <input type="button" value="0" class="button ling" id="0" onClick="show(this)">
+                    <input type="button" value="←" class="button" id="dele" onClick="funback()">
+                   <!-- <input type="button" value="=" class="button" id="=" onClick="getResult()" style="visibility: hidden;">  -->
+                  </div>
+                  <div class="bottoms-btn">
+                    <div class="bottoms-bakgs">返回</div>
+                    <div class="bottoms-sure">确定</div>
+                  </div>
+            </div>
+          </div>
+        </form>
+      </div>
+        <!-- <div class="cont-box">
+            <p>个人基本信息录入</p>
+            <p>请按照指引将身份证放置于感应区域进行基本信息录入</p>
+            <p>若长时间为读取到个人信息，请尝试退出重新进入</p>
+            <p><img src="/pharmacies/user/images/v2_qlizks.png"></p>
+            <p onclick="goo('/pharmacies/user/distinguish1.html')">下一步</p>
+        </div> -->
+    </div>
+</div>
+
+
+<script type="text/javascript" lang="javascript">
+  var clearmsg = false;
+  var ispoint = true;
+  function show(obj){
+  
+    var data =	obj.value;
+    var text = document.getElementById("text");
+    if(text.value=='请输入手机号'){text.value="";}
+    if(clearmsg){
+      text.value = "";
+      clearmsg=false;
     }
- 
-    let video = document.getElementById('video');
-    let canvas = document.getElementById('canvas');
-    let context = canvas.getContext('2d');
- 
-    function success(stream) {
-      //兼容webkit核心浏览器
-      let CompatibleURL = window.URL || window.webkitURL;
-      //将视频流设置为video元素的源
-      console.log(stream);
- 
-      //video.src = CompatibleURL.createObjectURL(stream);
-      video.srcObject = stream;
-      video.play();
+    if(data == "+" || data == "-" || data == "*" || data == "/"){
+      ispoint = true;
     }
- 
-    function error(error) {
-      console.log(`访问用户媒体设备失败${error.name}, ${error.message}`);
+    if(data == "0" && text.value == "0"){
+      text.value = parseInt(text.value) + 0;	
+    }else if(text.value == "0" && data != "+" && data != "-" && data != "*" && data != "/"){
+      text.value = parseInt(text.value) + parseInt(data);
+    }else{
+      text.value += data;
     }
- 
-    if (navigator.mediaDevices.getUserMedia || navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia) {
-      //调用用户媒体设备, 访问摄像头
-      getUserMedia({video : {width: 480, height: 320}}, success, error);
-    } else {
-      alert('不支持访问用户媒体');
+  }
+  //计算结果
+  function getResult(){
+    var data = document.getElementById("text");
+    try{
+      ispoint = true;
+      data.value = eval(data.value);
+      clearmsg = true;
+      //alert(ispoint);
+    }catch(err){
+      alert("这怎么算!");
+      data.value = "0";
     }
- 
-    document.getElementById('capture').addEventListener('click', function () {
-      context.drawImage(video, 0, 0, 480, 320);      
-    })
+  }
+  //点
+  function point(){
+    var p = document.getElementById(".");
+    var text = document.getElementById("text");
+    
+    if(ispoint){
+      text.value += p.value;
+      ispoint = false;
+    }
+    //if(text.value.indexOf(".") == true ){
+    //}else{
+    //	text.value += p.value;
+    //}			
+  }
+  //清空
+  function funclear(){
+    var a = document.getElementById("text").value = "0";
+    clearmsg = false;
+    ispoint = true;
+  }
+  //退格键
+  function funback(){
+    var text = document.getElementById("text");
+    if(text.value == "0" || text.value == ""){
+      text.value = "0";
+    }else{
+      document.getElementById("text").value=document.getElementById("text").value.slice(0,-1);
+    }
+  }
   </script>
+  
+
+
 </body>
 </html>

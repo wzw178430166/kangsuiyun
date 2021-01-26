@@ -5,23 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport"
         content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-    <link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css?v=132">
-    <link rel="stylesheet" type="text/css" href="/pharmacies/user/css/header_common.css?v=132">
-    <link rel="stylesheet" type="text/css" href="/pharmacies/user/css/left_.css?v=132">
-    <link rel="stylesheet" type="text/css" href="/pharmacies/user/css/index.css?v=132">
+    <link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/user/css/header_common.css">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/user/css/left_.css">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/user/css/index.css">
     <!-- <link rel="stylesheet" href="/statics/dataManage/css/bootstrap.css"> -->
-    <link rel="stylesheet" type="text/css" href="/statics/currency/plug/swiper/css/swiper.min.css?v=132">
+    <link rel="stylesheet" type="text/css" href="/statics/currency/plug/swiper/css/swiper.min.css">
     <script type="text/javascript" src="/statics/js/setFontSize.js"></script>
     <!-- <script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script> -->
-    <script type="text/javascript" src="/statics/js/global.js?v=132"></script>
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css?v=132">
+    <script type="text/javascript" src="/statics/js/global.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- <script type="text/javascript" src="/statics/js/TouchSlide.1.1.js"></script> -->
     <script type="text/javascript" src="/statics/currency/plug/swiper/js/swiper.min.js"></script>
     <!-- <script type="text/javascript" src="/statics/js/layer_mobile/layer.js"></script> -->
     <!-- <script type="text/javascript" src="/statics/admin/common/layui/layui.all.js"></script> -->
-    <script type="text/javascript" src="/statics/js/layer_mobile/layer.js?v=132"></script>
+    <script type="text/javascript" src="/statics/js/layer_mobile/layer.js"></script>
     <title>药房-用户端人面识别</title>
     <style>
    .cont-box{width:auto;margin:auto;text-align: center;}
@@ -269,7 +269,7 @@
                 <p>若长时间为读取到个人信息，请尝试退出重新进入</p>
                 <p><img src="/pharmacies/user/images/v2_qlizks.png"></p>
             <div class="cont-face" style="position: absolute;
-            bottom: 14%;
+            bottom: 16%;
             left: 0;
             width: 26%;">
                 <div class="cont-face-left">
@@ -421,6 +421,7 @@
              let canvas = document.getElementById("canvas");
              canvas.width = video.videoWidth;
              canvas.height = video.videoHeight;
+             console.log(canvas);
              let ctx = canvas.getContext('2d');
              ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
          }
@@ -452,43 +453,39 @@
             $.ajax({ 
                 'url':'/?m=data&c=da_fun&a=lookImgCard'
                 ,'type':'POST' 
-                ,'data':'imgStr='+sbase64
+                ,'data':'imgStr_='+sbase64
                 ,'dataType':'json'
                 ,'success':function(da){
                 var sucssed=da.idcard_number_type;
                 var words_result= da.words_result;
-                var nid=da.nid;
-                if(0>sucssed||words_result['公民身份号码'].words==''){
-              //     if(0>sucssed){
-                             layer.open({
-                                    content:'识别失败',
+                if(0>sucssed){
+                $.ajax({ 
+                'url':'/?m=data&c=da_fun&a=lookImgCard&type=2'
+                ,'type':'POST' 
+                ,'data':'imgStr_='+sbase64
+                ,'dataType':'json'
+                ,'success':function(da){
+                  var words_result=da.words_result; 
+                  var words_result_num=da.words_result_num; 
+                  if(0==words_result_num&&0==Object.keys(words_result).length){
+                      alert('识别失败');
+                  }else{
+                   for(let k in words_result){
+                    words_result[k].words=escape(words_result[k].words);
+                   }
+                    words_result=JSON.stringify(words_result);
+                    layer.open({
+                                    content:'识别成功',
                                     skin: 'msg',
                                     time: 2 //2秒后自动关闭
                              });
-            //     $.ajax({    //其他证件识别
-            //     'url':'/?m=data&c=da_fun&a=lookImgCard&type=2'
-            //     ,'type':'POST' 
-            //     ,'data':'imgStr_='+sbase64
-            //     ,'dataType':'json'
-            //     ,'success':function(da){
-            //       var words_result=da.words_result; 
-            //       var words_result_num=da.words_result_num; 
-            //       if(0==words_result_num&&0==Object.keys(words_result).length){
-            //           alert('识别失败');
-            //       }else{
-            //            layer.open({
-            //                         content:'识别成功',
-            //                         skin: 'msg',
-            //                         time: 2 //2秒后自动关闭
-            //                  });
-            //           setTimeout(function(){
-            //             goo('/pharmacies/user/identification.html?nid='+da.nid)  
-            //           },1000);       
-            //       }
-            //     }
-            // }); 
-                  }else if(sucssed==0||sucssed==1){
-                    console.log(words_result);
+                      setTimeout(function(){
+                        goo('/pharmacies/user/identification.html?im_card='+words_result)  
+                      },1000);       
+                  }
+                }
+            }); 
+                  }else if(sucssed==0){
                     var row = [];
                     for(let item in words_result){ 
                           var key = escape(item);
@@ -502,14 +499,15 @@
                                     time: 2 //2秒后自动关闭
                              });
 
-                   //  row2 = JSON.stringify(row);
+                     row2 = JSON.stringify(row);
+                     console.log(row2);
+                  //    return;
                       setTimeout(function(){
-                     //   console.log(row2);
-                        goo('/pharmacies/user/identification.html?nid='+nid)  
+                        console.log(row2);
+                        goo('/pharmacies/user/identification.html?id_card='+row2)  
                       },1000);       
 
                   }
-
                    // sendPhoto_back(da);
                 }
             });
@@ -601,8 +599,10 @@
         //          }); 
            
         //     },1500);
+        var datast={"words_result":{"\u59d3\u540d":{"words":"\u97e6\u5c0f\u5b9d","location":{"top":63,"left":139,"width":84,"height":31}},"\u6c11\u65cf":{"words":"\u6c49","location":{"top":113,"left":267,"width":20,"height":30}},"\u4f4f\u5740":{"words":"\u5317\u4eac\u5e02\u4e1c\u57ce\u533a\u666f\u5c71\u524d\u88574\u53f7\u7d2b\u7981\u57ce\u656c\u4e8b\u623f","location":{"top":208,"left":130,"width":279,"height":74}},"\u516c\u6c11\u8eab\u4efd\u53f7\u7801":{"words":"","location":{"top":0,"left":0,"width":0,"height":0}},"\u51fa\u751f":{"words":"","location":{"top":0,"left":0,"width":0,"height":0}},"\u6027\u522b":{"words":"\u7537","location":{"top":114,"left":139,"width":25,"height":30}}},"log_id":1353892940119801856,"words_result_num":6,"idcard_number_type":0,"image_status":"unknown","nid":451};
 
-
+        console.log(datast);
+        
         </script>
 </body>
 

@@ -23,7 +23,7 @@
 }
 </style>
 <div class="headers_box">
-    <div class="header_left" onclick="goo('/pharmacies/user/index.html')">
+    <div class="header_left" id="header_left">
       广州唐剑大药房
     </div>
     <div class="header_right">
@@ -32,7 +32,18 @@
     </div>
 </div>
 <script>
-    
+   var video = getUrlParam('video');
+  $(function(){
+    if(video=='store'){
+        $('#header_left').click(function(){
+          goo('/pharmacies/store/');
+        });
+      }else{
+        $('#header_left').click(function(){
+          goo('/pharmacies/user/index.html');
+        });
+      }
+  })
   var t = null;
       t = setTimeout(time,1000);//開始运行
       function time()

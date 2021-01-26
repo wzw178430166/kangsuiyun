@@ -1,166 +1,321 @@
 <!DOCTYPE html>
 <html lang="cn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport"
+    <meta charset="UTF-8">
+    <meta name="viewport"
         content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
-<link rel="stylesheet" type="text/css" href="/pharmacies/user/css/header_common.css">
-<link rel="stylesheet" type="text/css" href="/pharmacies/user/css/left_.css">
-<link rel="stylesheet" type="text/css" href="/pharmacies/user/css/index.css">
-<link rel="stylesheet" href="/statics/dataManage/css/bootstrap.css">
-<script type="text/javascript" src="/statics/js/setFontSize.js"></script>
-<script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="/statics/js/global.js"></script>
-<title>视频问诊-用户</title>
-<style>
- .query-btn .btn-item {
-    margin-left: 0px;
-}
-.query-btn .btn-item {
-    height: auto;
-    min-height: 26px;
-}
-.query-btn .btn-item {
-    height: auto;
-    min-height: 26px;
-    text-align: center;
-}
+    <link rel="stylesheet" type="text/css" href="/statics/css/app/appstyle.css">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/user/css/header_common.css">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/user/css/left_.css">
+    <link rel="stylesheet" type="text/css" href="/pharmacies/user/css/index.css">
+    <link rel="stylesheet" href="/statics/dataManage/css/bootstrap.css">
+    <script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+    <script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/statics/js/global.js"></script>
+    <title>视频问诊-用户</title>
+    <style>
+        .query-btn .btn-item {
+            margin-left: 0px;
+        }
 
-.matst_back {
-    width: 95%;
-    display: flex;
-    margin: 0 auto;    align-items: center;
-    margin-top: .5rem;
-}
-.back_goo {
-    width: 2rem;
-    height: .9rem;
-    line-height: .9rem;
-    border: 1px solid #929292;
-    color: #7d7272;
-    text-align: center;
-    border-radius: .1rem;
-}
-.back_goo svg {
-    width: .6rem;
-    height: .6rem;
-    vertical-align: middle;
-} 
-.conten_con{width: 100%;display: flex;height: 100vh;}
-.conten_con .cotent_con_left{width: 100%;border-right: 1px solid #e4e4e4;}
+        .query-btn .btn-item {
+            height: auto;
+            min-height: 26px;
+        }
 
-.lines{width: 96%;;margin: .8rem auto .3rem auto;}
+        .query-btn .btn-item {
+            height: auto;
+            min-height: 26px;
+            text-align: center;
+        }
 
-.ctab_bottom{    
-    width: 96%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;}
-.ctab_bottom span{float: right;
-    width: 3rem;
-    height: 1rem;
-    font-size: .38rem;
-    line-height: 1rem;
-    border: 1px solid #339EFC;
-    text-align: center;
-    border-radius: .07rem;}
-.ctab_bottom span:nth-child(1){background: #339EFC;color: #ffffff;}
-.ctab_bottom span:nth-child(2){color: #339EFC;margin-right: .2rem;}
+        .matst_back {
+            width: 95%;
+            display: flex;
+            margin: 0 auto;
+            align-items: center;
+            margin-top: .5rem;
+        }
+
+        .back_goo {
+            width: 2rem;
+            height: .9rem;
+            line-height: .9rem;
+            border: 1px solid #929292;
+            color: #7d7272;
+            text-align: center;
+            border-radius: .1rem;
+        }
+
+        .back_goo svg {
+            width: .6rem;
+            height: .6rem;
+            vertical-align: middle;
+        }
+
+        .conten_con {
+            width: 100%;
+            display: flex;
+            height: 100vh;
+        }
+
+        .conten_con .cotent_con_left {
+            width: 100%;
+            border-right: 1px solid #e4e4e4;
+        }
+
+        .lines {
+            width: 96%;
+            ;
+            margin: .8rem auto .3rem auto;
+        }
+
+        .ctab_bottom {
+            width: 96%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .ctab_bottom span {
+            float: right;
+            width: 3rem;
+            height: 1rem;
+            font-size: .38rem;
+            line-height: 1rem;
+            border: 1px solid #339EFC;
+            text-align: center;
+            border-radius: .07rem;
+        }
+
+        .ctab_bottom span:nth-child(1) {
+            background: #339EFC;
+            color: #ffffff;
+        }
+
+        .ctab_bottom span:nth-child(2) {
+            color: #339EFC;
+            margin-right: .2rem;
+        }
 
 
-.outs_left{    width: 95%;
-    margin: 0 auto;
-    overflow: auto;
-    margin-top: 2vh;}
-.cont_dor{width: 100%;height: 70vh;background: #F2EFEF;margin-top: .2rem;    border: 1px solid #aba5a5;padding-top: 3.3rem;}
-.cont_icon{width: 50%;margin: 0 auto;text-align: center;}
-.cont_icon svg{    width: 60px;
-    height: 60px;}
-.cont_dor p.mst_1{    font-size: .5rem;
-    text-align: center;margin: 0;height: 1rem;
-    color: #000000;}
-.cont_dor p.mst_2{    
-    font-size: .4rem;
-    text-align: center;
-    color: #A81414;}
-.cont_divobr{    
-    width: 99%; margin: 0 auto; border-radius: .05rem;
-    margin-top: .3rem;padding-bottom: .5rem;margin-bottom: .5rem;
-    box-shadow: 0px -1px 3px 2px #e6e6e6;}
-.cont_divobr .con_dbr1{        padding-left: .35rem;
-    font-size: .37rem;
-    height: .85rem;
-    line-height: .85rem;
-    padding-top: .1rem;
-}
-.cont_divobr .con_dbr2{   
-    height: 3rem;
-    text-indent: 2em;
-    margin: 0;
-    font-size: .35rem;
-    padding: 0 .2rem;
-    background: #FAFAFA;}
-.cont_divobr .con_dbr3{    
-    height: 1.2rem;
-    border-top: 1px solid #dcdcdc;
-    border-bottom: 1px solid #dcdcdc;}
-.con_dbr4{padding-left: .3rem;padding-right: .3rem;}
-.con_dbr4 p:first-child{    font-size: .38rem;
-    margin-top: 0.3rem;}
-.con_dbr4 p{font-size: .35rem;line-height: inherit;}
-.con_dbr4 p:not(:first-child){margin-bottom: .2rem;}
-.mast_kais{   
-     font-size: .55rem;
-    color: #0078FF;
-    margin-left: .8rem;}
+        .outs_left {
+            width: 95%;
+            margin: 0 auto;
+            overflow: auto;
+            margin-top: 2vh;
+        }
 
-</style>
+        .cont_dor {
+            width: 100%;
+            height: 70vh;
+            background: #F2EFEF;
+            margin-top: .2rem;
+            border: 1px solid #aba5a5;
+            padding-top: 3.3rem;
+        }
+
+        .cont_icon {
+            width: 50%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cont_icon svg {
+            width: 60px;
+            height: 60px;
+        }
+
+        .cont_dor p.mst_1 {
+            font-size: .5rem;
+            text-align: center;
+            margin: 0;
+            height: 1rem;
+            color: #000000;
+        }
+
+        .cont_dor p.mst_2 {
+            font-size: .4rem;
+            text-align: center;
+            color: #A81414;
+        }
+
+        .cont_divobr {
+            width: 99%;
+            margin: 0 auto;
+            border-radius: .05rem;
+            margin-top: .3rem;
+            padding-bottom: .5rem;
+            margin-bottom: .5rem;
+            box-shadow: 0px -1px 3px 2px #e6e6e6;
+        }
+
+        .cont_divobr .con_dbr1 {
+            padding-left: .35rem;
+            font-size: .37rem;
+            height: .85rem;
+            line-height: .85rem;
+            padding-top: .1rem;
+        }
+
+        .cont_divobr .con_dbr2 {
+            height: 3rem;
+            text-indent: 2em;
+            margin: 0;
+            font-size: .35rem;
+            padding: 0 .2rem;
+            background: #FAFAFA;
+        }
+
+        .cont_divobr .con_dbr3 {
+            height: 1.2rem;
+            border-top: 1px solid #dcdcdc;
+            border-bottom: 1px solid #dcdcdc;
+        }
+
+        .con_dbr4 {
+            padding-left: .3rem;
+            padding-right: .3rem;
+        }
+
+        .con_dbr4 p:first-child {
+            font-size: .38rem;
+            margin-top: 0.3rem;
+        }
+
+        .con_dbr4 p {
+            font-size: .35rem;
+            line-height: inherit;
+        }
+
+        .con_dbr4 p:not(:first-child) {
+            margin-bottom: .2rem;
+        }
+
+        .mast_kais {
+            font-size: .55rem;
+            color: #0078FF;
+            margin-left: .8rem;
+        }
+    </style>
 </head>
+
 <body>
-   <div class="outdiv">
-       <div class="right_conter">
-           <div style="width:auto;margin:auto;">
-            <div class="conten_con">
-                <div class="cotent_con_left">
-                    <div class="header_box" id="header">
-                        <!--#include file="header.html"-->   
-                      </div>
-                      <div class="h8vh"></div>
-                      <div class="matst_back">
-                        <div class="back_goo" onclick="goback()">
-                            <svg t="1607408152481" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3504" width="48" height="48"><path d="M438.4 297.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2L300.8 480H800c19.2 0 32 12.8 32 32 0 16-12.8 28.8-28.8 32H300.8l137.6 137.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2c-12.8 12.8-28.8 12.8-41.6 3.2l-3.2-3.2-192-192-3.2-3.2-3.2-3.2-3.2-3.2V499.2l3.2-3.2 3.2-3.2 3.2-3.2 192-192c12.8-12.8 32-12.8 44.8 0z" fill="#bfbfbf" p-id="3505"></path></svg>
-                            返回
+    <div class="outdiv">
+        <div class="right_conter">
+            <div style="width:auto;margin:auto;">
+                <div class="conten_con">
+                    <div class="cotent_con_left">
+                        <div class="header_box" id="header">
+                            <!--#include file="header.html"-->
                         </div>
-                        <span class="mast_kais">在线开处方</span>
-                    </div>
-            
-                    <div class="outs_left">
-                        <div class="cont_dor">
-                            <div class="cont_icon">
-                                <svg t="1607501438126" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7771" id="mx_n_1607501438129" width="48" height="48"><path d="M0 0h1024v1024H0z" fill="#FFFFFF" fill-opacity="0" p-id="7772"></path><path d="M142.222 142.222h739.556q85.333 0 85.333 85.334v455.11q0 85.334-85.333 85.334H142.222q-85.333 0-85.333-85.333V227.556q0-85.334 85.333-85.334zM284.444 824.889h455.112q28.444 0 28.444 28.444 0 28.445-28.444 28.445H284.444q-28.444 0-28.444-28.445 0-28.444 28.444-28.444z" fill="#1296db" p-id="7773" data-spm-anchor-id="a313x.7781069.0.i23" class="selected"></path><path d="M443.506 316.871a30.379 30.379 0 0 0-30.18 0.057 30.04 30.04 0 0 0-15.104 25.998v224.37c0 10.724 5.746 20.622 15.076 25.998 9.358 5.376 20.85 5.405 30.208 0.057L639.06 481.195a30.009 30.009 0 0 0 0-52.054l-195.555-112.27z" fill="#FFFFFF" p-id="7774"></path></svg>
+                        <div class="h8vh"></div>
+                        <div class="matst_back">
+                            <div class="back_goo" onclick="goback()">
+                                <svg t="1607408152481" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg" p-id="3504" width="48" height="48">
+                                    <path
+                                        d="M438.4 297.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2L300.8 480H800c19.2 0 32 12.8 32 32 0 16-12.8 28.8-28.8 32H300.8l137.6 137.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2c-12.8 12.8-28.8 12.8-41.6 3.2l-3.2-3.2-192-192-3.2-3.2-3.2-3.2-3.2-3.2V499.2l3.2-3.2 3.2-3.2 3.2-3.2 192-192c12.8-12.8 32-12.8 44.8 0z"
+                                        fill="#bfbfbf" p-id="3505"></path>
+                                </svg>
+                                返回
                             </div>
-                            <p class="mst_1">即将安排医生接诊，请稍等</p>
-                            <p class="mst_2">前面排队人数<span style="color: #A81414;
+                            <span class="mast_kais">在线开处方</span>
+                        </div>
+                        <div class="outs_left">
+                            <div class="cont_dor">
+                                <div class="cont_icon">
+                                    <svg t="1607501438126" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" p-id="7771" id="mx_n_1607501438129"
+                                        width="48" height="48">
+                                        <path d="M0 0h1024v1024H0z" fill="#FFFFFF" fill-opacity="0" p-id="7772"></path>
+                                        <path
+                                            d="M142.222 142.222h739.556q85.333 0 85.333 85.334v455.11q0 85.334-85.333 85.334H142.222q-85.333 0-85.333-85.333V227.556q0-85.334 85.333-85.334zM284.444 824.889h455.112q28.444 0 28.444 28.444 0 28.445-28.444 28.445H284.444q-28.444 0-28.444-28.445 0-28.444 28.444-28.444z"
+                                            fill="#1296db" p-id="7773" data-spm-anchor-id="a313x.7781069.0.i23"
+                                            class="selected"></path>
+                                        <path
+                                            d="M443.506 316.871a30.379 30.379 0 0 0-30.18 0.057 30.04 30.04 0 0 0-15.104 25.998v224.37c0 10.724 5.746 20.622 15.076 25.998 9.358 5.376 20.85 5.405 30.208 0.057L639.06 481.195a30.009 30.009 0 0 0 0-52.054l-195.555-112.27z"
+                                            fill="#FFFFFF" p-id="7774"></path>
+                                    </svg>
+                                </div>
+                                <p class="mst_1">即将安排医生接诊，请稍等</p>
+                                <p class="mst_2">前面排队人数<span style="color: #A81414;
                                 font-weight: 600;
                                 font-size: .42rem;
-                                padding: 0 .2rem;">0</span>人,预计需要等待<span>30秒</span></p>
+                                padding: 0 .2rem;" id="sort">0</span>人,预计需要等待<span><span id="time">30</span>秒</span></p>
+                            </div>
                         </div>
-    
-                     
-                    </div>       
-                   
+                    </div>
+
                 </div>
-             
+
             </div>
-            
-          </div>
-       </div>
-   </div>   
-   <script>
-      setTimeout(function() {
-          goo('https://wcdt.yjxun.cn:9988/room.php?cid=2_4&type=1&vid=keyTest');
-      },3000)
-   </script>
+        </div>
+    </div>
+    <script>
+        var nid = getUrlParam('nid');
+        var time=null;
+       function getAllnum(){
+                var url = '/?m=pharmacy&c=pharmacist&a=getAllNum&nid='+nid;
+                var xhr=null;
+                xhr=new XMLHttpRequest();
+                xhr.open('GET',url,true);
+                xhr.send();
+                xhr.onreadystatechange=function(){
+                    if(xhr.readyState==4 && xhr.status==200){
+                        var obj = JSON.parse(xhr.responseText);
+                        $('#sort').text(obj.sort);
+                        $('#time').text(obj.time);
+                        if(obj.sort===1){
+                        clearTimeout(time);
+                        var stateObject = {
+                            title: '',
+                            url: 'https://wcdt.yjxun.cn:9988/room.php?cid=2_4&type=1&vid=16800&f=ksy'
+                        };
+                        var title = "Wow Title";
+                        var newUrl = "https://www.519ksy.com/pharmacies/user/circulation.html";
+                        history.pushState(stateObject, title, newUrl);
+                        setTimeout(function () {
+                            goo('https://wcdt.yjxun.cn:9988/room.php?cid=2_4&type=1&vid=16800&f=ksy');
+                        }, 3000) 
+                        }else{
+                            time=setTimeout(function(){getAllnum()},3000);  
+                        }
+                        console.log(obj);
+                    }
+                };
+                }
+             getAllnum();
+
+
+        function getAllnumss(){
+             $.ajax({   
+                'url':'/?m=pharmacy&c=pharmacist&a=getAllNum&nid='+nid
+                ,'type':'GET' 
+                ,'dataType':'json'
+                ,'success':function(da){
+                    console.log(da);
+                    $('#len').text(da.len);
+                    $('#time').text(da.time);
+                if(da.sort===1){
+                    $('#len').text(da.len);
+                    $('#time').text(da.time);
+                }
+            // var stateObject = {
+            //     title: '',
+            //     url: 'https://wcdt.yjxun.cn:9988/room.php?cid=2_4&type=1&vid=16800&f=ksy'
+            // };
+            // var title = "Wow Title";
+            // var newUrl = "https://www.519ksy.com/pharmacies/user/circulation.html";
+            // history.pushState(stateObject, title, newUrl);
+            // setTimeout(function () {
+            //     goo('https://wcdt.yjxun.cn:9988/room.php?cid=2_4&type=1&vid=16800&f=ksy');
+            // }, 3000)                 
+
+                }
+            }); 
+        }
+    </script>
 </body>
+
 </html>

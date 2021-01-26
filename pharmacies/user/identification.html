@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <link rel="stylesheet" type="text/css" href="/pharmacies/user/css/header_common.css">
+  <script type="text/javascript" src="/statics/js/setFontSize.js"></script>
+  <script type="text/javascript" src="/statics/js/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript" src="/statics/js/layer_mobile/layer.js"></script>
+  <script type="text/javascript" src="/statics/js/global.js"></script>
+  <title>药房-用户端</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-size: 14px;
+      font-family: "微软雅黑";
+      color: #666;
+    }
+
+    #container h3 {
+      text-align: center;
+      margin-top: 5px;
+    }
+
+    .text {
+      width: 280px;
+      border: 1px solid #c2c2c2;
+      height: 50px;
+      border-radius: 5px;
+      margin: 10px;
+      font-size: 24px;
+      text-align: right;
+      background: #ffffff;
+    }
+
+    .buttons {
+      position: relative;
+      width: 100%;
+      display: flex;
+      margin-top: .7rem;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+    }
+
+    .button {
+      width: 85px;
+      height: 50px;
+      margin-bottom: 5px;
+      border: 1px solid #ddd;
+      border-radius: 1px;
+      font-weight: bold;
+      color: #1e395b;
+      margin-top: .2rem;
+      border-radius: .1rem;
+      background: #eaf1f9;
+    }
+
+    .ling {
+      width: 180px;
+    }
+
+    .container-box {
+      width: 90%;
+      height: 70vh;
+      border-radius: 5px;
+      display: flex;
+      position: absolute;
+      top: 50%;
+      background: #ffffff;
+      left: 50%;
+      transform: translate(-50%, -40%);
+    }
+
+    .container-left {
+      width: 70%;
+      height: 100%;
+      flex: 1;
+      border: 1px solid #e6e6e6;
+      margin-right: .3rem;
+      background: #f1f1f1;
+    }
+
+    .container-right {
+      width: 300px;
+      height: 100%;
+      background: #0078FF;
+    }
+
+    .container-title {
+      width: 100%;
+      height: 3rem;
+      line-height: 3rem;
+      color: #ffffff;
+      background: #0078FF;
+      padding-left: 1rem;
+    }
+
+    .container-table {
+      width: 100%;
+    }
+
+    .container-table tr.table-title {
+      width: 100%;
+      height: 1.3rem;
+      line-height: 1.3rem;
+      color: #ffffff;
+      font-size: .35rem;
+      background: #0078FF;
+    }
+
+    .container-table tr.table-title td {
+      padding-left: .8rem;
+    }
+
+    .container-table tr th {
+      width: 6%;
+      text-align: right;
+      height: 1rem;
+      font-size: .35rem;
+      line-height: 1rem;
+    }
+
+    .container-table tr td {
+      width: 20%;
+      font-size: .35rem;
+      padding-left: .2rem;
+    }
+
+    .matst_back {
+      width: 95%;
+      display: flex;
+      justify-content: space-between;
+      margin: 0 auto;
+      margin-top: .5rem;
+    }
+
+    .back_goo {
+      width: 2rem;
+      height: .9rem;
+      line-height: .9rem;
+      border: 1px solid #929292;
+      color: #7d7272;
+      text-align: center;
+      border-radius: .1rem;
+    }
+
+    .back_goo svg {
+      width: .6rem;
+      height: .6rem;
+      vertical-align: middle;
+    }
+
+    .bottoms-btn {
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      margin-top: .5rem;
+    }
+
+    .bottoms-btn .bottoms-bakgs {
+      width: 40%;
+      height: 1.7rem;
+      line-height: 1.7rem;
+      background: #025CEE;
+      color: #ffffff;
+      text-align: center;
+      border-radius: .1rem;
+    }
+
+    .bottoms-btn .bottoms-sure {
+      width: 40%;
+      height: 1.7rem;
+      line-height: 1.7rem;
+      background: #0689BD;
+      color: #ffffff;
+      text-align: center;
+      border-radius: .1rem;
+    }
+
+    .cont_box {
+      position: relative;
+      width: 100%;
+      height: 70vh;
+    }
+
+    .container-table tr td span input {
+      border: 0;
+      outline: 0;
+      background-color: transparent;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="outdiv">
+    <div class="right_conter">
+      <div class="header_box" id="header">
+        <!--#include file="header.html"-->
+      </div>
+      <div class="h8vh"></div>
+      <!-- <div class="matst_back">
+        <div class="back_goo" onclick="goback()">
+          <svg t="1607408152481" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="3504" width="48" height="48">
+            <path
+              d="M438.4 297.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2L300.8 480H800c19.2 0 32 12.8 32 32 0 16-12.8 28.8-28.8 32H300.8l137.6 137.6c12.8 12.8 12.8 28.8 3.2 41.6l-3.2 3.2c-12.8 12.8-28.8 12.8-41.6 3.2l-3.2-3.2-192-192-3.2-3.2-3.2-3.2-3.2-3.2V499.2l3.2-3.2 3.2-3.2 3.2-3.2 192-192c12.8-12.8 32-12.8 44.8 0z"
+              fill="#bfbfbf" p-id="3505"></path>
+          </svg>
+          返回
+        </div>
+      </div> -->
+      <div class="cont_box">
+        <form name="computer" id="J_form">
+          <input type="hidden" name="address" id="address">
+          <input type="hidden" name="ages" id="ages">
+          <input type="hidden" name="nid" id="nid">
+          <input type="hidden" name="dosubmit" value="1">
+          <div id="container" class="container-box">
+            <div class="container-left">
+              <table class="container-table">
+                <tr class="table-title">
+                  <td colspan="4">个人信息</td>
+                </tr>
+                <tr style="height: 1rem;">
+                  <td colspan="4"></td>
+                </tr>
+                <tr>
+                  <th>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:</th>
+                  <td>
+                    <span id="name">
+                      <input type="text" class="styleinput" name="name" readonly="readonly">
+                    </span></td>
+                  <th>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</th>
+                  <td><span id="sex">
+                      <input type="text" class="styleinput" id="sexfirst" disabled>
+                      <input type="hidden" class="styleinput" name="sex" id="sexsecond" readonly="readonly">
+                    </span></td>
+                </tr>
+                <tr>
+                  <th>民&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;族:</th>
+                  <td><span id="nation">
+                      <input type="text" class="styleinput" name="nation" readonly="readonly">
+                    </span></td>
+                  <th>出生日期：</th>
+                  <td>
+                    <span id="both">
+                      <input type="text" class="styleinput" name="both" readonly="readonly">
+                    </span></td>
+                </tr>
+                <tr>
+                  <th id="idcoard">身份证号:</th>
+                  <td colspan="3">
+                    <span id="idcard">
+                      <input type="text" class="styleinput" name="idcard" readonly="readonly">
+                    </span>
+                  </td>
+                </tr>
+                <tr style="height: 1rem;">
+                  <td colspan="4"></td>
+                </tr>
+                <tr class="table-title">
+                  <td colspan="4">绑定手机</td>
+                </tr>
+                <tr>
+                  <td colspan="4">
+                    <input type="text" id="text" name="phone" class="text" readonly="readonly" value="请输入手机号" style="font-size: .32rem;
+                    text-align: left;
+                    padding-left: .2rem;
+                    margin-top: 1rem;
+                    height: 40px;">
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="container-right">
+              <div class="buttons">
+                <input type="button" value="7" class="button" id="7" onClick="show(this)">
+                <input type="button" value="8" class="button" id="8" onClick="show(this)">
+                <input type="button" value="9" class="button" id="9" onClick="show(this)">
+                <input type="button" value="4" class="button" id="4" onClick="show(this)">
+                <input type="button" value="5" class="button" id="5" onClick="show(this)">
+                <input type="button" value="6" class="button" id="6" onClick="show(this)">
+                <input type="button" value="1" class="button" id="1" onClick="show(this)">
+                <input type="button" value="2" class="button" id="2" onClick="show(this)">
+                <input type="button" value="3" class="button" id="3" onClick="show(this)">
+                <input type="button" value="0" class="button ling" id="0" onClick="show(this)">
+                <input type="button" value="退格" class="button" id="dele" onClick="funback()">
+              </div>
+              <div class="bottoms-btn">
+                <div class="bottoms-bakgs" id="backgs">返回</div>
+                <div class="bottoms-sure" id="submit">确定</div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" lang="javascript">
+    var nid = getUrlParam('nid');
+    var video = getUrlParam('video');
+    var im_card = getUrlParam('im_card');
+    var id_card = getUrlParam('id_card');
+    var clearmsg = false;
+    var ispoint = true;
+    $(function () {
+      if (im_card) {
+        const datastr = JSON.parse(im_card);
+        console.log(datastr);
+        $('#idcoard').text('医保卡号码');
+        $('#infomsg').text(datastr[4].words);
+      }
+      if (id_card) {
+        // id_card = decodeURIComponent(id_card);
+        const datastr = JSON.parse(id_card);
+        console.log(datastr);
+      }
+      if (video == 'store') {
+        $('#backgs').click(function () {
+          goo('/pharmacies/store/');
+        });
+      } else {
+        $('#backgs').click(function () {
+          goback();
+        });
+      }
+      getDate();
+      $('#submit').click(function () {
+        var text = $('#text').val();
+        if ($.trim(text) == '' || text == '请输入手机号' || typeof text !== 'number' && isNaN(text)) {
+          layer.open({
+            content: '手机号码不能为空',
+            skin: 'msg',
+            time: 2
+          });
+          return;
+        }
+        var urls = '/?m=pharmacy&c=doctor&a=consultation';
+        $.ajax({
+          url: urls,
+          type: "POST",
+          dataType: "JSON",
+          data: $('#J_form').serialize(),
+          success: function (data) {
+            if (1 == data.status) {
+              layer.open({
+                content: '即将进入问诊',
+                skin: 'msg',
+                time: 2
+              });
+              setTimeout(function () {
+                goo('/pharmacies/user/video_user.html?&nid=' + nid);
+              }, 3000)
+            } else {
+              layer.open({
+                content: data.erro,
+                skin: 'msg',
+                time: 2
+              });
+            }
+          }
+        });
+      })
+    })
+
+    function show(obj) {
+      var data = obj.value;
+      var text = document.getElementById("text");
+      if (text.value == '请输入手机号') {
+        text.value = "";
+      }
+      if (clearmsg) {
+        text.value = "";
+        clearmsg = false;
+      }
+      if (data == "+" || data == "-" || data == "*" || data == "/") {
+        ispoint = true;
+      }
+      if (data == "0" && text.value == "0") {
+        text.value = parseInt(text.value) + 0;
+      } else if (text.value == "0" && data != "+" && data != "-" && data != "*" && data != "/") {
+        text.value = parseInt(text.value) + parseInt(data);
+      } else {
+        text.value += data;
+      }
+    }
+
+    function funback() {
+      var text = document.getElementById("text");
+      if (text.value == "请输入手机号" || text.value == "") {
+        text.value = "请输入手机号";
+      } else {
+        document.getElementById("text").value = document.getElementById("text").value.slice(0, -1);
+      }
+    }
+
+    function getDate() {
+      $.ajax({
+        'url': '/?m=data&c=da_fun&a=lookImgCard',
+        'type': 'GET',
+        'data': '&nid=' + nid,
+        'dataType': 'json',
+        'success': function (da) {
+          setCookie('yf_user_id', da.id);
+          var data = JSON.parse(da.data);
+          var words_result;
+          if (da.words_result) {
+            words_result = da.words_result
+          } else {
+            words_result = JSON.parse(da.data);
+          }
+          //   var words_result = da.words_result;
+          var words_result_num = da.words_result_num;
+          if (0 == words_result_num && 0 == Object.keys(words_result).length) {
+            alert('识别失败');
+          } else {
+            words_result = words_result.words_result;
+            if (da.ni) {
+              $('#nid').val(da.nid)
+            } else {
+              $('#nid').val(da.id)
+            }
+            $('#name input').val(words_result['姓名'].words);
+            $('#sex #sexfirst').val(getFromIdCard(words_result['公民身份号码'].words, 2));
+            $('#sex #sexsecond').val(getFromSex(words_result['公民身份号码'].words, 2));
+            $('#both input').val(getFromIdCard(words_result['公民身份号码'].words, 1));
+            $('#address').val(words_result['住址'].words);
+            $('#ages').val(getFromIdCard(words_result['公民身份号码'].words, 3));
+            $('#idcard input').val(getFromIdCard(words_result['公民身份号码'].words, 4));
+            $('#nation input').val(words_result['民族'].words);
+          }
+        }
+      });
+    }
+
+
+    function getFromSex(UUserCard, num) {
+      if (num == 2) {
+        if (UUserCard == '') {
+          return "-";
+        }
+        if (parseInt(UUserCard.substr(16, 1)) % 2 == 1) {
+          return 1; //男
+        } else {
+          return 2; //女
+        }
+      }
+    }
+
+    function getFromIdCard(UUserCard, num) {
+      if (num == 1) {
+        birth = UUserCard.substring(6, 10) + "-" + UUserCard.substring(10, 12) + "-" + UUserCard.substring(12, 14);
+        return birth;
+      }
+      if (num == 2) {
+        if (UUserCard == '') {
+          return "-";
+        }
+        if (parseInt(UUserCard.substr(16, 1)) % 2 == 1) {
+          return "男";
+        } else {
+          return "女";
+        }
+      }
+      if (num == 3) {
+        var myDate = new Date();
+        var month = myDate.getMonth() + 1;
+        var day = myDate.getDate();
+        var age = myDate.getFullYear() - UUserCard.substring(6, 10) - 1;
+        if (UUserCard.substring(10, 12) < month || UUserCard.substring(10, 12) == month && UUserCard.substring(12,
+            14) <= day) {
+          age++;
+        }
+        return age;
+      }
+      if (num == 4 && UUserCard == '') {
+        return '--';
+      } else {
+        return UUserCard;
+      }
+    }
+  </script>
+
+
+
+</body>
+
+</html>
