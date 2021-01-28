@@ -487,11 +487,28 @@
                                     time: 2 //2秒后自动关闭
                              });
                     var row = [];
+<<<<<<< HEAD
+=======
                     for(let item in words_result){ 
                           var key = escape(item);
                           var info = words_result[item];
                           var words = escape(info.words);
                           row[key] = {words:words};
+                        }
+                      setTimeout(function(){
+                        goo('/pharmacies/user/text.html?im_card='+row)  
+                      },1000);       
+                  }
+                }
+            }); 
+                  }else if(sucssed==0){
+                    let rows = [];
+>>>>>>> 78902f24682119a6d09d391c8a7086176c5ec1ee
+                    for(let item in words_result){ 
+                          var key = escape(item);
+                          var info = words_result[item];
+                          var words = escape(info.words);
+                          rows[key] = {words:words};
                         }
                       setTimeout(function(){
                         goo('/pharmacies/user/text.html?im_card='+row)  
@@ -526,7 +543,11 @@
 
                     setTimeout(function(){
                      //  var sss = JSON.stringify(rows);    
+<<<<<<< HEAD
                        goo('/pharmacies/user/identification.html?id_card='+json2str(rows))
+=======
+                       goo('/pharmacies/user/text.html?id_card='+json2str(rows))
+>>>>>>> 78902f24682119a6d09d391c8a7086176c5ec1ee
                      
                     },1000);
                   }
@@ -534,7 +555,11 @@
                 }
             });
         }
+<<<<<<< HEAD
         function json2str(o) {    
+=======
+        function json2str(o) {
+>>>>>>> 78902f24682119a6d09d391c8a7086176c5ec1ee
             var arr = [];
             var fmt = function(s) {
                 if (typeof s == 'object' && s != null) return json2str(s);
