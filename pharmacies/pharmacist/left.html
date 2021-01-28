@@ -44,7 +44,7 @@
             </div>
             
         </div>
-        <div class="wdihje">20</div>
+        <div class="wdihje" id="whait_passed">20</div>
     </div>
 
     <!-- <div class="boawo_item" onclick="goo('#')">
@@ -138,5 +138,27 @@
       <p>版本号：1.0.1</p>
    </div>
      
-
 </div>
+
+<script>
+showUnreadNews();
+function showUnreadNews() {
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: "/?m=pharmacy&c=pharmacist&a=doHangup",
+            dataType: "json",
+            success: function (data) {
+                var res = data.data;
+                if (data.status == 1) {
+                    $('#whait_passed').text(res.pass_num);
+                }
+            }
+        });
+    });
+}
+setInterval('showUnreadNews()', 4000);
+
+
+
+</script>
